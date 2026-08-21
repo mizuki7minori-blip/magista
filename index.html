@@ -3,65 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MTGまとめ・ニュース・カード相場情報を集めるサイト">
-  <title>MTGまとめ | Magista</title>
+  <meta name="description" content="MAGISTA MTG - MTGニュース、5chまとめ、カード相場をまとめてチェックできるMTG情報サイト">
+  <title>MAGISTA MTG｜MTGまとめ・ニュース・カード相場</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html">MAGISTA<span>MTG</span></a>
-      <nav>
+      <a class="logo" href="index.html"><strong>MAGISTA</strong><span>MTG</span></a>
+      <nav aria-label="メインメニュー">
         <a href="#news">ニュース</a>
         <a href="#matome">5chまとめ</a>
         <a href="#price">カード相場</a>
+        <a href="#ranking">ランキング</a>
       </nav>
+      <button class="menu-button" aria-label="メニュー">☰</button>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container">
-        <p class="eyebrow">MAGIC: THE GATHERING</p>
-        <h1>MTGの情報を、<br>ひとつに。</h1>
-        <p class="hero-text">ニュース、5chまとめ、カード相場をまとめてチェックできるMTG情報サイト。</p>
+      <div class="hero-glow"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">MAGIC: THE GATHERING COMMUNITY</p>
+          <h1>MTGの「今」を、<br><span>もっと面白く。</span></h1>
+          <p class="hero-text">ニュース、5chまとめ、カード相場、新カード情報まで。<br>マジック：ザ・ギャザリングの話題をひとつに。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#news">最新記事を見る</a>
+            <a class="button secondary" href="#price">カード相場を見る</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <div class="hero-card-top">MTG / 2026</div>
+          <div class="hero-card-mark">M</div>
+          <div class="hero-card-bottom">MAGISTA</div>
+        </div>
       </div>
     </section>
 
-    <section class="container content-grid" id="news">
+    <div class="breaking"><div class="container breaking-inner"><span class="breaking-label">PICK UP</span><span>MTGの最新情報・話題を随時更新</span><span class="breaking-arrow">→</span></div></div>
+
+    <section class="container content-grid">
       <div class="main-column">
-        <div class="section-title"><h2>最新記事</h2><span>COMING SOON</span></div>
-        <article class="article-card featured">
-          <div class="tag">NEWS</div>
-          <h3>MTGまとめサイト、始動。</h3>
-          <p>ここに最新のMTGニュースや話題の記事が表示されます。</p>
-        </article>
-        <div class="article-list">
-          <article class="article-card"><div class="tag">5chまとめ</div><h3>話題のMTGスレッドをまとめて掲載</h3><p>記事データを追加予定です。</p></article>
-          <article class="article-card"><div class="tag">相場</div><h3>注目カードの価格情報</h3><p>カード価格データを追加予定です。</p></article>
-          <article class="article-card"><div class="tag">新カード</div><h3>新セット・新カード情報</h3><p>公式情報の掲載欄です。</p></article>
-        </div>
+        <section id="news">
+          <div class="section-heading"><div><span class="section-kicker">LATEST</span><h2>最新記事</h2></div><a href="#" class="more">もっと見る →</a></div>
+          <article class="article-card featured">
+            <div class="article-meta"><span class="tag news">NEWS</span><span>2026.08.21</span></div>
+            <h3>MAGISTA MTG、始動。MTGの話題をひとつに。</h3>
+            <p>MTGニュース、5chまとめ、カード相場など、マジック：ザ・ギャザリングを楽しむための情報を集めていきます。</p>
+            <a class="read-more" href="#">記事を読む →</a>
+          </article>
+          <div class="article-list">
+            <article class="article-card compact"><div class="article-meta"><span class="tag matome">5chまとめ</span><span>NEW</span></div><h3>話題のMTGスレッドをまとめて掲載</h3><p>MTGプレイヤーの反応や話題をチェック。</p></article>
+            <article class="article-card compact"><div class="article-meta"><span class="tag price">相場</span><span>NEW</span></div><h3>注目カードの価格情報をチェック</h3><p>販売価格・買取価格・価格推移を掲載予定。</p></article>
+            <article class="article-card compact"><div class="article-meta"><span class="tag card">新カード</span><span>NEW</span></div><h3>新セット・新カード情報</h3><p>新カードやセット情報を分かりやすく紹介。</p></article>
+          </div>
+        </section>
+
+        <section class="category-section" id="matome">
+          <div class="section-heading"><div><span class="section-kicker">COMMUNITY</span><h2>5chまとめ</h2></div><a href="#" class="more">一覧 →</a></div>
+          <div class="topic-list">
+            <a href="#" class="topic"><span class="topic-number">01</span><span><b>MTG関連の話題スレッド</b><small>コメント・反応まとめ</small></span><span>›</span></a>
+            <a href="#" class="topic"><span class="topic-number">02</span><span><b>新カード・新セットについて語るスレ</b><small>コメント・反応まとめ</small></span><span>›</span></a>
+            <a href="#" class="topic"><span class="topic-number">03</span><span><b>最近の大会・環境について</b><small>コメント・反応まとめ</small></span><span>›</span></a>
+          </div>
+        </section>
       </div>
 
       <aside class="sidebar">
-        <div class="side-card" id="matome">
-          <h2>5chまとめ</h2>
-          <p>MTG関連スレッドをまとめて掲載。</p>
-          <span class="status">準備中</span>
-        </div>
-        <div class="side-card" id="price">
-          <h2>カード相場</h2>
-          <p>販売価格・買取価格・価格推移を管理。</p>
-          <span class="status">準備中</span>
-        </div>
-        <div class="side-card ranking">
-          <h2>人気記事</h2>
-          <ol><li>これから掲載予定</li><li>これから掲載予定</li><li>これから掲載予定</li></ol>
-        </div>
+        <section class="side-card" id="price">
+          <div class="side-heading"><span class="section-kicker">MARKET</span><h2>カード相場</h2></div>
+          <p class="side-lead">気になるカードの相場をチェック。</p>
+          <div class="market-item"><span>注目カード</span><b>COMING SOON</b></div>
+          <div class="market-item"><span>価格ランキング</span><b>COMING SOON</b></div>
+          <a class="side-link" href="#">相場情報を見る →</a>
+        </section>
+
+        <section class="side-card" id="ranking">
+          <div class="side-heading"><span class="section-kicker">RANKING</span><h2>人気記事</h2></div>
+          <ol class="ranking-list">
+            <li><span>01</span><b>これから掲載予定</b></li>
+            <li><span>02</span><b>これから掲載予定</b></li>
+            <li><span>03</span><b>これから掲載予定</b></li>
+          </ol>
+        </section>
+
+        <section class="side-card about">
+          <span class="section-kicker">ABOUT</span>
+          <h2>MAGISTA MTG</h2>
+          <p>MTGのニュース、コミュニティ、カード情報をまとめるサイトです。</p>
+        </section>
       </aside>
     </section>
   </main>
 
-  <footer><div class="container">© 2026 MAGISTA MTG</div></footer>
+  <footer><div class="container footer-inner"><div><strong>MAGISTA</strong><span> MTG</span></div><small>© 2026 MAGISTA MTG</small></div></footer>
 </body>
 </html>
