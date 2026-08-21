@@ -1,0 +1,27 @@
+name: Weekly MAGSTA Pickup Update
+
+on:
+  schedule:
+    - cron: '0 0 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-pickup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update weekly pickup cards
+        run: python3 scripts/update_pickup.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html en/index.html pickup-data.json
+          git diff --cached --quiet || git commit -m "chore: update weekly pickup cards"
+          git push
