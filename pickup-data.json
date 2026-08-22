@@ -1,0 +1,38 @@
+[
+  {
+    "rank": 1,
+    "en": "Orcish Bowmasters",
+    "ja": "オークの弓使い",
+    "label": "📈 値動き注目",
+    "reason": "多くの環境で意識される人気カード。需要と再録情報による価格変化をチェック。",
+    "rating": "注目度 ★★★★☆",
+    "price": "—",
+    "updated": "2026-08-22",
+    "image": "",
+    "scryfall_url": ""
+  },
+  {
+    "rank": 2,
+    "en": "Sheoldred, the Apocalypse",
+    "ja": "黙示録、シェオルドレッド",
+    "label": "🏆 今週の注目",
+    "reason": "スタンダード以外でも高い知名度を持つ人気カード。仕様ごとの相場を追いたい。",
+    "rating": "注目度 ★★★★☆",
+    "price": "—",
+    "updated": "2026-08-22",
+    "image": "",
+    "scryfall_url": ""
+  },
+  {
+    "rank": 3,
+    "en": "Ragavan, Nimble Pilferer",
+    "ja": "敏捷なこそ泥、ラガバン",
+    "label": "💎 隠れ注目",
+    "reason": "モダンなどで知られる人気カード。需要と供給の変化に注目。",
+    "rating": "注目度 ★★★★☆",
+    "price": "—",
+    "updated": "2026-08-22",
+    "image": "",
+    "scryfall_url": ""
+  }
+]
