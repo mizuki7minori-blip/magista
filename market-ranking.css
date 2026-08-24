@@ -1,0 +1,23 @@
+/* ========================================
+   MAGSTA - Scryfall カード相場ランキング
+   ======================================== */
+
+.market-ranking{width:100%;background:#1a1a1a;border:1px solid #2d2d2d;border-radius:12px;overflow:hidden;color:#fff}
+.market-ranking__header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #2d2d2d;background:#202020}
+.market-ranking__eyebrow{display:block;margin-bottom:3px;color:#ff6b00;font-size:10px;font-weight:700;letter-spacing:1.5px}
+.market-ranking__header h2{margin:0;font-size:18px;font-weight:700;color:#fff}
+.market-ranking__source{padding:4px 8px;border:1px solid #444;border-radius:5px;color:#999;font-size:10px}
+.market-ranking__list{margin:0;padding:0;list-style:none}
+.market-ranking__item{display:grid;grid-template-columns:32px 48px minmax(0,1fr);align-items:center;gap:10px;min-height:68px;padding:10px 14px;border-bottom:1px solid #292929;box-sizing:border-box;transition:background-color .2s ease}
+.market-ranking__item:last-child{border-bottom:none}
+.market-ranking__item:hover{background:#242424}
+.market-ranking__rank{color:#ff6b00;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;text-align:center}
+.market-ranking__image{width:48px;height:48px;object-fit:cover;border-radius:5px;background:#111;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.market-ranking__info{min-width:0}
+.market-ranking__name{display:block;margin-bottom:4px;color:#f5f5f5;font-size:13px;font-weight:600;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.market-ranking__price{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.market-ranking__usd{color:#4caf50;font-size:14px;font-weight:700}
+.market-ranking__jpy{color:#aaa;font-size:11px;font-weight:500}
+.market-ranking__loading,.market-ranking__error{padding:22px 15px;color:#888;font-size:12px;line-height:1.6;text-align:center}
+.market-ranking__note{margin:0;padding:9px 14px;border-top:1px solid #292929;color:#666;font-size:9px;line-height:1.5;text-align:right}
+@media(max-width:480px){.market-ranking__header{padding:14px}.market-ranking__header h2{font-size:16px}.market-ranking__item{grid-template-columns:28px 44px minmax(0,1fr);gap:8px;min-height:62px;padding:8px 10px}.market-ranking__image{width:44px;height:44px}.market-ranking__name{font-size:12px}.market-ranking__usd{font-size:13px}.market-ranking__jpy{font-size:10px}}
