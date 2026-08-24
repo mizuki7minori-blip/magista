@@ -2,10 +2,6 @@
   'use strict';
   const RSS_API='https://api.rss2json.com/v1/api.json?rss_url=';
   const MAX_ITEMS_PER_LANGUAGE=8, MAX_LATEST_NEWS=4, REQUEST_TIMEOUT=9000;
-
-  // 日本語側は「RSSとして実際に取得できるフィード」を優先。
-  // 公式サイトのHTMLページをRSS URLとして渡すだけではrss2jsonで取得できないため、
-  // 公式日本語記事を検索できるGoogle News RSSと、RSSを公開している4Gamerをフォールバックとして使用します。
   const RSS_SOURCES=[
     {name:'MTG公式日本語（検索）',language:'ja',url:'https://news.google.com/rss/search?q=site%3Amagic.wizards.com%2Fja%2Fnews+MTG&hl=ja&gl=JP&ceid=JP%3Aja',className:'source-wizards-ja',keywords:['MTG','マジック','マジック：ザ・ギャザリング','アリーナ','カード','セット','禁止制限','イベント']},
     {name:'MTG日本公式（検索）',language:'ja',url:'https://news.google.com/rss/search?q=site%3Amtg-jp.com+%28MTG+OR+%E3%83%9E%E3%82%B8%E3%83%83%E3%82%AF%29&hl=ja&gl=JP&ceid=JP%3Aja',className:'source-official',keywords:['MTG','マジック','カード','セット','大会','イベント','読み物']},
@@ -14,7 +10,6 @@
     {name:'MTGGoldfish',language:'en',url:'https://www.mtggoldfish.com/feed',className:'source-goldfish',keywords:[]},
     {name:'Magic: The Gathering',language:'en',url:'https://magic.wizards.com/en/news',className:'source-wizards-en',keywords:[]}
   ];
-
   const CATEGORIES=[
     {key:'tournament',ja:'大会',en:'TOURNAMENT',words:['大会','優勝','top 8','top8','結果','tournament','grand prix','pro tour','world championship','championship','open','finals','standings']},
     {key:'price',ja:'相場',en:'PRICE',words:['価格','相場','買取','高騰','値上がり','値下がり','price','prices','market','buylist','spike','drop','expensive','cheap']},
@@ -22,92 +17,17 @@
     {key:'community',ja:'5ch',en:'COMMUNITY',words:['5ch','5ちゃん','スレ','掲示板','話題','community','reddit','thread','discussion','forum']},
     {key:'news',ja:'NEWS',en:'NEWS',words:[]}
   ];
-
-  const escapeText=v=>String(v??'').trim();
   const parseDate=v=>{const d=new Date(v);return Number.isNaN(d.getTime())?null:d;};
-
-  function formatDate(v){
-    const d=parseDate(v);if(!d)return'日時不明';
-    const n=new Date(),t=new Date(n.getFullYear(),n.getMonth(),n.getDate()),s=new Date(d.getFullYear(),d.getMonth(),d.getDate()),diff=Math.round((t-s)/86400000),time=d.toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'});
-    if(diff===0)return`今日 ${time}`;
-    if(diff===1)return`昨日 ${time}`;
-    return d.toLocaleDateString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit'}).replaceAll('/','.');
-  }
-
-  function classifyArticle(item,source){
-    const text=`${item.title??''} ${item.description??''}`.toLowerCase();
-    if(source.className==='source-5ch')return CATEGORIES.find(c=>c.key==='community');
-    return CATEGORIES.find(c=>c.words.some(w=>text.includes(w.toLowerCase())))||CATEGORIES.find(c=>c.key==='news');
-  }
-
-  function matchesKeywords(item,keywords){
-    if(!keywords?.length)return true;
-    const text=`${item.title??''} ${item.description??''}`.toLowerCase();
-    return keywords.some(k=>text.includes(k.toLowerCase()));
-  }
-
-  async function fetchFeed(source){
-    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),REQUEST_TIMEOUT);
-    try{
-      const response=await fetch(`${RSS_API}${encodeURIComponent(source.url)}`,{signal:controller.signal,cache:'no-store'});
-      if(!response.ok)throw new Error(`HTTP ${response.status}`);
-      const data=await response.json();
-      if(data.status!=='ok'||!Array.isArray(data.items))throw new Error(data.message||'RSSデータが取得できませんでした');
-      return data.items.filter(item=>item.link&&item.title&&matchesKeywords(item,source.keywords)).map(item=>{
-        const category=classifyArticle(item,source);
-        return{id:item.guid||item.link,title:escapeText(item.title),link:item.link,pubDate:item.pubDate||item.isoDate||'',sourceName:source.name,sourceClass:source.className,language:source.language,categoryKey:category.key,categoryJa:category.ja,categoryEn:category.en};
-      });
-    }finally{clearTimeout(timer);}
-  }
-
-  function createItem(article,index){
-    const link=document.createElement('a');link.className=`rss-timeline-item ${article.sourceClass} category-${article.categoryKey}`;link.href=article.link;link.target='_blank';link.rel='noopener noreferrer';
-    const number=document.createElement('span');number.className='rss-timeline-number';number.textContent=String(index+1).padStart(2,'0');
-    const body=document.createElement('span');body.className='rss-timeline-body';
-    const top=document.createElement('span');top.className='rss-timeline-topline';
-    const badge=document.createElement('span');badge.className=`rss-timeline-badge badge-${article.categoryKey}`;badge.textContent=article.language==='ja'?article.categoryJa:article.categoryEn;
-    const title=document.createElement('strong');title.className='rss-timeline-title';title.textContent=article.title;
-    const meta=document.createElement('small');meta.className='rss-timeline-meta';meta.textContent=`${formatDate(article.pubDate)} / ${article.sourceName}`;
-    top.appendChild(badge);body.append(top,title,meta);link.append(number,body);return link;
-  }
-
-  function renderLanguage(container,articles){
-    container.replaceChildren();
-    if(!articles.length){const empty=document.createElement('p');empty.className='rss-timeline-empty';empty.textContent='現在、表示できる記事がありません。';container.appendChild(empty);return;}
-    articles.slice(0,MAX_ITEMS_PER_LANGUAGE).forEach((a,i)=>container.appendChild(createItem(a,i)));
-  }
-
-  function createLatestArticle(article,featured=false){
-    const card=document.createElement('article');card.className=`article-card ${featured?'featured':'compact'} latest-rss-article`;
-    const meta=document.createElement('div');meta.className='article-meta';
-    const tag=document.createElement('span');tag.className=`tag ${article.categoryKey==='community'?'matome':article.categoryKey==='price'?'price':article.categoryKey==='new-card'?'card':'news'}`;tag.textContent=article.language==='ja'?article.categoryJa:article.categoryEn;
-    const date=document.createElement('span');date.textContent=`${formatDate(article.pubDate)} / ${article.sourceName}`;meta.append(tag,date);
-    const title=document.createElement('h3');title.textContent=article.title;
-    const description=document.createElement('p');description.textContent=article.language==='ja'?'MAGSTAがRSSから自動取得した最新MTG情報です。':'Latest MTG information automatically collected by MAGSTA.';
-    const readMore=document.createElement('a');readMore.className='read-more';readMore.href=article.link;readMore.target='_blank';readMore.rel='noopener noreferrer';readMore.textContent='記事を読む →';
-    card.append(meta,title,description,readMore);return card;
-  }
-
-  function renderLatestNews(articles){
-    const section=document.getElementById('news');if(!section)return;
-    const list=section.querySelector('.article-list'),featured=section.querySelector('.featured');if(!list||!featured||!articles.length)return;
-    const latest=articles.slice(0,MAX_LATEST_NEWS);featured.replaceWith(createLatestArticle(latest[0],true));list.replaceChildren(...latest.slice(1).map(a=>createLatestArticle(a)));
-  }
-
-  async function fetchMixedRSS(){
-    const jaContainer=document.getElementById('rss-timeline-ja-list'),enContainer=document.getElementById('rss-timeline-en-list'),status=document.getElementById('rss-timeline-status');
-    if(!jaContainer||!enContainer)return;
-    if(status)status.textContent='最新情報を整理中…';
-    const results=await Promise.allSettled(RSS_SOURCES.map(fetchFeed));
-    const articles=[];let successCount=0;
-    results.forEach((result,index)=>{if(result.status==='fulfilled'){successCount++;articles.push(...result.value);}else console.warn(`[MAGSTA RSS] ${RSS_SOURCES[index].name} 取得失敗:`,result.reason);});
-    const uniqueArticles=Array.from(new Map(articles.map(a=>[a.id,a])).values());
-    uniqueArticles.sort((a,b)=>(parseDate(b.pubDate)?.getTime()??0)-(parseDate(a.pubDate)?.getTime()??0));
-    renderLatestNews(uniqueArticles);
-    renderLanguage(jaContainer,uniqueArticles.filter(a=>a.language==='ja'));
-    renderLanguage(enContainer,uniqueArticles.filter(a=>a.language==='en'));
-    if(status)status.textContent=successCount>0?`${successCount}/${RSS_SOURCES.length}サイト取得・自動分類`:'RSSを取得できませんでした';
-  }
-
+  const formatDate=v=>{const d=parseDate(v);if(!d)return'日時不明';const n=new Date(),t=new Date(n.getFullYear(),n.getMonth(),n.getDate()),s=new Date(d.getFullYear(),d.getMonth(),d.getDate()),diff=Math.round((t-s)/86400000),time=d.toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'});if(diff===0)return`今日 ${time}`;if(diff===1)return`昨日 ${time}`;return d.toLocaleDateString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit'}).replaceAll('/','.');};
+  function classifyArticle(item,source){const text=`${item.title??''} ${item.description??''}`.toLowerCase();if(source.className==='source-5ch')return CATEGORIES.find(c=>c.key==='community');return CATEGORIES.find(c=>c.words.some(w=>text.includes(w.toLowerCase())))||CATEGORIES.find(c=>c.key==='news');}
+  function matchesKeywords(item,keywords){if(!keywords?.length)return true;const text=`${item.title??''} ${item.description??''}`.toLowerCase();return keywords.some(k=>text.includes(k.toLowerCase()));}
+  async function fetchFeed(source){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),REQUEST_TIMEOUT);try{const response=await fetch(`${RSS_API}${encodeURIComponent(source.url)}`,{signal:controller.signal,cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();if(data.status!=='ok'||!Array.isArray(data.items))throw new Error(data.message||'RSSデータが取得できませんでした');return data.items.filter(item=>item.link&&item.title&&matchesKeywords(item,source.keywords)).map(item=>{const category=classifyArticle(item,source);return{id:item.guid||item.link,title:String(item.title).trim(),description:item.description||'',link:item.link,pubDate:item.pubDate||item.isoDate||'',sourceName:source.name,sourceClass:source.className,language:source.language,categoryKey:category.key,categoryJa:category.ja,categoryEn:category.en};});}finally{clearTimeout(timer);}}
+  function createItem(article,index){const link=document.createElement('a');link.className=`rss-timeline-item ${article.sourceClass} category-${article.categoryKey}`;link.href=article.link;link.target='_blank';link.rel='noopener noreferrer';const number=document.createElement('span');number.className='rss-timeline-number';number.textContent=String(index+1).padStart(2,'0');const body=document.createElement('span');body.className='rss-timeline-body';const top=document.createElement('span');top.className='rss-timeline-topline';const badge=document.createElement('span');badge.className=`rss-timeline-badge badge-${article.categoryKey}`;badge.textContent=article.language==='ja'?article.categoryJa:article.categoryEn;const title=document.createElement('strong');title.className='rss-timeline-title';title.textContent=article.title;const meta=document.createElement('small');meta.className='rss-timeline-meta';meta.textContent=`${formatDate(article.pubDate)} / ${article.sourceName}`;top.appendChild(badge);body.append(top,title,meta);link.append(number,body);
+    if(article.language==='en'&&window.MAGSTAZeroSummary){const summary=document.createElement('span');summary.className='rss-timeline-summary';summary.hidden=true;const s=window.MAGSTAZeroSummary.get(article);summary.textContent=`🇯🇵 ${s.lead}${s.detail?' '+s.detail:''}`;body.appendChild(summary);const button=document.createElement('button');button.type='button';button.className='rss-summary-toggle';button.textContent='🇯🇵 要約を見る';button.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();summary.hidden=!summary.hidden;button.textContent=summary.hidden?'🇯🇵 要約を見る':'🇯🇵 要約を閉じる';});body.appendChild(button);}
+    return link;}
+  function renderLanguage(container,articles){container.replaceChildren();if(!articles.length){const empty=document.createElement('p');empty.className='rss-timeline-empty';empty.textContent='現在、表示できる記事がありません。';container.appendChild(empty);return;}articles.slice(0,MAX_ITEMS_PER_LANGUAGE).forEach((a,i)=>container.appendChild(createItem(a,i)));}
+  function createLatestArticle(article,featured=false){const card=document.createElement('article');card.className=`article-card ${featured?'featured':'compact'} latest-rss-article`;const meta=document.createElement('div');meta.className='article-meta';const tag=document.createElement('span');tag.className=`tag ${article.categoryKey==='community'?'matome':article.categoryKey==='price'?'price':article.categoryKey==='new-card'?'card':'news'}`;tag.textContent=article.language==='ja'?article.categoryJa:article.categoryEn;const date=document.createElement('span');date.textContent=`${formatDate(article.pubDate)} / ${article.sourceName}`;meta.append(tag,date);const title=document.createElement('h3');title.textContent=article.title;const description=document.createElement('p');description.textContent=article.language==='ja'?'MAGSTAがRSSから自動取得した最新MTG情報です。':'Latest MTG information automatically collected by MAGSTA.';const readMore=document.createElement('a');readMore.className='read-more';readMore.href=article.link;readMore.target='_blank';readMore.rel='noopener noreferrer';readMore.textContent='記事を読む →';card.append(meta,title,description,readMore);return card;}
+  function renderLatestNews(articles){const section=document.getElementById('news');if(!section)return;const list=section.querySelector('.article-list'),featured=section.querySelector('.featured');if(!list||!featured||!articles.length)return;const latest=articles.slice(0,MAX_LATEST_NEWS);featured.replaceWith(createLatestArticle(latest[0],true));list.replaceChildren(...latest.slice(1).map(a=>createLatestArticle(a)));}
+  async function fetchMixedRSS(){const ja=document.getElementById('rss-timeline-ja-list'),en=document.getElementById('rss-timeline-en-list'),status=document.getElementById('rss-timeline-status');if(!ja||!en)return;if(status)status.textContent='最新情報を整理中…';const results=await Promise.allSettled(RSS_SOURCES.map(fetchFeed)),articles=[];let success=0;results.forEach((r,i)=>{if(r.status==='fulfilled'){success++;articles.push(...r.value);}else console.warn(`[MAGSTA RSS] ${RSS_SOURCES[i].name} 取得失敗:`,r.reason);});const unique=Array.from(new Map(articles.map(a=>[a.id,a])).values());unique.sort((a,b)=>(parseDate(b.pubDate)?.getTime()??0)-(parseDate(a.pubDate)?.getTime()??0));renderLatestNews(unique);renderLanguage(ja,unique.filter(a=>a.language==='ja'));renderLanguage(en,unique.filter(a=>a.language==='en'));if(status)status.textContent=success?`${success}/${RSS_SOURCES.length}サイト取得・自動分類`:'RSSを取得できませんでした';}
   document.addEventListener('DOMContentLoaded',fetchMixedRSS);
 })();
