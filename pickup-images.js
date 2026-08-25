@@ -3,19 +3,25 @@
   style.textContent = `
     .pickup-card .pickup-symbol {
       position: relative;
-      width: min(150px, 48%);
-      height: 210px;
-      margin: 20px auto 18px;
-      border-radius: 10px;
+      width: min(230px, 88%);
+      height: auto;
+      aspect-ratio: 0.716 / 1;
+      margin: 20px auto 22px;
+      padding: 0;
+      border-radius: 12px;
       overflow: hidden;
       background: #0a0e14;
       border: 1px solid #3a4655;
+      box-shadow: 0 16px 38px rgba(0,0,0,.4);
+      display: block;
     }
     .pickup-card .pickup-symbol img {
       display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      max-width: none;
+      object-fit: contain;
+      object-position: center;
     }
     .pickup-card .pickup-symbol.is-loading::after {
       content: '画像を読み込み中…';
@@ -25,16 +31,24 @@
       place-items: center;
       padding: 12px;
       color: #8f99a8;
-      font-size: .65rem;
+      font-size: .7rem;
       text-align: center;
     }
     .pickup-card .pickup-symbol.is-fallback {
       font-size: 2.8rem;
     }
+    .pickup-card .pickup-symbol img {
+      cursor: zoom-in;
+    }
+    @media (max-width: 1000px) {
+      .pickup-card .pickup-symbol {
+        width: min(260px, 82%);
+      }
+    }
     @media (max-width: 520px) {
       .pickup-card .pickup-symbol {
-        width: 120px;
-        height: 168px;
+        width: min(330px, 90%);
+        margin-top: 18px;
       }
     }
   `;
@@ -58,7 +72,7 @@
       if (!response.ok) throw new Error(`Scryfall HTTP ${response.status}`);
 
       const data = await response.json();
-      const imageUrl = data.image_uris?.normal || data.image_uris?.large;
+      const imageUrl = data.image_uris?.large || data.image_uris?.normal;
       if (!imageUrl) throw new Error('No image URL');
 
       const image = document.createElement('img');
@@ -67,6 +81,7 @@
       image.loading = 'lazy';
       image.decoding = 'async';
       image.referrerPolicy = 'no-referrer';
+      image.addEventListener('click', () => window.open(imageUrl, '_blank', 'noopener,noreferrer'));
 
       target.textContent = '';
       target.appendChild(image);
