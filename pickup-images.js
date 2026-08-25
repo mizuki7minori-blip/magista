@@ -22,6 +22,7 @@
       max-width: none;
       object-fit: contain;
       object-position: center;
+      cursor: zoom-in;
     }
     .pickup-card .pickup-symbol.is-loading::after {
       content: '画像を読み込み中…';
@@ -34,25 +35,81 @@
       font-size: .7rem;
       text-align: center;
     }
-    .pickup-card .pickup-symbol.is-fallback {
-      font-size: 2.8rem;
+    .pickup-card .pickup-symbol.is-fallback { font-size: 2.8rem; }
+    .pickup-image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0,0,0,.86);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .18s ease, visibility .18s ease;
+      cursor: zoom-out;
     }
-    .pickup-card .pickup-symbol img {
-      cursor: zoom-in;
+    .pickup-image-modal.is-open { opacity: 1; visibility: visible; }
+    .pickup-image-modal img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: min(92vw, 560px);
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.65);
+      cursor: default;
     }
+    .pickup-image-modal-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.14);
+      color: #fff;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    body.pickup-modal-open { overflow: hidden; }
     @media (max-width: 1000px) {
-      .pickup-card .pickup-symbol {
-        width: min(260px, 82%);
-      }
+      .pickup-card .pickup-symbol { width: min(260px, 82%); }
     }
     @media (max-width: 520px) {
-      .pickup-card .pickup-symbol {
-        width: min(330px, 90%);
-        margin-top: 18px;
-      }
+      .pickup-card .pickup-symbol { width: min(330px, 90%); margin-top: 18px; }
+      .pickup-image-modal { padding: 12px; }
+      .pickup-image-modal img { max-width: 94vw; max-height: 88vh; }
+      .pickup-image-modal-close { top: 10px; right: 10px; }
     }
   `;
   document.head.appendChild(style);
+
+  const modal = document.createElement('div');
+  modal.className = 'pickup-image-modal';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-label', 'カード画像拡大表示');
+  modal.innerHTML = '<button class="pickup-image-modal-close" type="button" aria-label="閉じる">×</button><img alt="">';
+  document.body.appendChild(modal);
+
+  const modalImage = modal.querySelector('img');
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('pickup-modal-open');
+    modalImage.removeAttribute('src');
+  };
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+  modal.querySelector('.pickup-image-modal-close').addEventListener('click', closeModal);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeModal();
+  });
 
   const cards = [...document.querySelectorAll('.pickup-card')];
   if (!cards.length) return;
@@ -61,16 +118,11 @@
     const name = card.querySelector('.pickup-info h3')?.textContent?.trim();
     const target = card.querySelector('.pickup-symbol');
     if (!name || !target) return;
-
     target.classList.add('is-loading');
 
     try {
-      const response = await fetch(
-        `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`,
-        { headers: { Accept: 'application/json' } }
-      );
+      const response = await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`, { headers: { Accept: 'application/json' } });
       if (!response.ok) throw new Error(`Scryfall HTTP ${response.status}`);
-
       const data = await response.json();
       const imageUrl = data.image_uris?.large || data.image_uris?.normal;
       if (!imageUrl) throw new Error('No image URL');
@@ -81,7 +133,14 @@
       image.loading = 'lazy';
       image.decoding = 'async';
       image.referrerPolicy = 'no-referrer';
-      image.addEventListener('click', () => window.open(imageUrl, '_blank', 'noopener,noreferrer'));
+      image.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        modalImage.src = imageUrl;
+        modalImage.alt = `${name}のカード画像（拡大）`;
+        modal.classList.add('is-open');
+        document.body.classList.add('pickup-modal-open');
+      });
 
       target.textContent = '';
       target.appendChild(image);
