@@ -6,6 +6,8 @@
     .pickup-card .pickup-symbol.is-loading::after {content:'画像を読み込み中…';position:absolute;inset:0;display:grid;place-items:center;padding:12px;color:#fff;font-size:.8rem;text-align:center;background:rgba(10,14,20,.72)}
     .pickup-card .pickup-symbol.is-fallback {font-size:1rem;color:#fff;display:grid;place-items:center;text-align:center;padding:12px}
     .pickup-card .pickup-symbol.is-fallback::after {content:'カード画像を取得できませんでした';}
+    .pickup-card .pickup-name-wiki {color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.28);transition:color .18s ease,border-color .18s ease}
+    .pickup-card .pickup-name-wiki:hover {color:#7dd3fc;border-color:#7dd3fc}
     .pickup-image-modal {position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.86);opacity:0;visibility:hidden;transition:opacity .18s ease,visibility .18s ease;cursor:zoom-out}
     .pickup-image-modal.is-open {opacity:1;visibility:visible}
     .pickup-image-modal img {display:block;width:auto;height:auto;max-width:min(92vw,560px);max-height:92vh;object-fit:contain;border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.65);cursor:default}
@@ -31,6 +33,22 @@
 
   const cards = [...document.querySelectorAll('.pickup-card')];
   if (!cards.length) return;
+
+  // ピックアップカード名をMTG Wikiの検索ページへリンク
+  cards.forEach(card => {
+    const heading = card.querySelector('.pickup-info h3');
+    const name = heading?.textContent?.trim();
+    if (!heading || !name || heading.querySelector('.pickup-name-wiki')) return;
+    const link = document.createElement('a');
+    link.className = 'pickup-name-wiki';
+    link.href = `https://mtgwiki.com/wiki/Special:Search?search=${encodeURIComponent(name)}`;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.title = `${name}をMTG Wikiで見る`;
+    link.textContent = name;
+    heading.textContent = '';
+    heading.appendChild(link);
+  });
 
   const loadImage = (url,name,target) => new Promise((resolve,reject) => {
     const image = new Image();
