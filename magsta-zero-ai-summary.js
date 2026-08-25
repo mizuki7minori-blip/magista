@@ -1,21 +1,37 @@
-/* MAGSTA zero-cost RSS summary helper. Uses RSS title/description only. */
+/* MAGSTA RSS summary helper. Builds a clearer 2-4 sentence summary from the RSS title/description without copying article text. */
 (() => {
   'use strict';
-  const KEY='magsta_summary_cache_v3', MAX=120;
-  const RULES=[['大会','大会'],['tournament','大会'],['winner','大会結果'],['top 8','TOP8'],['top8','TOP8'],['spoiler','新カード'],['revealed','新カード'],['new card','新カード'],['新カード','新カード'],['price','カード相場'],['prices','カード相場'],['market','カード相場'],['spike','価格上昇'],['高騰','価格上昇'],['値上がり','価格上昇'],['値下がり','価格下落'],['deck','デッキ・環境'],['デッキ','デッキ・環境'],['modern','モダン'],['standard','スタンダード'],['commander','統率者'],['ban','禁止・制限'],['banned','禁止・制限'],['禁止','禁止・制限'],['announcement','公式発表'],['発表','公式発表']];
+  const KEY='magsta_summary_cache_v4', MAX=120;
+  const clean=v=>String(v||'').replace(/<[^>]*>/g,' ').replace(/&nbsp;/gi,' ').replace(/\s+/g,' ').trim();
+  const clip=(v,n=260)=>v.length>n?v.slice(0,n).replace(/\s+\S*$/,'')+'…':v;
+  const escape=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return{}}};
   const save=o=>localStorage.setItem(KEY,JSON.stringify(Object.fromEntries(Object.entries(o).slice(-MAX))));
-  function make(article,language='en'){
-    const text=`${article.title||''} ${article.description||''}`.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim(), lower=text.toLowerCase();
-    const tags=[...new Set(RULES.filter(([k])=>lower.includes(k.toLowerCase())).map(([,v])=>v))].slice(0,3);
-    let what='MTGに関する最新情報を扱った記事です。';
-    let point='記事のタイトルとRSS概要から、今回の話題のポイントを短く整理しています。';
-    if(/大会|tournament|winner|top 8|top8/.test(lower)){what='MTGの大会・競技シーンに関する記事です。';point='大会結果や上位入賞デッキなど、現在の競技環境をチェックできる内容です。';}
-    else if(/新カード|spoiler|revealed|new card/.test(lower)){what='新カードや新セットに関する記事です。';point='公開されたカードやセット情報が、今後の環境や相場に影響する可能性があります。';}
-    else if(/価格|相場|高騰|値上がり|値下がり|price|prices|market|spike/.test(lower)){what='MTGカードの価格・市場動向に関する記事です。';point='需要や大会結果、供給状況などによる価格変化をチェックする話題です。';}
-    else if(/デッキ|deck|modern|standard|commander/.test(lower)){what='MTGのデッキ・環境に関する記事です。';point='注目デッキや環境の変化を把握するための情報です。';}
-    else if(/禁止|ban|banned/.test(lower)){what='MTGの禁止・制限やルールに関する記事です。';point='環境やデッキ構築に影響する可能性がある公式・競技情報です。';}
-    return {title:article.title||'MTG記事',what,point,tags,detail:text,generatedAt:new Date().toISOString(),language,method:'zero-cost-rss-summary'};
+  const has=(t,words)=>words.some(w=>t.toLowerCase().includes(w));
+  function make(article,language='ja'){
+    const title=clean(article.title), desc=clean(article.description), text=clean(`${title} ${desc}`), lower=text.toLowerCase();
+    const tags=[];
+    if(has(lower,['大会','優勝','top 8','top8','tournament','championship','finals','standings'])) tags.push('大会');
+    if(has(lower,['価格','相場','買取','高騰','値上がり','値下がり','price','prices','market','spike'])) tags.push('カード相場');
+    if(has(lower,['新カード','新セット','スポイラー','プレビュー','spoiler','revealed','new card','expansion'])) tags.push('新カード');
+    if(has(lower,['5ch','5ちゃん','スレ','掲示板','reddit','thread','discussion'])) tags.push('コミュニティ');
+    if(has(lower,['デッキ','deck','modern','standard','commander','legacy','vintage'])) tags.push('デッキ・環境');
+    let summary='';
+    if(desc && desc.length>35){
+      const d=clip(desc,320);
+      summary=language==='en'
+        ? `この記事では「${title}」について紹介しています。${d}`
+        : `この記事では「${title}」について紹介しています。${d}`;
+    } else {
+      if(tags.includes('大会')) summary=`「${title}」はMTGの大会・競技シーンに関する話題です。大会結果や上位デッキなど、現在の競技環境を確認する材料になります。`;
+      else if(tags.includes('カード相場')) summary=`「${title}」はMTGカードの価格や市場動向に関する話題です。需要や大会結果、供給状況によって今後の価格が動く可能性があります。`;
+      else if(tags.includes('新カード')) summary=`「${title}」は新カード・新セットに関する話題です。公開されたカードの性能や採用先によって、今後の環境や相場への影響が注目されます。`;
+      else if(tags.includes('デッキ・環境')) summary=`「${title}」はMTGのデッキや環境に関する話題です。注目されているデッキや採用カードの変化を追うことで、現在の環境を把握できます。`;
+      else if(tags.includes('コミュニティ')) summary=`「${title}」はMTGコミュニティで話題になっている内容です。プレイヤーの反応や議論の流れをチェックできます。`;
+      else summary=`「${title}」についてのMTG最新情報です。記事のタイトルと公開された概要をもとに、話題のポイントを短く整理しています。`;
+    }
+    const point=tags.includes('大会')?'大会での採用状況や次のイベントでの動きに注目。':tags.includes('カード相場')?'今後の大会結果・再録情報・需要による価格変動に注目。':tags.includes('新カード')?'発売後の採用率とカード価格の動きに注目。':tags.includes('デッキ・環境')?'今後の大会での使用率や環境への影響に注目。':tags.includes('コミュニティ')?'プレイヤーの反応が今後の話題や環境にどう影響するかに注目。':'今後の公式発表やプレイヤーの反応に注目。';
+    return {summary:clip(summary,520),point,tags:tags.slice(0,3),generatedAt:new Date().toISOString(),language,method:'rss-title-description-summary-v4'};
   }
-  window.MAGSTAZeroSummary={get(article,language='en'){const c=load(),k=`${language}:${article.id||article.link||article.title}`;if(!c[k]){c[k]=make(article,language);save(c)}return c[k]}};
+  window.MAGSTAZeroSummary={get(article,language='ja'){const c=load(),k=`${language}:${article.id||article.link||article.title}`;if(!c[k]){c[k]=make(article,language);save(c)}return c[k]}};
 })();
