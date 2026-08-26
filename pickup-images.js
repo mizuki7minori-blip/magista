@@ -11,8 +11,17 @@
     .pickup-image-modal img {display:block;width:auto;height:auto;max-width:min(92vw,560px);max-height:92vh;object-fit:contain;border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.65);cursor:default}
     .pickup-image-modal-close {position:fixed;top:18px;right:22px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:28px;line-height:1;cursor:pointer}
     body.pickup-modal-open {overflow:hidden}
-    @media(max-width:1000px){.pickup-card .pickup-symbol{width:min(260px,82%)}}
-    @media(max-width:520px){.pickup-card .pickup-symbol{width:min(330px,90%);margin-top:18px}.pickup-image-modal{padding:12px}.pickup-image-modal img{max-width:94vw;max-height:88vh}.pickup-image-modal-close{top:10px;right:10px}}
+    .magsta-dashboard{margin:0 0 28px;padding:18px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(135deg,#111720,#0c1118);box-shadow:0 12px 35px rgba(0,0,0,.18)}
+    .magsta-dashboard-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}
+    .magsta-dashboard-title{margin:2px 0 0;font-size:1.2rem;color:var(--heading)}
+    .magsta-dashboard-status{font-size:.68rem;color:#8ee3ad;font-weight:800;white-space:nowrap}
+    .magsta-dashboard-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+    .magsta-dashboard-link{display:block;padding:12px;border:1px solid var(--line);border-radius:10px;background:#0d121a;transition:.18s}
+    .magsta-dashboard-link:hover{border-color:var(--accent);transform:translateY(-1px)}
+    .magsta-dashboard-link strong{display:block;font-size:.78rem;color:#fff}.magsta-dashboard-link span{display:block;margin-top:3px;font-size:.64rem;color:#aeb8c5}
+    .magsta-dashboard-count{color:var(--accent)!important;font-weight:900}
+    @media(max-width:1000px){.magsta-dashboard-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.pickup-card .pickup-symbol{width:min(330px,90%);margin-top:18px}.pickup-image-modal{padding:12px}.pickup-image-modal img{max-width:94vw;max-height:88vh}.pickup-image-modal-close{top:10px;right:10px}.magsta-dashboard{padding:14px}.magsta-dashboard-grid{grid-template-columns:1fr 1fr}.magsta-dashboard-head{align-items:flex-start;flex-direction:column;gap:4px}}
   `;
   document.head.appendChild(style);
 
@@ -28,6 +37,19 @@
   modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
   modal.querySelector('.pickup-image-modal-close').addEventListener('click',closeModal);
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+  const addDashboard = () => {
+    if(document.querySelector('.magsta-dashboard')) return;
+    const mainColumn=document.querySelector('.main-column');
+    const news=document.getElementById('news');
+    if(!mainColumn||!news) return;
+    const dashboard=document.createElement('section');
+    dashboard.className='magsta-dashboard';
+    dashboard.setAttribute('aria-label','MAGSTA情報ダッシュボード');
+    dashboard.innerHTML=`<div class="magsta-dashboard-head"><div><span class="section-kicker">MAGSTA PULSE</span><h2 class="magsta-dashboard-title">今日見るべきMTG情報</h2></div><span class="magsta-dashboard-status">● 自動更新エリア</span></div><div class="magsta-dashboard-grid"><a class="magsta-dashboard-link" href="#news"><strong>📰 最新記事</strong><span class="magsta-dashboard-count">最新ニュースを確認</span></a><a class="magsta-dashboard-link" href="#pickup"><strong>🔥 ピックアップ</strong><span>今週の注目カード</span></a><a class="magsta-dashboard-link" href="#price"><strong>💰 カード相場</strong><span>7フォーマット対応</span></a><a class="magsta-dashboard-link" href="#timeline"><strong>🌎 最新タイムライン</strong><span>日本語・英語を分離表示</span></a></div>`;
+    mainColumn.insertBefore(dashboard,news);
+  };
+  addDashboard();
 
   const cards = [...document.querySelectorAll('.pickup-card')];
   if (!cards.length) return;
