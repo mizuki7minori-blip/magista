@@ -15,11 +15,12 @@
     .magsta-dashboard-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}
     .magsta-dashboard-title{margin:2px 0 0;font-size:1.2rem;color:var(--heading)}
     .magsta-dashboard-status{font-size:.68rem;color:#8ee3ad;font-weight:800;white-space:nowrap}
-    .magsta-dashboard-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+    .magsta-dashboard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
     .magsta-dashboard-link{display:block;padding:12px;border:1px solid var(--line);border-radius:10px;background:#0d121a;transition:.18s}
     .magsta-dashboard-link:hover{border-color:var(--accent);transform:translateY(-1px)}
     .magsta-dashboard-link strong{display:block;font-size:.78rem;color:#fff}.magsta-dashboard-link span{display:block;margin-top:3px;font-size:.64rem;color:#aeb8c5}
     .magsta-dashboard-count{color:var(--accent)!important;font-weight:900}
+    .magsta-dashboard-live{color:#8ee3ad!important;font-weight:800}
     @media(max-width:1000px){.magsta-dashboard-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:520px){.pickup-card .pickup-symbol{width:min(330px,90%);margin-top:18px}.pickup-image-modal{padding:12px}.pickup-image-modal img{max-width:94vw;max-height:88vh}.pickup-image-modal-close{top:10px;right:10px}.magsta-dashboard{padding:14px}.magsta-dashboard-grid{grid-template-columns:1fr 1fr}.magsta-dashboard-head{align-items:flex-start;flex-direction:column;gap:4px}}
   `;
@@ -38,6 +39,7 @@
   modal.querySelector('.pickup-image-modal-close').addEventListener('click',closeModal);
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
+  const countItems = selector => document.querySelectorAll(selector).length;
   const addDashboard = () => {
     if(document.querySelector('.magsta-dashboard')) return;
     const mainColumn=document.querySelector('.main-column');
@@ -46,8 +48,32 @@
     const dashboard=document.createElement('section');
     dashboard.className='magsta-dashboard';
     dashboard.setAttribute('aria-label','MAGSTA情報ダッシュボード');
-    dashboard.innerHTML=`<div class="magsta-dashboard-head"><div><span class="section-kicker">MAGSTA PULSE</span><h2 class="magsta-dashboard-title">今日見るべきMTG情報</h2></div><span class="magsta-dashboard-status">● 自動更新エリア</span></div><div class="magsta-dashboard-grid"><a class="magsta-dashboard-link" href="#news"><strong>📰 最新記事</strong><span class="magsta-dashboard-count">最新ニュースを確認</span></a><a class="magsta-dashboard-link" href="#pickup"><strong>🔥 ピックアップ</strong><span>今週の注目カード</span></a><a class="magsta-dashboard-link" href="#price"><strong>💰 カード相場</strong><span>7フォーマット対応</span></a><a class="magsta-dashboard-link" href="#timeline"><strong>🌎 最新タイムライン</strong><span>日本語・英語を分離表示</span></a></div>`;
+    dashboard.innerHTML=`
+      <div class="magsta-dashboard-head"><div><span class="section-kicker">MAGSTA PULSE</span><h2 class="magsta-dashboard-title">今日見るべきMTG情報</h2></div><span class="magsta-dashboard-status">● 自動更新エリア</span></div>
+      <div class="magsta-dashboard-grid">
+        <a class="magsta-dashboard-link" href="#news"><strong>📰 最新記事</strong><span id="pulse-news" class="magsta-dashboard-count">取得中…</span></a>
+        <a class="magsta-dashboard-link" href="#pickup"><strong>🔥 ピックアップ</strong><span id="pulse-pickup" class="magsta-dashboard-count">注目カードを確認</span></a>
+        <a class="magsta-dashboard-link" href="#price"><strong>💰 カード相場</strong><span class="magsta-dashboard-count">7フォーマット対応</span></a>
+        <a class="magsta-dashboard-link" href="#timeline"><strong>🇯🇵 日本語タイムライン</strong><span id="pulse-ja" class="magsta-dashboard-count">取得中…</span></a>
+        <a class="magsta-dashboard-link" href="#timeline"><strong>🌎 英語タイムライン</strong><span id="pulse-en" class="magsta-dashboard-count">取得中…</span></a>
+        <a class="magsta-dashboard-link" href="#matome"><strong>💬 5chまとめ</strong><span class="magsta-dashboard-live">話題をチェック →</span></a>
+      </div>`;
     mainColumn.insertBefore(dashboard,news);
+
+    const updateCounts = () => {
+      const newsCount=countItems('#news .article-card');
+      const pickupCount=countItems('#pickup .pickup-card');
+      const jaCount=countItems('#rss-timeline-ja-list > *:not(.rss-timeline-empty)');
+      const enCount=countItems('#rss-timeline-en-list > *:not(.rss-timeline-empty)');
+      const set=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text};
+      set('pulse-news',newsCount?`${newsCount}件を表示中`:'最新記事を取得中…');
+      set('pulse-pickup',pickupCount?`${pickupCount}枚をチェック`:'今週の注目カード');
+      set('pulse-ja',jaCount?`${jaCount}件を表示中`:'最新情報を取得中…');
+      set('pulse-en',enCount?`${enCount}件を表示中`:'最新情報を取得中…');
+    };
+    updateCounts();
+    const observer=new MutationObserver(updateCounts);
+    ['news','pickup','rss-timeline-ja-list','rss-timeline-en-list'].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el,{childList:true,subtree:true})});
   };
   addDashboard();
 
