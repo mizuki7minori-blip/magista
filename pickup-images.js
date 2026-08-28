@@ -77,17 +77,6 @@
   };
   addDashboard();
 
-  const cards = [...document.querySelectorAll('.pickup-card')];
-  if (!cards.length) return;
-
-  const loadImage = (url,name) => new Promise((resolve,reject) => {
-    const image = new Image();
-    image.referrerPolicy='no-referrer';
-    image.onload=()=>resolve(image);
-    image.onerror=()=>reject(new Error('画像読み込み失敗'));
-    image.src=url;
-  });
-
   const fetchScryfall = async name => {
     const urls = [
       `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(name)}`,
@@ -105,10 +94,18 @@
     throw new Error('Scryfall画像なし');
   };
 
+  const loadImage = (url,name) => new Promise((resolve,reject) => {
+    const image = new Image();
+    image.referrerPolicy='no-referrer';
+    image.onload=()=>resolve(image);
+    image.onerror=()=>reject(new Error('画像読み込み失敗'));
+    image.src=url;
+  });
+
   const loadCardImage = async card => {
     const name=card.querySelector('.pickup-info h3')?.textContent?.trim();
     const target=card.querySelector('.pickup-symbol');
-    if(!name||!target)return;
+    if(!name||!target||name==='読み込み中…')return;
     target.classList.add('is-loading');
     target.classList.remove('is-fallback');
     try {
@@ -128,5 +125,18 @@
     }
   };
 
-  cards.forEach(loadCardImage);
+  const loadAllPickupImages = () => {
+    const cards=[...document.querySelectorAll('.pickup-card')];
+    if(cards.length) cards.forEach(loadCardImage);
+  };
+
+  // daily-pickup.js がカード名を設定してから画像を取得する。
+  document.addEventListener('magsta:daily-pickup', () => {
+    requestAnimationFrame(loadAllPickupImages);
+  }, {once:true});
+
+  // イベントが発火しない構成でも、既にカード名が入っていれば取得する。
+  if ([...document.querySelectorAll('.pickup-card .pickup-info h3')].some(el => el.textContent.trim() !== '読み込み中…')) {
+    loadAllPickupImages();
+  }
 })();
