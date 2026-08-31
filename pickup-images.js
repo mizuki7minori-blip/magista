@@ -48,41 +48,20 @@
     const dashboard=document.createElement('section');
     dashboard.className='magsta-dashboard';
     dashboard.setAttribute('aria-label','MAGSTA情報ダッシュボード');
-    dashboard.innerHTML=`
-      <div class="magsta-dashboard-head"><div><span class="section-kicker">MAGSTA PULSE</span><h2 class="magsta-dashboard-title">今日見るべきMTG情報</h2></div><span class="magsta-dashboard-status">● 自動更新エリア</span></div>
-      <div class="magsta-dashboard-grid">
-        <a class="magsta-dashboard-link" href="#news"><strong>📰 最新記事</strong><span id="pulse-news" class="magsta-dashboard-count">取得中…</span></a>
-        <a class="magsta-dashboard-link" href="#pickup"><strong>🔥 ピックアップ</strong><span id="pulse-pickup" class="magsta-dashboard-count">注目カードを確認</span></a>
-        <a class="magsta-dashboard-link" href="#price"><strong>💰 カード相場</strong><span class="magsta-dashboard-count">7フォーマット対応</span></a>
-        <a class="magsta-dashboard-link" href="#timeline"><strong>🇯🇵 日本語タイムライン</strong><span id="pulse-ja" class="magsta-dashboard-count">取得中…</span></a>
-        <a class="magsta-dashboard-link" href="#timeline"><strong>🌎 英語タイムライン</strong><span id="pulse-en" class="magsta-dashboard-count">取得中…</span></a>
-        <a class="magsta-dashboard-link" href="#matome"><strong>💬 5chまとめ</strong><span class="magsta-dashboard-live">話題をチェック →</span></a>
-      </div>`;
+    dashboard.innerHTML=`<div class="magsta-dashboard-head"><div><span class="section-kicker">MAGSTA PULSE</span><h2 class="magsta-dashboard-title">今日見るべきMTG情報</h2></div><span class="magsta-dashboard-status">● 自動更新エリア</span></div><div class="magsta-dashboard-grid"><a class="magsta-dashboard-link" href="#news"><strong>📰 最新記事</strong><span id="pulse-news" class="magsta-dashboard-count">取得中…</span></a><a class="magsta-dashboard-link" href="#pickup"><strong>🔥 ピックアップ</strong><span id="pulse-pickup" class="magsta-dashboard-count">注目カードを確認</span></a><a class="magsta-dashboard-link" href="#price"><strong>💰 カード相場</strong><span class="magsta-dashboard-count">7フォーマット対応</span></a><a class="magsta-dashboard-link" href="#timeline"><strong>🇯🇵 日本語タイムライン</strong><span id="pulse-ja" class="magsta-dashboard-count">取得中…</span></a><a class="magsta-dashboard-link" href="#timeline"><strong>🌎 英語タイムライン</strong><span id="pulse-en" class="magsta-dashboard-count">取得中…</span></a><a class="magsta-dashboard-link" href="#matome"><strong>💬 5chまとめ</strong><span class="magsta-dashboard-live">話題をチェック →</span></a></div>`;
     mainColumn.insertBefore(dashboard,news);
-
-    const updateCounts = () => {
-      const newsCount=countItems('#news .article-card');
-      const pickupCount=countItems('#pickup .pickup-card');
-      const jaCount=countItems('#rss-timeline-ja-list > *:not(.rss-timeline-empty)');
-      const enCount=countItems('#rss-timeline-en-list > *:not(.rss-timeline-empty)');
-      const set=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text};
-      set('pulse-news',newsCount?`${newsCount}件を表示中`:'最新記事を取得中…');
-      set('pulse-pickup',pickupCount?`${pickupCount}枚をチェック`:'今週の注目カード');
-      set('pulse-ja',jaCount?`${jaCount}件を表示中`:'最新情報を取得中…');
-      set('pulse-en',enCount?`${enCount}件を表示中`:'最新情報を取得中…');
-    };
-    updateCounts();
-    const observer=new MutationObserver(updateCounts);
-    ['news','pickup','rss-timeline-ja-list','rss-timeline-en-list'].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el,{childList:true,subtree:true})});
+    const updateCounts = () => {const newsCount=countItems('#news .article-card');const pickupCount=countItems('#pickup .pickup-card');const jaCount=countItems('#rss-timeline-ja-list > *:not(.rss-timeline-empty)');const enCount=countItems('#rss-timeline-en-list > *:not(.rss-timeline-empty)');const set=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text};set('pulse-news',newsCount?`${newsCount}件を表示中`:'最新記事を取得中…');set('pulse-pickup',pickupCount?`${pickupCount}枚をチェック`:'今週の注目カード');set('pulse-ja',jaCount?`${jaCount}件を表示中`:'最新情報を取得中…');set('pulse-en',enCount?`${enCount}件を表示中`:'最新情報を取得中…')};
+    updateCounts();const observer=new MutationObserver(updateCounts);['news','pickup','rss-timeline-ja-list','rss-timeline-en-list'].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el,{childList:true,subtree:true})});
   };
   addDashboard();
 
-  const fetchScryfall = async name => {
-    const urls = [
+  const fetchScryfall = async (name, englishName) => {
+    const queries = [
       `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(name)}`,
-      `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`
+      `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(englishName)}`,
+      `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(englishName)}`
     ];
-    for (const url of urls) {
+    for (const url of queries) {
       try {
         const response = await fetch(url,{headers:{Accept:'application/json'},cache:'no-store'});
         if (!response.ok) continue;
@@ -94,49 +73,25 @@
     throw new Error('Scryfall画像なし');
   };
 
-  const loadImage = (url,name) => new Promise((resolve,reject) => {
-    const image = new Image();
-    image.referrerPolicy='no-referrer';
-    image.onload=()=>resolve(image);
-    image.onerror=()=>reject(new Error('画像読み込み失敗'));
-    image.src=url;
-  });
+  const loadImage = (url,name) => new Promise((resolve,reject) => {const image = new Image();image.referrerPolicy='no-referrer';image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('画像読み込み失敗'));image.src=url});
 
   const loadCardImage = async card => {
-    const name=card.querySelector('.pickup-info h3')?.textContent?.trim();
+    const title=card.querySelector('.pickup-info h3');
+    const name=title?.textContent?.trim();
+    const englishName=card.dataset.pickupEnglishName || '';
     const target=card.querySelector('.pickup-symbol');
     if(!name||!target||name==='読み込み中…')return;
-    target.classList.add('is-loading');
-    target.classList.remove('is-fallback');
+    target.classList.add('is-loading');target.classList.remove('is-fallback');
     try {
-      const imageUrl=await fetchScryfall(name);
+      const imageUrl=await fetchScryfall(name,englishName);
       const image=await loadImage(imageUrl,name);
-      image.alt=`${name}のカード画像`;
-      image.loading='lazy';
-      image.decoding='async';
+      image.alt=`${name}の日本語版カード画像`;image.loading='lazy';image.decoding='async';
       image.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();modalImage.src=imageUrl;modalImage.alt=`${name}のカード画像（拡大）`;modal.classList.add('is-open');document.body.classList.add('pickup-modal-open')});
-      target.textContent='';
-      target.appendChild(image);
-      target.classList.remove('is-loading');
-    } catch(error) {
-      console.warn(`[MAGSTA] カード画像取得失敗: ${name}`,error);
-      target.classList.remove('is-loading');
-      target.classList.add('is-fallback');
-    }
+      target.textContent='';target.appendChild(image);target.classList.remove('is-loading');
+    } catch(error) {console.warn(`[MAGSTA] カード画像取得失敗: ${name}`,error);target.classList.remove('is-loading');target.classList.add('is-fallback')}
   };
 
-  const loadAllPickupImages = () => {
-    const cards=[...document.querySelectorAll('.pickup-card')];
-    if(cards.length) cards.forEach(loadCardImage);
-  };
-
-  // daily-pickup.js がカード名を設定してから画像を取得する。
-  document.addEventListener('magsta:daily-pickup', () => {
-    requestAnimationFrame(loadAllPickupImages);
-  }, {once:true});
-
-  // イベントが発火しない構成でも、既にカード名が入っていれば取得する。
-  if ([...document.querySelectorAll('.pickup-card .pickup-info h3')].some(el => el.textContent.trim() !== '読み込み中…')) {
-    loadAllPickupImages();
-  }
+  const loadAllPickupImages = () => {const cards=[...document.querySelectorAll('.pickup-card')];if(cards.length) cards.forEach(loadCardImage)};
+  document.addEventListener('magsta:daily-pickup', () => {requestAnimationFrame(loadAllPickupImages)}, {once:true});
+  if ([...document.querySelectorAll('.pickup-card .pickup-info h3')].some(el => el.textContent.trim() !== '読み込み中…')) loadAllPickupImages();
 })();
