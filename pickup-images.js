@@ -8,7 +8,6 @@
     .pickup-card .pickup-detail-link{display:inline-flex;margin-top:10px;padding:8px 12px;border:1px solid var(--accent);border-radius:8px;color:var(--text);font-weight:800;font-size:.72rem;text-decoration:none;background:rgba(255,255,255,.03)}
     .pickup-card .pickup-symbol.is-loading::after{content:'カード画像を読み込み中…';position:absolute;inset:0;display:grid;place-items:center;color:#fff;background:rgba(10,14,20,.72);pointer-events:none}
     .pickup-card .pickup-symbol.is-fallback{font-size:.9rem;color:#fff;text-align:center;padding:16px;box-sizing:border-box}
-    .pickup-card .pickup-symbol.is-fallback::after{content:'カード画像を取得できませんでした';display:block}
     .pickup-card .pickup-retry{display:block;margin:10px auto 0;padding:7px 12px;border:1px solid var(--accent);border-radius:8px;background:rgba(255,255,255,.04);color:var(--text);font-weight:800;font-size:.72rem;cursor:pointer}
     .pickup-image-modal{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.86);opacity:0;visibility:hidden;transition:.18s;cursor:zoom-out}.pickup-image-modal.is-open{opacity:1;visibility:visible}.pickup-image-modal img{max-width:min(92vw,560px);max-height:92vh;border-radius:14px}.pickup-image-modal-close{position:fixed;top:18px;right:22px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:28px;cursor:pointer}body.pickup-modal-open{overflow:hidden}
   `;
@@ -24,10 +23,15 @@
   modal.querySelector('button').addEventListener('click', close);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
-  // Scryfall API が一時的に応答しない場合でも、主要カードは画像を表示できるよう固定CDNを先に使用。
+  // APIが一時的に失敗しても画像を出せるよう、よく使うピックアップ候補はCDN画像を先に利用。
   const STATIC_IMAGES = {
     'The One Ring': 'https://cdn.mtg.ink/ltr/246_art_crop.jpg?v=fa27f28e-747b-4490-aa17-329059fc5390',
+    'Sheoldred, the Apocalypse': 'https://cdn.mtg.ink/dmu/107_art_crop.jpg',
     'Lightning Bolt': 'https://cdn.mtg.ink/3ed/162_art_crop.jpg?v=2cb6200c-d05b-419c-bd10-8b9c146e2339',
+    'Atraxa, Grand Unifier': 'https://cdn.mtg.ink/fca/49_art_crop.jpg?v=f2ebe584-386c-424a-b8c0-2becc8fda954',
+    'Kroxa, Titan of Death’s Hunger': 'https://cdn.mtg.ink/thb/221_art_crop.jpg',
+    'Counterspell': 'https://cdn.mtg.ink/fca/4_art_crop.jpg',
+    'Swords to Plowshares': 'https://cdn.mtg.ink/brb/84_art_crop.jpg?v=2aa59be5-ca4a-4e36-928c-8b72362c9ae5',
     'Aetherflux Reservoir': 'https://cdn.mtg.ink/brr/65_art_crop.jpg'
   };
 
@@ -93,7 +97,7 @@
     i.src = url;
   });
 
-  const showImage = (card, name, url) => {
+  const attachImage = (card, name, url) => {
     const target = card.querySelector('.pickup-symbol');
     if (!target) return;
     const img = new Image();
@@ -103,7 +107,6 @@
     img.referrerPolicy = 'no-referrer';
     img.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); modalImage.src = url; modalImage.alt = `${name}のカード画像（拡大）`; modal.classList.add('is-open'); document.body.classList.add('pickup-modal-open'); });
     img.onload = () => { target.textContent = ''; target.appendChild(img); target.classList.remove('is-loading','is-fallback'); };
-    img.onerror = () => { throw Error('static image failed'); };
     img.src = url;
   };
 
@@ -118,18 +121,15 @@
     try {
       if (staticUrl) {
         await loadImage(staticUrl);
-        showImage(card, name, staticUrl);
+        attachImage(card, name, staticUrl);
         try { const data = await getCardData(en); renderDetails(card, data); } catch (_) {}
         return;
       }
       const data = await getCardData(en);
       const url = getImageUrl(data);
-      const img = await loadImage(url);
-      img.alt = `${name}の日本語版カード画像`;
-      img.loading = 'eager';
-      img.decoding = 'async';
-      img.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); modalImage.src = url; modalImage.alt = `${name}のカード画像（拡大）`; modal.classList.add('is-open'); document.body.classList.add('pickup-modal-open'); });
-      target.textContent = ''; target.appendChild(img); target.classList.remove('is-loading'); renderDetails(card, data);
+      await loadImage(url);
+      attachImage(card, name, url);
+      renderDetails(card, data);
     } catch (e) {
       console.warn('[MAGSTA] pickup card error', name, e);
       target.classList.remove('is-loading'); target.classList.add('is-fallback'); target.textContent = '';
