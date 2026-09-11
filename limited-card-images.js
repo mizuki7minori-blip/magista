@@ -1,60 +1,43 @@
 (() => {
   'use strict';
 
-  const loadImages = async () => {
+  // ScryfallのJSON APIをブラウザからfetchする方式では、環境によってCORS・通信制限の影響を受けるため、
+  // 画像エンドポイントへ直接読み込む方式に変更。画像タグ自身がリダイレクト先を取得します。
+  const loadImages = () => {
     const cards = [...document.querySelectorAll('.limited-rank-item')];
     if (!cards.length) return;
 
-    for (const item of cards) {
+    cards.forEach((item) => {
       const img = item.querySelector('img[alt]');
       const nameNode = item.querySelector('span');
       const name = (nameNode?.textContent || '').trim();
-      if (!img || !name || img.dataset.scryfallLoaded) continue;
+      if (!img || !name || img.dataset.scryfallLoaded) return;
 
       img.dataset.scryfallLoaded = '1';
       img.dataset.originalSrc = img.src;
+      img.dataset.cardName = name;
 
-      try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 8000);
-        let response;
+      const makeUrl = (mode) =>
+        `https://api.scryfall.com/cards/named?${mode}=${encodeURIComponent(name)}&format=image&version=normal`;
 
-        try {
-          response = await fetch(
-            `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(name)}`,
-            { headers: { Accept: 'application/json' }, signal: controller.signal }
-          );
-        } finally {
-          clearTimeout(timeout);
+      const fallback = () => {
+        if (img.dataset.fuzzyTried) {
+          img.dataset.broken = '1';
+          img.alt = `${name}（画像を取得できませんでした）`;
+          return;
         }
+        img.dataset.fuzzyTried = '1';
+        img.src = makeUrl('fuzzy');
+      };
 
-        // Exact lookup can fail for punctuation/translation variants, so retry fuzzily.
-        if (!response.ok) {
-          const controller2 = new AbortController();
-          const timeout2 = setTimeout(() => controller2.abort(), 8000);
-          try {
-            response = await fetch(
-              `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`,
-              { headers: { Accept: 'application/json' }, signal: controller2.signal }
-            );
-          } finally {
-            clearTimeout(timeout2);
-          }
-        }
-
-        if (!response.ok) throw new Error('Scryfall lookup failed');
-        const card = await response.json();
-        const image = card.image_uris?.normal || card.image_uris?.large || card.image_uris?.small;
-        if (!image) throw new Error('No card image');
-
-        img.src = image;
+      img.addEventListener('error', fallback, { once: false });
+      img.addEventListener('load', () => {
         img.removeAttribute('data-broken');
-      } catch (error) {
-        img.dataset.broken = '1';
-        // Keep the page layout stable and make the failure explicit instead of a broken icon.
-        img.alt = `${name}（画像を取得できませんでした）`;
-      }
-    }
+      }, { once: true });
+
+      // 既存のダミーURLを使わず、Scryfallの正式画像エンドポイントから直接取得。
+      img.src = makeUrl('exact');
+    });
   };
 
   if (document.readyState === 'loading') {
