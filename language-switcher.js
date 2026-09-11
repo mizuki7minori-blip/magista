@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const translations = {
-    '記事一覧':'Articles','ニュース':'News','タイムライン':'Timeline','5chまとめ':'Community','ピックアップ':'Picks','今日のピックアップ':'Daily Picks','ランキング':'Ranking',
+    '記事一覧':'Articles','ニュース':'News','タイムライン':'Timeline','5chまとめ':'Community','ピックアップ':'Picks','今日のピックアップ':'Daily Picks',
     'MAGIC: THE GATHERING COMMUNITY':'MAGIC: THE GATHERING COMMUNITY','MTGの「今」を、':'MTG, right now,','もっと面白く。':'More exciting.','ニュース、5chまとめ、大会情報、新カード情報まで。':'News, community, tournament information, and new cards.','マジック：ザ・ギャザリングの話題をひとつに。':'Everything Magic: The Gathering, in one place.',
     '最新記事を見る':'Latest Articles','MTGの最新情報・話題を随時更新':'Latest MTG news and topics, updated regularly','最新記事':'Latest Articles','もっと見る →':'View all →','MTG最新タイムライン':'MTG Latest Timeline','日本語サイト':'Japanese Sites','英語サイト':'English Sites','日本語サイトと英語サイトを分け、英語記事には日本語要約を付けています。':'Japanese and English sources are separated; English articles include Japanese summaries.','大会・新カード・コミュニティの注目候補から、毎日3枚を自動で紹介します。':'Three cards are automatically selected daily from tournament, new-card, and community highlights.','大会・新カード・コミュニティの注目候補から、毎日3枚を自動で入れ替えます。':'Three cards are automatically rotated daily from tournament, new-card, and community highlights.','人気記事':'Popular Articles','これから掲載予定':'Coming soon','MAGSTA MTG':'MAGSTA MTG','MTGのニュース、コミュニティ、大会情報、新カード情報をまとめるサイトです。':'MTG news, community discussions, tournament information, and new cards in one place.','読み込み中…':'Loading…','最新情報を取得中…':'Loading latest information…','カード画像を取得できませんでした':'Card image unavailable','カード詳細を見る →':'View card details →'
   };
@@ -34,7 +34,16 @@
       @media(max-width:520px){.container{width:calc(100% - 24px)}.site-header .header-inner{height:64px}.hero-inner{padding:48px 0 54px}.hero h1{font-size:clamp(2.8rem,15vw,4.6rem);line-height:1.05}.section-heading{margin-bottom:16px}.section-heading h2,.side-heading h2{font-size:1.3rem}.article-list{gap:10px}.featured{padding:21px}.featured h3{font-size:1.25rem;line-height:1.5}.pickup-card{padding:19px}.article-page{padding-top:34px}.article-page h1{font-size:clamp(1.9rem,9vw,3rem);line-height:1.25}}
     `;document.head.appendChild(style);
   }
-  function init(){collect();addSwitcher();addHeaderFix();addReadability();apply();}
+  function loadLimitedImages(){
+    if(!location.pathname.endsWith('/limited.html') && !location.pathname.endsWith('limited.html')) return;
+    if(document.querySelector('script[data-limited-images]')) return;
+    const script=document.createElement('script');
+    script.src='limited-card-images.js';
+    script.dataset.limitedImages='1';
+    script.defer=true;
+    document.head.appendChild(script);
+  }
+  function init(){collect();addSwitcher();addHeaderFix();addReadability();loadLimitedImages();apply();}
   document.addEventListener('DOMContentLoaded',init);
   const observer=new MutationObserver(()=>{if(!document.querySelector('.lang-switcher'))addSwitcher();if(!document.getElementById('magsta-header-fix'))addHeaderFix();if(!document.getElementById('magsta-readability'))addReadability();});
   observer.observe(document.documentElement,{childList:true,subtree:true});
