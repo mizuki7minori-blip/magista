@@ -41,4 +41,24 @@
     card.dataset.pickupEnglishName = data.en;
   });
   document.dispatchEvent(new CustomEvent('magsta:daily-pickup', { detail: cards }));
+
+  // トップページにリミテッド記事のミニセクションを追加
+  if (document.querySelector('#limited-home')) return;
+  const matome = document.querySelector('#matome');
+  if (!matome) return;
+  const limited = document.createElement('section');
+  limited.id = 'limited-home';
+  limited.className = 'category-section';
+  limited.innerHTML = `
+    <div class="section-heading">
+      <div><span class="section-kicker">LIMITED</span><h2>リミテッド最新記事</h2></div>
+      <a href="limited.html" class="more">詳しく見る →</a>
+    </div>
+    <p class="pickup-intro">17Landsの公開データをもとに、ドラフトで注目したいカードと環境の動きをチェック。</p>
+    <div class="topic-list">
+      <a href="limited.html" class="topic"><span class="topic-number">01</span><span><b>リミテッド環境の最新スナップショット</b><small>ゲーム数・平均ターン・先手勝率を確認</small></span><span>›</span></a>
+      <a href="limited.html" class="topic"><span class="topic-number">02</span><span><b>今注目したいリミテッドカード</b><small>GIH WRとATAを組み合わせて評価</small></span><span>›</span></a>
+      <a href="limited.html" class="topic"><span class="topic-number">03</span><span><b>次のドラフトで見るべきポイント</b><small>カード・ピック順位・環境速度を整理</small></span><span>›</span></a>
+    </div>`;
+  matome.parentNode.insertBefore(limited, matome);
 })();
