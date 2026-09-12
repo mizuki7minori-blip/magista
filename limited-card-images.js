@@ -1,6 +1,24 @@
 (() => {
   'use strict';
 
+  const SNAPSHOT = {
+    set: 'HOB',
+    format: 'Premier Draft',
+    games: '332,859',
+    avgTurns: '8.572',
+    playWinRate: '54.6%',
+    checkedAt: '2026年9月12日'
+  };
+
+  const updateSnapshotMeta = () => {
+    const section = document.querySelector('.limited-section');
+    if (!section) return;
+    const notes = [...document.querySelectorAll('.limited-update, .limited-source')];
+    const note = notes.find((el) => el.classList.contains('limited-update')) || notes[0];
+    if (!note) return;
+    note.textContent = `※17Lands公開値（${SNAPSHOT.checkedAt}確認）。${SNAPSHOT.set} / ${SNAPSHOT.format}。セット・期間・フォーマットの条件により変動します。日本語カード名は公式・国内カード情報を確認して表記しています。`;
+  };
+
   // ScryfallのJSON APIをブラウザからfetchする方式では、環境によってCORS・通信制限の影響を受けるため、
   // 画像エンドポイントへ直接読み込む方式に変更。画像タグ自身がリダイレクト先を取得します。
   const loadImages = () => {
@@ -35,14 +53,18 @@
         img.removeAttribute('data-broken');
       }, { once: true });
 
-      // 既存のダミーURLを使わず、Scryfallの正式画像エンドポイントから直接取得。
       img.src = makeUrl('exact');
     });
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadImages, { once: true });
-  } else {
+  const run = () => {
+    updateSnapshotMeta();
     loadImages();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run, { once: true });
+  } else {
+    run();
   }
 })();
