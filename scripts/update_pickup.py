@@ -1,114 +1,48 @@
 from datetime import date
 from pathlib import Path
 import json
-import urllib.parse
-import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 
-# A curated pool keeps the automatic picks relevant to MAGSTA. The script
-# rotates three cards every week and refreshes their live Scryfall price data.
-CARDS = [
-    ("Mox Amber", "モックス・アンバー", "🏆 今週の注目", "軽量マナ加速として幅広いデッキで使われる定番カード。相場と需要の動きを追いたい1枚。", "注目度 ★★★★★"),
-    ("Force of Will", "意思の力", "📈 値動き注目", "長く需要が続く代表的なカード。版・Foilによる価格差にも注目。", "注目度 ★★★★☆"),
-    ("Cloud, Midgar Mercenary", "ミッドガルの傭兵、クラウド", "💎 隠れ注目", "FINAL FANTASY関連カードの需要とコレクション性をチェックしたい1枚。", "注目度 ★★★★☆"),
-    ("Sol Ring", "太陽の指輪", "📈 値動き注目", "統率者で定番のマナ加速。印刷仕様による価格差が大きく、相場チェック向き。", "注目度 ★★★★☆"),
-    ("The One Ring", "一つの指輪", "🏆 今週の注目", "高い人気とコレクション需要を持つ代表的なカード。仕様違いも含めて注目。", "注目度 ★★★★★"),
-    ("Mana Crypt", "魔力の墓所", "💎 隠れ注目", "強力なマナ加速として知られるカード。版ごとの相場変化を追いたい1枚。", "注目度 ★★★★☆"),
-    ("Orcish Bowmasters", "オークの弓使い", "📈 値動き注目", "多くの環境で意識される人気カード。需要と再録情報による価格変化をチェック。", "注目度 ★★★★☆"),
-    ("Sheoldred, the Apocalypse", "黙示録、シェオルドレッド", "🏆 今週の注目", "スタンダード以外でも高い知名度を持つ人気カード。仕様ごとの相場を追いたい。", "注目度 ★★★★☆"),
-    ("Ragavan, Nimble Pilferer", "敏捷なこそ泥、ラガバン", "💎 隠れ注目", "モダンなどで知られる人気カード。需要と供給の変化に注目。", "注目度 ★★★★☆"),
-    ("Esper Sentinel", "エスパーの歩哨", "📈 値動き注目", "統率者などで使われる人気クリーチャー。コレクター需要も含めてチェック。", "注目度 ★★★★☆"),
-    ("Dockside Extortionist", "波止場の恐喝者", "💎 隠れ注目", "統率者人気の高いカード。禁止・再録などのニュースが相場に影響しやすい。", "注目度 ★★★★☆"),
-    ("Jeweled Lotus", "宝石の睡蓮", "🏆 今週の注目", "統率者向けの代表的なカード。高額カードとして市場動向を追いやすい。", "注目度 ★★★★★"),
+# Three lanes: one card each, rotated daily. Images/details are resolved client-side
+# from Scryfall so the repository does not depend on a fragile third-party image URL.
+LANES = [
+    ("🏆 大会注目", [
+        ("一つの指輪", "The One Ring", "強力な防御能力とドローを両立する代表的なアーティファクト。競技シーンでの採用動向を追いたい1枚。"),
+        ("黙示録、シェオルドレッド", "Sheoldred, the Apocalypse", "カードを引くこととライフのやり取りを強く意識させる人気クリーチャー。採用環境の変化に注目。"),
+        ("敏捷なこそ泥、ラガバン", "Ragavan, Nimble Pilferer", "軽量ながら大きなリターンを狙える人気クリーチャー。フォーマットごとの採用状況を確認したい1枚。"),
+        ("オークの弓使い", "Orcish Bowmasters", "相手のドローに反応して盤面へ影響を与える人気カード。メタゲームとの関係を追いやすい1枚。"),
+    ]),
+    ("🆕 新カード", [
+        ("稲妻", "Lightning Bolt", "1マナで3点を与えられる代表的な火力。古典的なカードが各フォーマットでどう使われるかを確認。"),
+        ("完全なる統一、アトラクサ", "Atraxa, Grand Unifier", "戦場に出たときの大量アドバンテージが魅力の大型クリーチャー。多色戦略との相性に注目。"),
+        ("死の飢えのタイタン、クロクサ", "Kroxa, Titan of Death’s Hunger", "手札と墓地の両方に干渉できる伝説のクリーチャー。墓地利用戦略との組み合わせをチェック。"),
+        ("霊気貯蔵器", "Aetherflux Reservoir", "呪文を連続して唱える戦略で大きなリターンを狙えるアーティファクト。コンボ系デッキの動向と相性が良い。"),
+    ]),
+    ("💬 コミュニティ", [
+        ("対抗呪文", "Counterspell", "2マナで呪文を打ち消す青の定番カード。フォーマットごとの採用枚数や評価を見比べやすい1枚。"),
+        ("剣を鍬に", "Swords to Plowshares", "非常に軽いクリーチャー除去。相手にライフを与えるデメリットと引き換えに高い効率を持つ。"),
+        ("エスパーの歩哨", "Esper Sentinel", "相手の非クリーチャー呪文に反応してカードアドバンテージを狙える人気カード。"),
+        ("魔力の墓所", "Mana Crypt", "高速マナ加速として知られるカード。フォーマットやルール変更による評価の変化も追いやすい。"),
+    ]),
 ]
 
-
-def fetch_card(name: str):
-    url = "https://api.scryfall.com/cards/named?exact=" + urllib.parse.quote(name)
-    req = urllib.request.Request(url, headers={"User-Agent": "MAGSTA-weekly-pickup/1.0"})
-    with urllib.request.urlopen(req, timeout=20) as response:
-        return json.load(response)
-
-
-def money(value):
-    if not value:
-        return "—"
-    return f"${float(value):,.2f}"
-
-
-def build_card(item, rank, scryfall):
-    en, ja, label, reason, rating = item
-    prices = scryfall.get("prices", {})
-    price = prices.get("usd") or prices.get("usd_foil")
-    return {
-        "rank": rank,
-        "en": en,
-        "ja": ja,
+day = date.today().toordinal()
+cards = []
+for i, (label, pool) in enumerate(LANES):
+    name, en, desc = pool[(day + i) % len(pool)]
+    cards.append({
+        "rank": i + 1,
         "label": label,
-        "reason": reason,
-        "rating": rating,
-        "price": money(price),
-        "updated": date.today().isoformat(),
-        "image": (scryfall.get("image_uris") or {}).get("normal", ""),
-        "scryfall_url": scryfall.get("scryfall_uri", ""),
-    }
+        "name": name,
+        "ja": name,
+        "en": en,
+        "desc": desc,
+        "updated": date.today().isoformat()
+    })
 
-
-def render_jp(cards):
-    cards_html = []
-    for c in cards:
-        featured = " pickup-featured" if c["rank"] == 1 else ""
-        cards_html.append(f'''<article class="pickup-card{featured}"><div class="pickup-rank">{c["rank"]:02d}</div><div class="pickup-label">{c["label"]}</div><div class="pickup-symbol">{c["en"][0]}</div><div class="pickup-info"><h3>{c["ja"]}</h3><p>{c["reason"]}</p><div class="pickup-meta"><span>{c["rating"]}</span><span>{c["price"]} →</span></div></div></article>''')
-    return "\n".join(cards_html)
-
-
-def render_en(cards):
-    cards_html = []
-    for c in cards:
-        featured = " pickup-featured" if c["rank"] == 1 else ""
-        cards_html.append(f'''<article class="pickup-card{featured}"><div class="pickup-rank">{c["rank"]:02d}</div><div class="pickup-label">{c["label"]}</div><div class="pickup-symbol">{c["en"][0]}</div><div class="pickup-info"><h3>{c["en"]}</h3><p>{c["reason"]}</p><div class="pickup-meta"><span>{c["rating"]}</span><span>{c["price"]} →</span></div></div></article>''')
-    return "\n".join(cards_html)
-
-
-def replace_between(text, start_marker, end_marker, replacement):
-    start = text.index(start_marker) + len(start_marker)
-    end = text.index(end_marker, start)
-    return text[:start] + replacement + text[end:]
-
-
-def main():
-    # Rotate the curated pool by ISO week. Every Saturday run therefore gets a
-    # new set while remaining deterministic and reproducible.
-    week = date.today().isocalendar().week
-    selected = [CARDS[(week * 3 + i) % len(CARDS)] for i in range(3)]
-    cards = []
-    for rank, item in enumerate(selected, 1):
-        try:
-            data = fetch_card(item[0])
-        except Exception as exc:
-            print(f"Warning: Scryfall lookup failed for {item[0]}: {exc}")
-            data = {"prices": {}}
-        cards.append(build_card(item, rank, data))
-
-    (ROOT / "pickup-data.json").write_text(json.dumps(cards, ensure_ascii=False, indent=2), encoding="utf-8")
-
-    jp_path = ROOT / "index.html"
-    jp = jp_path.read_text(encoding="utf-8")
-    jp = replace_between(jp, '<!-- WEEKLY_PICKUP_START -->', '<!-- WEEKLY_PICKUP_END -->', render_jp(cards))
-    jp = jp.replace('2026.08.22 更新', f'{date.today().strftime("%Y.%m.%d")} 更新')
-    jp_path.write_text(jp, encoding="utf-8")
-
-    en_path = ROOT / "en/index.html"
-    en = en_path.read_text(encoding="utf-8")
-    en = replace_between(en, '<!-- WEEKLY_PICKUP_START -->', '<!-- WEEKLY_PICKUP_END -->', render_en(cards))
-    en = en.replace('Updated Aug. 22, 2026', f'Updated {date.today().strftime("%b. %d, %Y")}')
-    en_path.write_text(en, encoding="utf-8")
-
-    print("Updated weekly pickup cards:")
-    for c in cards:
-        print(f"{c['rank']}. {c['ja']} / {c['price']}")
-
-
-if __name__ == "__main__":
-    main()
+(ROOT / "pickup-data.json").write_text(
+    json.dumps(cards, ensure_ascii=False, indent=2) + "\n",
+    encoding="utf-8"
+)
+print(f"Updated {len(cards)} daily pickup cards for {date.today().isoformat()}")

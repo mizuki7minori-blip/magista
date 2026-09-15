@@ -117,25 +117,42 @@
     if (!name || !en || !target || name === '読み込み中…') return;
     target.classList.remove('is-fallback');
     target.classList.add('is-loading');
-    const staticUrl = STATIC_IMAGES[en];
+
     try {
-      if (staticUrl) {
-        await loadImage(staticUrl);
-        attachImage(card, name, staticUrl);
-        try { const data = await getCardData(en); renderDetails(card, data); } catch (_) {}
-        return;
-      }
       const data = await getCardData(en);
       const url = getImageUrl(data);
+      if (!url) throw Error('no image');
       await loadImage(url);
       attachImage(card, name, url);
       renderDetails(card, data);
+      return;
     } catch (e) {
-      console.warn('[MAGSTA] pickup card error', name, e);
-      target.classList.remove('is-loading'); target.classList.add('is-fallback'); target.textContent = '';
-      const msg = document.createElement('span'); msg.textContent = 'カード画像を取得できませんでした'; target.appendChild(msg);
-      const retry = document.createElement('button'); retry.type = 'button'; retry.className = 'pickup-retry'; retry.textContent = '再読み込み'; retry.addEventListener('click', () => loadCard(card)); target.appendChild(retry);
+      // Secondary image endpoint. This keeps the card visible when the search API is slow.
+      try {
+        const named = `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(en)}`;
+        const data = await fetchJson(named);
+        const url = getImageUrl(data);
+        if (!url) throw Error('no image');
+        await loadImage(url);
+        attachImage(card, name, url);
+        renderDetails(card, data);
+        return;
+      } catch (_) {}
     }
+
+    console.warn('[MAGSTA] pickup card error', name);
+    target.classList.remove('is-loading');
+    target.classList.add('is-fallback');
+    target.textContent = '';
+    const msg = document.createElement('span');
+    msg.textContent = 'カード画像を取得できませんでした';
+    target.appendChild(msg);
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'pickup-retry';
+    retry.textContent = '再読み込み';
+    retry.addEventListener('click', () => loadCard(card));
+    target.appendChild(retry);
   };
 
   const loadAll = () => document.querySelectorAll('.pickup-card').forEach(loadCard);
