@@ -23,18 +23,6 @@
   modal.querySelector('button').addEventListener('click', close);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
-  // APIが一時的に失敗しても画像を出せるよう、よく使うピックアップ候補はCDN画像を先に利用。
-  const STATIC_IMAGES = {
-    'The One Ring': 'https://cdn.mtg.ink/ltr/246_art_crop.jpg?v=fa27f28e-747b-4490-aa17-329059fc5390',
-    'Sheoldred, the Apocalypse': 'https://cdn.mtg.ink/dmu/107_art_crop.jpg',
-    'Lightning Bolt': 'https://cdn.mtg.ink/3ed/162_art_crop.jpg?v=2cb6200c-d05b-419c-bd10-8b9c146e2339',
-    'Atraxa, Grand Unifier': 'https://cdn.mtg.ink/fca/49_art_crop.jpg?v=f2ebe584-386c-424a-b8c0-2becc8fda954',
-    'Kroxa, Titan of Death’s Hunger': 'https://cdn.mtg.ink/thb/221_art_crop.jpg',
-    'Counterspell': 'https://cdn.mtg.ink/fca/4_art_crop.jpg',
-    'Swords to Plowshares': 'https://cdn.mtg.ink/brb/84_art_crop.jpg?v=2aa59be5-ca4a-4e36-928c-8b72362c9ae5',
-    'Aetherflux Reservoir': 'https://cdn.mtg.ink/brr/65_art_crop.jpg'
-  };
-
   const fetchJson = async url => {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
@@ -52,8 +40,7 @@
     const exact = encodeURIComponent(englishName);
     const urls = [
       `https://api.scryfall.com/cards/search?q=${q}&unique=prints&order=released`,
-      `https://api.scryfall.com/cards/named?exact=${exact}`,
-      `https://api.scryfall.com/cards/search?q=${encodeURIComponent(`!"${englishName}"`)}&unique=prints&order=released`
+      `https://api.scryfall.com/cards/named?exact=${exact}`
     ];
     for (const url of urls) {
       try {
@@ -102,9 +89,11 @@
     if (!target) return;
     const img = new Image();
     img.alt = `${name}のカード画像`;
-    img.loading = 'eager';
+    img.loading = 'lazy';
     img.decoding = 'async';
     img.referrerPolicy = 'no-referrer';
+    img.width = 488;
+    img.height = 680;
     img.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); modalImage.src = url; modalImage.alt = `${name}のカード画像（拡大）`; modal.classList.add('is-open'); document.body.classList.add('pickup-modal-open'); });
     img.onload = () => { target.textContent = ''; target.appendChild(img); target.classList.remove('is-loading','is-fallback'); };
     img.src = url;
@@ -117,7 +106,6 @@
     if (!name || !en || !target || name === '読み込み中…') return;
     target.classList.remove('is-fallback');
     target.classList.add('is-loading');
-
     try {
       const data = await getCardData(en);
       const url = getImageUrl(data);
@@ -126,20 +114,7 @@
       attachImage(card, name, url);
       renderDetails(card, data);
       return;
-    } catch (e) {
-      // Secondary image endpoint. This keeps the card visible when the search API is slow.
-      try {
-        const named = `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(en)}`;
-        const data = await fetchJson(named);
-        const url = getImageUrl(data);
-        if (!url) throw Error('no image');
-        await loadImage(url);
-        attachImage(card, name, url);
-        renderDetails(card, data);
-        return;
-      } catch (_) {}
-    }
-
+    } catch (_) {}
     console.warn('[MAGSTA] pickup card error', name);
     target.classList.remove('is-loading');
     target.classList.add('is-fallback');
@@ -156,6 +131,21 @@
   };
 
   const loadAll = () => document.querySelectorAll('.pickup-card').forEach(loadCard);
-  document.addEventListener('magsta:daily-pickup', () => requestAnimationFrame(loadAll), { once: true });
-  if ([...document.querySelectorAll('.pickup-card h3')].some(e => e.textContent.trim() !== '読み込み中…')) loadAll();
+  const startLazy = () => {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          observer.disconnect();
+          requestAnimationFrame(loadAll);
+        }
+      }, { rootMargin: '500px 0px' });
+      const section = document.querySelector('#pickup');
+      if (section) observer.observe(section);
+    } else {
+      requestAnimationFrame(loadAll);
+    }
+  };
+
+  document.addEventListener('magsta:daily-pickup', startLazy, { once: true });
+  if ([...document.querySelectorAll('.pickup-card h3')].some(e => e.textContent.trim() !== '読み込み中…')) startLazy();
 })();
