@@ -1,38 +1,29 @@
 [
   {
     "rank": 1,
-    "en": "Orcish Bowmasters",
-    "ja": "オークの弓使い",
-    "label": "📈 値動き注目",
-    "reason": "多くの環境で意識される人気カード。需要と再録情報による価格変化をチェック。",
-    "rating": "注目度 ★★★★☆",
-    "price": "—",
-    "updated": "2026-08-22",
-    "image": "",
-    "scryfall_url": ""
+    "label": "🏆 大会注目",
+    "name": "敏捷なこそ泥、ラガバン",
+    "ja": "敏捷なこそ泥、ラガバン",
+    "en": "Ragavan, Nimble Pilferer",
+    "desc": "軽量ながら大きなリターンを狙える人気クリーチャー。フォーマットごとの採用状況を確認したい1枚。",
+    "updated": "2026-09-19"
   },
   {
     "rank": 2,
-    "en": "Sheoldred, the Apocalypse",
-    "ja": "黙示録、シェオルドレッド",
-    "label": "🏆 今週の注目",
-    "reason": "スタンダード以外でも高い知名度を持つ人気カード。仕様ごとの相場を追いたい。",
-    "rating": "注目度 ★★★★☆",
-    "price": "—",
-    "updated": "2026-08-22",
-    "image": "",
-    "scryfall_url": ""
+    "label": "🆕 新カード",
+    "name": "霊気貯蔵器",
+    "ja": "霊気貯蔵器",
+    "en": "Aetherflux Reservoir",
+    "desc": "呪文を連続して唱える戦略で大きなリターンを狙えるアーティファクト。コンボ系デッキの動向と相性が良い。",
+    "updated": "2026-09-19"
   },
   {
     "rank": 3,
-    "en": "Ragavan, Nimble Pilferer",
-    "ja": "敏捷なこそ泥、ラガバン",
-    "label": "💎 隠れ注目",
-    "reason": "モダンなどで知られる人気カード。需要と供給の変化に注目。",
-    "rating": "注目度 ★★★★☆",
-    "price": "—",
-    "updated": "2026-08-22",
-    "image": "",
-    "scryfall_url": ""
+    "label": "💬 コミュニティ",
+    "name": "対抗呪文",
+    "ja": "対抗呪文",
+    "en": "Counterspell",
+    "desc": "2マナで呪文を打ち消す青の定番カード。フォーマットごとの採用枚数や評価を見比べやすい1枚。",
+    "updated": "2026-09-19"
   }
 ]
