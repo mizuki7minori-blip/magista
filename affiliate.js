@@ -12,6 +12,7 @@ function renderAffiliate(targetId = 'affiliate-products') {
         <div class="affiliate-item">
           <div><strong>${escapeAffiliate(item.title)}</strong><p>${escapeAffiliate(item.description)}</p></div>
           <a class="button primary affiliate-button" href="${escapeAffiliate(safeAffiliateUrl(item.url))}" target="_blank" rel="sponsored nofollow noopener noreferrer">${escapeAffiliate(item.label)} →</a>
+          ${safeAffiliateUrl(item.pixel) ? `<img class="affiliate-tracker" src="${escapeAffiliate(safeAffiliateUrl(item.pixel))}" alt="" width="1" height="1" aria-hidden="true">` : ''}
         </div>`).join('')}</div>
     </div>`;
 }
