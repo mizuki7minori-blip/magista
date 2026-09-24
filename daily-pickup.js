@@ -3,23 +3,23 @@
 
   const FALLBACK = [
     { label:'🏆 大会注目', name:'一つの指輪', en:'The One Ring', desc:'強力な防御能力とドローを両立する代表的なアーティファクト。競技・カジュアル双方で動向を追いやすい1枚。' },
-    { label:'🆕 新カード', name:'オークの弓使い', en:'Orcish Bowmasters', desc:'カードを多く引く相手への対策として存在感を持つクリーチャー。採用環境の変化をチェック。' },
+    { label:'🃏 カード注目', name:'オークの弓使い', en:'Orcish Bowmasters', desc:'カードを多く引く相手への対策として存在感を持つクリーチャー。採用環境の変化をチェック。' },
     { label:'💬 コミュニティ', name:'対抗呪文', en:'Counterspell', desc:'青を代表する定番カウンター。フォーマットごとの採用状況を見比べやすいカード。' }
   ];
 
   const section = document.querySelector('#pickup');
   if (!section) return;
 
-  const today = new Date();
-  const iso = `${today.getFullYear()}.${String(today.getMonth()+1).padStart(2,'0')}.${String(today.getDate()).padStart(2,'0')}`;
-  const dayIndex = Math.floor(Date.now() / 86400000);
+  const iso = new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 
   const fallback = FALLBACK.map((x,i) => ({...x, rank:i+1}));
   const apply = cards => {
     const dateEl = section.querySelector('.pickup-date');
-    if (dateEl) dateEl.textContent = `${iso} 更新`;
+    const updated = cards[0]?.updated;
+    const consistent = updated && cards.every(card => card.updated === updated);
+    if (dateEl) dateEl.textContent = consistent ? `${updated.replaceAll('-','.')} 選定` : '注目カード';
     const intro = section.querySelector('.pickup-intro');
-    if (intro) intro.textContent = '大会・新カード・コミュニティの注目候補から、毎日3枚を紹介します。';
+    if (intro) intro.textContent = consistent && updated === iso ? '今日の注目カードを3枚紹介します。' : '大会・カード・コミュニティから選んだ注目カードを紹介します。';
     [...section.querySelectorAll('.pickup-card')].forEach((card,i) => {
       const data = cards[i];
       if (!data) return;
