@@ -1,6 +1,7 @@
 import json
 import re
 import urllib.request
+from pathlib import Path
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -11,7 +12,7 @@ SOURCES = [
     ('晴れる屋記事（検索RSS）','ja','source-hareruya-article','https://news.google.com/rss/search?q=site%3Aarticle.hareruyamtg.com%2Farticle%2F+MTG&hl=ja&gl=JP&ceid=JP%3Aja'),
     ('イゼ速。','ja','source-izzet','https://www.izzetmtgnews.com/feed'),
     ('BIGWEB（記事検索）','ja','source-bigweb','https://news.google.com/rss/search?q=site%3Amtg.bigweb.co.jp%2Farticles+%28MTG+OR+%E3%83%9E%E3%82%B8%E3%83%83%E3%82%AF%29&hl=ja&gl=JP&ceid=JP%3Aja'),
-    ('5chまとめ（MTG限定検索）','ja','source-5ch','https://news.google.com/rss/search?q=site%3A5chant.com+%28MTG+OR+%22%E3%83%9E%E3%82%B8%E3%83%83%E3%82%AF%22+OR+%22%E3%82%AE%E3%83%A3%E3%82%B6%E3%83%AA%E3%83%B3%E3%82%B0%22&hl=ja&gl=JP&ceid=JP%3Aja'),
+    ('5chまとめ（MTG限定検索）','ja','source-5ch','https://news.google.com/rss/search?q=site%3A5chant.com+%28MTG+OR+%22%E3%83%9E%E3%82%B8%E3%83%83%E3%82%AF%22+OR+%22%E3%82%AE%E3%83%A3%E3%82%B6%E3%83%AA%E3%83%B3%E3%82%B0%22%29&hl=ja&gl=JP&ceid=JP%3Aja'),
     ('MTGGoldfish','en','source-goldfish','https://www.mtggoldfish.com/feed'),
     ('Magic: The Gathering（検索）','en','source-wizards-en','https://news.google.com/rss/search?q=site%3Amagic.wizards.com%2Fen%2Fnews+Magic%3A+The+Gathering&hl=en-US&gl=US&ceid=US%3Aen'),
 ]
@@ -79,19 +80,49 @@ def parse_feed(name, lang, cls, url):
     return out
 
 def main():
+    cache_path = Path('rss-cache.json')
+    try:
+        previous = json.loads(cache_path.read_text(encoding='utf-8'))
+        old_items = previous.get('items', [])
+    except (OSError, ValueError):
+        old_items = []
     all_items=[]
+    stale_sources=[]
+    succeeded=0
     for source in SOURCES:
         try:
             all_items.extend(parse_feed(*source))
+            succeeded+=1
         except Exception as e:
             print('RSS failed:', source[0], e)
+            # A temporary feed error should not erase its recent articles.
+            cutoff = datetime.now(timezone.utc).timestamp() - 7*86400
+            retained = 0
+            for item in old_items:
+                if item.get('sourceClass') != source[2]:
+                    continue
+                try:
+                    if datetime.fromisoformat(item['pubDate'].replace('Z','+00:00')).timestamp() >= cutoff:
+                        all_items.append(item)
+                        retained += 1
+                except (KeyError, ValueError, TypeError):
+                    pass
+            if retained:
+                stale_sources.append(source[2])
 
-    unique={x['id'] or x['link']:x for x in all_items if x.get('title') and x.get('link')}
-    items=sorted(unique.values(),key=lambda x:x.get('pubDate',''),reverse=True)[:80]
+    if not succeeded:
+        raise RuntimeError('All RSS feeds failed; keeping the previous cache')
+    unique={x.get('link'):x for x in all_items if x.get('title') and x.get('link')}
+    by_source={}
+    for item in sorted(unique.values(), key=lambda x:x.get('pubDate',''), reverse=True):
+        by_source.setdefault(item.get('sourceClass'),[]).append(item)
+    # Reserve room for smaller Japanese feeds even when one source has many posts.
+    items=sorted((item for group in by_source.values() for item in group[:12]),
+                 key=lambda x:x.get('pubDate',''),reverse=True)[:80]
     if not items:
         raise RuntimeError('No RSS articles fetched; keeping the previous cache')
-    with open('rss-cache.json','w',encoding='utf-8') as f:
-        json.dump({'updatedAt':datetime.now(timezone.utc).isoformat(),'items':items},f,ensure_ascii=False,separators=(',',':'))
+    with cache_path.open('w',encoding='utf-8') as f:
+        json.dump({'updatedAt':datetime.now(timezone.utc).isoformat(),'staleSources':stale_sources,'items':items},f,ensure_ascii=False,separators=(',',':'))
     print('RSS cache updated:', len(items))
 
 
