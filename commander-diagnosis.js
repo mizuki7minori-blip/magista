@@ -22,7 +22,7 @@
   box.className = 'deck-diagnosis';
   box.innerHTML = `
     <div class="deck-diagnosis-head"><div><span class="section-kicker">デッキ自動診断</span><h2>不足している役割をチェック</h2></div><button type="button" id="deck-diagnosis-refresh" class="button secondary">診断を更新</button></div>
-    <p class="commander-note">採用中のカードをカードタイプ・ルール文から簡易分類し、統率者デッキの一般的な目安と比較します。</p>
+    <p class="commander-note">採用中のカードをカードタイプ・ルール文から簡易分類し、選んだデッキ方針とブラケットに合わせた目安と比較します。</p>
     <div id="deck-diagnosis-grid" class="deck-diagnosis-grid"></div>
     <div id="deck-diagnosis-summary" class="deck-diagnosis-summary">カードを追加すると診断します。</div>`;
   builder.appendChild(box);
@@ -30,12 +30,14 @@
   const grid = box.querySelector('#deck-diagnosis-grid');
   const summary = box.querySelector('#deck-diagnosis-summary');
   const cache = new Map();
+  let strategy = 'balanced';
 
   function deckNames(){
     return [...builder.querySelectorAll('.decklist-item')].map(el => {
-      const small = el.querySelector('small')?.textContent?.trim();
+      const smalls=[...el.querySelectorAll('small')].map(x=>x.textContent.trim());
+      const english=smalls.find(x=>/^[\x00-\x7F]+$/.test(x));
       const strong = el.querySelector('strong')?.textContent?.trim();
-      return small || strong || '';
+      return english || strong || '';
     }).filter(Boolean);
   }
 
@@ -58,21 +60,25 @@
     if(/destroy target|exile target|deals? .* damage to target/.test(text)) out.add('除去');
     if(/counter target|return target .* to .* hand|tap target/.test(text)) out.add('妨害');
     if(/hexproof|indestructible|protection from|phase out|can't be targeted/.test(text)) out.add('防御');
+    if(/search your library for (a|an|up to|any) .* card|search your library for a card/.test(text)) out.add('サーチ');
     if(/each opponent|you win the game|loses? the game|double .* damage|combat damage to a player/.test(text)) out.add('勝ち筋');
     return out;
   }
 
   function targets(){
     const high = Number(bracket?.value || 3) >= 4;
-    return {
-      '土地':[35,38],
-      '加速':[high?11:9, high?13:11],
-      'ドロー':[high?11:9, high?14:12],
-      '除去':[8,12],
-      '妨害':[high?8:5, high?12:9],
-      '防御':[4,8],
-      '勝ち筋':[8,15]
+    const base={
+      '土地':[35,38], '加速':[high?11:9, high?13:11], 'ドロー':[high?11:9, high?14:12],
+      '除去':[8,12], '妨害':[high?8:5, high?12:9], '防御':[4,8], 'サーチ':[2,6], '勝ち筋':[8,15]
     };
+    if(strategy==='control'){
+      base['除去']=[10,14]; base['妨害']=[high?12:10,18]; base['ドロー']=[11,14]; base['防御']=[6,10]; base['勝ち筋']=[5,10];
+    } else if(strategy==='speed'){
+      base['加速']=[12,15]; base['ドロー']=[10,12]; base['妨害']=[4,8]; base['サーチ']=[2,5]; base['勝ち筋']=[9,14];
+    } else if(strategy==='combo'){
+      base['加速']=[12,14]; base['ドロー']=[12,15]; base['サーチ']=[6,10]; base['防御']=[6,10]; base['妨害']=[7,11]; base['勝ち筋']=[8,14];
+    }
+    return base;
   }
 
   async function diagnose(){
@@ -80,7 +86,7 @@
     if(!names.length){ grid.innerHTML=''; summary.textContent='カードを追加すると診断します。'; return; }
     summary.textContent='診断中…';
     const cards = await Promise.all(names.map(cardData));
-    const counts = {'土地':0,'加速':0,'ドロー':0,'除去':0,'妨害':0,'防御':0,'勝ち筋':0};
+    const counts = {'土地':0,'加速':0,'ドロー':0,'除去':0,'妨害':0,'防御':0,'サーチ':0,'勝ち筋':0};
     cards.filter(Boolean).forEach(c => classify(c).forEach(k => { if(k in counts) counts[k]++; }));
     const goal = targets();
     grid.innerHTML = Object.entries(counts).map(([k,v]) => {
@@ -90,12 +96,14 @@
       return `<article class="diagnosis-card ${cls}"><strong>${k}：${v}枚</strong><span>${text}</span></article>`;
     }).join('');
     const lacking = Object.entries(counts).filter(([k,v]) => v < goal[k][0]).sort((a,b)=>(goal[b[0]][0]-b[1])-(goal[a[0]][0]-a[1]));
-    summary.textContent = lacking.length ? `優先して補いたい役割：${lacking.slice(0,3).map(([k,v])=>`${k}（あと${goal[k][0]-v}枚目安）`).join('、')}。` : '主要な役割はおおむね目安を満たしています。あとは統率者シナジーと勝ち筋の質を調整しましょう。';
+    const label={balanced:'バランス型',control:'妨害重視',speed:'スピード重視',combo:'コンボ重視'}[strategy]||'バランス型';
+    summary.textContent = lacking.length ? `${label}の基準で、優先して補いたい役割：${lacking.slice(0,3).map(([k,v])=>`${k}（あと${goal[k][0]-v}枚目安）`).join('、')}。` : `${label}の基準では主要な役割をおおむね満たしています。`;
   }
 
   box.querySelector('#deck-diagnosis-refresh').addEventListener('click', diagnose);
   bracket?.addEventListener('change', diagnose);
   select.addEventListener('change', ()=>setTimeout(diagnose,50));
+  window.addEventListener('magsta:strategy-change',e=>{strategy=e.detail?.strategy||'balanced';diagnose();});
   const itemsWrap = builder.querySelector('#decklist-items');
   if(itemsWrap){
     let timer;
