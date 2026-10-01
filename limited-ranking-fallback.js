@@ -68,4 +68,12 @@
   setSelect.addEventListener('change', render);
   if (archSelect) archSelect.addEventListener('change', render);
   render();
+
+  if (!document.querySelector('script[data-magsta-arch-fast]')) {
+    const fastScript = document.createElement('script');
+    fastScript.src = `limited-arch-fast.js?v=20261001-fast1`;
+    fastScript.async = true;
+    fastScript.dataset.magstaArchFast = '1';
+    document.body.appendChild(fastScript);
+  }
 })();
