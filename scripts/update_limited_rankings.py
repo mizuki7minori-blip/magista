@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Centralized updater: keep previous snapshots when 17Lands is unavailable.
+# Manual refresh trigger: 2026-10-01
 import html
 import json
 import re
