@@ -67,7 +67,7 @@
 </section>
 
 <section class="limited-section">
-  <div class="limited-section-title"><div><span class="limited-kicker">相性カード</span><h2 id="limited-top-heading">アーキタイプ別 優先ピック TOP10</h2></div><p id="limited-top-note">日本語名優先・保存済みデータを表示</p></div>
+  <div class="limited-section-title"><div><span class="limited-kicker">相性カード</span><h2 id="limited-top-heading">アーキタイプ別 優先ピック TOP10</h2></div><p id="limited-top-note">保存済みランキングを先に表示</p></div>
   <div class="limited-card"><ol id="limited-top-cards" class="limited-top-list"><li>保存ランキングを読み込みます</li></ol></div>
 </section>
 
@@ -80,12 +80,16 @@
 
 <section class="limited-section">
   <div class="limited-section-title"><div><span class="limited-kicker">指標の見方</span><h2>まず見る指標</h2></div></div>
-  <div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>指標</th><th>意味</th><th>使いどころ</th></tr></thead><tbody><tr><td><span class="limited-badge">GIH WR</span></td><td>手札に入ったゲームでの勝率</td><td>カードの実戦貢献を確認</td></tr><tr><td><span class="limited-badge">色組み合わせ</span></td><td>デッキの主要2色</td><td>そのアーキで使えるカードを絞り込み</td></tr><tr><td><span class="limited-badge">役割</span></td><td>除去・序盤・フィニッシャー等</td><td>デッキ内の不足枠を判断</td></tr><tr><td><span class="limited-badge">サンプル数</span></td><td>17Landsでのゲーム数</td><td>勝率の信頼度を見る目安</td></tr></tbody></table></div>
+  <div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>指標</th><th>意味</th><th>使いどころ</th></tr></thead><tbody><tr><td><span class="limited-badge">GIH WR</span></td><td>手札に入ったゲームでの勝率</td><td>カードの実戦貢献を確認</td></tr><tr><td><span class="limited-badge">% GP</span></td><td>ピック後にデッキで使われた割合</td><td>実際の採用されやすさを見る</td></tr><tr><td><span class="limited-badge">ATA</span></td><td>実際に取られた平均順位</td><td>平均ピック位置を確認</td></tr><tr><td><span class="limited-badge">ALSA</span></td><td>最後に見かけた平均順位</td><td>カードがどの程度流れてくるか確認</td></tr></tbody></table></div>
   <p class="limited-note">ランキングはGitHub側で定期保存します。更新取得に失敗した場合は前回データを維持します。</p>
 </section>
 </main>
+
 <footer class="site-footer"><div class="container footer-inner"><div><a class="logo" href="index.html"><strong>MAGSTA.</strong></a><p>MTGの話題をひとつに。</p><small>編集：犬居わんこ</small></div><nav aria-label="フッターメニュー"><a href="articles.html">記事一覧</a><a href="weekly.html">週間企画</a><a href="strategy.html">MAGSTAについて</a><a href="contact.html">お問い合わせ</a></nav><small>© 2026 MAGSTA<br>Magic: The GatheringはWizards of the Coastの商標です。</small></div></footer>
 <script src="mobile-menu.js"></script>
-<script src="affiliate-config.js?v=20261001-series1"></script><script src="affiliate.js?v=20261001-series1"></script><script src="limited-card-images.js?v=20261001-arch1"></script>
+<script src="affiliate-config.js?v=20261001-series1"></script>
+<script src="affiliate.js?v=20261001-series1"></script>
+<script src="limited-ranking-fallback.js?v=20261001-fix1"></script>
+<script src="limited-card-images.js?v=20261001-fix1"></script>
 </body>
 </html>
