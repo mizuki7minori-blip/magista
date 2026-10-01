@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MAGSTA MTGのリミテッド攻略・環境分析。直近5シリーズの17Landsカードランキングを日本語カード名・日本語画像優先で確認できます。">
+<meta name="description" content="MAGSTA MTGのリミテッド攻略・環境分析。直近5シリーズをシリーズ・アーキタイプ別に切り替え、17Landsランキングと相性の良いカードを日本語優先で確認できます。">
 <title>MAGSTA MTG｜リミテッド攻略・環境分析</title>
 <link rel="preconnect" href="https://api.scryfall.com" crossorigin>
 <link rel="preconnect" href="https://cards.scryfall.io" crossorigin>
@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="affiliate.css?v=20261001-series1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
-.limited-set-picker{background:#fff;border:1px solid var(--line);border-left:4px solid #c6803f;border-radius:6px;padding:22px;margin-bottom:22px}.limited-set-picker label{display:block;font-weight:800;margin-bottom:8px}.limited-set-picker p{margin:0 0 14px;color:var(--muted);font-size:.9375rem}.limited-set-picker select{width:min(100%,520px);min-height:48px;padding:10px 42px 10px 14px;border:1px solid #adb7c2;border-radius:6px;background:#fff;color:var(--text);font-weight:700}.limited-series-note{margin-top:12px;font-size:.8125rem;color:var(--muted)}.limited-guide-value{font-size:1.08rem;font-weight:800;margin:.35rem 0}.limited-top-list{margin:0;padding-left:1.4rem}.limited-top-list li{padding:.35rem 0}.limited-guide-status{display:inline-block;padding:4px 9px;border-radius:999px;background:#f4eadf;color:#80501f;font-size:.78rem;font-weight:700}.limited-ranked-card{position:relative}.limited-rank-badge{position:absolute;z-index:2;top:8px;left:8px;background:#202833;color:#fff!important;border-radius:999px;padding:4px 9px;font-weight:800;font-size:.78rem!important;box-shadow:0 2px 8px #0003}.limited-image-placeholder{aspect-ratio:488/680;display:grid;place-items:center;background:#edf0f3;border-radius:9px;color:var(--muted);font-size:.85rem}.limited-affiliate-wrap{margin:28px 0}.limited-affiliate-wrap .affiliate-box{margin-top:0}
-@media(max-width:700px){.limited-set-picker{padding:18px}.limited-set-picker select{width:100%}}
+.limited-set-picker,.limited-arch-picker{background:#fff;border:1px solid var(--line);border-left:4px solid #c6803f;border-radius:6px;padding:22px;margin-bottom:22px}.limited-set-picker label,.limited-arch-picker label{display:block;font-weight:800;margin-bottom:8px}.limited-set-picker p,.limited-arch-picker p{margin:0 0 14px;color:var(--muted);font-size:.9375rem}.limited-set-picker select,.limited-arch-picker select{width:min(100%,520px);min-height:48px;padding:10px 42px 10px 14px;border:1px solid #adb7c2;border-radius:6px;background:#fff;color:var(--text);font-weight:700}.limited-series-note{margin-top:12px;font-size:.8125rem;color:var(--muted)}.limited-guide-value{font-size:1.08rem;font-weight:800;margin:.35rem 0}.limited-top-list{margin:0;padding-left:1.4rem}.limited-top-list li{padding:.5rem 0}.limited-guide-status{display:inline-block;padding:4px 9px;border-radius:999px;background:#f4eadf;color:#80501f;font-size:.78rem;font-weight:700}.limited-ranked-card{position:relative}.limited-rank-badge{position:absolute;z-index:2;top:8px;left:8px;background:#202833;color:#fff!important;border-radius:999px;padding:4px 9px;font-weight:800;font-size:.78rem!important;box-shadow:0 2px 8px #0003}.limited-role-badge{display:inline-block;width:auto!important;margin-top:5px;padding:2px 7px;border-radius:999px;background:#edf2f7;color:#365876!important;font-size:.74rem!important;font-weight:700}.limited-image-placeholder{aspect-ratio:488/680;display:grid;place-items:center;background:#edf0f3;border-radius:9px;color:var(--muted);font-size:.85rem}.limited-arch-summary{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.limited-arch-summary span{background:#f3f5f7;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:.82rem}.limited-affiliate-wrap{margin:28px 0}.limited-affiliate-wrap .affiliate-box{margin-top:0}
+@media(max-width:700px){.limited-set-picker,.limited-arch-picker{padding:18px}.limited-set-picker select,.limited-arch-picker select{width:100%}}
 </style>
 </head>
 <body>
@@ -23,16 +23,26 @@
 
 <main id="main-content" class="limited-page">
 <section class="limited-set-picker" aria-labelledby="limited-set-picker-title">
-  <label id="limited-set-picker-title" for="limited-set-select">直近5シリーズから選択</label>
+  <label id="limited-set-picker-title" for="limited-set-select">1. 直近5シリーズから選択</label>
   <p>保存済みの17Landsランキングを先に表示し、カード名と画像は日本語版を優先します。</p>
   <select id="limited-set-select">
     <option value="fra">リアリティ・フラクチャー（FRA）</option>
-    <option value="hob">The Hobbit（ホビット / HOB）</option>
-    <option value="msh">Marvel Super Heroes（マーベル / MSH）</option>
-    <option value="sos">Secrets of Strixhaven（ストリクスヘイヴン / SOS）</option>
-    <option value="tmt">Teenage Mutant Ninja Turtles（TMNT）</option>
+    <option value="hob">ホビット（HOB）</option>
+    <option value="msh">マーベル・スーパー・ヒーローズ（MSH）</option>
+    <option value="sos">ストリクスヘイヴンの秘密（SOS）</option>
+    <option value="tmt">TMNT（TMT）</option>
   </select>
-  <div class="limited-series-note">シリーズを切り替えると、カードランキングだけでなく関連商品・Secret Lair候補も自動で切り替わります。</div>
+  <div class="limited-series-note">シリーズを切り替えると、ランキング・関連商品も自動で切り替わります。</div>
+</section>
+
+<section class="limited-arch-picker" aria-labelledby="limited-arch-picker-title">
+  <label id="limited-arch-picker-title" for="limited-arch-select">2. アーキタイプを選択</label>
+  <p>色の組み合わせを選ぶと、その色で採用できる上位カードをGIH WR順で絞り込みます。</p>
+  <select id="limited-arch-select">
+    <option value="ALL">全体ランキング</option>
+    <option value="WU">白青（アゾリウス）</option><option value="UB">青黒（ディミーア）</option><option value="BR">黒赤（ラクドス）</option><option value="RG">赤緑（グルール）</option><option value="GW">緑白（セレズニア）</option><option value="WB">白黒（オルゾフ）</option><option value="BG">黒緑（ゴルガリ）</option><option value="GU">緑青（シミック）</option><option value="UR">青赤（イゼット）</option><option value="RW">赤白（ボロス）</option>
+  </select>
+  <div id="limited-arch-summary" class="limited-arch-summary"><span>全体ランキングを表示中</span></div>
 </section>
 
 <section class="limited-hero">
@@ -41,7 +51,7 @@
   <p id="limited-set-description">リアリティ・フラクチャー（FRA）のドラフト・シールド向け情報です。</p>
   <div class="limited-actions">
     <a id="limited-card-data-link" class="limited-button" href="https://www.17lands.com/card_data?expansion=FRA&amp;format=PremierDraft&amp;sort=ever_drawn_win_rate%2Cdesc&amp;time_period=ALL_TIME&amp;view=table" target="_blank" rel="noopener noreferrer">17Landsランキングを見る</a>
-    <a class="limited-button secondary" href="https://www.17lands.com/format_speed" target="_blank" rel="noopener noreferrer">環境スピード</a>
+    <a id="limited-color-data-link" class="limited-button secondary" href="https://www.17lands.com/deck_color_data?expansion=FRA&amp;format=PremierDraft" target="_blank" rel="noopener noreferrer">色別勝率を見る</a>
     <a id="limited-scryfall-link" class="limited-button secondary" href="https://scryfall.com/sets/fra" target="_blank" rel="noopener noreferrer">日本語カード一覧</a>
     <a id="limited-article-link" class="limited-button secondary" href="article-fra-draft-2026-09-25.html">MAGSTA攻略記事</a>
   </div>
@@ -51,36 +61,31 @@
   <div class="limited-section-title"><div><span class="limited-kicker">シリーズ別攻略</span><h2 id="limited-guide-heading">ドラフト攻略サマリー</h2></div><span id="limited-guide-status" class="limited-guide-status">ランキング連動</span></div>
   <div class="limited-grid">
     <article class="limited-card"><h2>おすすめ色</h2><p id="limited-best-colors" class="limited-guide-value">17Lands集計を基準に順次更新</p><p>色ごとの勝率・深さ・コモンの質を見て更新します。</p></article>
-    <article class="limited-card"><h2>代表アーキタイプ</h2><p id="limited-archetypes" class="limited-guide-value">シリーズ別に順次追加</p><p>色の組み合わせと主要シナジーをシリーズごとに表示します。</p></article>
-    <article class="limited-card"><h2>初手の考え方</h2><p id="limited-first-pick" class="limited-guide-value">除去・ボム・柔軟性を優先</p><p>単純な固定順位ではなく、そのシリーズの速度とシナジー依存度も加味します。</p></article>
+    <article class="limited-card"><h2>選択中アーキタイプ</h2><p id="limited-archetypes" class="limited-guide-value">全体ランキング</p><p>色を選ぶと、そのアーキタイプで採用できるカードに絞ります。</p></article>
+    <article class="limited-card"><h2>初手の考え方</h2><p id="limited-first-pick" class="limited-guide-value">除去・ボム・柔軟性を優先</p><p>序盤は単体性能、色が固まった後はアーキとの噛み合いを重視します。</p></article>
   </div>
 </section>
 
 <section class="limited-section">
-  <div class="limited-section-title"><div><span class="limited-kicker">実戦データ</span><h2 id="limited-top-heading">17Lands カードランキング</h2></div><p id="limited-top-note">日本語名優先・保存済みデータを表示</p></div>
+  <div class="limited-section-title"><div><span class="limited-kicker">相性カード</span><h2 id="limited-top-heading">アーキタイプ別 優先ピック TOP10</h2></div><p id="limited-top-note">日本語名優先・保存済みデータを表示</p></div>
   <div class="limited-card"><ol id="limited-top-cards" class="limited-top-list"><li>保存ランキングを読み込みます</li></ol></div>
 </section>
 
 <section class="limited-section">
-  <div class="limited-section-title"><div><span class="limited-kicker">ランキング画像</span><h2 id="limited-gallery-title">上位カードを日本語画像で見る</h2></div><p>GIH WR順。日本語版があるカードは日本語画像を表示します</p></div>
+  <div class="limited-section-title"><div><span class="limited-kicker">ランキング画像</span><h2 id="limited-gallery-title">上位カードを日本語画像で見る</h2></div><p>日本語版優先。画像を押すとカード詳細を開きます</p></div>
   <div id="limited-card-gallery" class="limited-image-grid"><p>保存ランキングを読み込み中です…</p></div>
 </section>
 
-<section class="limited-affiliate-wrap" aria-label="シリーズ関連商品">
-  <div id="affiliate-products"></div>
-</section>
+<section class="limited-affiliate-wrap" aria-label="シリーズ関連商品"><div id="affiliate-products"></div></section>
 
 <section class="limited-section">
   <div class="limited-section-title"><div><span class="limited-kicker">指標の見方</span><h2>まず見る指標</h2></div></div>
-  <div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>指標</th><th>意味</th><th>使いどころ</th></tr></thead><tbody><tr><td><span class="limited-badge">GIH WR</span></td><td>手札に入ったゲームでの勝率</td><td>カードの実戦貢献を確認</td></tr><tr><td><span class="limited-badge">% GP</span></td><td>ピック後にデッキで使われた割合</td><td>実際の採用されやすさを見る</td></tr><tr><td><span class="limited-badge">ATA</span></td><td>実際に取られた平均順位</td><td>平均ピック位置を確認</td></tr><tr><td><span class="limited-badge">ALSA</span></td><td>最後に見かけた平均順位</td><td>カードがどの程度流れてくるか確認</td></tr></tbody></table></div>
+  <div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>指標</th><th>意味</th><th>使いどころ</th></tr></thead><tbody><tr><td><span class="limited-badge">GIH WR</span></td><td>手札に入ったゲームでの勝率</td><td>カードの実戦貢献を確認</td></tr><tr><td><span class="limited-badge">色組み合わせ</span></td><td>デッキの主要2色</td><td>そのアーキで使えるカードを絞り込み</td></tr><tr><td><span class="limited-badge">役割</span></td><td>除去・序盤・フィニッシャー等</td><td>デッキ内の不足枠を判断</td></tr><tr><td><span class="limited-badge">サンプル数</span></td><td>17Landsでのゲーム数</td><td>勝率の信頼度を見る目安</td></tr></tbody></table></div>
   <p class="limited-note">ランキングはGitHub側で定期保存します。更新取得に失敗した場合は前回データを維持します。</p>
 </section>
 </main>
-
 <footer class="site-footer"><div class="container footer-inner"><div><a class="logo" href="index.html"><strong>MAGSTA.</strong></a><p>MTGの話題をひとつに。</p><small>編集：犬居わんこ</small></div><nav aria-label="フッターメニュー"><a href="articles.html">記事一覧</a><a href="weekly.html">週間企画</a><a href="strategy.html">MAGSTAについて</a><a href="contact.html">お問い合わせ</a></nav><small>© 2026 MAGSTA<br>Magic: The GatheringはWizards of the Coastの商標です。</small></div></footer>
 <script src="mobile-menu.js"></script>
-<script src="affiliate-config.js?v=20261001-series1"></script>
-<script src="affiliate.js?v=20261001-series1"></script>
-<script src="limited-card-images.js?v=20261001-series1"></script>
+<script src="affiliate-config.js?v=20261001-series1"></script><script src="affiliate.js?v=20261001-series1"></script><script src="limited-card-images.js?v=20261001-arch1"></script>
 </body>
 </html>
