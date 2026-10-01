@@ -30,6 +30,10 @@
     ]
   };
 
+  const style=document.createElement('style');
+  style.textContent=`.commander-search-wrap{display:grid;grid-template-columns:1fr auto;gap:10px;margin:14px 0 4px}.commander-search-wrap input{min-height:46px;padding:10px 13px;border:1px solid var(--line);border-radius:7px;font:inherit}.commander-search-results{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 14px}.commander-chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer;font:inherit}.commander-chip:hover{background:#f3f5f7}.deck-template{margin-top:22px;border-top:1px solid var(--line);padding-top:20px}.deck-template-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.deck-template-actions{display:flex;gap:8px;flex-wrap:wrap}.deck-template-actions button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:8px 12px;cursor:pointer}.deck-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.deck-group{border:1px solid var(--line);border-radius:8px;padding:14px;background:#fff}.deck-group h3{font-size:.95rem;margin:0 0 7px}.deck-group ul{margin:0;padding-left:1.2rem}.deck-group li{font-size:.82rem;margin:.2rem 0}.deck-total{margin-top:12px;font-weight:800}.deck-copy-status{font-size:.8rem;color:var(--muted)}@media(max-width:850px){.deck-groups{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.commander-search-wrap{grid-template-columns:1fr}.deck-groups{grid-template-columns:1fr}}`;
+  document.head.appendChild(style);
+
   const grid = document.getElementById('commander-ranking');
   const placeholder = (name) => `https://placehold.co/488x680?text=${encodeURIComponent(name)}`;
   const cardCache = new Map();
@@ -82,6 +86,25 @@
     const option=document.createElement('option'); option.value=name; option.textContent=name; if(i===0) option.selected=true; commanderSelect.appendChild(option);
   });
 
+  const controls=commanderSelect.closest('.commander-builder-controls');
+  const searchWrap=document.createElement('div');
+  searchWrap.className='commander-search-wrap';
+  searchWrap.innerHTML='<input id="commander-search" type="search" placeholder="統率者名を検索（英語名の一部でもOK）"><button class="button secondary" type="button" id="commander-search-clear">クリア</button>';
+  controls.before(searchWrap);
+  const results=document.createElement('div'); results.className='commander-search-results'; searchWrap.after(results);
+  const searchInput=searchWrap.querySelector('#commander-search');
+  const clearBtn=searchWrap.querySelector('#commander-search-clear');
+
+  function renderSearch(q=''){
+    const text=q.trim().toLowerCase();
+    const pool=Object.keys(synergyDB).filter(n=>!text || n.toLowerCase().includes(text)).slice(0,8);
+    results.innerHTML=pool.map(n=>`<button class="commander-chip" type="button" data-name="${n.replace(/"/g,'&quot;')}">${n}</button>`).join('');
+    results.querySelectorAll('.commander-chip').forEach(btn=>btn.addEventListener('click',()=>{commanderSelect.value=btn.dataset.name;renderBuilder();searchInput.value='';renderSearch('');}));
+  }
+  searchInput.addEventListener('input',e=>renderSearch(e.target.value));
+  clearBtn.addEventListener('click',()=>{searchInput.value='';renderSearch('');searchInput.focus();});
+  renderSearch('');
+
   function planFor(budget,bracket){
     const high = Number(bracket)>=4;
     if(budget==='5000') return [['土地','37前後'],['加速','10〜12'],['ドロー','9〜11'],['除去・妨害',high?'10〜12':'8〜10']];
@@ -90,12 +113,65 @@
     return [['土地','34〜37'],['加速','10〜13'],['ドロー','11〜14'],['除去・妨害',high?'12〜16':'10〜13']];
   }
 
+  const deckTemplate=document.createElement('section');
+  deckTemplate.className='deck-template';
+  deckTemplate.innerHTML='<div class="deck-template-head"><div><span class="section-kicker">99-CARD TEMPLATE</span><h2>99枚の構築ひな型</h2></div><div class="deck-template-actions"><button type="button" id="deck-refresh">ひな型を更新</button><button type="button" id="deck-copy">テキストをコピー</button></div></div><p class="commander-note">実カード99枚を固定するのではなく、まず役割ごとの枚数と核カードを組みます。そこから予算と好みに合わせて差し替えます。</p><div id="deck-groups" class="deck-groups"></div><div class="deck-total" id="deck-total"></div><div class="deck-copy-status" id="deck-copy-status"></div>';
+  budgetPlan.after(deckTemplate);
+
+  function buildTemplate(name,budget,bracket){
+    const high=Number(bracket)>=4;
+    const lands=budget==='open'?(high?34:35):budget==='30000'?35:budget==='10000'?36:37;
+    const ramp=high?12:10;
+    const draw=high?12:10;
+    const interaction=high?12:10;
+    const wipes=high?3:4;
+    const protection=high?6:5;
+    const grave=3;
+    const tutors=high?5:(budget==='5000'?1:2);
+    const synergy=Math.max(0,99-(lands+ramp+draw+interaction+wipes+protection+grave+tutors));
+    const core=(synergyDB[name]||[]).map(x=>x[0]);
+    return [
+      ['土地',lands,['基本土地・2色土地・多色土地を固有色に合わせて調整']],
+      ['マナ加速',ramp,core.filter((_,i)=>['加速','加速/ドロー','軽減'].includes((synergyDB[name]||[])[i]?.[1])).slice(0,4)],
+      ['ドロー',draw,core.filter((_,i)=>String((synergyDB[name]||[])[i]?.[1]).includes('ドロー')).slice(0,4)],
+      ['除去・妨害',interaction,core.filter((_,i)=>['除去','妨害','全体干渉'].includes((synergyDB[name]||[])[i]?.[1])).slice(0,4)],
+      ['全体除去',wipes,core.filter((_,i)=>String((synergyDB[name]||[])[i]?.[1]).includes('全体')).slice(0,3)],
+      ['防御',protection,core.filter((_,i)=>String((synergyDB[name]||[])[i]?.[1]).includes('防御')).slice(0,3)],
+      ['墓地対策',grave,['墓地利用が多い卓なら増量']],
+      ['サーチ',tutors,core.filter((_,i)=>String((synergyDB[name]||[])[i]?.[1]).includes('サーチ')).slice(0,3)],
+      ['統率者シナジー・勝ち筋',synergy,core.filter((_,i)=>['勝ち筋','部族強化','増殖'].some(r=>String((synergyDB[name]||[])[i]?.[1]).includes(r))).slice(0,6)]
+    ];
+  }
+
+  function renderDeckTemplate(){
+    const name=commanderSelect.value,budget=budgetSelect.value,bracket=bracketSelect.value;
+    const groups=buildTemplate(name,budget,bracket);
+    const wrap=document.getElementById('deck-groups');
+    wrap.innerHTML=groups.map(([label,count,examples])=>`<article class="deck-group"><h3>${label}：${count}枚</h3><ul>${(examples.length?examples:['好みと予算に合わせて選択']).map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
+    const total=groups.reduce((s,g)=>s+g[1],0);
+    document.getElementById('deck-total').textContent=`統率者1枚 + メイン${total}枚 = 合計${total+1}枚`;
+  }
+
+  function deckText(){
+    const name=commanderSelect.value,budget=budgetSelect.value,bracket=bracketSelect.value;
+    const groups=buildTemplate(name,budget,bracket);
+    return [`【MAGSTA 統率者デッキひな型】`,`統率者: ${name}`,`予算: ${budget==='open'?'上限なし':Number(budget).toLocaleString('ja-JP')+'円前後'}`,`Bracket: ${bracket}`,'',...groups.flatMap(([label,count,examples])=>[`${label} ${count}枚`,...(examples||[]).map(x=>`- ${x}`),''])].join('\n');
+  }
+
+  deckTemplate.querySelector('#deck-refresh').addEventListener('click',renderDeckTemplate);
+  deckTemplate.querySelector('#deck-copy').addEventListener('click',async()=>{
+    const status=document.getElementById('deck-copy-status');
+    try{await navigator.clipboard.writeText(deckText());status.textContent='ひな型をコピーしました。';}
+    catch(e){status.textContent='コピーできませんでした。ブラウザの権限をご確認ください。';}
+  });
+
   async function renderBuilder(){
     const name=commanderSelect.value, budget=budgetSelect.value, bracket=bracketSelect.value;
     const list=synergyDB[name]||[];
-    summary.innerHTML=`<strong>${name}</strong>予算：${budget==='open'?'上限なし':Number(budget).toLocaleString('ja-JP')+'円前後'} / Bracket ${bracket}。まずは役割が重複しすぎないように10枚の候補から核を選びます。`;
+    summary.innerHTML=`<strong>${name}</strong>予算：${budget==='open'?'上限なし':Number(budget).toLocaleString('ja-JP')+'円前後'} / Bracket ${bracket}。役割の重複を避けながら、まず10枚の核候補を選びます。`;
     synergyGrid.innerHTML=list.map(([card,role,note])=>`<article class="synergy-card" data-card="${card.replace(/"/g,'&quot;')}"><div class="synergy-image"><div class="commander-image-placeholder">画像読み込み中</div></div><div class="synergy-body"><span class="synergy-role">${role}</span><h3>${card}</h3><p>${note}</p></div></article>`).join('');
     budgetPlan.innerHTML=planFor(budget,bracket).map(([k,v])=>`<div><strong>${k}</strong><span>${v}</span></div>`).join('');
+    renderDeckTemplate();
     const els=[...synergyGrid.querySelectorAll('.synergy-card')];
     for(let i=0;i<els.length;i+=3){
       await Promise.all(els.slice(i,i+3).map(async el=>{
