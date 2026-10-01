@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="MAGSTA MTG Limited hub with recent-set draft rankings, archetype filters, 17Lands links and card images for Magic: The Gathering.">
+<meta name="robots" content="index,follow">
+<title>MTG Limited Draft Rankings & Archetypes | MAGSTA</title>
+<link rel="canonical" href="https://mizuki7minori-blip.github.io/magista/en/limited.html">
+<link rel="alternate" hreflang="en" href="https://mizuki7minori-blip.github.io/magista/en/limited.html">
+<link rel="alternate" hreflang="ja" href="https://mizuki7minori-blip.github.io/magista/limited.html">
+<link rel="stylesheet" href="../style.css?v=20261001-en2">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.limited-control{background:#fff;border:1px solid var(--line);border-left:4px solid #c6803f;border-radius:6px;padding:20px;margin-bottom:18px}.limited-control label{display:block;font-weight:800;margin-bottom:7px}.limited-control p{margin:0 0 12px;color:var(--muted)}.limited-control select{width:min(100%,520px);min-height:46px;padding:9px 12px;border:1px solid #adb7c2;border-radius:6px;background:#fff;font-weight:700}.limited-status{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}.limited-status span{background:#f3f5f7;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:.82rem}.limited-top-list{margin:0;padding-left:1.35rem}.limited-top-list li{padding:.55rem 0}.limited-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}.limited-card-item{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px}.limited-card-item img{width:100%;height:auto;border-radius:8px;display:block}.limited-card-item strong{display:block;margin-top:8px;line-height:1.25}.limited-card-item small{display:block;margin-top:4px;color:var(--muted)}.limited-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.limited-links a{display:inline-block;padding:10px 14px;border-radius:6px;background:#202833;color:#fff;text-decoration:none;font-weight:700}.limited-links a.secondary{background:#fff;color:#202833;border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><a class="logo" href="index.html"><strong>MAGSTA<span class="logo-dot">.</span></strong><small>MTG topics in one place</small></a><nav id="main-nav" aria-label="Main menu"><a href="articles.html">Articles</a><a href="category.html?cat=news">News</a><a href="category.html?cat=deck">Decks & Meta</a><a href="limited.html" aria-current="page">Limited</a><a href="category.html?cat=matome">Community</a></nav><a class="language-link" href="../limited.html" lang="ja">JP</a><button class="menu-button" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">☰</button></div></header>
+
+<main id="main-content" class="limited-page">
+<section class="page-hero"><div class="container"><p class="section-kicker">LIMITED / DRAFT</p><h1>Draft rankings by set and archetype</h1><p>Use saved 17Lands ranking data to scan the strongest cards from the five most recent sets, then filter by two-color archetype.</p></div></section>
+
+<section class="container">
+  <div class="limited-control"><label for="set-select">1. Choose a recent set</label><p>Rankings are loaded from MAGSTA's saved snapshot first for faster display.</p><select id="set-select"><option value="fra">Reality Fracture (FRA)</option><option value="hob">The Hobbit (HOB)</option><option value="msh">Marvel Super Heroes (MSH)</option><option value="sos">Secrets of Strixhaven (SOS)</option><option value="tmt">TMNT (TMT)</option></select></div>
+  <div class="limited-control"><label for="arch-select">2. Filter by archetype</label><p>Cards are filtered by color identity, while the original ranking order is preserved.</p><select id="arch-select"><option value="ALL">Overall ranking</option><option value="WU">White-Blue / Azorius</option><option value="UB">Blue-Black / Dimir</option><option value="BR">Black-Red / Rakdos</option><option value="RG">Red-Green / Gruul</option><option value="GW">Green-White / Selesnya</option><option value="WB">White-Black / Orzhov</option><option value="BG">Black-Green / Golgari</option><option value="GU">Green-Blue / Simic</option><option value="UR">Blue-Red / Izzet</option><option value="RW">Red-White / Boros</option></select><div id="status" class="limited-status"><span>Overall ranking</span><span>Saved data</span></div></div>
+
+  <section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">CURRENT SET</span><h2 id="set-title">Reality Fracture Limited</h2></div><p id="updated-note">Loading saved ranking…</p></div><p id="set-description">Draft and Sealed reference for Reality Fracture.</p><div class="limited-links"><a id="card-data-link" href="https://www.17lands.com/card_data?expansion=FRA&format=PremierDraft" target="_blank" rel="noopener">17Lands card data</a><a id="color-data-link" class="secondary" href="https://www.17lands.com/deck_color_data?expansion=FRA&format=PremierDraft" target="_blank" rel="noopener">Color performance</a><a id="scryfall-link" class="secondary" href="https://scryfall.com/sets/fra" target="_blank" rel="noopener">View set on Scryfall</a></div></section>
+
+  <section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">TOP PICKS</span><h2>Priority picks TOP10</h2></div><p>GIH WR order from the saved snapshot</p></div><div class="limited-card"><ol id="top-list" class="limited-top-list"><li>Loading ranking…</li></ol></div></section>
+
+  <section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">CARD VIEW</span><h2>Top cards at a glance</h2></div><p>English card names and images</p></div><div id="card-grid" class="limited-card-grid"><p>Loading cards…</p></div></section>
+
+  <section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">HOW TO READ</span><h2>Useful 17Lands metrics</h2></div></div><div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>Metric</th><th>Meaning</th><th>Use</th></tr></thead><tbody><tr><td>GIH WR</td><td>Win rate when the card was drawn or in the opening hand</td><td>Quick signal of game impact</td></tr><tr><td>% GP</td><td>Share of drafted copies that made the deck</td><td>How often the card is actually played</td></tr><tr><td>ATA</td><td>Average pick number</td><td>Where players usually take it</td></tr><tr><td>ALSA</td><td>Average last seen at</td><td>How late the card tends to remain available</td></tr></tbody></table></div></section>
+</section>
+</main>
+
+<footer class="site-footer"><div class="container footer-inner"><div><a class="logo" href="index.html"><strong>MAGSTA.</strong></a><p>MTG topics in one place.</p><small>Editor: Inu-i Wanko</small></div><nav aria-label="Footer menu"><a href="articles.html">Articles</a><a href="category.html?cat=news">News</a><a href="limited.html">Limited</a><a href="../contact.html">Contact</a></nav><small>© 2026 MAGSTA<br>Magic: The Gathering is a trademark of Wizards of the Coast.</small></div></footer>
+<script src="../mobile-menu.js" defer></script>
+<script>
+(()=>{
+const SETS={fra:{name:'Reality Fracture',code:'FRA'},hob:{name:'The Hobbit',code:'HOB'},msh:{name:'Marvel Super Heroes',code:'MSH'},sos:{name:'Secrets of Strixhaven',code:'SOS'},tmt:{name:'TMNT',code:'TMT'}};
+const ARCH={ALL:[],WU:['W','U'],UB:['U','B'],BR:['B','R'],RG:['R','G'],GW:['G','W'],WB:['W','B'],BG:['B','G'],GU:['G','U'],UR:['U','R'],RW:['R','W']};
+const setSelect=document.getElementById('set-select'),archSelect=document.getElementById('arch-select'),topList=document.getElementById('top-list'),grid=document.getElementById('card-grid'),status=document.getElementById('status');let snapshots={};
+const fmt=v=>typeof v==='number'?(v*100).toFixed(1)+'%':(v??'—');
+async function loadSnapshots(){try{const r=await fetch('../limited-ranking-data.json',{cache:'no-cache'});if(r.ok){const j=await r.json();snapshots=j.sets||{};}}catch{} render();}
+async function fetchCards(names){if(!names.length)return[];try{const r=await fetch('https://api.scryfall.com/cards/collection',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({identifiers:names.slice(0,20).map(name=>({name}))})});if(!r.ok)return[];return (await r.json()).data||[];}catch{return[];}}
+function matches(card,key){if(key==='ALL')return true;const allowed=new Set(ARCH[key]||[]);return (card?.colors||[]).every(c=>allowed.has(c));}
+async function render(){const key=setSelect.value,arch=archSelect.value,set=SETS[key],snap=snapshots[key]||{},ranking=Array.isArray(snap.ranking)?snap.ranking:[];document.getElementById('set-title').textContent=set.name+' Limited';document.getElementById('set-description').textContent='Draft and Sealed reference for '+set.name+'.';document.getElementById('card-data-link').href='https://www.17lands.com/card_data?expansion='+set.code+'&format=PremierDraft&sort=ever_drawn_win_rate%2Cdesc&time_period=ALL_TIME&view=table';document.getElementById('color-data-link').href='https://www.17lands.com/deck_color_data?expansion='+set.code+'&format=PremierDraft';document.getElementById('scryfall-link').href='https://scryfall.com/sets/'+key;document.getElementById('updated-note').textContent=snap.updatedAt?'Snapshot updated '+new Date(snap.updatedAt).toLocaleDateString('en-US'):'Saved ranking snapshot';status.innerHTML='<span>'+archSelect.options[archSelect.selectedIndex].text+'</span><span>'+ranking.length+' ranked cards</span>';
+const names=ranking.slice(0,60).map(x=>x.name).filter(Boolean),cards=await fetchCards(names),byName=new Map(cards.map(c=>[c.name,c]));const pool=ranking.map(item=>({item,card:byName.get(item.name)})).filter(x=>arch==='ALL'||matches(x.card,arch)).slice(0,10);topList.innerHTML=pool.length?pool.map((x,i)=>'<li><strong>#'+(i+1)+' '+x.item.name+'</strong> — GIH WR '+fmt(x.item.gih_wr??x.item.ever_drawn_win_rate)+'</li>').join(''):'<li>No saved cards match this filter yet.</li>';grid.innerHTML=pool.length?pool.map(x=>{const img=x.card?.image_uris?.normal||x.card?.card_faces?.[0]?.image_uris?.normal||'';return '<article class="limited-card-item">'+(img?'<img loading="lazy" src="'+img+'" alt="'+x.item.name+'">':'')+'<strong>'+x.item.name+'</strong><small>GIH WR '+fmt(x.item.gih_wr??x.item.ever_drawn_win_rate)+'</small></article>';}).join(''):'<p>No card images available for this filter.</p>';}
+setSelect.addEventListener('change',render);archSelect.addEventListener('change',render);loadSnapshots();
+})();
+</script>
+</body>
+</html>
