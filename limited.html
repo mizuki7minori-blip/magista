@@ -10,9 +10,10 @@
 <link rel="dns-prefetch" href="//api.scryfall.com">
 <link rel="dns-prefetch" href="//cards.scryfall.io">
 <link rel="stylesheet" href="style.css?v=20261001">
+<link rel="stylesheet" href="affiliate.css?v=20261001-series1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
-.limited-set-picker{background:#fff;border:1px solid var(--line);border-left:4px solid #c6803f;border-radius:6px;padding:22px;margin-bottom:22px}.limited-set-picker label{display:block;font-weight:800;margin-bottom:8px}.limited-set-picker p{margin:0 0 14px;color:var(--muted);font-size:.9375rem}.limited-set-picker select{width:min(100%,520px);min-height:48px;padding:10px 42px 10px 14px;border:1px solid #adb7c2;border-radius:6px;background:#fff;color:var(--text);font-weight:700}.limited-series-note{margin-top:12px;font-size:.8125rem;color:var(--muted)}.limited-guide-value{font-size:1.08rem;font-weight:800;margin:.35rem 0}.limited-top-list{margin:0;padding-left:1.4rem}.limited-top-list li{padding:.35rem 0}.limited-guide-status{display:inline-block;padding:4px 9px;border-radius:999px;background:#f4eadf;color:#80501f;font-size:.78rem;font-weight:700}.limited-ranked-card{position:relative}.limited-rank-badge{position:absolute;z-index:2;top:8px;left:8px;background:#202833;color:#fff!important;border-radius:999px;padding:4px 9px;font-weight:800;font-size:.78rem!important;box-shadow:0 2px 8px #0003}.limited-image-placeholder{aspect-ratio:488/680;display:grid;place-items:center;background:#edf0f3;border-radius:9px;color:var(--muted);font-size:.85rem}
+.limited-set-picker{background:#fff;border:1px solid var(--line);border-left:4px solid #c6803f;border-radius:6px;padding:22px;margin-bottom:22px}.limited-set-picker label{display:block;font-weight:800;margin-bottom:8px}.limited-set-picker p{margin:0 0 14px;color:var(--muted);font-size:.9375rem}.limited-set-picker select{width:min(100%,520px);min-height:48px;padding:10px 42px 10px 14px;border:1px solid #adb7c2;border-radius:6px;background:#fff;color:var(--text);font-weight:700}.limited-series-note{margin-top:12px;font-size:.8125rem;color:var(--muted)}.limited-guide-value{font-size:1.08rem;font-weight:800;margin:.35rem 0}.limited-top-list{margin:0;padding-left:1.4rem}.limited-top-list li{padding:.35rem 0}.limited-guide-status{display:inline-block;padding:4px 9px;border-radius:999px;background:#f4eadf;color:#80501f;font-size:.78rem;font-weight:700}.limited-ranked-card{position:relative}.limited-rank-badge{position:absolute;z-index:2;top:8px;left:8px;background:#202833;color:#fff!important;border-radius:999px;padding:4px 9px;font-weight:800;font-size:.78rem!important;box-shadow:0 2px 8px #0003}.limited-image-placeholder{aspect-ratio:488/680;display:grid;place-items:center;background:#edf0f3;border-radius:9px;color:var(--muted);font-size:.85rem}.limited-affiliate-wrap{margin:28px 0}.limited-affiliate-wrap .affiliate-box{margin-top:0}
 @media(max-width:700px){.limited-set-picker{padding:18px}.limited-set-picker select{width:100%}}
 </style>
 </head>
@@ -31,7 +32,7 @@
     <option value="sos">Secrets of Strixhaven（ストリクスヘイヴン / SOS）</option>
     <option value="tmt">Teenage Mutant Ninja Turtles（TMNT）</option>
   </select>
-  <div class="limited-series-note">日本語版が存在しないカードだけ英語名・英語画像で表示します。外部取得に失敗しても前回ランキングは維持されます。</div>
+  <div class="limited-series-note">シリーズを切り替えると、カードランキングだけでなく関連商品・Secret Lair候補も自動で切り替わります。</div>
 </section>
 
 <section class="limited-hero">
@@ -65,6 +66,10 @@
   <div id="limited-card-gallery" class="limited-image-grid"><p>保存ランキングを読み込み中です…</p></div>
 </section>
 
+<section class="limited-affiliate-wrap" aria-label="シリーズ関連商品">
+  <div id="affiliate-products"></div>
+</section>
+
 <section class="limited-section">
   <div class="limited-section-title"><div><span class="limited-kicker">指標の見方</span><h2>まず見る指標</h2></div></div>
   <div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>指標</th><th>意味</th><th>使いどころ</th></tr></thead><tbody><tr><td><span class="limited-badge">GIH WR</span></td><td>手札に入ったゲームでの勝率</td><td>カードの実戦貢献を確認</td></tr><tr><td><span class="limited-badge">% GP</span></td><td>ピック後にデッキで使われた割合</td><td>実際の採用されやすさを見る</td></tr><tr><td><span class="limited-badge">ATA</span></td><td>実際に取られた平均順位</td><td>平均ピック位置を確認</td></tr><tr><td><span class="limited-badge">ALSA</span></td><td>最後に見かけた平均順位</td><td>カードがどの程度流れてくるか確認</td></tr></tbody></table></div>
@@ -74,6 +79,8 @@
 
 <footer class="site-footer"><div class="container footer-inner"><div><a class="logo" href="index.html"><strong>MAGSTA.</strong></a><p>MTGの話題をひとつに。</p><small>編集：犬居わんこ</small></div><nav aria-label="フッターメニュー"><a href="articles.html">記事一覧</a><a href="weekly.html">週間企画</a><a href="strategy.html">MAGSTAについて</a><a href="contact.html">お問い合わせ</a></nav><small>© 2026 MAGSTA<br>Magic: The GatheringはWizards of the Coastの商標です。</small></div></footer>
 <script src="mobile-menu.js"></script>
-<script src="limited-card-images.js?v=20261001-ja1"></script>
+<script src="affiliate-config.js?v=20261001-series1"></script>
+<script src="affiliate.js?v=20261001-series1"></script>
+<script src="limited-card-images.js?v=20261001-series1"></script>
 </body>
 </html>
