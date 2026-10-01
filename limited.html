@@ -3,22 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MAGSTA MTGのリミテッド攻略・環境分析。17Landsの最新公開データをもとに注目カード、ピック順位、環境速度を整理します。">
+<meta name="description" content="MAGSTA MTGのリミテッド攻略・環境分析。シリーズごとにドラフト情報、17Landsデータ、カード画像を切り替えて確認できます。">
 <title>MAGSTA MTG｜リミテッド攻略・環境分析</title>
-
-
-<link rel="stylesheet" href="style.css?v=20261001"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head>
+<link rel="stylesheet" href="style.css?v=20261001">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+.limited-set-picker{background:#fff;border:1px solid var(--line);border-left:4px solid #c6803f;border-radius:6px;padding:22px;margin-bottom:22px}.limited-set-picker label{display:block;font-weight:800;margin-bottom:8px}.limited-set-picker p{margin:0 0 14px;color:var(--muted);font-size:.9375rem}.limited-set-picker select{width:min(100%,520px);min-height:48px;padding:10px 42px 10px 14px;border:1px solid #adb7c2;border-radius:6px;background:#fff;color:var(--text);font-weight:700}.limited-series-note{margin-top:12px;font-size:.8125rem;color:var(--muted)}
+@media(max-width:700px){.limited-set-picker{padding:18px}.limited-set-picker select{width:100%}}
+</style>
+</head>
 <body>
-<a class="skip-link" href="#main-content">本文へ移動</a><header class="site-header"><div class="container header-inner"><a class="logo" href="index.html" aria-label="MAGSTA ホーム"><strong>MAGSTA<span class="logo-dot">.</span></strong><small>MTGの話題をひとつに</small></a><nav id="main-nav" aria-label="メインメニュー"><a href="articles.html">記事一覧</a><a href="category.html?cat=news">ニュース</a><a href="category.html?cat=deck">デッキ・環境</a><a href="limited.html">リミテッド</a><a href="index.html#pickup">カード</a></nav><a class="language-link" href="en/index.html" lang="en">EN</a><button class="menu-button" aria-label="メニューを開く" aria-controls="main-nav" aria-expanded="false">☰</button></div></header>
+<a class="skip-link" href="#main-content">本文へ移動</a>
+<header class="site-header"><div class="container header-inner"><a class="logo" href="index.html" aria-label="MAGSTA ホーム"><strong>MAGSTA<span class="logo-dot">.</span></strong><small>MTGの話題をひとつに</small></a><nav id="main-nav" aria-label="メインメニュー"><a href="articles.html">記事一覧</a><a href="category.html?cat=news">ニュース</a><a href="category.html?cat=deck">デッキ・環境</a><a href="limited.html">リミテッド</a><a href="index.html#pickup">カード</a></nav><a class="language-link" href="en/index.html" lang="en">EN</a><button class="menu-button" aria-label="メニューを開く" aria-controls="main-nav" aria-expanded="false">☰</button></div></header>
+
 <main id="main-content" class="limited-page">
-<section class="limited-callout"><span class="limited-kicker">新着記事 / FRA</span><h2>リアリティ・フラクチャーのドラフトで取るべきカードは？初手候補とピックの考え方</h2><p>初期評価で注目したい８枚と、序盤から終盤のピック方針を整理しました。2026年9月25日公開。</p><div class="limited-actions"><a class="limited-button" href="article-fra-draft-2026-09-25.html">ドラフト攻略記事を読む</a></div></section>
-<section class="limited-hero"><span class="limited-kicker">リミテッド / SOS</span><h1>リミテッド攻略・環境分析</h1><p>掲載データは <strong>SOS / プレミア・ドラフト</strong> を基準に更新。17Landsの公開値（2026年9月17日確認）から、環境速度・先手後手差・カード評価の見方を整理します。</p><div class="limited-actions"><a class="limited-button" href="https://www.17lands.com/card_data?expansion=SOS&amp;format=PremierDraft&amp;time_period=ALL_TIME&amp;view=table" target="_blank" rel="noopener noreferrer">カードデータを見る</a><a class="limited-button secondary" href="https://www.17lands.com/format_speed" target="_blank" rel="noopener noreferrer">環境スピード</a><a class="limited-button secondary" href="https://www.17lands.com/public_datasets" target="_blank" rel="noopener noreferrer">公開データ</a></div></section>
-<section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">現在の環境</span><h2>環境スナップショット（9月17日確認）</h2></div><p>17Lands / SOS / プレミア・ドラフト</p></div><div class="limited-grid"><article class="limited-card"><h2>ゲーム数</h2><div class="limited-metric">1,152,750</div><p>SOS プレミア・ドラフトの公開ゲーム数。母数が大きく、環境全体の傾向を見る基準として扱います。</p></article><article class="limited-card"><h2>平均ゲームターン</h2><div class="limited-metric">9.003</div><p>HOBより長めのゲーム展開。序盤の盤面形成とリソース交換を重視した評価が重要です。</p></article><article class="limited-card"><h2>先手勝率</h2><div class="limited-metric">52.6%</div><p>先手側のゲーム勝率。先手有利の大きさを環境速度と合わせて読みます。</p></article></div></section>
-<section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">カード評価</span><h2>注目カードの確認方法</h2></div><p>数値は17Landsの最新表を優先</p></div><div class="limited-grid"><article class="limited-card"><h2>手札に来た時の勝率</h2><p>手札に入ったゲームでの勝率。カードの実戦貢献を確認する基本指標です。</p><a class="limited-button secondary" href="https://www.17lands.com/card_data?expansion=SOS&amp;format=PremierDraft&amp;sort=ever_drawn_win_rate%2Cdesc&amp;time_period=ALL_TIME&amp;view=table" target="_blank" rel="noopener noreferrer">勝率順で見る</a></article><article class="limited-card"><h2>ピック順位</h2><p>何手目に取られているか、最後に見かけた位置を確認し、需要と残り方を読みます。</p><a class="limited-button secondary" href="https://www.17lands.com/card_data?expansion=SOS&amp;format=PremierDraft&amp;sort=avg_taken_at%2Casc&amp;time_period=ALL_TIME&amp;view=table" target="_blank" rel="noopener noreferrer">ピック順位を見る</a></article><article class="limited-card"><h2>画像・日本語名</h2><p>固定した古いカード名・画像を残さず、最新の17LandsとScryfallを確認して更新します。</p><a class="limited-button secondary" href="https://scryfall.com/sets/sos" target="_blank" rel="noopener noreferrer">SOSカード一覧</a></article></div></section>
-<section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">カード画像</span><h2>SOSのカードを画像で見る</h2></div><p>画像を押すとScryfallのカード詳細を開きます</p></div><div id="limited-card-gallery" class="limited-image-grid"><p>カード画像を読み込み中です…</p></div></section>
-<section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">MAGSTAの見方</span><h2>今回の見方</h2></div></div><div class="limited-callout"><p>SOSはPremier Draftのゲーム数が大きく、平均ゲームターンは9.003。短期決着だけを前提にせず、カード単体のGIH WRと、ATA・ALSA・採用率を組み合わせて評価する方針に更新しました。特定カードの固定ランキングは、次回の公開データ確認時に最新値へ差し替えます。</p></div></section>
-<section class="limited-section"><div class="limited-section-title"><div><span class="limited-kicker">指標の見方</span><h2>まず見る指標</h2></div></div><div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>指標</th><th>意味</th><th>使いどころ</th></tr></thead><tbody><tr><td><span class="limited-badge">GIH WR</span></td><td>手札に入ったゲームでの勝率</td><td>手札に入ったときの勝率</td></tr><tr><td><span class="limited-badge">ATA</span></td><td>実際に取られた平均順位</td><td>実際に取られた平均ピック位置</td></tr><tr><td><span class="limited-badge">ALSA</span></td><td>最後に見かけた平均順位</td><td>最後に確認された平均ピック位置</td></tr><tr><td><span class="limited-badge">Play WR</span></td><td>先手時のゲーム勝率</td><td>環境の先手有利を確認</td></tr></tbody></table></div><p class="limited-note">確認日：2026年9月17日。17Landsの公開値は更新により変動します。</p></section>
+<section class="limited-set-picker" aria-labelledby="limited-set-picker-title">
+  <label id="limited-set-picker-title" for="limited-set-select">シリーズを選択</label>
+  <p>見たいシリーズを選ぶと、攻略ページ・17Lands・カード画像がそのシリーズに切り替わります。</p>
+  <select id="limited-set-select">
+    <option value="fra">リアリティ・フラクチャー（FRA）</option>
+    <option value="hob">The Hobbit（HOB）</option>
+    <option value="msh">Marvel Super Heroes（MSH）</option>
+    <option value="sos">Secrets of Strixhaven（SOS）</option>
+    <option value="tmt">Teenage Mutant Ninja Turtles（TMT）</option>
+    <option value="ecl">Lorwyn Eclipsed（ECL）</option>
+    <option value="fin">FINAL FANTASY（FIN）</option>
+    <option value="tdm">タルキール：龍嵐録（TDM）</option>
+  </select>
+  <div class="limited-series-note">初期表示は最新シリーズ「リアリティ・フラクチャー」です。</div>
+</section>
+
+<section class="limited-hero">
+  <span id="limited-set-kicker" class="limited-kicker">リミテッド / FRA</span>
+  <h1 id="limited-set-title">リアリティ・フラクチャー リミテッド攻略</h1>
+  <p id="limited-set-description">リアリティ・フラクチャー（FRA）のドラフト・シールド向け情報です。カード画像と公開データをシリーズごとに切り替えて確認できます。</p>
+  <div class="limited-actions">
+    <a id="limited-card-data-link" class="limited-button" href="https://www.17lands.com/card_data?expansion=FRA&amp;format=PremierDraft&amp;time_period=ALL_TIME&amp;view=table" target="_blank" rel="noopener noreferrer">17Landsのカードデータ</a>
+    <a class="limited-button secondary" href="https://www.17lands.com/format_speed" target="_blank" rel="noopener noreferrer">環境スピード</a>
+    <a id="limited-scryfall-link" class="limited-button secondary" href="https://scryfall.com/sets/fra" target="_blank" rel="noopener noreferrer">カード一覧</a>
+    <a id="limited-article-link" class="limited-button secondary" href="article-fra-draft-2026-09-25.html">MAGSTA攻略記事</a>
+  </div>
+</section>
+
+<section class="limited-section">
+  <div class="limited-section-title"><div><span class="limited-kicker">カード画像</span><h2 id="limited-gallery-title">リアリティ・フラクチャーのカードを画像で見る</h2></div><p>画像を押すとカード詳細を開きます</p></div>
+  <div id="limited-card-gallery" class="limited-image-grid"><p>カード画像を読み込み中です…</p></div>
+</section>
+
+<section class="limited-section">
+  <div class="limited-section-title"><div><span class="limited-kicker">ドラフトの見方</span><h2>シリーズが変わっても見るポイントは同じ</h2></div></div>
+  <div class="limited-grid">
+    <article class="limited-card"><h2>手札に来た時の勝率</h2><p>カードを引いたゲームでの勝率を確認し、実戦でどれだけ勝利に貢献しているかを見ます。</p></article>
+    <article class="limited-card"><h2>ピック順位</h2><p>平均何手目で取られているかを確認し、卓内での需要と取りやすさを判断します。</p></article>
+    <article class="limited-card"><h2>環境スピード</h2><p>平均ゲームターンや先手勝率を見て、軽いカード・除去・後半向けカードの評価を調整します。</p></article>
+  </div>
+</section>
+
+<section class="limited-section">
+  <div class="limited-section-title"><div><span class="limited-kicker">指標の見方</span><h2>まず見る指標</h2></div></div>
+  <div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>指標</th><th>意味</th><th>使いどころ</th></tr></thead><tbody><tr><td><span class="limited-badge">GIH WR</span></td><td>手札に入ったゲームでの勝率</td><td>カードの実戦貢献を確認</td></tr><tr><td><span class="limited-badge">ATA</span></td><td>実際に取られた平均順位</td><td>平均ピック位置を確認</td></tr><tr><td><span class="limited-badge">ALSA</span></td><td>最後に見かけた平均順位</td><td>カードがどの程度流れてくるか確認</td></tr><tr><td><span class="limited-badge">Play WR</span></td><td>先手時のゲーム勝率</td><td>環境の先手有利を確認</td></tr></tbody></table></div>
+  <p class="limited-note">公開データは随時更新されるため、MAGSTAでは固定ランキングより最新データへの導線を優先しています。</p>
+</section>
+
+<section class="limited-callout"><span class="limited-kicker">新着記事 / FRA</span><h2>リアリティ・フラクチャーのドラフトで取るべきカードは？</h2><p>初手候補と序盤から終盤のピック方針を整理した攻略記事です。</p><div class="limited-actions"><a class="limited-button" href="article-fra-draft-2026-09-25.html">ドラフト攻略記事を読む</a></div></section>
 </main>
+
 <footer class="site-footer"><div class="container footer-inner"><div><a class="logo" href="index.html"><strong>MAGSTA.</strong></a><p>MTGの話題をひとつに。</p><small>編集：犬居わんこ</small></div><nav aria-label="フッターメニュー"><a href="articles.html">記事一覧</a><a href="weekly.html">週間企画</a><a href="strategy.html">MAGSTAについて</a><a href="contact.html">お問い合わせ</a></nav><small>© 2026 MAGSTA<br>Magic: The GatheringはWizards of the Coastの商標です。</small></div></footer>
-<script src="mobile-menu.js"></script><script src="limited-card-images.js"></script>
-</body></html>
+<script src="mobile-menu.js"></script>
+<script src="limited-card-images.js?v=20261001"></script>
+</body>
+</html>
