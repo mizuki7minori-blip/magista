@@ -226,6 +226,11 @@
     }).join('');
   };
 
+  const syncSeriesAffiliate = (setKey) => {
+    if (document.body) document.body.dataset.affiliateSeries = setKey;
+    window.dispatchEvent(new CustomEvent('magsta:series-change', { detail: { set: setKey } }));
+  };
+
   const applySet = (setKey, updateUrl = true) => {
     const normalizedKey = SETS[setKey] ? setKey : 'fra';
     const set = SETS[normalizedKey];
@@ -250,6 +255,7 @@
     if (guideStatus) guideStatus.textContent = guide.status;
     if (topNote) topNote.textContent = set.ranking?.length ? `GIH WR順・日本語優先・${formatDate(set.updatedAt)}` : '初回保存データを準備中';
     updateTopList(set, buildJapaneseMap(readJaCache(normalizedKey) || []));
+    syncSeriesAffiliate(normalizedKey);
 
     if (updateUrl) {
       const url = new URL(window.location.href);
