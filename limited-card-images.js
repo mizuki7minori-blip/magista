@@ -17,17 +17,44 @@
         colors: '色の強弱は最新データを確認して更新',
         archetypes: 'シナジーの軸を見ながら更新',
         firstPick: '単体性能の高いカードを優先し、序盤は色を固定しすぎない',
-        topCards: ['攻略記事で紹介している初手候補を優先', '強力な除去', '単体で盤面を動かせるカード', '軽い優秀クリーチャー', 'カード・アドバンテージ源', 'テンポを取れるカード', 'シナジーの核', '安定した2～3マナ域', 'フィニッシャー', 'マナ基盤を安定させるカード'],
-        status: '攻略記事あり', note: '詳細順位はFRA攻略記事と最新公開データを併用'
-      }
+        topCards: ['攻略記事で紹介している初手候補を優先'],
+        status: '攻略記事あり', note: '17Landsのランキング値は確認後に掲載'
+      },
+      ranking: []
     },
-    hob: { name: 'The Hobbit', code: 'HOB', guide: PENDING },
-    msh: { name: 'Marvel Super Heroes', code: 'MSH', guide: PENDING },
-    sos: { name: 'Secrets of Strixhaven', code: 'SOS', guide: PENDING },
-    tmt: { name: 'Teenage Mutant Ninja Turtles', code: 'TMT', guide: PENDING },
-    ecl: { name: 'Lorwyn Eclipsed', code: 'ECL', guide: PENDING },
-    fin: { name: 'FINAL FANTASY', code: 'FIN', guide: PENDING },
-    tdm: { name: 'タルキール：龍嵐録', code: 'TDM', guide: PENDING }
+    hob: { name: 'The Hobbit', code: 'HOB', guide: PENDING, ranking: [] },
+    msh: {
+      name: 'Marvel Super Heroes', code: 'MSH', guide: PENDING,
+      ranking: [
+        { name: 'The Super Hero Civil War', wr: 69.3 },
+        { name: 'Sword of Fire and Ice', wr: 69.2 },
+        { name: "Captain Marvel, Earth's Protector", wr: 68.1 },
+        { name: 'Leader, Super-Genius', wr: 67.4 },
+        { name: 'Black Panther, Wakandan King', wr: 67.0 },
+        { name: 'Final Showdown', wr: 65.6 },
+        { name: 'Doctor Doom', wr: 64.9 },
+        { name: 'Avengers Assemble!', wr: 64.0 }
+      ]
+    },
+    sos: { name: 'Secrets of Strixhaven', code: 'SOS', guide: PENDING, ranking: [] },
+    tmt: { name: 'Teenage Mutant Ninja Turtles', code: 'TMT', guide: PENDING, ranking: [] },
+    ecl: { name: 'Lorwyn Eclipsed', code: 'ECL', guide: PENDING, ranking: [] },
+    fin: {
+      name: 'FINAL FANTASY', code: 'FIN', guide: PENDING,
+      ranking: [
+        { name: 'Atraxa, Grand Unifier', wr: 66.4 },
+        { name: "Dion, Bahamut's Dominant", wr: 64.5 },
+        { name: 'Ardyn, the Usurper', wr: 64.5 },
+        { name: 'Nibelheim Aflame', wr: 64.5 },
+        { name: 'Winota, Joiner of Forces', wr: 64.4 },
+        { name: "Smuggler's Copter", wr: 64.2 },
+        { name: 'Sazh Katzroy', wr: 64.2 },
+        { name: 'Urza, Lord High Artificer', wr: 64.2 },
+        { name: "Akroma's Will", wr: 63.6 },
+        { name: 'Esper Origins', wr: 63.6 }
+      ]
+    },
+    tdm: { name: 'タルキール：龍嵐録', code: 'TDM', guide: PENDING, ranking: [] }
   };
 
   const gallery = document.getElementById('limited-card-gallery');
@@ -47,85 +74,69 @@
   const topNote = document.getElementById('limited-top-note');
 
   if (!gallery || !selector) return;
-
   let requestId = 0;
 
   const getImage = (card) => card.image_uris?.normal || card.card_faces?.find(face => face.image_uris?.normal)?.image_uris.normal || '';
-  const getCardName = (card) => card.printed_name || card.name;
 
-  const rarityLabel = (rarity) => {
-    if (rarity === 'mythic') return '神話レア';
-    if (rarity === 'rare') return 'レア';
-    if (rarity === 'uncommon') return 'アンコモン';
-    return 'コモン';
+  const fetchCard = async (entry, setKey) => {
+    const exact = encodeURIComponent(entry.name);
+    let response = await fetch(`https://api.scryfall.com/cards/named?exact=${exact}&set=${setKey}`);
+    if (!response.ok) response = await fetch(`https://api.scryfall.com/cards/named?exact=${exact}`);
+    if (!response.ok) return { ...entry, card: null };
+    return { ...entry, card: await response.json() };
   };
 
-  const render = (cards, set) => {
-    const usable = cards.filter(card => getImage(card)).slice(0, 15);
-    if (!usable.length) throw new Error('no images');
-    gallery.innerHTML = usable.map(card => {
-      const image = getImage(card);
-      const name = getCardName(card);
-      return `<a class="limited-image-card" href="${card.scryfall_uri}" target="_blank" rel="noopener noreferrer">
-        <img src="${image}" alt="${name}" loading="lazy" decoding="async">
-        <strong>${name}</strong>
-        <span>${set.code} / ${rarityLabel(card.rarity)}</span>
+  const renderRanking = async (setKey, set, activeRequest) => {
+    const ranking = set.ranking || [];
+    if (!ranking.length) {
+      gallery.innerHTML = `<div class="limited-card"><strong>${set.name} のランキングは確認中です。</strong><p>ランダムなカード画像は表示せず、17Landsで順位を確認できたカードだけ掲載します。</p></div>`;
+      return;
+    }
+
+    gallery.innerHTML = `<p>${set.name} のランキング画像を読み込み中です…</p>`;
+    const results = await Promise.all(ranking.map(entry => fetchCard(entry, setKey)));
+    if (activeRequest !== requestId) return;
+
+    gallery.innerHTML = results.map((item, index) => {
+      const card = item.card;
+      const image = card ? getImage(card) : '';
+      const href = card?.scryfall_uri || `https://scryfall.com/search?q=${encodeURIComponent('!"' + item.name + '"')}`;
+      return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer">
+        <span class="limited-rank-badge">${index + 1}位</span>
+        ${image ? `<img src="${image}" alt="${item.name}" loading="lazy" decoding="async">` : '<div class="limited-image-placeholder">画像確認中</div>'}
+        <strong>${item.name}</strong>
+        <span>GIH WR ${item.wr.toFixed(1)}%</span>
       </a>`;
     }).join('');
   };
 
-  const fetchCards = async (setKey, set, activeRequest) => {
-    gallery.innerHTML = `<p>${set.name} のカード画像を読み込み中です…</p>`;
-    try {
-      let response = await fetch(`https://api.scryfall.com/cards/search?q=set%3A${setKey}+lang%3Aja&order=rarity&dir=asc`);
-      let data = response.ok ? await response.json() : { data: [] };
-      if (!data.data?.length) {
-        response = await fetch(`https://api.scryfall.com/cards/search?q=set%3A${setKey}&order=rarity&dir=asc`);
-        if (!response.ok) throw new Error('Scryfall request failed');
-        data = await response.json();
-      }
-      if (activeRequest !== requestId) return;
-      render(data.data || [], set);
-    } catch (error) {
-      if (activeRequest !== requestId) return;
-      gallery.innerHTML = `<p>${set.name} のカード画像を取得できませんでした。時間をおいて再読み込みしてください。</p>`;
-    }
-  };
-
-  const renderGuide = (set) => {
-    const guide = set.guide || PENDING;
-    if (bestColors) bestColors.textContent = guide.colors;
-    if (archetypes) archetypes.textContent = guide.archetypes;
-    if (firstPick) firstPick.textContent = guide.firstPick;
-    if (guideStatus) guideStatus.textContent = guide.status;
-    if (topNote) topNote.textContent = guide.note;
-    if (topCards) {
-      topCards.innerHTML = guide.topCards.map(item => `<li>${item}</li>`).join('');
-    }
-  };
-
   const applySet = (setKey, updateUrl = true) => {
-    const set = SETS[setKey] || SETS.fra;
     const normalizedKey = SETS[setKey] ? setKey : 'fra';
+    const set = SETS[normalizedKey];
+    const guide = set.guide || PENDING;
 
     selector.value = normalizedKey;
     if (kicker) kicker.textContent = `リミテッド / ${set.code}`;
     if (title) title.textContent = `${set.name} リミテッド攻略`;
-    if (description) description.textContent = `${set.name}（${set.code}）のドラフト・シールド向け情報です。シリーズ選択で攻略情報、公開データ、カード画像を切り替えられます。`;
-    if (galleryTitle) galleryTitle.textContent = `${set.name} のカードを画像で見る`;
+    if (description) description.textContent = `${set.name}（${set.code}）のドラフト・シールド向け情報です。17Landsで確認できた実戦データを優先して表示します。`;
+    if (galleryTitle) galleryTitle.textContent = `${set.name} 17Landsカードランキング`;
 
-    if (cardDataLink) cardDataLink.href = `https://www.17lands.com/card_data?expansion=${set.code}&format=PremierDraft&time_period=ALL_TIME&view=table`;
+    if (cardDataLink) cardDataLink.href = `https://www.17lands.com/card_data?expansion=${set.code}&format=PremierDraft&sort=ever_drawn_win_rate%2Cdesc&time_period=ALL_TIME&view=table`;
     if (scryfallLink) scryfallLink.href = `https://scryfall.com/sets/${normalizedKey}`;
     if (articleLink) {
-      if (set.article) {
-        articleLink.href = set.article;
-        articleLink.hidden = false;
-      } else {
-        articleLink.hidden = true;
-      }
+      articleLink.hidden = !set.article;
+      if (set.article) articleLink.href = set.article;
     }
 
-    renderGuide(set);
+    if (bestColors) bestColors.textContent = guide.colors;
+    if (archetypes) archetypes.textContent = guide.archetypes;
+    if (firstPick) firstPick.textContent = guide.firstPick;
+    if (guideStatus) guideStatus.textContent = guide.status;
+    if (topNote) topNote.textContent = set.ranking?.length ? '17Lands GIH WR順・確認済みデータ' : guide.note;
+    if (topCards) {
+      const items = set.ranking?.length ? set.ranking.map(card => `${card.name} — GIH WR ${card.wr.toFixed(1)}%`) : guide.topCards;
+      topCards.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    }
 
     if (updateUrl) {
       const url = new URL(window.location.href);
@@ -134,7 +145,10 @@
     }
 
     const activeRequest = ++requestId;
-    fetchCards(normalizedKey, set, activeRequest);
+    renderRanking(normalizedKey, set, activeRequest).catch(() => {
+      if (activeRequest !== requestId) return;
+      gallery.innerHTML = '<div class="limited-card"><strong>ランキング画像を取得できませんでした。</strong><p>順位データは上のTOP欄、詳細は17Landsで確認できます。</p></div>';
+    });
   };
 
   selector.addEventListener('change', () => applySet(selector.value));
