@@ -27,13 +27,42 @@
   }
 
   function localizeLabels(root=document){
-    root.querySelectorAll('.section-kicker,.bracket b,option').forEach(el=>{
+    root.querySelectorAll('.section-kicker,.bracket b').forEach(el=>{
       const t=el.textContent.trim();
       if(textMap.has(t)) el.textContent=textMap.get(t);
     });
     root.querySelectorAll('.commander-meta span').forEach(el=>{
       el.textContent=el.textContent.replace(/\bdecks\b/gi,'デッキ');
     });
+  }
+
+  async function localizeCommanderOptions(root=document){
+    const select = root.querySelector?.('#commander-select') || document.getElementById('commander-select');
+    if(!select) return;
+    const options=[...select.options];
+    for(let i=0;i<options.length;i+=3){
+      await Promise.all(options.slice(i,i+3).map(async option=>{
+        if(option.dataset.jaDone==='1') return;
+        const original=option.value || option.textContent.trim();
+        if(!original) return;
+        option.dataset.jaDone='1';
+        const jp=await japaneseName(original);
+        option.textContent=jp;
+        option.title=original;
+      }));
+    }
+  }
+
+  async function localizeCommanderChips(root=document){
+    const chips=[...root.querySelectorAll?.('.commander-chip') || []];
+    await Promise.all(chips.map(async chip=>{
+      const original=chip.dataset.name || chip.textContent.trim();
+      if(!original || chip.dataset.jaDone==='1') return;
+      chip.dataset.jaDone='1';
+      const jp=await japaneseName(original);
+      chip.textContent=jp;
+      chip.title=original;
+    }));
   }
 
   async function localizeCardNames(root=document){
@@ -53,6 +82,8 @@
 
   function run(root=document){
     localizeLabels(root);
+    localizeCommanderOptions(root);
+    localizeCommanderChips(root);
     localizeCardNames(root);
   }
 
