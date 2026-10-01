@@ -19,11 +19,13 @@
     .any-commander h3{margin:0 0 6px}.any-search-row{display:grid;grid-template-columns:1fr auto;gap:8px}
     .any-search-row input{min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:7px;font:inherit}
     .any-search-row button{min-height:46px}.any-results{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
-    .any-result{display:flex;gap:9px;align-items:center;text-align:left;border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px;cursor:pointer}
-    .any-result img{width:52px;aspect-ratio:488/680;object-fit:cover;border-radius:5px;background:#eef1f4}.any-result strong{display:block;font-size:.83rem;line-height:1.25}.any-result small{display:block;color:var(--muted);font-size:.72rem;line-height:1.25;margin-top:3px}
+    .any-result{display:flex;flex-direction:column;gap:8px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px;cursor:pointer;min-width:0}
+    .any-result:hover{border-color:#8090a0;box-shadow:0 3px 10px #20304012}.any-result.is-selected{outline:3px solid #246daf;outline-offset:1px}
+    .any-result img{width:100%;aspect-ratio:488/680;object-fit:cover;border-radius:7px;background:#eef1f4}.any-result strong{display:block;font-size:.88rem;line-height:1.35}.any-result small{display:block;color:var(--muted);font-size:.72rem;line-height:1.3;margin-top:3px}
+    .any-result-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.any-select-label{font-size:.72rem;font-weight:800;color:#246daf}
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
-    @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:1fr}}
+    @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
   `;
   document.head.appendChild(style);
 
@@ -33,7 +35,7 @@
   box.innerHTML = `
     <span class="section-kicker">統率者を自由検索</span>
     <h3>日本語・英語で統率者を検索</h3>
-    <p>日本語名でも英語名でも検索できます。日本語版があるカードは日本語名を優先して表示します。</p>
+    <p>候補が複数ある場合は、画像・日本語名・英語名を見比べて選択できます。</p>
     <div class="any-search-row"><input id="any-commander-input" type="search" placeholder="例：アトラクサ / クラウド / Atraxa"><button id="any-commander-button" class="button primary" type="button">検索</button></div>
     <div id="any-commander-results" class="any-results"></div>
     <div id="any-commander-status" class="dynamic-note"></div>`;
@@ -88,10 +90,15 @@
       results.innerHTML = cards.map((c,i) => {
         const jp = displayName(c);
         const en = c.name || jp;
-        return `<button type="button" class="any-result" data-i="${i}">${imgOf(c)?`<img src="${imgOf(c)}" loading="lazy" decoding="async" alt="${esc(jp)}">`:''}<span><strong>${esc(jp)}</strong>${jp!==en?`<small>${esc(en)}</small>`:''}<span class="identity-badges">${(c.color_identity?.length?c.color_identity:['C']).map(x=>`<span>${x}</span>`).join('')}</span></span></button>`;
+        return `<button type="button" class="any-result" data-i="${i}" aria-label="${esc(jp)}を統率者に選ぶ">${imgOf(c)?`<img src="${imgOf(c)}" loading="lazy" decoding="async" alt="${esc(jp)}">`:''}<span><strong>${esc(jp)}</strong>${jp!==en?`<small>${esc(en)}</small>`:''}<span class="identity-badges">${(c.color_identity?.length?c.color_identity:['C']).map(x=>`<span>${x}</span>`).join('')}</span></span><span class="any-result-meta"><span class="any-select-label">この統率者を選ぶ</span></span></button>`;
       }).join('');
-      results.querySelectorAll('.any-result').forEach(el => el.addEventListener('click', () => chooseCommander(cards[Number(el.dataset.i)])));
-      status.textContent = `${cards.length}件を表示。日本語版があるカードは日本語名を優先しています。`;
+      results.querySelectorAll('.any-result').forEach(el => el.addEventListener('click', async () => {
+        results.querySelectorAll('.any-result').forEach(x=>x.classList.remove('is-selected'));
+        el.classList.add('is-selected');
+        status.textContent = '選択中…';
+        await chooseCommander(cards[Number(el.dataset.i)]);
+      }));
+      status.textContent = cards.length === 1 ? '1件見つかりました。カードをタップして選択してください。' : `${cards.length}件の候補があります。画像と名前を見比べて選択してください。`;
     } catch(e) {
       results.innerHTML=''; status.textContent='検索に失敗しました。通信状態を確認して再度お試しください。';
     } finally { button.disabled = false; }
@@ -132,7 +139,9 @@
       select.appendChild(o);
     }
     select.value = card.name;
+    const picked = displayName(card);
     results.innerHTML=''; input.value='';
+    status.textContent = `${picked} を統率者に選択しました。`;
     await renderDynamic();
   }
 
@@ -152,7 +161,7 @@
     const high = Number(bracket.value) >= 4;
     const lands = high ? '34〜36' : '36〜38';
     if (plan) plan.innerHTML = [['固有色',colors],['土地',lands],['候補カード','10枚'],['調整方針',high?'速度・妨害を厚め':'安定性・テーマ性を重視']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
-    status.textContent = '統率者をデッキビルダーへ反映しました。';
+    status.textContent = `${shownName} を統率者に選択しました。`;
   }
 
   button.addEventListener('click', searchCommanders);
