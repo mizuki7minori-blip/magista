@@ -1,11 +1,291 @@
 {
-  "generatedAt": "2026-10-01T00:00:00Z",
+  "generatedAt": "2026-10-01T06:56:23.692411Z",
   "source": "17Lands PremierDraft",
   "sets": {
-    "fra": {"code":"FRA","name":"リアリティ・フラクチャー","updatedAt":null,"ranking":[]},
-    "hob": {"code":"HOB","name":"The Hobbit","updatedAt":null,"ranking":[]},
-    "msh": {"code":"MSH","name":"Marvel Super Heroes","updatedAt":"2026-10-01T00:00:00Z","ranking":[{"name":"The Super Hero Civil War","wr":69.3},{"name":"Sword of Fire and Ice","wr":69.2},{"name":"Captain Marvel, Earth's Protector","wr":68.1},{"name":"Leader, Super-Genius","wr":67.4},{"name":"Black Panther, Wakandan King","wr":67.0},{"name":"Final Showdown","wr":65.6},{"name":"Doctor Doom","wr":64.9},{"name":"Avengers Assemble!","wr":64.0}]},
-    "sos": {"code":"SOS","name":"Secrets of Strixhaven","updatedAt":null,"ranking":[]},
-    "tmt": {"code":"TMT","name":"Teenage Mutant Ninja Turtles","updatedAt":null,"ranking":[]}
+    "fra": {
+      "code": "FRA",
+      "name": "リアリティ・フラクチャー",
+      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "ranking": [
+        {
+          "name": "Ajani Unrelenting",
+          "wr": 67.4,
+          "games": 279
+        },
+        {
+          "name": "Sphinx of False Conclusions",
+          "wr": 66.7,
+          "games": 585
+        },
+        {
+          "name": "Simulacrum Shaper",
+          "wr": 65.2,
+          "games": 543
+        },
+        {
+          "name": "Lich's Relic",
+          "wr": 64.7,
+          "games": 556
+        },
+        {
+          "name": "Kiora of Fire and Ashes",
+          "wr": 64.5,
+          "games": 1452
+        },
+        {
+          "name": "Primal Witchstalker",
+          "wr": 63.6,
+          "games": 796
+        },
+        {
+          "name": "Craftwork Crusher",
+          "wr": 63.2,
+          "games": 1438
+        },
+        {
+          "name": "Recursive Recruitment",
+          "wr": 63.0,
+          "games": 1312
+        },
+        {
+          "name": "Break Under Pressure",
+          "wr": 62.1,
+          "games": 1337
+        },
+        {
+          "name": "Hapatra, the Desert Fang",
+          "wr": 61.9,
+          "games": 1109
+        }
+      ]
+    },
+    "hob": {
+      "code": "HOB",
+      "name": "The Hobbit",
+      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "ranking": [
+        {
+          "name": "Fíli the Pathfinder",
+          "wr": 66.0,
+          "games": 16483
+        },
+        {
+          "name": "An Unexpected Party",
+          "wr": 65.3,
+          "games": 17891
+        },
+        {
+          "name": "Bard's Company",
+          "wr": 63.8,
+          "games": 19964
+        },
+        {
+          "name": "Smaug the Magnificent",
+          "wr": 63.6,
+          "games": 6997
+        },
+        {
+          "name": "Kíli the Resourceful",
+          "wr": 63.1,
+          "games": 13599
+        },
+        {
+          "name": "Beorn the Fierce",
+          "wr": 63.1,
+          "games": 6172
+        },
+        {
+          "name": "Gollum, Riddle Master",
+          "wr": 63.0,
+          "games": 7336
+        },
+        {
+          "name": "Thorin, Mountain-king",
+          "wr": 63.0,
+          "games": 6783
+        },
+        {
+          "name": "Dáin's Company",
+          "wr": 62.3,
+          "games": 10814
+        },
+        {
+          "name": "Celebrate the Mountain-king",
+          "wr": 62.0,
+          "games": 56820
+        }
+      ]
+    },
+    "msh": {
+      "code": "MSH",
+      "name": "Marvel Super Heroes",
+      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "ranking": [
+        {
+          "name": "The Super Hero Civil War",
+          "wr": 69.3,
+          "games": 22332
+        },
+        {
+          "name": "Sword of Fire and Ice",
+          "wr": 69.2,
+          "games": 718
+        },
+        {
+          "name": "Captain Marvel, Earth's Protector",
+          "wr": 68.1,
+          "games": 10276
+        },
+        {
+          "name": "Leader, Super-Genius",
+          "wr": 67.4,
+          "games": 23757
+        },
+        {
+          "name": "Black Panther, Wakandan King",
+          "wr": 67.0,
+          "games": 569
+        },
+        {
+          "name": "Final Showdown",
+          "wr": 65.6,
+          "games": 736
+        },
+        {
+          "name": "Doctor Doom",
+          "wr": 64.9,
+          "games": 9194
+        },
+        {
+          "name": "Avengers Assemble!",
+          "wr": 64.0,
+          "games": 9332
+        },
+        {
+          "name": "Jennifer Walters",
+          "wr": 63.9,
+          "games": 10128
+        },
+        {
+          "name": "Avengers: Under Siege",
+          "wr": 63.8,
+          "games": 14770
+        }
+      ]
+    },
+    "sos": {
+      "code": "SOS",
+      "name": "Secrets of Strixhaven",
+      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "ranking": [
+        {
+          "name": "Together as One",
+          "wr": 65.6,
+          "games": 37273
+        },
+        {
+          "name": "Practiced Offense",
+          "wr": 64.7,
+          "games": 32527
+        },
+        {
+          "name": "Emeritus of Ideation",
+          "wr": 64.5,
+          "games": 15071
+        },
+        {
+          "name": "Antiquities on the Loose",
+          "wr": 64.2,
+          "games": 32903
+        },
+        {
+          "name": "Moment of Reckoning",
+          "wr": 63.3,
+          "games": 28367
+        },
+        {
+          "name": "Ark of Hunger",
+          "wr": 63.1,
+          "games": 36976
+        },
+        {
+          "name": "Stirring Hopesinger",
+          "wr": 62.7,
+          "games": 30492
+        },
+        {
+          "name": "Professor Dellian Fel",
+          "wr": 62.7,
+          "games": 12229
+        },
+        {
+          "name": "Colorstorm Stallion",
+          "wr": 62.5,
+          "games": 32248
+        },
+        {
+          "name": "Improvisation Capstone",
+          "wr": 62.5,
+          "games": 16511
+        }
+      ]
+    },
+    "tmt": {
+      "code": "TMT",
+      "name": "Teenage Mutant Ninja Turtles",
+      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "ranking": [
+        {
+          "name": "Sally Pride, Lioness Leader",
+          "wr": 69.8,
+          "games": 9525
+        },
+        {
+          "name": "The Last Ronin",
+          "wr": 69.5,
+          "games": 6550
+        },
+        {
+          "name": "Umezawa's Jitte",
+          "wr": 67.7,
+          "games": 964
+        },
+        {
+          "name": "Mighty Mutanimals",
+          "wr": 65.0,
+          "games": 28470
+        },
+        {
+          "name": "Armaggon, Future Shark",
+          "wr": 64.7,
+          "games": 9107
+        },
+        {
+          "name": "April O'Neil, Hacktivist",
+          "wr": 64.5,
+          "games": 12043
+        },
+        {
+          "name": "Everything Pizza",
+          "wr": 64.0,
+          "games": 32616
+        },
+        {
+          "name": "Dream Beavers",
+          "wr": 64.0,
+          "games": 26431
+        },
+        {
+          "name": "Agent Bishop, Man in Black",
+          "wr": 64.0,
+          "games": 8928
+        },
+        {
+          "name": "Courier of Comestibles",
+          "wr": 62.8,
+          "games": 32242
+        }
+      ]
+    }
   }
 }
