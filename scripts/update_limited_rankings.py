@@ -9,13 +9,13 @@ from pathlib import Path
 
 SETS = {
     "fra": ("FRA", "リアリティ・フラクチャー"),
-    "hob": ("HOB", "The Hobbit"),
-    "msh": ("MSH", "Marvel Super Heroes"),
-    "sos": ("SOS", "Secrets of Strixhaven"),
-    "tmt": ("TMT", "Teenage Mutant Ninja Turtles"),
+    "hob": ("HOB", "ホビット"),
+    "msh": ("MSH", "マーベル・スーパー・ヒーローズ"),
+    "sos": ("SOS", "ストリクスヘイヴンの秘密"),
+    "tmt": ("TMT", "ティーンエイジ・ミュータント・ニンジャ・タートルズ"),
 }
 OUT = Path(__file__).resolve().parents[1] / "limited-ranking-data.json"
-UA = "MAGSTA-Limited-Ranking-Updater/1.0"
+UA = "MAGSTA-Limited-Ranking-Updater/1.1"
 
 
 def load_previous():
@@ -79,7 +79,8 @@ def normalized_ranking(rows):
             continue
         items.append({"name": name, "wr": round(wr, 1), "games": games})
     items.sort(key=lambda x: (x["wr"], x["games"]), reverse=True)
-    return items[:10]
+    # Keep a deeper pool so the site can build color-pair/archetype pick rankings.
+    return items[:60]
 
 
 def main():
