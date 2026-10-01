@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-10-01T00:00:00Z",
+  "source": "17Lands PremierDraft",
+  "sets": {
+    "fra": {"code":"FRA","name":"リアリティ・フラクチャー","updatedAt":null,"ranking":[]},
+    "hob": {"code":"HOB","name":"The Hobbit","updatedAt":null,"ranking":[]},
+    "msh": {"code":"MSH","name":"Marvel Super Heroes","updatedAt":"2026-10-01T00:00:00Z","ranking":[{"name":"The Super Hero Civil War","wr":69.3},{"name":"Sword of Fire and Ice","wr":69.2},{"name":"Captain Marvel, Earth's Protector","wr":68.1},{"name":"Leader, Super-Genius","wr":67.4},{"name":"Black Panther, Wakandan King","wr":67.0},{"name":"Final Showdown","wr":65.6},{"name":"Doctor Doom","wr":64.9},{"name":"Avengers Assemble!","wr":64.0}]},
+    "sos": {"code":"SOS","name":"Secrets of Strixhaven","updatedAt":null,"ranking":[]},
+    "tmt": {"code":"TMT","name":"Teenage Mutant Ninja Turtles","updatedAt":null,"ranking":[]}
+  }
+}
