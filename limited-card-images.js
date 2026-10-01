@@ -1,6 +1,7 @@
 (() => {
   'use strict';
 
+  const CACHE_TTL = 24 * 60 * 60 * 1000;
   const PENDING = {
     colors: '最新データ確認中',
     archetypes: '最新データ確認中',
@@ -75,15 +76,57 @@
 
   if (!gallery || !selector) return;
   let requestId = 0;
+  const memoryCache = new Map();
 
-  const getImage = (card) => card.image_uris?.normal || card.card_faces?.find(face => face.image_uris?.normal)?.image_uris.normal || '';
+  const getImage = (card) => card?.image_uris?.normal || card?.card_faces?.find(face => face.image_uris?.normal)?.image_uris.normal || '';
 
-  const fetchCard = async (entry, setKey) => {
-    const exact = encodeURIComponent(entry.name);
-    let response = await fetch(`https://api.scryfall.com/cards/named?exact=${exact}&set=${setKey}`);
-    if (!response.ok) response = await fetch(`https://api.scryfall.com/cards/named?exact=${exact}`);
-    if (!response.ok) return { ...entry, card: null };
-    return { ...entry, card: await response.json() };
+  const readCache = (setKey) => {
+    if (memoryCache.has(setKey)) return memoryCache.get(setKey);
+    try {
+      const raw = localStorage.getItem(`magsta-limited-${setKey}`);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!parsed?.savedAt || Date.now() - parsed.savedAt > CACHE_TTL) return null;
+      memoryCache.set(setKey, parsed.cards || []);
+      return parsed.cards || [];
+    } catch {
+      return null;
+    }
+  };
+
+  const writeCache = (setKey, cards) => {
+    memoryCache.set(setKey, cards);
+    try {
+      localStorage.setItem(`magsta-limited-${setKey}`, JSON.stringify({ savedAt: Date.now(), cards }));
+    } catch {}
+  };
+
+  const fetchRankingCards = async (setKey, ranking) => {
+    const cached = readCache(setKey);
+    if (cached?.length) return cached;
+
+    try {
+      const response = await fetch('https://api.scryfall.com/cards/collection', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ identifiers: ranking.map(entry => ({ name: entry.name })) })
+      });
+      if (!response.ok) throw new Error('batch failed');
+      const data = await response.json();
+      const cards = data.data || [];
+      if (cards.length) writeCache(setKey, cards);
+      return cards;
+    } catch {
+      const results = await Promise.all(ranking.map(async entry => {
+        const exact = encodeURIComponent(entry.name);
+        let response = await fetch(`https://api.scryfall.com/cards/named?exact=${exact}&set=${setKey}`);
+        if (!response.ok) response = await fetch(`https://api.scryfall.com/cards/named?exact=${exact}`);
+        return response.ok ? response.json() : null;
+      }));
+      const cards = results.filter(Boolean);
+      if (cards.length) writeCache(setKey, cards);
+      return cards;
+    }
   };
 
   const renderRanking = async (setKey, set, activeRequest) => {
@@ -93,17 +136,23 @@
       return;
     }
 
-    gallery.innerHTML = `<p>${set.name} のランキング画像を読み込み中です…</p>`;
-    const results = await Promise.all(ranking.map(entry => fetchCard(entry, setKey)));
+    const cached = readCache(setKey);
+    gallery.innerHTML = cached?.length
+      ? '<p>ランキング画像を表示しています…</p>'
+      : `<p>${set.name} のランキング画像を読み込み中です…</p>`;
+
+    const cards = cached?.length ? cached : await fetchRankingCards(setKey, ranking);
     if (activeRequest !== requestId) return;
 
-    gallery.innerHTML = results.map((item, index) => {
-      const card = item.card;
-      const image = card ? getImage(card) : '';
+    const byName = new Map(cards.map(card => [card.name, card]));
+    gallery.innerHTML = ranking.map((item, index) => {
+      const card = byName.get(item.name) || cards.find(c => c.printed_name === item.name) || null;
+      const image = getImage(card);
       const href = card?.scryfall_uri || `https://scryfall.com/search?q=${encodeURIComponent('!"' + item.name + '"')}`;
+      const eager = index < 3;
       return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer">
         <span class="limited-rank-badge">${index + 1}位</span>
-        ${image ? `<img src="${image}" alt="${item.name}" loading="lazy" decoding="async">` : '<div class="limited-image-placeholder">画像確認中</div>'}
+        ${image ? `<img src="${image}" alt="${item.name}" loading="${eager ? 'eager' : 'lazy'}" decoding="async"${eager ? ' fetchpriority="high"' : ''}>` : '<div class="limited-image-placeholder">画像確認中</div>'}
         <strong>${item.name}</strong>
         <span>GIH WR ${item.wr.toFixed(1)}%</span>
       </a>`;
