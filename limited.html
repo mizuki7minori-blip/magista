@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MAGSTA MTGのリミテッド攻略・環境分析。直近5シリーズの17Landsカードランキング、ドラフト情報、カード画像を確認できます。">
+<meta name="description" content="MAGSTA MTGのリミテッド攻略・環境分析。直近5シリーズの17Landsカードランキングを日本語カード名・日本語画像優先で確認できます。">
 <title>MAGSTA MTG｜リミテッド攻略・環境分析</title>
 <link rel="preconnect" href="https://api.scryfall.com" crossorigin>
 <link rel="preconnect" href="https://cards.scryfall.io" crossorigin>
@@ -23,15 +23,15 @@
 <main id="main-content" class="limited-page">
 <section class="limited-set-picker" aria-labelledby="limited-set-picker-title">
   <label id="limited-set-picker-title" for="limited-set-select">直近5シリーズから選択</label>
-  <p>保存済みの17Landsランキングを先に表示し、新しいデータ取得に成功したときだけ更新します。</p>
+  <p>保存済みの17Landsランキングを先に表示し、カード名と画像は日本語版を優先します。</p>
   <select id="limited-set-select">
     <option value="fra">リアリティ・フラクチャー（FRA）</option>
-    <option value="hob">The Hobbit（HOB）</option>
-    <option value="msh">Marvel Super Heroes（MSH）</option>
-    <option value="sos">Secrets of Strixhaven（SOS）</option>
-    <option value="tmt">Teenage Mutant Ninja Turtles（TMT）</option>
+    <option value="hob">The Hobbit（ホビット / HOB）</option>
+    <option value="msh">Marvel Super Heroes（マーベル / MSH）</option>
+    <option value="sos">Secrets of Strixhaven（ストリクスヘイヴン / SOS）</option>
+    <option value="tmt">Teenage Mutant Ninja Turtles（TMNT）</option>
   </select>
-  <div class="limited-series-note">外部データ取得に失敗しても、前回保存したランキングは消えません。</div>
+  <div class="limited-series-note">日本語版が存在しないカードだけ英語名・英語画像で表示します。外部取得に失敗しても前回ランキングは維持されます。</div>
 </section>
 
 <section class="limited-hero">
@@ -41,7 +41,7 @@
   <div class="limited-actions">
     <a id="limited-card-data-link" class="limited-button" href="https://www.17lands.com/card_data?expansion=FRA&amp;format=PremierDraft&amp;sort=ever_drawn_win_rate%2Cdesc&amp;time_period=ALL_TIME&amp;view=table" target="_blank" rel="noopener noreferrer">17Landsランキングを見る</a>
     <a class="limited-button secondary" href="https://www.17lands.com/format_speed" target="_blank" rel="noopener noreferrer">環境スピード</a>
-    <a id="limited-scryfall-link" class="limited-button secondary" href="https://scryfall.com/sets/fra" target="_blank" rel="noopener noreferrer">カード一覧</a>
+    <a id="limited-scryfall-link" class="limited-button secondary" href="https://scryfall.com/sets/fra" target="_blank" rel="noopener noreferrer">日本語カード一覧</a>
     <a id="limited-article-link" class="limited-button secondary" href="article-fra-draft-2026-09-25.html">MAGSTA攻略記事</a>
   </div>
 </section>
@@ -56,12 +56,12 @@
 </section>
 
 <section class="limited-section">
-  <div class="limited-section-title"><div><span class="limited-kicker">実戦データ</span><h2 id="limited-top-heading">17Lands カードランキング</h2></div><p id="limited-top-note">保存済みデータを表示</p></div>
+  <div class="limited-section-title"><div><span class="limited-kicker">実戦データ</span><h2 id="limited-top-heading">17Lands カードランキング</h2></div><p id="limited-top-note">日本語名優先・保存済みデータを表示</p></div>
   <div class="limited-card"><ol id="limited-top-cards" class="limited-top-list"><li>保存ランキングを読み込みます</li></ol></div>
 </section>
 
 <section class="limited-section">
-  <div class="limited-section-title"><div><span class="limited-kicker">ランキング画像</span><h2 id="limited-gallery-title">17Lands上位カードを画像で見る</h2></div><p>GIH WR順。画像を押すとカード詳細を開きます</p></div>
+  <div class="limited-section-title"><div><span class="limited-kicker">ランキング画像</span><h2 id="limited-gallery-title">上位カードを日本語画像で見る</h2></div><p>GIH WR順。日本語版があるカードは日本語画像を表示します</p></div>
   <div id="limited-card-gallery" class="limited-image-grid"><p>保存ランキングを読み込み中です…</p></div>
 </section>
 
@@ -74,6 +74,6 @@
 
 <footer class="site-footer"><div class="container footer-inner"><div><a class="logo" href="index.html"><strong>MAGSTA.</strong></a><p>MTGの話題をひとつに。</p><small>編集：犬居わんこ</small></div><nav aria-label="フッターメニュー"><a href="articles.html">記事一覧</a><a href="weekly.html">週間企画</a><a href="strategy.html">MAGSTAについて</a><a href="contact.html">お問い合わせ</a></nav><small>© 2026 MAGSTA<br>Magic: The GatheringはWizards of the Coastの商標です。</small></div></footer>
 <script src="mobile-menu.js"></script>
-<script src="limited-card-images.js?v=20261001e"></script>
+<script src="limited-card-images.js?v=20261001-ja1"></script>
 </body>
 </html>
