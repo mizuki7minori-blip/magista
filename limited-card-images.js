@@ -1,31 +1,30 @@
 (() => {
   'use strict';
 
-  const CACHE_TTL = 24 * 60 * 60 * 1000;
+  const IMAGE_CACHE_TTL = 24 * 60 * 60 * 1000;
+  const SNAPSHOT_CACHE_KEY = 'magsta-limited-ranking-snapshots-v1';
   const PENDING = {
-    colors: '最新データ確認中',
-    archetypes: '最新データ確認中',
+    colors: '17Lands集計を基準に順次更新',
+    archetypes: 'シリーズ別に順次追加',
     firstPick: '除去・ボム・柔軟性を優先',
-    topCards: ['最新データ確認中'],
-    status: '更新中',
-    note: '17Landsとカードプールを確認して更新'
+    status: 'ランキング連動',
+    note: '保存済みランキングを表示'
   };
 
   const SETS = {
     fra: {
-      name: 'リアリティ・フラクチャー', code: 'FRA', article: 'article-fra-draft-2026-09-25.html',
+      name: 'リアリティ・フラクチャー', code: 'FRA', article: 'article-fra-draft-2026-09-25.html', updatedAt: null,
       guide: {
-        colors: '色の強弱は最新データを確認して更新',
+        colors: '17Lands集計を基準に順次更新',
         archetypes: 'シナジーの軸を見ながら更新',
         firstPick: '単体性能の高いカードを優先し、序盤は色を固定しすぎない',
-        topCards: ['攻略記事で紹介している初手候補を優先'],
-        status: '攻略記事あり', note: '17Landsのランキング値は確認後に掲載'
+        status: '攻略記事あり', note: '保存済みランキングを表示'
       },
       ranking: []
     },
-    hob: { name: 'The Hobbit', code: 'HOB', guide: PENDING, ranking: [] },
+    hob: { name: 'The Hobbit', code: 'HOB', guide: PENDING, ranking: [], updatedAt: null },
     msh: {
-      name: 'Marvel Super Heroes', code: 'MSH', guide: PENDING,
+      name: 'Marvel Super Heroes', code: 'MSH', guide: PENDING, updatedAt: '2026-10-01T00:00:00Z',
       ranking: [
         { name: 'The Super Hero Civil War', wr: 69.3 },
         { name: 'Sword of Fire and Ice', wr: 69.2 },
@@ -37,25 +36,8 @@
         { name: 'Avengers Assemble!', wr: 64.0 }
       ]
     },
-    sos: { name: 'Secrets of Strixhaven', code: 'SOS', guide: PENDING, ranking: [] },
-    tmt: { name: 'Teenage Mutant Ninja Turtles', code: 'TMT', guide: PENDING, ranking: [] },
-    ecl: { name: 'Lorwyn Eclipsed', code: 'ECL', guide: PENDING, ranking: [] },
-    fin: {
-      name: 'FINAL FANTASY', code: 'FIN', guide: PENDING,
-      ranking: [
-        { name: 'Atraxa, Grand Unifier', wr: 66.4 },
-        { name: "Dion, Bahamut's Dominant", wr: 64.5 },
-        { name: 'Ardyn, the Usurper', wr: 64.5 },
-        { name: 'Nibelheim Aflame', wr: 64.5 },
-        { name: 'Winota, Joiner of Forces', wr: 64.4 },
-        { name: "Smuggler's Copter", wr: 64.2 },
-        { name: 'Sazh Katzroy', wr: 64.2 },
-        { name: 'Urza, Lord High Artificer', wr: 64.2 },
-        { name: "Akroma's Will", wr: 63.6 },
-        { name: 'Esper Origins', wr: 63.6 }
-      ]
-    },
-    tdm: { name: 'タルキール：龍嵐録', code: 'TDM', guide: PENDING, ranking: [] }
+    sos: { name: 'Secrets of Strixhaven', code: 'SOS', guide: PENDING, ranking: [], updatedAt: null },
+    tmt: { name: 'Teenage Mutant Ninja Turtles', code: 'TMT', guide: PENDING, ranking: [], updatedAt: null }
   };
 
   const gallery = document.getElementById('limited-card-gallery');
@@ -75,18 +57,57 @@
   const topNote = document.getElementById('limited-top-note');
 
   if (!gallery || !selector) return;
+
   let requestId = 0;
   const memoryCache = new Map();
 
   const getImage = (card) => card?.image_uris?.normal || card?.card_faces?.find(face => face.image_uris?.normal)?.image_uris.normal || '';
 
-  const readCache = (setKey) => {
+  const formatDate = (iso) => {
+    if (!iso) return '保存データ準備中';
+    const date = new Date(iso);
+    if (Number.isNaN(date.getTime())) return '保存済みデータ';
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} 更新`;
+  };
+
+  const mergeSnapshots = (payload) => {
+    const snapshots = payload?.sets || {};
+    Object.entries(snapshots).forEach(([key, snapshot]) => {
+      if (!SETS[key] || !snapshot) return;
+      if (Array.isArray(snapshot.ranking) && snapshot.ranking.length) SETS[key].ranking = snapshot.ranking;
+      if (snapshot.updatedAt) SETS[key].updatedAt = snapshot.updatedAt;
+    });
+  };
+
+  const readSnapshotCache = () => {
+    try {
+      const raw = localStorage.getItem(SNAPSHOT_CACHE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const refreshSnapshots = async () => {
+    try {
+      const response = await fetch('limited-ranking-data.json', { cache: 'no-cache' });
+      if (!response.ok) throw new Error('snapshot fetch failed');
+      const payload = await response.json();
+      mergeSnapshots(payload);
+      try { localStorage.setItem(SNAPSHOT_CACHE_KEY, JSON.stringify(payload)); } catch {}
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const readImageCache = (setKey) => {
     if (memoryCache.has(setKey)) return memoryCache.get(setKey);
     try {
-      const raw = localStorage.getItem(`magsta-limited-${setKey}`);
+      const raw = localStorage.getItem(`magsta-limited-images-${setKey}`);
       if (!raw) return null;
       const parsed = JSON.parse(raw);
-      if (!parsed?.savedAt || Date.now() - parsed.savedAt > CACHE_TTL) return null;
+      if (!parsed?.savedAt || Date.now() - parsed.savedAt > IMAGE_CACHE_TTL) return null;
       memoryCache.set(setKey, parsed.cards || []);
       return parsed.cards || [];
     } catch {
@@ -94,15 +115,15 @@
     }
   };
 
-  const writeCache = (setKey, cards) => {
+  const writeImageCache = (setKey, cards) => {
     memoryCache.set(setKey, cards);
     try {
-      localStorage.setItem(`magsta-limited-${setKey}`, JSON.stringify({ savedAt: Date.now(), cards }));
+      localStorage.setItem(`magsta-limited-images-${setKey}`, JSON.stringify({ savedAt: Date.now(), cards }));
     } catch {}
   };
 
   const fetchRankingCards = async (setKey, ranking) => {
-    const cached = readCache(setKey);
+    const cached = readImageCache(setKey);
     if (cached?.length) return cached;
 
     try {
@@ -114,17 +135,17 @@
       if (!response.ok) throw new Error('batch failed');
       const data = await response.json();
       const cards = data.data || [];
-      if (cards.length) writeCache(setKey, cards);
+      if (cards.length) writeImageCache(setKey, cards);
       return cards;
     } catch {
-      const results = await Promise.all(ranking.map(async entry => {
+      const results = await Promise.all(ranking.slice(0, 10).map(async entry => {
         const exact = encodeURIComponent(entry.name);
         let response = await fetch(`https://api.scryfall.com/cards/named?exact=${exact}&set=${setKey}`);
         if (!response.ok) response = await fetch(`https://api.scryfall.com/cards/named?exact=${exact}`);
         return response.ok ? response.json() : null;
       }));
       const cards = results.filter(Boolean);
-      if (cards.length) writeCache(setKey, cards);
+      if (cards.length) writeImageCache(setKey, cards);
       return cards;
     }
   };
@@ -132,29 +153,27 @@
   const renderRanking = async (setKey, set, activeRequest) => {
     const ranking = set.ranking || [];
     if (!ranking.length) {
-      gallery.innerHTML = `<div class="limited-card"><strong>${set.name} のランキングは確認中です。</strong><p>ランダムなカード画像は表示せず、17Landsで順位を確認できたカードだけ掲載します。</p></div>`;
+      gallery.innerHTML = `<div class="limited-card"><strong>${set.name} の保存ランキングを準備しています。</strong><p>自動更新に成功した時点でランキングを保存し、以後は取得失敗時も前回データを表示します。</p></div>`;
       return;
     }
 
-    const cached = readCache(setKey);
-    gallery.innerHTML = cached?.length
-      ? '<p>ランキング画像を表示しています…</p>'
-      : `<p>${set.name} のランキング画像を読み込み中です…</p>`;
+    const cached = readImageCache(setKey);
+    if (!cached?.length) gallery.innerHTML = `<p>${set.name} のランキング画像を読み込み中です…</p>`;
 
     const cards = cached?.length ? cached : await fetchRankingCards(setKey, ranking);
     if (activeRequest !== requestId) return;
 
     const byName = new Map(cards.map(card => [card.name, card]));
-    gallery.innerHTML = ranking.map((item, index) => {
+    gallery.innerHTML = ranking.slice(0, 10).map((item, index) => {
       const card = byName.get(item.name) || cards.find(c => c.printed_name === item.name) || null;
       const image = getImage(card);
       const href = card?.scryfall_uri || `https://scryfall.com/search?q=${encodeURIComponent('!"' + item.name + '"')}`;
       const eager = index < 3;
       return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer">
         <span class="limited-rank-badge">${index + 1}位</span>
-        ${image ? `<img src="${image}" alt="${item.name}" loading="${eager ? 'eager' : 'lazy'}" decoding="async"${eager ? ' fetchpriority="high"' : ''}>` : '<div class="limited-image-placeholder">画像確認中</div>'}
+        ${image ? `<img src="${image}" alt="${item.name}" loading="${eager ? 'eager' : 'lazy'}" decoding="async"${eager ? ' fetchpriority="high"' : ''}>` : '<div class="limited-image-placeholder">画像準備中</div>'}
         <strong>${item.name}</strong>
-        <span>GIH WR ${item.wr.toFixed(1)}%</span>
+        <span>GIH WR ${Number(item.wr).toFixed(1)}%</span>
       </a>`;
     }).join('');
   };
@@ -167,7 +186,7 @@
     selector.value = normalizedKey;
     if (kicker) kicker.textContent = `リミテッド / ${set.code}`;
     if (title) title.textContent = `${set.name} リミテッド攻略`;
-    if (description) description.textContent = `${set.name}（${set.code}）のドラフト・シールド向け情報です。17Landsで確認できた実戦データを優先して表示します。`;
+    if (description) description.textContent = `${set.name}（${set.code}）のドラフト・シールド向け情報です。保存済みの17Landsランキングを優先表示します。`;
     if (galleryTitle) galleryTitle.textContent = `${set.name} 17Landsカードランキング`;
 
     if (cardDataLink) cardDataLink.href = `https://www.17lands.com/card_data?expansion=${set.code}&format=PremierDraft&sort=ever_drawn_win_rate%2Cdesc&time_period=ALL_TIME&view=table`;
@@ -181,9 +200,11 @@
     if (archetypes) archetypes.textContent = guide.archetypes;
     if (firstPick) firstPick.textContent = guide.firstPick;
     if (guideStatus) guideStatus.textContent = guide.status;
-    if (topNote) topNote.textContent = set.ranking?.length ? '17Lands GIH WR順・確認済みデータ' : guide.note;
+    if (topNote) topNote.textContent = set.ranking?.length ? `GIH WR順・${formatDate(set.updatedAt)}` : '初回保存データを準備中';
     if (topCards) {
-      const items = set.ranking?.length ? set.ranking.map(card => `${card.name} — GIH WR ${card.wr.toFixed(1)}%`) : guide.topCards;
+      const items = set.ranking?.length
+        ? set.ranking.slice(0, 10).map(card => `${card.name} — GIH WR ${Number(card.wr).toFixed(1)}%`)
+        : ['自動更新でランキングを取得後、前回データを常時表示します'];
       topCards.innerHTML = items.map(item => `<li>${item}</li>`).join('');
     }
 
@@ -196,11 +217,18 @@
     const activeRequest = ++requestId;
     renderRanking(normalizedKey, set, activeRequest).catch(() => {
       if (activeRequest !== requestId) return;
-      gallery.innerHTML = '<div class="limited-card"><strong>ランキング画像を取得できませんでした。</strong><p>順位データは上のTOP欄、詳細は17Landsで確認できます。</p></div>';
+      gallery.innerHTML = '<div class="limited-card"><strong>カード画像を取得できませんでした。</strong><p>ランキング順位は上の一覧に保存されているため、データ自体はそのまま確認できます。</p></div>';
     });
   };
+
+  const cachedSnapshots = readSnapshotCache();
+  if (cachedSnapshots) mergeSnapshots(cachedSnapshots);
 
   selector.addEventListener('change', () => applySet(selector.value));
   const initialSet = new URLSearchParams(window.location.search).get('set')?.toLowerCase() || 'fra';
   applySet(initialSet, false);
+
+  refreshSnapshots().then(updated => {
+    if (updated) applySet(selector.value, false);
+  });
 })();
