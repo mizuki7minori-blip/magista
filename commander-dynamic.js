@@ -12,6 +12,7 @@
   const imgOf = c => c?.image_uris?.normal || c?.card_faces?.[0]?.image_uris?.normal || '';
   const hasJapanese = s => /[\u3040-\u30ff\u3400-\u9fff]/.test(String(s || ''));
   const displayName = c => c?.printed_name || c?.name || '名称不明';
+  const displayText = c => c?.printed_text || c?.oracle_text || '';
 
   const style = document.createElement('style');
   style.textContent = `
@@ -26,6 +27,7 @@
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
     .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .synergy-body small{display:block;color:var(--muted);font-size:.72rem;margin-top:3px}
     @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
   `;
   document.head.appendChild(style);
@@ -120,9 +122,10 @@
   ];
 
   async function fetchRole(role, roleQuery, identity, commanderName) {
-    const q = `legal:commander game:paper ${identityQuery(identity)} -name:${JSON.stringify(commanderName)} ${roleQuery}`;
+    const base = `legal:commander game:paper ${identityQuery(identity)} -name:${JSON.stringify(commanderName)} ${roleQuery}`;
     try {
-      const r = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(q)}&order=edhrec&unique=cards`);
+      let r = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(`${base} lang:ja`)}&order=edhrec&unique=cards`);
+      if (!r.ok) r = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(base)}&order=edhrec&unique=cards`);
       if (!r.ok) return [];
       const data = await r.json();
       return (data.data || []).slice(0,2).map(c => ({card:c,role}));
@@ -171,11 +174,16 @@
       }
       state.suggestions = batches.flat().slice(0,10);
       if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">候補カードを取得できませんでした。</p>'; return; }
-      grid.innerHTML = state.suggestions.map(({card,role}) => `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(card.name)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(card.name)}</h3><p>${esc((card.oracle_text||'').slice(0,100))}${(card.oracle_text||'').length>100?'…':''}</p></div></article>`).join('');
+      grid.innerHTML = state.suggestions.map(({card,role}) => {
+        const jp = displayName(card);
+        const en = card.name || jp;
+        const text = displayText(card);
+        return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p>${esc(text.slice(0,100))}${text.length>100?'…':''}</p></div></article>`;
+      }).join('');
       const high = Number(bracket.value) >= 4;
       const lands = high ? '34〜36' : '36〜38';
       if (plan) plan.innerHTML = [['固有色',colors],['土地',lands],['候補カード','10枚'],['調整方針',high?'速度・妨害を厚め':'安定性・テーマ性を重視']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
-      status.textContent = `${shownName} の候補カードを表示しました。`;
+      status.textContent = `${shownName} の候補カードを日本語優先で表示しました。`;
     } finally {
       loadSynergyButton.disabled = false;
       loadSynergyButton.textContent = '相性カード候補を再読み込み';
