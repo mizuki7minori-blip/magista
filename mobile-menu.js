@@ -1,7 +1,6 @@
 (() => {
-  // MAGSTA GA4 loader. Set this to the GA4 Measurement ID (G-XXXXXXXXXX)
-  // once the Google Analytics property has been created.
-  const GA4_MEASUREMENT_ID = '';
+  // MAGSTA GA4 loader
+  const GA4_MEASUREMENT_ID = 'G-51MGTEG0DS';
 
   if (GA4_MEASUREMENT_ID && /^G-[A-Z0-9]+$/i.test(GA4_MEASUREMENT_ID)) {
     window.dataLayer = window.dataLayer || [];
