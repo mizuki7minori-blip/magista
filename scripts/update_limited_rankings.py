@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Centralized updater: keep previous snapshots when 17Lands is unavailable.
 import json
 import time
 import urllib.parse
@@ -74,7 +75,6 @@ def normalized_ranking(rows):
             games = int(games or 0)
         except (TypeError, ValueError):
             continue
-        # Avoid tiny-sample cards dominating the ranking when counts are available.
         if games and games < 100:
             continue
         items.append({"name": name, "wr": round(wr, 1), "games": games})
