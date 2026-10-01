@@ -1,68 +1,318 @@
 {
-  "generatedAt": "2026-10-01T06:58:30.679696Z",
+  "generatedAt": "2026-10-01T07:32:27.412873Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-10-01T06:58:30.679696Z",
+      "updatedAt": "2026-10-01T07:32:27.412873Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
-          "wr": 67.4,
-          "games": 279
+          "wr": 74.4,
+          "games": 1100
+        },
+        {
+          "name": "Uldaros Theorix",
+          "wr": 70.2,
+          "games": 925
+        },
+        {
+          "name": "The Theorist, Jace Beleren",
+          "wr": 69.4,
+          "games": 983
+        },
+        {
+          "name": "Garruk, Veiled Butcher",
+          "wr": 68.9,
+          "games": 988
+        },
+        {
+          "name": "Garruk, Curse Breaker",
+          "wr": 66.3,
+          "games": 979
         },
         {
           "name": "Sphinx of False Conclusions",
-          "wr": 66.7,
-          "games": 585
+          "wr": 66.0,
+          "games": 2234
         },
         {
-          "name": "Simulacrum Shaper",
-          "wr": 65.2,
-          "games": 543
+          "name": "Overwrite the Multiverse",
+          "wr": 65.1,
+          "games": 893
         },
         {
           "name": "Lich's Relic",
-          "wr": 64.7,
-          "games": 556
+          "wr": 64.8,
+          "games": 2059
         },
         {
-          "name": "Kiora of Fire and Ashes",
-          "wr": 64.5,
-          "games": 1452
-        },
-        {
-          "name": "Primal Witchstalker",
+          "name": "Denzilore Fatehold",
           "wr": 63.6,
-          "games": 796
+          "games": 969
+        },
+        {
+          "name": "Kwia Vigorbloom",
+          "wr": 63.3,
+          "games": 780
         },
         {
           "name": "Craftwork Crusher",
           "wr": 63.2,
-          "games": 1438
+          "games": 4928
+        },
+        {
+          "name": "Aerid Konstrari",
+          "wr": 63.2,
+          "games": 836
         },
         {
           "name": "Recursive Recruitment",
-          "wr": 63.0,
-          "games": 1312
+          "wr": 62.8,
+          "games": 5082
+        },
+        {
+          "name": "Kiora of Fire and Ashes",
+          "wr": 62.6,
+          "games": 5268
+        },
+        {
+          "name": "Vraska, the Cutting Glare",
+          "wr": 62.1,
+          "games": 1654
+        },
+        {
+          "name": "Null Summoner",
+          "wr": 62.0,
+          "games": 2062
+        },
+        {
+          "name": "Kindred Judgment",
+          "wr": 61.7,
+          "games": 1291
+        },
+        {
+          "name": "Diviner of Victory",
+          "wr": 61.5,
+          "games": 1604
+        },
+        {
+          "name": "Avatar of Burgeoning Echoes",
+          "wr": 61.4,
+          "games": 778
+        },
+        {
+          "name": "Sanctum Lurker",
+          "wr": 61.3,
+          "games": 1828
+        },
+        {
+          "name": "Gideon the Oathless",
+          "wr": 61.2,
+          "games": 1627
+        },
+        {
+          "name": "Proctor of Potential",
+          "wr": 61.2,
+          "games": 1287
+        },
+        {
+          "name": "Chandra, Chill of Compliance",
+          "wr": 61.1,
+          "games": 794
+        },
+        {
+          "name": "Simulacrum Shaper",
+          "wr": 60.8,
+          "games": 1878
+        },
+        {
+          "name": "Carnivorous Cultivator",
+          "wr": 60.8,
+          "games": 1647
+        },
+        {
+          "name": "The Echoverse Fulcrum",
+          "wr": 60.8,
+          "games": 673
+        },
+        {
+          "name": "Primal Witchstalker",
+          "wr": 60.7,
+          "games": 3069
         },
         {
           "name": "Break Under Pressure",
-          "wr": 62.1,
-          "games": 1337
+          "wr": 60.6,
+          "games": 5018
+        },
+        {
+          "name": "Seasoned Cryomancer",
+          "wr": 60.6,
+          "games": 942
+        },
+        {
+          "name": "Chandra, Torch of Defiance",
+          "wr": 60.5,
+          "games": 888
         },
         {
           "name": "Hapatra, the Desert Fang",
-          "wr": 61.9,
-          "games": 1109
+          "wr": 60.3,
+          "games": 4163
+        },
+        {
+          "name": "Hungering Puppetbeast",
+          "wr": 60.3,
+          "games": 1832
+        },
+        {
+          "name": "Extended Absence",
+          "wr": 60.2,
+          "games": 11168
+        },
+        {
+          "name": "Rewrite Regrets",
+          "wr": 60.2,
+          "games": 3011
+        },
+        {
+          "name": "Countersculpt",
+          "wr": 60.1,
+          "games": 5184
+        },
+        {
+          "name": "Lyra, Tolarian Archangel",
+          "wr": 60.0,
+          "games": 2239
+        },
+        {
+          "name": "Sublime Epiphany",
+          "wr": 60.0,
+          "games": 265
+        },
+        {
+          "name": "Plan for All Outcomes",
+          "wr": 59.9,
+          "games": 6451
+        },
+        {
+          "name": "Violent Echoes",
+          "wr": 59.9,
+          "games": 5360
+        },
+        {
+          "name": "Verdant Kraken",
+          "wr": 59.9,
+          "games": 1913
+        },
+        {
+          "name": "Desperate Futurescribe",
+          "wr": 59.8,
+          "games": 4180
+        },
+        {
+          "name": "Shipwreck Marsh",
+          "wr": 59.8,
+          "games": 1278
+        },
+        {
+          "name": "Mindseeker Oculus",
+          "wr": 59.7,
+          "games": 14234
+        },
+        {
+          "name": "Lyra, Archangel of Dawn",
+          "wr": 59.3,
+          "games": 1480
+        },
+        {
+          "name": "Repurposed Enforcer",
+          "wr": 59.2,
+          "games": 1856
+        },
+        {
+          "name": "Surveillance Phantasm",
+          "wr": 59.1,
+          "games": 8763
+        },
+        {
+          "name": "Theorist's Sanctum",
+          "wr": 59.1,
+          "games": 1765
+        },
+        {
+          "name": "Multiply by Zero",
+          "wr": 59.0,
+          "games": 5354
+        },
+        {
+          "name": "Way of the Mind Sculptor",
+          "wr": 59.0,
+          "games": 4485
+        },
+        {
+          "name": "Pia, Determined Rebuilder",
+          "wr": 58.9,
+          "games": 4635
+        },
+        {
+          "name": "Curse-Marred Demon",
+          "wr": 58.9,
+          "games": 1605
+        },
+        {
+          "name": "Tarmogoyf",
+          "wr": 58.9,
+          "games": 669
+        },
+        {
+          "name": "Vigorbloom Charm",
+          "wr": 58.8,
+          "games": 3436
+        },
+        {
+          "name": "Fatehold Charm",
+          "wr": 58.7,
+          "games": 3805
+        },
+        {
+          "name": "Something Worth Saving",
+          "wr": 58.6,
+          "games": 3727
+        },
+        {
+          "name": "Fblthp, Impossibly Lost",
+          "wr": 58.6,
+          "games": 3187
+        },
+        {
+          "name": "Konstrari Charm",
+          "wr": 58.3,
+          "games": 1725
+        },
+        {
+          "name": "Fblthp, Knows the Way",
+          "wr": 58.2,
+          "games": 5148
+        },
+        {
+          "name": "Jace, Reality Sculptor",
+          "wr": 58.2,
+          "games": 1511
+        },
+        {
+          "name": "Hexhaven Battalion",
+          "wr": 58.0,
+          "games": 10840
         }
       ]
     },
     "hob": {
       "code": "HOB",
-      "name": "The Hobbit",
-      "updatedAt": "2026-10-01T06:58:30.679696Z",
+      "name": "ホビット",
+      "updatedAt": "2026-10-01T07:32:27.412873Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -72,7 +322,7 @@
         {
           "name": "An Unexpected Party",
           "wr": 65.3,
-          "games": 17891
+          "games": 17896
         },
         {
           "name": "Bard's Company",
@@ -107,19 +357,269 @@
         {
           "name": "Dáin's Company",
           "wr": 62.3,
-          "games": 10814
+          "games": 10816
         },
         {
           "name": "Celebrate the Mountain-king",
           "wr": 62.0,
           "games": 56820
+        },
+        {
+          "name": "Great Gilded Boat",
+          "wr": 62.0,
+          "games": 19894
+        },
+        {
+          "name": "Chief Warg's Company",
+          "wr": 62.0,
+          "games": 13351
+        },
+        {
+          "name": "Thranduil's Company",
+          "wr": 61.6,
+          "games": 12814
+        },
+        {
+          "name": "The Mountain-king's Return",
+          "wr": 61.3,
+          "games": 54999
+        },
+        {
+          "name": "Dáin Ironfoot",
+          "wr": 61.3,
+          "games": 14621
+        },
+        {
+          "name": "Desolation Prowler",
+          "wr": 61.0,
+          "games": 53182
+        },
+        {
+          "name": "Rhovanion Rampager",
+          "wr": 60.9,
+          "games": 14514
+        },
+        {
+          "name": "Head of the Hunt",
+          "wr": 60.9,
+          "games": 14489
+        },
+        {
+          "name": "The Arkenstone",
+          "wr": 60.6,
+          "games": 8181
+        },
+        {
+          "name": "Bothersome Noisemaker",
+          "wr": 60.5,
+          "games": 50594
+        },
+        {
+          "name": "Bilbo, Luckwearer",
+          "wr": 60.4,
+          "games": 55458
+        },
+        {
+          "name": "Stone by Sunlight",
+          "wr": 60.3,
+          "games": 51691
+        },
+        {
+          "name": "Crude Bent Blade",
+          "wr": 60.1,
+          "games": 117228
+        },
+        {
+          "name": "Bejeweled Warg",
+          "wr": 59.9,
+          "games": 11092
+        },
+        {
+          "name": "The Eagles Are Coming!",
+          "wr": 59.7,
+          "games": 16110
+        },
+        {
+          "name": "Mirkwood Pathmaker",
+          "wr": 59.6,
+          "games": 36583
+        },
+        {
+          "name": "Burn, Burn, Tree and Fern",
+          "wr": 59.5,
+          "games": 44987
+        },
+        {
+          "name": "Plunder the Trollshaws",
+          "wr": 59.2,
+          "games": 112634
+        },
+        {
+          "name": "Down, Down to Goblin-town",
+          "wr": 59.2,
+          "games": 47517
+        },
+        {
+          "name": "Dwalin, Weaponmaster",
+          "wr": 59.2,
+          "games": 13777
+        },
+        {
+          "name": "Nighthowl Pursuer",
+          "wr": 59.1,
+          "games": 41814
+        },
+        {
+          "name": "Pinecone Strike",
+          "wr": 59.0,
+          "games": 110015
+        },
+        {
+          "name": "Master's Councillors",
+          "wr": 59.0,
+          "games": 57778
+        },
+        {
+          "name": "Gollum, Silent Slinker",
+          "wr": 58.9,
+          "games": 99529
+        },
+        {
+          "name": "Gandalf, Spark Starter",
+          "wr": 58.9,
+          "games": 39883
+        },
+        {
+          "name": "Nasty Little Rabbit",
+          "wr": 58.9,
+          "games": 32961
+        },
+        {
+          "name": "Dancing from Dark to Dawn",
+          "wr": 58.8,
+          "games": 5379
+        },
+        {
+          "name": "Settle the Wreckage",
+          "wr": 58.6,
+          "games": 13050
+        },
+        {
+          "name": "Bard the Bowman",
+          "wr": 58.5,
+          "games": 47032
+        },
+        {
+          "name": "The Queen of Dale",
+          "wr": 58.5,
+          "games": 6322
+        },
+        {
+          "name": "Patient Instructor",
+          "wr": 58.4,
+          "games": 125376
+        },
+        {
+          "name": "The Lonely Mountain",
+          "wr": 58.4,
+          "games": 13204
+        },
+        {
+          "name": "The Sackville-Bagginses",
+          "wr": 58.4,
+          "games": 12936
+        },
+        {
+          "name": "Bilbo, Thief in the Night",
+          "wr": 58.4,
+          "games": 6443
+        },
+        {
+          "name": "Thranduil, Sindarin Liege",
+          "wr": 58.2,
+          "games": 35233
+        },
+        {
+          "name": "Stone-Giant of High Pass",
+          "wr": 58.2,
+          "games": 12380
+        },
+        {
+          "name": "Long Lake Nuisance",
+          "wr": 58.0,
+          "games": 111082
+        },
+        {
+          "name": "Misty Mountains Raider",
+          "wr": 58.0,
+          "games": 41984
+        },
+        {
+          "name": "Gandalf, Goblins' Bane",
+          "wr": 57.9,
+          "games": 5481
+        },
+        {
+          "name": "Iron Hills Blacksmith",
+          "wr": 57.7,
+          "games": 41195
+        },
+        {
+          "name": "Tom, Bert, and William",
+          "wr": 57.6,
+          "games": 11500
+        },
+        {
+          "name": "Lakeshore Apothecary",
+          "wr": 57.5,
+          "games": 130073
+        },
+        {
+          "name": "Bilbo Baggins, Burglar",
+          "wr": 57.5,
+          "games": 108414
+        },
+        {
+          "name": "Glóin the Mighty",
+          "wr": 57.5,
+          "games": 33365
+        },
+        {
+          "name": "The Misty Mountains Cold",
+          "wr": 57.2,
+          "games": 10521
+        },
+        {
+          "name": "Ravening Warg",
+          "wr": 57.1,
+          "games": 89665
+        },
+        {
+          "name": "Dori, Bearer of Friends",
+          "wr": 57.0,
+          "games": 83551
+        },
+        {
+          "name": "Bilbo's Deadly Slice",
+          "wr": 56.9,
+          "games": 90453
+        },
+        {
+          "name": "Gollum the Abandoned",
+          "wr": 56.9,
+          "games": 35997
+        },
+        {
+          "name": "Great Ugly-Looking Goblin",
+          "wr": 56.7,
+          "games": 36872
         }
       ]
     },
     "msh": {
       "code": "MSH",
-      "name": "Marvel Super Heroes",
-      "updatedAt": "2026-10-01T06:58:30.679696Z",
+      "name": "マーベル・スーパー・ヒーローズ",
+      "updatedAt": "2026-10-01T07:32:27.412873Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -170,13 +670,263 @@
           "name": "Avengers: Under Siege",
           "wr": 63.8,
           "games": 14770
+        },
+        {
+          "name": "Wolverine, Fierce Fighter",
+          "wr": 63.7,
+          "games": 16116
+        },
+        {
+          "name": "Agent Phil Coulson",
+          "wr": 63.3,
+          "games": 20079
+        },
+        {
+          "name": "M.O.D.O.K.",
+          "wr": 63.3,
+          "games": 8727
+        },
+        {
+          "name": "The Wondrous Wasp",
+          "wr": 63.2,
+          "games": 22373
+        },
+        {
+          "name": "Justice, Vance Astrovik",
+          "wr": 63.0,
+          "games": 62189
+        },
+        {
+          "name": "The Coming of Galactus",
+          "wr": 62.9,
+          "games": 8144
+        },
+        {
+          "name": "Elektra, Daughter of the Hand",
+          "wr": 62.8,
+          "games": 17091
+        },
+        {
+          "name": "Monica Rambeau",
+          "wr": 62.8,
+          "games": 9726
+        },
+        {
+          "name": "Thor, God of Thunder",
+          "wr": 62.7,
+          "games": 7511
+        },
+        {
+          "name": "Cosmic Cube",
+          "wr": 61.9,
+          "games": 9642
+        },
+        {
+          "name": "Cloak and Dagger, Entwined",
+          "wr": 61.7,
+          "games": 16701
+        },
+        {
+          "name": "The Ruinous Wrecking Crew",
+          "wr": 61.5,
+          "games": 15350
+        },
+        {
+          "name": "Captain America, Wings of Freedom",
+          "wr": 61.3,
+          "games": 19514
+        },
+        {
+          "name": "Kang the Conqueror",
+          "wr": 61.2,
+          "games": 9582
+        },
+        {
+          "name": "Massacre Girl",
+          "wr": 61.1,
+          "games": 542
+        },
+        {
+          "name": "Ka-Zar of the Savage Land",
+          "wr": 61.0,
+          "games": 46316
+        },
+        {
+          "name": "Vision Quest",
+          "wr": 60.8,
+          "games": 17951
+        },
+        {
+          "name": "Bruce Banner",
+          "wr": 60.7,
+          "games": 9488
+        },
+        {
+          "name": "Extinction Event",
+          "wr": 60.7,
+          "games": 659
+        },
+        {
+          "name": "Hero in Training",
+          "wr": 60.5,
+          "games": 149706
+        },
+        {
+          "name": "King T'Challa",
+          "wr": 60.5,
+          "games": 10125
+        },
+        {
+          "name": "Trickster's Stratagem",
+          "wr": 60.4,
+          "games": 144032
+        },
+        {
+          "name": "She-Hulk, Jade Defender",
+          "wr": 60.4,
+          "games": 40057
+        },
+        {
+          "name": "The Mighty Thor, Jane Foster",
+          "wr": 60.4,
+          "games": 20364
+        },
+        {
+          "name": "Killmonger, Scourge of Wakanda",
+          "wr": 60.3,
+          "games": 38054
+        },
+        {
+          "name": "Avengers Tower",
+          "wr": 60.0,
+          "games": 45713
+        },
+        {
+          "name": "Absorbing Man",
+          "wr": 60.0,
+          "games": 14474
+        },
+        {
+          "name": "Warleader's Call",
+          "wr": 60.0,
+          "games": 565
+        },
+        {
+          "name": "Tony Stark",
+          "wr": 59.9,
+          "games": 7985
+        },
+        {
+          "name": "Three Steps Ahead",
+          "wr": 59.9,
+          "games": 703
+        },
+        {
+          "name": "Path to Exile",
+          "wr": 59.8,
+          "games": 649
+        },
+        {
+          "name": "Murdock's Crusade",
+          "wr": 59.7,
+          "games": 113158
+        },
+        {
+          "name": "Falcon, Winged Wonder",
+          "wr": 59.7,
+          "games": 52578
+        },
+        {
+          "name": "Punishing Punch",
+          "wr": 59.7,
+          "games": 40456
+        },
+        {
+          "name": "Ravenous Tyrannosaurus",
+          "wr": 59.7,
+          "games": 631
+        },
+        {
+          "name": "Secret Invasion",
+          "wr": 59.6,
+          "games": 18919
+        },
+        {
+          "name": "S.H.I.E.L.D. Deployment Drone",
+          "wr": 59.5,
+          "games": 143086
+        },
+        {
+          "name": "Storm, Windrider",
+          "wr": 59.5,
+          "games": 16387
+        },
+        {
+          "name": "Dark Deed",
+          "wr": 59.4,
+          "games": 39722
+        },
+        {
+          "name": "We Say Thee Nay!",
+          "wr": 59.3,
+          "games": 125155
+        },
+        {
+          "name": "Web Up",
+          "wr": 59.3,
+          "games": 120247
+        },
+        {
+          "name": "Political Triumph",
+          "wr": 59.2,
+          "games": 42788
+        },
+        {
+          "name": "The Unbeatable Squirrel Girl",
+          "wr": 59.2,
+          "games": 15648
+        },
+        {
+          "name": "Cruel Alliance",
+          "wr": 59.1,
+          "games": 104690
+        },
+        {
+          "name": "Stature, Size Shifter",
+          "wr": 59.1,
+          "games": 49339
+        },
+        {
+          "name": "Agent Maria Hill",
+          "wr": 59.1,
+          "games": 44634
+        },
+        {
+          "name": "Super-Skrull",
+          "wr": 59.1,
+          "games": 16750
+        },
+        {
+          "name": "Captain America, Super-Soldier",
+          "wr": 59.1,
+          "games": 9062
+        },
+        {
+          "name": "Undercover Skrull",
+          "wr": 59.0,
+          "games": 101613
+        },
+        {
+          "name": "S.H.I.E.L.D. Flying Car",
+          "wr": 58.9,
+          "games": 20242
         }
       ]
     },
     "sos": {
       "code": "SOS",
-      "name": "Secrets of Strixhaven",
-      "updatedAt": "2026-10-01T06:58:30.679696Z",
+      "name": "ストリクスヘイヴンの秘密",
+      "updatedAt": "2026-10-01T07:32:27.412873Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -227,13 +977,263 @@
           "name": "Improvisation Capstone",
           "wr": 62.5,
           "games": 16511
+        },
+        {
+          "name": "Mathemagics",
+          "wr": 61.9,
+          "games": 16682
+        },
+        {
+          "name": "Snarl Song",
+          "wr": 61.7,
+          "games": 78858
+        },
+        {
+          "name": "Winds of Abandon",
+          "wr": 61.6,
+          "games": 3766
+        },
+        {
+          "name": "Informed Inkwright",
+          "wr": 61.5,
+          "games": 29611
+        },
+        {
+          "name": "Crackle with Power",
+          "wr": 61.4,
+          "games": 4176
+        },
+        {
+          "name": "Quandrix, the Proof",
+          "wr": 61.2,
+          "games": 13691
+        },
+        {
+          "name": "Environmental Scientist",
+          "wr": 61.1,
+          "games": 63616
+        },
+        {
+          "name": "Splatter Technique",
+          "wr": 61.0,
+          "games": 31493
+        },
+        {
+          "name": "Hardened Academic",
+          "wr": 60.6,
+          "games": 28053
+        },
+        {
+          "name": "Scolding Administrator",
+          "wr": 60.4,
+          "games": 51212
+        },
+        {
+          "name": "Ambitious Augmenter",
+          "wr": 60.4,
+          "games": 24282
+        },
+        {
+          "name": "Traumatic Critique",
+          "wr": 60.3,
+          "games": 33623
+        },
+        {
+          "name": "Exhibition Tidecaller",
+          "wr": 60.3,
+          "games": 32444
+        },
+        {
+          "name": "Stress Dream",
+          "wr": 60.1,
+          "games": 76388
+        },
+        {
+          "name": "Moseo, Vein's New Dean",
+          "wr": 60.1,
+          "games": 23833
+        },
+        {
+          "name": "Postmortem Professor",
+          "wr": 60.1,
+          "games": 23124
+        },
+        {
+          "name": "Akroma's Will",
+          "wr": 60.1,
+          "games": 3435
+        },
+        {
+          "name": "Stock Up",
+          "wr": 60.0,
+          "games": 69588
+        },
+        {
+          "name": "Library of Alexandria",
+          "wr": 60.0,
+          "games": 3177
+        },
+        {
+          "name": "Subterranean Tremors",
+          "wr": 59.9,
+          "games": 3691
+        },
+        {
+          "name": "Arcane Omens",
+          "wr": 59.8,
+          "games": 54788
+        },
+        {
+          "name": "Molten-Core Maestro",
+          "wr": 59.7,
+          "games": 32030
+        },
+        {
+          "name": "Conciliator's Duelist",
+          "wr": 59.7,
+          "games": 22348
+        },
+        {
+          "name": "Silverquill Charm",
+          "wr": 59.5,
+          "games": 47367
+        },
+        {
+          "name": "Jadzi, Steward of Fate",
+          "wr": 59.5,
+          "games": 31432
+        },
+        {
+          "name": "Brotherhood's End",
+          "wr": 59.5,
+          "games": 5739
+        },
+        {
+          "name": "Molten Note",
+          "wr": 59.4,
+          "games": 72080
+        },
+        {
+          "name": "Emeritus of Abundance",
+          "wr": 59.3,
+          "games": 12212
+        },
+        {
+          "name": "Elite Interceptor",
+          "wr": 59.2,
+          "games": 172182
+        },
+        {
+          "name": "Pursue the Past",
+          "wr": 59.1,
+          "games": 131150
+        },
+        {
+          "name": "Slumbering Trudge",
+          "wr": 59.1,
+          "games": 25247
+        },
+        {
+          "name": "Blech, Loafing Pest",
+          "wr": 59.1,
+          "games": 17398
+        },
+        {
+          "name": "Dismember",
+          "wr": 59.1,
+          "games": 6922
+        },
+        {
+          "name": "Practiced Scrollsmith",
+          "wr": 59.0,
+          "games": 70789
+        },
+        {
+          "name": "Scheming Silvertongue",
+          "wr": 59.0,
+          "games": 23256
+        },
+        {
+          "name": "Emeritus of Woe",
+          "wr": 59.0,
+          "games": 12640
+        },
+        {
+          "name": "Strixhaven Skycoach",
+          "wr": 58.9,
+          "games": 79923
+        },
+        {
+          "name": "Repel Calamity",
+          "wr": 58.9,
+          "games": 64803
+        },
+        {
+          "name": "Vicious Rivalry",
+          "wr": 58.9,
+          "games": 21501
+        },
+        {
+          "name": "Sundering Archaic",
+          "wr": 58.8,
+          "games": 67627
+        },
+        {
+          "name": "Vibrant Outburst",
+          "wr": 58.8,
+          "games": 65067
+        },
+        {
+          "name": "Sanar, Unfinished Genius",
+          "wr": 58.8,
+          "games": 64162
+        },
+        {
+          "name": "Pestbrood Sloth",
+          "wr": 58.8,
+          "games": 51066
+        },
+        {
+          "name": "Great Hall of the Biblioplex",
+          "wr": 58.8,
+          "games": 31228
+        },
+        {
+          "name": "Reprieve",
+          "wr": 58.8,
+          "games": 6597
+        },
+        {
+          "name": "Burst Lightning",
+          "wr": 58.7,
+          "games": 72582
+        },
+        {
+          "name": "Cyclonic Rift",
+          "wr": 58.7,
+          "games": 3010
+        },
+        {
+          "name": "Foolish Fate",
+          "wr": 58.6,
+          "games": 54439
+        },
+        {
+          "name": "Pensive Professor",
+          "wr": 58.6,
+          "games": 28232
+        },
+        {
+          "name": "Daze",
+          "wr": 58.6,
+          "games": 5110
         }
       ]
     },
     "tmt": {
       "code": "TMT",
-      "name": "Teenage Mutant Ninja Turtles",
-      "updatedAt": "2026-10-01T06:58:30.679696Z",
+      "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
+      "updatedAt": "2026-10-01T07:32:27.412873Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -284,6 +1284,256 @@
           "name": "Courier of Comestibles",
           "wr": 62.8,
           "games": 32242
+        },
+        {
+          "name": "Don & Leo, Problem Solvers",
+          "wr": 62.8,
+          "games": 10218
+        },
+        {
+          "name": "Dark Leo & Shredder",
+          "wr": 62.7,
+          "games": 4496
+        },
+        {
+          "name": "Turncoat Kunoichi",
+          "wr": 62.6,
+          "games": 8193
+        },
+        {
+          "name": "Does Machines",
+          "wr": 62.3,
+          "games": 9775
+        },
+        {
+          "name": "Metalhead",
+          "wr": 62.2,
+          "games": 36605
+        },
+        {
+          "name": "Brilliance Unleashed",
+          "wr": 62.2,
+          "games": 35750
+        },
+        {
+          "name": "Mikey & Don, Party Planners",
+          "wr": 62.0,
+          "games": 9097
+        },
+        {
+          "name": "North Wind Avatar",
+          "wr": 62.0,
+          "games": 6444
+        },
+        {
+          "name": "Triceraton Commander",
+          "wr": 62.0,
+          "games": 5231
+        },
+        {
+          "name": "Kitsune, Dragon's Daughter",
+          "wr": 61.8,
+          "games": 10436
+        },
+        {
+          "name": "Shadowspear",
+          "wr": 61.8,
+          "games": 688
+        },
+        {
+          "name": "Ravenous Robots",
+          "wr": 61.6,
+          "games": 8476
+        },
+        {
+          "name": "Frog Butler",
+          "wr": 61.4,
+          "games": 72548
+        },
+        {
+          "name": "Casey Jones, Jury-Rig Justiciar",
+          "wr": 61.4,
+          "games": 26437
+        },
+        {
+          "name": "Leatherhead, Swamp Stalker",
+          "wr": 61.4,
+          "games": 7745
+        },
+        {
+          "name": "Raph & Mikey, Troublemakers",
+          "wr": 61.2,
+          "games": 8630
+        },
+        {
+          "name": "The Cloning of Shredder",
+          "wr": 61.1,
+          "games": 5775
+        },
+        {
+          "name": "Leonardo, Sewer Samurai",
+          "wr": 61.1,
+          "games": 3852
+        },
+        {
+          "name": "Tainted Treats",
+          "wr": 61.0,
+          "games": 25599
+        },
+        {
+          "name": "Chrome Dome",
+          "wr": 60.9,
+          "games": 9338
+        },
+        {
+          "name": "Ooze Spill",
+          "wr": 60.6,
+          "games": 25141
+        },
+        {
+          "name": "Weather Maker",
+          "wr": 60.5,
+          "games": 8894
+        },
+        {
+          "name": "Michelangelo, Weirdness to 11",
+          "wr": 60.5,
+          "games": 7488
+        },
+        {
+          "name": "Lessons from Life",
+          "wr": 60.4,
+          "games": 26260
+        },
+        {
+          "name": "TCRI Building",
+          "wr": 60.2,
+          "games": 44586
+        },
+        {
+          "name": "Rat King, Verminister",
+          "wr": 59.9,
+          "games": 8147
+        },
+        {
+          "name": "Manhole Missile",
+          "wr": 59.8,
+          "games": 64614
+        },
+        {
+          "name": "Baxter Stockman",
+          "wr": 59.8,
+          "games": 27877
+        },
+        {
+          "name": "Savanti Romero, Time's Exile",
+          "wr": 59.8,
+          "games": 8090
+        },
+        {
+          "name": "Mouser Foundry",
+          "wr": 59.7,
+          "games": 68279
+        },
+        {
+          "name": "Transdimensional Bovine",
+          "wr": 59.6,
+          "games": 7699
+        },
+        {
+          "name": "Ninja Teen",
+          "wr": 59.6,
+          "games": 6464
+        },
+        {
+          "name": "The Last Ronin's Technique",
+          "wr": 59.5,
+          "games": 21882
+        },
+        {
+          "name": "Sewer-veillance Cam",
+          "wr": 59.4,
+          "games": 67648
+        },
+        {
+          "name": "Super Shredder",
+          "wr": 59.4,
+          "games": 4965
+        },
+        {
+          "name": "Undercity Sewers",
+          "wr": 59.3,
+          "games": 519
+        },
+        {
+          "name": "Return to the Sewers",
+          "wr": 59.2,
+          "games": 61037
+        },
+        {
+          "name": "Mutant Town",
+          "wr": 59.2,
+          "games": 40596
+        },
+        {
+          "name": "Turtle Blimp",
+          "wr": 59.2,
+          "games": 28470
+        },
+        {
+          "name": "Leonardo, Leader in Blue",
+          "wr": 59.2,
+          "games": 20856
+        },
+        {
+          "name": "Krang, Master Mind",
+          "wr": 59.2,
+          "games": 8806
+        },
+        {
+          "name": "Donatello, Mutant Mechanic",
+          "wr": 59.1,
+          "games": 4776
+        },
+        {
+          "name": "Buzz Bots",
+          "wr": 59.0,
+          "games": 64090
+        },
+        {
+          "name": "Splinter, Hamato Yoshi",
+          "wr": 59.0,
+          "games": 19252
+        },
+        {
+          "name": "Raphael, the Nightwatcher",
+          "wr": 58.9,
+          "games": 6315
+        },
+        {
+          "name": "Technodrome",
+          "wr": 58.9,
+          "games": 4983
+        },
+        {
+          "name": "Dimensional Exile",
+          "wr": 58.8,
+          "games": 21991
+        },
+        {
+          "name": "Lita, Little Orphan Amphibian",
+          "wr": 58.8,
+          "games": 20652
+        },
+        {
+          "name": "Novel Nunchaku",
+          "wr": 58.7,
+          "games": 22874
+        },
+        {
+          "name": "Mutagen Man, Living Ooze",
+          "wr": 58.7,
+          "games": 7512
         }
       ]
     }
