@@ -25,7 +25,7 @@
 
   function startCore(){
     if(corePromise) return corePromise;
-    corePromise = load('commander.js?v=20261001stable');
+    corePromise = load('commander.js?v=20261001stable2');
     return corePromise;
   }
 
@@ -47,7 +47,6 @@
     return toolsPromise;
   }
 
-  // 画面に入れば即起動。
   if('IntersectionObserver' in window){
     const coreTargets = [builder, popular].filter(Boolean);
     const io = new IntersectionObserver(entries => {
@@ -59,19 +58,27 @@
     coreTargets.forEach(el => io.observe(el));
   }
 
-  // ユーザー操作時は全機能を即起動。
+  // 入力欄の focus / keydown / pointerdown では重い追加機能を読まない。
+  // 明示的な操作（ボタン・選択変更）だけで追加機能を起動する。
   if(builder){
-    const activate = () => startTools();
-    builder.addEventListener('pointerdown', activate, {once:true, passive:true});
-    builder.addEventListener('focusin', activate, {once:true});
-    builder.addEventListener('keydown', activate, {once:true});
+    builder.addEventListener('click', e => {
+      const button = e.target.closest('button');
+      if(button) startTools();
+    }, {passive:true});
+
+    builder.addEventListener('change', e => {
+      if(e.target.matches('select')) {
+        if('requestIdleCallback' in window) requestIdleCallback(() => startTools(), {timeout:1200});
+        else setTimeout(() => startTools(), 250);
+      }
+    });
   }
 
   document.querySelectorAll('a[href="#builder"]').forEach(a => {
-    a.addEventListener('click', () => startTools(), {once:true});
+    a.addEventListener('click', () => startCore(), {once:true});
   });
 
-  // 安全弁：IntersectionObserverが動かない環境でも必ず本体を起動。
+  // 安全弁：本体だけは必ず起動。追加機能はユーザー操作まで待つ。
   const guaranteedStart = () => setTimeout(() => startCore(), 450);
   if(document.readyState === 'complete' || document.readyState === 'interactive') guaranteedStart();
   else window.addEventListener('DOMContentLoaded', guaranteedStart, {once:true});
