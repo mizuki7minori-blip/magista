@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-01T06:56:23.692411Z",
+  "generatedAt": "2026-10-01T06:58:30.679696Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "updatedAt": "2026-10-01T06:58:30.679696Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
@@ -62,7 +62,7 @@
     "hob": {
       "code": "HOB",
       "name": "The Hobbit",
-      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "updatedAt": "2026-10-01T06:58:30.679696Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -119,7 +119,7 @@
     "msh": {
       "code": "MSH",
       "name": "Marvel Super Heroes",
-      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "updatedAt": "2026-10-01T06:58:30.679696Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -176,7 +176,7 @@
     "sos": {
       "code": "SOS",
       "name": "Secrets of Strixhaven",
-      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "updatedAt": "2026-10-01T06:58:30.679696Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -233,7 +233,7 @@
     "tmt": {
       "code": "TMT",
       "name": "Teenage Mutant Ninja Turtles",
-      "updatedAt": "2026-10-01T06:56:23.692411Z",
+      "updatedAt": "2026-10-01T06:58:30.679696Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
