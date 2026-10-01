@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MAGSTA MTGのリミテッド攻略・環境分析。シリーズごとに17Landsのカードランキング、ドラフト情報、カード画像を確認できます。">
+<meta name="description" content="MAGSTA MTGのリミテッド攻略・環境分析。直近5シリーズの17Landsカードランキング、ドラフト情報、カード画像を確認できます。">
 <title>MAGSTA MTG｜リミテッド攻略・環境分析</title>
 <link rel="preconnect" href="https://api.scryfall.com" crossorigin>
 <link rel="preconnect" href="https://cards.scryfall.io" crossorigin>
@@ -22,19 +22,16 @@
 
 <main id="main-content" class="limited-page">
 <section class="limited-set-picker" aria-labelledby="limited-set-picker-title">
-  <label id="limited-set-picker-title" for="limited-set-select">シリーズを選択</label>
-  <p>シリーズを選ぶと、17Landsランキング・攻略情報・カード画像がまとめて切り替わります。</p>
+  <label id="limited-set-picker-title" for="limited-set-select">直近5シリーズから選択</label>
+  <p>保存済みの17Landsランキングを先に表示し、新しいデータ取得に成功したときだけ更新します。</p>
   <select id="limited-set-select">
     <option value="fra">リアリティ・フラクチャー（FRA）</option>
     <option value="hob">The Hobbit（HOB）</option>
     <option value="msh">Marvel Super Heroes（MSH）</option>
     <option value="sos">Secrets of Strixhaven（SOS）</option>
     <option value="tmt">Teenage Mutant Ninja Turtles（TMT）</option>
-    <option value="ecl">Lorwyn Eclipsed（ECL）</option>
-    <option value="fin">FINAL FANTASY（FIN）</option>
-    <option value="tdm">タルキール：龍嵐録（TDM）</option>
   </select>
-  <div class="limited-series-note">ランダム画像ではなく、確認できた実戦ランキングだけを表示します。</div>
+  <div class="limited-series-note">外部データ取得に失敗しても、前回保存したランキングは消えません。</div>
 </section>
 
 <section class="limited-hero">
@@ -50,33 +47,33 @@
 </section>
 
 <section class="limited-section" aria-labelledby="limited-guide-heading">
-  <div class="limited-section-title"><div><span class="limited-kicker">シリーズ別攻略</span><h2 id="limited-guide-heading">ドラフト攻略サマリー</h2></div><span id="limited-guide-status" class="limited-guide-status">更新中</span></div>
+  <div class="limited-section-title"><div><span class="limited-kicker">シリーズ別攻略</span><h2 id="limited-guide-heading">ドラフト攻略サマリー</h2></div><span id="limited-guide-status" class="limited-guide-status">ランキング連動</span></div>
   <div class="limited-grid">
-    <article class="limited-card"><h2>おすすめ色</h2><p id="limited-best-colors" class="limited-guide-value">最新データ確認中</p><p>色ごとの勝率・深さ・コモンの質を見て更新します。</p></article>
-    <article class="limited-card"><h2>代表アーキタイプ</h2><p id="limited-archetypes" class="limited-guide-value">最新データ確認中</p><p>色の組み合わせと主要シナジーをシリーズごとに表示します。</p></article>
+    <article class="limited-card"><h2>おすすめ色</h2><p id="limited-best-colors" class="limited-guide-value">17Lands集計を基準に順次更新</p><p>色ごとの勝率・深さ・コモンの質を見て更新します。</p></article>
+    <article class="limited-card"><h2>代表アーキタイプ</h2><p id="limited-archetypes" class="limited-guide-value">シリーズ別に順次追加</p><p>色の組み合わせと主要シナジーをシリーズごとに表示します。</p></article>
     <article class="limited-card"><h2>初手の考え方</h2><p id="limited-first-pick" class="limited-guide-value">除去・ボム・柔軟性を優先</p><p>単純な固定順位ではなく、そのシリーズの速度とシナジー依存度も加味します。</p></article>
   </div>
 </section>
 
 <section class="limited-section">
-  <div class="limited-section-title"><div><span class="limited-kicker">実戦データ</span><h2 id="limited-top-heading">17Lands カードランキング</h2></div><p id="limited-top-note">確認済みデータのみ掲載</p></div>
-  <div class="limited-card"><ol id="limited-top-cards" class="limited-top-list"><li>最新データ確認中</li></ol></div>
+  <div class="limited-section-title"><div><span class="limited-kicker">実戦データ</span><h2 id="limited-top-heading">17Lands カードランキング</h2></div><p id="limited-top-note">保存済みデータを表示</p></div>
+  <div class="limited-card"><ol id="limited-top-cards" class="limited-top-list"><li>保存ランキングを読み込みます</li></ol></div>
 </section>
 
 <section class="limited-section">
   <div class="limited-section-title"><div><span class="limited-kicker">ランキング画像</span><h2 id="limited-gallery-title">17Lands上位カードを画像で見る</h2></div><p>GIH WR順。画像を押すとカード詳細を開きます</p></div>
-  <div id="limited-card-gallery" class="limited-image-grid"><p>ランキングを読み込み中です…</p></div>
+  <div id="limited-card-gallery" class="limited-image-grid"><p>保存ランキングを読み込み中です…</p></div>
 </section>
 
 <section class="limited-section">
   <div class="limited-section-title"><div><span class="limited-kicker">指標の見方</span><h2>まず見る指標</h2></div></div>
   <div class="limited-table-wrap"><table class="limited-table"><thead><tr><th>指標</th><th>意味</th><th>使いどころ</th></tr></thead><tbody><tr><td><span class="limited-badge">GIH WR</span></td><td>手札に入ったゲームでの勝率</td><td>カードの実戦貢献を確認</td></tr><tr><td><span class="limited-badge">% GP</span></td><td>ピック後にデッキで使われた割合</td><td>実際の採用されやすさを見る</td></tr><tr><td><span class="limited-badge">ATA</span></td><td>実際に取られた平均順位</td><td>平均ピック位置を確認</td></tr><tr><td><span class="limited-badge">ALSA</span></td><td>最後に見かけた平均順位</td><td>カードがどの程度流れてくるか確認</td></tr></tbody></table></div>
-  <p class="limited-note">17Landsの公開データは更新で変動します。MAGSTAでは確認できた数値だけをランキングとして掲載します。</p>
+  <p class="limited-note">ランキングはGitHub側で定期保存します。更新取得に失敗した場合は前回データを維持します。</p>
 </section>
 </main>
 
 <footer class="site-footer"><div class="container footer-inner"><div><a class="logo" href="index.html"><strong>MAGSTA.</strong></a><p>MTGの話題をひとつに。</p><small>編集：犬居わんこ</small></div><nav aria-label="フッターメニュー"><a href="articles.html">記事一覧</a><a href="weekly.html">週間企画</a><a href="strategy.html">MAGSTAについて</a><a href="contact.html">お問い合わせ</a></nav><small>© 2026 MAGSTA<br>Magic: The GatheringはWizards of the Coastの商標です。</small></div></footer>
 <script src="mobile-menu.js"></script>
-<script src="limited-card-images.js?v=20261001d"></script>
+<script src="limited-card-images.js?v=20261001e"></script>
 </body>
 </html>
