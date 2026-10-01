@@ -3,17 +3,23 @@ function renderAffiliate(targetId = 'affiliate-products') {
   if (!target || typeof MAGSTA_AFFILIATE === 'undefined') return;
 
   const items = selectAffiliateProducts().filter(item => safeAffiliateUrl(item.url));
-  if (!items.length) return;
+  if (!items.length) {
+    target.innerHTML = '';
+    return;
+  }
+
+  const series = detectAffiliateSeries();
+  const heading = series ? 'このシリーズの関連商品' : 'この記事に関連する商品・サービス';
 
   target.innerHTML = `
     <div class="affiliate-box">
       <div class="affiliate-head"><span class="section-kicker">RECOMMENDED</span><span class="affiliate-label">PR / AD</span></div>
-      <h2>この記事に関連する商品・サービス</h2>
+      <h2>${heading}</h2>
       <p class="affiliate-disclosure">${MAGSTA_AFFILIATE.disclosure}</p>
       <div class="affiliate-list">${items.map(item => `
-        <div class="affiliate-item">
-          <div><strong>${escapeAffiliate(item.title)}</strong><p>${escapeAffiliate(item.description)}</p></div>
-          <a class="button primary affiliate-button" href="${escapeAffiliate(safeAffiliateUrl(item.url))}" target="_blank" rel="sponsored nofollow noopener noreferrer">${escapeAffiliate(item.label)} →</a>
+        <div class="affiliate-item${item.kind === 'secret-lair' ? ' affiliate-item-secret-lair' : ''}">
+          <div><strong>${escapeAffiliate(item.title)}</strong><p>${escapeAffiliate(item.description)}</p>${item.affiliate === false ? '<small class="affiliate-source-note">参考リンク</small>' : '<small class="affiliate-source-note">アフィリエイト</small>'}</div>
+          <a class="button primary affiliate-button" href="${escapeAffiliate(safeAffiliateUrl(item.url))}" target="_blank" rel="${item.affiliate === false ? 'noopener noreferrer' : 'sponsored nofollow noopener noreferrer'}">${escapeAffiliate(item.label)} →</a>
           ${safeAffiliateUrl(item.pixel) ? `<img class="affiliate-tracker" src="${escapeAffiliate(safeAffiliateUrl(item.pixel))}" alt="" width="1" height="1" aria-hidden="true">` : ''}
         </div>`).join('')}</div>
     </div>`;
@@ -22,9 +28,15 @@ function renderAffiliate(targetId = 'affiliate-products') {
 function selectAffiliateProducts() {
   const products = MAGSTA_AFFILIATE.products || [];
   const byKey = new Map(products.map(item => [item.key, item]));
+  const series = detectAffiliateSeries();
+  const seriesKeys = series && MAGSTA_AFFILIATE.seriesProducts?.[series];
+
+  if (Array.isArray(seriesKeys) && seriesKeys.length) {
+    return seriesKeys.map(key => byKey.get(key)).filter(Boolean);
+  }
+
   const path = location.pathname.split('/').pop() || 'index.html';
   const exactKeys = MAGSTA_AFFILIATE.articleProducts?.[path];
-
   if (Array.isArray(exactKeys) && exactKeys.length) {
     return exactKeys.map(key => byKey.get(key)).filter(Boolean);
   }
@@ -36,6 +48,13 @@ function selectAffiliateProducts() {
 
   const selected = categoryKeys.map(key => byKey.get(key)).filter(Boolean);
   return selected.length ? selected : products.slice(0, 1);
+}
+
+function detectAffiliateSeries() {
+  const params = new URLSearchParams(location.search);
+  const explicit = document.body?.dataset?.affiliateSeries || params.get('set');
+  const key = String(explicit || '').toLowerCase();
+  return MAGSTA_AFFILIATE.seriesProducts?.[key] ? key : '';
 }
 
 function detectAffiliateCategory() {
@@ -66,4 +85,6 @@ function safeAffiliateUrl(value) {
   catch { return ''; }
 }
 
+window.renderAffiliate = renderAffiliate;
+window.addEventListener('magsta:series-change', () => renderAffiliate());
 document.addEventListener('DOMContentLoaded', () => renderAffiliate());
