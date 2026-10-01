@@ -25,7 +25,10 @@
 
   function startCore(){
     if(corePromise) return corePromise;
-    corePromise = load('commander.js?v=20261001stable2');
+    corePromise = (async()=>{
+      await load('commander.js?v=20261001stable2');
+      await load('commander-search-cleanup.js?v=20261001');
+    })();
     return corePromise;
   }
 
@@ -58,8 +61,6 @@
     coreTargets.forEach(el => io.observe(el));
   }
 
-  // 入力欄の focus / keydown / pointerdown では重い追加機能を読まない。
-  // 明示的な操作（ボタン・選択変更）だけで追加機能を起動する。
   if(builder){
     builder.addEventListener('click', e => {
       const button = e.target.closest('button');
@@ -78,7 +79,6 @@
     a.addEventListener('click', () => startCore(), {once:true});
   });
 
-  // 安全弁：本体だけは必ず起動。追加機能はユーザー操作まで待つ。
   const guaranteedStart = () => setTimeout(() => startCore(), 450);
   if(document.readyState === 'complete' || document.readyState === 'interactive') guaranteedStart();
   else window.addEventListener('DOMContentLoaded', guaranteedStart, {once:true});
