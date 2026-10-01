@@ -3,42 +3,55 @@
   const popular = document.getElementById('popular');
   if (!builder && !popular) return;
 
-  let coreStarted = false;
-  let toolsStarted = false;
+  let corePromise = null;
+  let toolsPromise = null;
 
   const load = src => new Promise(resolve => {
-    if (document.querySelector(`script[data-lazy-src="${src}"]`)) return resolve();
+    const existing = document.querySelector(`script[data-lazy-src="${src}"]`);
+    if (existing) {
+      if (existing.dataset.loaded === '1') return resolve();
+      existing.addEventListener('load', resolve, {once:true});
+      existing.addEventListener('error', resolve, {once:true});
+      return;
+    }
     const s = document.createElement('script');
     s.src = src;
     s.async = true;
     s.dataset.lazySrc = src;
-    s.onload = resolve;
+    s.onload = () => { s.dataset.loaded = '1'; resolve(); };
     s.onerror = resolve;
     document.body.appendChild(s);
   });
 
-  async function startCore(){
-    if(coreStarted) return;
-    coreStarted = true;
-    await load('commander.js?v=20261001ultra');
+  function startCore(){
+    if(corePromise) return corePromise;
+    corePromise = load('commander.js?v=20261001ultra2');
+    return corePromise;
   }
 
-  async function startTools(){
-    if(toolsStarted) return;
-    toolsStarted = true;
-    await startCore();
-    const files = [
-      'commander-dynamic.js?v=20261001j',
-      'commander-ja.js?v=20261001a',
-      'commander-decklist.js?v=20261001b',
-      'commander-card-search.js?v=20261001',
-      'commander-strategy.js?v=20261001',
-      'commander-diagnosis.js?v=20261001b'
-    ];
-    for(const file of files) await load(file);
+  function startTools(){
+    if(toolsPromise) return toolsPromise;
+    toolsPromise = (async()=>{
+      await startCore();
+
+      // 依存しない機能は並列読み込み。
+      await Promise.all([
+        load('commander-dynamic.js?v=20261001j'),
+        load('commander-ja.js?v=20261001a'),
+        load('commander-strategy.js?v=20261001')
+      ]);
+
+      // デッキリストを先に作り、その後に依存機能を並列で追加。
+      await load('commander-decklist.js?v=20261001b');
+      await Promise.all([
+        load('commander-card-search.js?v=20261001'),
+        load('commander-diagnosis.js?v=20261001b')
+      ]);
+    })();
+    return toolsPromise;
   }
 
-  // 人気統率者は実際に画面へ入る直前まで本体JSを読み込まない。
+  // ビルダー/人気統率者が画面に入った時だけ本体を起動。
   if('IntersectionObserver' in window){
     const coreTargets = [builder, popular].filter(Boolean);
     const io = new IntersectionObserver(entries => {
@@ -50,7 +63,7 @@
     coreTargets.forEach(el => io.observe(el));
   }
 
-  // ビルダーの追加機能は、ユーザーが触った時だけ読み込む。
+  // 操作された場合は追加機能を即読み込み。
   if(builder){
     const activate = () => startTools();
     builder.addEventListener('pointerdown', activate, {once:true, passive:true});
@@ -58,12 +71,10 @@
     builder.addEventListener('keydown', activate, {once:true});
   }
 
-  // 上部の「相性カードを探す」から直接飛んだ場合のみ起動。
   document.querySelectorAll('a[href="#builder"]').forEach(a => {
-    a.addEventListener('click', () => { startCore(); startTools(); }, {once:true});
+    a.addEventListener('click', () => startTools(), {once:true});
   });
 
-  // IntersectionObserver 非対応ブラウザのみ、完全静止は避けるため load 後に本体だけ読み込む。
   if(!('IntersectionObserver' in window)){
     window.addEventListener('load', startCore, {once:true});
   }
