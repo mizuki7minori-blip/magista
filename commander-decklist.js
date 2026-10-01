@@ -37,6 +37,10 @@
 
   const displayName = () => select.options[select.selectedIndex]?.textContent?.trim() || select.value || '統率者';
 
+  function publish(){
+    window.dispatchEvent(new CustomEvent('magsta:deck-updated',{detail:{commander:select.value,displayCommander:displayName(),cards:[...items.values()]}}));
+  }
+
   function addCard(data){
     if(!data?.name) return;
     if(items.has(data.name)){ status.textContent='そのカードはすでに採用されています。'; return; }
@@ -54,6 +58,7 @@
       const key=[...items.keys()][Number(btn.dataset.remove)];
       items.delete(key); syncButtons(); render();
     }));
+    publish();
   }
 
   function syncButtons(){
