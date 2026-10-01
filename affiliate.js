@@ -2,7 +2,8 @@ function renderAffiliate(targetId = 'affiliate-products') {
   const target = document.getElementById(targetId);
   if (!target || typeof MAGSTA_AFFILIATE === 'undefined') return;
 
-  const items = selectAffiliateProducts().filter(item => safeAffiliateUrl(item.url));
+  const maxItems = Number(MAGSTA_AFFILIATE.maxItems) || 4;
+  const items = selectAffiliateProducts().filter(item => safeAffiliateUrl(item.url)).slice(0, maxItems);
   if (!items.length) {
     target.innerHTML = '';
     return;
@@ -10,19 +11,47 @@ function renderAffiliate(targetId = 'affiliate-products') {
 
   const series = detectAffiliateSeries();
   const heading = series ? 'このシリーズの関連商品' : 'この記事に関連する商品・サービス';
+  const hasAffiliate = items.some(item => item.affiliate !== false);
+  const headLabel = hasAffiliate ? 'PR / 商品リンク' : 'RELATED ITEMS';
 
   target.innerHTML = `
     <div class="affiliate-box">
-      <div class="affiliate-head"><span class="section-kicker">RECOMMENDED</span><span class="affiliate-label">PR / AD</span></div>
+      <div class="affiliate-head"><span class="section-kicker">RECOMMENDED</span><span class="affiliate-label">${headLabel}</span></div>
       <h2>${heading}</h2>
-      <p class="affiliate-disclosure">${MAGSTA_AFFILIATE.disclosure}</p>
-      <div class="affiliate-list">${items.map(item => `
-        <div class="affiliate-item${item.kind === 'secret-lair' ? ' affiliate-item-secret-lair' : ''}">
-          <div><strong>${escapeAffiliate(item.title)}</strong><p>${escapeAffiliate(item.description)}</p>${item.affiliate === false ? '<small class="affiliate-source-note">参考リンク</small>' : '<small class="affiliate-source-note">アフィリエイト</small>'}</div>
-          <a class="button primary affiliate-button" href="${escapeAffiliate(safeAffiliateUrl(item.url))}" target="_blank" rel="${item.affiliate === false ? 'noopener noreferrer' : 'sponsored nofollow noopener noreferrer'}">${escapeAffiliate(item.label)} →</a>
-          ${safeAffiliateUrl(item.pixel) ? `<img class="affiliate-tracker" src="${escapeAffiliate(safeAffiliateUrl(item.pixel))}" alt="" width="1" height="1" aria-hidden="true">` : ''}
-        </div>`).join('')}</div>
+      ${hasAffiliate ? `<p class="affiliate-disclosure">${escapeAffiliate(MAGSTA_AFFILIATE.disclosure)}</p>` : '<p class="affiliate-disclosure">シリーズに関連する商品・公式限定商品への参考リンクです。価格・在庫・販売地域はリンク先で確認してください。</p>'}
+      <div class="affiliate-list">${items.map(item => renderAffiliateItem(item)).join('')}</div>
     </div>`;
+}
+
+function renderAffiliateItem(item) {
+  const url = safeAffiliateUrl(item.url);
+  const isAffiliate = item.affiliate !== false;
+  const kind = String(item.kind || 'product').replace(/[^a-z0-9-]/gi, '');
+  const badge = item.badge || kindLabel(kind);
+  return `
+    <article class="affiliate-item affiliate-kind-${escapeAffiliate(kind)}${kind === 'secret-lair' ? ' affiliate-item-secret-lair' : ''}">
+      <div class="affiliate-copy">
+        <div class="affiliate-item-meta">
+          <span class="affiliate-kind-badge">${escapeAffiliate(badge)}</span>
+          <span class="affiliate-source-note">${isAffiliate ? 'アフィリエイト' : '参考リンク'}</span>
+        </div>
+        <strong>${escapeAffiliate(item.title)}</strong>
+        <p>${escapeAffiliate(item.description)}</p>
+      </div>
+      <a class="button primary affiliate-button" href="${escapeAffiliate(url)}" target="_blank" rel="${isAffiliate ? 'sponsored nofollow noopener noreferrer' : 'noopener noreferrer'}">${escapeAffiliate(item.label)} →</a>
+      ${safeAffiliateUrl(item.pixel) ? `<img class="affiliate-tracker" src="${escapeAffiliate(safeAffiliateUrl(item.pixel))}" alt="" width="1" height="1" aria-hidden="true">` : ''}
+    </article>`;
+}
+
+function kindLabel(kind) {
+  const labels = {
+    sealed: 'BOX / Bundle',
+    supply: 'サプライ',
+    'secret-lair': 'Secret Lair',
+    service: 'サービス',
+    product: '関連商品'
+  };
+  return labels[kind] || '関連商品';
 }
 
 function selectAffiliateProducts() {
