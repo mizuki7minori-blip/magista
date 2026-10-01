@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-01T07:32:27.412873Z",
+  "generatedAt": "2026-10-01T08:19:01.048905Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-10-01T07:32:27.412873Z",
+      "updatedAt": "2026-10-01T08:19:01.048905Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
@@ -307,12 +307,13 @@
           "wr": 58.0,
           "games": 10840
         }
-      ]
+      ],
+      "archetypes": []
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-10-01T07:32:27.412873Z",
+      "updatedAt": "2026-10-01T08:19:01.048905Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -614,12 +615,13 @@
           "wr": 56.7,
           "games": 36872
         }
-      ]
+      ],
+      "archetypes": []
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-10-01T07:32:27.412873Z",
+      "updatedAt": "2026-10-01T08:19:01.048905Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -921,12 +923,13 @@
           "wr": 58.9,
           "games": 20242
         }
-      ]
+      ],
+      "archetypes": []
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-10-01T07:32:27.412873Z",
+      "updatedAt": "2026-10-01T08:19:01.048905Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -1228,12 +1231,13 @@
           "wr": 58.6,
           "games": 5110
         }
-      ]
+      ],
+      "archetypes": []
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-10-01T07:32:27.412873Z",
+      "updatedAt": "2026-10-01T08:19:01.048905Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -1535,7 +1539,8 @@
           "wr": 58.7,
           "games": 7512
         }
-      ]
+      ],
+      "archetypes": []
     }
   }
 }
