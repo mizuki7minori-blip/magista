@@ -20,7 +20,7 @@
   builder.className = 'decklist-builder';
   builder.innerHTML = `
     <div class="decklist-head">
-      <div><span class="section-kicker">完成デッキリスト</span><h2>採用カードを99枚にまとめる</h2><p class="commander-note">候補カードの「採用する」を押すと、下のデッキリストへ追加されます。</p></div>
+      <div><span class="section-kicker">完成デッキリスト</span><h2>採用カードを99枚にまとめる</h2><p class="commander-note">候補カードの「採用する」またはカード検索から追加できます。</p></div>
       <div class="decklist-count"><strong id="decklist-current">0</strong> / 99枚 <span>＋統率者1枚</span></div>
     </div>
     <div class="decklist-actions"><button type="button" id="decklist-copy">デッキリストをコピー</button><button type="button" id="decklist-clear">採用カードをすべて外す</button></div>
@@ -37,10 +37,19 @@
 
   const displayName = () => select.options[select.selectedIndex]?.textContent?.trim() || select.value || '統率者';
 
+  function addCard(data){
+    if(!data?.name) return;
+    if(items.has(data.name)){ status.textContent='そのカードはすでに採用されています。'; return; }
+    if(items.size>=99){ status.textContent='99枚までです。別のカードを外してから追加してください。'; return; }
+    items.set(data.name,{name:data.name,jp:data.jp||data.name,role:data.role||''});
+    status.textContent=`${data.jp||data.name} を採用しました。`;
+    syncButtons(); render();
+  }
+
   function render(){
     current.textContent = String(items.size);
     empty.hidden = items.size > 0;
-    itemsWrap.innerHTML = [...items.values()].map((x,i)=>`<div class="decklist-item"><div><strong>${x.jp || x.name}</strong>${x.jp && x.jp !== x.name ? `<small>${x.name}</small>` : ''}</div><button type="button" data-remove="${i}">外す</button></div>`).join('');
+    itemsWrap.innerHTML = [...items.values()].map((x,i)=>`<div class="decklist-item"><div><strong>${x.jp || x.name}</strong>${x.jp && x.jp !== x.name ? `<small>${x.name}</small>` : ''}${x.role?`<small>${x.role}</small>`:''}</div><button type="button" data-remove="${i}">外す</button></div>`).join('');
     itemsWrap.querySelectorAll('[data-remove]').forEach(btn=>btn.addEventListener('click',()=>{
       const key=[...items.keys()][Number(btn.dataset.remove)];
       items.delete(key); syncButtons(); render();
@@ -56,10 +65,8 @@
       const exists=items.has(original);
       btn.textContent=exists?'採用済み':'採用する'; btn.classList.toggle('added',exists);
       btn.onclick=()=>{
-        if(exists){ items.delete(original); }
-        else if(items.size>=99){ status.textContent='99枚までです。別のカードを外してから追加してください。'; return; }
-        else { items.set(original,{name:original,jp:h3.textContent.trim(),role:card.querySelector('.synergy-role')?.textContent.trim()||''}); }
-        status.textContent=''; syncButtons(); render();
+        if(exists){ items.delete(original); status.textContent='カードを外しました。'; syncButtons(); render(); return; }
+        addCard({name:original,jp:h3.textContent.trim(),role:card.querySelector('.synergy-role')?.textContent.trim()||''});
       };
     });
   }
@@ -71,6 +78,7 @@
     catch(e){ status.textContent='コピーできませんでした。ブラウザの権限をご確認ください。'; }
   });
 
+  window.addEventListener('magsta:add-deck-card',e=>addCard(e.detail));
   const observer = new MutationObserver(()=>syncButtons());
   observer.observe(grid,{childList:true,subtree:true});
   select.addEventListener('change',()=>{items.clear(); status.textContent='統率者を変更したため、採用カードをリセットしました。'; setTimeout(()=>{syncButtons();render();},0);});
