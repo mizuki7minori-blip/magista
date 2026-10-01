@@ -25,6 +25,7 @@
     .any-result-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.any-select-label{font-size:.72rem;font-weight:800;color:#246daf}
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
+    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
   `;
   document.head.appendChild(style);
@@ -38,13 +39,15 @@
     <p>候補が複数ある場合は、画像・日本語名・英語名を見比べて選択できます。</p>
     <div class="any-search-row"><input id="any-commander-input" type="search" placeholder="例：アトラクサ / クラウド / Atraxa"><button id="any-commander-button" class="button primary" type="button">検索</button></div>
     <div id="any-commander-results" class="any-results"></div>
-    <div id="any-commander-status" class="dynamic-note"></div>`;
+    <div id="any-commander-status" class="dynamic-note"></div>
+    <div class="dynamic-actions"><button id="load-synergy-button" class="button secondary" type="button" hidden>相性カード候補を表示</button></div>`;
   controls.before(box);
 
   const input = box.querySelector('#any-commander-input');
   const button = box.querySelector('#any-commander-button');
   const results = box.querySelector('#any-commander-results');
   const status = box.querySelector('#any-commander-status');
+  const loadSynergyButton = box.querySelector('#load-synergy-button');
 
   async function fetchSearch(query) {
     const r = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(query)}&order=edhrec&unique=prints`);
@@ -92,11 +95,10 @@
         const en = c.name || jp;
         return `<button type="button" class="any-result" data-i="${i}" aria-label="${esc(jp)}を統率者に選ぶ">${imgOf(c)?`<img src="${imgOf(c)}" loading="lazy" decoding="async" alt="${esc(jp)}">`:''}<span><strong>${esc(jp)}</strong>${jp!==en?`<small>${esc(en)}</small>`:''}<span class="identity-badges">${(c.color_identity?.length?c.color_identity:['C']).map(x=>`<span>${x}</span>`).join('')}</span></span><span class="any-result-meta"><span class="any-select-label">この統率者を選ぶ</span></span></button>`;
       }).join('');
-      results.querySelectorAll('.any-result').forEach(el => el.addEventListener('click', async () => {
+      results.querySelectorAll('.any-result').forEach(el => el.addEventListener('click', () => {
         results.querySelectorAll('.any-result').forEach(x=>x.classList.remove('is-selected'));
         el.classList.add('is-selected');
-        status.textContent = '選択中…';
-        await chooseCommander(cards[Number(el.dataset.i)]);
+        chooseCommander(cards[Number(el.dataset.i)]);
       }));
       status.textContent = cards.length === 1 ? '1件見つかりました。カードをタップして選択してください。' : `${cards.length}件の候補があります。画像と名前を見比べて選択してください。`;
     } catch(e) {
@@ -127,7 +129,7 @@
     } catch(e) { return []; }
   }
 
-  async function chooseCommander(card) {
+  function chooseCommander(card) {
     state.dynamicCommander = card;
     const existing = [...select.options].find(o => o.value === card.name);
     if (!existing) {
@@ -140,33 +142,52 @@
     }
     select.value = card.name;
     const picked = displayName(card);
-    results.innerHTML=''; input.value='';
+    const identity = card.color_identity || [];
+    const colors = identity.length ? identity.join(' / ') : '無色';
+    const budgetText = budget.value === 'open' ? '上限なし' : `${Number(budget.value).toLocaleString('ja-JP')}円前後`;
+    summary.innerHTML = `<strong>${esc(picked)}</strong>${picked!==card.name?`<small>${esc(card.name)}</small>`:''}固有色：${esc(colors)} / 予算：${budgetText} / ブラケット ${esc(bracket.value)}。`;
+    results.innerHTML='';
+    input.value='';
+    grid.innerHTML = '<p class="builder-empty">統率者を選択しました。相性カードは必要な時だけ読み込めます。</p>';
+    state.suggestions = [];
+    loadSynergyButton.hidden = false;
     status.textContent = `${picked} を統率者に選択しました。`;
-    await renderDynamic();
   }
 
   async function renderDynamic() {
     const c = state.dynamicCommander;
     if (!c || select.value !== c.name) return;
+    loadSynergyButton.disabled = true;
+    loadSynergyButton.textContent = '候補カードを取得中…';
     const identity = c.color_identity || [];
     const colors = identity.length ? identity.join(' / ') : '無色';
-    const budgetText = budget.value === 'open' ? '上限なし' : `${Number(budget.value).toLocaleString('ja-JP')}円前後`;
     const shownName = displayName(c);
-    summary.innerHTML = `<strong>${esc(shownName)}</strong>${shownName!==c.name?`<small>${esc(c.name)}</small>`:''}固有色：${esc(colors)} / 予算：${budgetText} / ブラケット ${esc(bracket.value)}。固有色内の統率者戦合法カードから採用候補を自動抽出します。`;
     grid.innerHTML = '<div class="dynamic-loading">候補カードを取得しています…</div>';
-    const batches = await Promise.all(roleQueries.map(([role,q]) => fetchRole(role,q,identity,c.name)));
-    state.suggestions = batches.flat().slice(0,10);
-    if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">候補カードを取得できませんでした。</p>'; return; }
-    grid.innerHTML = state.suggestions.map(({card,role}) => `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(card.name)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(card.name)}</h3><p>${esc((card.oracle_text||'').slice(0,100))}${(card.oracle_text||'').length>100?'…':''}</p></div></article>`).join('');
-    const high = Number(bracket.value) >= 4;
-    const lands = high ? '34〜36' : '36〜38';
-    if (plan) plan.innerHTML = [['固有色',colors],['土地',lands],['候補カード','10枚'],['調整方針',high?'速度・妨害を厚め':'安定性・テーマ性を重視']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
-    status.textContent = `${shownName} を統率者に選択しました。`;
+    try {
+      const batches = [];
+      for (const [role,q] of roleQueries) {
+        batches.push(await fetchRole(role,q,identity,c.name));
+        await new Promise(r=>setTimeout(r,40));
+      }
+      state.suggestions = batches.flat().slice(0,10);
+      if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">候補カードを取得できませんでした。</p>'; return; }
+      grid.innerHTML = state.suggestions.map(({card,role}) => `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(card.name)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(card.name)}</h3><p>${esc((card.oracle_text||'').slice(0,100))}${(card.oracle_text||'').length>100?'…':''}</p></div></article>`).join('');
+      const high = Number(bracket.value) >= 4;
+      const lands = high ? '34〜36' : '36〜38';
+      if (plan) plan.innerHTML = [['固有色',colors],['土地',lands],['候補カード','10枚'],['調整方針',high?'速度・妨害を厚め':'安定性・テーマ性を重視']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
+      status.textContent = `${shownName} の候補カードを表示しました。`;
+    } finally {
+      loadSynergyButton.disabled = false;
+      loadSynergyButton.textContent = '相性カード候補を再読み込み';
+    }
   }
 
   button.addEventListener('click', searchCommanders);
+  loadSynergyButton.addEventListener('click', renderDynamic);
   input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); searchCommanders(); } });
-  select.addEventListener('change', () => { if (state.dynamicCommander && select.value === state.dynamicCommander.name) renderDynamic(); });
-  budget.addEventListener('change', renderDynamic);
-  bracket.addEventListener('change', renderDynamic);
+  select.addEventListener('change', () => {
+    if (state.dynamicCommander && select.value === state.dynamicCommander.name) chooseCommander(state.dynamicCommander);
+  });
+  budget.addEventListener('change', () => { if(state.dynamicCommander) chooseCommander(state.dynamicCommander); });
+  bracket.addEventListener('change', () => { if(state.dynamicCommander) chooseCommander(state.dynamicCommander); });
 })();
