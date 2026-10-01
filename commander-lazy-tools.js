@@ -28,6 +28,7 @@
     corePromise = (async()=>{
       await load('commander.js?v=20261001stable2');
       await load('commander-search-cleanup.js?v=20261001');
+      await load('commander-dynamic.js?v=20261001selectfix');
     })();
     return corePromise;
   }
@@ -37,7 +38,6 @@
     toolsPromise = (async()=>{
       await startCore();
       await Promise.all([
-        load('commander-dynamic.js?v=20261001j'),
         load('commander-ja.js?v=20261001a'),
         load('commander-strategy.js?v=20261001')
       ]);
@@ -64,13 +64,18 @@
   if(builder){
     builder.addEventListener('click', e => {
       const button = e.target.closest('button');
-      if(button) startTools();
+      if(!button) return;
+      // 検索・候補選択では重い補助機能を起動しない。
+      if(button.closest('.any-commander') || button.classList.contains('commander-chip')) return;
+      startTools();
     }, {passive:true});
 
     builder.addEventListener('change', e => {
       if(e.target.matches('select')) {
-        if('requestIdleCallback' in window) requestIdleCallback(() => startTools(), {timeout:1200});
-        else setTimeout(() => startTools(), 250);
+        // 統率者選択直後は候補カード描画を優先し、補助機能は十分後に回す。
+        const run = () => startTools();
+        if('requestIdleCallback' in window) requestIdleCallback(run, {timeout:3000});
+        else setTimeout(run, 1500);
       }
     });
   }
