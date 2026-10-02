@@ -31,9 +31,9 @@
   if (!gallery || !selector || !archSelector) return;
   const title=$('limited-set-title'), description=$('limited-set-description'), kicker=$('limited-set-kicker'), galleryTitle=$('limited-gallery-title');
   const cardDataLink=$('limited-card-data-link'), colorDataLink=$('limited-color-data-link'), scryfallLink=$('limited-scryfall-link'), articleLink=$('limited-article-link');
-  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note');
+  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note'), synergyPicker=$('limited-synergy-picker'), synergyList=$('limited-synergy-list'), synergyNote=$('limited-synergy-note');
 
-  let requestId=0, activeRole='ALL', lastRender=null;
+  let requestId=0, activeRole='ALL', lastRender=null, activeSynergyCard='';
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
   const getImage=card=>card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris?.normal)?.image_uris.normal||'';
   const getDisplayName=(fallback,jaCard)=>jaCard?.printed_name||fallback;
@@ -109,6 +109,65 @@
     planBalance.textContent=p.balance;
     if(planNote)planNote.textContent=archKey==='ALL'?'全体ランキングから基本方針を表示':'上位20枚の役割・カードテキストから自動分析';
   };
+  const synergyTags=card=>{
+    const text=(card?.oracle_text||card?.card_faces?.map(f=>f.oracle_text||'').join(' ')||'').toLowerCase();
+    const tags=[];
+    const rules=[
+      ['墓地・生け贄',/graveyard|dies|sacrifice/],
+      ['カウンター',/counter on|proliferate/],
+      ['トークン',/token/],
+      ['アーティファクト',/artifact/],
+      ['エンチャント',/enchantment/],
+      ['スペル',/instant|sorcery|noncreature spell/],
+      ['手札差',/draw.*card|discard/],
+      ['回避・打点',/flying|menace|trample|double strike/],
+      ['ライフゲイン',/gain .* life|lifelink/]
+    ];
+    rules.forEach(([name,re])=>{if(re.test(text))tags.push(name);});
+    return tags;
+  };
+
+  const synergyScore=(base,candidate)=>{
+    if(!base||!candidate||base.name===candidate.name)return -999;
+    let score=0;
+    const a=synergyTags(base),b=synergyTags(candidate);
+    const shared=a.filter(x=>b.includes(x));
+    score+=shared.length*4;
+    const baseRole=roleFor(base),candidateRole=roleFor(candidate);
+    if(baseRole===candidateRole)score+=1;
+    if(baseRole==='アーキ中核'&&candidateRole!=='アーキ中核')score+=2;
+    if(candidateRole==='除去')score+=1;
+    const mvA=Number(base.cmc||0),mvB=Number(candidate.cmc||0);
+    if(Math.abs(mvA-mvB)<=2)score+=1;
+    const colorsA=new Set(base.colors||[]),colorsB=candidate.colors||[];
+    if(colorsB.every(x=>colorsA.has(x))||colorsA.size===0)score+=1;
+    return score;
+  };
+
+  const renderSynergy=(set,cards,jaCards,archKey)=>{
+    if(!synergyPicker||!synergyList)return;
+    const ranking=rankingFor(set,archKey);
+    const byName=new Map(cards.map(c=>[c.name,c]));
+    const jaMap=buildJapaneseMap(jaCards);
+    const candidates=ranking.slice(0,12).map(x=>byName.get(x.name)).filter(Boolean);
+    if(!candidates.length){synergyPicker.innerHTML='';synergyList.innerHTML='<div class="limited-card"><strong>候補を準備中です。</strong></div>';return;}
+    if(!activeSynergyCard||!byName.has(activeSynergyCard))activeSynergyCard=candidates[0].name;
+    synergyPicker.innerHTML=candidates.slice(0,5).map(card=>{
+      const ja=jaMap.get(card.name),name=getDisplayName(card.name,ja);
+      return '<button type="button" data-card="'+card.name.replace(/"/g,'&quot;')+'" class="'+(card.name===activeSynergyCard?'is-active':'')+'">'+name+'</button>';
+    }).join('');
+    synergyPicker.querySelectorAll('button[data-card]').forEach(btn=>btn.addEventListener('click',()=>{activeSynergyCard=btn.dataset.card;renderSynergy(set,cards,jaCards,archKey);}));
+    const base=byName.get(activeSynergyCard);
+    const scored=ranking.map(item=>({item,card:byName.get(item.name)})).filter(x=>x.card&&x.card.name!==activeSynergyCard).map(x=>({...x,score:synergyScore(base,x.card)})).sort((a,b)=>b.score-a.score||Number(b.item.wr||0)-Number(a.item.wr||0)).slice(0,5);
+    const baseName=getDisplayName(base.name,jaMap.get(base.name));
+    if(synergyNote)synergyNote.textContent=baseName+' と噛み合う候補TOP5';
+    synergyList.innerHTML=scored.map(({item,card,score},i)=>{
+      const name=getDisplayName(card.name,jaMap.get(card.name));
+      const shared=synergyTags(base).filter(x=>synergyTags(card).includes(x));
+      const reason=shared.length?'共通シナジー：'+shared.join('・'):'役割補完：'+roleFor(card);
+      return '<article class="limited-synergy-card"><strong>'+(i+1)+'位 '+name+'</strong><small>'+reason+'</small><small>GIH WR '+Number(item.wr||0).toFixed(1)+'% / 相性スコア '+score+'</small></article>';
+    }).join('');
+  };
   const fitsArchetype=(card,archKey)=>{
     if(archKey==='ALL')return true;
     const allowed=new Set(ARCHETYPES[archKey]?.colors||[]), colors=card?.colors||[];
@@ -180,6 +239,7 @@
     if(topNote)topNote.textContent=`${arch.name}・${archKey==='ALL'?'全体GIH WR':'アーキタイプ専用GIH WR'}順・${formatDate(archKey==='ALL'?set.updatedAt:(set.archetypeCardsUpdatedAt||set.updatedAt))}`;
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
     renderPlan(set,cards,archKey);
+    renderSynergy(set,cards,jaCards,archKey);
     if(!pool.length){if(topCards)topCards.innerHTML='<li>条件に合う候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>条件に合うカードがありません。</strong><p>役割を「すべて」に戻すか、別のアーキタイプを選んでください。</p></div>';renderCommonUncommon(set,cards,jaCards,archKey);return;}
     if(topCards)topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
     gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer"><span class="limited-rank-badge">${i+1}位</span>${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a>`;}).join('');
@@ -203,7 +263,7 @@
 
   const syncSeriesAffiliate=setKey=>{if(document.body)document.body.dataset.affiliateSeries=setKey;window.dispatchEvent(new CustomEvent('magsta:series-change',{detail:{set:setKey}}));};
   const applySet=(setKey,updateUrl=true)=>{
-    activeRole='ALL';
+    activeRole='ALL';activeSynergyCard='';
     if(roleFilter)roleFilter.querySelectorAll('button[data-role]').forEach((b,i)=>b.classList.toggle('is-active',i===0));
     const key=SETS[setKey]?setKey:'fra',set=SETS[key],guide=set.guide||PENDING;selector.value=key;
     if(kicker)kicker.textContent=`リミテッド / ${set.code}`;if(title)title.textContent=`${set.name} リミテッド攻略`;if(description)description.textContent=`${set.name}（${set.code}）を、シリーズ → アーキタイプ → 優先カードの順で確認できます。`;
@@ -218,7 +278,7 @@
     if(updateUrl){const u=new URL(location.href);u.searchParams.set('set',key);u.searchParams.set('arch',archSelector.value||'ALL');history.replaceState({},'',u);}
     renderCurrent().catch(()=>{gallery.innerHTML='<div class="limited-card"><strong>カード情報を取得できませんでした。</strong><p>保存ランキングは維持されています。</p></div>';});
   };
-  const applyArch=()=>{activeRole='ALL';if(roleFilter)roleFilter.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('is-active',i===0));const set=SETS[selector.value];syncCurrentView(set,archSelector.value);const u=new URL(location.href);u.searchParams.set('set',selector.value);u.searchParams.set('arch',archSelector.value);history.replaceState({},'',u);renderCurrent();};
+  const applyArch=()=>{activeRole='ALL';activeSynergyCard='';if(roleFilter)roleFilter.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('is-active',i===0));const set=SETS[selector.value];syncCurrentView(set,archSelector.value);const u=new URL(location.href);u.searchParams.set('set',selector.value);u.searchParams.set('arch',archSelector.value);history.replaceState({},'',u);renderCurrent();};
 
   if(roleFilter)roleFilter.addEventListener('click',event=>{
     const button=event.target.closest('button[data-role]');
