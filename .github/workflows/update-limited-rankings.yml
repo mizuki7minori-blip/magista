@@ -24,8 +24,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Update rankings
+      - name: Update card rankings
         run: python scripts/update_limited_rankings.py
+
+      - name: Update archetype rankings
+        run: python scripts/update_limited_archetypes.py
 
       - name: Commit snapshot if changed
         run: |
