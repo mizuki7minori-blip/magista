@@ -29,3 +29,11 @@
 .home-hub-actions a:hover{border-color:#80501f;color:#80501f}
 @media(max-width:900px){.home-hub-grid{grid-template-columns:1fr 1fr}.home-hub-tools{grid-column:1/-1}}
 @media(max-width:640px){.home-hub-grid{grid-template-columns:1fr}.home-hub-tools{grid-column:auto}.home-hub-card{min-height:0}}
+
+.breadcrumb{border-bottom:1px solid var(--line);background:#fbfcfd}
+.breadcrumb>.container{display:flex;align-items:center;gap:8px;min-height:42px;font-size:.78rem;color:var(--muted);overflow:auto;white-space:nowrap}
+.breadcrumb a{color:#4e5b68;text-decoration:none}
+.breadcrumb a:hover{color:#80501f;text-decoration:underline}
+.breadcrumb [aria-current="page"]{color:#202833;font-weight:700}
+.breadcrumb-sep{color:#9aa5b1}
+@media(max-width:760px){.breadcrumb>.container{min-height:38px;font-size:.74rem}}
