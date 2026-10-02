@@ -35,7 +35,7 @@ def normalize(payload):
     for row in rows if isinstance(rows, list) else []:
         if not isinstance(row, dict):
             continue
-        raw = row.get("code") or row.get("color") or row.get("colors") or row.get("deck_color") or row.get("name") or ""
+        raw = row.get("short_name") or row.get("code") or row.get("color") or row.get("colors") or row.get("deck_color") or row.get("color_name") or row.get("name") or ""
         code = str(raw).upper()
         for pair in PAIRS:
             if pair in code:
@@ -54,6 +54,8 @@ def normalize(payload):
         try:
             games = int(games or 0)
             wins = int(wins or 0)
+            if wr is None and games:
+                wr = wins / games
             wr = float(wr)
             if wr <= 1:
                 wr *= 100
@@ -75,7 +77,9 @@ def main():
         params = urllib.parse.urlencode({
             "expansion": code,
             "event_type": "PremierDraft",
-            "combine_splash": "true",
+            "start_date": "2019-01-01",
+            "end_date": datetime.now(timezone.utc).date().isoformat(),
+            "combine_splash": "false",
         })
         url = "https://www.17lands.com/color_ratings/data?" + params
         try:
