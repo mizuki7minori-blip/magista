@@ -31,7 +31,7 @@
   if (!gallery || !selector || !archSelector) return;
   const title=$('limited-set-title'), description=$('limited-set-description'), kicker=$('limited-set-kicker'), galleryTitle=$('limited-gallery-title');
   const cardDataLink=$('limited-card-data-link'), colorDataLink=$('limited-color-data-link'), scryfallLink=$('limited-scryfall-link'), articleLink=$('limited-article-link');
-  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary');
+  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note');
 
   let requestId=0;
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
@@ -39,7 +39,7 @@
   const getDisplayName=(fallback,jaCard)=>jaCard?.printed_name||fallback;
   const formatDate=iso=>{if(!iso)return'保存データ準備中';const d=new Date(iso);return Number.isNaN(d.getTime())?'保存済みデータ':`${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} 更新`;};
 
-  const mergeSnapshots=payload=>{Object.entries(payload?.sets||{}).forEach(([key,s])=>{if(!SETS[key]||!s)return;if(Array.isArray(s.ranking)&&s.ranking.length)SETS[key].ranking=s.ranking;if(s.updatedAt)SETS[key].updatedAt=s.updatedAt;});};
+  const mergeSnapshots=payload=>{Object.entries(payload?.sets||{}).forEach(([key,s])=>{if(!SETS[key]||!s)return;if(Array.isArray(s.ranking)&&s.ranking.length)SETS[key].ranking=s.ranking;if(Array.isArray(s.archetypes)&&s.archetypes.length)SETS[key].archetypes=s.archetypes;if(s.updatedAt)SETS[key].updatedAt=s.updatedAt;if(s.archetypesUpdatedAt)SETS[key].archetypesUpdatedAt=s.archetypesUpdatedAt;});};
   const readSnapshotCache=()=>{try{return JSON.parse(localStorage.getItem(SNAPSHOT_CACHE_KEY)||'null');}catch{return null;}};
   const refreshSnapshots=async()=>{try{const r=await fetch('limited-ranking-data.json',{cache:'no-cache'});if(!r.ok)throw 0;const p=await r.json();mergeSnapshots(p);try{localStorage.setItem(SNAPSHOT_CACHE_KEY,JSON.stringify(p));}catch{}return true;}catch{return false;}};
 
@@ -79,15 +79,45 @@
     return (set.ranking||[]).map(item=>({item,card:byName.get(item.name)||null})).filter(x=>fitsArchetype(x.card,archKey)).slice(0,10);
   };
 
+  const buildCommonUncommonPool=(set,cards,archKey)=>{
+    const byName=new Map(cards.map(c=>[c.name,c]));
+    return (set.ranking||[])
+      .map(item=>({item,card:byName.get(item.name)||null}))
+      .filter(x=>x.card && ['common','uncommon'].includes(String(x.card.rarity||'').toLowerCase()))
+      .filter(x=>fitsArchetype(x.card,archKey))
+      .slice(0,5);
+  };
+
+  const renderBestColors=set=>{
+    if(!bestColors)return;
+    const rows=(set.archetypes||[]).slice(0,3);
+    if(!rows.length){bestColors.textContent='17Lands集計を基準に順次更新';return;}
+    bestColors.innerHTML=rows.map((r,i)=>`${i+1}位 ${r.name} ${Number(r.wr).toFixed(1)}%${r.games?`（${Number(r.games).toLocaleString()}ゲーム）`:''}`).join('<br>');
+  };
+
+  const renderCommonUncommon=(set,cards,jaCards,archKey)=>{
+    if(!cuGrid)return;
+    const jaMap=buildJapaneseMap(jaCards), pool=buildCommonUncommonPool(set,cards,archKey), arch=ARCHETYPES[archKey]||ARCHETYPES.ALL;
+    if(cuNote)cuNote.textContent=`${arch.name}で使えるコモン・アンコモンをGIH WR順に表示`;
+    if(!pool.length){cuGrid.innerHTML='<div class="limited-card"><strong>候補を準備中です。</strong><p>カード情報取得後に表示します。</p></div>';return;}
+    cuGrid.innerHTML=pool.map(({item,card},i)=>{
+      const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),rarity=String(card.rarity||'').toLowerCase()==='common'?'コモン':'アンコモン';
+      const href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`;
+      return `<a class="limited-cu-card" href="${href}" target="_blank" rel="noopener noreferrer">${image?`<img src="${image}" alt="${name}" loading="lazy" decoding="async">`:'<div class="limited-image-placeholder">画像準備中</div>'}<div class="limited-cu-body"><span class="limited-role-badge">${rarity}</span><strong>${i+1}位 ${name}</strong>${name!==item.name?`<small>${item.name}</small>`:''}<small>GIH WR ${Number(item.wr).toFixed(1)}% / ${Number(item.games||0).toLocaleString()}ゲーム</small></div></a>`;
+    }).join('');
+  };
+
   const renderPool=(setKey,set,cards,jaCards,archKey)=>{
     const jaMap=buildJapaneseMap(jaCards), pool=buildPool(set,cards,archKey), arch=ARCHETYPES[archKey]||ARCHETYPES.ALL;
     if(archetypes)archetypes.textContent=arch.name;
+    renderBestColors(set);
     if(archSummary)archSummary.innerHTML=`<span>${arch.name}</span><span>${pool.length}枚を優先表示</span><span>GIH WR順</span>`;
     if(topNote)topNote.textContent=`${arch.name}・GIH WR順・${formatDate(set.updatedAt)}`;
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
-    if(!pool.length){topCards.innerHTML='<li>この色組み合わせの候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>候補カードを準備中です。</strong><p>次回のランキング更新で上位60枚を保存後、色別候補が増えます。</p></div>';return;}
+    if(!pool.length){topCards.innerHTML='<li>この色組み合わせの候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>候補カードを準備中です。</strong><p>次回のランキング更新で上位60枚を保存後、色別候補が増えます。</p></div>';if(cuGrid)cuGrid.innerHTML='<div class="limited-card"><strong>候補を準備中です。</strong></div>';return;}
     topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
     gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer"><span class="limited-rank-badge">${i+1}位</span>${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a>`;}).join('');
+    renderCommonUncommon(set,cards,jaCards,archKey);
   };
 
   const renderCurrent=async()=>{
