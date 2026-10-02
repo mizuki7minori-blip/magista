@@ -3,6 +3,7 @@
 
   const container = document.getElementById('limited-archetype-ranking');
   const selector = document.getElementById('limited-set-select');
+  const archSelector = document.getElementById('limited-arch-select');
   if (!container || !selector) return;
 
   const label = code => ({
@@ -22,11 +23,19 @@
       <thead><tr><th>順位</th><th>アーキタイプ</th><th>勝率</th><th>ゲーム数</th></tr></thead>
       <tbody>${rows.slice(0, 10).map((row, index) => `<tr>
         <td><span class="limited-badge">${index + 1}位</span></td>
-        <td><strong>${row.name || label(row.code)}</strong></td>
+        <td><button type="button" class="limited-arch-jump" data-arch="${row.code}" style="border:0;background:none;padding:0;font:inherit;font-weight:800;cursor:pointer;text-decoration:underline;text-underline-offset:3px">${row.name || label(row.code)}</button></td>
         <td>${Number(row.wr).toFixed(1)}%${Number(row.games||0)<3000?`<br><small style="color:var(--muted)">参考値</small>`:``}</td>
         <td>${Number(row.games || 0).toLocaleString()}${Number(row.games||0)<3000?`<br><small style="color:var(--muted)">母数少なめ</small>`:``}</td>
       </tr>`).join('')}</tbody>
     </table></div>`;
+    container.querySelectorAll('.limited-arch-jump').forEach(button=>{
+      button.addEventListener('click',()=>{
+        if(!archSelector)return;
+        archSelector.value=button.dataset.arch;
+        archSelector.dispatchEvent(new Event('change',{bubbles:true}));
+        document.getElementById('limited-top-heading')?.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
   };
 
   const load = async () => {
