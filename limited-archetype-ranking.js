@@ -23,8 +23,8 @@
       <tbody>${rows.slice(0, 10).map((row, index) => `<tr>
         <td><span class="limited-badge">${index + 1}位</span></td>
         <td><strong>${row.name || label(row.code)}</strong></td>
-        <td>${Number(row.wr).toFixed(1)}%</td>
-        <td>${Number(row.games || 0).toLocaleString()}</td>
+        <td>${Number(row.wr).toFixed(1)}%${Number(row.games||0)<3000?`<br><small style="color:var(--muted)">参考値</small>`:``}</td>
+        <td>${Number(row.games || 0).toLocaleString()}${Number(row.games||0)<3000?`<br><small style="color:var(--muted)">母数少なめ</small>`:``}</td>
       </tr>`).join('')}</tbody>
     </table></div>`;
   };
