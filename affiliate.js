@@ -27,7 +27,7 @@ function renderAffiliate(targetId = 'affiliate-products') {
 const affiliateImageCache=new Map();
 function affiliateMedia(item){
   const direct=safeAffiliateUrl(item.image);
-  if(direct) return `<div class="affiliate-media"><img src="${escapeAffiliate(direct)}" alt="${escapeAffiliate(item.imageAlt||item.title)}" loading="lazy" decoding="async"><span>関連イメージ</span></div>`;
+  if(direct) return `<div class="affiliate-media"><img src="${escapeAffiliate(direct)}" alt="${escapeAffiliate(item.imageAlt||item.title)}" loading="lazy" decoding="async"><span>${item.key==='toretoku-buyback'?'公式バナー':'実商品画像'}</span></div>`;
   if(item.scryfallImage) return `<div class="affiliate-media affiliate-media-dynamic" data-scryfall-image="${escapeAffiliate(item.scryfallImage)}"><div class="affiliate-media-placeholder">画像を読み込み中</div><span>関連イメージ</span></div>`;
   return '';
 }
