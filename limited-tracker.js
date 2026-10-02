@@ -84,3 +84,5 @@ search.addEventListener('input',renderSearch);[colorFilter,manaFilter].filter(Bo
 const p=new URLSearchParams(location.search);if(p.get('set'))setSel.value=p.get('set');if(p.get('arch'))archSel.value=p.get('arch').toUpperCase();loadPicked();fetchData();
 })();
 (()=>{const s=document.createElement('script');s.src='limited-tracker-synergy.js?v=20261002-dedupe2';s.defer=true;document.body.appendChild(s);})();
+
+(()=>{const s=document.createElement('script');s.src='limited-tracker-pack.js?v=20261002-1';s.defer=true;document.body.appendChild(s);})();
