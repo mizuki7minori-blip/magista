@@ -31,7 +31,7 @@
   if (!gallery || !selector || !archSelector) return;
   const title=$('limited-set-title'), description=$('limited-set-description'), kicker=$('limited-set-kicker'), galleryTitle=$('limited-gallery-title');
   const cardDataLink=$('limited-card-data-link'), colorDataLink=$('limited-color-data-link'), scryfallLink=$('limited-scryfall-link'), articleLink=$('limited-article-link');
-  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter');
+  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note');
 
   let requestId=0, activeRole='ALL', lastRender=null;
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
@@ -68,6 +68,46 @@
     if(/draw (a|two|three|\d+) card|draw cards/.test(text))return'アドバンテージ';
     if((card.colors||[]).length>=2)return'アーキ中核';
     return'優先ピック';
+  };
+  const analyzePlan=(cards,archKey)=>{
+    if(archKey==='ALL')return {
+      game:'色を決める前は単体性能と柔軟性を優先し、流れてくる色を見ながらアーキタイプを決めます。',
+      synergy:'まずは除去・ボム・2〜3マナ域を確保し、後半から選んだ色のシナジーへ寄せます。',
+      balance:'クリーチャー15〜17枚、除去3〜5枚、アドバンテージ源2〜4枚を目安に調整します。'
+    };
+    const usable=cards.filter(Boolean),counts={};
+    usable.forEach(card=>{const r=roleFor(card);counts[r]=(counts[r]||0)+1;});
+    const avgMv=usable.length?usable.reduce((s,c)=>s+Number(c.cmc||0),0)/usable.length:0;
+    const creatureCount=usable.filter(c=>(c.type_line||'').toLowerCase().includes('creature')).length;
+    const text=usable.map(c=>(c.oracle_text||c.card_faces?.map(f=>f.oracle_text||'').join(' ')||'').toLowerCase()).join(' ');
+    const signals=[];
+    if(/graveyard|dies|sacrifice/.test(text))signals.push('墓地・生け贄');
+    if(/counter on|proliferate/.test(text))signals.push('カウンター');
+    if(/token/.test(text))signals.push('トークン');
+    if(/artifact/.test(text))signals.push('アーティファクト');
+    if(/enchantment/.test(text))signals.push('エンチャント');
+    if(/instant|sorcery|noncreature spell/.test(text))signals.push('スペル');
+    if(/draw.*card|discard/.test(text))signals.push('手札差');
+    if(/flying|menace|trample|double strike/.test(text))signals.push('回避・打点');
+    const topRoles=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,2).map(x=>x[0]);
+    let game=avgMv&&avgMv<3?'低マナ域を厚くしてテンポよく先行する構成が向きます。':avgMv>3.6?'序盤を受けて、中盤以降の高出力カードで押し切る構成が向きます。':'2〜4マナ域を中心に、盤面と手札差の両方を取るバランス型が組みやすいです。';
+    if((counts['除去']||0)>=4)game+=' 上位カードに除去が多いため、相手のキーカードを処理して優位を維持しやすいです。';
+    const synergy=signals.length?signals.slice(0,3).join('・')+'を意識。特に'+(topRoles.join('・')||'優先ピック')+'のカードを軸にするとまとまりやすいです。':(topRoles.join('・')||'上位カード')+'を軸に、カード単体の強さを落とさず同じ役割を重ねるのが安定します。';
+    const creatures=Math.max(14,Math.min(18,Math.round(14+creatureCount/Math.max(1,usable.length)*4)));
+    const removal=Math.max(2,Math.min(5,counts['除去']||3));
+    const advantage=Math.max(2,Math.min(4,counts['アドバンテージ']||2));
+    return {game,synergy,balance:'クリーチャー'+creatures+'〜'+(creatures+1)+'枚、除去'+removal+'〜'+Math.min(6,removal+1)+'枚、アドバンテージ源'+advantage+'〜'+Math.min(5,advantage+1)+'枚を目安に調整。'};
+  };
+
+  const renderPlan=(set,cards,archKey)=>{
+    if(!planGame||!planSynergy||!planBalance)return;
+    const byName=new Map(cards.map(c=>[c.name,c]));
+    const source=rankingFor(set,archKey).slice(0,20).map(x=>byName.get(x.name)).filter(Boolean);
+    const p=analyzePlan(source,archKey);
+    planGame.textContent=p.game;
+    planSynergy.textContent=p.synergy;
+    planBalance.textContent=p.balance;
+    if(planNote)planNote.textContent=archKey==='ALL'?'全体ランキングから基本方針を表示':'上位20枚の役割・カードテキストから自動分析';
   };
   const fitsArchetype=(card,archKey)=>{
     if(archKey==='ALL')return true;
@@ -139,6 +179,7 @@
     if(archSummary)archSummary.innerHTML=`<span>${arch.name}</span><span>${activeRole==='ALL'?'全役割':activeRole}</span><span>${pool.length}枚を優先表示</span><span>GIH WR順</span>`;
     if(topNote)topNote.textContent=`${arch.name}・${archKey==='ALL'?'全体GIH WR':'アーキタイプ専用GIH WR'}順・${formatDate(archKey==='ALL'?set.updatedAt:(set.archetypeCardsUpdatedAt||set.updatedAt))}`;
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
+    renderPlan(set,cards,archKey);
     if(!pool.length){if(topCards)topCards.innerHTML='<li>条件に合う候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>条件に合うカードがありません。</strong><p>役割を「すべて」に戻すか、別のアーキタイプを選んでください。</p></div>';renderCommonUncommon(set,cards,jaCards,archKey);return;}
     if(topCards)topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
     gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer"><span class="limited-rank-badge">${i+1}位</span>${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a>`;}).join('');
