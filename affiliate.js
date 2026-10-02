@@ -116,4 +116,54 @@ function safeAffiliateUrl(value) {
 
 window.renderAffiliate = renderAffiliate;
 window.addEventListener('magsta:series-change', () => renderAffiliate());
-document.addEventListener('DOMContentLoaded', () => renderAffiliate());
+document.addEventListener('DOMContentLoaded', () => { renderAffiliate(); renderInlineAffiliate(); bindAffiliateAnalytics(); });
+
+
+function renderInlineAffiliate() {
+  if (typeof MAGSTA_AFFILIATE === 'undefined') return;
+  const body = document.querySelector('.article-body');
+  if (!body || document.getElementById('affiliate-inline')) return;
+
+  const items = selectAffiliateProducts()
+    .filter(item => item.affiliate !== false && safeAffiliateUrl(item.url))
+    .slice(0, 2);
+  if (!items.length) return;
+
+  const headings = [...body.querySelectorAll('h2')];
+  const anchor = headings[Math.min(2, Math.max(0, headings.length - 1))];
+  if (!anchor) return;
+
+  const box = document.createElement('aside');
+  box.id = 'affiliate-inline';
+  box.className = 'affiliate-inline';
+  box.setAttribute('aria-label', '関連商品');
+  box.innerHTML = `
+    <div class="affiliate-inline-head">
+      <span class="affiliate-label">PR / 関連商品</span>
+      <strong>この記事を読んだ人向け</strong>
+    </div>
+    <div class="affiliate-inline-list">${items.map(item => {
+      const url = safeAffiliateUrl(item.url);
+      return `<a class="affiliate-inline-link" href="${escapeAffiliate(url)}" target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-key="${escapeAffiliate(item.key || '')}">
+        <span><b>${escapeAffiliate(item.title)}</b><small>${escapeAffiliate(item.description)}</small></span>
+        <em>${escapeAffiliate(item.label)} →</em>
+      </a>`;
+    }).join('')}</div>
+  `;
+  anchor.before(box);
+}
+
+function bindAffiliateAnalytics() {
+  document.addEventListener('click', event => {
+    const link = event.target.closest('.affiliate-button,.affiliate-inline-link,.a8-top-banner a');
+    if (!link) return;
+    const key = link.dataset.affiliateKey || link.closest('[data-affiliate-key]')?.dataset.affiliateKey || 'banner';
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'affiliate_click', {
+        affiliate_key: key,
+        page_path: location.pathname,
+        link_url: link.href
+      });
+    }
+  }, { passive:true });
+}
