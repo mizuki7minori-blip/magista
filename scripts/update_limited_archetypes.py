@@ -20,6 +20,7 @@ JP = {
     "RW":"赤白（ボロス）",
 }
 PAIRS = set(JP)
+PAIR_BY_COLORS = {frozenset(code): code for code in PAIRS}
 UA = "MAGSTA-Limited-Archetype-Updater/1.0"
 
 def fetch_json(url):
@@ -36,11 +37,16 @@ def normalize(payload):
         if not isinstance(row, dict):
             continue
         raw = row.get("short_name") or row.get("code") or row.get("color") or row.get("colors") or row.get("deck_color") or row.get("color_name") or row.get("name") or ""
-        code = str(raw).upper()
-        for pair in PAIRS:
-            if pair in code:
-                code = pair
-                break
+        code = str(raw).upper().strip()
+        if len(code) == 2 and all(ch in "WUBRG" for ch in code):
+            code = PAIR_BY_COLORS.get(frozenset(code), code)
+        else:
+            found = None
+            for pair in PAIRS:
+                if pair in code or pair[::-1] in code:
+                    found = pair
+                    break
+            code = found or code
         if code not in PAIRS:
             continue
         games = row.get("games")
