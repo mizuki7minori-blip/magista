@@ -351,7 +351,7 @@
     if(!recommended.length){assistantPicks.innerHTML='<div class="limited-assistant-pick"><strong>候補準備中</strong><small>この役割の上位カードが見つからないため、優先ピックTOP10を参考にしてください。</small></div>';return;}
     assistantPicks.innerHTML=recommended.map(({item,card},i)=>{
       const name=getDisplayName(card.name,jaMap.get(card.name));
-      return '<article class="limited-assistant-pick"><strong>'+(i+1)+'位 '+name+'</strong><small>'+roleFor(card)+' / GIH WR '+Number(item.wr||0).toFixed(1)+'%</small><button type="button" class="limited-pick-button" data-pick-card="'+card.name.replace(/"/g,'&quot;')+'">＋ピック</button></article>';
+      return '<article class="limited-assistant-pick"><strong>'+(i+1)+'位 '+name+'</strong><small>'+roleFor(card)+' / GIH WR '+Number(item.wr||0).toFixed(1)+'%</small></article>';
     }).join('');
   };
   const fitsArchetype=(card,archKey)=>{
@@ -431,7 +431,7 @@
     syncPickedCounts();renderPickedList();
     if(!pool.length){if(topCards)topCards.innerHTML='<li>条件に合う候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>条件に合うカードがありません。</strong><p>役割を「すべて」に戻すか、別のアーキタイプを選んでください。</p></div>';renderCommonUncommon(set,cards,jaCards,archKey);return;}
     if(topCards)topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
-    gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<article class="limited-image-card limited-ranked-card"><span class="limited-rank-badge">${i+1}位</span><a href="${href}" target="_blank" rel="noopener noreferrer">${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a><button type="button" class="limited-pick-button" data-pick-card="${item.name.replace(/"/g,'&quot;')}">＋ピック</button></article>`;}).join('');
+    gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer"><span class="limited-rank-badge">${i+1}位</span>${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a>`;}).join('');
     renderCommonUncommon(set,cards,jaCards,archKey);
   };
 
