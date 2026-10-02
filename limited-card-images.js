@@ -94,10 +94,15 @@
     const setKey=selector.value, set=SETS[setKey], archKey=archSelector.value||'ALL', active=++requestId;
     const ranking=set.ranking||[];
     if(!ranking.length){topCards.innerHTML='<li>保存ランキングを準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>保存ランキングを準備しています。</strong></div>';return;}
-    gallery.innerHTML='<p>アーキタイプ別ランキングを読み込み中です…</p>';
-    const [cards,jaCards]=await Promise.all([fetchRankingCards(setKey,ranking),fetchJapaneseSetCards(setKey)]);
+    gallery.innerHTML='<p>保存ランキングからカード情報を読み込み中です…</p>';
+
+    const cards=await fetchRankingCards(setKey,ranking);
     if(active!==requestId)return;
-    renderPool(setKey,set,cards,jaCards,archKey);
+    renderPool(setKey,set,cards,[],archKey);
+
+    const jaCards=await fetchJapaneseSetCards(setKey);
+    if(active!==requestId)return;
+    if(jaCards?.length)renderPool(setKey,set,cards,jaCards,archKey);
   };
 
   const syncSeriesAffiliate=setKey=>{if(document.body)document.body.dataset.affiliateSeries=setKey;window.dispatchEvent(new CustomEvent('magsta:series-change',{detail:{set:setKey}}));};
