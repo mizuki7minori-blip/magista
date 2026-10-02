@@ -15,7 +15,7 @@ function card(a,compact=false){
  item.append(el('small','source',`${day(a.pubDate)} · ${a.sourceName||'配信元'}${a.language==='en'?' · 英語':''}`));return item;
 }
 function error(target,retry){target.replaceChildren();const box=el('div','feed-error','記事を取得できませんでした。');const btn=el('button','','再読み込み');btn.type='button';btn.addEventListener('click',retry);box.append(btn);target.append(box);}
-async function editorialCards(limit=3){
+async function editorialCards(limit=3, newsOnly=false){
  try{
   const r=await fetch(`articles.html?v=${Math.floor(Date.now()/600000)}`,{signal:AbortSignal.timeout(8000)});
   if(!r.ok)throw Error('editorial');
@@ -23,6 +23,7 @@ async function editorialCards(limit=3){
   return [...doc.querySelectorAll('.article-list .article-card')].map(node=>{
    const a=node.querySelector('a.read-more'),h=node.querySelector('h2'),meta=[...node.querySelectorAll('.article-meta span')].map(x=>x.textContent.trim());
    if(!a||!h||!/^article/i.test(a.getAttribute('href')||''))return null;
+   if(newsOnly&&!node.querySelector('.tag.news'))return null;
    return {title:h.textContent.trim(),link:a.getAttribute('href'),description:node.querySelector('p')?.textContent?.trim()||'',meta};
   }).filter(Boolean).slice(0,limit);
  }catch{return [];}
@@ -50,7 +51,7 @@ async function load(){
   if(category){
    const requested=new URLSearchParams(location.search).get('cat')||'news';const key=Object.hasOwn(categories,requested)?requested:'news';const [name,match]=categories[key];document.title=`${name}｜MAGSTA`;document.getElementById('category-title').textContent=name;document.getElementById('category-description').textContent=match instanceof RegExp?'見出し・概要にフォーマット名を含む記事を表示しています。':'配信元の記事を新しい順に掲載しています。';
    document.querySelectorAll('[data-cat]').forEach(a=>{a.classList.toggle('active',a.dataset.cat===key);if(a.dataset.cat===key)a.setAttribute('aria-current','page');});
-   const selected=items.filter(a=>match instanceof RegExp?match.test(a.title+' '+clean(a.description)):match?a.categoryKey===match:a.categoryKey==='news');category.replaceChildren(...selected.slice(0,40).map(a=>card(a)));if(!selected.length)category.append(el('p','feed-error','このカテゴリーの記事は現在ありません。ほかのカテゴリーをご覧ください。'));
+   const selected=items.filter(a=>match instanceof RegExp?match.test(a.title+' '+clean(a.description)):match?a.categoryKey===match:a.categoryKey==='news');const editorials=key==='news'?await editorialCards(10,true):[];category.replaceChildren(...editorials.map(editorialCard),...selected.slice(0,40).map(a=>card(a)));if(!selected.length&&!editorials.length)category.append(el('p','feed-error','このカテゴリーの記事は現在ありません。ほかのカテゴリーをご覧ください。'));
   }else{
    const ja=items.filter(a=>a.language==='ja'),en=items.filter(a=>a.language==='en');
    const latest=document.getElementById('latest-list');

@@ -1,5 +1,6 @@
 (()=>{'use strict';
 const ITEMS=[
+ {title:"【MTG】Secret Lair × MSCHF「The Zeta Set」が12月9日に再販決定　24時間限定の受注販売へ",url:'article-zeta-set-2026-10-02.html',type:'記事',text:'NEWS ニュース Secret Lair MSCHF Zeta Set 再販 受注 12月9日 キャンセル'},
  {title:'【10月2日】MTG週末注目情報',url:'article-weekend-2026-10-02.html',type:'記事',text:'リアリティ フラクチャー 新環境 スタンダード 統率者 リミテッド 週末'},
  {title:'リアリティ・フラクチャー ドラフト攻略',url:'article-fra-draft-2026-09-25.html',type:'記事',text:'ドラフト 初手 ピック リミテッド リアリティ フラクチャー'},
  {title:'週末注目情報 9月25日',url:'article-weekend-2026-09-25.html',type:'記事',text:'スタンダード モダン パイオニア ボロス ドラゴン エネルギー エルドラージ'},
