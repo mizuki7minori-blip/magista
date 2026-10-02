@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
-const setSel=$('tracker-set'),archSel=$('tracker-arch'),search=$('tracker-search'),results=$('tracker-search-results'),pickedEl=$('tracker-picked'),pickedCount=$('tracker-picked-count'),packEl=$('tracker-pack'),pickEl=$('tracker-pick'),autoEl=$('tracker-auto'),stageStatus=$('tracker-stage-status'),stageAdvice=$('tracker-stage-advice'),colorBars=$('tracker-color-bars'),colorNote=$('tracker-color-note'),recText=$('tracker-recommend-text'),recEl=$('tracker-recommendations'),reset=$('tracker-reset'),creaturesEl=$('tracker-creatures'),removalEl=$('tracker-removal'),advantageEl=$('tracker-advantage'),finisherEl=$('tracker-finisher');
+const setSel=$('tracker-set'),archSel=$('tracker-arch'),search=$('tracker-search'),results=$('tracker-search-results'),pickedEl=$('tracker-picked'),pickedCount=$('tracker-picked-count'),packEl=$('tracker-pack'),pickEl=$('tracker-pick'),autoEl=$('tracker-auto'),stageStatus=$('tracker-stage-status'),stageAdvice=$('tracker-stage-advice'),colorBars=$('tracker-color-bars'),colorNote=$('tracker-color-note'),recText=$('tracker-recommend-text'),recEl=$('tracker-recommendations'),reset=$('tracker-reset'),creaturesEl=$('tracker-creatures'),removalEl=$('tracker-removal'),advantageEl=$('tracker-advantage'),finisherEl=$('tracker-finisher'),curveEl=$('tracker-curve'),curveNote=$('tracker-curve-note'),mainCountEl=$('tracker-main-count'),mainStatusEl=$('tracker-main-status');
 if(!setSel)return;
 const NAMES={W:'白',U:'青',B:'黒',R:'赤',G:'緑'};
 let cards=[],jaCards=[],ranking=[],picked=[];
@@ -17,11 +17,36 @@ const syncStage=()=>{const auto=autoEl.checked;packEl.disabled=auto;pickEl.disab
 const colorProfile=()=>{const map=byName(),counts={W:0,U:0,B:0,R:0,G:0};picked.forEach(n=>(map.get(n)?.colors||[]).forEach(c=>counts[c]++));return Object.entries(counts).sort((a,b)=>b[1]-a[1]);};
 const renderColors=()=>{const rows=colorProfile();colorBars.innerHTML=rows.map(([c,n])=>`<div class="tracker-color"><strong>${NAMES[c]}</strong><span>${n}票</span></div>`).join('');const total=rows.reduce((s,x)=>s+x[1],0);if(!total){colorNote.textContent='まだ色の傾向はありません。';return;}const [a,b,c]=rows,pack=Number(packEl.value),pick=Number(pickEl.value);if((pack===1&&pick<=5)||picked.length<5){colorNote.textContent=`現在は${NAMES[a[0]]}がやや多め。まだ色を切らず様子を見る段階です。`;return;}if(a[1]>=b[1]+3&&a[1]>=5){colorNote.textContent=`主色候補は${NAMES[a[0]]}、副色候補は${NAMES[b[0]]}。現在は${NAMES[a[0]]+NAMES[b[0]]}寄りです。${c&&c[1]<=1?' '+NAMES[c[0]]+'はかなり薄めです。':''}`;return;}colorNote.textContent=`現在は${NAMES[a[0]]+NAMES[b[0]]}が中心候補です。`;};
 const counts=()=>{const map=byName();let cr=0,rm=0,ad=0,fi=0;picked.forEach(n=>{const c=map.get(n);if(!c)return;if((c.type_line||'').toLowerCase().includes('creature'))cr++;const r=roleFor(c);if(r==='除去')rm++;if(r==='アドバンテージ')ad++;if(r==='フィニッシャー')fi++;});return{cr,rm,ad,fi};};
+const renderCurve=()=>{
+  if(!curveEl||!curveNote)return;
+  const map=byName(), bins={1:0,2:0,3:0,4:0,5:0,'6+':0};
+  let nonlands=0;
+  picked.forEach(n=>{
+    const card=map.get(n);if(!card)return;
+    if((card.type_line||'').toLowerCase().includes('land'))return;
+    nonlands++;
+    const mv=Math.max(0,Number(card.cmc||0));
+    const key=mv>=6?'6+':String(Math.max(1,Math.floor(mv)));
+    if(bins[key]!==undefined)bins[key]++;
+  });
+  curveEl.innerHTML=Object.entries(bins).map(([k,n])=>'<div class="tracker-curve-col"><span>'+k+'マナ</span><strong>'+n+'</strong></div>').join('');
+  const low=bins['2']+bins['3'], high=bins['5']+bins['6+'];
+  let note='マナカーブはバランスしています。';
+  if(nonlands<8)note='まだ序盤です。2〜3マナ域を意識しながらピックを進めます。';
+  else if(low<5)note='2〜3マナ域が少なめです。序盤に動けるカードを優先したい状態です。';
+  else if(high>=6&&high>low/2)note='5マナ以上が多めです。これ以上の重いカードは慎重に選びましょう。';
+  else if(bins['2']<3)note='2マナ域が薄めです。テンポを崩さないため、2マナのクリーチャーや妨害を優先候補に。';
+  curveNote.textContent=note;
+  if(mainCountEl)mainCountEl.textContent=Math.min(nonlands,23)+' / 23';
+  if(mainStatusEl){
+    mainStatusEl.textContent=nonlands>=23?'メイン候補到達':nonlands>=18?'完成間近':nonlands>=10?'骨格形成中':'まだ序盤';
+  }
+};
 const fitColor=card=>{if(picked.length<5)return 0;const top=colorProfile(),main=top[0]?.[0],second=top[1]?.[0],pack=Number(packEl.value);let s=0;(card.colors||[]).forEach(c=>{if(c===main)s+=pack===1?.5:1.5;else if(c===second)s+=pack===1?.2:1;else if(pack>=2)s-=1;});return s;};
 const renderRecommendations=()=>{const c=counts();creaturesEl.textContent=c.cr;removalEl.textContent=c.rm;advantageEl.textContent=c.ad;finisherEl.textContent=c.fi;const needs=[['序盤要員','クリーチャー',Math.max(0,15-c.cr)],['除去','除去',Math.max(0,4-c.rm)],['アドバンテージ','アドバンテージ',Math.max(0,3-c.ad)],['フィニッシャー','フィニッシャー',Math.max(0,2-c.fi)]].sort((a,b)=>b[2]-a[2]),need=needs[0],map=byName(),early=Number(packEl.value)===1&&Number(pickEl.value)<=5;const pool=ranking.map(i=>({item:i,card:map.get(i.name)})).filter(x=>x.card).map(x=>{let s=Number(x.item.wr||0)+fitColor(x.card);if(!early&&roleFor(x.card)===need[0])s+=need[2]*2;return{...x,s};}).sort((a,b)=>b.s-a.s).slice(0,3);recText.textContent=need[2]>0?`今は「${need[1]}」が不足気味です。`:'大きな不足はありません。GIH WRと色の噛み合いを優先できます。';recEl.innerHTML=pool.map(({item,card},i)=>`<div class="tracker-rec"><span><strong>${i+1}位 ${displayName(card.name)}</strong><small>${roleFor(card)} / GIH WR ${Number(item.wr||0).toFixed(1)}%</small></span><button class="tracker-add" data-pick="${card.name.replace(/"/g,'&quot;')}">＋ピック</button></div>`).join('');};
 const renderPicked=()=>{pickedCount.textContent=picked.length;if(!picked.length){pickedEl.innerHTML='<span class="limited-series-note">カードを検索して追加してください。</span>';return;}pickedEl.innerHTML=picked.map((n,i)=>`<span class="tracker-chip">${displayName(n)} <button data-remove="${i}">×</button></span>`).join('');};
 const renderSearch=()=>{const q=search.value.trim().toLowerCase();if(!q){results.innerHTML='';return;}const jm=jaMap(),matches=[];for(const c of cards){const j=jm.get(c.name),ja=(j?.printed_name||'').toLowerCase(),en=c.name.toLowerCase();if(ja.includes(q)||en.includes(q)){matches.push(c);if(matches.length>=10)break;}}results.innerHTML=matches.length?matches.map(c=>`<div class="tracker-result"><span>${displayName(c.name)}<small>${c.name}</small></span><button class="tracker-add" data-pick="${c.name.replace(/"/g,'&quot;')}">＋ピック</button></div>`).join(''):'<span class="limited-series-note">該当カードが見つかりません。</span>';};
-const renderAll=()=>{syncStage();renderColors();renderRecommendations();renderPicked();renderSearch();savePicked();};
+const renderAll=()=>{syncStage();renderColors();renderCurve();renderRecommendations();renderPicked();renderSearch();savePicked();};
 document.addEventListener('click',e=>{const a=e.target.closest('[data-pick]');if(a){picked.push(a.dataset.pick);renderAll();return;}const r=e.target.closest('[data-remove]');if(r){picked.splice(Number(r.dataset.remove),1);renderAll();}});
 search.addEventListener('input',renderSearch);reset.addEventListener('click',()=>{picked=[];renderAll();});autoEl.addEventListener('change',renderAll);packEl.addEventListener('input',renderAll);pickEl.addEventListener('input',renderAll);archSel.addEventListener('change',fetchData);setSel.addEventListener('change',()=>{loadPicked();fetchData();});
 const p=new URLSearchParams(location.search);if(p.get('set'))setSel.value=p.get('set');if(p.get('arch'))archSel.value=p.get('arch').toUpperCase();loadPicked();fetchData();
