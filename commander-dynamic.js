@@ -18,13 +18,15 @@
   const typeText = c => [c?.type_line, ...(c?.card_faces || []).map(f=>f.type_line)].filter(Boolean).join(' ').toLowerCase();
 
   const strategyNames = { balanced:'バランス型', control:'妨害重視', speed:'スピード重視', combo:'コンボ重視' };
-  const strategyDescriptions = {
+  const initialParams=new URLSearchParams(location.search);
+const strategyDescriptions = {
     balanced:'統率者固有のテーマを中心に、加速・ドローなどを補います。',
     control:'統率者固有のテーマを残しつつ、妨害・除去・防御を厚くします。',
     speed:'統率者の勝ち筋へ早く到達するため、軽い加速・展開補助を優先します。',
     combo:'統率者のテーマに沿うサーチ・ドロー・保護・コンボ部品を優先します。'
   };
 
+if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('strategy')])strategy.value=initialParams.get('strategy');
   const genericStaples = new Set([
     'sol ring','arcane signet','command tower','swiftfoot boots','lightning greaves',
     'rhystic study','smothering tithe','cyclonic rift','demonic tutor','vampiric tutor',
