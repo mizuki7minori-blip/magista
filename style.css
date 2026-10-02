@@ -75,3 +75,17 @@
 .recent-clear:hover{border-color:#80501f;color:#80501f}
 @media(max-width:900px){.quick-access-grid,.recent-pages-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.quick-access-grid,.recent-pages-grid{grid-template-columns:1fr}}
+
+.saved-pages{margin-top:28px}
+.saved-pages-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.saved-page-card{display:flex;flex-direction:column;gap:7px;padding:15px;border:1px solid var(--line);border-radius:9px;background:#fff;color:inherit;text-decoration:none}
+.saved-page-card:hover{border-color:#80501f;box-shadow:0 5px 16px #00000010}
+.saved-page-card span{font-size:.68rem;font-weight:900;color:#80501f}
+.saved-page-card strong{font-size:.9rem;line-height:1.4}
+.saved-page-card b{margin-top:auto;font-size:.72rem;color:#80501f}
+.save-page-button{border:1px solid var(--line);border-radius:999px;background:#fff;padding:7px 11px;font:inherit;font-size:.76rem;font-weight:800;cursor:pointer;color:#4e5b68}
+.save-page-button:hover{border-color:#80501f;color:#80501f}
+.save-page-button.is-saved{border-color:#80501f;background:#fff7ed;color:#80501f}
+.article-meta .save-page-button{margin-left:auto}
+@media(max-width:900px){.saved-pages-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.saved-pages-grid{grid-template-columns:1fr}.article-meta .save-page-button{margin-left:0}}
