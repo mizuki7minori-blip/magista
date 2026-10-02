@@ -21,8 +21,34 @@ function renderAffiliate(targetId = 'affiliate-products') {
       ${hasAffiliate ? `<p class="affiliate-disclosure">${escapeAffiliate(MAGSTA_AFFILIATE.disclosure)}</p>` : '<p class="affiliate-disclosure">シリーズに関連する商品・公式限定商品への参考リンクです。価格・在庫・販売地域はリンク先で確認してください。</p>'}
       <div class="affiliate-list">${items.map(item => renderAffiliateItem(item)).join('')}</div>
     </div>`;
+  hydrateAffiliateImages(target);
 }
 
+const affiliateImageCache=new Map();
+function affiliateMedia(item){
+  const direct=safeAffiliateUrl(item.image);
+  if(direct) return `<div class="affiliate-media"><img src="${escapeAffiliate(direct)}" alt="${escapeAffiliate(item.imageAlt||item.title)}" loading="lazy" decoding="async"><span>関連イメージ</span></div>`;
+  if(item.scryfallImage) return `<div class="affiliate-media affiliate-media-dynamic" data-scryfall-image="${escapeAffiliate(item.scryfallImage)}"><div class="affiliate-media-placeholder">画像を読み込み中</div><span>関連イメージ</span></div>`;
+  return '';
+}
+function hydrateAffiliateImages(root=document){
+  root.querySelectorAll?.('.affiliate-media-dynamic[data-scryfall-image]').forEach(async box=>{
+    if(box.dataset.done)return; box.dataset.done='1';
+    const name=box.dataset.scryfallImage;
+    try{
+      let src=affiliateImageCache.get(name);
+      if(!src){
+        const r=await fetch('https://api.scryfall.com/cards/named?fuzzy='+encodeURIComponent(name));
+        if(!r.ok)throw 0;
+        const card=await r.json();
+        src=card?.image_uris?.normal||card?.card_faces?.[0]?.image_uris?.normal||'';
+        if(src)affiliateImageCache.set(name,src);
+      }
+      if(src)box.innerHTML='<img src="'+escapeAffiliate(src)+'" alt="'+escapeAffiliate(name)+'" loading="lazy" decoding="async"><span>関連イメージ</span>';
+      else box.remove();
+    }catch{box.remove();}
+  });
+}
 function renderAffiliateItem(item) {
   const url = safeAffiliateUrl(item.url);
   const isAffiliate = item.affiliate !== false;
@@ -30,6 +56,7 @@ function renderAffiliateItem(item) {
   const badge = item.badge || kindLabel(kind);
   return `
     <article class="affiliate-item affiliate-kind-${escapeAffiliate(kind)}${kind === 'secret-lair' ? ' affiliate-item-secret-lair' : ''}">
+      ${affiliateMedia(item)}
       <div class="affiliate-copy">
         <div class="affiliate-item-meta">
           <span class="affiliate-kind-badge">${escapeAffiliate(badge)}</span>
@@ -196,6 +223,7 @@ function renderCommanderAffiliate() {
       <p class="affiliate-disclosure">現在の設定：${escapeAffiliate(budgetText)} / ${escapeAffiliate(strategy)}重視。商品価格・在庫・送料はリンク先で確認してください。</p>
       <div class="affiliate-list">${items.map(item => renderAffiliateItem(item)).join('')}</div>
     </div>`;
+  hydrateAffiliateImages(target);
 }
 
 function bindCommanderAffiliate() {
