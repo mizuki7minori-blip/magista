@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mizuki7minori-blip.github.io/magista/sitemap.xml
+Sitemap: https://magsta.jp/sitemap.xml
