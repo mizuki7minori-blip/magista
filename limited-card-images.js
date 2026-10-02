@@ -39,7 +39,7 @@
   const getDisplayName=(fallback,jaCard)=>jaCard?.printed_name||fallback;
   const formatDate=iso=>{if(!iso)return'保存データ準備中';const d=new Date(iso);return Number.isNaN(d.getTime())?'保存済みデータ':`${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} 更新`;};
 
-  const mergeSnapshots=payload=>{Object.entries(payload?.sets||{}).forEach(([key,s])=>{if(!SETS[key]||!s)return;if(Array.isArray(s.ranking)&&s.ranking.length)SETS[key].ranking=s.ranking;if(Array.isArray(s.archetypes)&&s.archetypes.length)SETS[key].archetypes=s.archetypes;if(s.updatedAt)SETS[key].updatedAt=s.updatedAt;if(s.archetypesUpdatedAt)SETS[key].archetypesUpdatedAt=s.archetypesUpdatedAt;});};
+  const mergeSnapshots=payload=>{Object.entries(payload?.sets||{}).forEach(([key,s])=>{if(!SETS[key]||!s)return;if(Array.isArray(s.ranking)&&s.ranking.length)SETS[key].ranking=s.ranking;if(Array.isArray(s.archetypes)&&s.archetypes.length)SETS[key].archetypes=s.archetypes;if(s.archetypeCards)SETS[key].archetypeCards=s.archetypeCards;if(s.updatedAt)SETS[key].updatedAt=s.updatedAt;if(s.archetypesUpdatedAt)SETS[key].archetypesUpdatedAt=s.archetypesUpdatedAt;if(s.archetypeCardsUpdatedAt)SETS[key].archetypeCardsUpdatedAt=s.archetypeCardsUpdatedAt;});};
   const readSnapshotCache=()=>{try{return JSON.parse(localStorage.getItem(SNAPSHOT_CACHE_KEY)||'null');}catch{return null;}};
   const refreshSnapshots=async()=>{try{const r=await fetch('limited-ranking-data.json',{cache:'no-cache'});if(!r.ok)throw 0;const p=await r.json();mergeSnapshots(p);try{localStorage.setItem(SNAPSHOT_CACHE_KEY,JSON.stringify(p));}catch{}return true;}catch{return false;}};
 
@@ -74,14 +74,15 @@
     const allowed=new Set(ARCHETYPES[archKey]?.colors||[]), colors=card?.colors||[];
     return colors.every(c=>allowed.has(c));
   };
+  const rankingFor=(set,archKey)=>archKey!=='ALL'&&Array.isArray(set.archetypeCards?.[archKey])&&set.archetypeCards[archKey].length?set.archetypeCards[archKey]:(set.ranking||[]);
   const buildPool=(set,cards,archKey)=>{
     const byName=new Map(cards.map(c=>[c.name,c]));
-    return (set.ranking||[]).map(item=>({item,card:byName.get(item.name)||null})).filter(x=>fitsArchetype(x.card,archKey)).slice(0,10);
+    return rankingFor(set,archKey).map(item=>({item,card:byName.get(item.name)||null})).filter(x=>fitsArchetype(x.card,archKey)).slice(0,10);
   };
 
   const buildCommonUncommonPool=(set,cards,archKey)=>{
     const byName=new Map(cards.map(c=>[c.name,c]));
-    return (set.ranking||[])
+    return rankingFor(set,archKey)
       .map(item=>({item,card:byName.get(item.name)||null}))
       .filter(x=>x.card && ['common','uncommon'].includes(String(x.card.rarity||'').toLowerCase()))
       .filter(x=>fitsArchetype(x.card,archKey))
@@ -112,7 +113,7 @@
     if(archetypes)archetypes.textContent=arch.name;
     renderBestColors(set);
     if(archSummary)archSummary.innerHTML=`<span>${arch.name}</span><span>${pool.length}枚を優先表示</span><span>GIH WR順</span>`;
-    if(topNote)topNote.textContent=`${arch.name}・GIH WR順・${formatDate(set.updatedAt)}`;
+    if(topNote)topNote.textContent=`${arch.name}・${archKey==='ALL'?'全体GIH WR':'アーキタイプ専用GIH WR'}順・${formatDate(archKey==='ALL'?set.updatedAt:(set.archetypeCardsUpdatedAt||set.updatedAt))}`;
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
     if(!pool.length){topCards.innerHTML='<li>この色組み合わせの候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>候補カードを準備中です。</strong><p>次回のランキング更新で上位60枚を保存後、色別候補が増えます。</p></div>';if(cuGrid)cuGrid.innerHTML='<div class="limited-card"><strong>候補を準備中です。</strong></div>';return;}
     topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
