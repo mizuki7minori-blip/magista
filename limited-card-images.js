@@ -257,6 +257,34 @@
     else {title='終盤：23枚を完成させる';body='サイド候補よりも、メインデッキの穴を埋めるカードを優先。マナカーブと枚数を最終調整します。';}
     stageAdvice.innerHTML='<strong>'+title+'</strong><p>'+body+'</p>';
   };
+  const currentColorProfile=()=>{
+    const counts={W:0,U:0,B:0,R:0,G:0};
+    if(!lastRender)return {counts,top:[]};
+    const byName=new Map(lastRender.cards.map(c=>[c.name,c]));
+    pickedCards.forEach(name=>{
+      const card=byName.get(name);if(!card)return;
+      (card.colors||[]).forEach(color=>{if(counts[color]!==undefined)counts[color]+=1;});
+    });
+    return {counts,top:Object.entries(counts).sort((a,b)=>b[1]-a[1])};
+  };
+
+  const colorFitScore=card=>{
+    const {top}=currentColorProfile();
+    const colors=card?.colors||[];
+    if(!colors.length||pickedCards.length<5)return 0;
+    const pack=Math.max(1,Math.min(3,Number(packNumber?.value||1)));
+    const main=top[0]?.[0], second=top[1]?.[0], third=top[2]?.[0];
+    const mainCount=top[0]?.[1]||0, secondCount=top[1]?.[1]||0;
+    let score=0;
+    colors.forEach(color=>{
+      if(color===main)score+=pack===1?0.6:1.6;
+      else if(color===second)score+=pack===1?0.3:1.1;
+      else if(color===third&&pack===1)score+=0.1;
+      else if(pack>=2&&mainCount>=secondCount+2)score-=1.2;
+    });
+    if(pack===3&&colors.every(c=>c===main||c===second))score+=1.5;
+    return score;
+  };
   const assistantNeed=()=>{
     const creature=Math.max(0,Number(countCreature?.value||0));
     const removal=Math.max(0,Number(countRemoval?.value||0));
@@ -290,12 +318,16 @@
       if(pack>=2&&role==='アーキ中核')score+=1.5;
       if(late&&role===topNeed.role)score+=3;
       if(late&&Number(x.card.cmc||0)<=3)score+=0.8;
+      score+=colorFitScore(x.card);
       return {...x,assistantScore:score};
     }).sort((a,b)=>b.assistantScore-a.assistantScore);
     const recommended=scored.slice(0,3);
     const total=(Number(countCreature?.value||0)+Number(countRemoval?.value||0)+Number(countAdvantage?.value||0)+Number(countFinisher?.value||0));
+    const profile=currentColorProfile(), topColors=profile.top.filter(x=>x[1]>0).slice(0,2);
+    const colorNames={W:'白',U:'青',B:'黒',R:'赤',G:'緑'};
+    const colorText=topColors.length>=2&&pickedCards.length>=5?' 現在は'+topColors.map(x=>colorNames[x[0]]).join('')+'寄り。':'';
     const stageText=early?'序盤なので単体性能を優先。':late?'終盤なのでデッキの穴を埋めるカードを優先。':'アーキタイプと不足役割を優先。';
-    const needText=topNeed.gap>0?stageText+' 今は「'+topNeed.label+'」が不足気味です。':stageText+' 大きな不足はありません。';
+    const needText=topNeed.gap>0?stageText+colorText+' 今は「'+topNeed.label+'」が不足気味です。':stageText+colorText+' 大きな不足はありません。';
     assistantResult.querySelector('strong').textContent=(total?'現在の入力：'+total+'項目分。 ':'')+needText;
     if(!recommended.length){assistantPicks.innerHTML='<div class="limited-assistant-pick"><strong>候補準備中</strong><small>この役割の上位カードが見つからないため、優先ピックTOP10を参考にしてください。</small></div>';return;}
     assistantPicks.innerHTML=recommended.map(({item,card},i)=>{
