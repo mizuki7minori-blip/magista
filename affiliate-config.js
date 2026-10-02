@@ -31,6 +31,8 @@ const MAGSTA_AFFILIATE = {
     { key:'tmt-sl-ronin', title:'Secret Lair x TMNT: The Last Ronin', description:'TMNT関連の公式Secret Lair。販売状況・仕様は公式ページで確認してください。', label:'公式商品を見る', url:'https://secretlair.wizards.com/us/en/product/1250000/secret-lair-x-teenage-mutant-ninja-turtles-the-last-ronin', affiliate:false, kind:'secret-lair', badge:'Secret Lair' },
     { key:'tmt-sl-mutanimals', title:'Secret Lair x TMNT: The Mighty Mutanimals', description:'TMNT関連の公式Secret Lair。限定アートを採用した商品です。', label:'公式商品を見る', url:'https://secretlair.wizards.com/us/en/product/1250002/secret-lair-x-teenage-mutant-ninja-turtles-the-mighty-mutanimals', affiliate:false, kind:'secret-lair', badge:'Secret Lair' },
 
+    { key:'commander-deck', title:'MTG 統率者デッキ・関連商品', description:'統率者デッキや統率者向けカードを楽天市場で探せます。価格・在庫はリンク先で確認してください。', label:'統率者関連商品を探す', url:'https://rpx.a8.net/svt/ejp?a8mat=4BADDD+A1ZKKY+2HOM+BW8O1&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa26082448618_4BADDD_A1ZKKY_2HOM_BW8O1%3Fpc%3Dhttps%253A%252F%252Fsearch.rakuten.co.jp%252Fsearch%252Fmall%252FMTG%252B%25E7%25B5%25B1%25E7%258E%2587%25E8%2580%2585%252F%26m%3Dhttps%253A%252F%252Fsearch.rakuten.co.jp%252Fsearch%252Fmall%252FMTG%252B%25E7%25B5%25B1%25E7%258E%2587%25E8%2580%2585%252F', pixel:'https://www15.a8.net/0.gif?a8mat=4BADDD+A1ZKKY+2HOM+BW8O1', affiliate:true, kind:'sealed', badge:'統率者' },
+    { key:'commander-supply', title:'統率者向けスリーブ・デッキケース', description:'100枚デッキ向けのスリーブ、デッキケース、プレイマットなどを楽天市場で探せます。', label:'統率者サプライを探す', url:'https://rpx.a8.net/svt/ejp?a8mat=4BADDD+A1ZKKY+2HOM+BW8O1&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa26082448618_4BADDD_A1ZKKY_2HOM_BW8O1%3Fpc%3Dhttps%253A%252F%252Fsearch.rakuten.co.jp%252Fsearch%252Fmall%252FMTG%252B%25E7%25B5%25B1%25E7%258E%2587%25E8%2580%2585%252B%25E3%2582%25B9%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%2596%252B%25E3%2583%2587%25E3%2583%2583%25E3%2582%25AD%25E3%2582%25B1%25E3%2583%25BC%25E3%2582%25B9%252F%26m%3Dhttps%253A%252F%252Fsearch.rakuten.co.jp%252Fsearch%252Fmall%252FMTG%252B%25E7%25B5%25B1%25E7%258E%2587%25E8%2580%2585%252B%25E3%2582%25B9%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%2596%252B%25E3%2583%2587%25E3%2583%2583%25E3%2582%25AD%25E3%2582%25B1%25E3%2583%25BC%25E3%2582%25B9%252F', pixel:'https://www15.a8.net/0.gif?a8mat=4BADDD+A1ZKKY+2HOM+BW8O1', affiliate:true, kind:'supply', badge:'サプライ' },
     { key:'secret-lair-official', title:'Secret Lair ドロップ', description:'限定アートやコラボ商品を探したい人向け。販売期間・地域・在庫は公式ページで確認してください。', label:'Secret Lair公式を見る', url:'https://secretlair.wizards.com/', affiliate:false, kind:'secret-lair', badge:'Secret Lair' }
   ],
 
@@ -50,11 +52,17 @@ const MAGSTA_AFFILIATE = {
     tmt: ['tmt-sealed','tmt-supply','tmt-sl-ronin','tmt-sl-mutanimals']
   },
 
+  commanderProducts: {
+    low: ['toretoku-buyback','commander-supply','commander-deck'],
+    mid: ['commander-deck','commander-supply','toretoku-buyback'],
+    high: ['commander-deck','commander-supply','secret-lair-official','toretoku-buyback']
+  },
+
   categoryProducts: {
     ff: ['ff-play-booster','secret-lair-official','toretoku-buyback'],
     booster: ['ff-play-booster','secret-lair-official'],
     market: ['toretoku-buyback'],
-    deck: ['toretoku-buyback','secret-lair-official'],
+    deck: ['commander-deck','commander-supply','toretoku-buyback','secret-lair-official'],
     card: ['secret-lair-official','toretoku-buyback'],
     general: ['secret-lair-official','toretoku-buyback']
   }
