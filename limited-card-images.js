@@ -237,9 +237,24 @@
     const byName=new Map(cards.map(c=>[c.name,c]));
     const jaMap=buildJapaneseMap(jaCards);
     const ranked=rankingFor(set,archKey).map(item=>({item,card:byName.get(item.name)})).filter(x=>x.card);
-    const recommended=ranked.filter(x=>roleFor(x.card)===topNeed.role).slice(0,3);
+    const pack=Math.max(1,Math.min(3,Number(packNumber?.value||1)));
+    const pick=Math.max(1,Math.min(14,Number(pickNumber?.value||1)));
+    const early=(pack===1&&pick<=5);
+    const late=(pack===3&&pick>=7);
+    const scored=ranked.map(x=>{
+      const role=roleFor(x.card);
+      const wr=Number(x.item.wr||0);
+      let score=wr;
+      if(!early&&role===topNeed.role)score+=topNeed.gap*2.2;
+      if(pack>=2&&role==='アーキ中核')score+=1.5;
+      if(late&&role===topNeed.role)score+=3;
+      if(late&&Number(x.card.cmc||0)<=3)score+=0.8;
+      return {...x,assistantScore:score};
+    }).sort((a,b)=>b.assistantScore-a.assistantScore);
+    const recommended=scored.slice(0,3);
     const total=(Number(countCreature?.value||0)+Number(countRemoval?.value||0)+Number(countAdvantage?.value||0)+Number(countFinisher?.value||0));
-    const needText=topNeed.gap>0?'今は「'+topNeed.label+'」を優先。目安まであと'+topNeed.gap+'枚です。':'大きな不足はありません。GIH WRとシナジーを優先してピックできます。';
+    const stageText=early?'序盤なので単体性能を優先。':late?'終盤なのでデッキの穴を埋めるカードを優先。':'アーキタイプと不足役割を優先。';
+    const needText=topNeed.gap>0?stageText+' 今は「'+topNeed.label+'」が不足気味です。':stageText+' 大きな不足はありません。';
     assistantResult.querySelector('strong').textContent=(total?'現在の入力：'+total+'項目分。 ':'')+needText;
     if(!recommended.length){assistantPicks.innerHTML='<div class="limited-assistant-pick"><strong>候補準備中</strong><small>この役割の上位カードが見つからないため、優先ピックTOP10を参考にしてください。</small></div>';return;}
     assistantPicks.innerHTML=recommended.map(({item,card},i)=>{
