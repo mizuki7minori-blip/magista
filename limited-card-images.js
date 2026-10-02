@@ -31,7 +31,7 @@
   if (!gallery || !selector || !archSelector) return;
   const title=$('limited-set-title'), description=$('limited-set-description'), kicker=$('limited-set-kicker'), galleryTitle=$('limited-gallery-title');
   const cardDataLink=$('limited-card-data-link'), colorDataLink=$('limited-color-data-link'), scryfallLink=$('limited-scryfall-link'), articleLink=$('limited-article-link');
-  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note'), synergyPicker=$('limited-synergy-picker'), synergyList=$('limited-synergy-list'), synergyNote=$('limited-synergy-note'), countCreature=$('limited-count-creature'), countRemoval=$('limited-count-removal'), countAdvantage=$('limited-count-advantage'), countFinisher=$('limited-count-finisher'), assistantResult=$('limited-assistant-result'), assistantPicks=$('limited-assistant-picks'), pickedList=$('limited-picked-list'), pickedCount=$('limited-picked-count'), clearPicks=$('limited-clear-picks');
+  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note'), synergyPicker=$('limited-synergy-picker'), synergyList=$('limited-synergy-list'), synergyNote=$('limited-synergy-note'), countCreature=$('limited-count-creature'), countRemoval=$('limited-count-removal'), countAdvantage=$('limited-count-advantage'), countFinisher=$('limited-count-finisher'), assistantResult=$('limited-assistant-result'), assistantPicks=$('limited-assistant-picks'), pickedList=$('limited-picked-list'), pickedCount=$('limited-picked-count'), clearPicks=$('limited-clear-picks'), packNumber=$('limited-pack-number'), pickNumber=$('limited-pick-number'), stageAdvice=$('limited-stage-advice');
 
   let requestId=0, activeRole='ALL', lastRender=null, activeSynergyCard='', pickedCards=[];
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
@@ -203,6 +203,19 @@
     if(lastRender)renderDraftAssistant(lastRender.set,lastRender.cards,lastRender.jaCards,lastRender.archKey);
   };
   const addPickedCard=name=>{if(!name)return;pickedCards.push(name);refreshPickedAssistant();};
+  const renderDraftStage=()=>{
+    if(!stageAdvice)return;
+    const pack=Math.max(1,Math.min(3,Number(packNumber?.value||1)));
+    const pick=Math.max(1,Math.min(15,Number(pickNumber?.value||1)));
+    let title='',body='';
+    if(pack===1&&pick<=5){title='序盤：色を開けておく';body='単体性能と柔軟性を優先。強いカードを取りつつ、まだ2色に固定しすぎない段階です。';}
+    else if(pack===1){title='1パック後半：流れを読む';body='繰り返し流れてくる色を意識し、主色候補を絞ります。弱いカードで無理に色を守る必要はありません。';}
+    else if(pack===2&&pick<=5){title='2パック序盤：軸を固める';body='ここからは選んだ色・アーキタイプとの噛み合いを重視。多少GIH WRが下でも必要な役割を優先します。';}
+    else if(pack===2){title='2パック後半：不足を埋める';body='クリーチャー数、除去、2〜3マナ域を確認し、完成形に必要な役割を優先して集めます。';}
+    else if(pack===3&&pick<=5){title='3パック序盤：完成度を上げる';body='色替えは最小限にして、デッキに実際に入るカードを優先。除去や弱いマナ域の補強を重視します。';}
+    else {title='終盤：23枚を完成させる';body='サイド候補よりも、メインデッキの穴を埋めるカードを優先。マナカーブと枚数を最終調整します。';}
+    stageAdvice.innerHTML='<strong>'+title+'</strong><p>'+body+'</p>';
+  };
   const assistantNeed=()=>{
     const creature=Math.max(0,Number(countCreature?.value||0));
     const removal=Math.max(0,Number(countRemoval?.value||0));
@@ -306,6 +319,7 @@
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
     renderPlan(set,cards,archKey);
     renderSynergy(set,cards,jaCards,archKey);
+    renderDraftStage();
     renderDraftAssistant(set,cards,jaCards,archKey);
     syncPickedCounts();renderPickedList();
     if(!pool.length){if(topCards)topCards.innerHTML='<li>条件に合う候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>条件に合うカードがありません。</strong><p>役割を「すべて」に戻すか、別のアーキタイプを選んでください。</p></div>';renderCommonUncommon(set,cards,jaCards,archKey);return;}
@@ -331,9 +345,9 @@
 
   const syncSeriesAffiliate=setKey=>{if(document.body)document.body.dataset.affiliateSeries=setKey;window.dispatchEvent(new CustomEvent('magsta:series-change',{detail:{set:setKey}}));};
   const applySet=(setKey,updateUrl=true)=>{
-    activeRole='ALL';activeSynergyCard='';loadPicked();
+    activeRole='ALL';activeSynergyCard='';
     if(roleFilter)roleFilter.querySelectorAll('button[data-role]').forEach((b,i)=>b.classList.toggle('is-active',i===0));
-    const key=SETS[setKey]?setKey:'fra',set=SETS[key],guide=set.guide||PENDING;selector.value=key;
+    const key=SETS[setKey]?setKey:'fra',set=SETS[key],guide=set.guide||PENDING;selector.value=key;loadPicked();
     if(kicker)kicker.textContent=`リミテッド / ${set.code}`;if(title)title.textContent=`${set.name} リミテッド攻略`;if(description)description.textContent=`${set.name}（${set.code}）を、シリーズ → アーキタイプ → 優先カードの順で確認できます。`;
     if(cardDataLink)cardDataLink.href=`https://www.17lands.com/card_data?expansion=${set.code}&format=PremierDraft&sort=ever_drawn_win_rate%2Cdesc&time_period=ALL_TIME&view=table`;
     if(colorDataLink)colorDataLink.href=`https://www.17lands.com/deck_color_data?expansion=${set.code}&format=PremierDraft`;
@@ -355,6 +369,8 @@
     if(remove){pickedCards.splice(Number(remove.dataset.removePick),1);refreshPickedAssistant();}
   });
   if(clearPicks)clearPicks.addEventListener('click',()=>{pickedCards=[];refreshPickedAssistant();});
+  const draftStageInputs=[packNumber,pickNumber].filter(Boolean);
+  draftStageInputs.forEach(input=>input.addEventListener('input',()=>{renderDraftStage();if(lastRender)renderDraftAssistant(lastRender.set,lastRender.cards,lastRender.jaCards,lastRender.archKey);}));
   const assistantInputs=[countCreature,countRemoval,countAdvantage,countFinisher].filter(Boolean);
   assistantInputs.forEach(input=>input.addEventListener('input',()=>{
     if(lastRender)renderDraftAssistant(lastRender.set,lastRender.cards,lastRender.jaCards,lastRender.archKey);
