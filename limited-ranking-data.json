@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-01T08:19:01.048905Z",
+  "generatedAt": "2026-10-02T01:47:44.356465Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-10-01T08:19:01.048905Z",
+      "updatedAt": "2026-10-02T01:47:44.356465Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
@@ -313,7 +313,7 @@
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-10-01T08:19:01.048905Z",
+      "updatedAt": "2026-10-02T01:47:44.356465Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -621,7 +621,7 @@
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-10-01T08:19:01.048905Z",
+      "updatedAt": "2026-10-02T01:47:44.356465Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -929,7 +929,7 @@
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-10-01T08:19:01.048905Z",
+      "updatedAt": "2026-10-02T01:47:44.356465Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -1237,7 +1237,7 @@
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-10-01T08:19:01.048905Z",
+      "updatedAt": "2026-10-02T01:47:44.356465Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
