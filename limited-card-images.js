@@ -31,9 +31,9 @@
   if (!gallery || !selector || !archSelector) return;
   const title=$('limited-set-title'), description=$('limited-set-description'), kicker=$('limited-set-kicker'), galleryTitle=$('limited-gallery-title');
   const cardDataLink=$('limited-card-data-link'), colorDataLink=$('limited-color-data-link'), scryfallLink=$('limited-scryfall-link'), articleLink=$('limited-article-link');
-  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note'), synergyPicker=$('limited-synergy-picker'), synergyList=$('limited-synergy-list'), synergyNote=$('limited-synergy-note'), countCreature=$('limited-count-creature'), countRemoval=$('limited-count-removal'), countAdvantage=$('limited-count-advantage'), countFinisher=$('limited-count-finisher'), assistantResult=$('limited-assistant-result'), assistantPicks=$('limited-assistant-picks');
+  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note'), synergyPicker=$('limited-synergy-picker'), synergyList=$('limited-synergy-list'), synergyNote=$('limited-synergy-note'), countCreature=$('limited-count-creature'), countRemoval=$('limited-count-removal'), countAdvantage=$('limited-count-advantage'), countFinisher=$('limited-count-finisher'), assistantResult=$('limited-assistant-result'), assistantPicks=$('limited-assistant-picks'), pickedList=$('limited-picked-list'), pickedCount=$('limited-picked-count'), clearPicks=$('limited-clear-picks');
 
-  let requestId=0, activeRole='ALL', lastRender=null, activeSynergyCard='';
+  let requestId=0, activeRole='ALL', lastRender=null, activeSynergyCard='', pickedCards=[];
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
   const getImage=card=>card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris?.normal)?.image_uris.normal||'';
   const getDisplayName=(fallback,jaCard)=>jaCard?.printed_name||fallback;
@@ -168,6 +168,41 @@
       return '<article class="limited-synergy-card"><strong>'+(i+1)+'位 '+name+'</strong><small>'+reason+'</small><small>GIH WR '+Number(item.wr||0).toFixed(1)+'% / 相性スコア '+score+'</small></article>';
     }).join('');
   };
+  const pickedStorageKey=()=>`magsta-limited-picks-${selector.value}`;
+  const loadPicked=()=>{
+    try{pickedCards=JSON.parse(localStorage.getItem(pickedStorageKey())||'[]');if(!Array.isArray(pickedCards))pickedCards=[];}catch{pickedCards=[];}
+  };
+  const savePicked=()=>{try{localStorage.setItem(pickedStorageKey(),JSON.stringify(pickedCards));}catch{}};
+  const syncPickedCounts=()=>{
+    if(!lastRender)return;
+    const byName=new Map(lastRender.cards.map(c=>[c.name,c]));
+    let creatures=0,removal=0,advantage=0,finisher=0;
+    pickedCards.forEach(name=>{
+      const card=byName.get(name);if(!card)return;
+      const type=(card.type_line||'').toLowerCase();
+      const role=roleFor(card);
+      if(type.includes('creature'))creatures++;
+      if(role==='除去')removal++;
+      if(role==='アドバンテージ')advantage++;
+      if(role==='フィニッシャー')finisher++;
+    });
+    if(countCreature)countCreature.value=creatures;
+    if(countRemoval)countRemoval.value=removal;
+    if(countAdvantage)countAdvantage.value=advantage;
+    if(countFinisher)countFinisher.value=finisher;
+  };
+  const renderPickedList=()=>{
+    if(!pickedList||!pickedCount)return;
+    pickedCount.textContent=String(pickedCards.length);
+    if(!pickedCards.length){pickedList.innerHTML='<span class="limited-series-note">優先ピックの「＋ピック」から追加できます。</span>';return;}
+    const jaMap=buildJapaneseMap(lastRender?.jaCards||[]);
+    pickedList.innerHTML=pickedCards.map((name,i)=>'<span class="limited-picked-chip">'+getDisplayName(name,jaMap.get(name))+' <button type="button" data-remove-pick="'+i+'" aria-label="このピックを取り消す">×</button></span>').join('');
+  };
+  const refreshPickedAssistant=()=>{
+    syncPickedCounts();renderPickedList();savePicked();
+    if(lastRender)renderDraftAssistant(lastRender.set,lastRender.cards,lastRender.jaCards,lastRender.archKey);
+  };
+  const addPickedCard=name=>{if(!name)return;pickedCards.push(name);refreshPickedAssistant();};
   const assistantNeed=()=>{
     const creature=Math.max(0,Number(countCreature?.value||0));
     const removal=Math.max(0,Number(countRemoval?.value||0));
@@ -196,7 +231,7 @@
     if(!recommended.length){assistantPicks.innerHTML='<div class="limited-assistant-pick"><strong>候補準備中</strong><small>この役割の上位カードが見つからないため、優先ピックTOP10を参考にしてください。</small></div>';return;}
     assistantPicks.innerHTML=recommended.map(({item,card},i)=>{
       const name=getDisplayName(card.name,jaMap.get(card.name));
-      return '<article class="limited-assistant-pick"><strong>'+(i+1)+'位 '+name+'</strong><small>'+roleFor(card)+' / GIH WR '+Number(item.wr||0).toFixed(1)+'%</small></article>';
+      return '<article class="limited-assistant-pick"><strong>'+(i+1)+'位 '+name+'</strong><small>'+roleFor(card)+' / GIH WR '+Number(item.wr||0).toFixed(1)+'%</small><button type="button" class="limited-pick-button" data-pick-card="'+card.name.replace(/"/g,'&quot;')+'">＋ピック</button></article>';
     }).join('');
   };
   const fitsArchetype=(card,archKey)=>{
@@ -272,9 +307,10 @@
     renderPlan(set,cards,archKey);
     renderSynergy(set,cards,jaCards,archKey);
     renderDraftAssistant(set,cards,jaCards,archKey);
+    syncPickedCounts();renderPickedList();
     if(!pool.length){if(topCards)topCards.innerHTML='<li>条件に合う候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>条件に合うカードがありません。</strong><p>役割を「すべて」に戻すか、別のアーキタイプを選んでください。</p></div>';renderCommonUncommon(set,cards,jaCards,archKey);return;}
     if(topCards)topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
-    gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer"><span class="limited-rank-badge">${i+1}位</span>${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a>`;}).join('');
+    gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<article class="limited-image-card limited-ranked-card"><span class="limited-rank-badge">${i+1}位</span><a href="${href}" target="_blank" rel="noopener noreferrer">${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a><button type="button" class="limited-pick-button" data-pick-card="${item.name.replace(/"/g,'&quot;')}">＋ピック</button></article>`;}).join('');
     renderCommonUncommon(set,cards,jaCards,archKey);
   };
 
@@ -295,7 +331,7 @@
 
   const syncSeriesAffiliate=setKey=>{if(document.body)document.body.dataset.affiliateSeries=setKey;window.dispatchEvent(new CustomEvent('magsta:series-change',{detail:{set:setKey}}));};
   const applySet=(setKey,updateUrl=true)=>{
-    activeRole='ALL';activeSynergyCard='';
+    activeRole='ALL';activeSynergyCard='';loadPicked();
     if(roleFilter)roleFilter.querySelectorAll('button[data-role]').forEach((b,i)=>b.classList.toggle('is-active',i===0));
     const key=SETS[setKey]?setKey:'fra',set=SETS[key],guide=set.guide||PENDING;selector.value=key;
     if(kicker)kicker.textContent=`リミテッド / ${set.code}`;if(title)title.textContent=`${set.name} リミテッド攻略`;if(description)description.textContent=`${set.name}（${set.code}）を、シリーズ → アーキタイプ → 優先カードの順で確認できます。`;
@@ -312,6 +348,13 @@
   };
   const applyArch=()=>{activeRole='ALL';activeSynergyCard='';if(roleFilter)roleFilter.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('is-active',i===0));const set=SETS[selector.value];syncCurrentView(set,archSelector.value);const u=new URL(location.href);u.searchParams.set('set',selector.value);u.searchParams.set('arch',archSelector.value);history.replaceState({},'',u);renderCurrent();};
 
+  document.addEventListener('click',event=>{
+    const add=event.target.closest('[data-pick-card]');
+    if(add){event.preventDefault();addPickedCard(add.dataset.pickCard);return;}
+    const remove=event.target.closest('[data-remove-pick]');
+    if(remove){pickedCards.splice(Number(remove.dataset.removePick),1);refreshPickedAssistant();}
+  });
+  if(clearPicks)clearPicks.addEventListener('click',()=>{pickedCards=[];refreshPickedAssistant();});
   const assistantInputs=[countCreature,countRemoval,countAdvantage,countFinisher].filter(Boolean);
   assistantInputs.forEach(input=>input.addEventListener('input',()=>{
     if(lastRender)renderDraftAssistant(lastRender.set,lastRender.cards,lastRender.jaCards,lastRender.archKey);
