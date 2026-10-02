@@ -45,7 +45,8 @@
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
     .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}
-    @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .commander-goals{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.commander-goals h3{margin:0 0 5px}.commander-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.commander-goal{min-height:74px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#f8fafb;text-align:left;cursor:pointer;font:inherit}.commander-goal strong{display:block;margin-bottom:4px}.commander-goal small{color:var(--muted);line-height:1.35}.commander-goal.is-active{border-color:#80501f;box-shadow:0 0 0 2px #80501f18;background:#fffaf4}
+    @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}.commander-goal-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}.commander-goal-grid{grid-template-columns:1fr}}
   `;
   document.head.appendChild(style);
 
@@ -61,6 +62,31 @@
     <div id="any-commander-status" class="dynamic-note"></div>
     <div class="dynamic-actions"><button id="load-synergy-button" class="button secondary" type="button" hidden>相性カード候補を表示</button></div>`;
   controls.before(box);
+
+  const goalBox = document.createElement('section');
+  goalBox.className = 'commander-goals';
+  goalBox.innerHTML = `
+    <span class="section-kicker">何をしたい？</span>
+    <h3>デッキの動かし方から選ぶ</h3>
+    <p class="dynamic-note">目的を押すと、統率者の固有テーマを残したまま候補カードの優先順位を切り替えます。</p>
+    <div class="commander-goal-grid">
+      <button type="button" class="commander-goal" data-strategy="balanced"><strong>バランスよく組みたい</strong><small>テーマ・加速・ドローを均等に補強</small></button>
+      <button type="button" class="commander-goal" data-strategy="control"><strong>妨害したい</strong><small>除去・打ち消し・防御を厚くする</small></button>
+      <button type="button" class="commander-goal" data-strategy="speed"><strong>スピードを上げたい</strong><small>軽い加速・コスト軽減を優先</small></button>
+      <button type="button" class="commander-goal" data-strategy="combo"><strong>コンボを決めたい</strong><small>サーチ・保護・コンボ部品を優先</small></button>
+    </div>`;
+  controls.before(goalBox);
+
+  const goalButtons = [...goalBox.querySelectorAll('.commander-goal')];
+  const syncGoalButtons = () => goalButtons.forEach(btn => btn.classList.toggle('is-active', btn.dataset.strategy === (strategy?.value || 'balanced')));
+  goalButtons.forEach(btn => btn.addEventListener('click', () => {
+    if (!strategy) return;
+    strategy.value = btn.dataset.strategy;
+    syncGoalButtons();
+    strategy.dispatchEvent(new Event('change', { bubbles: true }));
+    window.dispatchEvent(new CustomEvent('magsta:strategy-change', { detail: { strategy: strategy.value } }));
+  }));
+  syncGoalButtons();
 
   const input = box.querySelector('#any-commander-input');
   const button = box.querySelector('#any-commander-button');
