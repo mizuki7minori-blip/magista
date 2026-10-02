@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="affiliate.css?v=20261001-series1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
-.limited-set-picker,.limited-arch-picker{background:#fff;border:1px solid var(--line);border-left:4px solid #c6803f;border-radius:6px;padding:22px;margin-bottom:22px}.limited-set-picker label,.limited-arch-picker label{display:block;font-weight:800;margin-bottom:8px}.limited-set-picker p,.limited-arch-picker p{margin:0 0 14px;color:var(--muted);font-size:.9375rem}.limited-set-picker select,.limited-arch-picker select{width:min(100%,520px);min-height:48px;padding:10px 42px 10px 14px;border:1px solid #adb7c2;border-radius:6px;background:#fff;color:var(--text);font-weight:700}.limited-series-note{margin-top:12px;font-size:.8125rem;color:var(--muted)}.limited-guide-value{font-size:1.08rem;font-weight:800;margin:.35rem 0}.limited-top-list{margin:0;padding-left:1.4rem}.limited-top-list li{padding:.5rem 0}.limited-guide-status{display:inline-block;padding:4px 9px;border-radius:999px;background:#f4eadf;color:#80501f;font-size:.78rem;font-weight:700}.limited-ranked-card{position:relative}.limited-rank-badge{position:absolute;z-index:2;top:8px;left:8px;background:#202833;color:#fff!important;border-radius:999px;padding:4px 9px;font-weight:800;font-size:.78rem!important;box-shadow:0 2px 8px #0003}.limited-role-badge{display:inline-block;width:auto!important;margin-top:5px;padding:2px 7px;border-radius:999px;background:#edf2f7;color:#365876!important;font-size:.74rem!important;font-weight:700}.limited-image-placeholder{aspect-ratio:488/680;display:grid;place-items:center;background:#edf0f3;border-radius:9px;color:var(--muted);font-size:.85rem}.limited-arch-summary{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.limited-arch-summary span{background:#f3f5f7;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:.82rem}.limited-affiliate-wrap{margin:28px 0}.limited-affiliate-wrap .affiliate-box{margin-top:0}
-@media(max-width:700px){.limited-set-picker,.limited-arch-picker{padding:18px}.limited-set-picker select,.limited-arch-picker select{width:100%}}
+.limited-set-picker,.limited-arch-picker{background:#fff;border:1px solid var(--line);border-left:4px solid #c6803f;border-radius:6px;padding:22px;margin-bottom:22px}.limited-set-picker label,.limited-arch-picker label{display:block;font-weight:800;margin-bottom:8px}.limited-set-picker p,.limited-arch-picker p{margin:0 0 14px;color:var(--muted);font-size:.9375rem}.limited-set-picker select,.limited-arch-picker select{width:min(100%,520px);min-height:48px;padding:10px 42px 10px 14px;border:1px solid #adb7c2;border-radius:6px;background:#fff;color:var(--text);font-weight:700}.limited-series-note{margin-top:12px;font-size:.8125rem;color:var(--muted)}.limited-guide-value{font-size:1.08rem;font-weight:800;margin:.35rem 0}.limited-top-list{margin:0;padding-left:1.4rem}.limited-top-list li{padding:.5rem 0}.limited-guide-status{display:inline-block;padding:4px 9px;border-radius:999px;background:#f4eadf;color:#80501f;font-size:.78rem;font-weight:700}.limited-ranked-card{position:relative}.limited-rank-badge{position:absolute;z-index:2;top:8px;left:8px;background:#202833;color:#fff!important;border-radius:999px;padding:4px 9px;font-weight:800;font-size:.78rem!important;box-shadow:0 2px 8px #0003}.limited-role-badge{display:inline-block;width:auto!important;margin-top:5px;padding:2px 7px;border-radius:999px;background:#edf2f7;color:#365876!important;font-size:.74rem!important;font-weight:700}.limited-image-placeholder{aspect-ratio:488/680;display:grid;place-items:center;background:#edf0f3;border-radius:9px;color:var(--muted);font-size:.85rem}.limited-arch-summary{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.limited-arch-summary span{background:#f3f5f7;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:.82rem}.limited-affiliate-wrap{margin:28px 0}.limited-affiliate-wrap .affiliate-box{margin-top:0}.limited-cu-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.limited-cu-card{border:1px solid var(--line);border-radius:9px;background:#fff;overflow:hidden}.limited-cu-card img{width:100%;aspect-ratio:488/680;object-fit:cover;display:block}.limited-cu-body{padding:10px}.limited-cu-body strong{display:block;font-size:.88rem;line-height:1.35}.limited-cu-body small{display:block;color:var(--muted);margin-top:4px}.limited-sample-note{font-size:.78rem;color:var(--muted);margin-top:6px}
+@media(max-width:1000px){.limited-cu-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){.limited-set-picker,.limited-arch-picker{padding:18px}.limited-set-picker select,.limited-arch-picker select{width:100%}.limited-cu-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -77,6 +77,12 @@
 </section>
 
 <section class="limited-section">
+  <div class="limited-section-title"><div><span class="limited-kicker">実戦向け</span><h2>コモン・アンコモン TOP5</h2></div><p id="limited-cu-note">選択中アーキタイプで使えるカードをGIH WR順に表示</p></div>
+  <div id="limited-cu-grid" class="limited-cu-grid"><p>カード情報を読み込み中です…</p></div>
+  <p class="limited-sample-note">レア・神話レアを除き、ドラフトで再現しやすいカードを優先して確認できます。</p>
+</section>
+
+<section class="limited-section">
   <div class="limited-section-title"><div><span class="limited-kicker">ランキング画像</span><h2 id="limited-gallery-title">上位カードを日本語画像で見る</h2></div><p>日本語版優先。画像を押すとカード詳細を開きます</p></div>
   <div id="limited-card-gallery" class="limited-image-grid"><p>保存ランキングを読み込み中です…</p></div>
 </section>
@@ -96,6 +102,6 @@
 <script src="affiliate.js?v=20261001-series1"></script>
 <script src="limited-ranking-fallback.js?v=20261001-fix1"></script>
 <script src="limited-archetype-ranking.js?v=20261002"></script>
-<script src="limited-card-images.js?v=20261002-fast1"></script>
+<script src="limited-card-images.js?v=20261002-cu1"></script>
 </body>
 </html>
