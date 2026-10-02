@@ -115,8 +115,8 @@
     if(archSummary)archSummary.innerHTML=`<span>${arch.name}</span><span>${pool.length}枚を優先表示</span><span>GIH WR順</span>`;
     if(topNote)topNote.textContent=`${arch.name}・${archKey==='ALL'?'全体GIH WR':'アーキタイプ専用GIH WR'}順・${formatDate(archKey==='ALL'?set.updatedAt:(set.archetypeCardsUpdatedAt||set.updatedAt))}`;
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
-    if(!pool.length){topCards.innerHTML='<li>この色組み合わせの候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>候補カードを準備中です。</strong><p>次回のランキング更新で上位60枚を保存後、色別候補が増えます。</p></div>';if(cuGrid)cuGrid.innerHTML='<div class="limited-card"><strong>候補を準備中です。</strong></div>';return;}
-    topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
+    if(!pool.length){if(topCards)topCards.innerHTML='<li>この色組み合わせの候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>候補カードを準備中です。</strong><p>次回のランキング更新で上位60枚を保存後、色別候補が増えます。</p></div>';if(cuGrid)cuGrid.innerHTML='<div class="limited-card"><strong>候補を準備中です。</strong></div>';return;}
+    if(topCards)topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
     gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer"><span class="limited-rank-badge">${i+1}位</span>${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a>`;}).join('');
     renderCommonUncommon(set,cards,jaCards,archKey);
   };
@@ -124,7 +124,7 @@
   const renderCurrent=async()=>{
     const setKey=selector.value, set=SETS[setKey], archKey=archSelector.value||'ALL', active=++requestId;
     const ranking=set.ranking||[];
-    if(!ranking.length){topCards.innerHTML='<li>保存ランキングを準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>保存ランキングを準備しています。</strong></div>';return;}
+    if(!ranking.length){if(topCards)topCards.innerHTML='<li>保存ランキングを準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>保存ランキングを準備しています。</strong></div>';return;}
     gallery.innerHTML='<p>保存ランキングからカード情報を読み込み中です…</p>';
 
     const cards=await fetchRankingCards(setKey,ranking);
