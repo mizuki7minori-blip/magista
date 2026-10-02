@@ -1,0 +1,22 @@
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const grid=$('tracker-synergy-grid'),note=$('tracker-synergy-note'),setSel=$('tracker-set'),archSel=$('tracker-arch'),pickedEl=$('tracker-picked');
+if(!grid||!setSel)return;
+let cards=[],jaCards=[],ranking=[];
+const roleFor=card=>{const text=(card?.oracle_text||card?.card_faces?.map(f=>f.oracle_text||'').join(' ')||'').toLowerCase(),type=(card?.type_line||'').toLowerCase(),mv=Number(card?.cmc||0);if(/destroy target|exile target|deals? \d+ damage to target|gets -\d+\/-\d+/.test(text))return'除去';if(type.includes('creature')&&mv>0&&mv<=2)return'序盤要員';if(type.includes('creature')&&mv>=5)return'フィニッシャー';if(/draw .*card|discard/.test(text))return'アドバンテージ';if((card?.colors||[]).length>=2)return'アーキ中核';return'優先ピック';};
+const tags=card=>{const text=(card?.oracle_text||card?.card_faces?.map(f=>f.oracle_text||'').join(' ')||'').toLowerCase(),out=[];[
+ ['墓地',/graveyard|dies/],['生け贄',/sacrifice/],['トークン',/token/],['カウンター',/proliferate|counter on/],['アーティファクト',/artifact/],['エンチャント',/enchantment/],['スペル',/instant|sorcery|noncreature spell/],['手札',/draw .*card|discard/],['回避',/flying|menace|trample|double strike/],['ライフゲイン',/gain .* life|lifelink/]
+].forEach(([n,r])=>{if(r.test(text))out.push(n);});return out;};
+const imageFor=card=>card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';
+const storeKey=()=>`magsta-limited-picks-${setSel.value}`;
+const picked=()=>{try{const v=JSON.parse(localStorage.getItem(storeKey())||'[]');return Array.isArray(v)?v:[];}catch{return[];}};
+const jaMap=()=>new Map(jaCards.filter(c=>c?.name).map(c=>[c.name,c]));
+const nameOf=name=>jaMap().get(name)?.printed_name||name;
+const fetchPaged=async q=>{let url='https://api.scryfall.com/cards/search?q='+encodeURIComponent(q)+'&unique=prints&order=set',out=[],n=0;while(url&&n<5){const r=await fetch(url);if(!r.ok)break;const d=await r.json();out.push(...(d.data||[]));url=d.has_more?d.next_page:'';n++;}return out;};
+const load=async()=>{const set=setSel.value,[snap,eng,ja]=await Promise.all([fetch('limited-ranking-data.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null),fetchPaged('set:'+set),fetchPaged('set:'+set+' lang:ja')]);cards=eng;jaCards=ja;const s=snap?.sets?.[set]||{};ranking=(archSel.value!=='ALL'&&s.archetypeCards?.[archSel.value]?.length?s.archetypeCards[archSel.value]:s.ranking)||[];render();};
+const colorScore=card=>{const map=new Map(cards.map(c=>[c.name,c])),counts={W:0,U:0,B:0,R:0,G:0};picked().forEach(n=>(map.get(n)?.colors||[]).forEach(c=>counts[c]++));const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]);if(picked().length<5)return 0;let s=0;(card.colors||[]).forEach(c=>{if(c===top[0]?.[0])s+=1.5;else if(c===top[1]?.[0])s+=1;else s-=.5;});return s;};
+const render=()=>{const selected=picked(),map=new Map(cards.map(c=>[c.name,c])),pickedCards=selected.map(n=>map.get(n)).filter(Boolean);if(!pickedCards.length){note.textContent='カードをピックすると、共通シナジーから候補を表示します。';grid.innerHTML='';return;}const tc={};pickedCards.forEach(c=>tags(c).forEach(t=>tc[t]=(tc[t]||0)+1));const result=cards.filter(c=>!selected.includes(c.name)).map(card=>{const common=tags(card).filter(t=>tc[t]);const rank=ranking.find(r=>r.name===card.name);let score=common.reduce((s,t)=>s+tc[t]*3,0)+colorScore(card)+(Number(rank?.wr||0)-50)*.2;return{card,common,score,wr:Number(rank?.wr||0)};}).filter(x=>x.common.length).sort((a,b)=>b.score-a.score||b.wr-a.wr).slice(0,5);const top=Object.entries(tc).sort((a,b)=>b[1]-a[1]).slice(0,3).map(x=>x[0]);note.textContent=top.length?'現在の中心シナジー：'+top.join('・'):'シナジー傾向を分析中です。';grid.innerHTML=result.length?result.map(({card,common,wr})=>{const img=imageFor(jaMap().get(card.name)||card),name=nameOf(card.name);return `<article class="tracker-synergy-card">${img?`<img src="${img}" alt="${name}" loading="lazy">`:''}<div class="tracker-synergy-body"><strong>${name}</strong><small>共通：${common.join('・')}</small><small>${roleFor(card)} / ${Number(card.cmc||0)}マナ${wr?` / GIH WR ${wr.toFixed(1)}%`:''}</small></div><button class="tracker-add" data-pick="${card.name.replace(/"/g,'&quot;')}">＋ピック</button></article>`;}).join(''):'<span class="limited-series-note">共通シナジー候補はまだ少なめです。</span>';};
+setSel.addEventListener('change',load);archSel.addEventListener('change',load);
+if(pickedEl)new MutationObserver(render).observe(pickedEl,{childList:true,subtree:true});
+load();
+})();
