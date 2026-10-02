@@ -116,7 +116,7 @@ function safeAffiliateUrl(value) {
 
 window.renderAffiliate = renderAffiliate;
 window.addEventListener('magsta:series-change', () => renderAffiliate());
-document.addEventListener('DOMContentLoaded', () => { renderAffiliate(); renderInlineAffiliate(); bindAffiliateAnalytics(); });
+document.addEventListener('DOMContentLoaded', () => { renderAffiliate(); renderInlineAffiliate(); bindAffiliateAnalytics(); bindCommanderAffiliate(); });
 
 
 function renderInlineAffiliate() {
@@ -166,4 +166,47 @@ function bindAffiliateAnalytics() {
       });
     }
   }, { passive:true });
+}
+
+
+function renderCommanderAffiliate() {
+  const target = document.getElementById('commander-affiliate-products');
+  if (!target || typeof MAGSTA_AFFILIATE === 'undefined') return;
+
+  const budgetEl = document.getElementById('budget-select');
+  const strategyEl = document.getElementById('strategy-select');
+  const commanderEl = document.getElementById('commander-select');
+  const budgetValue = budgetEl?.value || '10000';
+  const tier = budgetValue === '5000' ? 'low' : (budgetValue === '10000' ? 'mid' : 'high');
+  const keys = MAGSTA_AFFILIATE.commanderProducts?.[tier] || MAGSTA_AFFILIATE.categoryProducts?.deck || [];
+  const byKey = new Map((MAGSTA_AFFILIATE.products || []).map(item => [item.key, item]));
+  const items = keys.map(key => byKey.get(key)).filter(item => item && safeAffiliateUrl(item.url)).slice(0, 4);
+  if (!items.length) { target.innerHTML=''; return; }
+
+  const commander = commanderEl?.value || '';
+  const strategyNames = {balanced:'バランス',control:'妨害',speed:'スピード',combo:'コンボ'};
+  const strategy = strategyNames[strategyEl?.value] || 'バランス';
+  const budgetText = budgetValue === 'open' ? '予算上限なし' : Number(budgetValue).toLocaleString('ja-JP') + '円前後';
+  const heading = commander ? commander + ' の構築に使える商品・サービス' : '統率者デッキ作成に使える商品・サービス';
+
+  target.innerHTML = `
+    <div class="affiliate-box">
+      <div class="affiliate-head"><span class="section-kicker">BUILD SUPPORT</span><span class="affiliate-label">PR / 商品リンク</span></div>
+      <h2>${escapeAffiliate(heading)}</h2>
+      <p class="affiliate-disclosure">現在の設定：${escapeAffiliate(budgetText)} / ${escapeAffiliate(strategy)}重視。商品価格・在庫・送料はリンク先で確認してください。</p>
+      <div class="affiliate-list">${items.map(item => renderAffiliateItem(item)).join('')}</div>
+    </div>`;
+}
+
+function bindCommanderAffiliate() {
+  const target = document.getElementById('commander-affiliate-products');
+  if (!target) return;
+  ['budget-select','strategy-select','commander-select'].forEach(id => {
+    document.getElementById(id)?.addEventListener('change', renderCommanderAffiliate);
+  });
+  const summary = document.getElementById('builder-summary');
+  if (summary && 'MutationObserver' in window) {
+    new MutationObserver(renderCommanderAffiliate).observe(summary, {childList:true,subtree:true,characterData:true});
+  }
+  renderCommanderAffiliate();
 }
