@@ -31,9 +31,9 @@
   if (!gallery || !selector || !archSelector) return;
   const title=$('limited-set-title'), description=$('limited-set-description'), kicker=$('limited-set-kicker'), galleryTitle=$('limited-gallery-title');
   const cardDataLink=$('limited-card-data-link'), colorDataLink=$('limited-color-data-link'), scryfallLink=$('limited-scryfall-link'), articleLink=$('limited-article-link');
-  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view');
+  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter');
 
-  let requestId=0;
+  let requestId=0, activeRole='ALL', lastRender=null;
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
   const getImage=card=>card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris?.normal)?.image_uris.normal||'';
   const getDisplayName=(fallback,jaCard)=>jaCard?.printed_name||fallback;
@@ -75,9 +75,13 @@
     return colors.every(c=>allowed.has(c));
   };
   const rankingFor=(set,archKey)=>archKey!=='ALL'&&Array.isArray(set.archetypeCards?.[archKey])&&set.archetypeCards[archKey].length?set.archetypeCards[archKey]:(set.ranking||[]);
-  const buildPool=(set,cards,archKey)=>{
+  const buildPool=(set,cards,archKey,role='ALL')=>{
     const byName=new Map(cards.map(c=>[c.name,c]));
-    return rankingFor(set,archKey).map(item=>({item,card:byName.get(item.name)||null})).filter(x=>fitsArchetype(x.card,archKey)).slice(0,10);
+    return rankingFor(set,archKey)
+      .map(item=>({item,card:byName.get(item.name)||null}))
+      .filter(x=>fitsArchetype(x.card,archKey))
+      .filter(x=>role==='ALL'||roleFor(x.card)===role)
+      .slice(0,10);
   };
 
   const buildCommonUncommonPool=(set,cards,archKey)=>{
@@ -128,13 +132,14 @@
   };
 
   const renderPool=(setKey,set,cards,jaCards,archKey)=>{
-    const jaMap=buildJapaneseMap(jaCards), pool=buildPool(set,cards,archKey), arch=ARCHETYPES[archKey]||ARCHETYPES.ALL;
+    lastRender={setKey,set,cards,jaCards,archKey};
+    const jaMap=buildJapaneseMap(jaCards), pool=buildPool(set,cards,archKey,activeRole), arch=ARCHETYPES[archKey]||ARCHETYPES.ALL;
     if(archetypes)archetypes.textContent=arch.name;
     renderBestColors(set);
-    if(archSummary)archSummary.innerHTML=`<span>${arch.name}</span><span>${pool.length}枚を優先表示</span><span>GIH WR順</span>`;
+    if(archSummary)archSummary.innerHTML=`<span>${arch.name}</span><span>${activeRole==='ALL'?'全役割':activeRole}</span><span>${pool.length}枚を優先表示</span><span>GIH WR順</span>`;
     if(topNote)topNote.textContent=`${arch.name}・${archKey==='ALL'?'全体GIH WR':'アーキタイプ専用GIH WR'}順・${formatDate(archKey==='ALL'?set.updatedAt:(set.archetypeCardsUpdatedAt||set.updatedAt))}`;
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
-    if(!pool.length){if(topCards)topCards.innerHTML='<li>この色組み合わせの候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>候補カードを準備中です。</strong><p>次回のランキング更新で上位60枚を保存後、色別候補が増えます。</p></div>';if(cuGrid)cuGrid.innerHTML='<div class="limited-card"><strong>候補を準備中です。</strong></div>';return;}
+    if(!pool.length){if(topCards)topCards.innerHTML='<li>条件に合う候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>条件に合うカードがありません。</strong><p>役割を「すべて」に戻すか、別のアーキタイプを選んでください。</p></div>';renderCommonUncommon(set,cards,jaCards,archKey);return;}
     if(topCards)topCards.innerHTML=pool.map(({item,card})=>{const ja=jaMap.get(item.name),name=getDisplayName(item.name,ja),en=name!==item.name?`<small style="display:block;color:var(--muted)">${item.name}</small>`:'';return `<li><strong>${name}</strong>${en}<span class="limited-role-badge">${roleFor(card)}</span> GIH WR ${Number(item.wr).toFixed(1)}%${item.games?` / ${Number(item.games).toLocaleString()}ゲーム`:''}</li>`;}).join('');
     gallery.innerHTML=pool.map(({item,card},i)=>{const ja=jaMap.get(item.name),shown=ja||card,image=getImage(shown),name=getDisplayName(item.name,ja),href=shown?.scryfall_uri||`https://scryfall.com/search?q=${encodeURIComponent('!"'+item.name+'"')}`,eager=i<3;return `<a class="limited-image-card limited-ranked-card" href="${href}" target="_blank" rel="noopener noreferrer"><span class="limited-rank-badge">${i+1}位</span>${image?`<img src="${image}" alt="${name}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}>`:'<div class="limited-image-placeholder">画像準備中</div>'}<strong>${name}</strong>${name!==item.name?`<span>${item.name}</span>`:''}<span class="limited-role-badge">${roleFor(card)}</span><span>GIH WR ${Number(item.wr).toFixed(1)}%</span></a>`;}).join('');
     renderCommonUncommon(set,cards,jaCards,archKey);
@@ -170,7 +175,15 @@
     if(updateUrl){const u=new URL(location.href);u.searchParams.set('set',key);u.searchParams.set('arch',archSelector.value||'ALL');history.replaceState({},'',u);}
     renderCurrent().catch(()=>{gallery.innerHTML='<div class="limited-card"><strong>カード情報を取得できませんでした。</strong><p>保存ランキングは維持されています。</p></div>';});
   };
-  const applyArch=()=>{const set=SETS[selector.value];syncCurrentView(set,archSelector.value);const u=new URL(location.href);u.searchParams.set('set',selector.value);u.searchParams.set('arch',archSelector.value);history.replaceState({},'',u);renderCurrent();};
+  const applyArch=()=>{activeRole='ALL';if(roleFilter)roleFilter.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('is-active',i===0));const set=SETS[selector.value];syncCurrentView(set,archSelector.value);const u=new URL(location.href);u.searchParams.set('set',selector.value);u.searchParams.set('arch',archSelector.value);history.replaceState({},'',u);renderCurrent();};
+
+  if(roleFilter)roleFilter.addEventListener('click',event=>{
+    const button=event.target.closest('button[data-role]');
+    if(!button)return;
+    activeRole=button.dataset.role||'ALL';
+    roleFilter.querySelectorAll('button[data-role]').forEach(b=>b.classList.toggle('is-active',b===button));
+    if(lastRender)renderPool(lastRender.setKey,lastRender.set,lastRender.cards,lastRender.jaCards,lastRender.archKey);
+  });
 
   const cached=readSnapshotCache();if(cached)mergeSnapshots(cached);
   const params=new URLSearchParams(location.search),initialSet=(params.get('set')||'fra').toLowerCase(),initialArch=(params.get('arch')||'ALL').toUpperCase();
