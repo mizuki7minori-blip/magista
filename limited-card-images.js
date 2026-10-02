@@ -31,7 +31,7 @@
   if (!gallery || !selector || !archSelector) return;
   const title=$('limited-set-title'), description=$('limited-set-description'), kicker=$('limited-set-kicker'), galleryTitle=$('limited-gallery-title');
   const cardDataLink=$('limited-card-data-link'), colorDataLink=$('limited-color-data-link'), scryfallLink=$('limited-scryfall-link'), articleLink=$('limited-article-link');
-  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note'), synergyPicker=$('limited-synergy-picker'), synergyList=$('limited-synergy-list'), synergyNote=$('limited-synergy-note'), countCreature=$('limited-count-creature'), countRemoval=$('limited-count-removal'), countAdvantage=$('limited-count-advantage'), countFinisher=$('limited-count-finisher'), assistantResult=$('limited-assistant-result'), assistantPicks=$('limited-assistant-picks'), pickedList=$('limited-picked-list'), pickedCount=$('limited-picked-count'), clearPicks=$('limited-clear-picks'), packNumber=$('limited-pack-number'), pickNumber=$('limited-pick-number'), stageAdvice=$('limited-stage-advice'), autoStage=$('limited-auto-stage'), stageStatus=$('limited-stage-status'), colorBars=$('limited-color-bars'), colorNote=$('limited-color-note');
+  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view'), roleFilter=$('limited-role-filter'), planGame=$('limited-plan-game'), planSynergy=$('limited-plan-synergy'), planBalance=$('limited-plan-balance'), planNote=$('limited-plan-note'), synergyPicker=$('limited-synergy-picker'), synergyList=$('limited-synergy-list'), synergyNote=$('limited-synergy-note'), countCreature=$('limited-count-creature'), countRemoval=$('limited-count-removal'), countAdvantage=$('limited-count-advantage'), countFinisher=$('limited-count-finisher'), assistantResult=$('limited-assistant-result'), assistantPicks=$('limited-assistant-picks'), pickedList=$('limited-picked-list'), pickedCount=$('limited-picked-count'), clearPicks=$('limited-clear-picks'), packNumber=$('limited-pack-number'), pickNumber=$('limited-pick-number'), stageAdvice=$('limited-stage-advice'), autoStage=$('limited-auto-stage'), stageStatus=$('limited-stage-status'), colorBars=$('limited-color-bars'), colorNote=$('limited-color-note'), cardSearch=$('limited-card-search'), cardSearchResults=$('limited-card-search-results');
 
   let requestId=0, activeRole='ALL', lastRender=null, activeSynergyCard='', pickedCards=[];
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
@@ -168,6 +168,25 @@
       return '<article class="limited-synergy-card"><strong>'+(i+1)+'位 '+name+'</strong><small>'+reason+'</small><small>GIH WR '+Number(item.wr||0).toFixed(1)+'% / 相性スコア '+score+'</small></article>';
     }).join('');
   };
+  const renderCardSearch=()=>{
+    if(!cardSearch||!cardSearchResults)return;
+    const q=cardSearch.value.trim().toLowerCase();
+    if(!q){cardSearchResults.innerHTML='';return;}
+    const pool=[...(lastRender?.jaCards||[]),...(lastRender?.cards||[])];
+    const seen=new Set(), matches=[];
+    for(const card of pool){
+      if(!card?.name||seen.has(card.name))continue;
+      seen.add(card.name);
+      const ja=(card.printed_name||'').toLowerCase(), en=card.name.toLowerCase();
+      if(ja.includes(q)||en.includes(q)){matches.push(card);if(matches.length>=8)break;}
+    }
+    if(!matches.length){cardSearchResults.innerHTML='<span class="limited-series-note">該当カードが見つかりません。</span>';return;}
+    cardSearchResults.innerHTML=matches.map(card=>{
+      const name=card.printed_name||card.name;
+      const sub=name!==card.name?'<small>'+card.name+'</small>':'';
+      return '<div class="limited-card-search-result"><span>'+name+sub+'</span><button type="button" data-pick-card="'+card.name.replace(/"/g,'&quot;')+'">＋ピック</button></div>';
+    }).join('');
+  };
   const pickedStorageKey=()=>`magsta-limited-picks-${selector.value}`;
   const loadPicked=()=>{
     try{pickedCards=JSON.parse(localStorage.getItem(pickedStorageKey())||'[]');if(!Array.isArray(pickedCards))pickedCards=[];}catch{pickedCards=[];}
@@ -199,7 +218,7 @@
     pickedList.innerHTML=pickedCards.map((name,i)=>'<span class="limited-picked-chip">'+getDisplayName(name,jaMap.get(name))+' <button type="button" data-remove-pick="'+i+'" aria-label="このピックを取り消す">×</button></span>').join('');
   };
   const refreshPickedAssistant=()=>{
-    syncPickedCounts();renderPickedList();savePicked();syncAutoStage();renderDraftStage();renderColorRead();
+    syncPickedCounts();renderPickedList();savePicked();syncAutoStage();renderDraftStage();renderColorRead();renderCardSearch();
     if(lastRender)renderDraftAssistant(lastRender.set,lastRender.cards,lastRender.jaCards,lastRender.archKey);
   };
   const addPickedCard=name=>{if(!name)return;pickedCards.push(name);refreshPickedAssistant();};
@@ -407,7 +426,7 @@
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
     renderPlan(set,cards,archKey);
     renderSynergy(set,cards,jaCards,archKey);
-    syncAutoStage();renderDraftStage();renderColorRead();
+    syncAutoStage();renderDraftStage();renderColorRead();renderCardSearch();
     renderDraftAssistant(set,cards,jaCards,archKey);
     syncPickedCounts();renderPickedList();
     if(!pool.length){if(topCards)topCards.innerHTML='<li>条件に合う候補を準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>条件に合うカードがありません。</strong><p>役割を「すべて」に戻すか、別のアーキタイプを選んでください。</p></div>';renderCommonUncommon(set,cards,jaCards,archKey);return;}
@@ -450,6 +469,7 @@
   };
   const applyArch=()=>{activeRole='ALL';activeSynergyCard='';if(roleFilter)roleFilter.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('is-active',i===0));const set=SETS[selector.value];syncCurrentView(set,archSelector.value);const u=new URL(location.href);u.searchParams.set('set',selector.value);u.searchParams.set('arch',archSelector.value);history.replaceState({},'',u);renderCurrent();};
 
+  if(cardSearch)cardSearch.addEventListener('input',renderCardSearch);
   document.addEventListener('click',event=>{
     const add=event.target.closest('[data-pick-card]');
     if(add){event.preventDefault();addPickedCard(add.dataset.pickCard);return;}
