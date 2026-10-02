@@ -177,5 +177,5 @@
   archSelector.value=ARCHETYPES[initialArch]?initialArch:'ALL';
   selector.addEventListener('change',()=>applySet(selector.value));archSelector.addEventListener('change',applyArch);
   applySet(initialSet,false);
-  refreshSnapshots().then(ok=>{if(ok)renderCurrent();});
+  refreshSnapshots().then(ok=>{if(ok){const set=SETS[selector.value];renderQuickArches(set);syncCurrentView(set,archSelector.value||'ALL');renderCurrent();}});
 })();
