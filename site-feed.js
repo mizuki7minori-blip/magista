@@ -15,6 +15,26 @@ function card(a,compact=false){
  item.append(el('small','source',`${day(a.pubDate)} · ${a.sourceName||'配信元'}${a.language==='en'?' · 英語':''}`));return item;
 }
 function error(target,retry){target.replaceChildren();const box=el('div','feed-error','記事を取得できませんでした。');const btn=el('button','','再読み込み');btn.type='button';btn.addEventListener('click',retry);box.append(btn);target.append(box);}
+async function editorialCards(limit=3){
+ try{
+  const r=await fetch(`articles.html?v=${Math.floor(Date.now()/600000)}`,{signal:AbortSignal.timeout(8000)});
+  if(!r.ok)throw Error('editorial');
+  const doc=new DOMParser().parseFromString(await r.text(),'text/html');
+  return [...doc.querySelectorAll('.article-list .article-card')].map(node=>{
+   const a=node.querySelector('a.read-more'),h=node.querySelector('h2'),meta=[...node.querySelectorAll('.article-meta span')].map(x=>x.textContent.trim());
+   if(!a||!h||!/^article/i.test(a.getAttribute('href')||''))return null;
+   return {title:h.textContent.trim(),link:a.getAttribute('href'),description:node.querySelector('p')?.textContent?.trim()||'',meta};
+  }).filter(Boolean).slice(0,limit);
+ }catch{return [];}
+}
+function editorialCard(a){
+ const item=el('article','feed-card editorial-feed-card');
+ item.append(el('span','tag deck','MAGSTA記事'));
+ const h=el('h3'),link=el('a','',a.title);link.href=a.link;h.append(link);item.append(h);
+ if(a.description)item.append(el('p','',a.description));
+ item.append(el('small','source',a.meta.filter(Boolean).join(' · ')||'MAGSTA編集部'));
+ return item;
+}
 async function load(){
  const category=document.getElementById('category-rss-list');
  const status=document.getElementById(category?'category-status':'feed-status');
@@ -33,7 +53,14 @@ async function load(){
    const selected=items.filter(a=>match instanceof RegExp?match.test(a.title+' '+clean(a.description)):match?a.categoryKey===match:a.categoryKey==='news');category.replaceChildren(...selected.slice(0,40).map(a=>card(a)));if(!selected.length)category.append(el('p','feed-error','このカテゴリーの記事は現在ありません。ほかのカテゴリーをご覧ください。'));
   }else{
    const ja=items.filter(a=>a.language==='ja'),en=items.filter(a=>a.language==='en');
-   for(const [id,list,count,compact] of [['latest-list',ja,3,false],['feed-ja',ja,8,true],['feed-en',en,8,true]]){const target=document.getElementById(id);if(target){target.replaceChildren(...list.slice(0,count).map(a=>card(a,compact)));if(!list.length)target.append(el('p','','現在、表示できる記事はありません。'));}}
+   const latest=document.getElementById('latest-list');
+   if(latest){
+    const editorial=await editorialCards(3);
+    const cards=editorial.length?editorial.map(editorialCard):ja.slice(0,3).map(a=>card(a,false));
+    latest.replaceChildren(...cards);
+    if(!cards.length)latest.append(el('p','','現在、表示できる記事はありません。'));
+   }
+   for(const [id,list,count] of [['feed-ja',ja,8],['feed-en',en,8]]){const target=document.getElementById(id);if(target){target.replaceChildren(...list.slice(0,count).map(a=>card(a,true)));if(!list.length)target.append(el('p','','現在、表示できる記事はありません。'));}}
   }
  }catch{if(status)status.textContent='配信データを読み込めませんでした。';for(const id of category?['category-rss-list']:['latest-list','feed-ja','feed-en']){const target=document.getElementById(id);if(target)error(target,load);}}
 }
