@@ -162,6 +162,8 @@
 
   const syncSeriesAffiliate=setKey=>{if(document.body)document.body.dataset.affiliateSeries=setKey;window.dispatchEvent(new CustomEvent('magsta:series-change',{detail:{set:setKey}}));};
   const applySet=(setKey,updateUrl=true)=>{
+    activeRole='ALL';
+    if(roleFilter)roleFilter.querySelectorAll('button[data-role]').forEach((b,i)=>b.classList.toggle('is-active',i===0));
     const key=SETS[setKey]?setKey:'fra',set=SETS[key],guide=set.guide||PENDING;selector.value=key;
     if(kicker)kicker.textContent=`リミテッド / ${set.code}`;if(title)title.textContent=`${set.name} リミテッド攻略`;if(description)description.textContent=`${set.name}（${set.code}）を、シリーズ → アーキタイプ → 優先カードの順で確認できます。`;
     if(cardDataLink)cardDataLink.href=`https://www.17lands.com/card_data?expansion=${set.code}&format=PremierDraft&sort=ever_drawn_win_rate%2Cdesc&time_period=ALL_TIME&view=table`;
