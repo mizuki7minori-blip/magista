@@ -33,7 +33,7 @@
         if(!archSelector)return;
         archSelector.value=button.dataset.arch;
         archSelector.dispatchEvent(new Event('change',{bubbles:true}));
-        document.getElementById('limited-top-heading')?.scrollIntoView({behavior:'smooth',block:'start'});
+        document.getElementById('limited-gallery-title')?.scrollIntoView({behavior:'smooth',block:'start'});
       });
     });
   };
