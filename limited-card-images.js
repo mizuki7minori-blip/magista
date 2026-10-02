@@ -31,7 +31,7 @@
   if (!gallery || !selector || !archSelector) return;
   const title=$('limited-set-title'), description=$('limited-set-description'), kicker=$('limited-set-kicker'), galleryTitle=$('limited-gallery-title');
   const cardDataLink=$('limited-card-data-link'), colorDataLink=$('limited-color-data-link'), scryfallLink=$('limited-scryfall-link'), articleLink=$('limited-article-link');
-  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note');
+  const bestColors=$('limited-best-colors'), archetypes=$('limited-archetypes'), firstPick=$('limited-first-pick'), topCards=$('limited-top-cards'), guideStatus=$('limited-guide-status'), topNote=$('limited-top-note'), archSummary=$('limited-arch-summary'), cuGrid=$('limited-cu-grid'), cuNote=$('limited-cu-note'), quickArches=$('limited-quick-arches'), currentView=$('limited-current-view');
 
   let requestId=0;
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
@@ -45,12 +45,12 @@
 
   const readTimedCache=(key,ttl,mem)=>{if(mem.has(key))return mem.get(key);try{const raw=localStorage.getItem(key);if(!raw)return null;const p=JSON.parse(raw);if(!p?.savedAt||Date.now()-p.savedAt>ttl)return null;mem.set(key,p.cards||[]);return p.cards||[];}catch{return null;}};
   const writeTimedCache=(key,cards,mem)=>{mem.set(key,cards);try{localStorage.setItem(key,JSON.stringify({savedAt:Date.now(),cards}));}catch{}};
-  const readImageCache=k=>readTimedCache(`magsta-limited-images-v2-${k}`,IMAGE_CACHE_TTL,imageMemoryCache);
+  const readImageCache=k=>readTimedCache(`magsta-limited-images-v3-${k}`,IMAGE_CACHE_TTL,imageMemoryCache);
   const readJaCache=k=>readTimedCache(`magsta-limited-ja-${k}`,JA_CACHE_TTL,jaMemoryCache);
 
-  const fetchRankingCards=async(setKey,ranking)=>{
-    const cached=readImageCache(setKey); if(cached?.length)return cached;
-    try{const r=await fetch('https://api.scryfall.com/cards/collection',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({identifiers:ranking.slice(0,60).map(x=>({name:x.name}))})});if(!r.ok)throw 0;const d=await r.json(),cards=d.data||[];if(cards.length)writeTimedCache(`magsta-limited-images-v2-${setKey}`,cards,imageMemoryCache);return cards;}catch{return [];}
+  const fetchRankingCards=async(cacheKey,ranking)=>{
+    const cached=readImageCache(cacheKey); if(cached?.length)return cached;
+    try{const r=await fetch('https://api.scryfall.com/cards/collection',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({identifiers:ranking.slice(0,60).map(x=>({name:x.name}))})});if(!r.ok)throw 0;const d=await r.json(),cards=d.data||[];if(cards.length)writeTimedCache(`magsta-limited-images-v3-${cacheKey}`,cards,imageMemoryCache);return cards;}catch{return [];}
   };
   const fetchJapaneseSetCards=async setKey=>{
     const cached=readJaCache(setKey);if(cached?.length)return cached;
@@ -89,6 +89,25 @@
       .slice(0,5);
   };
 
+  const renderQuickArches=set=>{
+    if(!quickArches)return;
+    const rows=(set.archetypes||[]).slice(0,3);
+    quickArches.innerHTML=rows.length
+      ? rows.map((r,i)=>`<button type="button" class="limited-quick-arch" data-arch="${r.code}">${i+1}位 ${r.name} ${Number(r.wr).toFixed(1)}%</button>`).join('')
+      : '<span class="limited-series-note">勝率上位アーキタイプを準備中です</span>';
+    quickArches.querySelectorAll('.limited-quick-arch').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        archSelector.value=btn.dataset.arch;
+        applyArch();
+      });
+    });
+  };
+
+  const syncCurrentView=(set,archKey)=>{
+    if(currentView)currentView.innerHTML=`<span>${set.code}</span><span>${(ARCHETYPES[archKey]||ARCHETYPES.ALL).name}</span>`;
+    if(quickArches)quickArches.querySelectorAll('.limited-quick-arch').forEach(btn=>btn.classList.toggle('is-active',btn.dataset.arch===archKey));
+  };
+
   const renderBestColors=set=>{
     if(!bestColors)return;
     const rows=(set.archetypes||[]).slice(0,3);
@@ -123,11 +142,11 @@
 
   const renderCurrent=async()=>{
     const setKey=selector.value, set=SETS[setKey], archKey=archSelector.value||'ALL', active=++requestId;
-    const ranking=set.ranking||[];
+    const ranking=rankingFor(set,archKey);
     if(!ranking.length){if(topCards)topCards.innerHTML='<li>保存ランキングを準備中です</li>';gallery.innerHTML='<div class="limited-card"><strong>保存ランキングを準備しています。</strong></div>';return;}
     gallery.innerHTML='<p>保存ランキングからカード情報を読み込み中です…</p>';
 
-    const cards=await fetchRankingCards(setKey,ranking);
+    const cards=await fetchRankingCards(`${setKey}-${archKey}`,ranking);
     if(active!==requestId)return;
     renderPool(setKey,set,cards,[],archKey);
 
@@ -145,11 +164,13 @@
     if(scryfallLink)scryfallLink.href=`https://scryfall.com/sets/${key}?as=grid&order=set&lang=ja`;
     if(articleLink){articleLink.hidden=!set.article;if(set.article)articleLink.href=set.article;}
     if(bestColors)bestColors.textContent=guide.colors;if(firstPick)firstPick.textContent=guide.firstPick;if(guideStatus)guideStatus.textContent=guide.status;
+    renderQuickArches(set);
+    syncCurrentView(set,archSelector.value||'ALL');
     syncSeriesAffiliate(key);
     if(updateUrl){const u=new URL(location.href);u.searchParams.set('set',key);u.searchParams.set('arch',archSelector.value||'ALL');history.replaceState({},'',u);}
     renderCurrent().catch(()=>{gallery.innerHTML='<div class="limited-card"><strong>カード情報を取得できませんでした。</strong><p>保存ランキングは維持されています。</p></div>';});
   };
-  const applyArch=()=>{const u=new URL(location.href);u.searchParams.set('set',selector.value);u.searchParams.set('arch',archSelector.value);history.replaceState({},'',u);renderCurrent();};
+  const applyArch=()=>{const set=SETS[selector.value];syncCurrentView(set,archSelector.value);const u=new URL(location.href);u.searchParams.set('set',selector.value);u.searchParams.set('arch',archSelector.value);history.replaceState({},'',u);renderCurrent();};
 
   const cached=readSnapshotCache();if(cached)mergeSnapshots(cached);
   const params=new URLSearchParams(location.search),initialSet=(params.get('set')||'fra').toLowerCase(),initialArch=(params.get('arch')||'ALL').toUpperCase();
