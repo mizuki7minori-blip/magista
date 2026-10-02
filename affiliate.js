@@ -38,7 +38,7 @@ function renderAffiliateItem(item) {
         <strong>${escapeAffiliate(item.title)}</strong>
         <p>${escapeAffiliate(item.description)}</p>
       </div>
-      <a class="button primary affiliate-button" href="${escapeAffiliate(url)}" target="_blank" rel="${isAffiliate ? 'sponsored nofollow noopener noreferrer' : 'noopener noreferrer'}">${escapeAffiliate(item.label)} →</a>
+      <a class="button primary affiliate-button" data-affiliate-key="${escapeAffiliate(item.key || kind)}" href="${escapeAffiliate(url)}" target="_blank" rel="${isAffiliate ? 'sponsored nofollow noopener noreferrer' : 'noopener noreferrer'}">${escapeAffiliate(item.label)} →</a>
       ${safeAffiliateUrl(item.pixel) ? `<img class="affiliate-tracker" src="${escapeAffiliate(safeAffiliateUrl(item.pixel))}" alt="" width="1" height="1" aria-hidden="true">` : ''}
     </article>`;
 }
