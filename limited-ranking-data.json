@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-02T01:49:51.593819Z",
+  "generatedAt": "2026-10-02T01:51:02.988322Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-10-02T01:49:32.707775Z",
+      "updatedAt": "2026-10-02T01:50:46.433881Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
@@ -345,11 +345,32 @@
           "wr": 56.3
         },
         {
+          "code": "GW",
+          "name": "緑白（セレズニア）",
+          "wins": 2839,
+          "games": 5162,
+          "wr": 55.0
+        },
+        {
           "code": "BR",
           "name": "黒赤（ラクドス）",
           "wins": 2669,
           "games": 4882,
           "wr": 54.7
+        },
+        {
+          "code": "RW",
+          "name": "赤白（ボロス）",
+          "wins": 1617,
+          "games": 2980,
+          "wr": 54.3
+        },
+        {
+          "code": "GU",
+          "name": "緑青（シミック）",
+          "wins": 1220,
+          "games": 2247,
+          "wr": 54.3
         },
         {
           "code": "WB",
@@ -359,12 +380,12 @@
           "wr": 53.4
         }
       ],
-      "archetypesUpdatedAt": "2026-10-02T01:49:51.593819Z"
+      "archetypesUpdatedAt": "2026-10-02T01:51:02.988322Z"
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-10-02T01:49:32.707775Z",
+      "updatedAt": "2026-10-02T01:50:46.433881Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -697,6 +718,13 @@
           "wr": 56.2
         },
         {
+          "code": "RW",
+          "name": "赤白（ボロス）",
+          "wins": 41717,
+          "games": 74172,
+          "wr": 56.2
+        },
+        {
           "code": "UR",
           "name": "青赤（イゼット）",
           "wins": 2397,
@@ -711,6 +739,20 @@
           "wr": 53.3
         },
         {
+          "code": "GU",
+          "name": "緑青（シミック）",
+          "wins": 12015,
+          "games": 22984,
+          "wr": 52.3
+        },
+        {
+          "code": "GW",
+          "name": "緑白（セレズニア）",
+          "wins": 654,
+          "games": 1272,
+          "wr": 51.4
+        },
+        {
           "code": "RG",
           "name": "赤緑（グルール）",
           "wins": 1556,
@@ -718,12 +760,12 @@
           "wr": 49.5
         }
       ],
-      "archetypesUpdatedAt": "2026-10-02T01:49:51.593819Z"
+      "archetypesUpdatedAt": "2026-10-02T01:51:02.988322Z"
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-10-02T01:49:32.707775Z",
+      "updatedAt": "2026-10-02T01:50:46.433881Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -1035,11 +1077,32 @@
           "wr": 58.6
         },
         {
+          "code": "GU",
+          "name": "緑青（シミック）",
+          "wins": 18010,
+          "games": 31348,
+          "wr": 57.5
+        },
+        {
+          "code": "GW",
+          "name": "緑白（セレズニア）",
+          "wins": 27993,
+          "games": 49653,
+          "wr": 56.4
+        },
+        {
           "code": "BG",
           "name": "黒緑（ゴルガリ）",
           "wins": 14283,
           "games": 25433,
           "wr": 56.2
+        },
+        {
+          "code": "RW",
+          "name": "赤白（ボロス）",
+          "wins": 15053,
+          "games": 27182,
+          "wr": 55.4
         },
         {
           "code": "WB",
@@ -1077,12 +1140,12 @@
           "wr": 52.3
         }
       ],
-      "archetypesUpdatedAt": "2026-10-02T01:49:51.593819Z"
+      "archetypesUpdatedAt": "2026-10-02T01:51:02.988322Z"
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-10-02T01:49:32.707775Z",
+      "updatedAt": "2026-10-02T01:50:46.433881Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -1394,11 +1457,11 @@
           "wr": 57.9
         },
         {
-          "code": "BR",
-          "name": "黒赤（ラクドス）",
-          "wins": 1728,
-          "games": 3103,
-          "wr": 55.7
+          "code": "RW",
+          "name": "赤白（ボロス）",
+          "wins": 110126,
+          "games": 191326,
+          "wr": 57.6
         },
         {
           "code": "BG",
@@ -1406,6 +1469,13 @@
           "wins": 52264,
           "games": 94979,
           "wr": 55.0
+        },
+        {
+          "code": "GU",
+          "name": "緑青（シミック）",
+          "wins": 40566,
+          "games": 73886,
+          "wr": 54.9
         },
         {
           "code": "UR",
@@ -1417,9 +1487,30 @@
         {
           "code": "RG",
           "name": "赤緑（グルール）",
-          "wins": 2628,
-          "games": 5003,
-          "wr": 52.5
+          "wins": 29316,
+          "games": 54638,
+          "wr": 53.7
+        },
+        {
+          "code": "WU",
+          "name": "白青（アゾリウス）",
+          "wins": 13294,
+          "games": 24933,
+          "wr": 53.3
+        },
+        {
+          "code": "GW",
+          "name": "緑白（セレズニア）",
+          "wins": 151,
+          "games": 299,
+          "wr": 50.5
+        },
+        {
+          "code": "BR",
+          "name": "黒赤（ラクドス）",
+          "wins": 8648,
+          "games": 17336,
+          "wr": 49.9
         },
         {
           "code": "UB",
@@ -1427,21 +1518,14 @@
           "wins": 408,
           "games": 827,
           "wr": 49.3
-        },
-        {
-          "code": "WU",
-          "name": "白青（アゾリウス）",
-          "wins": 715,
-          "games": 1502,
-          "wr": 47.6
         }
       ],
-      "archetypesUpdatedAt": "2026-10-02T01:49:51.593819Z"
+      "archetypesUpdatedAt": "2026-10-02T01:51:02.988322Z"
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-10-02T01:49:32.707775Z",
+      "updatedAt": "2026-10-02T01:50:46.433881Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -1746,6 +1830,13 @@
       ],
       "archetypes": [
         {
+          "code": "RG",
+          "name": "赤緑（グルール）",
+          "wins": 2137,
+          "games": 3606,
+          "wr": 59.3
+        },
+        {
           "code": "WB",
           "name": "白黒（オルゾフ）",
           "wins": 37549,
@@ -1758,6 +1849,13 @@
           "wins": 36164,
           "games": 62500,
           "wr": 57.9
+        },
+        {
+          "code": "GW",
+          "name": "緑白（セレズニア）",
+          "wins": 2299,
+          "games": 3989,
+          "wr": 57.6
         },
         {
           "code": "WU",
@@ -1774,6 +1872,20 @@
           "wr": 56.3
         },
         {
+          "code": "GU",
+          "name": "緑青（シミック）",
+          "wins": 16754,
+          "games": 29898,
+          "wr": 56.0
+        },
+        {
+          "code": "RW",
+          "name": "赤白（ボロス）",
+          "wins": 14039,
+          "games": 25200,
+          "wr": 55.7
+        },
+        {
           "code": "UB",
           "name": "青黒（ディミーア）",
           "wins": 805,
@@ -1781,21 +1893,14 @@
           "wr": 53.1
         },
         {
-          "code": "RG",
-          "name": "赤緑（グルール）",
-          "wins": 873,
-          "games": 1679,
-          "wr": 52.0
-        },
-        {
           "code": "BR",
           "name": "黒赤（ラクドス）",
-          "wins": 316,
-          "games": 675,
+          "wins": 498,
+          "games": 1065,
           "wr": 46.8
         }
       ],
-      "archetypesUpdatedAt": "2026-10-02T01:49:51.593819Z"
+      "archetypesUpdatedAt": "2026-10-02T01:51:02.988322Z"
     }
   }
 }
