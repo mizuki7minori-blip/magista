@@ -8,7 +8,7 @@
   const plan = document.getElementById('budget-plan');
   if (!select || !summary || !grid) return;
 
-  const state = { dynamicCommander: null, suggestions: [], themes: [], draftDeck: [] };
+  const state = { dynamicCommander: null, suggestions: [], themes: [], draftDeck: [], lands: [] };
   const esc = s => String(s || '').replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const imgOf = c => c?.image_uris?.normal || c?.card_faces?.[0]?.image_uris?.normal || '';
   const hasJapanese = s => /[\u3040-\u30ff\u3400-\u9fff]/.test(String(s || ''));
@@ -85,11 +85,11 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const DRAFT_KEY = 'magsta-commander-draft-en';
 
   function loadDraftDeck(){
-    try { state.draftDeck = JSON.parse(localStorage.getItem(DRAFT_KEY) || '[]'); }
+    try { const saved=JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}'); state.draftDeck=Array.isArray(saved)?saved:(saved.cards||[]); state.lands=Array.isArray(saved)?[]:(saved.lands||[]); }
     catch(e){ state.draftDeck = []; }
     renderDraftDeck();
   }
-  function saveDraftDeck(){ localStorage.setItem(DRAFT_KEY, JSON.stringify(state.draftDeck)); renderDraftDeck(); }
+  function saveDraftDeck(){ localStorage.setItem(DRAFT_KEY, JSON.stringify({cards:state.draftDeck,lands:state.lands||[]})); renderDraftDeck(); }
   function addDraftCard(item){
     const key=item.card.oracle_id||item.card.name;
     if(state.draftDeck.some(x=>x.key===key)) return;
@@ -200,10 +200,29 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       if(state.draftDeck.length<nonlandTarget && state.suggestions.length){
         addItems(state.suggestions,'theme',nonlandTarget);
       }
+      state.lands=buildLandPackage();
       saveDraftDeck();
-      status.textContent=`Built a 99-card draft: ${state.draftDeck.length} nonlands + about ${landTarget} lands + 1 commander.`;
+      status.textContent=`Built a 100-card draft: 1 commander + ${state.draftDeck.length} nonlands + ${state.lands.length} lands.`;
     }catch(e){status.textContent='Auto-fill failed. Please try again.';}
     finally{draftAutoBuild.disabled=false;draftAutoBuild.textContent='Auto-fill 99-card draft';}
+  }
+
+  function basicLandName(color){
+    return {W:'Plains',U:'Island',B:'Swamp',R:'Mountain',G:'Forest'}[color] || 'Wastes';
+  }
+
+  function buildLandPackage(){
+    if(!state.dynamicCommander) return [];
+    const identity=state.dynamicCommander.color_identity||[], high=Number(bracket?.value)>=4;
+    const target=high?35:37, lands=[];
+    const add=(name,count=1)=>{for(let i=0;i<count;i++)lands.push({name,role:'Land'});};
+    if(!identity.length){add('Wastes',target);return lands;}
+    if(identity.length===1){add(basicLandName(identity[0]),target);return lands;}
+    const utility=['Command Tower','Exotic Orchard','Path of Ancestry'];
+    utility.slice(0,Math.min(3,target)).forEach(x=>add(x));
+    const remaining=target-lands.length, per=Math.floor(remaining/identity.length), extra=remaining%identity.length;
+    identity.forEach((color,i)=>add(basicLandName(color),per+(i<extra?1:0)));
+    return lands;
   }
 
   function draftGroups(){
@@ -216,16 +235,16 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     if(!draftExportGrid) return;
     const groups=draftGroups();
     const labels={ramp:'Ramp',draw:'Card draw',interaction:'Interaction',protection:'Protection',graveyard:'Graveyard interaction',tutor:'Tutors',theme:'Theme / Other'};
-    draftExportGrid.innerHTML=Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>`<section class="draft-export-group"><h4>${labels[key]} (${items.length})</h4><ul>${items.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`).join('') || '<p class="draft-deck-empty">Add cards to see a categorized deck list.</p>';
+    const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>`<section class="draft-export-group"><h4>${labels[key]} (${items.length})</h4><ul>${items.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`).join('') + (landItems.length?`<section class="draft-export-group"><h4>Lands (${landItems.length})</h4><ul>${landItems.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`:'')) || '<p class="draft-deck-empty">Add cards to see a categorized deck list.</p>';
   }
 
   function draftText(){
     const groups=draftGroups(), labels={ramp:'Ramp',draw:'Card draw',interaction:'Interaction',protection:'Protection',graveyard:'Graveyard interaction',tutor:'Tutors',theme:'Theme / Other'};
     const commanderName=state.dynamicCommander?displayName(state.dynamicCommander):'Not selected';
-    const high=Number(bracket?.value)>=4, landTarget=high?35:37;
-    const lines=[`MAGSTA Commander Draft`,`Commander: ${commanderName}`,`Bracket: ${bracket?.value||'-'}`,`Suggested lands: ${landTarget}`,''];
+    const landItems=(state.lands&&state.lands.length)?state.lands:buildLandPackage(), landTarget=landItems.length;
+    const lines=[`MAGSTA Commander Draft`,`Commander: ${commanderName}`,`Bracket: ${bracket?.value||'-'}`,`Lands: ${landTarget}`,''];
     Object.entries(groups).forEach(([key,items])=>{if(!items.length)return;lines.push(`## ${labels[key]} (${items.length})`,...items.map(x=>`1 ${x.name}`),'');});
-    lines.push(`## Lands (about ${landTarget})`,`Adjust basics and utility lands to match the commander's color identity.`);
+    lines.push(`## Lands (${landTarget})`,...landItems.map(x=>`1 ${x.name}`));
     return lines.join('\n');
   }
 
@@ -239,7 +258,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   }
   draftAddAll.addEventListener('click',()=>{state.suggestions.forEach(addDraftCard);status.textContent='Saved the current candidates to your draft deck.';});
   draftAutoBuild.addEventListener('click',autoBuildDraft);
-  draftClear.addEventListener('click',()=>{state.draftDeck=[];saveDraftDeck();});
+  draftClear.addEventListener('click',()=>{state.draftDeck=[];state.lands=[];saveDraftDeck();});
   draftCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(draftText());draftCopyStatus.textContent='Deck list copied.';}catch(e){draftCopyStatus.textContent='Could not copy the deck list.';}});
   loadDraftDeck();
 
