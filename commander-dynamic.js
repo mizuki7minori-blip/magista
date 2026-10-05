@@ -203,8 +203,9 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
         addItems(state.suggestions,'theme',nonlandTarget);
       }
       state.lands=buildLandPackage();
+      const check=normalizeDeckTo100();
       saveDraftDeck();
-      status.textContent=`100枚構築のたたき台を作成しました。統率者1枚 + 非土地 ${state.draftDeck.length}枚 + 土地 ${state.lands.length}枚です。`;
+      status.textContent=`最終チェック完了：統率者1枚 + 非土地 ${state.draftDeck.length}枚 + 土地 ${state.lands.length}枚 = ${check.total}枚です。`;
     }catch(e){status.textContent='自動補充に失敗しました。もう一度試してください。';}
     finally{draftAutoBuild.disabled=false;draftAutoBuild.textContent='99枚たたき台を自動補充';}
   }
@@ -225,6 +226,24 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     const remaining=target-lands.length, per=Math.floor(remaining/identity.length), extra=remaining%identity.length;
     identity.forEach((color,i)=>add(basicLandName(color),per+(i<extra?1:0)));
     return lands;
+  }
+
+  function normalizeDeckTo100(){
+    if(!state.dynamicCommander) return {total:state.draftDeck.length+(state.lands?.length||0), adjusted:false};
+    const targetMain=99;
+    if(!Array.isArray(state.lands) || !state.lands.length) state.lands=buildLandPackage();
+    let mainCount=state.draftDeck.length+state.lands.length, adjusted=false;
+    if(mainCount<targetMain){
+      const identity=state.dynamicCommander.color_identity||[];
+      const fillers=identity.length?identity.map(basicLandName):['荒地'];
+      let i=0;
+      while(mainCount<targetMain){state.lands.push({name:fillers[i%fillers.length],role:'土地'});i++;mainCount++;adjusted=true;}
+    }else if(mainCount>targetMain){
+      const over=mainCount-targetMain;
+      state.lands.splice(Math.max(0,state.lands.length-over),Math.min(over,state.lands.length));
+      mainCount=state.draftDeck.length+state.lands.length; adjusted=true;
+    }
+    return {total:mainCount+1,main:mainCount,adjusted};
   }
 
   function draftGroups(){
@@ -253,7 +272,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function renderDraftDeck(){
     const totalUsd=state.draftDeck.map(x=>Number(x.usd)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
     const totalJpy=Math.round(totalUsd*USD_TO_JPY);
-    draftSummary.textContent=`${state.draftDeck.length}枚保存 / 概算 ${totalJpy.toLocaleString('ja-JP')}円（この端末のブラウザに保存）`;
+    const check=normalizeDeckTo100(); draftSummary.textContent=`${state.draftDeck.length}枚保存 / 土地 ${state.lands.length}枚 / 合計 ${check.total}枚 / 概算 ${totalJpy.toLocaleString('ja-JP')}円（この端末のブラウザに保存）`;
     draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'候補')}</small></div><span>${x.usd==null?'価格不明':'約'+Math.round(Number(x.usd)*USD_TO_JPY).toLocaleString('ja-JP')+'円'}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
     draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
     renderDraftExport();
