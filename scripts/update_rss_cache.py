@@ -200,7 +200,7 @@ def translation_state(previous):
 
 
 
-def normalize_mtg_translation(value):
+def normalize_mtg_translation(value, original=''):
     replacements = [
         (r'Tarmogoyf|ターモゴイフ', 'タルモゴイフ'),
         (r'(?<![A-Za-z])Modern(?![A-Za-z])', 'モダン'), (r'(?<![A-Za-z])Standard(?![A-Za-z])', 'スタンダード'),
@@ -210,6 +210,12 @@ def normalize_mtg_translation(value):
     ]
     for pattern, replacement in replacements:
         value = re.sub(pattern, replacement, value, flags=re.I)
+    if 'reality fracture' in original.lower():
+        value = re.sub(r'Reality Fracture|現実の虚像|リアリティフラクチャー', 'リアリティ・フラクチャー', value, flags=re.I)
+    if 'commander' in original.lower():
+        value = value.replace('司令官', '統率者')
+    if 'house bans' in original.lower():
+        value = value.replace('ハウス禁止', '独自の禁止カード')
     return value
 
 
@@ -233,7 +239,7 @@ def translate_japanese(text, state):
         result = html_tools.unescape(data.get('responseData', {}).get('translatedText', '')).strip()
         if not result or not re.search(r'[ぁ-んァ-ヶ一-龥]', result):
             return None
-        return normalize_mtg_translation(result)
+        return normalize_mtg_translation(result, text)
     except Exception as error:
         if getattr(error, 'code', None) in (403, 429):
             state['blocked'] = True
