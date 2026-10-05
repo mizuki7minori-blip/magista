@@ -65,6 +65,15 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     <div class="dynamic-actions"><button id="load-synergy-button" class="button secondary" type="button" hidden>Show synergy candidates</button></div>`;
   controls.before(box);
 
+  const input = box.querySelector('#any-commander-input');
+  const button = box.querySelector('#any-commander-button');
+  const results = box.querySelector('#any-commander-results');
+  const status = box.querySelector('#any-commander-status');
+  const loadSynergyButton = box.querySelector('#load-synergy-button');
+
+  button.addEventListener('click',searchCommanders);
+  input.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();searchCommanders();} });
+
 
   const draftDeckBox = document.createElement('section');
   draftDeckBox.className = 'draft-deck';
@@ -316,7 +325,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   draftClear.addEventListener('click',()=>{state.draftDeck=[];state.lands=[];saveDraftDeck();});
   draftCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(draftText());draftCopyStatus.textContent='Deck list copied.';}catch(e){draftCopyStatus.textContent='Could not copy the deck list.';}});
   draftCopyImport.addEventListener('click',async()=>{try{const check=normalizeDeckTo100();await navigator.clipboard.writeText(importDeckText());draftCopyStatus.textContent=`Copied a ${check.total}-card list for Moxfield / Archidekt.`;}catch(e){draftCopyStatus.textContent='Could not copy the import list.';}});
-  loadDraftDeck();
+  try { loadDraftDeck(); } catch(e) { console.warn('MAGSTA draft init failed', e); state.draftDeck=[]; state.lands=[]; if(draftSummary) draftSummary.textContent='Saved draft data could not be loaded. Commander search is still available.'; }
 
   const goalBox = document.createElement('section');
   goalBox.className = 'commander-goals';
@@ -342,12 +351,6 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     window.dispatchEvent(new CustomEvent('magsta:strategy-change', { detail: { strategy: strategy.value } }));
   }));
   syncGoalButtons();
-
-  const input = box.querySelector('#any-commander-input');
-  const button = box.querySelector('#any-commander-button');
-  const results = box.querySelector('#any-commander-results');
-  const status = box.querySelector('#any-commander-status');
-  const loadSynergyButton = box.querySelector('#load-synergy-button');
 
   async function fetchSearch(query, unique='prints') {
     try {
@@ -597,9 +600,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     } catch(e) { grid.innerHTML='<p class="builder-empty">Unable to load candidates. Check your connection and try again.</p>'; } finally { loadSynergyButton.disabled=false; loadSynergyButton.textContent='Refresh synergy candidates'; }
   }
 
-  button.addEventListener('click',searchCommanders);
   loadSynergyButton.addEventListener('click',renderDynamic);
-  input.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();searchCommanders();} });
   select.addEventListener('change',()=>{ if(state.dynamicCommander && select.value===state.dynamicCommander.name) chooseCommander(state.dynamicCommander); });
   budget.addEventListener('change',()=>{ if(state.dynamicCommander) renderCommanderSummary(state.dynamicCommander); });
   bracket.addEventListener('change',()=>{ if(state.dynamicCommander) renderCommanderSummary(state.dynamicCommander); });
