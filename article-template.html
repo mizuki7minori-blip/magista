@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{{DESCRIPTION}}">
+<title>{{TITLE}}｜MAGSTA</title>
+<link rel="canonical" href="https://magsta.jp/{{FILENAME}}">
+<meta property="og:site_name" content="MAGSTA">
+<meta property="og:title" content="{{TITLE}}｜MAGSTA">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://magsta.jp/{{FILENAME}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css?v=20261005-final1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"{{TITLE}}",
+  "datePublished":"{{PUBLISHED_ISO}}",
+  "dateModified":"{{MODIFIED_ISO}}",
+  "author":{"@type":"Person","name":"犬居"},
+  "publisher":{"@type":"Organization","name":"MAGSTA"},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://magsta.jp/{{FILENAME}}"},
+  "inLanguage":"ja"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">本文へ移動</a>
+<header class="site-header"><div class="container header-inner">
+<a class="logo" href="index.html" aria-label="MAGSTA ホーム"><strong>MAGSTA<span class="logo-dot">.</span></strong><small>MTGの話題をひとつに</small></a>
+<nav id="main-nav" aria-label="メインメニュー"><a href="articles.html">記事を見る</a><a href="limited.html">ドラフト攻略</a><a href="commander.html">統率者</a><a class="nav-builder" href="commander-builder.html">デッキを組む</a><a href="search.html">検索</a></nav>
+<a class="language-link" href="en/index.html" lang="en">EN</a>
+<button class="menu-button" aria-label="メニューを開く" aria-controls="main-nav" aria-expanded="false">☰</button>
+</div></header>
+
+<nav class="breadcrumb" aria-label="パンくずリスト"><div class="container">
+<a href="index.html">ホーム</a><span class="breadcrumb-sep">›</span>
+<a href="articles.html">記事一覧</a><span class="breadcrumb-sep">›</span>
+<a href="category.html?cat={{CATEGORY}}">{{CATEGORY_LABEL}}</a><span class="breadcrumb-sep">›</span>
+<span aria-current="page">{{SHORT_TITLE}}</span>
+</div></nav>
+
+<main id="main-content">
+<article class="container article-page">
+<a class="back-link" href="articles.html">← 記事一覧へ戻る</a>
+<div class="article-meta">
+<span class="tag {{TAG_CLASS}}">{{LABEL}}</span>
+<span>公開：<time datetime="{{DATE}}">{{DATE_DISPLAY}}</time></span>
+<span>編集：犬居</span>
+</div>
+<h1>{{TITLE}}</h1>
+<p class="article-lead">{{LEAD}}</p>
+
+<div class="article-body">
+<h2>{{HEADING_1}}</h2>
+<p>{{BODY_1}}</p>
+
+<h2>{{HEADING_2}}</h2>
+<p>{{BODY_2}}</p>
+
+<div class="notice"><b>MAGSTA編集部コメント</b><br>{{EDITOR_COMMENT}}</div>
+
+<h2>出典</h2>
+<ul>
+<li><a href="{{SOURCE_URL_1}}" rel="noopener noreferrer">{{SOURCE_NAME_1}}</a></li>
+<li><a href="{{SOURCE_URL_2}}" rel="noopener noreferrer">{{SOURCE_NAME_2}}</a></li>
+</ul>
+<p><small>確認日：{{DATE_DISPLAY}}。情報は公開時点の内容です。</small></p>
+</div>
+
+<aside id="affiliate-products" class="limited-affiliate-wrap" aria-label="関連商品"></aside>
+</article>
+</main>
+
+<footer class="site-footer"><div class="container footer-inner footer-grid">
+<div class="footer-brand"><a class="logo" href="index.html"><strong>MAGSTA.</strong></a><p>MTGの話題をひとつに。</p><small>編集：犬居</small></div>
+<nav class="footer-nav-group" aria-label="主要コンテンツ"><strong>コンテンツ</strong><a href="articles.html">記事を見る</a><a href="limited.html">ドラフト攻略</a><a href="commander.html">統率者</a><a href="commander-builder.html">デッキを組む</a></nav>
+<nav class="footer-nav-group" aria-label="サイト案内"><strong>サイト案内</strong><a href="weekly.html">週間企画</a><a href="strategy.html">MAGSTAについて</a><a href="search.html">サイト内検索</a><a href="contact.html">お問い合わせ</a></nav>
+<div class="footer-legal"><a href="privacy.html">プライバシー</a><small>© 2026 MAGSTA<br>Magic: The GatheringはWizards of the Coastの商標です。</small></div>
+</div></footer>
+
+<script src="mobile-menu.js" defer></script>
+<script src="affiliate-config.js?v=20261002-images3" defer></script>
+<script src="affiliate.js?v=20261002-images3" defer></script>
+<script src="article-data.js?v=20261005-2" defer></script>
+<script src="related-articles.js?v=20261005-data1" defer></script>
+<script src="recent-pages.js?v=20261002-1" defer></script>
+<script src="saved-pages.js?v=20261002-1" defer></script>
+<script src="comments-config.js?v=20261005-1" defer></script>
+<script src="site-comments.js?v=20261005-1" defer></script>
+</body>
+</html>

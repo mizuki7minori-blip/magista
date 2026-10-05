@@ -1,0 +1,48 @@
+name: Generate tomorrow article draft
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      target_date:
+        description: "Target date (YYYY-MM-DD). Leave blank for tomorrow in Japan."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate draft
+        env:
+          TARGET_DATE: ${{ inputs.target_date }}
+        run: |
+          if [ -n "$TARGET_DATE" ]; then
+            python scripts/generate_tomorrow_draft.py --date "$TARGET_DATE" --refresh
+          else
+            python scripts/generate_tomorrow_draft.py
+          fi
+
+      - name: Commit draft
+        run: |
+          if git diff --quiet -- drafts/; then
+            echo "No new draft."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add drafts/
+          git commit -m "draft: generate next MAGSTA article"
+          git push
