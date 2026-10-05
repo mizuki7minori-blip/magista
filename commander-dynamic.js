@@ -69,13 +69,14 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const draftDeckBox = document.createElement('section');
   draftDeckBox.className = 'draft-deck';
   draftDeckBox.innerHTML = `
-    <div class="draft-deck-head"><div><span class="section-kicker">仮デッキリスト</span><h3>保存した候補カード</h3></div><div class="draft-deck-actions"><button type="button" id="draft-add-all" class="button secondary">候補10枚を追加</button><button type="button" id="draft-clear" class="button secondary">クリア</button></div></div>
+    <div class="draft-deck-head"><div><span class="section-kicker">仮デッキリスト</span><h3>保存した候補カード</h3></div><div class="draft-deck-actions"><button type="button" id="draft-add-all" class="button secondary">候補10枚を追加</button><button type="button" id="draft-auto-build" class="button primary">99枚たたき台を自動補充</button><button type="button" id="draft-clear" class="button secondary">クリア</button></div></div>
     <div id="draft-deck-summary" class="dynamic-note"></div>
     <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
   controls.after(draftDeckBox);
   const draftList = draftDeckBox.querySelector('#draft-deck-list');
   const draftSummary = draftDeckBox.querySelector('#draft-deck-summary');
   const draftAddAll = draftDeckBox.querySelector('#draft-add-all');
+  const draftAutoBuild = draftDeckBox.querySelector('#draft-auto-build');
   const draftClear = draftDeckBox.querySelector('#draft-clear');
   const draftDiagnosis = draftDeckBox.querySelector('#draft-diagnosis');
   const DRAFT_KEY = 'magsta-commander-draft-ja';
@@ -165,6 +166,45 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     draftDiagnosis.querySelectorAll('.draft-role-btn').forEach(btn=>btn.addEventListener('click',()=>searchRoleCandidates(btn.dataset.role)));
   }
 
+  async function autoBuildDraft(){
+    if(!state.dynamicCommander){status.textContent='先に統率者を選択してください。';return;}
+    draftAutoBuild.disabled=true; draftAutoBuild.textContent='自動補充中…';
+    const identity=state.dynamicCommander.color_identity||[], high=Number(bracket?.value)>=4;
+    const targets={ramp:high?12:10,draw:high?12:10,interaction:high?12:10,protection:high?6:5,graveyard:3,tutor:high?5:2};
+    const landTarget=high?35:37, nonlandTarget=99-landTarget;
+    const counts={ramp:0,draw:0,interaction:0,protection:0,graveyard:0,tutor:0,theme:0};
+    state.draftDeck.forEach(x=>counts[roleBucket(x.role)]++);
+    const seen=new Set(state.draftDeck.map(x=>x.key)), cap=budgetCardCapUsd();
+    const addItems=(items,key,max)=>{
+      for(const item of items){
+        if(state.draftDeck.length>=nonlandTarget || (counts[key]||0)>=max) break;
+        const id=item.card.oracle_id||item.card.name, price=cardUsd(item.card);
+        if(seen.has(id)) continue;
+        if(budget.value!=='open' && price!=null && price>cap) continue;
+        seen.add(id); counts[key]=(counts[key]||0)+1;
+        state.draftDeck.push({key:id,name:displayName(item.card),role:item.role,usd:price});
+      }
+    };
+    try{
+      for(const key of ['ramp','draw','interaction','protection','graveyard','tutor']){
+        const spec=roleSearchSpec(key), found=await fetchSpec(spec,identity,state.dynamicCommander.name);
+        addItems(found,key,targets[key]); await new Promise(r=>setTimeout(r,100));
+      }
+      const themes=detectThemes(state.dynamicCommander);
+      for(const theme of themes){
+        if(state.draftDeck.length>=nonlandTarget) break;
+        const found=await fetchSpec({label:theme.label,query:theme.query,fallback:theme.fallback,reason:theme.reason},identity,state.dynamicCommander.name);
+        addItems(found,'theme',nonlandTarget); await new Promise(r=>setTimeout(r,100));
+      }
+      if(state.draftDeck.length<nonlandTarget && state.suggestions.length){
+        addItems(state.suggestions,'theme',nonlandTarget);
+      }
+      saveDraftDeck();
+      status.textContent=`99枚のたたき台を作成しました。非土地 ${state.draftDeck.length}枚 + 土地目安 ${landTarget}枚 + 統率者1枚です。`;
+    }catch(e){status.textContent='自動補充に失敗しました。もう一度試してください。';}
+    finally{draftAutoBuild.disabled=false;draftAutoBuild.textContent='99枚たたき台を自動補充';}
+  }
+
   function renderDraftDeck(){
     const totalUsd=state.draftDeck.map(x=>Number(x.usd)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
     const totalJpy=Math.round(totalUsd*USD_TO_JPY);
@@ -174,6 +214,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     renderDraftDiagnosis();
   }
   draftAddAll.addEventListener('click',()=>{state.suggestions.forEach(addDraftCard);status.textContent='現在の候補を仮デッキリストに保存しました。';});
+  draftAutoBuild.addEventListener('click',autoBuildDraft);
   draftClear.addEventListener('click',()=>{state.draftDeck=[];saveDraftDeck();});
   loadDraftDeck();
 
