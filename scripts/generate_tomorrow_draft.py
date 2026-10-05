@@ -4,10 +4,13 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import argparse
 import re
+import json
+import html
 
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATES = ROOT / "templates"
 DRAFTS = ROOT / "drafts"
+RSS_CACHE = ROOT / "rss-cache.json"
 
 DAY_CONFIG = {
     0: ("monday", "週間ニュース", "news", "ニュース"),
@@ -18,6 +21,73 @@ DAY_CONFIG = {
     5: ("saturday", "大会・デッキ速報", "tournament", "大会"),
     6: ("sunday", "今週のMAGSTAまとめ", "news", "ニュース"),
 }
+
+
+def load_candidates(category, limit=6):
+    if not RSS_CACHE.exists():
+        return []
+    try:
+        payload = json.loads(RSS_CACHE.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+
+    preferred = {
+        "news": {"news", "tournament", "deck"},
+        "deck": {"deck", "tournament", "news"},
+        "card": {"card", "deck", "news"},
+        "tournament": {"tournament", "deck", "news"},
+    }.get(category, {"news", "deck", "tournament"})
+
+    items = []
+    for item in payload.get("items", []):
+        if item.get("categoryKey") not in preferred:
+            continue
+        title = item.get("translatedTitle") or item.get("title") or ""
+        link = item.get("link") or ""
+        source = item.get("sourceName") or "外部情報"
+        published = (item.get("pubDate") or "")[:10]
+        summary = item.get("summary", {})
+        summary_text = summary.get("text") if isinstance(summary, dict) else ""
+        if not summary_text:
+            summary_text = re.sub(r"<[^>]+>", " ", item.get("description") or "")
+            summary_text = re.sub(r"\\s+", " ", html.unescape(summary_text)).strip()
+        if not title or not link:
+            continue
+        items.append({
+            "title": title.strip(),
+            "link": link,
+            "source": source,
+            "published": published,
+            "summary": summary_text[:240].strip(),
+        })
+        if len(items) >= limit:
+            break
+    return items
+
+def candidate_block(category):
+    items = load_candidates(category)
+    if not items:
+        return '<section class="notice"><b>自動収集候補</b><br>RSSキャッシュから候補を取得できませんでした。公開前に最新情報を確認してください。</section>'
+
+    cards = []
+    for item in items:
+        safe_title = html.escape(item["title"])
+        safe_link = html.escape(item["link"], quote=True)
+        safe_source = html.escape(item["source"])
+        safe_date = html.escape(item["published"])
+        safe_summary = html.escape(item["summary"])
+        cards.append(
+            f'<li><a href="{safe_link}" rel="noopener noreferrer">{safe_title}</a>'
+            f'<br><small>{safe_source} / {safe_date}</small>'
+            + (f'<p>{safe_summary}</p>' if safe_summary else '') +
+            '</li>'
+        )
+    return (
+        '<section class="notice"><b>自動収集した記事候補</b><br>'
+        'RSSキャッシュから関連度の高い候補を抽出しています。'
+        '数値・大会結果・カード名は公開前に一次情報で再確認してください。'
+        '<ul>' + ''.join(cards) + '</ul></section>'
+    )
 
 def jp_date(d):
     return f"{d.year}.{d.month:02d}.{d.day:02d}"
@@ -37,7 +107,7 @@ def slug_for(topic):
     }
     return mapping[topic]
 
-def generate(target):
+def generate(target, refresh=False):
     weekday_slug, topic, category, category_label = DAY_CONFIG[target.weekday()]
     template_path = TEMPLATES / f"article-{weekday_slug}.html"
     if not template_path.exists():
@@ -48,7 +118,7 @@ def generate(target):
     output = DRAFTS / filename
     DRAFTS.mkdir(exist_ok=True)
 
-    if output.exists():
+    if output.exists() and not refresh:
         print(f"Draft already exists: {output.relative_to(ROOT)}")
         return output
 
@@ -72,7 +142,8 @@ def generate(target):
         'このページは自動生成された翌日用の下書きです。調査・校閲後、'
         f'<code>{filename}</code> としてルートへ移動して公開してください。</div>'
     )
-    content = content.replace('<div class="article-body">', '<div class="article-body">\n' + draft_note, 1)
+    auto_candidates = candidate_block(category)
+    content = content.replace('<div class="article-body">', '<div class="article-body">\n' + draft_note + '\n' + auto_candidates, 1)
 
     output.write_text(content, encoding="utf-8")
     print(f"Created: {output.relative_to(ROOT)}")
@@ -82,6 +153,7 @@ def generate(target):
 def main():
     parser = argparse.ArgumentParser(description="Generate the next MAGSTA editorial draft.")
     parser.add_argument("--date", help="Target date in YYYY-MM-DD. Defaults to tomorrow in Asia/Tokyo.")
+    parser.add_argument("--refresh", action="store_true", help="Regenerate an existing draft with the latest RSS cache.")
     args = parser.parse_args()
 
     if args.date:
@@ -90,7 +162,7 @@ def main():
         now = datetime.now(ZoneInfo("Asia/Tokyo"))
         target = (now + timedelta(days=1)).date()
 
-    generate(target)
+    generate(target, refresh=args.refresh)
 
 if __name__ == "__main__":
     main()
