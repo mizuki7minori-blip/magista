@@ -46,6 +46,50 @@
     }
   }
 
+  if (articlePage) {
+    articlePage.dataset.category = currentItem.category;
+
+    const notice = [...body.querySelectorAll(".notice")].find(el => /MAGSTA編集部|編集部分析|編集部コメント/.test(el.textContent));
+    if (notice && !notice.classList.contains("editor-comment")) {
+      notice.classList.add("editor-comment");
+      if (!notice.querySelector(".editor-comment-label")) {
+        const label = document.createElement("span");
+        label.className = "editor-comment-label";
+        label.textContent = "MAGSTA編集部コメント";
+        notice.prepend(label);
+      }
+    }
+
+    if (!articlePage.querySelector(".article-share")) {
+      const share = document.createElement("aside");
+      share.className = "article-share";
+      share.setAttribute("aria-label","この記事をシェア");
+      const shareUrl = encodeURIComponent(location.href);
+      const shareTitle = encodeURIComponent(document.title);
+      share.innerHTML = `
+        <span class="section-kicker">SHARE</span>
+        <strong>この記事をシェア</strong>
+        <div>
+          <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}" target="_blank" rel="noopener noreferrer">Xで共有</a>
+          <a href="https://social-plugins.line.me/lineit/share?url=${shareUrl}" target="_blank" rel="noopener noreferrer">LINEで共有</a>
+          <button type="button" class="copy-link-button">リンクをコピー</button>
+        </div>`;
+      const lead = articlePage.querySelector(".article-lead");
+      (lead || articlePage.querySelector("h1")).insertAdjacentElement("afterend", share);
+
+      const copyButton = share.querySelector(".copy-link-button");
+      copyButton.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(location.href);
+          copyButton.textContent = "コピーしました";
+          setTimeout(() => { copyButton.textContent = "リンクをコピー"; }, 1800);
+        } catch {
+          copyButton.textContent = "URLを選択してコピー";
+        }
+      });
+    }
+  }
+
   if (!document.querySelector(".article-next-actions")) {
     const actions = document.createElement("aside");
     actions.className = "article-next-actions";
