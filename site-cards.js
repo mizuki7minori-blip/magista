@@ -23,17 +23,35 @@ async function picture(data,button,status,fresh=false){
 function failure(data,button,status){button.replaceChildren(node('span','','画像を再読み込み'));button.disabled=false;button.onclick=()=>picture(data,button,status);status.textContent='画像を取得できませんでした。再読み込みできます。';}
 const refresh=document.getElementById('pickup-refresh');
 const refreshStatus=document.getElementById('pickup-refresh-status');
-let busy=false,loaded=false;
+let busy=false,loaded=false,currentCards=[],candidatePool=[];
+function chooseCards(pool,previous){
+ if(!Array.isArray(pool)||pool.length<3)throw Error('pool');
+ const excluded=new Set(previous.map(card=>card.en));
+ const chosen=[];
+ for(const group of pool.slice(0,3)){
+  const alternatives=(Array.isArray(group?.cards)?group.cards:[]).filter(card=>card&&typeof card.en==='string'&&card.en.trim()&&!excluded.has(card.en));
+  if(!alternatives.length)throw Error('pool');
+  const card=alternatives[Math.floor(Math.random()*alternatives.length)];
+  chosen.push({...card,label:group.label||card.label});excluded.add(card.en);
+ }
+ return chosen;
+}
 async function load(fresh=false){
  if(busy)return;
  busy=true;grid.setAttribute('aria-busy','true');
  if(refresh){refresh.disabled=true;refresh.textContent=fresh?'更新中…':'読み込み中…';}
  if(refreshStatus)refreshStatus.hidden=!fresh;
- if(refreshStatus)refreshStatus.textContent=fresh?'最新のピックアップカードを取得しています…':'';
+ if(refreshStatus)refreshStatus.textContent=fresh?'別のピックアップカードを選んでいます…':'';
  try{
-  const data=await request('pickup-data.json?v='+(fresh?Date.now():Math.floor(Date.now()/600000)),fresh);
-  if(!Array.isArray(data))throw Error('data');
-  const cards=data.filter(card=>card&&typeof card.en==='string'&&card.en.trim()).slice(0,3);
+  let cards;
+  if(fresh){
+   if(!candidatePool.length)candidatePool=await request('pickup-pool.json?v='+Math.floor(Date.now()/600000));
+   cards=chooseCards(candidatePool,currentCards);
+  }else{
+   const data=await request('pickup-data.json?v='+Math.floor(Date.now()/600000));
+   if(!Array.isArray(data))throw Error('data');
+   cards=data.filter(card=>card&&typeof card.en==='string'&&card.en.trim()).slice(0,3);
+  }
   if(!cards.length)throw Error('data');
   const entries=cards.map((card,i)=>{
    const item=node('article','card-pick');
@@ -44,11 +62,11 @@ async function load(fresh=false){
    item.append(button,status,node('h3','',card.name||card.ja||card.en),node('p','',card.desc||card.reason||''));
    return {item,card,button,status};
   });
-  grid.replaceChildren(...entries.map(entry=>entry.item));loaded=true;
+  grid.replaceChildren(...entries.map(entry=>entry.item));loaded=true;currentCards=cards;
   const date=document.querySelector('.pickup-date');
-  if(date)date.textContent=cards[0].updated?cards[0].updated+' 選定':'';
-  for(const entry of entries)await picture(entry.card,entry.button,entry.status,fresh);
-  if(fresh&&refreshStatus)refreshStatus.textContent='最新の選定データを取得しました。画像が表示されない場合は、カードの「画像を再読み込み」を押してください。';
+  if(date)date.textContent=fresh?'手動ピックアップ':cards[0].updated?cards[0].updated+' 選定':'';
+  for(const entry of entries)await picture(entry.card,entry.button,entry.status);
+  if(fresh&&refreshStatus)refreshStatus.textContent='別の3枚に切り替えました。画像が表示されない場合は、カードの「画像を再読み込み」を押してください。';
  }catch{
   if(refreshStatus)refreshStatus.hidden=false;
   if(!loaded)grid.replaceChildren(node('p','feed-error','注目カードを取得できませんでした。「更新」ボタンから再試行してください。'));
