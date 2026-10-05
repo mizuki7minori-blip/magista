@@ -268,6 +268,30 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return '価格制限なし';
   }
 
+  const USD_TO_JPY = 150;
+
+  function priceSummary(items) {
+    const known = items.map(item=>cardUsd(item.card)).filter(v=>v != null);
+    const unknown = items.length - known.length;
+    const totalUsd = known.reduce((sum,v)=>sum+v,0);
+    const totalJpy = Math.round(totalUsd * USD_TO_JPY);
+    const budgetJpy = budget.value === 'open' ? null : Number(budget.value);
+    const remaining = budgetJpy == null ? null : Math.max(0, budgetJpy - totalJpy);
+    return { known:known.length, unknown, totalJpy, budgetJpy, remaining };
+  }
+
+  function priceSummaryLabel(items) {
+    const p = priceSummary(items);
+    const suffix = p.unknown ? `（価格不明 ${p.unknown}枚）` : '';
+    return `約${p.totalJpy.toLocaleString('ja-JP')}円 ${suffix}`.trim();
+  }
+
+  function remainingBudgetLabel(items) {
+    if (budget.value === 'open') return '上限なし';
+    const p = priceSummary(items);
+    return `約${p.remaining.toLocaleString('ja-JP')}円`;
+  }
+
   function renderCommanderSummary(card) {
     const picked = displayName(card), identity = card.color_identity || [], colors = identity.length ? identity.join(' / ') : '無色';
     const budgetText = budget.value === 'open' ? '上限なし' : `${Number(budget.value).toLocaleString('ja-JP')}円前後`;
@@ -304,8 +328,8 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
         return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>採用理由：</strong>${esc(reason)}</p></div></article>`;
       }).join('');
       const high=Number(bracket.value)>=4, lands=high?'34〜36':'36〜38', themeLabel=detected.map(t=>t.label).join(' / ') || '能力ベース';
-      if (plan) plan.innerHTML=[['検出テーマ',themeLabel],['方針',strategyNames[mode]],['土地',lands],['予算フィルター',budgetFilterLabel()],['候補構成','テーマ優先＋方針補助 / 汎用定番は最大2枚']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
-      status.textContent=`${displayName(c)} 専用のテーマ候補を表示しました。`;
+      if (plan) plan.innerHTML=[['検出テーマ',themeLabel],['方針',strategyNames[mode]],['土地',lands],['予算フィルター',budgetFilterLabel()],['候補10枚の概算',priceSummaryLabel(state.suggestions)],['予算残額',remainingBudgetLabel(state.suggestions)],['候補構成','テーマ優先＋方針補助 / 汎用定番は最大2枚']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
+      status.textContent=`${displayName(c)} 専用のテーマ候補を表示しました。価格はScryfallのUSD価格を1ドル=${USD_TO_JPY}円で参考換算しています。`;
     } finally { loadSynergyButton.disabled=false; loadSynergyButton.textContent='相性カード候補を再検討'; }
   }
 
