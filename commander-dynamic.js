@@ -83,7 +83,8 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     <div class="draft-deck-head"><div><span class="section-kicker">仮デッキリスト</span><h3>保存した候補カード</h3></div><div class="draft-deck-actions"><button type="button" id="draft-add-all" class="button secondary">候補10枚を追加</button><button type="button" id="draft-auto-build" class="button primary">99枚たたき台を自動補充</button><button type="button" id="draft-clear" class="button secondary">クリア</button></div></div>
     <div id="draft-deck-summary" class="dynamic-note"></div>
     <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-export" class="draft-export"><div class="draft-deck-head"><strong>カテゴリ別デッキリスト</strong><div class="draft-deck-actions"><button type="button" id="draft-copy" class="button secondary">デッキリストをコピー</button><button type="button" id="draft-copy-import" class="button secondary">Moxfield / Archidekt用コピー</button></div></div><div id="draft-export-grid" class="draft-export-grid"></div><div id="draft-copy-status" class="draft-copy-status"></div></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
-  controls.after(draftDeckBox);
+  const commanderMain = controls.closest('main') || document.querySelector('main');
+  if (commanderMain) commanderMain.appendChild(draftDeckBox); else controls.after(draftDeckBox);
   const draftList = draftDeckBox.querySelector('#draft-deck-list');
   const draftSummary = draftDeckBox.querySelector('#draft-deck-summary');
   const draftAddAll = draftDeckBox.querySelector('#draft-add-all');
