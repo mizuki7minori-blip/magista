@@ -46,7 +46,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     .any-result-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.any-select-label{font-size:.72rem;font-weight:800;color:#246daf}
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
-    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}.synergy-alt .synergy-swap{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.synergy-save{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.draft-deck{margin:22px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.draft-deck-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.draft-deck-list{display:grid;gap:8px;margin-top:12px}.draft-deck-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px}.draft-deck-row small{color:var(--muted)}.draft-deck-empty{color:var(--muted);margin-top:10px}.draft-deck-actions{display:flex;gap:8px;flex-wrap:wrap}.draft-diagnosis{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:9px;background:#f8fafb}.draft-diagnosis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.draft-diagnosis-item{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}.draft-diagnosis-item strong,.draft-diagnosis-item span{display:block}.draft-diagnosis-item small{display:block;color:var(--muted);margin-top:3px}@media(max-width:700px){.draft-diagnosis-grid{grid-template-columns:repeat(2,1fr)}}
+    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}.synergy-alt .synergy-swap{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.synergy-save{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.draft-deck{margin:22px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.draft-deck-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.draft-deck-list{display:grid;gap:8px;margin-top:12px}.draft-deck-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px}.draft-deck-row small{color:var(--muted)}.draft-deck-empty{color:var(--muted);margin-top:10px}.draft-deck-actions{display:flex;gap:8px;flex-wrap:wrap}.draft-diagnosis{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:9px;background:#f8fafb}.draft-diagnosis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.draft-diagnosis-item{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}.draft-diagnosis-item strong,.draft-diagnosis-item span{display:block}.draft-diagnosis-item small{display:block;color:var(--muted);margin-top:3px}.draft-role-btn{margin-top:8px;width:100%;font-size:.72rem;padding:6px 8px}.role-search-results{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.role-search-card{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}.role-search-card img{width:100%;aspect-ratio:488/680;object-fit:cover;border-radius:6px;background:#eef1f4}.role-search-card h4{margin:7px 0 4px;font-size:.9rem}.role-search-card small{display:block;color:var(--muted)}@media(max-width:700px){.role-search-results{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.draft-diagnosis-grid{grid-template-columns:repeat(2,1fr)}}
     .commander-goals{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.commander-goals h3{margin:0 0 5px}.commander-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.commander-goal{min-height:74px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#f8fafb;text-align:left;cursor:pointer;font:inherit}.commander-goal strong{display:block;margin-bottom:4px}.commander-goal small{color:var(--muted);line-height:1.35}.commander-goal.is-active{border-color:#80501f;box-shadow:0 0 0 2px #80501f18;background:#fffaf4}
     @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}.commander-goal-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}.commander-goal-grid{grid-template-columns:1fr}}
   `;
@@ -103,6 +103,43 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return 'theme';
   }
 
+
+  function roleSearchSpec(key){
+    const map={
+      ramp:{label:'マナ加速',query:'otag:ramp mv<=3',fallback:'((oracle:"add {" OR t:artifact) mv<=3)',reason:'不足しているマナ加速枠を補うため'},
+      draw:{label:'カード補充',query:'otag:card-draw',fallback:'oracle:"draw"',reason:'不足しているドロー枠を補うため'},
+      interaction:{label:'除去・妨害',query:'(otag:removal OR otag:counterspell)',fallback:'(oracle:"destroy target" OR oracle:"exile target" OR oracle:"counter target")',reason:'不足している除去・妨害枠を補うため'},
+      protection:{label:'保護',query:'otag:protection',fallback:'(oracle:"hexproof" OR oracle:"indestructible")',reason:'不足している保護枠を補うため'},
+      graveyard:{label:'墓地対策',query:'otag:graveyard-hate',fallback:'(oracle:"exile" oracle:"graveyard")',reason:'不足している墓地対策枠を補うため'},
+      tutor:{label:'サーチ',query:'otag:tutor',fallback:'oracle:"search your library"',reason:'不足しているサーチ枠を補うため'}
+    };
+    return map[key]||null;
+  }
+
+  async function searchRoleCandidates(key){
+    if(!state.dynamicCommander){ status.textContent='先に統率者を選択してください。'; return; }
+    const spec=roleSearchSpec(key); if(!spec) return;
+    const identity=state.dynamicCommander.color_identity||[];
+    draftDiagnosis.insertAdjacentHTML('beforeend','<div id="role-search-results" class="role-search-results"><div class="dynamic-loading">候補を検索中…</div></div>');
+    const wrap=draftDiagnosis.querySelector('#role-search-results');
+    const found=await fetchSpec(spec,identity,state.dynamicCommander.name);
+    const seen=new Set(state.draftDeck.map(x=>x.key));
+    const cap=budgetCardCapUsd();
+    const filtered=found.filter(x=>!seen.has(x.card.oracle_id||x.card.name)).sort((a,b)=>{
+      const pa=cardUsd(a.card), pb=cardUsd(b.card);
+      const aa=pa!=null&&pa<=cap?0:1, bb=pb!=null&&pb<=cap?0:1;
+      return aa-bb || (pa??9999)-(pb??9999);
+    }).slice(0,6);
+    wrap.innerHTML=filtered.length?filtered.map((item,i)=>{
+      const card=item.card, usd=cardUsd(card), price=usd==null?'価格不明':'約'+Math.round(usd*USD_TO_JPY).toLocaleString('ja-JP')+'円';
+      return `<article class="role-search-card">${imgOf(card)?`<img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(displayName(card))}">`:''}<h4>${esc(displayName(card))}</h4><small>${esc(price)}</small><button type="button" class="button secondary role-add" data-i="${i}">仮デッキに追加</button></article>`;
+    }).join(''):'<p class="draft-deck-empty">候補を取得できませんでした。</p>';
+    wrap.querySelectorAll('.role-add').forEach(btn=>btn.addEventListener('click',()=>{
+      const item=filtered[Number(btn.dataset.i)]; if(!item) return;
+      addDraftCard(item); status.textContent=`${displayName(item.card)} を仮デッキに追加しました。`;
+    }));
+  }
+
   function renderDraftDiagnosis(){
     if(!draftDiagnosis) return;
     const counts={ramp:0,draw:0,interaction:0,protection:0,graveyard:0,tutor:0,theme:0};
@@ -124,7 +161,8 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     const recommendedLands=high?35:37;
     const targetNonlands=99-recommendedLands;
     const stillNeeded=Math.max(0,targetNonlands-totalSaved);
-    draftDiagnosis.innerHTML=`<strong>99枚構築の不足診断</strong><small>目安：土地 ${recommendedLands}枚 / 非土地 ${targetNonlands}枚</small><div class="draft-diagnosis-grid">${rows.map(([label,key])=>{const have=counts[key]||0, need=Math.max(0,targets[key]-have);return `<div class="draft-diagnosis-item"><strong>${label}</strong><span>${have} / ${targets[key]}枚</span><small>${need? 'あと'+need+'枚':'目安達成'}</small></div>`;}).join('')}</div><p class="dynamic-note">現在の保存カード：${totalSaved}枚。非土地枠はあと約${stillNeeded}枚。テーマカードは役割が重複する場合があるため、最終調整時に再確認してください。</p>`;
+    draftDiagnosis.innerHTML=`<strong>99枚構築の不足診断</strong><small>目安：土地 ${recommendedLands}枚 / 非土地 ${targetNonlands}枚</small><div class="draft-diagnosis-grid">${rows.map(([label,key])=>{const have=counts[key]||0, need=Math.max(0,targets[key]-have);return `<div class="draft-diagnosis-item"><strong>${label}</strong><span>${have} / ${targets[key]}枚</span><small>${need? 'あと'+need+'枚':'目安達成'}</small>${need?`<button type="button" class="button secondary draft-role-btn" data-role="${key}">この役割の候補を見る</button>`:''}</div>`;}).join('')}</div><p class="dynamic-note">現在の保存カード：${totalSaved}枚。非土地枠はあと約${stillNeeded}枚。テーマカードは役割が重複する場合があるため、最終調整時に再確認してください。</p>`;
+    draftDiagnosis.querySelectorAll('.draft-role-btn').forEach(btn=>btn.addEventListener('click',()=>searchRoleCandidates(btn.dataset.role)));
   }
 
   function renderDraftDeck(){
