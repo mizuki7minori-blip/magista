@@ -1,3 +1,5 @@
+from html.parser import HTMLParser
+from urllib.parse import urlparse
 import json
 import re
 import urllib.request
@@ -79,6 +81,143 @@ def parse_feed(name, lang, cls, url):
             out.append({'id':guid or link,'title':title,'description':desc,'link':link,'image':'','pubDate':iso_date(pub),'sourceName':name,'sourceClass':cls,'language':lang,'categoryKey':category(title,desc,cls)})
     return out
 
+
+# Extractive summaries preserve source wording and never invent a translation.
+SUMMARY_VERSION = 'body-extract-ja-v1'
+BODY_HOSTS = {'www.izzetmtgnews.com', 'izzetmtgnews.com',
+              'article.hareruyamtg.com', 'mtg-jp.com', 'www.mtg-jp.com',
+              'magic.wizards.com', 'mtg.bigweb.co.jp'}
+
+
+class ArticleParagraphs(HTMLParser):
+    VOID = {'br', 'hr', 'img', 'input', 'meta', 'link', 'source', 'wbr'}
+    EXCLUDED = {'script', 'style', 'nav', 'footer', 'header', 'aside', 'form'}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack = []
+        self.parts = None
+        self.paragraphs = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        marker = (attrs.get('class', '') + ' ' + attrs.get('id', '')).lower()
+        scope = tag in {'article', 'main'} or any(
+            word in marker for word in ('entry-content', 'post-content', 'article-body', 'article-content'))
+        excluded = tag in self.EXCLUDED or any(
+            word in marker for word in ('comment', 'related', 'advert', 'social', 'share-button'))
+        if tag not in self.VOID:
+            self.stack.append((tag, scope, excluded))
+        if tag == 'p' and any(x[1] for x in self.stack) and not any(x[2] for x in self.stack):
+            self.parts = []
+
+    def handle_endtag(self, tag):
+        if tag == 'p' and self.parts is not None:
+            paragraph = re.sub(r'\s+', ' ', ''.join(self.parts)).strip()
+            if paragraph:
+                self.paragraphs.append(paragraph)
+            self.parts = None
+        for index in range(len(self.stack)-1, -1, -1):
+            if self.stack[index][0] == tag:
+                del self.stack[index:]
+                break
+
+    def handle_data(self, data):
+        if self.parts is not None and not any(x[2] for x in self.stack):
+            self.parts.append(data)
+
+
+def extract_summary(html, title):
+    parser = ArticleParagraphs()
+    parser.feed(html)
+    paragraphs = [p for p in parser.paragraphs
+                  if len(p) >= 35 and re.search(r'[ぁ-んァ-ヶ一-龥]', p)
+                  and not re.search(r'無断転載|Cookie|クッキー|プライバシー|ログイン|コメントを|関連記事', p, re.I)]
+    if sum(map(len, paragraphs)) < 180:
+        return None
+    candidates = []
+    title_key = re.sub(r'\W+', '', title)
+    for paragraph in paragraphs:
+        for sentence in re.findall(r'[^。！？]+[。！？]?', paragraph):
+            sentence = sentence.strip()
+            if not 35 <= len(sentence) <= 180:
+                continue
+            if re.sub(r'\W+', '', sentence) == title_key or sentence in candidates:
+                continue
+            candidates.append(sentence)
+    if not candidates:
+        return None
+    # Prefer concrete facts, retaining the original order in the final excerpt.
+    ranked = sorted(range(len(candidates)), key=lambda i: (
+        -(2 * bool(re.search(r'\d|発売|発表|優勝|採用|禁止|変更|再録|販売', candidates[i]))), i))
+    chosen = []
+    size = 0
+    for index in ranked:
+        if len(chosen) == 3:
+            break
+        if size + len(candidates[index]) <= 300:
+            chosen.append(index)
+            size += len(candidates[index])
+    points = [candidates[i] for i in sorted(chosen)]
+    return {'text': ''.join(points), 'points': points, 'language': 'ja',
+            'method': SUMMARY_VERSION, 'source': 'article-body',
+            'generatedAt': datetime.now(timezone.utc).isoformat()}
+
+
+class SummaryRedirects(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        target = urlparse(newurl)
+        if target.scheme != 'https' or target.hostname not in BODY_HOSTS:
+            raise ValueError('Unsupported article redirect')
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def enrich_summaries(items, old_items, limit=8):
+    previous = {item.get('link'): item for item in old_items}
+    remaining = limit
+    opener = urllib.request.build_opener(SummaryRedirects())
+    for item in items:
+        if item.get('language') != 'ja':
+            continue
+        link = item.get('link', '')
+        target = urlparse(link)
+        if target.scheme != 'https' or target.hostname not in BODY_HOSTS:
+            continue
+        if target.hostname == 'magic.wizards.com' and not target.path.startswith('/ja/'):
+            continue
+        old = previous.get(link, {})
+        same = all(old.get(key) == item.get(key) for key in ('title', 'description', 'pubDate'))
+        if same and old.get('summary', {}).get('method') == SUMMARY_VERSION:
+            item['summary'] = old['summary']
+            continue
+        if same and old.get('summaryAttemptedAt'):
+            try:
+                age = datetime.now(timezone.utc).timestamp() - datetime.fromisoformat(old['summaryAttemptedAt']).timestamp()
+                if 0 <= age < 86400:
+                    item['summaryAttemptedAt'] = old['summaryAttemptedAt']
+                    continue
+            except (ValueError, TypeError):
+                pass
+        if remaining <= 0:
+            continue
+        remaining -= 1
+        item['summaryAttemptedAt'] = datetime.now(timezone.utc).isoformat()
+        try:
+            request = urllib.request.Request(link, headers={'User-Agent': 'MAGSTA-RSS-Updater/1.1'})
+            with opener.open(request, timeout=6) as response:
+                if 'text/html' not in response.headers.get('Content-Type', ''):
+                    continue
+                raw = response.read(1500001)
+                if len(raw) > 1500000:
+                    continue
+                html = raw.decode(response.headers.get_content_charset() or 'utf-8', errors='replace')
+            summary = extract_summary(html, item.get('title', ''))
+            if summary:
+                item['summary'] = summary
+        except Exception as error:
+            print('Article summary unavailable:', target.hostname, type(error).__name__)
+
+
 def main():
     cache_path = Path('rss-cache.json')
     try:
@@ -121,6 +260,7 @@ def main():
                  key=lambda x:x.get('pubDate',''),reverse=True)[:80]
     if not items:
         raise RuntimeError('No RSS articles fetched; keeping the previous cache')
+    enrich_summaries(items, old_items)
     with cache_path.open('w',encoding='utf-8') as f:
         json.dump({'updatedAt':datetime.now(timezone.utc).isoformat(),'staleSources':stale_sources,'items':items},f,ensure_ascii=False,separators=(',',':'))
     print('RSS cache updated:', len(items))
