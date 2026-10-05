@@ -324,8 +324,9 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       state.suggestions=applyBudgetFilter(mergeCandidates(groups,24),10);
       if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">テーマに合う候補を取得できませんでした。別の方針でも試してください。</p>'; return; }
       grid.innerHTML=state.suggestions.map(({card,role,reason})=>{
-        const jp=displayName(card), en=card.name||jp, text=displayText(card);
-        return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>採用理由：</strong>${esc(reason)}</p></div></article>`;
+        const jp=displayName(card), en=card.name||jp, text=displayText(card), usd=cardUsd(card);
+        const price=usd==null?'価格不明':`約${Math.round(usd*USD_TO_JPY).toLocaleString('ja-JP')}円`;
+        return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p class="synergy-price"><strong>参考価格：</strong>${esc(price)}</p><p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>採用理由：</strong>${esc(reason)}</p></div></article>`;
       }).join('');
       const high=Number(bracket.value)>=4, lands=high?'34〜36':'36〜38', themeLabel=detected.map(t=>t.label).join(' / ') || '能力ベース';
       if (plan) plan.innerHTML=[['検出テーマ',themeLabel],['方針',strategyNames[mode]],['土地',lands],['予算フィルター',budgetFilterLabel()],['候補10枚の概算',priceSummaryLabel(state.suggestions)],['予算残額',remainingBudgetLabel(state.suggestions)],['候補構成','テーマ優先＋方針補助 / 汎用定番は最大2枚']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
