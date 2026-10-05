@@ -9,7 +9,7 @@ DATA = ROOT / "article-data.js"
 SITEMAP = ROOT / "sitemap.xml"
 
 ARTICLE_GLOB = "article-*.html"
-EXCLUDED = {"articles.html"}
+EXCLUDED = {"articles.html", "article-template.html"}
 
 def text_content(raw):
     raw = re.sub(r"<script[\s\S]*?</script>", "", raw, flags=re.I)
