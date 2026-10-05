@@ -290,11 +290,23 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return groups;
   }
 
+  function collapseNamedItems(items){
+    const map=new Map();
+    items.forEach(x=>{
+      const name=x?.name||'';
+      if(!name) return;
+      const row=map.get(name);
+      if(row) row.count+=1;
+      else map.set(name,{name,count:1});
+    });
+    return [...map.values()];
+  }
+
   function renderDraftExport(){
     if(!draftExportGrid) return;
     const groups=draftGroups();
     const labels={ramp:'マナ加速',draw:'ドロー',interaction:'除去・妨害',protection:'保護',graveyard:'墓地対策',tutor:'サーチ',theme:'テーマ・その他'};
-    const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>`<section class="draft-export-group"><h4>${labels[key]}（${items.length}）</h4><ul>${items.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`).join('') + (landItems.length?`<section class="draft-export-group"><h4>土地（${landItems.length}）</h4><ul>${landItems.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`:'')) || '<p class="draft-deck-empty">カードを追加するとカテゴリ別に表示されます。</p>';
+    const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>{const rows=collapseNamedItems(items);return `<section class="draft-export-group"><h4>${labels[key]}（${items.length}）</h4><ul>${rows.map(x=>`<li>${x.count} ${esc(x.name)}</li>`).join('')}</ul></section>`;}).join('') + (landItems.length?(()=>{const rows=collapseNamedItems(landItems);return `<section class="draft-export-group"><h4>土地（${landItems.length}）</h4><ul>${rows.map(x=>`<li>${x.count} ${esc(x.name)}</li>`).join('')}</ul></section>`;})():'')) || '<p class="draft-deck-empty">カードを追加するとカテゴリ別に表示されます。</p>';
   }
 
   function importDeckText(){
