@@ -243,13 +243,14 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function applyBudgetFilter(items, limit=10) {
     if (budget.value === 'open') return items.slice(0, limit);
     const cap = budgetCardCapUsd();
-    const affordable = [], unknown = [];
+    const affordable = [], premiumWithAlt = [], unknown = [];
     for (const item of items) {
       const price = cardUsd(item.card);
       if (price == null) unknown.push(item);
       else if (price <= cap) affordable.push(item);
+      else if (item.alternative) premiumWithAlt.push(item);
     }
-    return [...affordable, ...unknown].slice(0, limit);
+    return [...affordable, ...premiumWithAlt.slice(0,2), ...unknown].slice(0, limit);
   }
 
   function budgetFilterLabel() {
