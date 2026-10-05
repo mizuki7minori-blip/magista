@@ -480,12 +480,39 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     ];
   }
 
+  async function japaneseDisplayCard(card) {
+    if (!card) return card;
+    try {
+      const r = await fetch(`https://api.scryfall.com/cards/${card.set}/${card.collector_number}/ja`);
+      if (!r.ok) return card;
+      const ja = await r.json();
+      return {
+        ...card,
+        printed_name: ja.printed_name || ja.name || card.printed_name || card.name,
+        printed_text: ja.printed_text || card.printed_text || card.oracle_text,
+        image_uris: ja.image_uris || card.image_uris,
+        card_faces: ja.card_faces || card.card_faces
+      };
+    } catch(e) {
+      return card;
+    }
+  }
+
+  async function localizeSuggestionItem(item) {
+    if (!item?.card) return item;
+    const card = await japaneseDisplayCard(item.card);
+    let alternative = item.alternative;
+    if (alternative?.card) {
+      alternative = { ...alternative, card: await japaneseDisplayCard(alternative.card) };
+    }
+    return { ...item, card, alternative };
+  }
+
   async function fetchSpec(spec, identity, commanderName) {
     const prefix = `legal:commander game:paper ${identityQuery(identity)} -name:${JSON.stringify(commanderName)}`;
     for (const q of [spec.query,spec.fallback].filter(Boolean)) {
       try {
-        let r = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(`${prefix} ${q} lang:ja`)}&order=edhrec&unique=cards`);
-        if (!r.ok) r = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(`${prefix} ${q}`)}&order=edhrec&unique=cards`);
+        const r = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(`${prefix} ${q}`)}&order=edhrec&unique=cards`);
         if (!r.ok) continue;
         const data = await r.json();
         const cards = (data.data || []).slice(0,12);
@@ -672,9 +699,10 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       for (const spec of specs) { groups.push(await fetchSpec(spec,identity,c.name)); await new Promise(r=>setTimeout(r,110)); }
       state.suggestions=mergeCandidates(groups,10); state.suggestions.forEach(item=>item.alternative=findBudgetAlternative(item,groups)); state.suggestions=applyBudgetFilter(state.suggestions,10);
       if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">テーマに合う候補を取得できませんでした。別の方針でも試してください。</p>'; return; }
+      state.suggestions = await Promise.all(state.suggestions.map(localizeSuggestionItem));
       renderSuggestionCards();
       refreshBudgetPlan();
-      status.textContent=`${displayName(c)} 専用のテーマ候補を表示しました。価格はScryfallのUSD価格を1ドル=${USD_TO_JPY}円で参考換算しています。`;
+      status.textContent=`${displayName(c)} 専用のテーマ候補を表示しました。国内価格データがあるカードはWisdom Guild参考値を優先し、未登録カードはScryfall価格を1ドル=${USD_TO_JPY}円で円換算しています。`;
     } finally { loadSynergyButton.disabled=false; loadSynergyButton.textContent='相性カード候補を再検討'; }
   }
 
