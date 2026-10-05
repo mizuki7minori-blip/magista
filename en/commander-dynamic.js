@@ -46,7 +46,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     .any-result-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.any-select-label{font-size:.72rem;font-weight:800;color:#246daf}
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
-    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}.synergy-alt .synergy-swap{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.synergy-save{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.draft-deck{margin:22px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.draft-deck-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.draft-deck-list{display:grid;gap:8px;margin-top:12px}.draft-deck-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px}.draft-deck-row small{color:var(--muted)}.draft-deck-empty{color:var(--muted);margin-top:10px}.draft-deck-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}.synergy-alt .synergy-swap{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.synergy-save{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.draft-deck{margin:22px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.draft-deck-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.draft-deck-list{display:grid;gap:8px;margin-top:12px}.draft-deck-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px}.draft-deck-row small{color:var(--muted)}.draft-deck-empty{color:var(--muted);margin-top:10px}.draft-deck-actions{display:flex;gap:8px;flex-wrap:wrap}.draft-diagnosis{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:9px;background:#f8fafb}.draft-diagnosis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.draft-diagnosis-item{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}.draft-diagnosis-item strong,.draft-diagnosis-item span{display:block}.draft-diagnosis-item small{display:block;color:var(--muted);margin-top:3px}@media(max-width:700px){.draft-diagnosis-grid{grid-template-columns:repeat(2,1fr)}}
     .commander-goals{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.commander-goals h3{margin:0 0 5px}.commander-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.commander-goal{min-height:74px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#f8fafb;text-align:left;cursor:pointer;font:inherit}.commander-goal strong{display:block;margin-bottom:4px}.commander-goal small{color:var(--muted);line-height:1.35}.commander-goal.is-active{border-color:#80501f;box-shadow:0 0 0 2px #80501f18;background:#fffaf4}
     @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}.commander-goal-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}.commander-goal-grid{grid-template-columns:1fr}}
   `;
@@ -71,12 +71,13 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   draftDeckBox.innerHTML = `
     <div class="draft-deck-head"><div><span class="section-kicker">DRAFT DECK</span><h3>Saved candidate cards</h3></div><div class="draft-deck-actions"><button type="button" id="draft-add-all" class="button secondary">Add all 10 candidates</button><button type="button" id="draft-clear" class="button secondary">Clear</button></div></div>
     <div id="draft-deck-summary" class="dynamic-note"></div>
-    <div id="draft-deck-list" class="draft-deck-list"></div>`;
+    <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
   controls.after(draftDeckBox);
   const draftList = draftDeckBox.querySelector('#draft-deck-list');
   const draftSummary = draftDeckBox.querySelector('#draft-deck-summary');
   const draftAddAll = draftDeckBox.querySelector('#draft-add-all');
   const draftClear = draftDeckBox.querySelector('#draft-clear');
+  const draftDiagnosis = draftDeckBox.querySelector('#draft-diagnosis');
   const DRAFT_KEY = 'magsta-commander-draft-en';
 
   function loadDraftDeck(){
@@ -91,6 +92,41 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     state.draftDeck.push({key,name:displayName(item.card),role:item.role,usd:cardUsd(item.card)});
     saveDraftDeck();
   }
+  function roleBucket(role){
+    const s=String(role||'');
+    if(/Ramp|Fast development|Cost reduction/i.test(s)) return 'ramp';
+    if(/Card draw/i.test(s)) return 'draw';
+    if(/Interaction|Removal/i.test(s)) return 'interaction';
+    if(/Protection/i.test(s)) return 'protection';
+    if(/Graveyard/i.test(s)) return 'graveyard';
+    if(/Tutors/i.test(s)) return 'tutor';
+    return 'theme';
+  }
+
+  function renderDraftDiagnosis(){
+    if(!draftDiagnosis) return;
+    const counts={ramp:0,draw:0,interaction:0,protection:0,graveyard:0,tutor:0,theme:0};
+    state.draftDeck.forEach(x=>counts[roleBucket(x.role)]++);
+    const high=Number(bracket?.value)>=4;
+    const targets={
+      ramp:high?12:10,
+      draw:high?12:10,
+      interaction:high?12:10,
+      protection:high?6:5,
+      graveyard:3,
+      tutor:high?5:2
+    };
+    const rows=[
+      ['Ramp','ramp'],['Card draw','draw'],['Interaction','interaction'],
+      ['Protection','protection'],['Graveyard interaction','graveyard'],['Tutors','tutor']
+    ];
+    const totalSaved=state.draftDeck.length;
+    const recommendedLands=high?35:37;
+    const targetNonlands=99-recommendedLands;
+    const stillNeeded=Math.max(0,targetNonlands-totalSaved);
+    draftDiagnosis.innerHTML=`<strong>99-card build diagnosis</strong><small>Guide: ${recommendedLands} lands / ${targetNonlands} nonland cards</small><div class="draft-diagnosis-grid">${rows.map(([label,key])=>{const have=counts[key]||0, need=Math.max(0,targets[key]-have);return `<div class="draft-diagnosis-item"><strong>${label}</strong><span>${have} / ${targets[key]}</span><small>${need? need+' more suggested':'Target reached'}</small></div>`;}).join('')}</div><p class="dynamic-note">Saved cards: ${totalSaved}. About ${stillNeeded} nonland slots remain. Theme cards can cover multiple roles, so review overlaps before finalizing the deck.</p>`;
+  }
+
   function renderDraftDeck(){
     const totalUsd=state.draftDeck.map(x=>Number(x.usd)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
     draftSummary.textContent=`${state.draftDeck.length} cards saved / estimated ${totalUsd.toFixed(2)} (saved in this browser)`;
@@ -379,10 +415,11 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   input.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();searchCommanders();} });
   select.addEventListener('change',()=>{ if(state.dynamicCommander && select.value===state.dynamicCommander.name) chooseCommander(state.dynamicCommander); });
   budget.addEventListener('change',()=>{ if(state.dynamicCommander) renderCommanderSummary(state.dynamicCommander); });
-  bracket.addEventListener('change',()=>{ if(state.dynamicCommander) renderCommanderSummary(state.dynamicCommander); });
+  bracket.addEventListener('change',()=>{ if(state.dynamicCommander) renderCommanderSummary(state.dynamicCommander); renderDraftDiagnosis(); });
   strategy?.addEventListener('change',()=>{ if(state.dynamicCommander){ renderCommanderSummary(state.dynamicCommander); grid.innerHTML='<p class="builder-empty">Strategy changed. Select Refresh synergy candidates to rebuild the suggestions.</p>'; loadSynergyButton.textContent='Refresh synergy candidates'; } });
 })();+Number(x.usd).toFixed(2)}</span><button type="button" class="button secondary draft-remove" data-index="${i}">Remove</button></div>`).join(''):'<p class="draft-deck-empty">No cards saved yet.</p>';
     draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
+    renderDraftDiagnosis();
   }
   draftAddAll.addEventListener('click',()=>{state.suggestions.forEach(addDraftCard);status.textContent='Saved the current candidates to your draft deck.';});
   draftClear.addEventListener('click',()=>{state.draftDeck=[];saveDraftDeck();});
