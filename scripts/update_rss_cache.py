@@ -84,7 +84,7 @@ def parse_feed(name, lang, cls, url):
 
 
 # Extractive summaries preserve source wording and never invent a translation.
-SUMMARY_VERSION = 'body-extract-ja-v1'
+SUMMARY_VERSION = 'body-extract-ja-v2'
 BODY_HOSTS = {'www.izzetmtgnews.com', 'izzetmtgnews.com',
               'article.hareruyamtg.com', 'mtg-jp.com', 'www.mtg-jp.com',
               'magic.wizards.com', 'mtg.bigweb.co.jp',
@@ -100,24 +100,29 @@ class ArticleParagraphs(HTMLParser):
         self.stack = []
         self.parts = None
         self.paragraphs = []
+        self.primary_paragraphs = []
+        self.primary = False
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         marker = (attrs.get('class', '') + ' ' + attrs.get('id', '')).lower()
-        scope = tag in {'article', 'main'} or any(
-            word in marker for word in ('entry-content', 'post-content', 'article-body', 'article-content'))
+        scope = 2 if tag == 'article' or any(
+            word in marker for word in ('entry-content', 'post-content', 'article-body', 'article-content')) else (1 if tag == 'main' else 0)
         excluded = tag in self.EXCLUDED or any(
             word in marker for word in ('comment', 'related', 'advert', 'social', 'share-button'))
         if tag not in self.VOID:
             self.stack.append((tag, scope, excluded))
         if tag == 'p' and any(x[1] for x in self.stack) and not any(x[2] for x in self.stack):
             self.parts = []
+            self.primary = any(x[1] == 2 for x in self.stack)
 
     def handle_endtag(self, tag):
         if tag == 'p' and self.parts is not None:
             paragraph = re.sub(r'\s+', ' ', ''.join(self.parts)).strip()
             if paragraph:
                 self.paragraphs.append(paragraph)
+                if self.primary:
+                    self.primary_paragraphs.append(paragraph)
             self.parts = None
         for index in range(len(self.stack)-1, -1, -1):
             if self.stack[index][0] == tag:
@@ -132,15 +137,26 @@ class ArticleParagraphs(HTMLParser):
 def extract_summary(html, title, language='ja'):
     parser = ArticleParagraphs()
     parser.feed(html)
-    paragraphs = [p for p in parser.paragraphs
+    paragraphs = [p for p in (parser.primary_paragraphs or parser.paragraphs)
                   if len(p) >= 35 and (language == 'en' or re.search(r'[ぁ-んァ-ヶ一-龥]', p))
                   and not re.search(r'無断転載|Cookie|クッキー|プライバシー|ログイン|コメントを|関連記事|subscribe|sign up|privacy policy|all rights reserved', p, re.I)]
-    if sum(map(len, paragraphs)) < 180:
+    if sum(map(len, paragraphs)) < (80 if language == 'en' else 180):
         return None
     candidates = []
     title_key = re.sub(r'\W+', '', title)
     for paragraph in paragraphs:
         sentences = re.split(r'(?<=[.!?])\s+(?=[A-Z0-9])', paragraph) if language == 'en' else re.findall(r'[^。！？]+[。！？]?', paragraph)
+        if language == 'en':
+            merged = []
+            pending = ''
+            for part in sentences:
+                pending = (pending + ' ' + part).strip()
+                if len(pending) >= 35:
+                    merged.append(pending)
+                    pending = ''
+            if pending and merged and len(merged[-1] + pending) < 350:
+                merged[-1] += ' ' + pending
+            sentences = merged
         for sentence in sentences:
             sentence = sentence.strip()
             if not 35 <= len(sentence) <= (350 if language == 'en' else 180):
@@ -170,7 +186,7 @@ def extract_summary(html, title, language='ja'):
 
 
 
-EN_SUMMARY_VERSION = 'body-extract-en-ja-v1'
+EN_SUMMARY_VERSION = 'body-extract-en-ja-v2'
 TRANSLATION_DAILY_BUDGET = 4000
 
 
@@ -181,6 +197,20 @@ def translation_state(previous):
         return {'day': today, 'characters': 0}
     return {'day': today, 'characters': max(0, int(state.get('characters', 0))),
             'blocked': bool(state.get('blocked', False))}
+
+
+
+def normalize_mtg_translation(value):
+    replacements = [
+        (r'Tarmogoyf|ターモゴイフ', 'タルモゴイフ'),
+        (r'\bModern\b', 'モダン'), (r'\bStandard\b', 'スタンダード'),
+        (r'\bCommander\b', '統率者'), (r'\bPioneer\b', 'パイオニア'),
+        (r'\bLegacy\b', 'レガシー'), (r'\bPauper\b', 'パウパー'),
+        (r'\bJund\b', 'ジャンド'), (r'(\d{4})\s+ERA\b', r'\1年当時の'),
+    ]
+    for pattern, replacement in replacements:
+        value = re.sub(pattern, replacement, value, flags=re.I)
+    return value
 
 
 def translate_japanese(text, state):
@@ -203,7 +233,7 @@ def translate_japanese(text, state):
         result = html_tools.unescape(data.get('responseData', {}).get('translatedText', '')).strip()
         if not result or not re.search(r'[ぁ-んァ-ヶ一-龥]', result):
             return None
-        return result
+        return normalize_mtg_translation(result)
     except Exception as error:
         if getattr(error, 'code', None) in (403, 429):
             state['blocked'] = True
@@ -276,7 +306,7 @@ def enrich_summaries(items, old_items, limit=8, state=None):
         item['summaryAttemptedAt'] = datetime.now(timezone.utc).isoformat()
         try:
             request = urllib.request.Request(link, headers={'User-Agent': 'MAGSTA-RSS-Updater/1.1'})
-            with opener.open(request, timeout=6) as response:
+            with opener.open(request, timeout=15) as response:
                 if 'text/html' not in response.headers.get('Content-Type', ''):
                     continue
                 raw = response.read(1500001)
