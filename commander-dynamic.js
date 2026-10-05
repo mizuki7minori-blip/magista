@@ -8,7 +8,7 @@
   const plan = document.getElementById('budget-plan');
   if (!select || !summary || !grid) return;
 
-  const state = { dynamicCommander: null, suggestions: [], themes: [], draftDeck: [], lands: [] };
+  const state = { dynamicCommander: null, suggestions: [], themes: [], draftDeck: [], lands: [], domesticPrices: {}, domesticPriceMeta: {} };
   const esc = s => String(s || '').replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const imgOf = c => c?.image_uris?.normal || c?.card_faces?.[0]?.image_uris?.normal || '';
   const hasJapanese = s => /[\u3040-\u30ff\u3400-\u9fff]/.test(String(s || ''));
@@ -65,6 +65,8 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     <div class="dynamic-actions"><button id="load-synergy-button" class="button secondary" type="button" hidden>相性カード候補を表示</button></div>`;
   controls.before(box);
 
+  loadDomesticPrices();
+
   const input = box.querySelector('#any-commander-input');
   const button = box.querySelector('#any-commander-button');
   const results = box.querySelector('#any-commander-results');
@@ -103,7 +105,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function addDraftCard(item){
     const key=item.card.oracle_id||item.card.name;
     if(state.draftDeck.some(x=>x.key===key)) return;
-    state.draftDeck.push({key,name:displayName(item.card),role:item.role,usd:cardUsd(item.card)});
+    const ref=domesticPriceInfo(item.card); state.draftDeck.push({key,name:displayName(item.card),role:item.role,usd:cardUsd(item.card),jpy:ref.jpy,priceSource:ref.source});
     saveDraftDeck();
   }
   function roleBucket(role){
@@ -315,10 +317,9 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   }
 
   function renderDraftDeck(){
-    const totalUsd=state.draftDeck.map(x=>Number(x.usd)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
-    const totalJpy=Math.round(totalUsd*USD_TO_JPY);
+    const totalJpy=state.draftDeck.map(x=>Number(x.jpy ?? (Number.isFinite(Number(x.usd))?Number(x.usd)*USD_TO_JPY:null))).filter(Number.isFinite).reduce((a,b)=>a+b,0);
     const check=normalizeDeckTo100(); draftSummary.textContent=`${state.draftDeck.length}枚保存 / 土地 ${state.lands.length}枚 / 合計 ${check.total}枚 / 概算 ${totalJpy.toLocaleString('ja-JP')}円（この端末のブラウザに保存）`;
-    draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'候補')}</small></div><span>${x.usd==null?'価格不明':'約'+Math.round(Number(x.usd)*USD_TO_JPY).toLocaleString('ja-JP')+'円'}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
+    draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'候補')}</small></div><span>${x.jpy==null?'価格不明':'約'+Number(x.jpy).toLocaleString('ja-JP')+'円'}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
     draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
     renderDraftExport();
     renderDraftDiagnosis();
@@ -513,6 +514,33 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return values.length ? Math.min(...values) : null;
   }
 
+  async function loadDomesticPrices() {
+    try {
+      const res = await fetch('domestic-prices.json?v=20261005');
+      if (!res.ok) return;
+      const data = await res.json();
+      state.domesticPrices = data.cards || {};
+      state.domesticPriceMeta = data || {};
+    } catch(e) {}
+  }
+
+  function domesticPriceInfo(card) {
+    const keys=[card?.oracle_id,card?.name,card?.printed_name].filter(Boolean);
+    for(const key of keys){
+      const row=state.domesticPrices?.[key];
+      if(row && Number.isFinite(Number(row.jpy))){
+        return {jpy:Number(row.jpy),source:row.source||state.domesticPriceMeta?.primary_source||'国内価格'};
+      }
+    }
+    const usd=cardUsd(card);
+    if(usd==null) return {jpy:null,source:'価格情報なし'};
+    return {jpy:Math.round(usd*USD_TO_JPY),source:'Scryfall換算'};
+  }
+
+  function cardReferenceYen(card) {
+    return domesticPriceInfo(card).jpy;
+  }
+
   function budgetCardCapUsd() {
     if (budget.value === '5000') return 4;
     if (budget.value === '10000') return 8;
@@ -543,10 +571,9 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const USD_TO_JPY = 150;
 
   function priceSummary(items) {
-    const known = items.map(item=>cardUsd(item.card)).filter(v=>v != null);
+    const known = items.map(item=>cardReferenceYen(item.card)).filter(v=>v != null);
     const unknown = items.length - known.length;
-    const totalUsd = known.reduce((sum,v)=>sum+v,0);
-    const totalJpy = Math.round(totalUsd * USD_TO_JPY);
+    const totalJpy = Math.round(known.reduce((sum,v)=>sum+v,0));
     const budgetJpy = budget.value === 'open' ? null : Number(budget.value);
     const remaining = budgetJpy == null ? null : Math.max(0, budgetJpy - totalJpy);
     return { known:known.length, unknown, totalJpy, budgetJpy, remaining };
@@ -587,10 +614,10 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function renderSuggestionCards() {
     grid.innerHTML=state.suggestions.map(({card,role,reason,alternative},index)=>{
       const jp=displayName(card), en=card.name||jp, text=displayText(card), usd=cardUsd(card);
-      const price=usd==null?'価格不明':`約${Math.round(usd*USD_TO_JPY).toLocaleString('ja-JP')}円`;
-      const alt=alternative?.card, altUsd=alt?cardUsd(alt):null, altName=alt?displayName(alt):'', altPrice=altUsd==null?'':`約${Math.round(altUsd*USD_TO_JPY).toLocaleString('ja-JP')}円`;
+      const ref=domesticPriceInfo(card), price=ref.jpy==null?'価格不明':`約${ref.jpy.toLocaleString('ja-JP')}円`;
+      const alt=alternative?.card, altRef=alt?domesticPriceInfo(alt):null, altName=alt?displayName(alt):'', altPrice=altRef?.jpy==null?'':`約${altRef.jpy.toLocaleString('ja-JP')}円`;
       const altHtml=alt?`<div class="synergy-alt"><strong>安い代替候補：</strong><a href="${esc(alt.scryfall_uri)}" target="_blank" rel="noopener noreferrer">${esc(altName)}</a><span>${esc(altPrice)}</span><small>同じ「${esc(role)}」枠の候補</small><button type="button" class="button secondary synergy-swap" data-index="${index}">このカードに差し替える</button></div>`:'';
-      return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p class="synergy-price"><strong>参考価格：</strong>${esc(price)}</p>${altHtml}<p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>採用理由：</strong>${esc(reason)}</p><button type="button" class="button secondary synergy-save" data-index="${index}">仮デッキに追加</button></div></article>`;
+      return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p class="synergy-price"><strong>国内参考価格：</strong>${esc(price)}<small>${esc(ref.source)}</small></p>${altHtml}<p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>採用理由：</strong>${esc(reason)}</p><button type="button" class="button secondary synergy-save" data-index="${index}">仮デッキに追加</button></div></article>`;
     }).join('');
     grid.querySelectorAll('.synergy-save').forEach(btn=>btn.addEventListener('click',()=>{const item=state.suggestions[Number(btn.dataset.index)];if(item){addDraftCard(item);status.textContent=`${displayName(item.card)} を仮デッキに保存しました。`;}}));
     grid.querySelectorAll('.synergy-swap').forEach(btn=>btn.addEventListener('click',()=>{
