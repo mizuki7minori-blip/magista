@@ -39,9 +39,30 @@ function editorialCard(a){
 async function load(){
  const category=document.getElementById('category-rss-list');
  const latest=category?null:document.getElementById('latest-list');
+ const requested=new URLSearchParams(location.search).get('cat')||'news';
+ const key=Object.hasOwn(categories,requested)?requested:'news';
+ if(category){
+  const [name,match]=categories[key];
+  document.title=`${name}｜MAGSTA`;
+  document.getElementById('category-title').textContent=name;
+  document.getElementById('category-description').textContent=match instanceof RegExp?'見出し・概要にフォーマット名を含む記事を表示しています。':'配信元の記事を新しい順に掲載しています。';
+  document.querySelectorAll('[data-cat]').forEach(a=>{
+   a.classList.toggle('active',a.dataset.cat===key);
+   if(a.dataset.cat===key)a.setAttribute('aria-current','page');
+   else a.removeAttribute('aria-current');
+  });
+ }
+ let editorial=[];
  // Editorial articles do not depend on the external news feed.
- const editorialTask=latest?editorialCards(3).then(articles=>{
-  if(articles.length)latest.replaceChildren(...articles.map(editorialCard));
+ const editorialTask=(latest||(category&&key==='news'))?editorialCards(category?10:3,Boolean(category)).then(articles=>{
+  editorial=articles;
+  if(articles.length){
+   if(latest)latest.replaceChildren(...articles.map(editorialCard));
+   else {
+    category.querySelector('.feed-error')?.remove();
+    category.prepend(...articles.map(editorialCard));
+   }
+  }
   return articles;
  }):Promise.resolve([]);
  const status=document.getElementById(category?'category-status':'feed-status');
@@ -55,24 +76,28 @@ async function load(){
   const stale=Date.now()-Date.parse(data.updatedAt)>21600000;
   if(status)status.textContent=`配信データ更新：${stamp}（日本時間）${stale?' / 更新が遅れています':''}${data.staleSources?.length?' / 一部は前回取得分':''}`;
   if(category){
-   const requested=new URLSearchParams(location.search).get('cat')||'news';const key=Object.hasOwn(categories,requested)?requested:'news';const [name,match]=categories[key];document.title=`${name}｜MAGSTA`;document.getElementById('category-title').textContent=name;document.getElementById('category-description').textContent=match instanceof RegExp?'見出し・概要にフォーマット名を含む記事を表示しています。':'配信元の記事を新しい順に掲載しています。';
-   document.querySelectorAll('[data-cat]').forEach(a=>{a.classList.toggle('active',a.dataset.cat===key);if(a.dataset.cat===key)a.setAttribute('aria-current','page');});
-   const selected=items.filter(a=>match instanceof RegExp?match.test(a.title+' '+clean(a.description)):match?a.categoryKey===match:a.categoryKey==='news');const editorials=key==='news'?await editorialCards(10,true):[];category.replaceChildren(...editorials.map(editorialCard),...selected.slice(0,40).map(a=>card(a)));if(!selected.length&&!editorials.length)category.append(el('p','feed-error','このカテゴリーの記事は現在ありません。ほかのカテゴリーをご覧ください。'));
+   const [,match]=categories[key];
+   const selected=items.filter(a=>match instanceof RegExp?match.test(a.title+' '+clean(a.description)):match?a.categoryKey===match:a.categoryKey==='news');
+   category.replaceChildren(...editorial.map(editorialCard),...selected.slice(0,40).map(a=>card(a)));
+   if(!selected.length&&!editorial.length){
+    editorialTask.then(articles=>{
+     if(!articles.length)category.append(el('p','feed-error','このカテゴリーの記事は現在ありません。ほかのカテゴリーをご覧ください。'));
+    });
+   }
   }else{
    const ja=items.filter(a=>a.language==='ja'),en=items.filter(a=>a.language==='en');
-   if(latest){
-    const editorial=await editorialTask;
-    const cards=editorial.length?editorial.map(editorialCard):ja.slice(0,3).map(a=>card(a,false));
+   if(latest&&!editorial.length){
+    const cards=ja.slice(0,3).map(a=>card(a,false));
     latest.replaceChildren(...cards);
     if(!cards.length)latest.append(el('p','','現在、表示できる記事はありません。'));
    }
    for(const [id,list,count] of [['feed-ja',ja,8],['feed-en',en,8]]){const target=document.getElementById(id);if(target){target.replaceChildren(...list.slice(0,count).map(a=>card(a,true)));if(!list.length)target.append(el('p','','現在、表示できる記事はありません。'));}}
   }
  }catch{
-  const editorial=await editorialTask;
+  await editorialTask;
   if(status)status.textContent=editorial.length?'ニュース配信データを読み込めませんでした。MAGSTAの編集記事は表示しています。':'配信データを読み込めませんでした。';
   for(const id of category?['category-rss-list']:['latest-list','feed-ja','feed-en']){
-   if(id==='latest-list'&&editorial.length)continue;
+   if((id==='latest-list'||id==='category-rss-list')&&editorial.length)continue;
    const target=document.getElementById(id);if(target)error(target,load);
   }
  }
