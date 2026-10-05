@@ -284,11 +284,23 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return groups;
   }
 
+  function collapseNamedItems(items){
+    const map=new Map();
+    items.forEach(x=>{
+      const name=x?.name||'';
+      if(!name) return;
+      const row=map.get(name);
+      if(row) row.count+=1;
+      else map.set(name,{name,count:1});
+    });
+    return [...map.values()];
+  }
+
   function renderDraftExport(){
     if(!draftExportGrid) return;
     const groups=draftGroups();
     const labels={ramp:'Ramp',draw:'Card draw',interaction:'Interaction',protection:'Protection',graveyard:'Graveyard interaction',tutor:'Tutors',theme:'Theme / Other'};
-    const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>`<section class="draft-export-group"><h4>${labels[key]} (${items.length})</h4><ul>${items.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`).join('') + (landItems.length?`<section class="draft-export-group"><h4>Lands (${landItems.length})</h4><ul>${landItems.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`:'')) || '<p class="draft-deck-empty">Add cards to see a categorized deck list.</p>';
+    const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>{const rows=collapseNamedItems(items);return `<section class="draft-export-group"><h4>${labels[key]} (${items.length})</h4><ul>${rows.map(x=>`<li>${x.count} ${esc(x.name)}</li>`).join('')}</ul></section>`;}).join('') + (landItems.length?(()=>{const rows=collapseNamedItems(landItems);return `<section class="draft-export-group"><h4>Lands (${landItems.length})</h4><ul>${rows.map(x=>`<li>${x.count} ${esc(x.name)}</li>`).join('')}</ul></section>`;})():'')) || '<p class="draft-deck-empty">Add cards to see a categorized deck list.</p>';
   }
 
   function importDeckText(){
