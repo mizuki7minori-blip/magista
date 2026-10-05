@@ -69,13 +69,14 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const draftDeckBox = document.createElement('section');
   draftDeckBox.className = 'draft-deck';
   draftDeckBox.innerHTML = `
-    <div class="draft-deck-head"><div><span class="section-kicker">DRAFT DECK</span><h3>Saved candidate cards</h3></div><div class="draft-deck-actions"><button type="button" id="draft-add-all" class="button secondary">Add all 10 candidates</button><button type="button" id="draft-clear" class="button secondary">Clear</button></div></div>
+    <div class="draft-deck-head"><div><span class="section-kicker">DRAFT DECK</span><h3>Saved candidate cards</h3></div><div class="draft-deck-actions"><button type="button" id="draft-add-all" class="button secondary">Add all 10 candidates</button><button type="button" id="draft-auto-build" class="button primary">Auto-fill 99-card draft</button><button type="button" id="draft-clear" class="button secondary">Clear</button></div></div>
     <div id="draft-deck-summary" class="dynamic-note"></div>
     <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
   controls.after(draftDeckBox);
   const draftList = draftDeckBox.querySelector('#draft-deck-list');
   const draftSummary = draftDeckBox.querySelector('#draft-deck-summary');
   const draftAddAll = draftDeckBox.querySelector('#draft-add-all');
+  const draftAutoBuild = draftDeckBox.querySelector('#draft-auto-build');
   const draftClear = draftDeckBox.querySelector('#draft-clear');
   const draftDiagnosis = draftDeckBox.querySelector('#draft-diagnosis');
   const DRAFT_KEY = 'magsta-commander-draft-en';
@@ -163,6 +164,45 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     draftDiagnosis.innerHTML=`<strong>99-card build diagnosis</strong><small>Guide: ${recommendedLands} lands / ${targetNonlands} nonland cards</small><div class="draft-diagnosis-grid">${rows.map(([label,key])=>{const have=counts[key]||0, need=Math.max(0,targets[key]-have);return `<div class="draft-diagnosis-item"><strong>${label}</strong><span>${have} / ${targets[key]}</span><small>${need? need+' more suggested':'Target reached'}</small></div>`;}).join('')}</div><p class="dynamic-note">Saved cards: ${totalSaved}. About ${stillNeeded} nonland slots remain. Theme cards can cover multiple roles, so review overlaps before finalizing the deck.</p>`;
   }
 
+  async function autoBuildDraft(){
+    if(!state.dynamicCommander){status.textContent='Select a commander first.';return;}
+    draftAutoBuild.disabled=true; draftAutoBuild.textContent='Auto-filling…';
+    const identity=state.dynamicCommander.color_identity||[], high=Number(bracket?.value)>=4;
+    const targets={ramp:high?12:10,draw:high?12:10,interaction:high?12:10,protection:high?6:5,graveyard:3,tutor:high?5:2};
+    const landTarget=high?35:37, nonlandTarget=99-landTarget;
+    const counts={ramp:0,draw:0,interaction:0,protection:0,graveyard:0,tutor:0,theme:0};
+    state.draftDeck.forEach(x=>counts[roleBucket(x.role)]++);
+    const seen=new Set(state.draftDeck.map(x=>x.key)), cap=budgetCardCapUsd();
+    const addItems=(items,key,max)=>{
+      for(const item of items){
+        if(state.draftDeck.length>=nonlandTarget || (counts[key]||0)>=max) break;
+        const id=item.card.oracle_id||item.card.name, price=cardUsd(item.card);
+        if(seen.has(id)) continue;
+        if(budget.value!=='open' && price!=null && price>cap) continue;
+        seen.add(id); counts[key]=(counts[key]||0)+1;
+        state.draftDeck.push({key:id,name:displayName(item.card),role:item.role,usd:price});
+      }
+    };
+    try{
+      for(const key of ['ramp','draw','interaction','protection','graveyard','tutor']){
+        const spec=roleSearchSpec(key), found=await fetchSpec(spec,identity,state.dynamicCommander.name);
+        addItems(found,key,targets[key]); await new Promise(r=>setTimeout(r,100));
+      }
+      const themes=detectThemes(state.dynamicCommander);
+      for(const theme of themes){
+        if(state.draftDeck.length>=nonlandTarget) break;
+        const found=await fetchSpec({label:theme.label,query:theme.query,fallback:theme.fallback,reason:theme.reason},identity,state.dynamicCommander.name);
+        addItems(found,'theme',nonlandTarget); await new Promise(r=>setTimeout(r,100));
+      }
+      if(state.draftDeck.length<nonlandTarget && state.suggestions.length){
+        addItems(state.suggestions,'theme',nonlandTarget);
+      }
+      saveDraftDeck();
+      status.textContent=`Built a 99-card draft: ${state.draftDeck.length} nonlands + about ${landTarget} lands + 1 commander.`;
+    }catch(e){status.textContent='Auto-fill failed. Please try again.';}
+    finally{draftAutoBuild.disabled=false;draftAutoBuild.textContent='Auto-fill 99-card draft';}
+  }
+
   function renderDraftDeck(){
     const totalUsd=state.draftDeck.map(x=>Number(x.usd)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
     draftSummary.textContent=`${state.draftDeck.length} cards saved / estimated $${totalUsd.toFixed(2)} (saved in this browser)`;
@@ -171,6 +211,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     renderDraftDiagnosis();
   }
   draftAddAll.addEventListener('click',()=>{state.suggestions.forEach(addDraftCard);status.textContent='Saved the current candidates to your draft deck.';});
+  draftAutoBuild.addEventListener('click',autoBuildDraft);
   draftClear.addEventListener('click',()=>{state.draftDeck=[];saveDraftDeck();});
   loadDraftDeck();
 
