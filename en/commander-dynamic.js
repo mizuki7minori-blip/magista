@@ -216,6 +216,37 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return out;
   }
 
+  function cardUsd(card) {
+    const values = [card?.prices?.usd, card?.prices?.usd_foil].map(Number).filter(Number.isFinite);
+    return values.length ? Math.min(...values) : null;
+  }
+
+  function budgetCardCapUsd() {
+    if (budget.value === '50') return 4;
+    if (budget.value === '100') return 8;
+    if (budget.value === '300') return 25;
+    return Infinity;
+  }
+
+  function applyBudgetFilter(items, limit=10) {
+    if (budget.value === 'open') return items.slice(0, limit);
+    const cap = budgetCardCapUsd();
+    const affordable = [], unknown = [];
+    for (const item of items) {
+      const price = cardUsd(item.card);
+      if (price == null) unknown.push(item);
+      else if (price <= cap) affordable.push(item);
+    }
+    return [...affordable, ...unknown].slice(0, limit);
+  }
+
+  function budgetFilterLabel() {
+    if (budget.value === '50') return 'Mostly cards around $4 or less';
+    if (budget.value === '100') return 'Mostly cards around $8 or less';
+    if (budget.value === '300') return 'Mostly cards around $25 or less';
+    return 'No price cap';
+  }
+
   function renderCommanderSummary(card) {
     const picked = displayName(card), identity = card.color_identity || [], colors = identity.length ? identity.join(' / ') : 'Colorless';
     const budgetText = budget.value === 'open' ? 'No limit' : `About ${Number(budget.value).toLocaleString('en-US')}`;
@@ -245,14 +276,14 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       const specs = [...detected.map(t=>({label:t.label,query:t.query,fallback:t.fallback,reason:t.reason})), ...strategySpecsFor(mode)];
       const groups=[];
       for (const spec of specs) { groups.push(await fetchSpec(spec,identity,c.name)); await new Promise(r=>setTimeout(r,110)); }
-      state.suggestions=mergeCandidates(groups,10);
+      state.suggestions=applyBudgetFilter(mergeCandidates(groups,24),10);
       if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">No matching candidates found. Try another strategy.</p>'; return; }
       grid.innerHTML=state.suggestions.map(({card,role,reason})=>{
         const jp=displayName(card), en=card.name||jp, text=displayText(card);
         return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>Why it fits: </strong>${esc(reason)}</p></div></article>`;
       }).join('');
       const high=Number(bracket.value)>=4, lands=high?'34–36':'36–38', themeLabel=detected.map(t=>t.label).join(' / ') || 'Ability-based';
-      if (plan) plan.innerHTML=[['Detected themes',themeLabel],['Strategy',strategyNames[mode]],['Lands',lands],['Candidate mix','Theme first, then strategy support / up to 2 generic staples']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
+      if (plan) plan.innerHTML=[['Detected themes',themeLabel],['Strategy',strategyNames[mode]],['Lands',lands],['Budget filter',budgetFilterLabel()],['Candidate mix','Theme first, then strategy support / up to 2 generic staples']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
       status.textContent=`Showing theme candidates for ${displayName(c)}.`;
     } catch(e) { grid.innerHTML='<p class="builder-empty">Unable to load candidates. Check your connection and try again.</p>'; } finally { loadSynergyButton.disabled=false; loadSynergyButton.textContent='Refresh synergy candidates'; }
   }
