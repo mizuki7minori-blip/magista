@@ -71,7 +71,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   draftDeckBox.innerHTML = `
     <div class="draft-deck-head"><div><span class="section-kicker">DRAFT DECK</span><h3>Saved candidate cards</h3></div><div class="draft-deck-actions"><button type="button" id="draft-add-all" class="button secondary">Add all 10 candidates</button><button type="button" id="draft-auto-build" class="button primary">Auto-fill 99-card draft</button><button type="button" id="draft-clear" class="button secondary">Clear</button></div></div>
     <div id="draft-deck-summary" class="dynamic-note"></div>
-    <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-export" class="draft-export"><div class="draft-deck-head"><strong>Deck list by category</strong><button type="button" id="draft-copy" class="button secondary">Copy deck list</button></div><div id="draft-export-grid" class="draft-export-grid"></div><div id="draft-copy-status" class="draft-copy-status"></div></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
+    <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-export" class="draft-export"><div class="draft-deck-head"><strong>Deck list by category</strong><div class="draft-deck-actions"><button type="button" id="draft-copy" class="button secondary">Copy deck list</button><button type="button" id="draft-copy-import" class="button secondary">Copy for Moxfield / Archidekt</button></div></div><div id="draft-export-grid" class="draft-export-grid"></div><div id="draft-copy-status" class="draft-copy-status"></div></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
   controls.after(draftDeckBox);
   const draftList = draftDeckBox.querySelector('#draft-deck-list');
   const draftSummary = draftDeckBox.querySelector('#draft-deck-summary');
@@ -81,6 +81,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const draftDiagnosis = draftDeckBox.querySelector('#draft-diagnosis');
   const draftExportGrid = draftDeckBox.querySelector('#draft-export-grid');
   const draftCopy = draftDeckBox.querySelector('#draft-copy');
+  const draftCopyImport = draftDeckBox.querySelector('#draft-copy-import');
   const draftCopyStatus = draftDeckBox.querySelector('#draft-copy-status');
   const DRAFT_KEY = 'magsta-commander-draft-en';
 
@@ -257,6 +258,18 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>`<section class="draft-export-group"><h4>${labels[key]} (${items.length})</h4><ul>${items.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`).join('') + (landItems.length?`<section class="draft-export-group"><h4>Lands (${landItems.length})</h4><ul>${landItems.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`:'')) || '<p class="draft-deck-empty">Add cards to see a categorized deck list.</p>';
   }
 
+  function importDeckText(){
+    const commanderName=state.dynamicCommander?displayName(state.dynamicCommander):'';
+    const landItems=(state.lands&&state.lands.length)?state.lands:buildLandPackage();
+    const lines=[];
+    if(commanderName) lines.push(`1 ${commanderName}`);
+    state.draftDeck.forEach(x=>lines.push(`1 ${x.name}`));
+    const counts=new Map();
+    landItems.forEach(x=>counts.set(x.name,(counts.get(x.name)||0)+1));
+    counts.forEach((count,name)=>lines.push(`${count} ${name}`));
+    return lines.join('\n');
+  }
+
   function draftText(){
     const groups=draftGroups(), labels={ramp:'Ramp',draw:'Card draw',interaction:'Interaction',protection:'Protection',graveyard:'Graveyard interaction',tutor:'Tutors',theme:'Theme / Other'};
     const commanderName=state.dynamicCommander?displayName(state.dynamicCommander):'Not selected';
@@ -279,6 +292,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   draftAutoBuild.addEventListener('click',autoBuildDraft);
   draftClear.addEventListener('click',()=>{state.draftDeck=[];state.lands=[];saveDraftDeck();});
   draftCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(draftText());draftCopyStatus.textContent='Deck list copied.';}catch(e){draftCopyStatus.textContent='Could not copy the deck list.';}});
+  draftCopyImport.addEventListener('click',async()=>{try{const check=normalizeDeckTo100();await navigator.clipboard.writeText(importDeckText());draftCopyStatus.textContent=`Copied a ${check.total}-card list for Moxfield / Archidekt.`;}catch(e){draftCopyStatus.textContent='Could not copy the import list.';}});
   loadDraftDeck();
 
   const goalBox = document.createElement('section');
