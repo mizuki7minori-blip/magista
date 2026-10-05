@@ -14,7 +14,7 @@ function json(url){
  const task=(async()=>{
   if(url.startsWith('https://api.scryfall.com/'))await apiSlot();
   const response=await fetch(url,{signal:AbortSignal.timeout(12000)});
-  if(!response.ok)throw new Error('Data request failed: '+response.status);
+  if(!response.ok){const error=new Error('Data request failed: '+response.status);error.status=response.status;throw error;}
   const data=await response.json();cached.set(url,{at:Date.now(),data});return data;
  })();
  pending.set(url,task);
