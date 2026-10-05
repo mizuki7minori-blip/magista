@@ -12,7 +12,7 @@ function card(a,compact=false){
  const heading=el('h3'),link=el('a','',a.translatedTitle||a.title);link.href=safe(a.link);link.target='_blank';link.rel='noopener noreferrer';heading.append(link);item.append(heading);
  if(a.translatedTitle)item.append(el('small','source','原題：'+a.title));
  const summary=a.summary;
- if(summary?.source==='article-body'&&summary.language==='ja'&&['body-extract-ja-v1','body-extract-en-ja-v1'].includes(summary.method)&&Array.isArray(summary.points)&&summary.points.length){
+ if(summary?.source==='article-body'&&summary.language==='ja'&&['body-extract-ja-v2','body-extract-en-ja-v2'].includes(summary.method)&&Array.isArray(summary.points)&&summary.points.length){
   const details=el('details','article-body-summary');
   const translated=summary.originalLanguage==='en';
   details.append(el('summary','',translated?'日本語要約（機械翻訳）':'本文の要点（日本語）'));
