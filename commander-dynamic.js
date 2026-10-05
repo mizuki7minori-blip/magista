@@ -85,6 +85,8 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-export" class="draft-export"><div class="draft-deck-head"><strong>カテゴリ別デッキリスト</strong><div class="draft-deck-actions"><button type="button" id="draft-copy" class="button secondary">デッキリストをコピー</button><button type="button" id="draft-copy-import" class="button secondary">Moxfield / Archidekt用コピー</button></div></div><div id="draft-export-grid" class="draft-export-grid"></div><div id="draft-copy-status" class="draft-copy-status"></div></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
   const commanderMain = controls.closest('main') || document.querySelector('main');
   if (commanderMain) commanderMain.appendChild(draftDeckBox); else controls.after(draftDeckBox);
+  const affiliateBox = document.getElementById('commander-affiliate-products');
+  if (commanderMain && affiliateBox) commanderMain.appendChild(affiliateBox);
   const draftList = draftDeckBox.querySelector('#draft-deck-list');
   const draftSummary = draftDeckBox.querySelector('#draft-deck-summary');
   const draftAddAll = draftDeckBox.querySelector('#draft-add-all');
