@@ -25,6 +25,29 @@
     setTimeout(loadAnalytics, 2200);
   }
 
+  // ホームの目的別リンクを計測。初回クリック時も設定を先にキューへ入れる。
+  const homeGoalEvents = {
+    draft_guide: 'home_goal_draft_guide',
+    draft_rankings: 'home_goal_draft_rankings',
+    commander_builder: 'home_goal_commander_builder',
+    commander_guide: 'home_goal_commander_guide'
+  };
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a[data-home-action]');
+    const action = link?.dataset.homeAction;
+    if (!Object.prototype.hasOwnProperty.call(homeGoalEvents, action)) return;
+    try {
+      loadAnalytics();
+      window.gtag('event', homeGoalEvents[action], {
+        send_to: GA4_MEASUREMENT_ID,
+        content_type: 'home_goal',
+        content_id: action,
+        placement: 'home_start_here'
+      });
+    } catch (_) {
+      // 計測が利用できない場合も、リンクの移動はそのまま継続する。
+    }
+  });
   const header = document.querySelector('.site-header');
   const button = header?.querySelector('.menu-button');
   if (!button) return;
