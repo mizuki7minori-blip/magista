@@ -47,3 +47,15 @@ for i, (label, pool) in enumerate(LANES):
     encoding="utf-8"
 )
 print(f"Updated {len(cards)} daily pickup cards for {today.isoformat()}")
+
+# Publish the same editorial candidates for the manual update button.
+pool = [
+    {"label": label, "cards": [
+        {"label": label, "name": name, "ja": name, "en": en, "desc": desc}
+        for name, en, desc in lane
+    ]}
+    for label, lane in LANES
+]
+(ROOT / "pickup-pool.json").write_text(
+    json.dumps(pool, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+)
