@@ -15,7 +15,7 @@
   if (!body || !currentItem) return;
 
   const headings = [...body.querySelectorAll(":scope > h2")].filter(h => !h.closest(".related-reading"));
-  if (headings.length >= 2 && !document.querySelector(".article-toc")) {
+  if (headings.length >= 2 && !document.querySelector(".article-toc") && !document.querySelector(".draft-reading-nav")) {
     headings.forEach((heading, index) => {
       if (!heading.id) heading.id = `section-${index + 1}`;
     });
