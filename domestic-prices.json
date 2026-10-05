@@ -1,0 +1,7 @@
+{
+  "updated_at": null,
+  "primary_source": "Wisdom Guild",
+  "fallback_source": "Scryfall USD converted to JPY",
+  "notes": "Populate cards with domestic yen reference prices. Keys may be oracle_id, English name, or Japanese printed_name.",
+  "cards": {}
+}
