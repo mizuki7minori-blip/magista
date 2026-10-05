@@ -247,6 +247,27 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return 'No price cap';
   }
 
+  function priceSummary(items) {
+    const known = items.map(item=>cardUsd(item.card)).filter(v=>v != null);
+    const unknown = items.length - known.length;
+    const totalUsd = known.reduce((sum,v)=>sum+v,0);
+    const budgetUsd = budget.value === 'open' ? null : Number(budget.value);
+    const remaining = budgetUsd == null ? null : Math.max(0, budgetUsd - totalUsd);
+    return { known:known.length, unknown, totalUsd, budgetUsd, remaining };
+  }
+
+  function priceSummaryLabel(items) {
+    const p = priceSummary(items);
+    const suffix = p.unknown ? ` (${p.unknown} without price data)` : '';
+    return `About ${p.totalUsd.toFixed(2)}${suffix}`;
+  }
+
+  function remainingBudgetLabel(items) {
+    if (budget.value === 'open') return 'No limit';
+    const p = priceSummary(items);
+    return `About ${p.remaining.toFixed(2)}`;
+  }
+
   function renderCommanderSummary(card) {
     const picked = displayName(card), identity = card.color_identity || [], colors = identity.length ? identity.join(' / ') : 'Colorless';
     const budgetText = budget.value === 'open' ? 'No limit' : `About ${Number(budget.value).toLocaleString('en-US')}`;
@@ -283,7 +304,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
         return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>Why it fits: </strong>${esc(reason)}</p></div></article>`;
       }).join('');
       const high=Number(bracket.value)>=4, lands=high?'34–36':'36–38', themeLabel=detected.map(t=>t.label).join(' / ') || 'Ability-based';
-      if (plan) plan.innerHTML=[['Detected themes',themeLabel],['Strategy',strategyNames[mode]],['Lands',lands],['Budget filter',budgetFilterLabel()],['Candidate mix','Theme first, then strategy support / up to 2 generic staples']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
+      if (plan) plan.innerHTML=[['Detected themes',themeLabel],['Strategy',strategyNames[mode]],['Lands',lands],['Budget filter',budgetFilterLabel()],['Estimated cost of 10 candidates',priceSummaryLabel(state.suggestions)],['Budget remaining',remainingBudgetLabel(state.suggestions)],['Candidate mix','Theme first, then strategy support / up to 2 generic staples']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
       status.textContent=`Showing theme candidates for ${displayName(c)}.`;
     } catch(e) { grid.innerHTML='<p class="builder-empty">Unable to load candidates. Check your connection and try again.</p>'; } finally { loadSynergyButton.disabled=false; loadSynergyButton.textContent='Refresh synergy candidates'; }
   }
