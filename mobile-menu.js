@@ -1,4 +1,20 @@
 (() => {
+  const CANONICAL_ORIGIN = 'https://magsta.jp';
+  const isLegacyGithub = location.hostname === 'mizuki7minori-blip.github.io';
+  const isWww = location.hostname === 'www.magsta.jp';
+  let canonicalPath = location.pathname;
+
+  if (isLegacyGithub) {
+    canonicalPath = canonicalPath.replace(/^\/magista(?=\/|$)/, '') || '/';
+  }
+  if (/\/index\.html$/i.test(canonicalPath)) {
+    canonicalPath = canonicalPath.replace(/index\.html$/i, '');
+  }
+  if (isLegacyGithub || isWww || canonicalPath !== location.pathname) {
+    location.replace(CANONICAL_ORIGIN + canonicalPath + location.search + location.hash);
+    return;
+  }
+
   const english = document.documentElement.lang.toLowerCase().startsWith('en');
   const GA4_MEASUREMENT_ID = 'G-51MGTEG0DS';
 
