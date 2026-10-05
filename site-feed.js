@@ -10,6 +10,15 @@ function card(a,compact=false){
  const item=el('article',compact?'feed-row':'feed-card');
  item.append(el('span','tag '+a.categoryKey,labels[a.categoryKey]||'ニュース'));
  const heading=el('h3'),link=el('a','',a.title);link.href=safe(a.link);link.target='_blank';link.rel='noopener noreferrer';heading.append(link);item.append(heading);
+ const summary=a.summary;
+ if(summary?.source==='article-body'&&summary.language==='ja'&&summary.method==='body-extract-ja-v1'&&Array.isArray(summary.points)&&summary.points.length){
+  const details=el('details','article-body-summary');
+  details.append(el('summary','','本文の要点（日本語）'));
+  const list=el('ul');
+  summary.points.slice(0,3).forEach(point=>list.append(el('li','',String(point))));
+  details.append(list,el('small','source','配信元の本文から重要な文を抜粋。全文は記事リンクで確認できます。'));
+  item.append(details);
+ }
  const description=clean(a.description);
  if(description&&description!==a.title){const details=el('details');details.append(el('summary','',a.language==='en'?'配信元の概要（英語）':'配信元の概要'));details.append(el('p','',description));item.append(details);}
  item.append(el('small','source',`${day(a.pubDate)} · ${a.sourceName||'配信元'}${a.language==='en'?' · 英語':''}`));return item;
