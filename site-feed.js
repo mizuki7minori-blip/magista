@@ -9,19 +9,21 @@ function day(value){return Number.isFinite(Date.parse(value))?new Date(value).to
 function card(a,compact=false){
  const item=el('article',compact?'feed-row':'feed-card');
  item.append(el('span','tag '+a.categoryKey,labels[a.categoryKey]||'ニュース'));
- const heading=el('h3'),link=el('a','',a.title);link.href=safe(a.link);link.target='_blank';link.rel='noopener noreferrer';heading.append(link);item.append(heading);
+ const heading=el('h3'),link=el('a','',a.translatedTitle||a.title);link.href=safe(a.link);link.target='_blank';link.rel='noopener noreferrer';heading.append(link);item.append(heading);
+ if(a.translatedTitle)item.append(el('small','source','原題：'+a.title));
  const summary=a.summary;
- if(summary?.source==='article-body'&&summary.language==='ja'&&summary.method==='body-extract-ja-v1'&&Array.isArray(summary.points)&&summary.points.length){
+ if(summary?.source==='article-body'&&summary.language==='ja'&&['body-extract-ja-v1','body-extract-en-ja-v1'].includes(summary.method)&&Array.isArray(summary.points)&&summary.points.length){
   const details=el('details','article-body-summary');
-  details.append(el('summary','','本文の要点（日本語）'));
+  const translated=summary.originalLanguage==='en';
+  details.append(el('summary','',translated?'日本語要約（機械翻訳）':'本文の要点（日本語）'));
   const list=el('ul');
   summary.points.slice(0,3).forEach(point=>list.append(el('li','',String(point))));
-  details.append(list,el('small','source','配信元の本文から重要な文を抜粋。全文は記事リンクで確認できます。'));
+  details.append(list,el('small','source',translated?'英語本文の要点をMyMemoryで機械翻訳。カード名や細かな条件は原文で確認してください。':'配信元の本文から重要な文を抜粋。全文は記事リンクで確認できます。'));
   item.append(details);
  }
  const description=clean(a.description);
  if(description&&description!==a.title){const details=el('details');details.append(el('summary','',a.language==='en'?'配信元の概要（英語）':'配信元の概要'));details.append(el('p','',description));item.append(details);}
- item.append(el('small','source',`${day(a.pubDate)} · ${a.sourceName||'配信元'}${a.language==='en'?' · 英語':''}`));return item;
+ item.append(el('small','source',`${day(a.pubDate)} · ${a.sourceName||'配信元'}${a.language==='en'?' · 英語記事':''}`));return item;
 }
 function error(target,retry){target.replaceChildren();const box=el('div','feed-error','記事を取得できませんでした。');const btn=el('button','','再読み込み');btn.type='button';btn.addEventListener('click',retry);box.append(btn);target.append(box);}
 async function editorialCards(limit=3, newsOnly=false){
