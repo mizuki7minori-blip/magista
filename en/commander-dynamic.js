@@ -46,7 +46,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     .any-result-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.any-select-label{font-size:.72rem;font-weight:800;color:#246daf}
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
-    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}
+    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}.synergy-alt .synergy-swap{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}
     .commander-goals{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.commander-goals h3{margin:0 0 5px}.commander-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.commander-goal{min-height:74px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#f8fafb;text-align:left;cursor:pointer;font:inherit}.commander-goal strong{display:block;margin-bottom:4px}.commander-goal small{color:var(--muted);line-height:1.35}.commander-goal.is-active{border-color:#80501f;box-shadow:0 0 0 2px #80501f18;background:#fffaf4}
     @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}.commander-goal-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}.commander-goal-grid{grid-template-columns:1fr}}
   `;
@@ -300,6 +300,32 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     state.suggestions=[]; loadSynergyButton.hidden=false; status.textContent=`${displayName(card)} selected as your commander.`;
   }
 
+
+  function renderSuggestionCards() {
+    grid.innerHTML=state.suggestions.map(({card,role,reason,alternative},index)=>{
+      const name=displayName(card), text=displayText(card), usd=cardUsd(card);
+      const price=usd==null?'Price unavailable':`About ${usd.toFixed(2)}`;
+      const alt=alternative?.card, altUsd=alt?cardUsd(alt):null, altName=alt?displayName(alt):'', altPrice=altUsd==null?'':`About ${altUsd.toFixed(2)}`;
+      const altHtml=alt?`<div class="synergy-alt"><strong>Cheaper alternative: </strong><a href="${esc(alt.scryfall_uri)}" target="_blank" rel="noopener noreferrer">${esc(altName)}</a><span>${esc(altPrice)}</span><small>Same ${esc(role)} role</small><button type="button" class="button secondary synergy-swap" data-index="${index}">Swap to this card</button></div>`:'';
+      return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(name)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(name)}</h3><p class="synergy-price"><strong>Reference price: </strong>${esc(price)}</p>${altHtml}<p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>Why it fits: </strong>${esc(reason)}</p></div></article>`;
+    }).join('');
+    grid.querySelectorAll('.synergy-swap').forEach(btn=>btn.addEventListener('click',()=>{
+      const index=Number(btn.dataset.index), item=state.suggestions[index], alt=item?.alternative;
+      if(!item || !alt) return;
+      item.card=alt.card; item.reason=alt.reason || item.reason; item.alternative=null;
+      renderSuggestionCards();
+      refreshBudgetPlan();
+      status.textContent=`Swapped to ${displayName(item.card)}. Estimated cost and remaining budget were recalculated.`;
+    }));
+  }
+
+  function refreshBudgetPlan() {
+    if (!plan) return;
+    const mode=strategy?.value || 'balanced';
+    const high=Number(bracket.value)>=4, lands=high?'34–36':'36–38', themeLabel=state.themes.map(t=>t.label).join(' / ') || 'Ability-based';
+    plan.innerHTML=[['Detected themes',themeLabel],['Strategy',strategyNames[mode]],['Lands',lands],['Budget filter',budgetFilterLabel()],['Estimated cost of 10 candidates',priceSummaryLabel(state.suggestions)],['Budget remaining',remainingBudgetLabel(state.suggestions)],['Candidate mix','Theme first, then strategy support / up to 2 generic staples']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
+  }
+
   async function renderDynamic() {
     const c = state.dynamicCommander; if (!c || select.value !== c.name) return;
     loadSynergyButton.disabled=true; loadSynergyButton.textContent='Finding theme candidates…';
@@ -312,13 +338,8 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       for (const spec of specs) { groups.push(await fetchSpec(spec,identity,c.name)); await new Promise(r=>setTimeout(r,110)); }
       state.suggestions=mergeCandidates(groups,10); state.suggestions.forEach(item=>item.alternative=findBudgetAlternative(item,groups)); state.suggestions=applyBudgetFilter(state.suggestions,10);
       if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">No matching candidates found. Try another strategy.</p>'; return; }
-      grid.innerHTML=state.suggestions.map(({card,role,reason})=>{
-        const jp=displayName(card), en=card.name||jp, text=displayText(card), usd=cardUsd(card);
-        const price=usd==null?'Price unavailable':`About ${usd.toFixed(2)}`;
-        return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p class="synergy-price"><strong>Reference price: </strong>${esc(price)}</p><p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>Why it fits: </strong>${esc(reason)}</p></div></article>`;
-      }).join('');
-      const high=Number(bracket.value)>=4, lands=high?'34–36':'36–38', themeLabel=detected.map(t=>t.label).join(' / ') || 'Ability-based';
-      if (plan) plan.innerHTML=[['Detected themes',themeLabel],['Strategy',strategyNames[mode]],['Lands',lands],['Budget filter',budgetFilterLabel()],['Estimated cost of 10 candidates',priceSummaryLabel(state.suggestions)],['Budget remaining',remainingBudgetLabel(state.suggestions)],['Candidate mix','Theme first, then strategy support / up to 2 generic staples']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
+      renderSuggestionCards();
+      refreshBudgetPlan();
       status.textContent=`Showing theme candidates for ${displayName(c)}.`;
     } catch(e) { grid.innerHTML='<p class="builder-empty">Unable to load candidates. Check your connection and try again.</p>'; } finally { loadSynergyButton.disabled=false; loadSynergyButton.textContent='Refresh synergy candidates'; }
   }
