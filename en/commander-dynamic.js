@@ -486,7 +486,10 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   }
 
   function cardUsd(card) {
-    const values = [card?.prices?.usd, card?.prices?.usd_foil].map(Number).filter(Number.isFinite);
+    const values = [card?.prices?.usd, card?.prices?.usd_foil]
+      .filter(v => v !== null && v !== undefined && v !== '')
+      .map(Number)
+      .filter(v => Number.isFinite(v) && v > 0);
     return values.length ? Math.min(...values) : null;
   }
 
