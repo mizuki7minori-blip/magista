@@ -237,6 +237,37 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return out;
   }
 
+  function cardUsd(card) {
+    const values = [card?.prices?.usd, card?.prices?.usd_foil].map(Number).filter(Number.isFinite);
+    return values.length ? Math.min(...values) : null;
+  }
+
+  function budgetCardCapUsd() {
+    if (budget.value === '5000') return 4;
+    if (budget.value === '10000') return 8;
+    if (budget.value === '30000') return 25;
+    return Infinity;
+  }
+
+  function applyBudgetFilter(items, limit=10) {
+    if (budget.value === 'open') return items.slice(0, limit);
+    const cap = budgetCardCapUsd();
+    const affordable = [], unknown = [];
+    for (const item of items) {
+      const price = cardUsd(item.card);
+      if (price == null) unknown.push(item);
+      else if (price <= cap) affordable.push(item);
+    }
+    return [...affordable, ...unknown].slice(0, limit);
+  }
+
+  function budgetFilterLabel() {
+    if (budget.value === '5000') return '低価格カード中心';
+    if (budget.value === '10000') return '中低価格カード中心';
+    if (budget.value === '30000') return '中価格帯まで許容';
+    return '価格制限なし';
+  }
+
   function renderCommanderSummary(card) {
     const picked = displayName(card), identity = card.color_identity || [], colors = identity.length ? identity.join(' / ') : '無色';
     const budgetText = budget.value === 'open' ? '上限なし' : `${Number(budget.value).toLocaleString('ja-JP')}円前後`;
@@ -266,14 +297,14 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       const specs = [...detected.map(t=>({label:t.label,query:t.query,fallback:t.fallback,reason:t.reason})), ...strategySpecsFor(mode)];
       const groups=[];
       for (const spec of specs) { groups.push(await fetchSpec(spec,identity,c.name)); await new Promise(r=>setTimeout(r,110)); }
-      state.suggestions=mergeCandidates(groups,10);
+      state.suggestions=applyBudgetFilter(mergeCandidates(groups,24),10);
       if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">テーマに合う候補を取得できませんでした。別の方針でも試してください。</p>'; return; }
       grid.innerHTML=state.suggestions.map(({card,role,reason})=>{
         const jp=displayName(card), en=card.name||jp, text=displayText(card);
         return `<article class="synergy-card"><div class="synergy-image">${imgOf(card)?`<a href="${esc(card.scryfall_uri)}" target="_blank" rel="noopener noreferrer"><img src="${imgOf(card)}" loading="lazy" decoding="async" alt="${esc(jp)}"></a>`:''}</div><div class="synergy-body"><span class="synergy-role">${esc(role)}</span><h3>${esc(jp)}</h3>${jp!==en?`<small>${esc(en)}</small>`:''}<p>${esc(text.slice(0,110))}${text.length>110?'…':''}</p><p class="synergy-reason"><strong>採用理由：</strong>${esc(reason)}</p></div></article>`;
       }).join('');
       const high=Number(bracket.value)>=4, lands=high?'34〜36':'36〜38', themeLabel=detected.map(t=>t.label).join(' / ') || '能力ベース';
-      if (plan) plan.innerHTML=[['検出テーマ',themeLabel],['方針',strategyNames[mode]],['土地',lands],['候補構成','テーマ優先＋方針補助 / 汎用定番は最大2枚']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
+      if (plan) plan.innerHTML=[['検出テーマ',themeLabel],['方針',strategyNames[mode]],['土地',lands],['予算フィルター',budgetFilterLabel()],['候補構成','テーマ優先＋方針補助 / 汎用定番は最大2枚']].map(([k,v])=>`<div><strong>${esc(k)}</strong><span>${esc(v)}</span></div>`).join('');
       status.textContent=`${displayName(c)} 専用のテーマ候補を表示しました。`;
     } finally { loadSynergyButton.disabled=false; loadSynergyButton.textContent='相性カード候補を再検討'; }
   }
