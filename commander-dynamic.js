@@ -220,7 +220,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
         if(seen.has(id)) continue;
         if(budget.value!=='open' && price!=null && price>cap) continue;
         seen.add(id); counts[key]=(counts[key]||0)+1;
-        state.draftDeck.push({key:id,name:displayName(item.card),role:item.role,usd:price});
+        const ref=domesticPriceInfo(item.card); state.draftDeck.push({key:id,name:displayName(item.card),role:item.role,usd:price,jpy:ref.jpy,priceSource:ref.source});
       }
     };
     try{
@@ -319,7 +319,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function renderDraftDeck(){
     const totalJpy=state.draftDeck.map(x=>Number(x.jpy ?? (Number.isFinite(Number(x.usd))?Number(x.usd)*USD_TO_JPY:null))).filter(Number.isFinite).reduce((a,b)=>a+b,0);
     const check=normalizeDeckTo100(); draftSummary.textContent=`${state.draftDeck.length}枚保存 / 土地 ${state.lands.length}枚 / 合計 ${check.total}枚 / 概算 ${totalJpy.toLocaleString('ja-JP')}円（この端末のブラウザに保存）`;
-    draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'候補')}</small></div><span>${x.jpy==null?'価格不明':'約'+Number(x.jpy).toLocaleString('ja-JP')+'円'}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
+    draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'候補')}</small></div><span>${x.jpy==null?'価格不明':'約'+Number(x.jpy).toLocaleString('ja-JP')+'円'}${x.priceSource?`<small>${esc(x.priceSource)}</small>`:''}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
     draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
     renderDraftExport();
     renderDraftDiagnosis();
