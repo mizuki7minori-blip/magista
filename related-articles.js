@@ -91,6 +91,29 @@
   }
 
   if (!document.querySelector(".article-next-actions")) {
+    const actionMap = {
+      limited: [
+        ["limited.html","リミテッド環境を見る","limited_hub"],
+        ["limited-tracker.html","ドラフトを記録する","limited_tracker"],
+        ["article-fra-draft-data-2026-10-05.html","最新のドラフトデータを見る","limited_latest"]
+      ],
+      tournament: [
+        ["category.html?cat=standard","スタンダードを見る","standard_category"],
+        ["category.html?cat=modern","モダンを見る","modern_category"],
+        ["articles.html","大会・環境記事をもっと見る","articles"]
+      ],
+      deck: [
+        ["commander-builder.html","統率者デッキを組む","commander_builder"],
+        ["commander.html","統率者攻略を見る","commander_hub"],
+        ["articles.html","デッキ・環境記事をもっと見る","articles"]
+      ],
+      news: [
+        ["/#news","最新記事を見る","home_news"],
+        ["articles.html","記事一覧を見る","articles"],
+        ["/#formats","フォーマットから探す","home_formats"]
+      ]
+    };
+    const links = actionMap[currentItem.category] || actionMap.news;
     const actions = document.createElement("aside");
     actions.className = "article-next-actions";
     actions.setAttribute("aria-label","次に見る");
@@ -98,17 +121,29 @@
       <span class="section-kicker">NEXT</span>
       <strong>次に見るなら</strong>
       <div>
-        <a href="articles.html">記事一覧を見る</a>
-        <a href="index.html#news">最新記事へ</a>
-        <a href="index.html#formats">フォーマットから探す</a>
+        ${links.map(([href,label,id])=>`<a href="${href}" data-next-action="${id}">${label}</a>`).join("")}
       </div>`;
     body.appendChild(actions);
+
+    actions.addEventListener("click", event => {
+      const link = event.target.closest("a[data-next-action]");
+      if (!link || typeof window.gtag !== "function") return;
+      window.gtag("event","article_next_click",{
+        content_type:"article",
+        content_id:current,
+        destination:link.dataset.nextAction
+      });
+    });
   }
 
   if (!document.querySelector(".related-reading")) {
     const picks = articles
       .filter(a => a.path !== current)
-      .sort((a,b) => Number(b.category === currentItem.category) - Number(a.category === currentItem.category))
+      .sort((a,b) => {
+        const categoryDiff = Number(b.category === currentItem.category) - Number(a.category === currentItem.category);
+        if (categoryDiff) return categoryDiff;
+        return articles.indexOf(a) - articles.indexOf(b);
+      })
       .slice(0,3);
 
     if (picks.length) {
