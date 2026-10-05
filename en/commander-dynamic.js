@@ -531,7 +531,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function remainingBudgetLabel(items) {
     if (budget.value === 'open') return 'No limit';
     const p = priceSummary(items);
-    return `About ${p.remaining.toFixed(2)};
+    return `About ${p.remaining.toFixed(2)}`;
   }
 
   function renderCommanderSummary(card) {
