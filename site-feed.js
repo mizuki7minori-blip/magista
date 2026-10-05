@@ -36,6 +36,31 @@ function editorialCard(a){
  item.append(el('small','source',a.meta.filter(Boolean).join(' · ')||'MAGSTA編集部'));
  return item;
 }
+const feedCacheKey='magsta-feed-cache-v1';
+function validFeed(data){
+ return data&&Array.isArray(data.items)&&Number.isFinite(Date.parse(data.updatedAt));
+}
+async function fetchFeed(){
+ try{
+  const response=await fetch(`rss-cache.json?v=${Math.floor(Date.now()/600000)}`,{signal:AbortSignal.timeout(12000)});
+  if(!response.ok)throw Error('feed');
+  const data=await response.json();
+  if(!validFeed(data))throw Error('feed format');
+  // Storage can be unavailable or full; successful network reads still work.
+  try{localStorage.setItem(feedCacheKey,JSON.stringify({savedAt:Date.now(),data:{updatedAt:data.updatedAt,items:data.items.slice(0,300),staleSources:data.staleSources}}));}catch{}
+  return {data,cached:false};
+ }catch(networkError){
+  try{
+   const saved=JSON.parse(localStorage.getItem(feedCacheKey)||'null');
+   const age=Date.now()-saved?.savedAt;
+   const feedAge=Date.now()-Date.parse(saved?.data?.updatedAt);
+   if(validFeed(saved?.data)&&age>=0&&age<=7*86400000&&feedAge>=0&&feedAge<=7*86400000){
+    return {data:saved.data,cached:true};
+   }
+  }catch{}
+  throw networkError;
+ }
+}
 async function load(){
  const category=document.getElementById('category-rss-list');
  const latest=category?null:document.getElementById('latest-list');
@@ -68,13 +93,19 @@ async function load(){
  const status=document.getElementById(category?'category-status':'feed-status');
  if(status)status.textContent='記事を読み込んでいます…';
  try{
-  const response=await fetch(`rss-cache.json?v=${Math.floor(Date.now()/600000)}`,{signal:AbortSignal.timeout(12000)});if(!response.ok)throw Error('feed');const data=await response.json();
+  const {data,cached}=await fetchFeed();
   const seen=new Set();const items=(data.items||[]).filter(a=>{
-   if(!a.title||!safe(a.link))return false;const url=new URL(a.link);url.hash='';[...url.searchParams.keys()].filter(k=>/^utm_|^(ref|fbclid|gclid)$/i.test(k)).forEach(k=>url.searchParams.delete(k));const key=url.href;if(seen.has(key))return false;seen.add(key);return true;
+   if(!a||!a.title||!safe(a.link))return false;const url=new URL(a.link);url.hash='';[...url.searchParams.keys()].filter(k=>/^utm_|^(ref|fbclid|gclid)$/i.test(k)).forEach(k=>url.searchParams.delete(k));const key=url.href;if(seen.has(key))return false;seen.add(key);return true;
   }).sort((a,b)=>(Date.parse(b.pubDate)||0)-(Date.parse(a.pubDate)||0));
   let stamp=Number.isFinite(Date.parse(data.updatedAt))?new Date(data.updatedAt).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'}):'不明';
   const stale=Date.now()-Date.parse(data.updatedAt)>21600000;
-  if(status)status.textContent=`配信データ更新：${stamp}（日本時間）${stale?' / 更新が遅れています':''}${data.staleSources?.length?' / 一部は前回取得分':''}`;
+  if(status){
+   status.textContent=`配信データ更新：${stamp}（日本時間）${cached?' / 通信に失敗したため、前回取得したニュースを表示しています':stale?' / 更新が遅れています':''}${data.staleSources?.length?' / 一部は前回取得分':''}`;
+   if(cached){
+    const retry=el('button','','再読み込み');retry.type='button';
+    retry.addEventListener('click',()=>{retry.disabled=true;load();});status.append(retry);
+   }
+  }
   if(category){
    const [,match]=categories[key];
    const selected=items.filter(a=>match instanceof RegExp?match.test(a.title+' '+clean(a.description)):match?a.categoryKey===match:a.categoryKey==='news');
