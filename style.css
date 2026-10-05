@@ -174,3 +174,17 @@
 .priority-guide{border-top:4px solid #c6803f}
 .priority-meta{border-top:4px solid #4f7b58}
 @media(max-width:800px){.article-priority-grid{grid-template-columns:1fr}}
+
+
+/* トップ注目記事ランキング */
+.popular-articles{margin-top:34px}
+.popular-articles-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.popular-articles-list li{border-bottom:1px solid var(--line)}
+.popular-articles-list a{display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:start;padding:18px 4px;color:inherit;text-decoration:none}
+.popular-articles-list a:hover{background:#fff}
+.popular-rank{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;background:#26313c;color:#fff;font-size:1rem;font-weight:900}
+.popular-articles-list small{display:block;margin-bottom:4px;color:#80501f;font-weight:900}
+.popular-articles-list strong{display:block;font-size:1rem;line-height:1.45}
+.popular-articles-list p{margin:5px 0 0;color:var(--muted);font-size:.82rem;line-height:1.55}
+.popular-articles-note{margin:10px 0 0;color:var(--muted);font-size:.72rem}
+@media(max-width:640px){.popular-articles-list a{grid-template-columns:44px 1fr}.popular-rank{width:36px;height:36px;font-size:.9rem}}
