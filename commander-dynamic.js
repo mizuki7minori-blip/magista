@@ -539,11 +539,20 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return out;
   }
 
-  function findBudgetAlternative(item, groups) {
+  function cardKey(card) {
+    return card?.oracle_id || card?.name || card?.printed_name || '';
+  }
+
+  function findBudgetAlternative(item, groups, usedKeys = new Set()) {
     if (budget.value === 'open') return null;
     const price = cardUsd(item.card), cap = budgetCardCapUsd();
     if (price == null || price <= cap) return null;
-    const pool = groups.flat().filter(x => x.role === item.role && (x.card.oracle_id || x.card.name) !== (item.card.oracle_id || item.card.name));
+    const currentKey = cardKey(item.card);
+    const pool = groups.flat().filter(x => {
+      if (x.role !== item.role) return false;
+      const key = cardKey(x.card);
+      return key && key !== currentKey && !usedKeys.has(key);
+    });
     const cheaper = pool
       .map(x=>({ ...x, usd:cardUsd(x.card) }))
       .filter(x=>x.usd != null && x.usd <= cap)
@@ -673,6 +682,14 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     grid.querySelectorAll('.synergy-swap').forEach(btn=>btn.addEventListener('click',()=>{
       const index=Number(btn.dataset.index), item=state.suggestions[index], alt=item?.alternative;
       if(!item || !alt) return;
+      const altKey=cardKey(alt.card);
+      const duplicateIndex=state.suggestions.findIndex((x,i)=>i!==index && cardKey(x.card)===altKey);
+      if(duplicateIndex>=0){
+        status.textContent=`${displayName(alt.card)} は他の候補ですでに表示中のため、重複を避けて差し替えませんでした。`;
+        item.alternative=null;
+        renderSuggestionCards();
+        return;
+      }
       item.card=alt.card; item.reason=alt.reason || item.reason; item.alternative=null;
       renderSuggestionCards();
       refreshBudgetPlan();
@@ -697,7 +714,17 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       const specs = [...detected.map(t=>({label:t.label,query:t.query,fallback:t.fallback,reason:t.reason})), ...strategySpecsFor(mode)];
       const groups=[];
       for (const spec of specs) { groups.push(await fetchSpec(spec,identity,c.name)); await new Promise(r=>setTimeout(r,110)); }
-      state.suggestions=mergeCandidates(groups,10); state.suggestions.forEach(item=>item.alternative=findBudgetAlternative(item,groups)); state.suggestions=applyBudgetFilter(state.suggestions,10);
+      state.suggestions=mergeCandidates(groups,10);
+      const displayedKeys=new Set(state.suggestions.map(item=>cardKey(item.card)).filter(Boolean));
+      const reservedAlternativeKeys=new Set();
+      state.suggestions.forEach(item=>{
+        const blocked=new Set([...displayedKeys,...reservedAlternativeKeys]);
+        blocked.delete(cardKey(item.card));
+        item.alternative=findBudgetAlternative(item,groups,blocked);
+        const altKey=cardKey(item.alternative?.card);
+        if(altKey) reservedAlternativeKeys.add(altKey);
+      });
+      state.suggestions=applyBudgetFilter(state.suggestions,10);
       if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">テーマに合う候補を取得できませんでした。別の方針でも試してください。</p>'; return; }
       state.suggestions = await Promise.all(state.suggestions.map(localizeSuggestionItem));
       renderSuggestionCards();
