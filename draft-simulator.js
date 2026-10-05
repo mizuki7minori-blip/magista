@@ -29,7 +29,7 @@ function newPack(){if(!active||loading)return;if(!draftPacks.length)startDraftRo
 function currentMainColors(){const c={W:0,U:0,B:0,R:0,G:0};picked.forEach(x=>(x.colors||[]).forEach(k=>{if(c[k]!==undefined)c[k]++;}));return Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,2).filter(x=>x[1]>0).map(x=>x[0]);}
 function cardFitValue(card){const wr=rankingMap.get(card.name)||55;let value=wr;const colors=currentMainColors();if(picked.length>=6&&colors.length){const cc=card.colors||[];if(cc.length===0||cc.every(x=>colors.includes(x)))value+=3.5;else if(cc.some(x=>colors.includes(x)))value+=1;else value-=3.5;}if(removalLike(card))value+=1.5;if(Number(card.cmc||0)>=2&&Number(card.cmc||0)<=3)value+=0.8;return value;}
 function reasonForChoice(chosen,best){const reasons=[];const colors=currentMainColors();if((rankingMap.get(best.name)||55)>(rankingMap.get(chosen.name)||55)+2)reasons.push('カード単体の実戦データが上');const bc=best.colors||[],cc=chosen.colors||[];if(picked.length>=6&&colors.length&&bc.every(x=>colors.includes(x))&&!cc.every(x=>colors.includes(x)))reasons.push('現在の主色により合う');if(removalLike(best)&&!removalLike(chosen))reasons.push('除去・干渉を確保できる');if(Number(best.cmc||0)>=2&&Number(best.cmc||0)<=3&&!(Number(chosen.cmc||0)>=2&&Number(chosen.cmc||0)<=3))reasons.push('2〜3マナ域を補強できる');return reasons.length?reasons.join('・'):'候補内で総合評価が高い';}
-function pickValue(card,packCards){const ranked=packCards.map(c=>({card:c,value:cardFitValue(c),wr:rankingMap.get(c.name)||55})).sort((a,b)=>b.value-a.value);const best=ranked[0];const chosenValue=cardFitValue(card);let score=100-Math.max(0,(best.value-chosenValue)*6);score=Math.max(25,Math.min(100,Math.round(score)));return{score,wr:rankingMap.get(card.name)||55,bestWr:best.wr,bestCard:best.card,reason:reasonForChoice(card,best.card)};}
+function pickValue(card,packCards){const ranked=packCards.map(c=>({card:c,value:cardFitValue(c),wr:rankingMap.get(c.name)||55})).sort((a,b)=>b.value-a.value);const best=ranked[0];const chosenValue=cardFitValue(card);const gap=Math.max(0,best.value-chosenValue);let score=100-gap*8.5;const colors=currentMainColors(),cc=card.colors||[];if(picked.length>=8&&colors.length&&cc.length&& !cc.some(x=>colors.includes(x)))score-=8;if(picked.length>=12&&Number(card.cmc||0)>=5){const high=picked.filter(c=>Number(c.cmc||0)>=5).length;if(high>=6)score-=5;}if(picked.length>=12&&!removalLike(card)){const removal=picked.filter(removalLike).length;if(removal<3&&packCards.some(removalLike))score-=6;}score=Math.max(15,Math.min(100,Math.round(score)));return{score,wr:rankingMap.get(card.name)||55,bestWr:best.wr,bestCard:best.card,reason:reasonForChoice(card,best.card)};}
 function pickCard(card,packCards){if(!card||!active)return;const result=pickValue(card,packCards);const pickNo=picked.length+1;pickHistory.push({pickNo,card:card.name,score:result.score,wr:result.wr,bestWr:result.bestWr,bestCard:result.bestCard?.name||card.name,reason:result.reason});picked.push(card);const seatPack=draftPacks[0]||currentPack;const idx=seatPack.findIndex(c=>c.name===card.name);if(idx>=0)seatPack.splice(idx,1);renderAll();advanceDraftAfterPick();}
 function renderStage(){const k=Math.min(14,draftPickInPack+1);stage.textContent=picked.length>=42?'完了':'パック'+draftPackNo+'・'+k+'手目 / 候補'+currentPack.length+'枚';count.textContent=picked.length+' / 42ピック';main.textContent='メイン候補 '+Math.min(23,picked.length)+'枚';}
 function renderColors(){const c={W:0,U:0,B:0,R:0,G:0};picked.forEach(x=>(x.colors||[]).forEach(k=>{if(c[k]!==undefined)c[k]++;}));colorsEl.innerHTML=Object.entries(c).map(([k,v])=>'<div><span>'+colorNames[k]+'</span><strong>'+v+'</strong></div>').join('');}
@@ -56,17 +56,17 @@ function finalScore(){
   picked.forEach(c=>(c.colors||[]).forEach(k=>{if(counts[k]!==undefined)counts[k]++;}));
   const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,2).map(x=>x[0]);
   const playable=picked.filter(c=>{const cols=c.colors||[];return cols.length===0||cols.every(x=>top.includes(x));});
-  const cohesion=Math.round(30*Math.min(1,playable.length/34));
+  const cohesion=Math.round(30*Math.min(1,Math.max(0,(playable.length-20)/16)));
   const low=playable.filter(c=>!String(c.type_line||'').toLowerCase().includes('land')&&Number(c.cmc||0)>=1&&Number(c.cmc||0)<=3).length;
-  const curve=Math.round(20*Math.min(1,low/14));
+  const curve=Math.round(20*Math.min(1,Math.max(0,(low-6)/9)));
   const creatures=playable.filter(c=>String(c.type_line||'').toLowerCase().includes('creature')).length;
-  const creatureScore=Math.round(20*Math.max(0,1-Math.abs(creatures-17)/12));
+  const creatureScore=Math.round(20*Math.max(0,1-Math.abs(creatures-17)/9));
   const interaction=playable.filter(removalLike).length;
-  const interactionScore=Math.round(20*Math.min(1,interaction/5));
+  const interactionScore=Math.round(20*Math.min(1,Math.max(0,(interaction-1)/5)));
   const value=playable.filter(advantageLike).length+playable.filter(c=>String(c.type_line||'').toLowerCase().includes('creature')&&Number(c.cmc||0)>=5).length;
-  const valueScore=Math.round(10*Math.min(1,value/7));
+  const valueScore=Math.round(10*Math.min(1,Math.max(0,(value-1)/7)));
   const total=Math.max(0,Math.min(100,cohesion+curve+creatureScore+interactionScore+valueScore));
-  const grade=total>=90?'S':total>=80?'A':total>=70?'B':total>=60?'C':'D';
+  const grade=total>=93?'S':total>=84?'A':total>=74?'B':total>=64?'C':'D';
   const items=[['色のまとまり',cohesion,30,playable.length+' / 42枚が主2色内'],['序盤の動き',curve,20,'1〜3マナ '+low+'枚'],['クリーチャー',creatureScore,20,creatures+'枚'],['除去・干渉',interactionScore,20,interaction+'枚'],['継戦力',valueScore,10,value+'枚']];
   scoreBox.hidden=false;scoreTotal.textContent=String(total);scoreGrade.textContent='評価 '+grade;
   scoreGrid.innerHTML=items.map(x=>'<div class="sim-score-item"><span>'+x[0]+'</span><strong>'+x[1]+' / '+x[2]+'</strong><small>'+x[3]+'</small></div>').join('');
