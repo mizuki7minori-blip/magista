@@ -202,3 +202,16 @@
   .home #news,.home #start-here{margin-top:36px;padding-top:26px}
   .home #timeline{margin-top:44px;padding-top:30px}
 }
+
+
+/* メインナビ強化 */
+.header-inner nav{align-items:center}
+.header-inner nav a{position:relative}
+.header-inner nav a::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:transparent}
+.header-inner nav a:hover::after,.header-inner nav a[aria-current="page"]::after{background:#80501f}
+.header-inner nav .nav-builder{padding:8px 12px;border:1px solid #d8c4b2;border-radius:999px;background:#fff8f1;color:#80501f}
+.header-inner nav .nav-builder:hover{background:#fff3e8}
+@media(max-width:760px){
+  .site-header.menu-open nav .nav-builder{margin-top:8px;border:1px solid #d8c4b2;border-radius:8px;background:#fff8f1;text-align:center}
+  .site-header.menu-open nav a::after{display:none}
+}
