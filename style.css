@@ -142,3 +142,20 @@
 .article-share a,.article-share button{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#374b60;text-decoration:none!important;font:inherit;font-size:.78rem;font-weight:800;cursor:pointer}
 .article-share a:hover,.article-share button:hover{border-color:#80501f;color:#80501f}
 @media(max-width:640px){.article-share{align-items:flex-start}.article-share>div{width:100%;display:grid;grid-template-columns:1fr}.article-share a,.article-share button{width:100%}}
+
+
+/* 記事一覧ブラウザ */
+.article-browser{margin:0 0 22px;padding:20px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.article-browser h2{margin:.2rem 0;font-size:1.3rem}
+.article-browser p{margin:.35rem 0;color:var(--muted)}
+.article-filter-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.article-filter-buttons button{border:1px solid var(--line);border-radius:999px;background:#fff;padding:8px 13px;font:inherit;font-size:.82rem;font-weight:800;color:#43505d;cursor:pointer}
+.article-filter-buttons button:hover{border-color:#80501f;color:#80501f}
+.article-filter-buttons button.active{background:#26313c;border-color:#26313c;color:#fff}
+.article-filter-status{font-size:.78rem!important;margin-top:12px!important}
+.article-list .article-card[hidden]{display:none}
+.article-list .article-card[data-article-category="news"]{border-left:4px solid #4677a8}
+.article-list .article-card[data-article-category="tournament"]{border-left:4px solid #8b5c9d}
+.article-list .article-card[data-article-category="limited"]{border-left:4px solid #c6803f}
+.article-list .article-card[data-article-category="deck"]{border-left:4px solid #4f7b58}
+@media(max-width:640px){.article-filter-buttons{display:grid;grid-template-columns:1fr 1fr}.article-filter-buttons button{width:100%}}
