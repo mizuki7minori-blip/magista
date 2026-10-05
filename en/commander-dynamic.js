@@ -218,7 +218,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
 
   function renderCommanderSummary(card) {
     const picked = displayName(card), identity = card.color_identity || [], colors = identity.length ? identity.join(' / ') : 'Colorless';
-    const budgetText = budget.value === 'open' ? 'No limit' : `About JPY ${Number(budget.value).toLocaleString('en-US')}`;
+    const budgetText = budget.value === 'open' ? 'No limit' : `About ${Number(budget.value).toLocaleString('en-US')}`;
     const mode = strategy?.value || 'balanced';
     state.themes = detectThemes(card);
     const themeText = state.themes.length ? state.themes.map(t=>`<span>${esc(t.label)}</span>`).join('') : '<span>Ability-based</span>';
