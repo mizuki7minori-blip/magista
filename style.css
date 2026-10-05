@@ -188,3 +188,17 @@
 .popular-articles-list p{margin:5px 0 0;color:var(--muted);font-size:.82rem;line-height:1.55}
 .popular-articles-note{margin:10px 0 0;color:var(--muted);font-size:.72rem}
 @media(max-width:640px){.popular-articles-list a{grid-template-columns:44px 1fr}.popular-rank{width:36px;height:36px;font-size:.9rem}}
+
+
+/* トップページ情報優先度 */
+.home .feature-layout{margin-top:24px}
+.home #popular-articles{margin-top:30px}
+.home .editor-picks{margin-top:38px}
+.home #news{margin-top:46px;padding-top:34px;border-top:1px solid var(--line)}
+.home #start-here{margin-top:46px;padding-top:34px;border-top:1px solid var(--line)}
+.home #timeline{margin-top:58px;padding-top:38px;border-top:2px solid #d9dee4}
+.home #timeline .section-kicker::after{content:" / 外部情報";font-weight:400;color:var(--muted)}
+@media(max-width:760px){
+  .home #news,.home #start-here{margin-top:36px;padding-top:26px}
+  .home #timeline{margin-top:44px;padding-top:30px}
+}
