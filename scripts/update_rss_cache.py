@@ -203,10 +203,10 @@ def translation_state(previous):
 def normalize_mtg_translation(value):
     replacements = [
         (r'Tarmogoyf|ターモゴイフ', 'タルモゴイフ'),
-        (r'\bModern\b', 'モダン'), (r'\bStandard\b', 'スタンダード'),
-        (r'\bCommander\b', '統率者'), (r'\bPioneer\b', 'パイオニア'),
-        (r'\bLegacy\b', 'レガシー'), (r'\bPauper\b', 'パウパー'),
-        (r'\bJund\b', 'ジャンド'), (r'(\d{4})\s+ERA\b', r'\1年当時の'),
+        (r'(?<![A-Za-z])Modern(?![A-Za-z])', 'モダン'), (r'(?<![A-Za-z])Standard(?![A-Za-z])', 'スタンダード'),
+        (r'(?<![A-Za-z])Commander(?![A-Za-z])', '統率者'), (r'(?<![A-Za-z])Pioneer(?![A-Za-z])', 'パイオニア'),
+        (r'(?<![A-Za-z])Legacy(?![A-Za-z])', 'レガシー'), (r'(?<![A-Za-z])Pauper(?![A-Za-z])', 'パウパー'),
+        (r'(?<![A-Za-z])Jund(?![A-Za-z])', 'ジャンド'), (r'(\d{4})\s+ERA\b', r'\1年当時の'),
     ]
     for pattern, replacement in replacements:
         value = re.sub(pattern, replacement, value, flags=re.I)
