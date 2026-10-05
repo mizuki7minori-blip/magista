@@ -201,8 +201,9 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
         addItems(state.suggestions,'theme',nonlandTarget);
       }
       state.lands=buildLandPackage();
+      const check=normalizeDeckTo100();
       saveDraftDeck();
-      status.textContent=`Built a 100-card draft: 1 commander + ${state.draftDeck.length} nonlands + ${state.lands.length} lands.`;
+      status.textContent=`Final check complete: 1 commander + ${state.draftDeck.length} nonlands + ${state.lands.length} lands = ${check.total} cards.`;
     }catch(e){status.textContent='Auto-fill failed. Please try again.';}
     finally{draftAutoBuild.disabled=false;draftAutoBuild.textContent='Auto-fill 99-card draft';}
   }
@@ -223,6 +224,24 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     const remaining=target-lands.length, per=Math.floor(remaining/identity.length), extra=remaining%identity.length;
     identity.forEach((color,i)=>add(basicLandName(color),per+(i<extra?1:0)));
     return lands;
+  }
+
+  function normalizeDeckTo100(){
+    if(!state.dynamicCommander) return {total:state.draftDeck.length+(state.lands?.length||0), adjusted:false};
+    const targetMain=99;
+    if(!Array.isArray(state.lands) || !state.lands.length) state.lands=buildLandPackage();
+    let mainCount=state.draftDeck.length+state.lands.length, adjusted=false;
+    if(mainCount<targetMain){
+      const identity=state.dynamicCommander.color_identity||[];
+      const fillers=identity.length?identity.map(basicLandName):['Wastes'];
+      let i=0;
+      while(mainCount<targetMain){state.lands.push({name:fillers[i%fillers.length],role:'Land'});i++;mainCount++;adjusted=true;}
+    }else if(mainCount>targetMain){
+      const over=mainCount-targetMain;
+      state.lands.splice(Math.max(0,state.lands.length-over),Math.min(over,state.lands.length));
+      mainCount=state.draftDeck.length+state.lands.length; adjusted=true;
+    }
+    return {total:mainCount+1,main:mainCount,adjusted};
   }
 
   function draftGroups(){
@@ -250,7 +269,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
 
   function renderDraftDeck(){
     const totalUsd=state.draftDeck.map(x=>Number(x.usd)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
-    draftSummary.textContent=`${state.draftDeck.length} cards saved / estimated $${totalUsd.toFixed(2)} (saved in this browser)`;
+    const check=normalizeDeckTo100(); draftSummary.textContent=`${state.draftDeck.length} nonlands / ${state.lands.length} lands / ${check.total} cards total / estimated ${totalUsd.toFixed(2)} (saved in this browser)`;
     draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'Candidate')}</small></div><span>${x.usd==null?'Price unavailable':'About $'+Number(x.usd).toFixed(2)}</span><button type="button" class="button secondary draft-remove" data-index="${i}">Remove</button></div>`).join(''):'<p class="draft-deck-empty">No cards saved yet.</p>';
     draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
     renderDraftExport();
