@@ -64,6 +64,78 @@ def load_candidates(category, limit=6):
             break
     return items
 
+
+FORMAT_KEYWORDS = {
+    "Standard": ("standard", "スタンダード"),
+    "Pioneer": ("pioneer", "パイオニア"),
+    "Modern": ("modern", "モダン"),
+    "Legacy": ("legacy", "レガシー"),
+    "Vintage": ("vintage", "ヴィンテージ"),
+    "Commander": ("commander", "統率者"),
+    "Pauper": ("pauper", "パウパー"),
+}
+
+def item_formats(item):
+    haystack = (item.get("title", "") + " " + item.get("summary", "")).lower()
+    found = []
+    for name, keywords in FORMAT_KEYWORDS.items():
+        if any(keyword.lower() in haystack for keyword in keywords):
+            found.append(name)
+    return found
+
+def brief_item(item):
+    title = html.escape(item.get("title", ""))
+    link = html.escape(item.get("link", ""), quote=True)
+    source = html.escape(item.get("source", "外部情報"))
+    summary = re.sub(r"\\s+", " ", item.get("summary", "")).strip()
+    if len(summary) > 150:
+        summary = summary[:147].rstrip() + "…"
+    summary = html.escape(summary)
+    return (
+        f'<a href="{link}" rel="noopener noreferrer">{title}</a>'
+        f'（{source}）'
+        + (f' — {summary}' if summary else '')
+    )
+
+def build_section_drafts(topic, category):
+    items = load_candidates(category, limit=10)
+    if not items:
+        return {}
+
+    if topic == "フォーマット別メタゲーム":
+        def select(names):
+            picked = [x for x in items if set(item_formats(x)) & set(names)]
+            return picked[:3]
+
+        main_formats = select({"Standard", "Pioneer", "Modern"})
+        eternal = select({"Legacy", "Vintage"})
+        casual = select({"Commander", "Pauper"})
+
+        def prose(selected, fallback):
+            if not selected:
+                return fallback
+            return " / ".join(brief_item(x) for x in selected)
+
+        return {
+            "1": "直近のRSSでは大会結果・新セット後の構築記事が中心。まず大会実績のある情報を優先し、個別デッキ記事は補助材料として確認します。",
+            "2": prose(main_formats, "Standard / Pioneer / Modern の一次情報を追加確認して更新。"),
+            "3": prose(eternal, "Legacy / Vintage の有力な直近候補はRSS内で不足。公式・大会結果を追加確認して更新。"),
+            "4": prose(casual, "Commander / Pauper の候補を追加確認して更新。"),
+            "5": "候補記事の中から、大会結果で複数回確認できるデッキや新セット由来の採用カードを優先してピックアップします。",
+            "6": "RSSの話題量だけで環境トップとは判断せず、大会順位・採用数・複数イベントでの再現性を確認してから評価します。",
+        }
+
+    top = items[:4]
+    joined = " / ".join(brief_item(x) for x in top)
+    return {
+        "1": joined,
+        "2": "上記候補を一次情報で確認し、重要度の高いものから整理します。",
+        "3": "関連フォーマットへの影響を確認して追記します。",
+        "4": "採用デッキ・カード・大会結果のつながりを確認して追記します。",
+        "5": "公開前に数値・カード名・日付を一次情報で再確認します。",
+        "6": "確認できた事実とMAGSTA編集部の考察を分けて記載します。",
+    }
+
 def candidate_block(category):
     items = load_candidates(category)
     if not items:
@@ -133,6 +205,9 @@ def generate(target, refresh=False):
     for key, value in replacements.items():
         content = content.replace(key, value)
 
+    section_drafts = build_section_drafts(topic, category)
+    for number, value in section_drafts.items():
+        content = content.replace(f"{{{{SECTION_{number}}}}}", value)
     content = re.sub(r"\{\{SECTION_(\d+)\}\}", r"TODO: この項目の情報を調査して記載。", content)
     content = re.sub(r"\{\{SOURCE_URL_(\d+)\}\}", "#", content)
     content = re.sub(r"\{\{SOURCE_NAME_(\d+)\}\}", r"TODO: 出典\1", content)
