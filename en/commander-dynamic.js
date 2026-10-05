@@ -97,8 +97,10 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const loadSynergyButton = box.querySelector('#load-synergy-button');
 
   async function fetchSearch(query, unique='prints') {
-    const data = await window.MAGSTAEnglishTools.json(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(query)}&order=edhrec&unique=${unique}`);
-    return data.data || [];
+    try {
+      const data = await window.MAGSTAEnglishTools.json(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(query)}&order=edhrec&unique=${unique}`);
+      return data.data || [];
+    } catch(error) { if(error.status===404)return []; throw error; }
   }
 
   async function enrichJapanese(cards) {
