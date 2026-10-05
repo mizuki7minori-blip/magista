@@ -8,7 +8,7 @@
   const plan = document.getElementById('budget-plan');
   if (!select || !summary || !grid) return;
 
-  const state = { dynamicCommander: null, suggestions: [], themes: [], draftDeck: [] };
+  const state = { dynamicCommander: null, suggestions: [], themes: [], draftDeck: [], lands: [] };
   const esc = s => String(s || '').replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const imgOf = c => c?.image_uris?.normal || c?.card_faces?.[0]?.image_uris?.normal || '';
   const hasJapanese = s => /[\u3040-\u30ff\u3400-\u9fff]/.test(String(s || ''));
@@ -85,11 +85,11 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const DRAFT_KEY = 'magsta-commander-draft-ja';
 
   function loadDraftDeck(){
-    try { state.draftDeck = JSON.parse(localStorage.getItem(DRAFT_KEY) || '[]'); }
+    try { const saved=JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}'); state.draftDeck=Array.isArray(saved)?saved:(saved.cards||[]); state.lands=Array.isArray(saved)?[]:(saved.lands||[]); }
     catch(e){ state.draftDeck = []; }
     renderDraftDeck();
   }
-  function saveDraftDeck(){ localStorage.setItem(DRAFT_KEY, JSON.stringify(state.draftDeck)); renderDraftDeck(); }
+  function saveDraftDeck(){ localStorage.setItem(DRAFT_KEY, JSON.stringify({cards:state.draftDeck,lands:state.lands||[]})); renderDraftDeck(); }
   function addDraftCard(item){
     const key=item.card.oracle_id||item.card.name;
     if(state.draftDeck.some(x=>x.key===key)) return;
@@ -202,10 +202,29 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       if(state.draftDeck.length<nonlandTarget && state.suggestions.length){
         addItems(state.suggestions,'theme',nonlandTarget);
       }
+      state.lands=buildLandPackage();
       saveDraftDeck();
-      status.textContent=`99枚のたたき台を作成しました。非土地 ${state.draftDeck.length}枚 + 土地目安 ${landTarget}枚 + 統率者1枚です。`;
+      status.textContent=`100枚構築のたたき台を作成しました。統率者1枚 + 非土地 ${state.draftDeck.length}枚 + 土地 ${state.lands.length}枚です。`;
     }catch(e){status.textContent='自動補充に失敗しました。もう一度試してください。';}
     finally{draftAutoBuild.disabled=false;draftAutoBuild.textContent='99枚たたき台を自動補充';}
+  }
+
+  function basicLandName(color){
+    return {W:'平地',U:'島',B:'沼',R:'山',G:'森'}[color] || '荒地';
+  }
+
+  function buildLandPackage(){
+    if(!state.dynamicCommander) return [];
+    const identity=state.dynamicCommander.color_identity||[], high=Number(bracket?.value)>=4;
+    const target=high?35:37, lands=[];
+    const add=(name,count=1)=>{for(let i=0;i<count;i++)lands.push({name,role:'土地'});};
+    if(!identity.length){add('荒地',target);return lands;}
+    if(identity.length===1){add(basicLandName(identity[0]),target);return lands;}
+    const utility=['統率の塔','風変わりな果樹園','祖先の道'];
+    utility.slice(0,Math.min(3,target)).forEach(x=>add(x));
+    const remaining=target-lands.length, per=Math.floor(remaining/identity.length), extra=remaining%identity.length;
+    identity.forEach((color,i)=>add(basicLandName(color),per+(i<extra?1:0)));
+    return lands;
   }
 
   function draftGroups(){
@@ -218,16 +237,16 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     if(!draftExportGrid) return;
     const groups=draftGroups();
     const labels={ramp:'マナ加速',draw:'ドロー',interaction:'除去・妨害',protection:'保護',graveyard:'墓地対策',tutor:'サーチ',theme:'テーマ・その他'};
-    draftExportGrid.innerHTML=Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>`<section class="draft-export-group"><h4>${labels[key]}（${items.length}）</h4><ul>${items.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`).join('') || '<p class="draft-deck-empty">カードを追加するとカテゴリ別に表示されます。</p>';
+    const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>`<section class="draft-export-group"><h4>${labels[key]}（${items.length}）</h4><ul>${items.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`).join('') + (landItems.length?`<section class="draft-export-group"><h4>土地（${landItems.length}）</h4><ul>${landItems.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`:'')) || '<p class="draft-deck-empty">カードを追加するとカテゴリ別に表示されます。</p>';
   }
 
   function draftText(){
     const groups=draftGroups(), labels={ramp:'マナ加速',draw:'ドロー',interaction:'除去・妨害',protection:'保護',graveyard:'墓地対策',tutor:'サーチ',theme:'テーマ・その他'};
     const commanderName=state.dynamicCommander?displayName(state.dynamicCommander):'未選択';
-    const high=Number(bracket?.value)>=4, landTarget=high?35:37;
-    const lines=[`【MAGSTA 統率者デッキ案】`,`統率者: ${commanderName}`,`ブラケット: ${bracket?.value||'-'}`,`土地目安: ${landTarget}枚`,''];
+    const landItems=(state.lands&&state.lands.length)?state.lands:buildLandPackage(), landTarget=landItems.length;
+    const lines=[`【MAGSTA 統率者デッキ案】`,`統率者: ${commanderName}`,`ブラケット: ${bracket?.value||'-'}`,`土地: ${landTarget}枚`,''];
     Object.entries(groups).forEach(([key,items])=>{if(!items.length)return;lines.push(`## ${labels[key]} (${items.length})`,...items.map(x=>`1 ${x.name}`),'');});
-    lines.push(`## 土地（目安 ${landTarget}枚）`,`基本土地・多色土地などを固有色に合わせて調整`);
+    lines.push(`## 土地 (${landTarget})`,...landItems.map(x=>`1 ${x.name}`));
     return lines.join('\n');
   }
 
@@ -242,7 +261,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   }
   draftAddAll.addEventListener('click',()=>{state.suggestions.forEach(addDraftCard);status.textContent='現在の候補を仮デッキリストに保存しました。';});
   draftAutoBuild.addEventListener('click',autoBuildDraft);
-  draftClear.addEventListener('click',()=>{state.draftDeck=[];saveDraftDeck();});
+  draftClear.addEventListener('click',()=>{state.draftDeck=[];state.lands=[];saveDraftDeck();});
   draftCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(draftText());draftCopyStatus.textContent='デッキリストをコピーしました。';}catch(e){draftCopyStatus.textContent='コピーできませんでした。';}});
   loadDraftDeck();
 
@@ -555,6 +574,6 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   input.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();searchCommanders();} });
   select.addEventListener('change',()=>{ if(state.dynamicCommander && select.value===state.dynamicCommander.name) chooseCommander(state.dynamicCommander); });
   budget.addEventListener('change',()=>{ if(state.dynamicCommander) renderCommanderSummary(state.dynamicCommander); });
-  bracket.addEventListener('change',()=>{ if(state.dynamicCommander) renderCommanderSummary(state.dynamicCommander); renderDraftDiagnosis(); });
+  bracket.addEventListener('change',()=>{ if(state.dynamicCommander){ renderCommanderSummary(state.dynamicCommander); if(state.lands.length) state.lands=buildLandPackage(); } renderDraftDeck(); });
   strategy?.addEventListener('change',()=>{ if(state.dynamicCommander){ renderCommanderSummary(state.dynamicCommander); grid.innerHTML='<p class="builder-empty">方針を変更しました。「相性カード候補を再検討」を押すと候補を組み直します。</p>'; loadSynergyButton.textContent='相性カード候補を再検討'; } });
 })();
