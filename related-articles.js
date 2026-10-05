@@ -7,31 +7,83 @@
     {path:"article-weekend-2026-09-25.html",category:"tournament",label:"週末注目情報",title:"【9月25日】週末注目情報｜スタンダード・モダン・パイオニア",desc:"直近大会から今週末の注目デッキを整理。"},
     {path:"article-meta-2026-09.html",category:"deck",label:"デッキ・環境",title:"現在のメタゲームと注目カード動向",desc:"競技シーンと注目カードの変化をまとめて確認。"}
   ];
+
   const current = location.pathname.split("/").pop() || "index.html";
   const currentItem = articles.find(a => a.path === current);
   const body = document.querySelector(".article-body");
-  if (!body || !currentItem || document.querySelector(".related-reading")) return;
+  const articlePage = document.querySelector(".article-page");
+  if (!body || !currentItem) return;
 
-  const picks = articles
-    .filter(a => a.path !== current)
-    .sort((a,b) => Number(b.category === currentItem.category) - Number(a.category === currentItem.category))
-    .slice(0,3);
+  const headings = [...body.querySelectorAll(":scope > h2")].filter(h => !h.closest(".related-reading"));
+  if (headings.length >= 2 && !document.querySelector(".article-toc")) {
+    headings.forEach((heading, index) => {
+      if (!heading.id) heading.id = `section-${index + 1}`;
+    });
 
-  if (!picks.length) return;
-  const section = document.createElement("section");
-  section.className = "related-reading";
-  section.setAttribute("aria-labelledby","related-reading-title");
-  section.innerHTML = `
-    <span class="section-kicker">RELATED</span>
-    <h2 id="related-reading-title">あわせて読みたい</h2>
-    <div class="related-reading-grid">
-      ${picks.map(a => `
-        <a class="related-reading-card" href="${a.path}">
-          <span>${a.label}</span>
-          <strong>${a.title}</strong>
-          <p>${a.desc}</p>
-          <b>記事を読む →</b>
-        </a>`).join("")}
-    </div>`;
-  body.appendChild(section);
+    const toc = document.createElement("nav");
+    toc.className = "article-toc";
+    toc.setAttribute("aria-labelledby","article-toc-title");
+    toc.innerHTML = `
+      <div class="article-toc-head">
+        <span class="section-kicker">CONTENTS</span>
+        <strong id="article-toc-title">この記事の内容</strong>
+      </div>
+      <ol>
+        ${headings.map(h => `<li><a href="#${h.id}">${h.textContent.trim()}</a></li>`).join("")}
+      </ol>`;
+    body.insertBefore(toc, body.firstChild);
+  }
+
+  if (articlePage && !articlePage.querySelector(".article-reading-info")) {
+    const textLength = body.textContent.replace(/\s/g,"").length;
+    const minutes = Math.max(1, Math.ceil(textLength / 500));
+    const meta = articlePage.querySelector(".article-meta");
+    if (meta) {
+      const info = document.createElement("span");
+      info.className = "article-reading-info";
+      info.textContent = `約${minutes}分で読めます`;
+      meta.appendChild(info);
+    }
+  }
+
+  if (!document.querySelector(".article-next-actions")) {
+    const actions = document.createElement("aside");
+    actions.className = "article-next-actions";
+    actions.setAttribute("aria-label","次に見る");
+    actions.innerHTML = `
+      <span class="section-kicker">NEXT</span>
+      <strong>次に見るなら</strong>
+      <div>
+        <a href="articles.html">記事一覧を見る</a>
+        <a href="index.html#news">最新記事へ</a>
+        <a href="index.html#formats">フォーマットから探す</a>
+      </div>`;
+    body.appendChild(actions);
+  }
+
+  if (!document.querySelector(".related-reading")) {
+    const picks = articles
+      .filter(a => a.path !== current)
+      .sort((a,b) => Number(b.category === currentItem.category) - Number(a.category === currentItem.category))
+      .slice(0,3);
+
+    if (picks.length) {
+      const section = document.createElement("section");
+      section.className = "related-reading";
+      section.setAttribute("aria-labelledby","related-reading-title");
+      section.innerHTML = `
+        <span class="section-kicker">RELATED</span>
+        <h2 id="related-reading-title">あわせて読みたい</h2>
+        <div class="related-reading-grid">
+          ${picks.map(a => `
+            <a class="related-reading-card" href="${a.path}">
+              <span>${a.label}</span>
+              <strong>${a.title}</strong>
+              <p>${a.desc}</p>
+              <b>記事を読む →</b>
+            </a>`).join("")}
+        </div>`;
+      body.appendChild(section);
+    }
+  }
 })();
