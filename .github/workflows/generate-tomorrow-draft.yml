@@ -30,7 +30,7 @@ jobs:
           TARGET_DATE: ${{ inputs.target_date }}
         run: |
           if [ -n "$TARGET_DATE" ]; then
-            python scripts/generate_tomorrow_draft.py --date "$TARGET_DATE"
+            python scripts/generate_tomorrow_draft.py --date "$TARGET_DATE" --refresh
           else
             python scripts/generate_tomorrow_draft.py
           fi
