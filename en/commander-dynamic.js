@@ -46,7 +46,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     .any-result-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.any-select-label{font-size:.72rem;font-weight:800;color:#246daf}
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
-    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}
+    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}
     .commander-goals{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.commander-goals h3{margin:0 0 5px}.commander-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.commander-goal{min-height:74px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#f8fafb;text-align:left;cursor:pointer;font:inherit}.commander-goal strong{display:block;margin-bottom:4px}.commander-goal small{color:var(--muted);line-height:1.35}.commander-goal.is-active{border-color:#80501f;box-shadow:0 0 0 2px #80501f18;background:#fffaf4}
     @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}.commander-goal-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}.commander-goal-grid{grid-template-columns:1fr}}
   `;
@@ -192,7 +192,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     for (const q of [spec.query,spec.fallback].filter(Boolean)) {
       try {
         const data = await window.MAGSTAEnglishTools.json(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(`${prefix} ${q} lang:en`)}&order=edhrec&unique=cards`);
-        const cards = (data.data || []).slice(0,6);
+        const cards = (data.data || []).slice(0,12);
         if (cards.length) return cards.map(card=>({card,role:spec.label,reason:spec.reason}));
       } catch(e) {}
     }
@@ -214,6 +214,18 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       }
     }
     return out;
+  }
+
+  function findBudgetAlternative(item, groups) {
+    if (budget.value === 'open') return null;
+    const price = cardUsd(item.card), cap = budgetCardCapUsd();
+    if (price == null || price <= cap) return null;
+    const pool = groups.flat().filter(x => x.role === item.role && (x.card.oracle_id || x.card.name) !== (item.card.oracle_id || item.card.name));
+    const cheaper = pool
+      .map(x=>({ ...x, usd:cardUsd(x.card) }))
+      .filter(x=>x.usd != null && x.usd <= cap)
+      .sort((a,b)=>a.usd-b.usd);
+    return cheaper[0] || null;
   }
 
   function cardUsd(card) {
@@ -297,7 +309,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       const specs = [...detected.map(t=>({label:t.label,query:t.query,fallback:t.fallback,reason:t.reason})), ...strategySpecsFor(mode)];
       const groups=[];
       for (const spec of specs) { groups.push(await fetchSpec(spec,identity,c.name)); await new Promise(r=>setTimeout(r,110)); }
-      state.suggestions=applyBudgetFilter(mergeCandidates(groups,24),10);
+      state.suggestions=mergeCandidates(groups,10); state.suggestions.forEach(item=>item.alternative=findBudgetAlternative(item,groups)); state.suggestions=applyBudgetFilter(state.suggestions,10);
       if (!state.suggestions.length) { grid.innerHTML='<p class="builder-empty">No matching candidates found. Try another strategy.</p>'; return; }
       grid.innerHTML=state.suggestions.map(({card,role,reason})=>{
         const jp=displayName(card), en=card.name||jp, text=displayText(card), usd=cardUsd(card);
