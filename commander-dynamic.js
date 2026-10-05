@@ -46,7 +46,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     .any-result-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.any-select-label{font-size:.72rem;font-weight:800;color:#246daf}
     .identity-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.identity-badges span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#202833;color:#fff;font-size:.7rem;font-weight:800}
     .dynamic-note{font-size:.78rem;color:var(--muted);margin-top:8px}.dynamic-loading{padding:18px;color:var(--muted)}
-    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}.synergy-alt .synergy-swap{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.synergy-save{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.draft-deck{margin:22px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.draft-deck-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.draft-deck-list{display:grid;gap:8px;margin-top:12px}.draft-deck-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px}.draft-deck-row small{color:var(--muted)}.draft-deck-empty{color:var(--muted);margin-top:10px}.draft-deck-actions{display:flex;gap:8px;flex-wrap:wrap}.draft-diagnosis{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:9px;background:#f8fafb}.draft-diagnosis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.draft-diagnosis-item{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}.draft-diagnosis-item strong,.draft-diagnosis-item span{display:block}.draft-diagnosis-item small{display:block;color:var(--muted);margin-top:3px}.draft-role-btn{margin-top:8px;width:100%;font-size:.72rem;padding:6px 8px}.role-search-results{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.role-search-card{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}.role-search-card img{width:100%;aspect-ratio:488/680;object-fit:cover;border-radius:6px;background:#eef1f4}.role-search-card h4{margin:7px 0 4px;font-size:.9rem}.role-search-card small{display:block;color:var(--muted)}@media(max-width:700px){.role-search-results{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.draft-diagnosis-grid{grid-template-columns:repeat(2,1fr)}}
+    .dynamic-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.theme-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.theme-badges span{padding:4px 8px;border-radius:999px;background:#eef3f7;font-size:.72rem;font-weight:800}.synergy-reason{margin-top:7px!important;padding-top:7px;border-top:1px dashed var(--line);font-size:.74rem!important}.synergy-alt{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:7px;background:#f8fafb;font-size:.75rem}.synergy-alt strong,.synergy-alt a,.synergy-alt span,.synergy-alt small{display:block}.synergy-alt a{font-weight:800;margin:3px 0}.synergy-alt small{color:var(--muted);margin-top:2px}.synergy-alt .synergy-swap{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.synergy-save{margin-top:8px;width:100%;font-size:.75rem;padding:7px 9px}.draft-deck{margin:22px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.draft-deck-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.draft-deck-list{display:grid;gap:8px;margin-top:12px}.draft-deck-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px}.draft-deck-row small{color:var(--muted)}.draft-deck-empty{color:var(--muted);margin-top:10px}.draft-deck-actions{display:flex;gap:8px;flex-wrap:wrap}.draft-export{margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:9px;background:#fff}.draft-export-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}.draft-export-group{padding:10px;border:1px solid var(--line);border-radius:8px;background:#f8fafb}.draft-export-group h4{margin:0 0 6px}.draft-export-group ul{margin:0;padding-left:18px}.draft-copy-status{margin-top:8px;color:var(--muted);font-size:.78rem}@media(max-width:700px){.draft-export-grid{grid-template-columns:1fr}}.draft-diagnosis{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:9px;background:#f8fafb}.draft-diagnosis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.draft-diagnosis-item{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}.draft-diagnosis-item strong,.draft-diagnosis-item span{display:block}.draft-diagnosis-item small{display:block;color:var(--muted);margin-top:3px}.draft-role-btn{margin-top:8px;width:100%;font-size:.72rem;padding:6px 8px}.role-search-results{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.role-search-card{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}.role-search-card img{width:100%;aspect-ratio:488/680;object-fit:cover;border-radius:6px;background:#eef1f4}.role-search-card h4{margin:7px 0 4px;font-size:.9rem}.role-search-card small{display:block;color:var(--muted)}@media(max-width:700px){.role-search-results{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.draft-diagnosis-grid{grid-template-columns:repeat(2,1fr)}}
     .commander-goals{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}.commander-goals h3{margin:0 0 5px}.commander-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.commander-goal{min-height:74px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#f8fafb;text-align:left;cursor:pointer;font:inherit}.commander-goal strong{display:block;margin-bottom:4px}.commander-goal small{color:var(--muted);line-height:1.35}.commander-goal.is-active{border-color:#80501f;box-shadow:0 0 0 2px #80501f18;background:#fffaf4}
     @media(max-width:900px){.any-results{grid-template-columns:repeat(2,1fr)}.commander-goal-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.any-search-row{grid-template-columns:1fr}.any-results{grid-template-columns:repeat(2,minmax(0,1fr))}.commander-goal-grid{grid-template-columns:1fr}}
   `;
@@ -71,7 +71,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   draftDeckBox.innerHTML = `
     <div class="draft-deck-head"><div><span class="section-kicker">仮デッキリスト</span><h3>保存した候補カード</h3></div><div class="draft-deck-actions"><button type="button" id="draft-add-all" class="button secondary">候補10枚を追加</button><button type="button" id="draft-auto-build" class="button primary">99枚たたき台を自動補充</button><button type="button" id="draft-clear" class="button secondary">クリア</button></div></div>
     <div id="draft-deck-summary" class="dynamic-note"></div>
-    <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
+    <div id="draft-deck-list" class="draft-deck-list"></div><div id="draft-export" class="draft-export"><div class="draft-deck-head"><strong>カテゴリ別デッキリスト</strong><button type="button" id="draft-copy" class="button secondary">デッキリストをコピー</button></div><div id="draft-export-grid" class="draft-export-grid"></div><div id="draft-copy-status" class="draft-copy-status"></div></div><div id="draft-diagnosis" class="draft-diagnosis"></div>`;
   controls.after(draftDeckBox);
   const draftList = draftDeckBox.querySelector('#draft-deck-list');
   const draftSummary = draftDeckBox.querySelector('#draft-deck-summary');
@@ -79,6 +79,9 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const draftAutoBuild = draftDeckBox.querySelector('#draft-auto-build');
   const draftClear = draftDeckBox.querySelector('#draft-clear');
   const draftDiagnosis = draftDeckBox.querySelector('#draft-diagnosis');
+  const draftExportGrid = draftDeckBox.querySelector('#draft-export-grid');
+  const draftCopy = draftDeckBox.querySelector('#draft-copy');
+  const draftCopyStatus = draftDeckBox.querySelector('#draft-copy-status');
   const DRAFT_KEY = 'magsta-commander-draft-ja';
 
   function loadDraftDeck(){
@@ -205,17 +208,42 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     finally{draftAutoBuild.disabled=false;draftAutoBuild.textContent='99枚たたき台を自動補充';}
   }
 
+  function draftGroups(){
+    const groups={ramp:[],draw:[],interaction:[],protection:[],graveyard:[],tutor:[],theme:[]};
+    state.draftDeck.forEach(x=>(groups[roleBucket(x.role)]||groups.theme).push(x));
+    return groups;
+  }
+
+  function renderDraftExport(){
+    if(!draftExportGrid) return;
+    const groups=draftGroups();
+    const labels={ramp:'マナ加速',draw:'ドロー',interaction:'除去・妨害',protection:'保護',graveyard:'墓地対策',tutor:'サーチ',theme:'テーマ・その他'};
+    draftExportGrid.innerHTML=Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>`<section class="draft-export-group"><h4>${labels[key]}（${items.length}）</h4><ul>${items.map(x=>`<li>1 ${esc(x.name)}</li>`).join('')}</ul></section>`).join('') || '<p class="draft-deck-empty">カードを追加するとカテゴリ別に表示されます。</p>';
+  }
+
+  function draftText(){
+    const groups=draftGroups(), labels={ramp:'マナ加速',draw:'ドロー',interaction:'除去・妨害',protection:'保護',graveyard:'墓地対策',tutor:'サーチ',theme:'テーマ・その他'};
+    const commanderName=state.dynamicCommander?displayName(state.dynamicCommander):'未選択';
+    const high=Number(bracket?.value)>=4, landTarget=high?35:37;
+    const lines=[`【MAGSTA 統率者デッキ案】`,`統率者: ${commanderName}`,`ブラケット: ${bracket?.value||'-'}`,`土地目安: ${landTarget}枚`,''];
+    Object.entries(groups).forEach(([key,items])=>{if(!items.length)return;lines.push(`## ${labels[key]} (${items.length})`,...items.map(x=>`1 ${x.name}`),'');});
+    lines.push(`## 土地（目安 ${landTarget}枚）`,`基本土地・多色土地などを固有色に合わせて調整`);
+    return lines.join('\n');
+  }
+
   function renderDraftDeck(){
     const totalUsd=state.draftDeck.map(x=>Number(x.usd)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
     const totalJpy=Math.round(totalUsd*USD_TO_JPY);
     draftSummary.textContent=`${state.draftDeck.length}枚保存 / 概算 ${totalJpy.toLocaleString('ja-JP')}円（この端末のブラウザに保存）`;
     draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'候補')}</small></div><span>${x.usd==null?'価格不明':'約'+Math.round(Number(x.usd)*USD_TO_JPY).toLocaleString('ja-JP')+'円'}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
     draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
+    renderDraftExport();
     renderDraftDiagnosis();
   }
   draftAddAll.addEventListener('click',()=>{state.suggestions.forEach(addDraftCard);status.textContent='現在の候補を仮デッキリストに保存しました。';});
   draftAutoBuild.addEventListener('click',autoBuildDraft);
   draftClear.addEventListener('click',()=>{state.draftDeck=[];saveDraftDeck();});
+  draftCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(draftText());draftCopyStatus.textContent='デッキリストをコピーしました。';}catch(e){draftCopyStatus.textContent='コピーできませんでした。';}});
   loadDraftDeck();
 
   const goalBox = document.createElement('section');
