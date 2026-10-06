@@ -72,7 +72,7 @@ async function fetchFeed(){
   throw networkError;
  }
 }
-async function load(){
+async function load(skipExternalFeed=false){
  const category=document.getElementById('category-rss-list');
  const latest=category?null:document.getElementById('latest-list');
  const requested=new URLSearchParams(location.search).get('cat')||'news';
@@ -114,6 +114,12 @@ async function load(){
   }
   return articles;
  }):Promise.resolve([]);
+ if(skipExternalFeed){
+  await editorialTask;
+  const status=document.getElementById('feed-status');
+  if(status)status.textContent='MAGSTAの最新記事を表示中。外部ニュースは下のニュース一覧まで移動すると読み込みます。';
+  return;
+ }
  const status=document.getElementById(category?'category-status':'feed-status');
  if(status)status.textContent='記事を読み込んでいます…';
  try{
@@ -157,5 +163,21 @@ async function load(){
   }
  }
 }
-load();
+const isHome=!document.getElementById('category-rss-list')&&Boolean(document.getElementById('timeline'));
+if(isHome){
+ load(true);
+ const timeline=document.getElementById('timeline');
+ let started=false;
+ const startExternal=()=>{if(started)return;started=true;load(false);};
+ if('IntersectionObserver' in window&&timeline){
+  const observer=new IntersectionObserver(entries=>{
+   if(entries.some(entry=>entry.isIntersecting)){observer.disconnect();startExternal();}
+  },{rootMargin:'700px 0px'});
+  observer.observe(timeline);
+ }else{
+  window.addEventListener('load',startExternal,{once:true});
+ }
+}else{
+ load(false);
+}
 })();
