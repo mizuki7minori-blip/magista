@@ -29,6 +29,10 @@ const start=()=>{
     idle(()=>add('affiliate-config.js?v=20261006-1').then(()=>add('affiliate.js?v=20261006-lite1')).catch(()=>{}),2600);
   }
 };
+const loadAdsense=()=>{if(document.querySelector('script[data-magsta-adsense]'))return;const s=document.createElement('script');s.async=true;s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448821491188838';s.crossOrigin='anonymous';s.dataset.magstaAdsense='1';document.head.appendChild(s);};
+const scheduleAdsense=()=>{'requestIdleCallback'in window?requestIdleCallback(loadAdsense,{timeout:5000}):setTimeout(loadAdsense,4000);};
+window.addEventListener('scroll',scheduleAdsense,{once:true,passive:true});
+window.addEventListener('pointerdown',scheduleAdsense,{once:true,passive:true});
 if(document.readyState==='complete') start();
 else window.addEventListener('load',start,{once:true});
 })();
