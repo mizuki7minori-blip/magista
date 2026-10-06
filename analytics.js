@@ -2,15 +2,22 @@
 const MEASUREMENT_ID='G-51MGTEG0DS';
 window.dataLayer=window.dataLayer||[];
 window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
-if(!document.querySelector('script[data-magsta-ga]')){
+const loadGA=()=>{
+  if(document.querySelector('script[data-magsta-ga]'))return;
   const s=document.createElement('script');
   s.async=true;
   s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(MEASUREMENT_ID);
   s.dataset.magstaGa='1';
   document.head.appendChild(s);
-}
-window.gtag('js',new Date());
-window.gtag('config',MEASUREMENT_ID,{send_page_view:true});
+  window.gtag('js',new Date());
+  window.gtag('config',MEASUREMENT_ID,{send_page_view:true});
+};
+const scheduleGA=()=>{
+  if('requestIdleCallback' in window)requestIdleCallback(loadGA,{timeout:2000});
+  else setTimeout(loadGA,700);
+};
+if(document.readyState==='complete')scheduleGA();
+else window.addEventListener('load',scheduleGA,{once:true});
 
 const path=location.pathname.split('/').pop()||'index.html';
 const pageType=
