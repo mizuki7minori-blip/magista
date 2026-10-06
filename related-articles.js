@@ -1,5 +1,5 @@
 (() => {
-  const articles = [
+  let articles = [
     {path:"article-metagame-2026-10-06.html",category:"tournament",label:"フォーマット別メタゲーム",title:"【10月6日】MTG最新メタゲーム｜Modernはイゼット果敢と緑単繁殖鱗に注目",desc:"横浜540名のModernデータから主要デッキと新カード動向を整理。",keywords:["モダン","modern","繁殖鱗","イゼット","果敢","コーリ鋼","戦闘魔道士","メタゲーム","横浜"]},
     {path:"article-fra-draft-data-2026-10-05.html",category:"limited",label:"リミテッド",title:"リアリティ・フラクチャー ドラフト最新データ",desc:"直近データからアーキタイプとピック傾向を確認。",keywords:["リアリティ","フラクチャー","ドラフト","リミテッド","アーキタイプ","ピック","17lands"]},
     {path:"article-weekly-news-2026-10-05.html",category:"news",label:"週間ニュース",title:"【10月5日】MTG週間ニュース｜リアリティ・フラクチャー発売、横浜Modern TOP8が確定",desc:"横浜Modern TOP8と新カードの実戦採用を整理。",keywords:["横浜","modern","モダン","リアリティ","フラクチャー","top8","新カード","大会"]},
@@ -11,10 +11,29 @@
   ];
 
   const current = location.pathname.split("/").pop() || "index.html";
-  const currentItem = articles.find(a => a.path === current);
   const body = document.querySelector(".article-body");
   const articlePage = document.querySelector(".article-page");
-  if (!body || !currentItem) return;
+  if (!body) return;
+
+  async function boot(){
+    try{
+      const response=await fetch("article-index.json?v="+Math.floor(Date.now()/600000),{signal:AbortSignal.timeout(8000)});
+      if(response.ok){
+        const data=await response.json();
+        if(Array.isArray(data.items)&&data.items.length){
+          articles=data.items.map(item=>({
+            path:item.path,
+            category:item.category||"news",
+            label:item.label||"記事",
+            title:item.title||item.path,
+            desc:item.desc||item.lead||"",
+            keywords:Array.isArray(item.keywords)?item.keywords:[]
+          }));
+        }
+      }
+    }catch{}
+    const currentItem = articles.find(a => a.path === current);
+    if (!currentItem) return;
 
   const headings = [...body.querySelectorAll(":scope > h2")].filter(h => !h.closest(".related-reading"));
   if (headings.length >= 2 && !document.querySelector(".article-toc") && !document.querySelector(".draft-reading-nav")) {
@@ -242,4 +261,6 @@
       body.appendChild(section);
     }
   }
+  }
+  boot();
 })();
