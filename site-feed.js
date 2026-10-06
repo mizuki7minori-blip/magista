@@ -43,19 +43,6 @@ async function editorialCards(limit=3, newsOnly=false){
    }));
  }catch{return [];}
 }
-function editorialCards(limit=3, newsOnly=false){
- try{
-  const r=await fetch(`articles.html?v=${Math.floor(Date.now()/600000)}`,{signal:AbortSignal.timeout(8000)});
-  if(!r.ok)throw Error('editorial');
-  const doc=new DOMParser().parseFromString(await r.text(),'text/html');
-  return [...doc.querySelectorAll('.article-list .article-card')].map(node=>{
-   const a=node.querySelector('a.read-more'),h=node.querySelector('h2'),meta=[...node.querySelectorAll('.article-meta span')].map(x=>x.textContent.trim());
-   if(!a||!h||!/^article/i.test(a.getAttribute('href')||''))return null;
-   if(newsOnly&&!node.querySelector('.tag.news'))return null;
-   return {title:h.textContent.trim(),link:a.getAttribute('href'),description:node.querySelector('p')?.textContent?.trim()||'',meta};
-  }).filter(Boolean).slice(0,limit);
- }catch{return [];}
-}
 function editorialCard(a){
  const item=el('article','feed-card editorial-feed-card');
  item.append(el('span','tag deck','MAGSTA記事'));
