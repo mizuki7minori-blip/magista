@@ -1,0 +1,40 @@
+# MAGSTA
+
+MAGSTA is a Japanese/English information portal for Magic: The Gathering (MTG).
+Primary site: https://magsta.jp/
+Language: Japanese (primary), English (secondary)
+Editor: 犬居
+
+## Main topics
+- MTG news and official announcements
+- Standard, Modern, Pioneer, Pauper and other format coverage
+- Limited and draft strategy
+- Draft simulator and draft tracking tools
+- Commander strategy and deck building
+- Card and metagame analysis
+
+## Key pages
+- Home: https://magsta.jp/
+- Articles: https://magsta.jp/articles.html
+- Limited: https://magsta.jp/limited.html
+- Draft simulator: https://magsta.jp/draft-simulator.html
+- Draft tracker: https://magsta.jp/limited-tracker.html
+- Commander: https://magsta.jp/commander.html
+- Commander builder: https://magsta.jp/commander-builder.html
+- Search: https://magsta.jp/search.html
+- English home: https://magsta.jp/en/
+
+## Recent editorial content
+- Latest metagame: https://magsta.jp/article-metagame-2026-10-06.html
+- FRA draft data: https://magsta.jp/article-fra-draft-data-2026-10-05.html
+- Weekly MTG news: https://magsta.jp/article-weekly-news-2026-10-05.html
+- FRA draft guide: https://magsta.jp/article-fra-draft-2026-09-25.html
+
+## Discovery
+- Sitemap: https://magsta.jp/sitemap.xml
+- Robots: https://magsta.jp/robots.txt
+
+## Editorial notes
+MAGSTA separates confirmed facts from editorial analysis where possible. For time-sensitive MTG information, prefer the newest dated MAGSTA article and its cited primary sources.
+
+Magic: The Gathering is a trademark of Wizards of the Coast. MAGSTA is an independent information site and is not affiliated with Wizards of the Coast.
