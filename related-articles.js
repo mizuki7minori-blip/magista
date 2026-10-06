@@ -1,13 +1,13 @@
 (() => {
   const articles = [
-    {path:"article-metagame-2026-10-06.html",category:"tournament",label:"フォーマット別メタゲーム",title:"【10月6日】MTG最新メタゲーム｜Modernはイゼット果敢と緑単繁殖鱗に注目",desc:"横浜540名のModernデータから主要デッキと新カード動向を整理。"},
-    {path:"article-fra-draft-data-2026-10-05.html",category:"limited",label:"リミテッド",title:"リアリティ・フラクチャー ドラフト最新データ",desc:"直近データからアーキタイプとピック傾向を確認。"},
-    {path:"article-weekly-news-2026-10-05.html",category:"news",label:"週間ニュース",title:"【10月5日】MTG週間ニュース｜リアリティ・フラクチャー発売、横浜Modern TOP8が確定",desc:"横浜Modern TOP8と新カードの実戦採用を整理。"},
-    {path:"article-zeta-set-2026-10-02.html",category:"news",label:"NEWS",title:"Secret Lair × MSCHF「The Zeta Set」が12月9日に再販決定",desc:"24時間限定の受注販売と発送予定を日本語で整理。"},
-    {path:"article-weekend-2026-10-02.html",category:"tournament",label:"週末注目情報",title:"【10月2日】MTG週末注目情報｜新環境スタンダードに注目",desc:"週末に見るべき大会・デッキ・環境情報を整理。"},
-    {path:"article-fra-draft-2026-09-25.html",category:"limited",label:"リミテッド",title:"リアリティ・フラクチャーのドラフトで取るべきカードは？",desc:"初手候補とピックの考え方を日本語で確認。"},
-    {path:"article-weekend-2026-09-25.html",category:"tournament",label:"週末注目情報",title:"【9月25日】週末注目情報｜スタンダード・モダン・パイオニア",desc:"直近大会から今週末の注目デッキを整理。"},
-    {path:"article-meta-2026-09.html",category:"deck",label:"デッキ・環境",title:"現在のメタゲームと注目カード動向",desc:"競技シーンと注目カードの変化をまとめて確認。"}
+    {path:"article-metagame-2026-10-06.html",category:"tournament",label:"フォーマット別メタゲーム",title:"【10月6日】MTG最新メタゲーム｜Modernはイゼット果敢と緑単繁殖鱗に注目",desc:"横浜540名のModernデータから主要デッキと新カード動向を整理。",keywords:["モダン","modern","繁殖鱗","イゼット","果敢","コーリ鋼","戦闘魔道士","メタゲーム","横浜"]},
+    {path:"article-fra-draft-data-2026-10-05.html",category:"limited",label:"リミテッド",title:"リアリティ・フラクチャー ドラフト最新データ",desc:"直近データからアーキタイプとピック傾向を確認。",keywords:["リアリティ","フラクチャー","ドラフト","リミテッド","アーキタイプ","ピック","17lands"]},
+    {path:"article-weekly-news-2026-10-05.html",category:"news",label:"週間ニュース",title:"【10月5日】MTG週間ニュース｜リアリティ・フラクチャー発売、横浜Modern TOP8が確定",desc:"横浜Modern TOP8と新カードの実戦採用を整理。",keywords:["横浜","modern","モダン","リアリティ","フラクチャー","top8","新カード","大会"]},
+    {path:"article-zeta-set-2026-10-02.html",category:"news",label:"NEWS",title:"Secret Lair × MSCHF「The Zeta Set」が12月9日に再販決定",desc:"24時間限定の受注販売と発送予定を日本語で整理。",keywords:["secret lair","mschf","zeta","再販","受注","限定","販売"]},
+    {path:"article-weekend-2026-10-02.html",category:"tournament",label:"週末注目情報",title:"【10月2日】MTG週末注目情報｜新環境スタンダードに注目",desc:"週末に見るべき大会・デッキ・環境情報を整理。",keywords:["スタンダード","standard","大会","新環境","週末","デッキ","メタゲーム"]},
+    {path:"article-fra-draft-2026-09-25.html",category:"limited",label:"リミテッド",title:"リアリティ・フラクチャーのドラフトで取るべきカードは？",desc:"初手候補とピックの考え方を日本語で確認。",keywords:["リアリティ","フラクチャー","ドラフト","リミテッド","初手","ピック","色"]},
+    {path:"article-weekend-2026-09-25.html",category:"tournament",label:"週末注目情報",title:"【9月25日】週末注目情報｜スタンダード・モダン・パイオニア",desc:"直近大会から今週末の注目デッキを整理。",keywords:["スタンダード","モダン","パイオニア","大会","週末","デッキ","環境"]},
+    {path:"article-meta-2026-09.html",category:"deck",label:"デッキ・環境",title:"現在のメタゲームと注目カード動向",desc:"競技シーンと注目カードの変化をまとめて確認。",keywords:["メタゲーム","注目カード","大会","環境","スタンダード","モダン","デッキ"]}
   ];
 
   const current = location.pathname.split("/").pop() || "index.html";
@@ -139,13 +139,22 @@
   }
 
   if (!document.querySelector(".related-reading")) {
+    const sourceText=(document.querySelector('.article-page')?.textContent||'').toLowerCase().normalize('NFKC');
+    const scoreArticle=a=>{
+      let score=a.category===currentItem.category?8:0;
+      for(const keyword of a.keywords||[]){
+        const word=keyword.toLowerCase().normalize('NFKC');
+        if(word&&sourceText.includes(word))score+=3;
+      }
+      const currentWords=(currentItem.keywords||[]).map(x=>x.toLowerCase().normalize('NFKC'));
+      const candidateWords=(a.keywords||[]).map(x=>x.toLowerCase().normalize('NFKC'));
+      score+=candidateWords.filter(word=>currentWords.includes(word)).length*4;
+      return score;
+    };
     const picks = articles
       .filter(a => a.path !== current)
-      .sort((a,b) => {
-        const categoryDiff = Number(b.category === currentItem.category) - Number(a.category === currentItem.category);
-        if (categoryDiff) return categoryDiff;
-        return articles.indexOf(a) - articles.indexOf(b);
-      })
+      .map(a=>({...a,relatedScore:scoreArticle(a)}))
+      .sort((a,b)=>b.relatedScore-a.relatedScore||articles.findIndex(x=>x.path===a.path)-articles.findIndex(x=>x.path===b.path))
       .slice(0,3);
 
     if (picks.length) {
