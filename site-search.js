@@ -64,13 +64,31 @@ async function loadCatalog(){
   try{
    if(index===0){
     const doc=new DOMParser().parseFromString(response.value,'text/html');
+    const articleTargets=[];
     for(const node of doc.querySelectorAll('.article-list .article-card')){
      const link=node.querySelector('a.read-more'),title=node.querySelector('h2')?.textContent?.trim();
      const url=safeUrl(link?.getAttribute('href'));
      if(!title||!url||url.origin!==location.origin||!/^article[^/]*\.html$/.test(url.pathname.split('/').pop()))continue;
      const text=[node.querySelector('p')?.textContent||'',...[...node.querySelectorAll('.article-meta span')].map(x=>x.textContent)].join(' ').trim();
      combined.set(urlKey(url.href),{title,url:url.href,type:'編集記事',text});
+     articleTargets.push({title,url});
     }
+    const articleResponses=await Promise.allSettled(articleTargets.slice(0,16).map(item=>fetchText(item.url.pathname.split('/').pop())));
+    articleResponses.forEach((articleResponse,i)=>{
+      if(articleResponse.status!=='fulfilled'){partial=true;return;}
+      try{
+        const articleDoc=new DOMParser().parseFromString(articleResponse.value,'text/html');
+        const articleBody=articleDoc.querySelector('.article-body');
+        if(!articleBody)return;
+        const target=articleTargets[i];
+        const key=urlKey(target.url.href);
+        const current=combined.get(key);
+        if(!current)return;
+        const bodyText=clean(articleBody.textContent).slice(0,12000);
+        const cardNames=[...articleBody.textContent.matchAll(/《([^》]{1,80})》/g)].map(m=>m[1]).join(' ');
+        combined.set(key,{...current,text:[current.text,bodyText,cardNames].join(' ').trim()});
+      }catch{partial=true;}
+    });
    }else{
     const data=JSON.parse(response.value);
     if(!Array.isArray(data.items))throw Error('search feed');
