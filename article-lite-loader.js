@@ -1,4 +1,5 @@
 (()=>{'use strict';
+const css=(href)=>{if(document.querySelector('link[href^="'+href.split('?')[0]+'"]'))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href;document.head.appendChild(l);};
 const add=(src)=>new Promise((resolve,reject)=>{
   if(document.querySelector('script[src^="'+src.split('?')[0]+'"]')) return resolve();
   const s=document.createElement('script');
@@ -21,12 +22,12 @@ const start=()=>{
     const io=new IntersectionObserver(entries=>{
       if(entries.some(e=>e.isIntersecting)){
         io.disconnect();
-        add('affiliate-config.js?v=20261006-1').then(()=>add('affiliate.js?v=20261006-lite1')).catch(()=>{});
+        css('affiliate.css?v=20261006-lite1');add('affiliate-config.js?v=20261006-1').then(()=>add('affiliate.js?v=20261006-lite1')).catch(()=>{});
       }
     },{rootMargin:'700px 0px'});
     io.observe(affiliate);
   }else if(affiliate){
-    idle(()=>add('affiliate-config.js?v=20261006-1').then(()=>add('affiliate.js?v=20261006-lite1')).catch(()=>{}),2600);
+    idle(()=>css('affiliate.css?v=20261006-lite1');add('affiliate-config.js?v=20261006-1').then(()=>add('affiliate.js?v=20261006-lite1')).catch(()=>{}),2600);
   }
 };
 const loadAdsense=()=>{if(document.querySelector('script[data-magsta-adsense]'))return;const s=document.createElement('script');s.async=true;s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448821491188838';s.crossOrigin='anonymous';s.dataset.magstaAdsense='1';document.head.appendChild(s);};
