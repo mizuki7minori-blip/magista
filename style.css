@@ -281,3 +281,16 @@
 .home-start-limited{border-top:4px solid #c6803f}
 .home-start-commander{border-top:4px solid #4f7b58}
 @media(max-width:800px){.home-start-grid{grid-template-columns:1fr}.home-start-card{min-height:0}}
+
+
+/* homepage rendering performance */
+.home #formats,
+.home #pickup,
+.home #saved-pages,
+.home #recent-pages,
+.home #timeline,
+.home .a8-top-banner,
+.home #affiliate-products{
+  content-visibility:auto;
+  contain-intrinsic-size:1px 700px;
+}
