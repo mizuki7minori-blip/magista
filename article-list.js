@@ -1,13 +1,13 @@
 (() => {
   const buttons = [...document.querySelectorAll("[data-article-filter]")];
-  const cards = [...document.querySelectorAll(".article-list .article-card[data-article-category]")];
-  const status = document.querySelector("[data-article-filter-status]");
+   const status = document.querySelector("[data-article-filter-status]");
   if (!buttons.length || !cards.length) return;
 
   const labels = {all:"すべて",news:"ニュース",tournament:"大会・環境",limited:"リミテッド",deck:"デッキ・メタ"};
 
   const apply = (filter) => {
     let visible = 0;
+    const cards = [...document.querySelectorAll(".article-list .article-card[data-article-category]")];
     cards.forEach(card => {
       const show = filter === "all" || card.dataset.articleCategory === filter;
       card.hidden = !show;
@@ -27,5 +27,7 @@
 
   buttons.forEach(btn => btn.addEventListener("click", () => apply(btn.dataset.articleFilter)));
   const initial = new URL(location.href).searchParams.get("filter");
-  apply(labels[initial] ? initial : "all");
+  const initialFilter=labels[initial] ? initial : "all";
+  apply(initialFilter);
+  document.addEventListener("magsta:article-index-rendered",()=>apply(new URL(location.href).searchParams.get("filter")||initialFilter));
 })();
