@@ -92,6 +92,44 @@
     }
   }
 
+  if (!document.querySelector(".article-inline-related")) {
+    const sourceText=(articlePage?.textContent||'').toLowerCase().normalize('NFKC');
+    const inlineCandidates=articles
+      .filter(a=>a.path!==current)
+      .map(a=>{
+        let score=a.category===currentItem.category?8:0;
+        for(const keyword of a.keywords||[]){
+          const word=keyword.toLowerCase().normalize('NFKC');
+          if(word&&sourceText.includes(word))score+=3;
+        }
+        score+=(a.keywords||[]).filter(k=>(currentItem.keywords||[]).includes(k)).length*4;
+        return {...a,score};
+      })
+      .sort((a,b)=>b.score-a.score);
+    const inlinePick=inlineCandidates[0];
+    const bodyHeadings=[...body.querySelectorAll(":scope > h2")];
+    const anchor=bodyHeadings[Math.max(1,Math.floor(bodyHeadings.length/2))];
+    if(inlinePick&&anchor){
+      const box=document.createElement("aside");
+      box.className="article-inline-related";
+      box.setAttribute("aria-label","関連して読む");
+      box.innerHTML=`
+        <span>RELATED</span>
+        <div>
+          <small>${inlinePick.label}</small>
+          <strong>${inlinePick.title}</strong>
+          <p>${inlinePick.desc}</p>
+        </div>
+        <a href="${inlinePick.path}" data-inline-related="${inlinePick.path}">この記事も読む →</a>`;
+      anchor.before(box);
+      box.addEventListener("click",event=>{
+        const link=event.target.closest("a[data-inline-related]");
+        if(!link||typeof window.gtag!=="function")return;
+        window.gtag("event","article_inline_related_click",{content_id:current,destination:link.dataset.inlineRelated});
+      });
+    }
+  }
+
   if (!document.querySelector(".article-next-actions")) {
     const actionMap = {
       limited: [
