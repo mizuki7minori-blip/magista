@@ -143,7 +143,7 @@ function safeAffiliateUrl(value) {
 
 window.renderAffiliate = renderAffiliate;
 window.addEventListener('magsta:series-change', () => renderAffiliate());
-document.addEventListener('DOMContentLoaded', () => { renderAffiliate(); renderInlineAffiliate(); bindAffiliateAnalytics(); bindCommanderAffiliate(); });
+document.addEventListener('DOMContentLoaded', () => { renderAffiliate(); renderInlineAffiliate(); bindCommanderAffiliate(); });
 
 
 function renderInlineAffiliate() {
@@ -179,22 +179,6 @@ function renderInlineAffiliate() {
   `;
   anchor.before(box);
 }
-
-function bindAffiliateAnalytics() {
-  document.addEventListener('click', event => {
-    const link = event.target.closest('.affiliate-button,.affiliate-inline-link,.a8-top-banner a');
-    if (!link) return;
-    const key = link.dataset.affiliateKey || link.closest('[data-affiliate-key]')?.dataset.affiliateKey || 'banner';
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'affiliate_click', {
-        affiliate_key: key,
-        page_path: location.pathname,
-        link_url: link.href
-      });
-    }
-  }, { passive:true });
-}
-
 
 function renderCommanderAffiliate() {
   const target = document.getElementById('commander-affiliate-products');
