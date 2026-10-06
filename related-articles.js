@@ -141,11 +141,8 @@
         </div>
         <a href="${inlinePick.path}" data-inline-related="${inlinePick.path}">この記事も読む →</a>`;
       anchor.before(box);
-      box.addEventListener("click",event=>{
-        const link=event.target.closest("a[data-inline-related]");
-        if(!link||typeof window.gtag!=="function")return;
-        window.gtag("event","article_inline_related_click",{content_id:current,destination:link.dataset.inlineRelated});
-      });
+    }
+  });
     }
   }
 
@@ -199,16 +196,7 @@
         ${links.slice(0,3).map(([href,label,id])=>`<a href="${href}" data-next-action="${id}">${label}</a>`).join("")}
       </div>`;
     body.appendChild(actions);
-
-    actions.addEventListener("click", event => {
-      const link = event.target.closest("a[data-next-action]");
-      if (!link || typeof window.gtag !== "function") return;
-      window.gtag("event","article_next_click",{
-        content_type:"article",
-        content_id:current,
-        destination:link.dataset.nextAction
-      });
-    });
+  });
   }
 
   if (!document.querySelector(".article-trust-note")) {
