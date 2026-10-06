@@ -38,6 +38,10 @@ const MAGSTA_AFFILIATE = {
   ],
 
   articleProducts: {
+    'article-metagame-2026-10-06.html': ['toretoku-buyback','secret-lair-official'],
+    'article-weekly-news-2026-10-05.html': ['fra-sealed','fra-supply','toretoku-buyback'],
+    'article-fra-draft-data-2026-10-05.html': ['fra-sealed','fra-supply','toretoku-buyback'],
+    'article-zeta-set-2026-10-02.html': ['secret-lair-official','toretoku-buyback'],
     'article-weekend-2026-10-02.html': ['fra-sealed','fra-supply','toretoku-buyback'],
     'article-fra-draft-2026-09-25.html': ['fra-sealed','fra-supply','toretoku-buyback'],
     'article-weekend-2026-09-25.html': ['toretoku-buyback','secret-lair-official'],
