@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T03:14:22.473Z",
+  "updatedAt": "2026-10-06T22:59:18.269Z",
   "items": [
     {
       "path": "article-metagame-2026-10-06.html",
@@ -117,6 +117,17 @@
       "lead": "新セット発売後および直近の競技シーンを中心に、メタゲームの変化、注目カード、コミュニティでの議論を整理します。",
       "published": "2026-09-01T09:00:00+09:00",
       "modified": "2026-10-02T16:00:00+09:00",
+      "keywords": []
+    },
+    {
+      "path": "article-card-watch-2026-10-07.html",
+      "category": "news",
+      "label": "ニュース",
+      "title": "10月7日 今週の注目カード",
+      "desc": "",
+      "lead": "",
+      "published": "",
+      "modified": "",
       "keywords": []
     }
   ]
