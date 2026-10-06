@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-05T09:14:06.499434Z",
+  "generatedAt": "2026-10-06T09:06:24.166256Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-10-05T09:13:48.901787Z",
+      "updatedAt": "2026-10-06T09:06:06.189177Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
@@ -380,7 +380,7 @@
           "wr": 53.1
         }
       ],
-      "archetypesUpdatedAt": "2026-10-05T09:14:06.499434Z",
+      "archetypesUpdatedAt": "2026-10-06T09:06:24.166256Z",
       "archetypeCards": {
         "WU": [
           {
@@ -1903,12 +1903,12 @@
           }
         ]
       },
-      "archetypeCardsUpdatedAt": "2026-10-05T09:14:06.499434Z"
+      "archetypeCardsUpdatedAt": "2026-10-06T09:06:24.166256Z"
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-10-05T09:13:48.901787Z",
+      "updatedAt": "2026-10-06T09:06:06.189177Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -2283,12 +2283,12 @@
           "wr": 51.4
         }
       ],
-      "archetypesUpdatedAt": "2026-10-05T09:14:06.499434Z"
+      "archetypesUpdatedAt": "2026-10-06T09:06:24.166256Z"
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-10-05T09:13:48.901787Z",
+      "updatedAt": "2026-10-06T09:06:06.189177Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -2663,12 +2663,12 @@
           "wr": 52.3
         }
       ],
-      "archetypesUpdatedAt": "2026-10-05T09:14:06.499434Z"
+      "archetypesUpdatedAt": "2026-10-06T09:06:24.166256Z"
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-10-05T09:13:48.901787Z",
+      "updatedAt": "2026-10-06T09:06:06.189177Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -3043,12 +3043,12 @@
           "wr": 49.9
         }
       ],
-      "archetypesUpdatedAt": "2026-10-05T09:14:06.499434Z"
+      "archetypesUpdatedAt": "2026-10-06T09:06:24.166256Z"
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-10-05T09:13:48.901787Z",
+      "updatedAt": "2026-10-06T09:06:06.189177Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -3423,7 +3423,7 @@
           "wr": 46.8
         }
       ],
-      "archetypesUpdatedAt": "2026-10-05T09:14:06.499434Z"
+      "archetypesUpdatedAt": "2026-10-06T09:06:24.166256Z"
     }
   }
 }
