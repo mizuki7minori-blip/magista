@@ -1,0 +1,64 @@
+{
+  "updatedAt": "2026-10-06T11:03:00+09:00",
+  "window": "last_7d_including_today",
+  "source": "GA4",
+  "formula": "active_users*10 + min(avg_engagement_seconds,120)/5 + freshness_bonus",
+  "items": [
+    {
+      "path": "article-fra-draft-2026-09-25.html",
+      "activeUsers": 12,
+      "avgEngagementSeconds": 28.25,
+      "freshnessBonus": 5,
+      "score": 130.65
+    },
+    {
+      "path": "article-fra-draft-data-2026-10-05.html",
+      "activeUsers": 2,
+      "avgEngagementSeconds": 89.5,
+      "freshnessBonus": 15,
+      "score": 52.9
+    },
+    {
+      "path": "article-weekly-news-2026-10-05.html",
+      "activeUsers": 3,
+      "avgEngagementSeconds": 20,
+      "freshnessBonus": 15,
+      "score": 49
+    },
+    {
+      "path": "article-zeta-set-2026-10-02.html",
+      "activeUsers": 2,
+      "avgEngagementSeconds": 53.5,
+      "freshnessBonus": 5,
+      "score": 35.7
+    },
+    {
+      "path": "article-metagame-2026-10-06.html",
+      "activeUsers": 0,
+      "avgEngagementSeconds": 0,
+      "freshnessBonus": 35,
+      "score": 35
+    },
+    {
+      "path": "article-weekend-2026-10-02.html",
+      "activeUsers": 2,
+      "avgEngagementSeconds": 37,
+      "freshnessBonus": 5,
+      "score": 32.4
+    },
+    {
+      "path": "article-weekend-2026-09-25.html",
+      "activeUsers": 1,
+      "avgEngagementSeconds": 18,
+      "freshnessBonus": 0,
+      "score": 13.6
+    },
+    {
+      "path": "article-meta-2026-09.html",
+      "activeUsers": 0,
+      "avgEngagementSeconds": 0,
+      "freshnessBonus": 0,
+      "score": 0
+    }
+  ]
+}
