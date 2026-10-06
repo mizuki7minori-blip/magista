@@ -17,7 +17,7 @@
 
   async function boot(){
     try{
-      const response=await fetch("article-index.json?v="+Math.floor(Date.now()/600000),{signal:AbortSignal.timeout(8000)});
+      const response=await fetch("article-index.json",{signal:AbortSignal.timeout(5000),cache:"force-cache"});
       if(response.ok){
         const data=await response.json();
         if(Array.isArray(data.items)&&data.items.length){
