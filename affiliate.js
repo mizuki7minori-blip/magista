@@ -21,10 +21,27 @@ function renderAffiliate(targetId = 'affiliate-products') {
       ${hasAffiliate ? `<p class="affiliate-disclosure">${escapeAffiliate(MAGSTA_AFFILIATE.disclosure)}</p>` : '<p class="affiliate-disclosure">シリーズに関連する商品・公式限定商品への参考リンクです。価格・在庫・販売地域はリンク先で確認してください。</p>'}
       <div class="affiliate-list">${items.map(item => renderAffiliateItem(item)).join('')}</div>
     </div>`;
-  hydrateAffiliateImages(target);
+  scheduleAffiliateImages(target);
 }
 
 const affiliateImageCache=new Map();
+function scheduleAffiliateImages(root){
+  if(!root)return;
+  const run=()=>hydrateAffiliateImages(root);
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)){
+        observer.disconnect();
+        run();
+      }
+    },{rootMargin:'500px 0px'});
+    observer.observe(root);
+  }else if('requestIdleCallback' in window){
+    requestIdleCallback(run,{timeout:1800});
+  }else{
+    setTimeout(run,800);
+  }
+}
 function affiliateMedia(item){
   const direct=safeAffiliateUrl(item.image);
   if(direct) return `<div class="affiliate-media"><img src="${escapeAffiliate(direct)}" alt="${escapeAffiliate(item.imageAlt||item.title)}" loading="lazy" decoding="async"><span>${item.key==='toretoku-buyback'?'公式バナー':'実商品画像'}</span></div>`;
