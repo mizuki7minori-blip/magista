@@ -142,8 +142,6 @@
         <a href="${inlinePick.path}" data-inline-related="${inlinePick.path}">この記事も読む →</a>`;
       anchor.before(box);
     }
-  });
-    }
   }
 
   if (!document.querySelector(".article-next-actions")) {
