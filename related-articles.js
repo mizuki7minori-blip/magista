@@ -154,6 +154,18 @@
     });
   }
 
+  if (!document.querySelector(".article-trust-note")) {
+    const trust = document.createElement("aside");
+    trust.className = "article-trust-note";
+    trust.setAttribute("aria-label","MAGSTAの記事方針");
+    trust.innerHTML = `
+      <span class="section-kicker">MAGSTA POLICY</span>
+      <strong>この記事の情報について</strong>
+      <p>公式情報・大会カバレージ・一次データを優先し、確認できた事実と編集部の分析を分けて掲載しています。誤りや更新が必要な情報は確認後に修正します。</p>
+      <div><a href="strategy.html">編集・訂正方針を見る</a><a href="contact.html">訂正を知らせる</a></div>`;
+    body.appendChild(trust);
+  }
+
   if (!document.querySelector(".related-reading")) {
     const sourceText=(document.querySelector('.article-page')?.textContent||'').toLowerCase().normalize('NFKC');
     const scoreArticle=a=>{
