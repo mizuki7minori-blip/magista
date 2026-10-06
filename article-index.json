@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T23:00:03.857Z",
+  "updatedAt": "2026-10-06T23:00:28.787Z",
   "items": [
     {
       "path": "article-metagame-2026-10-06.html",
@@ -121,14 +121,17 @@
     },
     {
       "path": "article-card-watch-2026-10-07.html",
-      "category": "news",
-      "label": "ニュース",
-      "title": "10月7日 今週の注目カード",
+      "category": "tournament",
+      "label": "大会・環境",
+      "title": "【10月7日】今週の注目カード｜Modern・イゼット果敢の新カードに注目",
       "desc": "",
       "lead": "",
       "published": "",
       "modified": "",
-      "keywords": []
+      "keywords": [
+        "驕慢な&#25126;&#38360;魔道士",
+        "コーリ鋼の短刀"
+      ]
     }
   ]
 }
