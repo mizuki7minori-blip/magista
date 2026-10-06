@@ -70,6 +70,27 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   },{passive:true});
 
+  document.addEventListener('change',e=>{
+    const el=e.target;
+    if(!(el instanceof HTMLSelectElement||el instanceof HTMLInputElement))return;
+    if(['commander-select','budget-select','bracket-select','strategy-select'].includes(el.id)){
+      event('commander_setting_change',{control_id:el.id,control_value:String(el.value).slice(0,120)});
+      return;
+    }
+    if(el.closest('.limited-page,.limited-section,#limited-tracker')){
+      event('limited_setting_change',{control_id:el.id||el.name||'control',control_value:String(el.value).slice(0,120)});
+    }
+  });
+
+  document.addEventListener('submit',e=>{
+    const form=e.target;
+    if(!(form instanceof HTMLFormElement))return;
+    if(form.matches('[role="search"],.site-search-form,.article-search')){
+      const q=form.querySelector('input[type="search"],input[name="q"]')?.value||'';
+      event('site_search',{search_term:String(q).trim().slice(0,120),search_surface:pageType});
+    }
+  });
+
   const marks=[25,50,75,90],sent=new Set();
   const onScroll=()=>{
     const max=document.documentElement.scrollHeight-innerHeight;
