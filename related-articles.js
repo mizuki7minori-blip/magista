@@ -115,15 +115,31 @@
         ["/#formats","フォーマットから探す","home_formats"]
       ]
     };
-    const links = actionMap[currentItem.category] || actionMap.news;
+    const sourceText=(articlePage?.textContent||'').toLowerCase().normalize('NFKC');
+    const contextualAction=()=>{
+      if(currentItem.category==='limited')return ["limited-tracker.html","この環境でドラフトを試す","limited_tracker","ピックを記録しながら実戦感覚で確認"];
+      if(/モダン|modern/.test(sourceText))return ["category.html?cat=modern","Modernの記事を続けて見る","modern_category","大会結果・メタゲーム・注目カードをまとめて確認"];
+      if(/スタンダード|standard/.test(sourceText))return ["category.html?cat=standard","Standardの記事を続けて見る","standard_category","新環境・デッキ・注目カードをまとめて確認"];
+      if(/パイオニア|pioneer/.test(sourceText))return ["category.html?cat=pioneer","Pioneerの記事を続けて見る","pioneer_category","大会結果と環境変化をまとめて確認"];
+      if(/統率者|commander|edh/.test(sourceText))return ["commander-builder.html","このテーマで統率者を組む","commander_builder","目的と予算からデッキ構築へ進む"];
+      if(currentItem.category==='deck')return ["commander-builder.html","デッキ構築へ進む","commander_builder","記事を読んだ流れで構築を試す"];
+      return ["articles.html","関連する記事をもっと見る","articles","MAGSTAの最新記事・攻略を続けて確認"];
+    };
+    const primary=contextualAction();
+    const links = (actionMap[currentItem.category] || actionMap.news).filter(([href])=>href!==primary[0]);
     const actions = document.createElement("aside");
-    actions.className = "article-next-actions";
+    actions.className = "article-next-actions article-action-panel";
     actions.setAttribute("aria-label","次に見る");
     actions.innerHTML = `
-      <span class="section-kicker">NEXT</span>
-      <strong>次に見るなら</strong>
-      <div>
-        ${links.map(([href,label,id])=>`<a href="${href}" data-next-action="${id}">${label}</a>`).join("")}
+      <span class="section-kicker">NEXT STEP</span>
+      <strong>この記事の次に</strong>
+      <a class="article-primary-action" href="${primary[0]}" data-next-action="${primary[2]}">
+        <span>おすすめ</span>
+        <b>${primary[1]}</b>
+        <small>${primary[3]}</small>
+      </a>
+      <div class="article-secondary-actions">
+        ${links.slice(0,3).map(([href,label,id])=>`<a href="${href}" data-next-action="${id}">${label}</a>`).join("")}
       </div>`;
     body.appendChild(actions);
 
