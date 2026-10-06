@@ -55,3 +55,20 @@
 - 信頼性・訂正方針表示
 - 関連記事
 - 広告・アフィリエイト
+
+
+## 7. Search Console確認項目
+Search Consoleを接続したら、毎週以下を確認します。
+- 検索クエリ別の表示回数
+- CTRが低い記事
+- 平均掲載順位が8〜20位の記事
+- クリックが増えている記事
+- インデックス未登録URL
+
+### 改善の優先順位
+1. 表示回数が多くCTRが低い → タイトル・description改善
+2. 8〜20位の記事 → 本文追記・内部リンク追加
+3. インデックス未登録 → sitemap・canonical・robots確認
+4. 検索流入が伸びた記事 → 関連記事・続編を作成
+
+新規 `article-*.html` の追加・更新時は、`article-index.json` と `sitemap.xml` がGitHub Actionsで自動再生成されます。
