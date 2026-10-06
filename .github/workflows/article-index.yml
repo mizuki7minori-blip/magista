@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: article-index-main
+  cancel-in-progress: true
+
 jobs:
   build-index:
     if: github.actor != 'github-actions[bot]'
