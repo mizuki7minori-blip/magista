@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),diagnostics=require('../scripts/draft_diagnostics.cjs'),{correlation}=require('../scripts/calibrate_draft.cjs'),model=require('../draft-evaluation.js');
+assert.ok(Math.abs(diagnostics.probabilityAtLeast(40,1,1,1)-1/40)<1e-12);assert.equal(diagnostics.probabilityAtLeast(40,40,7,1),1);assert.equal(diagnostics.probabilityAtLeast(40,0,7,1),0);assert.equal(diagnostics.probabilityAtLeast(40,2,1,2),0);
+assert.deepEqual(diagnostics.ranks([1,1,3]),[1.5,1.5,3]);assert.ok(Math.abs(diagnostics.spearman([[1,2],[1,2],[3,4]],correlation)-1)<1e-12);assert.equal(diagnostics.spearman([[1,1],[1,2],[1,3]],correlation),null);
+const card=(name,extra={})=>({name,oracle_id:name,type_line:'Creature',colors:['R'],cmc:2,mana_cost:'{R}{R}',power:'2',toughness:'2',...extra}),history=Array.from({length:30},(_,i)=>card('H'+i,{cmc:i%7+1,oracle_text:i%2?'Destroy target creature.':''}));
+for(const c of [card('Red'),card('Blue',{colors:['U']}),card('High',{cmc:7}),card('H1',{type_line:'Legendary Creature'}),card('Draw',{type_line:'Instant',oracle_text:'Draw two cards.'})]){const e=model.evaluate(c,history);assert.ok(Math.abs(Object.values(e.components).reduce((s,x)=>s+x,0)-e.value)<1e-9);assert.ok(Number.isFinite(e.base.wrContribution));}
+assert.equal(diagnostics.probabilityAtLeast(40,17,7,Infinity),null);
+assert.equal(diagnostics.manaDiagnostics([card('Invalid',{cmc:Infinity})],history,{}).unmodelledCosts,1);
+const check=diagnostics.manaDiagnostics(Array(23).fill(card('Red')),history,{});assert.equal(check.mana.landCount,17);assert.ok(check.checks.every(c=>c.probability>=0&&c.probability<=1));assert.ok(check.checks.every(c=>c.sources===17));
+const flags=diagnostics.anomalies({scores:{buckets:{'>=90':60,'<40':0}},archetypes:{WU:90},cpus:100,cards:[],mana:{zeroSources:0,splashLow:0}});assert.ok(flags.some(f=>f.type==='score90PlusShare'));assert.ok(flags.some(f=>f.type==='pairConcentration:WU'));
+console.log('PASS component accounting, tied-rank Spearman, hypergeometric boundaries, mana assumptions, anomaly screening');

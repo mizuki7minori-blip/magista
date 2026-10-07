@@ -1,0 +1,167 @@
+name: Draft calibration (manual, reports only)
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/draft-calibration.yml']
+  workflow_dispatch:
+    inputs:
+      set_codes:
+        description: 'Comma-separated sets: fra,hob,msh,sos,tmt'
+        default: 'fra,hob,msh,sos,tmt'
+        required: true
+      tables:
+        description: '8-player tables per set (1-1000)'
+        type: number
+        default: 100
+        required: true
+      seed:
+        description: 'Reproducible uint32 seed'
+        default: '12345'
+        required: true
+      start_date:
+        description: '17Lands start date (YYYY-MM-DD)'
+        required: true
+      end_date:
+        description: '17Lands end date (YYYY-MM-DD)'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      sets: ${{ steps.inputs.outputs.sets }}
+      tables: ${{ steps.inputs.outputs.tables }}
+      seed: ${{ steps.inputs.outputs.seed }}
+      start: ${{ steps.inputs.outputs.start }}
+      end: ${{ steps.inputs.outputs.end }}
+    steps:
+      - id: inputs
+        env:
+          SET_CODES: ${{ inputs.set_codes }}
+          TABLES: ${{ inputs.tables }}
+          SEED: ${{ inputs.seed }}
+          START: ${{ inputs.start_date }}
+          END: ${{ inputs.end_date }}
+        run: |
+          python - <<'PY'
+          import os, json
+          from datetime import date, datetime, timezone
+          raw=os.environ['SET_CODES'] or 'fra,hob,msh,sos,tmt'
+          tables=os.environ['TABLES'] or '100'; seed=os.environ['SEED'] or '12345'
+          start=os.environ['START'] or '2019-01-01'; end=os.environ['END'] or datetime.now(timezone.utc).date().isoformat()
+          codes=list(dict.fromkeys(x.strip().lower() for x in raw.split(',')))
+          if not codes or any(x not in ['fra','hob','msh','sos','tmt'] for x in codes):
+              raise ValueError('invalid set_codes')
+          if not 1 <= int(tables) <= 1000:
+              raise ValueError('invalid tables')
+          if not 0 <= int(seed) <= 4294967295:
+              raise ValueError('invalid seed')
+          if date.fromisoformat(start) > date.fromisoformat(end):
+              raise ValueError('invalid date range')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              for key,value in {'sets':json.dumps(codes),'tables':tables,'seed':seed,'start':start,'end':end}.items():
+                  f.write(key+'='+value+'\n')
+          PY
+  calibrate:
+    needs: validate
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        set_code: ${{ fromJSON(needs.validate.outputs.sets) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SET_CODE: ${{ matrix.set_code }}
+      DRAFT_TABLES: ${{ needs.validate.outputs.tables }}
+      DRAFT_SEED: ${{ needs.validate.outputs.seed }}
+      RATING_START: ${{ needs.validate.outputs.start }}
+      RATING_END: ${{ needs.validate.outputs.end }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/draft-cards
+            data/draft-ratings
+          key: draft-data-${{ matrix.set_code }}-${{ needs.validate.outputs.start }}-${{ needs.validate.outputs.end }}-${{ hashFiles('scripts/fetch_draft*.py', 'scripts/draft_data_io.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            draft-data-${{ matrix.set_code }}-${{ needs.validate.outputs.start }}-${{ needs.validate.outputs.end }}-${{ hashFiles('scripts/fetch_draft*.py', 'scripts/draft_data_io.py') }}-
+      - name: Fetch complete card pools
+        continue-on-error: true
+        run: |
+          card_sets=("$SET_CODE")
+          if [ "$SET_CODE" = fra ]; then card_sets+=(spg); fi
+          python scripts/fetch_draft_cards.py --sets "${card_sets[@]}"
+      - name: Fetch all rating rows
+        continue-on-error: true
+        run: python scripts/fetch_draft_ratings.py --sets "$SET_CODE" --start-date "$RATING_START" --end-date "$RATING_END"
+      - name: Run offline calibration
+        run: |
+          node scripts/calibrate_draft.cjs --sets "$SET_CODE" --tables "$DRAFT_TABLES" --seed "$DRAFT_SEED" --require-full-ratings --start-date "$RATING_START" --end-date "$RATING_END" --report-dir "reports/draft-calibration/$SET_CODE" --output "reports/draft-calibration/$SET_CODE/run.json"
+      - name: Preserve complete data and resumable pages
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/draft-cards
+            data/draft-ratings
+          key: draft-data-${{ matrix.set_code }}-${{ needs.validate.outputs.start }}-${{ needs.validate.outputs.end }}-${{ hashFiles('scripts/fetch_draft*.py', 'scripts/draft_data_io.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Upload per-set reports including failure details
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: draft-calibration-${{ matrix.set_code }}-${{ needs.validate.outputs.seed }}
+          path: reports/draft-calibration/${{ matrix.set_code }}/
+          if-no-files-found: warn
+          retention-days: 14
+
+  publish:
+    needs: [validate, calibrate]
+    if: always() && needs.validate.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: draft-calibration-report-publication
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Select report branch
+        run: |
+          git show HEAD:scripts/publish_draft_reports.py > /tmp/publish_draft_reports.py
+          if git ls-remote --exit-code --heads origin calibration-results; then
+            git fetch origin calibration-results
+            git switch -c calibration-results FETCH_HEAD
+          else
+            git switch -c calibration-results
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: draft-calibration-*
+          path: /tmp/draft-reports
+      - name: Update generated JSON and CSV only
+        run: python /tmp/publish_draft_reports.py --input-dir /tmp/draft-reports
+      - name: Commit, push and verify generated reports
+        run: |
+          git add -- reports/draft-calibration
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update draft calibration JSON and CSV reports'
+          git push origin HEAD:calibration-results
+          git fetch origin calibration-results
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"

@@ -1,0 +1,5 @@
+# Raw externally fetched pools and resumable checkpoints are local inputs.
+/data/draft-cards/
+/data/draft-ratings/
+__pycache__/
+*.pyc
