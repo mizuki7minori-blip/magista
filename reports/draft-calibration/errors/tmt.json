@@ -22,7 +22,7 @@
     "maxLands": 1
   },
   "savedWRCount": 60,
-  "fullCardCount": null,
+  "fullCardCount": 320,
   "wrCoverage": null,
   "drafts": 0,
   "cpus": 0,
@@ -562,6 +562,64 @@
   },
   "ratingMode": "full-rating-snapshot",
   "fullPrintWRCount": 0,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Atmt+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:48:17.701748+00:00",
+  "inputSHA256": "160f123ce194935380b41538912d077967eb56eb5addada9a651d349e2d336aa",
+  "statisticsSHA256": "cf295369a1f5c7676d22742f3aae1b64cf328ce1d27f6a4637fa02785f8ec162",
+  "apiTotal": 320,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "7add9a4bca263f9dc1da8ad46910643ecd8841c37f8ae2576dc9b156ce5b27f7",
+  "specialPools": {
+    "spg": 0,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 320,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 94,
+      "uncommon": 68,
+      "rare": 106,
+      "mythic": 52
+    },
+    "uniqueOracles": 195,
+    "samples": [
+      {
+        "id": "bc0f5ca8-47bd-4451-8fd1-a312ff7d31ec",
+        "oracle_id": "a9d68cf5-3055-4ec9-9893-244bfd7046be",
+        "name": "Action News Crew",
+        "rarity": "common",
+        "type_line": "Creature — Human Citizen",
+        "booster": false,
+        "collector_number": "1"
+      },
+      {
+        "id": "9c769202-178c-442a-a9e2-aa08b5ae5c9a",
+        "oracle_id": "f33217cc-175f-45e8-bc69-801f41cb4495",
+        "name": "Agent Bishop, Man in Black",
+        "rarity": "rare",
+        "type_line": "Legendary Creature — Human Soldier",
+        "booster": false,
+        "collector_number": "2"
+      },
+      {
+        "id": "a9c717bf-0b1d-4234-8909-22488aed7379",
+        "oracle_id": "f33217cc-175f-45e8-bc69-801f41cb4495",
+        "name": "Agent Bishop, Man in Black",
+        "rarity": "rare",
+        "type_line": "Legendary Creature — Human Soldier",
+        "booster": false,
+        "collector_number": "258"
+      }
+    ]
+  },
   "savedWRIntegrity": {
     "checked": 210,
     "nonFinite": 0

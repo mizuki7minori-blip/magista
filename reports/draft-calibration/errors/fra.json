@@ -37,7 +37,7 @@
     ]
   },
   "savedWRCount": 60,
-  "fullCardCount": null,
+  "fullCardCount": 461,
   "wrCoverage": null,
   "drafts": 0,
   "cpus": 0,
@@ -577,6 +577,64 @@
   },
   "ratingMode": "full-rating-snapshot",
   "fullPrintWRCount": 355,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Afra+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:47:12.531130+00:00",
+  "inputSHA256": "acf1c065159682f488e8156246fc782c629080e6ff7503d431bfd8807a98d8b8",
+  "statisticsSHA256": "834e45c8f21f44943b57cd76f1087b47ed82c1e7df66bf6b4703ac75f68c16df",
+  "apiTotal": 461,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "a9d7fa0ad40fa4c9aee29b8881813800bc96c24c61495b6fda862fd0e7fdce2a",
+  "specialPools": {
+    "spg": 10,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 461,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 106,
+      "uncommon": 129,
+      "rare": 135,
+      "mythic": 91
+    },
+    "uniqueOracles": 285,
+    "samples": [
+      {
+        "id": "730d8c28-1e58-4b8e-89e9-445d154d2e83",
+        "oracle_id": "406e853b-713f-4c89-9efb-aca74a11183f",
+        "name": "Academic Ascent",
+        "rarity": "common",
+        "type_line": "Instant",
+        "booster": false,
+        "collector_number": "2"
+      },
+      {
+        "id": "f17d2792-b075-4c47-ad38-e7a7eaee5f8c",
+        "oracle_id": "172a8f58-c420-4497-b962-c5853f923667",
+        "name": "Aerid Konstrari",
+        "rarity": "mythic",
+        "type_line": "Legendary Creature — Elder Sphinx",
+        "booster": false,
+        "collector_number": "121"
+      },
+      {
+        "id": "66dcd789-d405-4fa6-855f-61064e2e4635",
+        "oracle_id": "172a8f58-c420-4497-b962-c5853f923667",
+        "name": "Aerid Konstrari",
+        "rarity": "mythic",
+        "type_line": "Legendary Creature — Elder Sphinx",
+        "booster": false,
+        "collector_number": "347"
+      }
+    ]
+  },
   "savedWRIntegrity": {
     "checked": 290,
     "nonFinite": 0

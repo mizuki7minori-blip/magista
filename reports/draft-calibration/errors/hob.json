@@ -22,7 +22,7 @@
     "maxLands": null
   },
   "savedWRCount": 60,
-  "fullCardCount": null,
+  "fullCardCount": 321,
   "wrCoverage": null,
   "drafts": 0,
   "cpus": 0,
@@ -562,6 +562,64 @@
   },
   "ratingMode": "full-rating-snapshot",
   "fullPrintWRCount": 0,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Ahob+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:47:26.836406+00:00",
+  "inputSHA256": "2e6d4b222c324b0ad82249c1f02c9aa209269e52e319bc6d94a7bfe357824b63",
+  "statisticsSHA256": "93b334fff202db1ae9e36e2a9da4ba7de514e71f301e78ad35db507bebee97b0",
+  "apiTotal": 321,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "7add9a4bca263f9dc1da8ad46910643ecd8841c37f8ae2576dc9b156ce5b27f7",
+  "specialPools": {
+    "spg": 0,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 321,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 85,
+      "uncommon": 71,
+      "rare": 119,
+      "mythic": 46
+    },
+    "uniqueOracles": 193,
+    "samples": [
+      {
+        "id": "3696d65c-fffd-4685-bb2d-e8769bf476e3",
+        "oracle_id": "f4437cb3-85f7-49b5-bb41-6a948549d987",
+        "name": "Along the Crooked Way",
+        "rarity": "rare",
+        "type_line": "Enchantment",
+        "booster": false,
+        "collector_number": "60"
+      },
+      {
+        "id": "e340aa1c-a497-4fc4-9be9-26e7c982f893",
+        "oracle_id": "f4437cb3-85f7-49b5-bb41-6a948549d987",
+        "name": "Along the Crooked Way",
+        "rarity": "rare",
+        "type_line": "Enchantment",
+        "booster": false,
+        "collector_number": "295"
+      },
+      {
+        "id": "3aa29fe8-1687-486f-b4df-c04977869ab1",
+        "oracle_id": "38503d34-f4f9-4eeb-9b1e-4fec1df921b3",
+        "name": "An Unexpected Party // At the Door",
+        "rarity": "rare",
+        "type_line": "Enchantment // Sorcery — Adventure",
+        "booster": false,
+        "collector_number": "29"
+      }
+    ]
+  },
   "savedWRIntegrity": {
     "checked": 188,
     "nonFinite": 0

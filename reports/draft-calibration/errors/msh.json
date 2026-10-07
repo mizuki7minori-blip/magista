@@ -22,7 +22,7 @@
     "maxLands": null
   },
   "savedWRCount": 60,
-  "fullCardCount": null,
+  "fullCardCount": 453,
   "wrCoverage": null,
   "drafts": 0,
   "cpus": 0,
@@ -562,6 +562,64 @@
   },
   "ratingMode": "full-rating-snapshot",
   "fullPrintWRCount": 0,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Amsh+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:47:43.066399+00:00",
+  "inputSHA256": "c2d2cdbd27d770ac2467be8c03d125b7a72155e46e4da98674ec2530c16e1168",
+  "statisticsSHA256": "568930687665f08fa765db8ae4e52f19b317d2b700d10c7942532a1a1121a270",
+  "apiTotal": 453,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "7add9a4bca263f9dc1da8ad46910643ecd8841c37f8ae2576dc9b156ce5b27f7",
+  "specialPools": {
+    "spg": 0,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 453,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 124,
+      "uncommon": 124,
+      "rare": 129,
+      "mythic": 76
+    },
+    "uniqueOracles": 281,
+    "samples": [
+      {
+        "id": "2c6ab9bb-dba2-4b5b-a4d9-54735f65ac21",
+        "oracle_id": "72101185-4336-480a-b4d7-f8ceb0007a51",
+        "name": "Abomination, Terrifying Titan",
+        "rarity": "uncommon",
+        "type_line": "Legendary Creature — Gamma Villain",
+        "booster": false,
+        "collector_number": "198"
+      },
+      {
+        "id": "d1fb5d54-8232-4888-9d51-5aca90a7b6eb",
+        "oracle_id": "72101185-4336-480a-b4d7-f8ceb0007a51",
+        "name": "Abomination, Terrifying Titan",
+        "rarity": "uncommon",
+        "type_line": "Legendary Creature — Gamma Villain",
+        "booster": false,
+        "collector_number": "333"
+      },
+      {
+        "id": "7114ef87-53ff-43e9-864c-9faa455d86ef",
+        "oracle_id": "ec8e310f-e871-498f-8d80-c3617c5e1433",
+        "name": "Absorbing Man",
+        "rarity": "rare",
+        "type_line": "Legendary Creature — Human Villain",
+        "booster": false,
+        "collector_number": "199"
+      }
+    ]
+  },
   "savedWRIntegrity": {
     "checked": 334,
     "nonFinite": 0

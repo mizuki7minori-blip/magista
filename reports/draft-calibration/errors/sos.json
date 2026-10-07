@@ -26,7 +26,7 @@
     "maxLands": null
   },
   "savedWRCount": 60,
-  "fullCardCount": null,
+  "fullCardCount": 368,
   "wrCoverage": null,
   "drafts": 0,
   "cpus": 0,
@@ -566,6 +566,64 @@
   },
   "ratingMode": "full-rating-snapshot",
   "fullPrintWRCount": 0,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Asos+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:48:02.787903+00:00",
+  "inputSHA256": "19c20a7c79df772772085a57fd1030bf6bc2503b70250d8b7e2d1f8eace68d6b",
+  "statisticsSHA256": "7ccf505e112fe06308cde12c4b264146384ac1315393208268137291df6ecff5",
+  "apiTotal": 368,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "7add9a4bca263f9dc1da8ad46910643ecd8841c37f8ae2576dc9b156ce5b27f7",
+  "specialPools": {
+    "spg": 0,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 368,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 101,
+      "uncommon": 105,
+      "rare": 121,
+      "mythic": 41
+    },
+    "uniqueOracles": 271,
+    "samples": [
+      {
+        "id": "797131cf-d80d-4050-bebd-2ce1d7fae5d0",
+        "oracle_id": "a0657586-0404-4bb0-a92d-25f040d560c1",
+        "name": "Aberrant Manawurm",
+        "rarity": "uncommon",
+        "type_line": "Creature — Wurm",
+        "booster": false,
+        "collector_number": "138"
+      },
+      {
+        "id": "77285d12-e658-4eb3-ba13-ff202afab9c8",
+        "oracle_id": "2f5f46ed-b8aa-4864-bd20-17281d4632bf",
+        "name": "Abigale, Poet Laureate // Heroic Stanza",
+        "rarity": "uncommon",
+        "type_line": "Legendary Creature — Bird Bard // Sorcery",
+        "booster": false,
+        "collector_number": "170"
+      },
+      {
+        "id": "ea008094-d995-4740-9b39-c61049356c55",
+        "oracle_id": "bc899d5c-0a91-4f19-a3e4-3078ae966110",
+        "name": "Abstract Paintmage",
+        "rarity": "uncommon",
+        "type_line": "Creature — Djinn Sorcerer",
+        "booster": false,
+        "collector_number": "171"
+      }
+    ]
+  },
   "savedWRIntegrity": {
     "checked": 341,
     "nonFinite": 0
