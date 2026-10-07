@@ -1,0 +1,1526 @@
+{
+  "officialCollation": {
+    "status": "official-unverified",
+    "source": null,
+    "cards": 14,
+    "common": 7,
+    "uncommon": 3,
+    "rareSlots": 1,
+    "mythicChance": 0.14285714285714285,
+    "basicSlots": 1,
+    "wildcardSlots": 2,
+    "wildcardWeights": [
+      0.5,
+      0.35,
+      0.125,
+      0.025
+    ],
+    "foil": null,
+    "doubleFacedSlot": null,
+    "bonusSheet": null,
+    "specialGuest": null,
+    "maxLands": 1
+  },
+  "savedWRCount": 60,
+  "fullCardCount": 320,
+  "wrCoverage": 0,
+  "drafts": 100,
+  "cpus": 800,
+  "totalPicks": 33600,
+  "errors": 0,
+  "status": "measured-card-pool",
+  "reason": "No complete card snapshot; fetch inputs in a network-enabled environment.",
+  "ratingSource": "https://www.17lands.com/card_ratings/data?expansion=TMT&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07",
+  "ratingFetchedAt": "2026-10-07T06:48:19.270288+00:00",
+  "ratingValidation": {
+    "duplicates": 0,
+    "invalidValues": 0,
+    "missingIdentity": 0,
+    "missingMetrics": {
+      "wr": 210,
+      "gih_wr": 210,
+      "oh_wr": 210,
+      "games": 0,
+      "ata": 210,
+      "alsa": 210,
+      "usage": 210
+    },
+    "missingValues": 1260
+  },
+  "ratingWindow": {
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07"
+  },
+  "actualColorResults": {
+    "set": "tmt",
+    "complete": true,
+    "source": "https://www.17lands.com/color_ratings/data?expansion=TMT&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07&combine_splash=false",
+    "fetchedAt": "2026-10-07T06:48:21.867717+00:00",
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07",
+    "rows": [
+      {
+        "is_summary": true,
+        "color_name": "Mono-color",
+        "short_name": 1,
+        "wins": 299,
+        "games": 541
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White",
+        "short_name": "W",
+        "wins": 172,
+        "games": 272
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue",
+        "short_name": "U",
+        "wins": 31,
+        "games": 67
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black",
+        "short_name": "B",
+        "wins": 9,
+        "games": 20
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red",
+        "short_name": "R",
+        "wins": 42,
+        "games": 96
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green",
+        "short_name": "G",
+        "wins": 45,
+        "games": 86
+      },
+      {
+        "is_summary": true,
+        "color_name": "Mono-color + Splash",
+        "short_name": "1+",
+        "wins": 2675,
+        "games": 4661
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White + Splash",
+        "short_name": "W+",
+        "wins": 617,
+        "games": 1036
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue + Splash",
+        "short_name": "U+",
+        "wins": 622,
+        "games": 1060
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black + Splash",
+        "short_name": "B+",
+        "wins": 38,
+        "games": 94
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red + Splash",
+        "short_name": "R+",
+        "wins": 114,
+        "games": 205
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green + Splash",
+        "short_name": "G+",
+        "wins": 1284,
+        "games": 2266
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color",
+        "short_name": 2,
+        "wins": 110300,
+        "games": 194040
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU)",
+        "short_name": "WU",
+        "wins": 1117,
+        "games": 1953
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB)",
+        "short_name": "UB",
+        "wins": 704,
+        "games": 1338
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR)",
+        "short_name": "BR",
+        "wins": 316,
+        "games": 675
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG)",
+        "short_name": "RG",
+        "wins": 295,
+        "games": 668
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW)",
+        "short_name": "WG",
+        "wins": 1091,
+        "games": 2023
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB)",
+        "short_name": "WB",
+        "wins": 37549,
+        "games": 63836
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG)",
+        "short_name": "BG",
+        "wins": 12656,
+        "games": 23390
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU)",
+        "short_name": "UG",
+        "wins": 6369,
+        "games": 12457
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR)",
+        "short_name": "UR",
+        "wins": 36164,
+        "games": 62500
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW)",
+        "short_name": "WR",
+        "wins": 14039,
+        "games": 25200
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color + Splash",
+        "short_name": "2+",
+        "wins": 51392,
+        "games": 92120
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU) + Splash",
+        "short_name": "WU+",
+        "wins": 1002,
+        "games": 1766
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB) + Splash",
+        "short_name": "UB+",
+        "wins": 805,
+        "games": 1515
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR) + Splash",
+        "short_name": "BR+",
+        "wins": 293,
+        "games": 604
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG) + Splash",
+        "short_name": "RG+",
+        "wins": 873,
+        "games": 1679
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW) + Splash",
+        "short_name": "WG+",
+        "wins": 2299,
+        "games": 3989
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB) + Splash",
+        "short_name": "WB+",
+        "wins": 5956,
+        "games": 10669
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG) + Splash",
+        "short_name": "BG+",
+        "wins": 13245,
+        "games": 23505
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU) + Splash",
+        "short_name": "UG+",
+        "wins": 16754,
+        "games": 29898
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR) + Splash",
+        "short_name": "UR+",
+        "wins": 6956,
+        "games": 12424
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW) + Splash",
+        "short_name": "WR+",
+        "wins": 3209,
+        "games": 6071
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color",
+        "short_name": 3,
+        "wins": 7776,
+        "games": 15174
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR)",
+        "short_name": "WUR",
+        "wins": 770,
+        "games": 1504
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG)",
+        "short_name": "UBG",
+        "wins": 2945,
+        "games": 5573
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW)",
+        "short_name": "WBR",
+        "wins": 498,
+        "games": 1065
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU)",
+        "short_name": "URG",
+        "wins": 1279,
+        "games": 2491
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB)",
+        "short_name": "WBG",
+        "wins": 1676,
+        "games": 3284
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB)",
+        "short_name": "WUB",
+        "wins": 131,
+        "games": 276
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR)",
+        "short_name": "UBR",
+        "wins": 163,
+        "games": 320
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG)",
+        "short_name": "BRG",
+        "wins": 48,
+        "games": 124
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW)",
+        "short_name": "WRG",
+        "wins": 66,
+        "games": 133
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU)",
+        "short_name": "WUG",
+        "wins": 200,
+        "games": 404
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color + Splash",
+        "short_name": "3+",
+        "wins": 8061,
+        "games": 13890
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR) + Splash",
+        "short_name": "WUR+",
+        "wins": 291,
+        "games": 506
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG) + Splash",
+        "short_name": "UBG+",
+        "wins": 3574,
+        "games": 6077
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW) + Splash",
+        "short_name": "WBR+",
+        "wins": 84,
+        "games": 157
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU) + Splash",
+        "short_name": "URG+",
+        "wins": 2137,
+        "games": 3606
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB) + Splash",
+        "short_name": "WBG+",
+        "wins": 830,
+        "games": 1500
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB) + Splash",
+        "short_name": "WUB+",
+        "wins": 80,
+        "games": 161
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR) + Splash",
+        "short_name": "UBR+",
+        "wins": 102,
+        "games": 180
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG) + Splash",
+        "short_name": "BRG+",
+        "wins": 245,
+        "games": 427
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW) + Splash",
+        "short_name": "WRG+",
+        "wins": 147,
+        "games": 279
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU) + Splash",
+        "short_name": "WUG+",
+        "wins": 571,
+        "games": 997
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color",
+        "short_name": 4,
+        "wins": 165,
+        "games": 300
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR)",
+        "short_name": "WUBR",
+        "wins": 7,
+        "games": 14
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG)",
+        "short_name": "UBRG",
+        "wins": 60,
+        "games": 112
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW)",
+        "short_name": "WBRG",
+        "wins": 22,
+        "games": 49
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU)",
+        "short_name": "WURG",
+        "wins": 32,
+        "games": 52
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB)",
+        "short_name": "WUBG",
+        "wins": 44,
+        "games": 73
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color + Splash",
+        "short_name": "4+",
+        "wins": 418,
+        "games": 739
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR) + Splash",
+        "short_name": "WUBR+",
+        "wins": 15,
+        "games": 27
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG) + Splash",
+        "short_name": "UBRG+",
+        "wins": 174,
+        "games": 293
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW) + Splash",
+        "short_name": "WBRG+",
+        "wins": 36,
+        "games": 61
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU) + Splash",
+        "short_name": "WURG+",
+        "wins": 73,
+        "games": 135
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB) + Splash",
+        "short_name": "WUBG+",
+        "wins": 120,
+        "games": 223
+      },
+      {
+        "is_summary": true,
+        "color_name": "Five-color",
+        "short_name": 5,
+        "wins": 12,
+        "games": 25
+      },
+      {
+        "is_summary": false,
+        "color_name": "All Colors (WUBRG)",
+        "short_name": "WUBRG",
+        "wins": 12,
+        "games": 25
+      },
+      {
+        "is_summary": true,
+        "color_name": "All Decks",
+        "short_name": "All",
+        "wins": 181098,
+        "games": 321490
+      }
+    ]
+  },
+  "ratingMode": "full-rating-snapshot",
+  "fullPrintWRCount": 0,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Atmt+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:48:17.701748+00:00",
+  "inputSHA256": "160f123ce194935380b41538912d077967eb56eb5addada9a651d349e2d336aa",
+  "statisticsSHA256": "cf295369a1f5c7676d22742f3aae1b64cf328ce1d27f6a4637fa02785f8ec162",
+  "apiTotal": 320,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "7add9a4bca263f9dc1da8ad46910643ecd8841c37f8ae2576dc9b156ce5b27f7",
+  "specialPools": {
+    "spg": 0,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 320,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 94,
+      "uncommon": 68,
+      "rare": 106,
+      "mythic": 52
+    },
+    "uniqueOracles": 195,
+    "samples": [
+      {
+        "id": "bc0f5ca8-47bd-4451-8fd1-a312ff7d31ec",
+        "oracle_id": "a9d68cf5-3055-4ec9-9893-244bfd7046be",
+        "name": "Action News Crew",
+        "rarity": "common",
+        "type_line": "Creature — Human Citizen",
+        "booster": false,
+        "collector_number": "1"
+      },
+      {
+        "id": "9c769202-178c-442a-a9e2-aa08b5ae5c9a",
+        "oracle_id": "f33217cc-175f-45e8-bc69-801f41cb4495",
+        "name": "Agent Bishop, Man in Black",
+        "rarity": "rare",
+        "type_line": "Legendary Creature — Human Soldier",
+        "booster": false,
+        "collector_number": "2"
+      },
+      {
+        "id": "a9c717bf-0b1d-4234-8909-22488aed7379",
+        "oracle_id": "f33217cc-175f-45e8-bc69-801f41cb4495",
+        "name": "Agent Bishop, Man in Black",
+        "rarity": "rare",
+        "type_line": "Legendary Creature — Human Soldier",
+        "booster": false,
+        "collector_number": "258"
+      }
+    ]
+  },
+  "rawCardCount": 320,
+  "draftPoolCount": 195,
+  "excludedNonDraft": 0,
+  "performanceVariantsCollapsed": 125,
+  "packEligibility": {
+    "officialVerified": false,
+    "method": "UNVERIFIED all main-set oracle-unique cards; booster flag bypassed ONLY for diagnostic simulation"
+  },
+  "wrCount": 0,
+  "missingWR": 195,
+  "joinMethods": {
+    "name": 189,
+    "unmatched": 6
+  },
+  "ratingRecordsNotMatchedToDraftPool": 21,
+  "cardKinds": {
+    "lands": 13,
+    "basicLands": 5,
+    "creatures": 117,
+    "multicolor": 33,
+    "colorless": 24,
+    "doubleFaced": 0
+  },
+  "ratings": {
+    "minimum": 12,
+    "maximum": 55.7,
+    "invalid": [],
+    "missingStructuralFields": 0,
+    "extremes": []
+  },
+  "scores": {
+    "mean": 67.00875,
+    "atMost40": 0,
+    "median": 67,
+    "standardDeviation": 4.302751844750057,
+    "min": 44,
+    "max": 77,
+    "buckets": {
+      "<40": 0,
+      "40-49": 5,
+      "50-59": 24,
+      "60-69": 556,
+      "70-79": 215,
+      "80-89": 0,
+      ">=90": 0
+    }
+  },
+  "colorPicks": {
+    "G": 4928,
+    "W": 4977,
+    "multicolor": 5463,
+    "B": 4929,
+    "U": 4911,
+    "C": 3604,
+    "R": 4788
+  },
+  "finalColorAdoption": {
+    "W": {
+      "decks": 280,
+      "rate": 0.35
+    },
+    "U": {
+      "decks": 322,
+      "rate": 0.4025
+    },
+    "B": {
+      "decks": 351,
+      "rate": 0.43875
+    },
+    "R": {
+      "decks": 332,
+      "rate": 0.415
+    },
+    "G": {
+      "decks": 315,
+      "rate": 0.39375
+    }
+  },
+  "archetypes": {
+    "WU": 47,
+    "UB": 82,
+    "BR": 74,
+    "RG": 80,
+    "GW": 51,
+    "WB": 104,
+    "UR": 100,
+    "BG": 91,
+    "RW": 78,
+    "GU": 93
+  },
+  "mainPairChangesAfterP1P10": 126,
+  "earlyCommitAtP1P5": 0,
+  "landCounts": {
+    "1": 2400
+  },
+  "packRarityCounts": {
+    "common": 21629,
+    "uncommon": 8880,
+    "rare": 2627,
+    "mythic": 464
+  },
+  "packRarityRates": {
+    "common": 0.643720238095238,
+    "uncommon": 0.2642857142857143,
+    "rare": 0.07818452380952381,
+    "mythic": 0.01380952380952381
+  },
+  "slotCounts": {
+    "normal": 33600,
+    "special": 0
+  },
+  "slotRates": {
+    "normal": 1,
+    "special": 0
+  },
+  "scryfallIdMatchRate": 0,
+  "constructionRates": {
+    "playable23": 0.98125,
+    "twoColorComplete": 0.98125,
+    "splash": 0,
+    "averageLands": 17
+  },
+  "attainmentComparison": "ATA comparison enabled; ALSA kept separate",
+  "ataComparison": {
+    "status": "diagnostic-only-unverified-collation",
+    "cards": 0,
+    "pearson": null,
+    "spearman": null,
+    "pickedEarlier": [],
+    "pickedLater": []
+  },
+  "manaSummary": {
+    "decks": 800,
+    "earlyDoublePipLow": 86,
+    "splashLow": 0,
+    "zeroSources": 0,
+    "moreThanTwoColors": 0,
+    "incomplete": 15,
+    "twoColorComplete": 785,
+    "splash": 0,
+    "playable23": 785,
+    "totalLands": 13600,
+    "unmodelledCosts": 548,
+    "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled"
+  },
+  "extremeDecks": [
+    {
+      "score": 44,
+      "colors": "BR",
+      "parts": [
+        [
+          "カードパワー",
+          7,
+          30,
+          "単体評価平均 48.5（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          12,
+          15,
+          "採用候補の呪文 19 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          10,
+          15,
+          "2/3/4マナの生物 4/2/2・6マナ以上 0"
+        ],
+        [
+          "クリーチャー",
+          9,
+          10,
+          "14枚"
+        ],
+        [
+          "除去・干渉",
+          3,
+          10,
+          "種類別の重み合計 4.0"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          2,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：B8/R9・非基本 0・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "003e5dc6-8b26-4a0a-a50b-5f0806a7bacd",
+          "name": "South Wind Avatar"
+        },
+        {
+          "key": "49598fd5-2aad-4974-b499-38b60fc371b6",
+          "name": "Null Group Biological Assets"
+        },
+        {
+          "key": "ade54bb7-3df8-4578-add8-1f85afee57ab",
+          "name": "General Traag, Heart of Stone"
+        },
+        {
+          "key": "d1edb950-a118-4b4d-a0ef-9a6683d74c9f",
+          "name": "Purple Dragon Punks"
+        },
+        {
+          "key": "9076a886-efe0-4c99-8661-f0fd7a7b3129",
+          "name": "Paramecia Coloniex"
+        },
+        {
+          "key": "eaf194a7-d95f-4738-9052-92ad00443a76",
+          "name": "Raphael, Most Attitude"
+        },
+        {
+          "key": "d14f620c-0fbd-485c-9fe4-34949e742147",
+          "name": "Oroku Saki, Shredder Rising"
+        },
+        {
+          "key": "8abff7b5-fe27-46bd-b951-b5d9f93f3a14",
+          "name": "Slash, Reptile Rampager"
+        },
+        {
+          "key": "59d96fc0-6580-43c2-8c6a-dcf983644561",
+          "name": "Shredder, Unrelenting"
+        },
+        {
+          "key": "2c72e6d2-bbb0-42de-b465-438d584cbddc",
+          "name": "Raphael, Tough Turtle"
+        },
+        {
+          "key": "39c813e1-0e26-440a-b9bd-e781f7576b8b",
+          "name": "Bebop, Warthog Warrior"
+        },
+        {
+          "key": "b4c4fdb9-e034-49c0-9f7f-07e8cae19eb2",
+          "name": "Casey Jones, Jury-Rig Justiciar"
+        },
+        {
+          "key": "6074632b-4520-4ae8-bcdc-26b1eff71af9",
+          "name": "Savanti Romero, Time's Exile"
+        },
+        {
+          "key": "9665f940-c0a4-4d3e-b889-8049cf549a4f",
+          "name": "Spicy Oatmeal Pizza"
+        },
+        {
+          "key": "e88b1520-aa9a-41ee-9036-4d4bebd1a0c0",
+          "name": "Old Hob, Alleycat Blues"
+        },
+        {
+          "key": "bae5dc68-1fd1-428d-bee7-c238e07b21ea",
+          "name": "Mouser Attack!"
+        },
+        {
+          "key": "bda5d0aa-3ed0-4f8c-80ae-f9cb8ed0ac82",
+          "name": "Shredder's Armor"
+        },
+        {
+          "key": "e9975888-c75f-471e-a70d-17449e92226d",
+          "name": "Pain 101"
+        },
+        {
+          "key": "e9975888-c75f-471e-a70d-17449e92226d",
+          "name": "Pain 101"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 36,
+          "missingSpells": 4,
+          "spellCount": 19,
+          "landCount": 17,
+          "basicCount": 17,
+          "basics": {
+            "B": 8,
+            "R": 9
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [],
+          "weightedColorDemand": {
+            "B": 12.5,
+            "R": 15
+          },
+          "splashColors": [],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "South Wind Avatar",
+            "color": "B",
+            "required": 1,
+            "cmc": 4,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Null Group Biological Assets",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.9262720978084755,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "General Traag, Heart of Stone",
+            "color": "R",
+            "required": 2,
+            "cmc": 5,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.7907078905530918,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Purple Dragon Punks",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Paramecia Coloniex",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Raphael, Most Attitude",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Oroku Saki, Shredder Rising",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Slash, Reptile Rampager",
+            "color": "R",
+            "required": 2,
+            "cmc": 5,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.7907078905530918,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Shredder, Unrelenting",
+            "color": "B",
+            "required": 1,
+            "cmc": 5,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Raphael, Tough Turtle",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Bebop, Warthog Warrior",
+            "color": "B",
+            "required": 1,
+            "cmc": 5,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Casey Jones, Jury-Rig Justiciar",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Savanti Romero, Time's Exile",
+            "color": "B",
+            "required": 2,
+            "cmc": 5,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.7209438540707891,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Spicy Oatmeal Pizza",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.9262720978084755,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Old Hob, Alleycat Blues",
+            "color": "R",
+            "required": 1,
+            "cmc": 5,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Mouser Attack!",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Shredder's Armor",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Pain 101",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Pain 101",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          }
+        ],
+        "unmodelledCosts": 0,
+        "earlyDoublePipLow": 0,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": false,
+        "incomplete": true
+      }
+    },
+    {
+      "score": 77,
+      "colors": "BR",
+      "parts": [
+        [
+          "カードパワー",
+          9,
+          30,
+          "単体評価平均 48.8（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          15,
+          15,
+          "採用候補の呪文 23 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          14,
+          15,
+          "2/3/4マナの生物 6/4/2・6マナ以上 0"
+        ],
+        [
+          "クリーチャー",
+          10,
+          10,
+          "15枚"
+        ],
+        [
+          "除去・干渉",
+          10,
+          10,
+          "種類別の重み合計 13.5"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          9,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：B6/R11・非基本 0・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "2043fbde-48c4-4a77-8911-8991d77de1eb",
+          "name": "Foot Mystic"
+        },
+        {
+          "key": "49598fd5-2aad-4974-b499-38b60fc371b6",
+          "name": "Null Group Biological Assets"
+        },
+        {
+          "key": "49598fd5-2aad-4974-b499-38b60fc371b6",
+          "name": "Null Group Biological Assets"
+        },
+        {
+          "key": "49598fd5-2aad-4974-b499-38b60fc371b6",
+          "name": "Null Group Biological Assets"
+        },
+        {
+          "key": "c596b847-4e05-4279-8675-b4e39cb3dc91",
+          "name": "Manhole Missile"
+        },
+        {
+          "key": "c596b847-4e05-4279-8675-b4e39cb3dc91",
+          "name": "Manhole Missile"
+        },
+        {
+          "key": "39c813e1-0e26-440a-b9bd-e781f7576b8b",
+          "name": "Bebop, Warthog Warrior"
+        },
+        {
+          "key": "10185447-a13f-40d8-a8b6-39ce801f2fc0",
+          "name": "Stomped by the Foot"
+        },
+        {
+          "key": "404e958b-ead9-4ec7-b786-7b3d65e29967",
+          "name": "Mouser Foundry"
+        },
+        {
+          "key": "404e958b-ead9-4ec7-b786-7b3d65e29967",
+          "name": "Mouser Foundry"
+        },
+        {
+          "key": "1f097c91-6c2e-410f-8c8f-c021f39491af",
+          "name": "Henchbots"
+        },
+        {
+          "key": "9076a886-efe0-4c99-8661-f0fd7a7b3129",
+          "name": "Paramecia Coloniex"
+        },
+        {
+          "key": "0a8e5c48-885d-4ea8-9c68-a3e9213d4289",
+          "name": "Tunnel Rats"
+        },
+        {
+          "key": "9076a886-efe0-4c99-8661-f0fd7a7b3129",
+          "name": "Paramecia Coloniex"
+        },
+        {
+          "key": "14079f05-fbc1-401c-9008-da678656b4c6",
+          "name": "Bot Bashing Time"
+        },
+        {
+          "key": "73413bd5-8c40-4d45-8f05-c20c39ee4017",
+          "name": "Madame Null, Power Broker"
+        },
+        {
+          "key": "d944d33d-0a95-4d0d-96ce-49d02500227d",
+          "name": "Zog, Triceraton Castaway"
+        },
+        {
+          "key": "d944d33d-0a95-4d0d-96ce-49d02500227d",
+          "name": "Zog, Triceraton Castaway"
+        },
+        {
+          "key": "392a71c7-8f6d-46b8-bcc3-613e086d86ed",
+          "name": "Wingnut, Bat on the Belfry"
+        },
+        {
+          "key": "392a71c7-8f6d-46b8-bcc3-613e086d86ed",
+          "name": "Wingnut, Bat on the Belfry"
+        },
+        {
+          "key": "bae5dc68-1fd1-428d-bee7-c238e07b21ea",
+          "name": "Mouser Attack!"
+        },
+        {
+          "key": "5dd31fcd-72db-4daf-b127-ceb27bf25a94",
+          "name": "Shredder's Revenge"
+        },
+        {
+          "key": "2c72e6d2-bbb0-42de-b465-438d584cbddc",
+          "name": "Raphael, Tough Turtle"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 40,
+          "missingSpells": 0,
+          "spellCount": 23,
+          "landCount": 17,
+          "basicCount": 17,
+          "basics": {
+            "B": 6,
+            "R": 11
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [],
+          "weightedColorDemand": {
+            "B": 11,
+            "R": 19.5
+          },
+          "splashColors": [],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "Foot Mystic",
+            "color": "B",
+            "required": 1,
+            "cmc": 4,
+            "sources": 6,
+            "splash": false,
+            "probability": 0.8453058321479374,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Null Group Biological Assets",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Null Group Biological Assets",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Null Group Biological Assets",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Manhole Missile",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Manhole Missile",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Bebop, Warthog Warrior",
+            "color": "B",
+            "required": 1,
+            "cmc": 5,
+            "sources": 6,
+            "splash": false,
+            "probability": 0.8762446657183499,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Stomped by the Foot",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 6,
+            "splash": false,
+            "probability": 0.7639129007550061,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Mouser Foundry",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Mouser Foundry",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Paramecia Coloniex",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 6,
+            "splash": false,
+            "probability": 0.7639129007550061,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Tunnel Rats",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 6,
+            "splash": false,
+            "probability": 0.7639129007550061,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Paramecia Coloniex",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 6,
+            "splash": false,
+            "probability": 0.7639129007550061,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Bot Bashing Time",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Madame Null, Power Broker",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 6,
+            "splash": false,
+            "probability": 0.8081792318634424,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Zog, Triceraton Castaway",
+            "color": "R",
+            "required": 1,
+            "cmc": 5,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9850344889481512,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Zog, Triceraton Castaway",
+            "color": "R",
+            "required": 1,
+            "cmc": 5,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9850344889481512,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Wingnut, Bat on the Belfry",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Wingnut, Bat on the Belfry",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Mouser Attack!",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Shredder's Revenge",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 6,
+            "splash": false,
+            "probability": 0.8081792318634424,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Raphael, Tough Turtle",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          }
+        ],
+        "unmodelledCosts": 0,
+        "earlyDoublePipLow": 0,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": false,
+        "incomplete": false
+      }
+    }
+  ],
+  "anomalies": [
+    {
+      "type": "highP1P1",
+      "card": "Buzz Bots",
+      "rate": 0.8095238095238095
+    },
+    {
+      "type": "highP1P1",
+      "card": "General Traag, Heart of Stone",
+      "rate": 0.9629629629629629
+    }
+  ],
+  "savedWRIntegrity": {
+    "checked": 210,
+    "nonFinite": 0
+  }
+}

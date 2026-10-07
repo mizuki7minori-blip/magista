@@ -1,0 +1,1502 @@
+{
+  "officialCollation": {
+    "status": "official-unverified",
+    "source": null,
+    "cards": 14,
+    "common": 7,
+    "uncommon": 3,
+    "rareSlots": 1,
+    "mythicChance": 0.14285714285714285,
+    "basicSlots": 1,
+    "wildcardSlots": 2,
+    "wildcardWeights": [
+      0.391,
+      0.391,
+      0.195,
+      0.019
+    ],
+    "foil": null,
+    "doubleFacedSlot": null,
+    "bonusSheet": {
+      "pool": "archive",
+      "chance": 1,
+      "status": "legacy-unverified"
+    },
+    "specialGuest": null,
+    "maxLands": null
+  },
+  "savedWRCount": 60,
+  "fullCardCount": 368,
+  "wrCoverage": 0,
+  "drafts": 100,
+  "cpus": 800,
+  "totalPicks": 33600,
+  "errors": 0,
+  "status": "measured-card-pool",
+  "reason": "No complete card snapshot; fetch inputs in a network-enabled environment.",
+  "ratingSource": "https://www.17lands.com/card_ratings/data?expansion=SOS&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07",
+  "ratingFetchedAt": "2026-10-07T06:48:04.160964+00:00",
+  "ratingValidation": {
+    "duplicates": 0,
+    "invalidValues": 0,
+    "missingIdentity": 0,
+    "missingMetrics": {
+      "wr": 341,
+      "gih_wr": 341,
+      "oh_wr": 341,
+      "games": 0,
+      "ata": 341,
+      "alsa": 341,
+      "usage": 341
+    },
+    "missingValues": 2046
+  },
+  "ratingWindow": {
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07"
+  },
+  "actualColorResults": {
+    "set": "sos",
+    "complete": true,
+    "source": "https://www.17lands.com/color_ratings/data?expansion=SOS&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07&combine_splash=false",
+    "fetchedAt": "2026-10-07T06:48:07.430891+00:00",
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07",
+    "rows": [
+      {
+        "is_summary": true,
+        "color_name": "Mono-color",
+        "short_name": 1,
+        "wins": 86,
+        "games": 158
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White",
+        "short_name": "W",
+        "wins": 26,
+        "games": 43
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue",
+        "short_name": "U",
+        "wins": 11,
+        "games": 19
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black",
+        "short_name": "B",
+        "wins": 28,
+        "games": 47
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red",
+        "short_name": "R",
+        "wins": 18,
+        "games": 43
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green",
+        "short_name": "G",
+        "wins": 3,
+        "games": 6
+      },
+      {
+        "is_summary": true,
+        "color_name": "Mono-color + Splash",
+        "short_name": "1+",
+        "wins": 413,
+        "games": 768
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White + Splash",
+        "short_name": "W+",
+        "wins": 39,
+        "games": 73
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue + Splash",
+        "short_name": "U+",
+        "wins": 209,
+        "games": 382
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black + Splash",
+        "short_name": "B+",
+        "wins": 15,
+        "games": 37
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red + Splash",
+        "short_name": "R+",
+        "wins": 54,
+        "games": 111
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green + Splash",
+        "short_name": "G+",
+        "wins": 96,
+        "games": 165
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color",
+        "short_name": 2,
+        "wins": 339487,
+        "games": 602038
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU)",
+        "short_name": "WU",
+        "wins": 81,
+        "games": 191
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB)",
+        "short_name": "UB",
+        "wins": 123,
+        "games": 259
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR)",
+        "short_name": "BR",
+        "wins": 92,
+        "games": 196
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG)",
+        "short_name": "RG",
+        "wins": 103,
+        "games": 210
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW)",
+        "short_name": "WG",
+        "wins": 103,
+        "games": 195
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB)",
+        "short_name": "WB",
+        "wins": 101847,
+        "games": 175923
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG)",
+        "short_name": "BG",
+        "wins": 52264,
+        "games": 94979
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU)",
+        "short_name": "UG",
+        "wins": 19219,
+        "games": 35676
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR)",
+        "short_name": "UR",
+        "wins": 55529,
+        "games": 103083
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW)",
+        "short_name": "WR",
+        "wins": 110126,
+        "games": 191326
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color + Splash",
+        "short_name": "2+",
+        "wins": 165579,
+        "games": 307570
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU) + Splash",
+        "short_name": "WU+",
+        "wins": 141,
+        "games": 276
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB) + Splash",
+        "short_name": "UB+",
+        "wins": 408,
+        "games": 827
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR) + Splash",
+        "short_name": "BR+",
+        "wins": 261,
+        "games": 502
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG) + Splash",
+        "short_name": "RG+",
+        "wins": 630,
+        "games": 1164
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW) + Splash",
+        "short_name": "WG+",
+        "wins": 151,
+        "games": 299
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB) + Splash",
+        "short_name": "WB+",
+        "wins": 13222,
+        "games": 24956
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG) + Splash",
+        "short_name": "BG+",
+        "wins": 26950,
+        "games": 51569
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU) + Splash",
+        "short_name": "UG+",
+        "wins": 40566,
+        "games": 73886
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR) + Splash",
+        "short_name": "UR+",
+        "wins": 60969,
+        "games": 112674
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW) + Splash",
+        "short_name": "WR+",
+        "wins": 22281,
+        "games": 41417
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color",
+        "short_name": 3,
+        "wins": 61658,
+        "games": 120206
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR)",
+        "short_name": "WUR",
+        "wins": 13294,
+        "games": 24933
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG)",
+        "short_name": "UBG",
+        "wins": 13683,
+        "games": 26617
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW)",
+        "short_name": "WBR",
+        "wins": 8648,
+        "games": 17336
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU)",
+        "short_name": "URG",
+        "wins": 20591,
+        "games": 39927
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB)",
+        "short_name": "WBG",
+        "wins": 4490,
+        "games": 9438
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB)",
+        "short_name": "WUB",
+        "wins": 112,
+        "games": 254
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR)",
+        "short_name": "UBR",
+        "wins": 418,
+        "games": 796
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG)",
+        "short_name": "BRG",
+        "wins": 164,
+        "games": 335
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW)",
+        "short_name": "WRG",
+        "wins": 137,
+        "games": 293
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU)",
+        "short_name": "WUG",
+        "wins": 121,
+        "games": 277
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color + Splash",
+        "short_name": "3+",
+        "wins": 53727,
+        "games": 99758
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR) + Splash",
+        "short_name": "WUR+",
+        "wins": 8050,
+        "games": 14617
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG) + Splash",
+        "short_name": "UBG+",
+        "wins": 10108,
+        "games": 18695
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW) + Splash",
+        "short_name": "WBR+",
+        "wins": 1172,
+        "games": 2260
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU) + Splash",
+        "short_name": "URG+",
+        "wins": 29316,
+        "games": 54638
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB) + Splash",
+        "short_name": "WBG+",
+        "wins": 1215,
+        "games": 2441
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB) + Splash",
+        "short_name": "WUB+",
+        "wins": 135,
+        "games": 276
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR) + Splash",
+        "short_name": "UBR+",
+        "wins": 1728,
+        "games": 3103
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG) + Splash",
+        "short_name": "BRG+",
+        "wins": 768,
+        "games": 1445
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW) + Splash",
+        "short_name": "WRG+",
+        "wins": 697,
+        "games": 1267
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU) + Splash",
+        "short_name": "WUG+",
+        "wins": 538,
+        "games": 1016
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color",
+        "short_name": 4,
+        "wins": 5010,
+        "games": 9720
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR)",
+        "short_name": "WUBR",
+        "wins": 300,
+        "games": 598
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG)",
+        "short_name": "UBRG",
+        "wins": 2628,
+        "games": 5003
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW)",
+        "short_name": "WBRG",
+        "wins": 318,
+        "games": 681
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU)",
+        "short_name": "WURG",
+        "wins": 1533,
+        "games": 2932
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB)",
+        "short_name": "WUBG",
+        "wins": 231,
+        "games": 506
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color + Splash",
+        "short_name": "4+",
+        "wins": 5813,
+        "games": 11030
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR) + Splash",
+        "short_name": "WUBR+",
+        "wins": 475,
+        "games": 876
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG) + Splash",
+        "short_name": "UBRG+",
+        "wins": 2528,
+        "games": 4880
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW) + Splash",
+        "short_name": "WBRG+",
+        "wins": 389,
+        "games": 756
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU) + Splash",
+        "short_name": "WURG+",
+        "wins": 2022,
+        "games": 3781
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB) + Splash",
+        "short_name": "WUBG+",
+        "wins": 399,
+        "games": 737
+      },
+      {
+        "is_summary": true,
+        "color_name": "Five-color",
+        "short_name": 5,
+        "wins": 715,
+        "games": 1502
+      },
+      {
+        "is_summary": false,
+        "color_name": "All Colors (WUBRG)",
+        "short_name": "WUBRG",
+        "wins": 715,
+        "games": 1502
+      },
+      {
+        "is_summary": true,
+        "color_name": "All Decks",
+        "short_name": "All",
+        "wins": 632488,
+        "games": 1152750
+      }
+    ]
+  },
+  "ratingMode": "full-rating-snapshot",
+  "fullPrintWRCount": 0,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Asos+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:48:02.787903+00:00",
+  "inputSHA256": "19c20a7c79df772772085a57fd1030bf6bc2503b70250d8b7e2d1f8eace68d6b",
+  "statisticsSHA256": "7ccf505e112fe06308cde12c4b264146384ac1315393208268137291df6ecff5",
+  "apiTotal": 368,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "7add9a4bca263f9dc1da8ad46910643ecd8841c37f8ae2576dc9b156ce5b27f7",
+  "specialPools": {
+    "spg": 0,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 368,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 101,
+      "uncommon": 105,
+      "rare": 121,
+      "mythic": 41
+    },
+    "uniqueOracles": 271,
+    "samples": [
+      {
+        "id": "797131cf-d80d-4050-bebd-2ce1d7fae5d0",
+        "oracle_id": "a0657586-0404-4bb0-a92d-25f040d560c1",
+        "name": "Aberrant Manawurm",
+        "rarity": "uncommon",
+        "type_line": "Creature — Wurm",
+        "booster": false,
+        "collector_number": "138"
+      },
+      {
+        "id": "77285d12-e658-4eb3-ba13-ff202afab9c8",
+        "oracle_id": "2f5f46ed-b8aa-4864-bd20-17281d4632bf",
+        "name": "Abigale, Poet Laureate // Heroic Stanza",
+        "rarity": "uncommon",
+        "type_line": "Legendary Creature — Bird Bard // Sorcery",
+        "booster": false,
+        "collector_number": "170"
+      },
+      {
+        "id": "ea008094-d995-4740-9b39-c61049356c55",
+        "oracle_id": "bc899d5c-0a91-4f19-a3e4-3078ae966110",
+        "name": "Abstract Paintmage",
+        "rarity": "uncommon",
+        "type_line": "Creature — Djinn Sorcerer",
+        "booster": false,
+        "collector_number": "171"
+      }
+    ]
+  },
+  "rawCardCount": 368,
+  "draftPoolCount": 271,
+  "excludedNonDraft": 0,
+  "performanceVariantsCollapsed": 97,
+  "packEligibility": {
+    "officialVerified": false,
+    "method": "UNVERIFIED all main-set oracle-unique cards; booster flag bypassed ONLY for diagnostic simulation"
+  },
+  "wrCount": 0,
+  "missingWR": 271,
+  "joinMethods": {
+    "name": 266,
+    "unmatched": 5
+  },
+  "ratingRecordsNotMatchedToDraftPool": 75,
+  "cardKinds": {
+    "lands": 19,
+    "basicLands": 5,
+    "creatures": 138,
+    "multicolor": 77,
+    "colorless": 30,
+    "doubleFaced": 36
+  },
+  "ratings": {
+    "minimum": 12,
+    "maximum": 57.6,
+    "invalid": [],
+    "missingStructuralFields": 0,
+    "extremes": []
+  },
+  "scores": {
+    "mean": 61.0275,
+    "atMost40": 20,
+    "median": 62,
+    "standardDeviation": 6.605243655611809,
+    "min": 27,
+    "max": 76,
+    "buckets": {
+      "<40": 17,
+      "40-49": 22,
+      "50-59": 201,
+      "60-69": 523,
+      "70-79": 37,
+      "80-89": 0,
+      ">=90": 0
+    }
+  },
+  "colorPicks": {
+    "W": 4058,
+    "U": 4166,
+    "multicolor": 7571,
+    "G": 4066,
+    "B": 4070,
+    "R": 4021,
+    "C": 5648
+  },
+  "finalColorAdoption": {
+    "W": {
+      "decks": 403,
+      "rate": 0.50375
+    },
+    "U": {
+      "decks": 255,
+      "rate": 0.31875
+    },
+    "B": {
+      "decks": 320,
+      "rate": 0.4
+    },
+    "R": {
+      "decks": 305,
+      "rate": 0.38125
+    },
+    "G": {
+      "decks": 317,
+      "rate": 0.39625
+    }
+  },
+  "archetypes": {
+    "WU": 66,
+    "UB": 50,
+    "BR": 53,
+    "RG": 65,
+    "GW": 84,
+    "WB": 127,
+    "UR": 61,
+    "BG": 90,
+    "RW": 126,
+    "GU": 78
+  },
+  "mainPairChangesAfterP1P10": 135,
+  "earlyCommitAtP1P5": 0,
+  "landCounts": {
+    "1": 1122,
+    "2": 896,
+    "3": 314,
+    "4": 60,
+    "5": 8
+  },
+  "packRarityCounts": {
+    "common": 21128,
+    "uncommon": 9097,
+    "rare": 2965,
+    "mythic": 410
+  },
+  "packRarityRates": {
+    "common": 0.6288095238095238,
+    "uncommon": 0.27074404761904763,
+    "rare": 0.08824404761904762,
+    "mythic": 0.012202380952380952
+  },
+  "slotCounts": {
+    "normal": 33600,
+    "special": 0
+  },
+  "slotRates": {
+    "normal": 1,
+    "special": 0
+  },
+  "scryfallIdMatchRate": 0,
+  "constructionRates": {
+    "playable23": 0.88875,
+    "twoColorComplete": 0.88875,
+    "splash": 0,
+    "averageLands": 17
+  },
+  "attainmentComparison": "ATA comparison enabled; ALSA kept separate",
+  "ataComparison": {
+    "status": "diagnostic-only-unverified-collation",
+    "cards": 0,
+    "pearson": null,
+    "spearman": null,
+    "pickedEarlier": [],
+    "pickedLater": []
+  },
+  "manaSummary": {
+    "decks": 800,
+    "earlyDoublePipLow": 650,
+    "splashLow": 0,
+    "zeroSources": 0,
+    "moreThanTwoColors": 0,
+    "incomplete": 89,
+    "twoColorComplete": 711,
+    "splash": 0,
+    "playable23": 711,
+    "totalLands": 13600,
+    "unmodelledCosts": 499,
+    "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled"
+  },
+  "extremeDecks": [
+    {
+      "score": 27,
+      "colors": "BR",
+      "parts": [
+        [
+          "カードパワー",
+          5,
+          30,
+          "単体評価平均 48.5（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          9,
+          15,
+          "採用候補の呪文 14 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          9,
+          15,
+          "2/3/4マナの生物 2/3/2・6マナ以上 0"
+        ],
+        [
+          "クリーチャー",
+          6,
+          10,
+          "10枚"
+        ],
+        [
+          "除去・干渉",
+          5,
+          10,
+          "種類別の重み合計 6.0"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          0,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：R8/B8・非基本 1・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "485233bf-dc4b-4f31-8dfb-5054aee70c08",
+          "name": "Molten-Core Maestro"
+        },
+        {
+          "key": "2e80d632-cf84-4562-8c93-5850cceb5bec",
+          "name": "Tackle Artist"
+        },
+        {
+          "key": "9da7f9ec-872a-471d-8d60-5f4213f0204f",
+          "name": "Ulna Alley Shopkeep"
+        },
+        {
+          "key": "9da7f9ec-872a-471d-8d60-5f4213f0204f",
+          "name": "Ulna Alley Shopkeep"
+        },
+        {
+          "key": "140cb5cf-8aa2-457c-9d65-5acefea00195",
+          "name": "Eternal Student"
+        },
+        {
+          "key": "c531801c-acf0-45ae-a112-054cc5ccb6ed",
+          "name": "Burrog Banemaker"
+        },
+        {
+          "key": "23c3de07-8aa2-48e9-848c-50b5a40bd133",
+          "name": "Goblin Glasswright // Craft with Pride"
+        },
+        {
+          "key": "02125db4-4507-467a-ac0c-406de2c7d533",
+          "name": "Adventurous Eater // Have a Bite"
+        },
+        {
+          "key": "21a094d6-de3d-48d4-a35d-b99617da55db",
+          "name": "Sneering Shadewriter"
+        },
+        {
+          "key": "f0163420-2f91-493c-bad4-2cd33e9856bf",
+          "name": "Tome Blast"
+        },
+        {
+          "key": "0c061a1b-206a-4fcc-92e5-30c8ed9d65c1",
+          "name": "Artistic Process"
+        },
+        {
+          "key": "0c061a1b-206a-4fcc-92e5-30c8ed9d65c1",
+          "name": "Artistic Process"
+        },
+        {
+          "key": "6a68fcaf-b1e8-451d-8e1c-b47db55c83cc",
+          "name": "Rancorous Archaic"
+        },
+        {
+          "key": "d604c75e-9d81-49de-80bc-08f4ef3ee975",
+          "name": "Potioner's Trove"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 31,
+          "missingSpells": 9,
+          "spellCount": 14,
+          "landCount": 17,
+          "basicCount": 16,
+          "basics": {
+            "R": 8,
+            "B": 8
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [
+            {
+              "key": "a32e08fa-bea4-4ba9-a126-9bf0a91f67e2",
+              "name": "Fields of Strife",
+              "producedMana": [
+                "R",
+                "W"
+              ]
+            }
+          ],
+          "weightedColorDemand": {
+            "R": 11,
+            "B": 9.5
+          },
+          "splashColors": [],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "Molten-Core Maestro",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Tackle Artist",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Ulna Alley Shopkeep",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Ulna Alley Shopkeep",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Eternal Student",
+            "color": "B",
+            "required": 1,
+            "cmc": 4,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Burrog Banemaker",
+            "color": "B",
+            "required": 1,
+            "cmc": 1,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Goblin Glasswright // Craft with Pride",
+            "color": "R",
+            "required": 2,
+            "cmc": 2,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.589688196499342,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Adventurous Eater // Have a Bite",
+            "color": "B",
+            "required": 2,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.589688196499342,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Sneering Shadewriter",
+            "color": "B",
+            "required": 1,
+            "cmc": 5,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Tome Blast",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Artistic Process",
+            "color": "R",
+            "required": 2,
+            "cmc": 5,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.7907078905530918,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Artistic Process",
+            "color": "R",
+            "required": 2,
+            "cmc": 5,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.7907078905530918,
+            "landsByTurnProbability": 0.5463164777680907
+          }
+        ],
+        "unmodelledCosts": 0,
+        "earlyDoublePipLow": 2,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": false,
+        "incomplete": true
+      }
+    },
+    {
+      "score": 76,
+      "colors": "RW",
+      "parts": [
+        [
+          "カードパワー",
+          10,
+          30,
+          "単体評価平均 50.0（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          15,
+          15,
+          "採用候補の呪文 23 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          14,
+          15,
+          "2/3/4マナの生物 7/6/2・6マナ以上 0"
+        ],
+        [
+          "クリーチャー",
+          9,
+          10,
+          "16枚"
+        ],
+        [
+          "除去・干渉",
+          10,
+          10,
+          "種類別の重み合計 21.0"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          8,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：W6/R10・非基本 1・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "57f58d52-0014-4cac-94fc-668063cc147a",
+          "name": "Shattered Acolyte"
+        },
+        {
+          "key": "57f58d52-0014-4cac-94fc-668063cc147a",
+          "name": "Shattered Acolyte"
+        },
+        {
+          "key": "a02f9f42-4c3a-4a97-8667-68ba4617f193",
+          "name": "Practiced Scrollsmith"
+        },
+        {
+          "key": "a02f9f42-4c3a-4a97-8667-68ba4617f193",
+          "name": "Practiced Scrollsmith"
+        },
+        {
+          "key": "a02f9f42-4c3a-4a97-8667-68ba4617f193",
+          "name": "Practiced Scrollsmith"
+        },
+        {
+          "key": "5d46e85f-4a04-48b1-afe9-3a47678041d4",
+          "name": "Startled Relic Sloth"
+        },
+        {
+          "key": "b0b9a7c1-f515-4627-a050-b595d6641611",
+          "name": "Charging Strifeknight"
+        },
+        {
+          "key": "070aa6c7-4741-47de-b68a-629aa4201ac0",
+          "name": "Eager Glyphmage"
+        },
+        {
+          "key": "f35aa497-bd0f-4642-8713-820b9f014da5",
+          "name": "Rubble Rouser"
+        },
+        {
+          "key": "921252df-6679-4f70-ae26-d4956c90b7df",
+          "name": "Hardened Academic"
+        },
+        {
+          "key": "23c3de07-8aa2-48e9-848c-50b5a40bd133",
+          "name": "Goblin Glasswright // Craft with Pride"
+        },
+        {
+          "key": "295f8b8d-102a-47af-93c2-f8182c5f11ca",
+          "name": "Ascendant Dustspeaker"
+        },
+        {
+          "key": "43b5794a-4ed6-471d-bc45-22fac486895d",
+          "name": "Thunderdrum Soloist"
+        },
+        {
+          "key": "34c572b2-dccf-43d9-a9c4-846653ad22da",
+          "name": "Spirit Mascot"
+        },
+        {
+          "key": "34c572b2-dccf-43d9-a9c4-846653ad22da",
+          "name": "Spirit Mascot"
+        },
+        {
+          "key": "329f6434-8f1b-4a10-8feb-2a9dc5f2712b",
+          "name": "Heated Argument"
+        },
+        {
+          "key": "262c5ac9-af41-42d1-a53a-8a671eedd5a6",
+          "name": "Duel Tactics"
+        },
+        {
+          "key": "9d059345-1a2f-4ecb-b419-3873ebadf318",
+          "name": "Unsubtle Mockery"
+        },
+        {
+          "key": "58f83528-9110-4895-b5ea-51b90af30a8d",
+          "name": "Seize the Spoils"
+        },
+        {
+          "key": "58f83528-9110-4895-b5ea-51b90af30a8d",
+          "name": "Seize the Spoils"
+        },
+        {
+          "key": "e85c6bd2-db15-4052-88c0-3ae25414f0ca",
+          "name": "Strife Scholar // Awaken the Ages"
+        },
+        {
+          "key": "4384996f-aeaa-41ac-aa0e-12d72c887731",
+          "name": "Pursue the Past"
+        },
+        {
+          "key": "4384996f-aeaa-41ac-aa0e-12d72c887731",
+          "name": "Pursue the Past"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 40,
+          "missingSpells": 0,
+          "spellCount": 23,
+          "landCount": 17,
+          "basicCount": 16,
+          "basics": {
+            "W": 6,
+            "R": 10
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [
+            {
+              "key": "349ea6c7-6b3e-417f-b082-b712e2b1635b",
+              "name": "Forum of Amity",
+              "producedMana": [
+                "B",
+                "W"
+              ]
+            }
+          ],
+          "weightedColorDemand": {
+            "W": 22.5,
+            "R": 35
+          },
+          "splashColors": [],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "Shattered Acolyte",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Shattered Acolyte",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Startled Relic Sloth",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9645553685614107,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Startled Relic Sloth",
+            "color": "W",
+            "required": 1,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Charging Strifeknight",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Eager Glyphmage",
+            "color": "W",
+            "required": 1,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Rubble Rouser",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Hardened Academic",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Hardened Academic",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Goblin Glasswright // Craft with Pride",
+            "color": "R",
+            "required": 2,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.6591764858018727,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Ascendant Dustspeaker",
+            "color": "W",
+            "required": 1,
+            "cmc": 5,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.9162831562212367,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Thunderdrum Soloist",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Spirit Mascot",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Spirit Mascot",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Spirit Mascot",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Spirit Mascot",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Heated Argument",
+            "color": "R",
+            "required": 1,
+            "cmc": 5,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Duel Tactics",
+            "color": "R",
+            "required": 1,
+            "cmc": 1,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Unsubtle Mockery",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Seize the Spoils",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Seize the Spoils",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Strife Scholar // Awaken the Ages",
+            "color": "R",
+            "required": 2,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.7336282243402987,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Pursue the Past",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Pursue the Past",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Pursue the Past",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Pursue the Past",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          }
+        ],
+        "unmodelledCosts": 3,
+        "earlyDoublePipLow": 1,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": false,
+        "incomplete": false
+      }
+    }
+  ],
+  "anomalies": [
+    {
+      "type": "highP1P1",
+      "card": "Shattered Acolyte",
+      "rate": 1
+    },
+    {
+      "type": "highP1P1",
+      "card": "Elite Interceptor // Rejoinder",
+      "rate": 0.8133333333333334
+    }
+  ],
+  "savedWRIntegrity": {
+    "checked": 341,
+    "nonFinite": 0
+  }
+}

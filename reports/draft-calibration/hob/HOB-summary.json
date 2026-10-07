@@ -1,0 +1,1522 @@
+{
+  "officialCollation": {
+    "status": "official-unverified",
+    "source": null,
+    "cards": 14,
+    "common": 7,
+    "uncommon": 3,
+    "rareSlots": 1,
+    "mythicChance": 0.14285714285714285,
+    "basicSlots": 1,
+    "wildcardSlots": 2,
+    "wildcardWeights": [
+      0.5,
+      0.35,
+      0.125,
+      0.025
+    ],
+    "foil": null,
+    "doubleFacedSlot": null,
+    "bonusSheet": null,
+    "specialGuest": null,
+    "maxLands": null
+  },
+  "savedWRCount": 60,
+  "fullCardCount": 321,
+  "wrCoverage": 0,
+  "drafts": 100,
+  "cpus": 800,
+  "totalPicks": 33600,
+  "errors": 0,
+  "status": "measured-card-pool",
+  "reason": "No complete card snapshot; fetch inputs in a network-enabled environment.",
+  "ratingSource": "https://www.17lands.com/card_ratings/data?expansion=HOB&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07",
+  "ratingFetchedAt": "2026-10-07T06:47:28.128965+00:00",
+  "ratingValidation": {
+    "duplicates": 0,
+    "invalidValues": 0,
+    "missingIdentity": 0,
+    "missingMetrics": {
+      "wr": 188,
+      "gih_wr": 188,
+      "oh_wr": 188,
+      "games": 0,
+      "ata": 188,
+      "alsa": 188,
+      "usage": 188
+    },
+    "missingValues": 1128
+  },
+  "ratingWindow": {
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07"
+  },
+  "actualColorResults": {
+    "set": "hob",
+    "complete": true,
+    "source": "https://www.17lands.com/color_ratings/data?expansion=HOB&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07&combine_splash=false",
+    "fetchedAt": "2026-10-07T06:47:30.222871+00:00",
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07",
+    "rows": [
+      {
+        "is_summary": true,
+        "color_name": "Mono-color",
+        "short_name": 1,
+        "wins": 1723,
+        "games": 3017
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White",
+        "short_name": "W",
+        "wins": 86,
+        "games": 159
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue",
+        "short_name": "U",
+        "wins": 289,
+        "games": 562
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black",
+        "short_name": "B",
+        "wins": 743,
+        "games": 1145
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red",
+        "short_name": "R",
+        "wins": 201,
+        "games": 392
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green",
+        "short_name": "G",
+        "wins": 404,
+        "games": 759
+      },
+      {
+        "is_summary": true,
+        "color_name": "Mono-color + Splash",
+        "short_name": "1+",
+        "wins": 6754,
+        "games": 11973
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White + Splash",
+        "short_name": "W+",
+        "wins": 207,
+        "games": 370
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue + Splash",
+        "short_name": "U+",
+        "wins": 2785,
+        "games": 5094
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black + Splash",
+        "short_name": "B+",
+        "wins": 1912,
+        "games": 3156
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red + Splash",
+        "short_name": "R+",
+        "wins": 507,
+        "games": 886
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green + Splash",
+        "short_name": "G+",
+        "wins": 1343,
+        "games": 2467
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color",
+        "short_name": 2,
+        "wins": 225903,
+        "games": 400584
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU)",
+        "short_name": "WU",
+        "wins": 46811,
+        "games": 83275
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB)",
+        "short_name": "UB",
+        "wins": 6579,
+        "games": 12344
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR)",
+        "short_name": "BR",
+        "wins": 66995,
+        "games": 116609
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG)",
+        "short_name": "RG",
+        "wins": 1367,
+        "games": 2541
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW)",
+        "short_name": "WG",
+        "wins": 654,
+        "games": 1272
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB)",
+        "short_name": "WB",
+        "wins": 3203,
+        "games": 5607
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG)",
+        "short_name": "BG",
+        "wins": 44234,
+        "games": 77632
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU)",
+        "short_name": "UG",
+        "wins": 12015,
+        "games": 22984
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR)",
+        "short_name": "UR",
+        "wins": 2328,
+        "games": 4148
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW)",
+        "short_name": "WR",
+        "wins": 41717,
+        "games": 74172
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color + Splash",
+        "short_name": "2+",
+        "wins": 51960,
+        "games": 97188
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU) + Splash",
+        "short_name": "WU+",
+        "wins": 6659,
+        "games": 12272
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB) + Splash",
+        "short_name": "UB+",
+        "wins": 4312,
+        "games": 8252
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR) + Splash",
+        "short_name": "BR+",
+        "wins": 12850,
+        "games": 23392
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG) + Splash",
+        "short_name": "RG+",
+        "wins": 1115,
+        "games": 2124
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW) + Splash",
+        "short_name": "WG+",
+        "wins": 437,
+        "games": 914
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB) + Splash",
+        "short_name": "WB+",
+        "wins": 1258,
+        "games": 2280
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG) + Splash",
+        "short_name": "BG+",
+        "wins": 8805,
+        "games": 16629
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU) + Splash",
+        "short_name": "UG+",
+        "wins": 7245,
+        "games": 14076
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR) + Splash",
+        "short_name": "UR+",
+        "wins": 2397,
+        "games": 4404
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW) + Splash",
+        "short_name": "WR+",
+        "wins": 6882,
+        "games": 12845
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color",
+        "short_name": 3,
+        "wins": 8290,
+        "games": 16580
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR)",
+        "short_name": "WUR",
+        "wins": 1579,
+        "games": 2990
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG)",
+        "short_name": "UBG",
+        "wins": 1245,
+        "games": 2724
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW)",
+        "short_name": "WBR",
+        "wins": 1591,
+        "games": 3215
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU)",
+        "short_name": "URG",
+        "wins": 113,
+        "games": 233
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB)",
+        "short_name": "WBG",
+        "wins": 163,
+        "games": 316
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB)",
+        "short_name": "WUB",
+        "wins": 638,
+        "games": 1223
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR)",
+        "short_name": "UBR",
+        "wins": 296,
+        "games": 593
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG)",
+        "short_name": "BRG",
+        "wins": 1556,
+        "games": 3146
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW)",
+        "short_name": "WRG",
+        "wins": 70,
+        "games": 157
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU)",
+        "short_name": "WUG",
+        "wins": 1039,
+        "games": 1983
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color + Splash",
+        "short_name": "3+",
+        "wins": 817,
+        "games": 1727
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR) + Splash",
+        "short_name": "WUR+",
+        "wins": 113,
+        "games": 236
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG) + Splash",
+        "short_name": "UBG+",
+        "wins": 142,
+        "games": 285
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW) + Splash",
+        "short_name": "WBR+",
+        "wins": 107,
+        "games": 220
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU) + Splash",
+        "short_name": "URG+",
+        "wins": 43,
+        "games": 102
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB) + Splash",
+        "short_name": "WBG+",
+        "wins": 36,
+        "games": 70
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB) + Splash",
+        "short_name": "WUB+",
+        "wins": 86,
+        "games": 185
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR) + Splash",
+        "short_name": "UBR+",
+        "wins": 98,
+        "games": 204
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG) + Splash",
+        "short_name": "BRG+",
+        "wins": 94,
+        "games": 200
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW) + Splash",
+        "short_name": "WRG+",
+        "wins": 28,
+        "games": 60
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU) + Splash",
+        "short_name": "WUG+",
+        "wins": 70,
+        "games": 165
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color",
+        "short_name": 4,
+        "wins": 50,
+        "games": 104
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR)",
+        "short_name": "WUBR",
+        "wins": 14,
+        "games": 31
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG)",
+        "short_name": "UBRG",
+        "wins": 1,
+        "games": 4
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW)",
+        "short_name": "WBRG",
+        "wins": 0,
+        "games": 1
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU)",
+        "short_name": "WURG",
+        "wins": 12,
+        "games": 23
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB)",
+        "short_name": "WUBG",
+        "wins": 23,
+        "games": 45
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color + Splash",
+        "short_name": "4+",
+        "wins": 11,
+        "games": 34
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR) + Splash",
+        "short_name": "WUBR+",
+        "wins": 2,
+        "games": 5
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG) + Splash",
+        "short_name": "UBRG+",
+        "wins": 6,
+        "games": 17
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW) + Splash",
+        "short_name": "WBRG+",
+        "wins": 0,
+        "games": 3
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU) + Splash",
+        "short_name": "WURG+",
+        "wins": 2,
+        "games": 5
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB) + Splash",
+        "short_name": "WUBG+",
+        "wins": 1,
+        "games": 4
+      },
+      {
+        "is_summary": true,
+        "color_name": "Five-color",
+        "short_name": 5,
+        "wins": 0,
+        "games": 1
+      },
+      {
+        "is_summary": false,
+        "color_name": "All Colors (WUBRG)",
+        "short_name": "WUBRG",
+        "wins": 0,
+        "games": 1
+      },
+      {
+        "is_summary": true,
+        "color_name": "All Decks",
+        "short_name": "All",
+        "wins": 295508,
+        "games": 531208
+      }
+    ]
+  },
+  "ratingMode": "full-rating-snapshot",
+  "fullPrintWRCount": 0,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Ahob+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:47:26.836406+00:00",
+  "inputSHA256": "2e6d4b222c324b0ad82249c1f02c9aa209269e52e319bc6d94a7bfe357824b63",
+  "statisticsSHA256": "93b334fff202db1ae9e36e2a9da4ba7de514e71f301e78ad35db507bebee97b0",
+  "apiTotal": 321,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "7add9a4bca263f9dc1da8ad46910643ecd8841c37f8ae2576dc9b156ce5b27f7",
+  "specialPools": {
+    "spg": 0,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 321,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 85,
+      "uncommon": 71,
+      "rare": 119,
+      "mythic": 46
+    },
+    "uniqueOracles": 193,
+    "samples": [
+      {
+        "id": "3696d65c-fffd-4685-bb2d-e8769bf476e3",
+        "oracle_id": "f4437cb3-85f7-49b5-bb41-6a948549d987",
+        "name": "Along the Crooked Way",
+        "rarity": "rare",
+        "type_line": "Enchantment",
+        "booster": false,
+        "collector_number": "60"
+      },
+      {
+        "id": "e340aa1c-a497-4fc4-9be9-26e7c982f893",
+        "oracle_id": "f4437cb3-85f7-49b5-bb41-6a948549d987",
+        "name": "Along the Crooked Way",
+        "rarity": "rare",
+        "type_line": "Enchantment",
+        "booster": false,
+        "collector_number": "295"
+      },
+      {
+        "id": "3aa29fe8-1687-486f-b4df-c04977869ab1",
+        "oracle_id": "38503d34-f4f9-4eeb-9b1e-4fec1df921b3",
+        "name": "An Unexpected Party // At the Door",
+        "rarity": "rare",
+        "type_line": "Enchantment // Sorcery — Adventure",
+        "booster": false,
+        "collector_number": "29"
+      }
+    ]
+  },
+  "rawCardCount": 321,
+  "draftPoolCount": 193,
+  "excludedNonDraft": 0,
+  "performanceVariantsCollapsed": 128,
+  "packEligibility": {
+    "officialVerified": false,
+    "method": "UNVERIFIED all main-set oracle-unique cards; booster flag bypassed ONLY for diagnostic simulation"
+  },
+  "wrCount": 0,
+  "missingWR": 193,
+  "joinMethods": {
+    "name": 188,
+    "unmatched": 5
+  },
+  "ratingRecordsNotMatchedToDraftPool": 0,
+  "cardKinds": {
+    "lands": 13,
+    "basicLands": 5,
+    "creatures": 112,
+    "multicolor": 26,
+    "colorless": 27,
+    "doubleFaced": 17
+  },
+  "ratings": {
+    "minimum": 12,
+    "maximum": 55.7,
+    "invalid": [],
+    "missingStructuralFields": 0,
+    "extremes": []
+  },
+  "scores": {
+    "mean": 66.675,
+    "atMost40": 0,
+    "median": 67,
+    "standardDeviation": 4.595854109956063,
+    "min": 42,
+    "max": 78,
+    "buckets": {
+      "<40": 0,
+      "40-49": 6,
+      "50-59": 42,
+      "60-69": 536,
+      "70-79": 216,
+      "80-89": 0,
+      ">=90": 0
+    }
+  },
+  "colorPicks": {
+    "G": 4670,
+    "B": 4596,
+    "multicolor": 3605,
+    "W": 4719,
+    "R": 4800,
+    "U": 4750,
+    "C": 6460
+  },
+  "finalColorAdoption": {
+    "W": {
+      "decks": 314,
+      "rate": 0.3925
+    },
+    "U": {
+      "decks": 293,
+      "rate": 0.36625
+    },
+    "B": {
+      "decks": 346,
+      "rate": 0.4325
+    },
+    "R": {
+      "decks": 302,
+      "rate": 0.3775
+    },
+    "G": {
+      "decks": 345,
+      "rate": 0.43125
+    }
+  },
+  "archetypes": {
+    "WU": 75,
+    "UB": 75,
+    "BR": 88,
+    "RG": 67,
+    "GW": 80,
+    "WB": 70,
+    "UR": 58,
+    "BG": 113,
+    "RW": 89,
+    "GU": 85
+  },
+  "mainPairChangesAfterP1P10": 104,
+  "earlyCommitAtP1P5": 0,
+  "landCounts": {
+    "1": 1009,
+    "2": 986,
+    "3": 351,
+    "4": 47,
+    "5": 7
+  },
+  "packRarityCounts": {
+    "common": 21629,
+    "uncommon": 8880,
+    "rare": 2627,
+    "mythic": 464
+  },
+  "packRarityRates": {
+    "common": 0.643720238095238,
+    "uncommon": 0.2642857142857143,
+    "rare": 0.07818452380952381,
+    "mythic": 0.01380952380952381
+  },
+  "slotCounts": {
+    "normal": 33600,
+    "special": 0
+  },
+  "slotRates": {
+    "normal": 1,
+    "special": 0
+  },
+  "scryfallIdMatchRate": 0,
+  "constructionRates": {
+    "playable23": 0.97625,
+    "twoColorComplete": 0.97375,
+    "splash": 0.00375,
+    "averageLands": 17
+  },
+  "attainmentComparison": "ATA comparison enabled; ALSA kept separate",
+  "ataComparison": {
+    "status": "diagnostic-only-unverified-collation",
+    "cards": 0,
+    "pearson": null,
+    "spearman": null,
+    "pickedEarlier": [],
+    "pickedLater": []
+  },
+  "manaSummary": {
+    "decks": 800,
+    "earlyDoublePipLow": 464,
+    "splashLow": 3,
+    "zeroSources": 0,
+    "moreThanTwoColors": 3,
+    "incomplete": 19,
+    "twoColorComplete": 779,
+    "splash": 3,
+    "playable23": 781,
+    "totalLands": 13600,
+    "unmodelledCosts": 343,
+    "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled"
+  },
+  "extremeDecks": [
+    {
+      "score": 42,
+      "colors": "GU",
+      "parts": [
+        [
+          "カードパワー",
+          6,
+          30,
+          "単体評価平均 47.9（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          12,
+          15,
+          "採用候補の呪文 18 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          10,
+          15,
+          "2/3/4マナの生物 3/5/1・6マナ以上 3"
+        ],
+        [
+          "クリーチャー",
+          8,
+          10,
+          "12枚"
+        ],
+        [
+          "除去・干渉",
+          3,
+          10,
+          "種類別の重み合計 3.8"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          5,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：G6/U7/W1・非基本 3・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "30ca8e92-5955-46a1-86c1-094a873f518f",
+          "name": "Beorn the Fierce"
+        },
+        {
+          "key": "c3fb2829-64f2-4795-b815-edcc5bbbc360",
+          "name": "Guardian of the Halls"
+        },
+        {
+          "key": "ce107656-f222-4d9a-9ba2-b33b4d47bdb5",
+          "name": "Wargling"
+        },
+        {
+          "key": "d0f62148-1015-49b8-b61f-a4332325a6b0",
+          "name": "Elven Raft-Steerer"
+        },
+        {
+          "key": "a73d9109-36e0-40ea-ab06-5c5f7eb4ac54",
+          "name": "Bilbo, Luckwearer // Burglar's Plot"
+        },
+        {
+          "key": "dbcf2a79-b455-43ac-9cf0-9e63708800f4",
+          "name": "Sound the Trumpets"
+        },
+        {
+          "key": "dbcf2a79-b455-43ac-9cf0-9e63708800f4",
+          "name": "Sound the Trumpets"
+        },
+        {
+          "key": "53c6c6bf-0256-424d-b937-1cc7d9e2d574",
+          "name": "Little Bear"
+        },
+        {
+          "key": "66630640-9605-44da-afdf-eb9d458d056f",
+          "name": "Mirkwood Nurturer"
+        },
+        {
+          "key": "66630640-9605-44da-afdf-eb9d458d056f",
+          "name": "Mirkwood Nurturer"
+        },
+        {
+          "key": "f6771d32-395e-4832-b33d-cbc12dff1516",
+          "name": "Thranduil, Sindarin Liege // Silvan Rally"
+        },
+        {
+          "key": "6f83da19-fd89-44ec-88f3-0c3fddfbd1b2",
+          "name": "Long-Bodied Grey Dog"
+        },
+        {
+          "key": "526f520e-b4bb-4215-9c6b-afc298744f06",
+          "name": "Plunder the Trollshaws"
+        },
+        {
+          "key": "526f520e-b4bb-4215-9c6b-afc298744f06",
+          "name": "Plunder the Trollshaws"
+        },
+        {
+          "key": "d7cba934-02ad-4677-bb4d-50808b01b4f9",
+          "name": "Thranduil's Decree"
+        },
+        {
+          "key": "09f09d0a-6054-4545-b81e-0295773cc5f0",
+          "name": "The Arkenstone // Seek the Heart"
+        },
+        {
+          "key": "dc788b66-d03d-4066-be35-481be96ed2f7",
+          "name": "Boughside Wanderers"
+        },
+        {
+          "key": "dc788b66-d03d-4066-be35-481be96ed2f7",
+          "name": "Boughside Wanderers"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 35,
+          "missingSpells": 5,
+          "spellCount": 18,
+          "landCount": 17,
+          "basicCount": 14,
+          "basics": {
+            "G": 6,
+            "U": 7,
+            "W": 1
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [
+            {
+              "key": "a91e0154-14a9-4681-8236-04db231592a4",
+              "name": "Elvenking's Halls",
+              "producedMana": [
+                "G",
+                "U"
+              ]
+            },
+            {
+              "key": "a91e0154-14a9-4681-8236-04db231592a4",
+              "name": "Elvenking's Halls",
+              "producedMana": [
+                "G",
+                "U"
+              ]
+            },
+            {
+              "key": "717c6beb-81c6-43ed-aab0-aedfc1cbac33",
+              "name": "Lake-town",
+              "producedMana": [
+                "U",
+                "W"
+              ]
+            }
+          ],
+          "weightedColorDemand": {
+            "G": 17.5,
+            "U": 22.5,
+            "W": 1
+          },
+          "splashColors": [
+            "W"
+          ],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "Beorn the Fierce",
+            "color": "G",
+            "required": 2,
+            "cmc": 5,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.7209438540707891,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Guardian of the Halls",
+            "color": "G",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Wargling",
+            "color": "G",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Elven Raft-Steerer",
+            "color": "U",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Bilbo, Luckwearer // Burglar's Plot",
+            "color": "U",
+            "required": 2,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.6591764858018727,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Sound the Trumpets",
+            "color": "U",
+            "required": 2,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.7336282243402987,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Sound the Trumpets",
+            "color": "U",
+            "required": 2,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.7336282243402987,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Little Bear",
+            "color": "G",
+            "required": 1,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Plunder the Trollshaws",
+            "color": "U",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Plunder the Trollshaws",
+            "color": "U",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Thranduil's Decree",
+            "color": "U",
+            "required": 2,
+            "cmc": 6,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.8867401432192205,
+            "landsByTurnProbability": 0.38792051228091273
+          },
+          {
+            "card": "The Arkenstone // Seek the Heart",
+            "color": "W",
+            "required": 1,
+            "cmc": 5,
+            "sources": 2,
+            "splash": true,
+            "probability": 0.47948717948717945,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Boughside Wanderers",
+            "color": "G",
+            "required": 2,
+            "cmc": 6,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.7748305581122918,
+            "landsByTurnProbability": 0.38792051228091273
+          },
+          {
+            "card": "Boughside Wanderers",
+            "color": "G",
+            "required": 2,
+            "cmc": 6,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.7748305581122918,
+            "landsByTurnProbability": 0.38792051228091273
+          }
+        ],
+        "unmodelledCosts": 3,
+        "earlyDoublePipLow": 1,
+        "splashLow": 1,
+        "zeroSources": 0,
+        "moreThanTwoColors": true,
+        "incomplete": true
+      }
+    },
+    {
+      "score": 78,
+      "colors": "RW",
+      "parts": [
+        [
+          "カードパワー",
+          9,
+          30,
+          "単体評価平均 48.5（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          15,
+          15,
+          "採用候補の呪文 23 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          14,
+          15,
+          "2/3/4マナの生物 6/3/3・6マナ以上 0"
+        ],
+        [
+          "クリーチャー",
+          10,
+          10,
+          "15枚"
+        ],
+        [
+          "除去・干渉",
+          10,
+          10,
+          "種類別の重み合計 13.0"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          10,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：R6/W9・非基本 2・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "94917b80-ac32-45ab-b4ee-157ade024bcd",
+          "name": "Thorin, Mountain-king"
+        },
+        {
+          "key": "cf765efe-884c-48e2-9edb-9d45cf2756dd",
+          "name": "Lake-town Lookout"
+        },
+        {
+          "key": "cf765efe-884c-48e2-9edb-9d45cf2756dd",
+          "name": "Lake-town Lookout"
+        },
+        {
+          "key": "ae03782f-8f05-4ce2-a049-005b1b688faf",
+          "name": "Dáin's Company"
+        },
+        {
+          "key": "bd4ab393-9538-4230-b2a1-bc77099481c9",
+          "name": "Iron Hills Stalwart"
+        },
+        {
+          "key": "a97d6c5c-1cff-442d-b535-fc8389160b0b",
+          "name": "Burn, Burn, Tree and Fern"
+        },
+        {
+          "key": "a97d6c5c-1cff-442d-b535-fc8389160b0b",
+          "name": "Burn, Burn, Tree and Fern"
+        },
+        {
+          "key": "70a702fe-1dd6-4d7b-a85a-45744ecad741",
+          "name": "Velvetwing Butterflies // Gaze in Wonder"
+        },
+        {
+          "key": "70a702fe-1dd6-4d7b-a85a-45744ecad741",
+          "name": "Velvetwing Butterflies // Gaze in Wonder"
+        },
+        {
+          "key": "0f208cd3-7673-4380-9cb8-5b6f09966ebd",
+          "name": "Lake-town Toymaker"
+        },
+        {
+          "key": "0f208cd3-7673-4380-9cb8-5b6f09966ebd",
+          "name": "Lake-town Toymaker"
+        },
+        {
+          "key": "58acd6b2-730c-4472-a34a-f2784977aca8",
+          "name": "Dori, Bearer of Friends"
+        },
+        {
+          "key": "9febdfa8-8af2-4aba-b2e6-cb2baad7e02b",
+          "name": "Iron Hills Blacksmith"
+        },
+        {
+          "key": "9febdfa8-8af2-4aba-b2e6-cb2baad7e02b",
+          "name": "Iron Hills Blacksmith"
+        },
+        {
+          "key": "bb67d0a4-864e-4f46-8538-fdd920bf0197",
+          "name": "Ragged Short Spear"
+        },
+        {
+          "key": "82bdf9cb-61fe-4eaf-8762-c32002403d96",
+          "name": "Magnificent End"
+        },
+        {
+          "key": "85ceb4ac-7a1c-4c7e-95a3-515a5b5d6116",
+          "name": "Goblin-town Flunkies"
+        },
+        {
+          "key": "cee583b7-7cc3-40ea-a227-b760839ec291",
+          "name": "Dwalin, Weaponmaster"
+        },
+        {
+          "key": "7907bbf0-f6d9-4e5b-b5de-73cd94979f98",
+          "name": "Stone by Sunlight"
+        },
+        {
+          "key": "7907bbf0-f6d9-4e5b-b5de-73cd94979f98",
+          "name": "Stone by Sunlight"
+        },
+        {
+          "key": "03253076-9add-4efb-9227-b0a062c86534",
+          "name": "Nori, Teller of Tales"
+        },
+        {
+          "key": "f8961618-ae68-4d13-84eb-8b5464ce4971",
+          "name": "Vow to Erebor"
+        },
+        {
+          "key": "3cd3cdc9-2ed2-4cdf-b58a-12c3a2ef218b",
+          "name": "Roads Go Ever, Ever On"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 40,
+          "missingSpells": 0,
+          "spellCount": 23,
+          "landCount": 17,
+          "basicCount": 15,
+          "basics": {
+            "R": 6,
+            "W": 9
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [
+            {
+              "key": "a71e8d07-1a49-47a0-834e-de87d750a200",
+              "name": "Iron Hills",
+              "producedMana": [
+                "R",
+                "W"
+              ]
+            },
+            {
+              "key": "a71e8d07-1a49-47a0-834e-de87d750a200",
+              "name": "Iron Hills",
+              "producedMana": [
+                "R",
+                "W"
+              ]
+            }
+          ],
+          "weightedColorDemand": {
+            "R": 13,
+            "W": 25.5
+          },
+          "splashColors": [],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "Thorin, Mountain-king",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Lake-town Lookout",
+            "color": "W",
+            "required": 1,
+            "cmc": 1,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9162831562212367,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Lake-town Lookout",
+            "color": "W",
+            "required": 1,
+            "cmc": 1,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9162831562212367,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Dáin's Company",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Dáin's Company",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Iron Hills Stalwart",
+            "color": "R",
+            "required": 1,
+            "cmc": 5,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Burn, Burn, Tree and Fern",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Burn, Burn, Tree and Fern",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Velvetwing Butterflies // Gaze in Wonder",
+            "color": "W",
+            "required": 2,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.7907078905530918,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Velvetwing Butterflies // Gaze in Wonder",
+            "color": "W",
+            "required": 2,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.7907078905530918,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Lake-town Toymaker",
+            "color": "W",
+            "required": 1,
+            "cmc": 4,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Lake-town Toymaker",
+            "color": "W",
+            "required": 1,
+            "cmc": 4,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Dori, Bearer of Friends",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Iron Hills Blacksmith",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Iron Hills Blacksmith",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Ragged Short Spear",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Magnificent End",
+            "color": "W",
+            "required": 1,
+            "cmc": 5,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9850344889481512,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Goblin-town Flunkies",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Stone by Sunlight",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Stone by Sunlight",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Vow to Erebor",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Roads Go Ever, Ever On",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          }
+        ],
+        "unmodelledCosts": 2,
+        "earlyDoublePipLow": 0,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": false,
+        "incomplete": false
+      }
+    }
+  ],
+  "anomalies": [
+    {
+      "type": "highP1P1",
+      "card": "Front Porch Sentries",
+      "rate": 0.9690721649484536
+    },
+    {
+      "type": "splashSupplyBelow70Percent",
+      "decks": 3,
+      "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled"
+    }
+  ],
+  "savedWRIntegrity": {
+    "checked": 188,
+    "nonFinite": 0
+  }
+}

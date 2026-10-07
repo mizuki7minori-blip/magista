@@ -1,0 +1,1627 @@
+{
+  "officialCollation": {
+    "status": "official-unverified",
+    "source": null,
+    "cards": 14,
+    "common": 7,
+    "uncommon": 3,
+    "rareSlots": 1,
+    "mythicChance": 0.14285714285714285,
+    "basicSlots": 1,
+    "wildcardSlots": 2,
+    "wildcardWeights": [
+      0.124,
+      0.64,
+      0.168,
+      0.021
+    ],
+    "foil": null,
+    "doubleFacedSlot": null,
+    "bonusSheet": null,
+    "specialGuest": null,
+    "maxLands": null
+  },
+  "savedWRCount": 60,
+  "fullCardCount": 453,
+  "wrCoverage": 0,
+  "drafts": 100,
+  "cpus": 800,
+  "totalPicks": 33600,
+  "errors": 0,
+  "status": "measured-card-pool",
+  "reason": "No complete card snapshot; fetch inputs in a network-enabled environment.",
+  "ratingSource": "https://www.17lands.com/card_ratings/data?expansion=MSH&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07",
+  "ratingFetchedAt": "2026-10-07T06:47:44.830472+00:00",
+  "ratingValidation": {
+    "duplicates": 0,
+    "invalidValues": 0,
+    "missingIdentity": 0,
+    "missingMetrics": {
+      "wr": 334,
+      "gih_wr": 334,
+      "oh_wr": 334,
+      "games": 0,
+      "ata": 334,
+      "alsa": 334,
+      "usage": 334
+    },
+    "missingValues": 2004
+  },
+  "ratingWindow": {
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07"
+  },
+  "actualColorResults": {
+    "set": "msh",
+    "complete": true,
+    "source": "https://www.17lands.com/color_ratings/data?expansion=MSH&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07&combine_splash=false",
+    "fetchedAt": "2026-10-07T06:47:48.475666+00:00",
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07",
+    "rows": [
+      {
+        "is_summary": true,
+        "color_name": "Mono-color",
+        "short_name": 1,
+        "wins": 1656,
+        "games": 3034
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White",
+        "short_name": "W",
+        "wins": 549,
+        "games": 934
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue",
+        "short_name": "U",
+        "wins": 448,
+        "games": 779
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black",
+        "short_name": "B",
+        "wins": 374,
+        "games": 755
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red",
+        "short_name": "R",
+        "wins": 85,
+        "games": 174
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green",
+        "short_name": "G",
+        "wins": 200,
+        "games": 392
+      },
+      {
+        "is_summary": true,
+        "color_name": "Mono-color + Splash",
+        "short_name": "1+",
+        "wins": 9135,
+        "games": 16167
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White + Splash",
+        "short_name": "W+",
+        "wins": 2557,
+        "games": 4262
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue + Splash",
+        "short_name": "U+",
+        "wins": 1753,
+        "games": 3048
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black + Splash",
+        "short_name": "B+",
+        "wins": 3173,
+        "games": 5863
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red + Splash",
+        "short_name": "R+",
+        "wins": 297,
+        "games": 575
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green + Splash",
+        "short_name": "G+",
+        "wins": 1355,
+        "games": 2419
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color",
+        "short_name": 2,
+        "wins": 181728,
+        "games": 324824
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU)",
+        "short_name": "WU",
+        "wins": 58544,
+        "games": 99942
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB)",
+        "short_name": "UB",
+        "wins": 15484,
+        "games": 28610
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR)",
+        "short_name": "BR",
+        "wins": 11501,
+        "games": 21994
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG)",
+        "short_name": "RG",
+        "wins": 6757,
+        "games": 12604
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW)",
+        "short_name": "WG",
+        "wins": 20994,
+        "games": 37268
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB)",
+        "short_name": "WB",
+        "wins": 15853,
+        "games": 28521
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG)",
+        "short_name": "BG",
+        "wins": 8761,
+        "games": 15921
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU)",
+        "short_name": "UG",
+        "wins": 12786,
+        "games": 22747
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR)",
+        "short_name": "UR",
+        "wins": 15995,
+        "games": 30035
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW)",
+        "short_name": "WR",
+        "wins": 15053,
+        "games": 27182
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color + Splash",
+        "short_name": "2+",
+        "wins": 172708,
+        "games": 309885
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU) + Splash",
+        "short_name": "WU+",
+        "wins": 42058,
+        "games": 72999
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB) + Splash",
+        "short_name": "UB+",
+        "wins": 17041,
+        "games": 31123
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR) + Splash",
+        "short_name": "BR+",
+        "wins": 10093,
+        "games": 19601
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG) + Splash",
+        "short_name": "RG+",
+        "wins": 8202,
+        "games": 15028
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW) + Splash",
+        "short_name": "WG+",
+        "wins": 27993,
+        "games": 49653
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB) + Splash",
+        "short_name": "WB+",
+        "wins": 16437,
+        "games": 29810
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG) + Splash",
+        "short_name": "BG+",
+        "wins": 14283,
+        "games": 25433
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU) + Splash",
+        "short_name": "UG+",
+        "wins": 18010,
+        "games": 31348
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR) + Splash",
+        "short_name": "UR+",
+        "wins": 10250,
+        "games": 19524
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW) + Splash",
+        "short_name": "WR+",
+        "wins": 8341,
+        "games": 15366
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color",
+        "short_name": 3,
+        "wins": 33020,
+        "games": 62853
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR)",
+        "short_name": "WUR",
+        "wins": 3961,
+        "games": 7689
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG)",
+        "short_name": "UBG",
+        "wins": 3039,
+        "games": 5604
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW)",
+        "short_name": "WBR",
+        "wins": 2040,
+        "games": 3940
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU)",
+        "short_name": "URG",
+        "wins": 1992,
+        "games": 3823
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB)",
+        "short_name": "WBG",
+        "wins": 2760,
+        "games": 5155
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB)",
+        "short_name": "WUB",
+        "wins": 3873,
+        "games": 7413
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR)",
+        "short_name": "UBR",
+        "wins": 2083,
+        "games": 4231
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG)",
+        "short_name": "BRG",
+        "wins": 2992,
+        "games": 5596
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW)",
+        "short_name": "WRG",
+        "wins": 3769,
+        "games": 7146
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU)",
+        "short_name": "WUG",
+        "wins": 6511,
+        "games": 12256
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color + Splash",
+        "short_name": "3+",
+        "wins": 16322,
+        "games": 30130
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR) + Splash",
+        "short_name": "WUR+",
+        "wins": 1062,
+        "games": 1982
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG) + Splash",
+        "short_name": "UBG+",
+        "wins": 2157,
+        "games": 3766
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW) + Splash",
+        "short_name": "WBR+",
+        "wins": 1088,
+        "games": 2107
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU) + Splash",
+        "short_name": "URG+",
+        "wins": 980,
+        "games": 1803
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB) + Splash",
+        "short_name": "WBG+",
+        "wins": 1871,
+        "games": 3400
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB) + Splash",
+        "short_name": "WUB+",
+        "wins": 1735,
+        "games": 3229
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR) + Splash",
+        "short_name": "UBR+",
+        "wins": 860,
+        "games": 1704
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG) + Splash",
+        "short_name": "BRG+",
+        "wins": 1445,
+        "games": 2656
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW) + Splash",
+        "short_name": "WRG+",
+        "wins": 1492,
+        "games": 2780
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU) + Splash",
+        "short_name": "WUG+",
+        "wins": 3632,
+        "games": 6703
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color",
+        "short_name": 4,
+        "wins": 986,
+        "games": 1890
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR)",
+        "short_name": "WUBR",
+        "wins": 99,
+        "games": 196
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG)",
+        "short_name": "UBRG",
+        "wins": 211,
+        "games": 403
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW)",
+        "short_name": "WBRG",
+        "wins": 210,
+        "games": 373
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU)",
+        "short_name": "WURG",
+        "wins": 292,
+        "games": 583
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB)",
+        "short_name": "WUBG",
+        "wins": 174,
+        "games": 335
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color + Splash",
+        "short_name": "4+",
+        "wins": 969,
+        "games": 1751
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR) + Splash",
+        "short_name": "WUBR+",
+        "wins": 134,
+        "games": 243
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG) + Splash",
+        "short_name": "UBRG+",
+        "wins": 137,
+        "games": 240
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW) + Splash",
+        "short_name": "WBRG+",
+        "wins": 238,
+        "games": 462
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU) + Splash",
+        "short_name": "WURG+",
+        "wins": 170,
+        "games": 307
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB) + Splash",
+        "short_name": "WUBG+",
+        "wins": 290,
+        "games": 499
+      },
+      {
+        "is_summary": true,
+        "color_name": "Five-color",
+        "short_name": 5,
+        "wins": 57,
+        "games": 117
+      },
+      {
+        "is_summary": false,
+        "color_name": "All Colors (WUBRG)",
+        "short_name": "WUBRG",
+        "wins": 57,
+        "games": 117
+      },
+      {
+        "is_summary": true,
+        "color_name": "All Decks",
+        "short_name": "All",
+        "wins": 416581,
+        "games": 750651
+      }
+    ]
+  },
+  "ratingMode": "full-rating-snapshot",
+  "fullPrintWRCount": 0,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Amsh+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:47:43.066399+00:00",
+  "inputSHA256": "c2d2cdbd27d770ac2467be8c03d125b7a72155e46e4da98674ec2530c16e1168",
+  "statisticsSHA256": "568930687665f08fa765db8ae4e52f19b317d2b700d10c7942532a1a1121a270",
+  "apiTotal": 453,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "7add9a4bca263f9dc1da8ad46910643ecd8841c37f8ae2576dc9b156ce5b27f7",
+  "specialPools": {
+    "spg": 0,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 453,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 124,
+      "uncommon": 124,
+      "rare": 129,
+      "mythic": 76
+    },
+    "uniqueOracles": 281,
+    "samples": [
+      {
+        "id": "2c6ab9bb-dba2-4b5b-a4d9-54735f65ac21",
+        "oracle_id": "72101185-4336-480a-b4d7-f8ceb0007a51",
+        "name": "Abomination, Terrifying Titan",
+        "rarity": "uncommon",
+        "type_line": "Legendary Creature — Gamma Villain",
+        "booster": false,
+        "collector_number": "198"
+      },
+      {
+        "id": "d1fb5d54-8232-4888-9d51-5aca90a7b6eb",
+        "oracle_id": "72101185-4336-480a-b4d7-f8ceb0007a51",
+        "name": "Abomination, Terrifying Titan",
+        "rarity": "uncommon",
+        "type_line": "Legendary Creature — Gamma Villain",
+        "booster": false,
+        "collector_number": "333"
+      },
+      {
+        "id": "7114ef87-53ff-43e9-864c-9faa455d86ef",
+        "oracle_id": "ec8e310f-e871-498f-8d80-c3617c5e1433",
+        "name": "Absorbing Man",
+        "rarity": "rare",
+        "type_line": "Legendary Creature — Human Villain",
+        "booster": false,
+        "collector_number": "199"
+      }
+    ]
+  },
+  "rawCardCount": 453,
+  "draftPoolCount": 281,
+  "excludedNonDraft": 0,
+  "performanceVariantsCollapsed": 172,
+  "packEligibility": {
+    "officialVerified": false,
+    "method": "UNVERIFIED all main-set oracle-unique cards; booster flag bypassed ONLY for diagnostic simulation"
+  },
+  "wrCount": 0,
+  "missingWR": 281,
+  "joinMethods": {
+    "name": 276,
+    "unmatched": 5
+  },
+  "ratingRecordsNotMatchedToDraftPool": 58,
+  "cardKinds": {
+    "lands": 25,
+    "basicLands": 5,
+    "creatures": 170,
+    "multicolor": 44,
+    "colorless": 40,
+    "doubleFaced": 5
+  },
+  "ratings": {
+    "minimum": 12,
+    "maximum": 56.599999999999994,
+    "invalid": [],
+    "missingStructuralFields": 0,
+    "extremes": []
+  },
+  "scores": {
+    "mean": 64.705,
+    "atMost40": 1,
+    "median": 65,
+    "standardDeviation": 4.958122124353144,
+    "min": 35,
+    "max": 78,
+    "buckets": {
+      "<40": 1,
+      "40-49": 4,
+      "50-59": 96,
+      "60-69": 569,
+      "70-79": 130,
+      "80-89": 0,
+      ">=90": 0
+    }
+  },
+  "colorPicks": {
+    "B": 4772,
+    "multicolor": 3136,
+    "C": 6611,
+    "G": 4739,
+    "W": 4849,
+    "R": 4683,
+    "U": 4810
+  },
+  "finalColorAdoption": {
+    "W": {
+      "decks": 350,
+      "rate": 0.4375
+    },
+    "U": {
+      "decks": 301,
+      "rate": 0.37625
+    },
+    "B": {
+      "decks": 367,
+      "rate": 0.45875
+    },
+    "R": {
+      "decks": 274,
+      "rate": 0.3425
+    },
+    "G": {
+      "decks": 308,
+      "rate": 0.385
+    }
+  },
+  "archetypes": {
+    "WU": 70,
+    "UB": 92,
+    "BR": 73,
+    "RG": 59,
+    "GW": 81,
+    "WB": 115,
+    "UR": 58,
+    "BG": 87,
+    "RW": 84,
+    "GU": 81
+  },
+  "mainPairChangesAfterP1P10": 124,
+  "earlyCommitAtP1P5": 0,
+  "landCounts": {
+    "1": 674,
+    "2": 950,
+    "3": 556,
+    "4": 167,
+    "5": 47,
+    "6": 6
+  },
+  "packRarityCounts": {
+    "common": 19821,
+    "uncommon": 10456,
+    "rare": 2871,
+    "mythic": 452
+  },
+  "packRarityRates": {
+    "common": 0.5899107142857143,
+    "uncommon": 0.3111904761904762,
+    "rare": 0.08544642857142858,
+    "mythic": 0.013452380952380952
+  },
+  "slotCounts": {
+    "normal": 33600,
+    "special": 0
+  },
+  "slotRates": {
+    "normal": 1,
+    "special": 0
+  },
+  "scryfallIdMatchRate": 0,
+  "constructionRates": {
+    "playable23": 0.9625,
+    "twoColorComplete": 0.9625,
+    "splash": 0,
+    "averageLands": 17
+  },
+  "attainmentComparison": "ATA comparison enabled; ALSA kept separate",
+  "ataComparison": {
+    "status": "diagnostic-only-unverified-collation",
+    "cards": 0,
+    "pearson": null,
+    "spearman": null,
+    "pickedEarlier": [],
+    "pickedLater": []
+  },
+  "manaSummary": {
+    "decks": 800,
+    "earlyDoublePipLow": 113,
+    "splashLow": 0,
+    "zeroSources": 0,
+    "moreThanTwoColors": 0,
+    "incomplete": 30,
+    "twoColorComplete": 770,
+    "splash": 0,
+    "playable23": 770,
+    "totalLands": 13600,
+    "unmodelledCosts": 311,
+    "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled"
+  },
+  "extremeDecks": [
+    {
+      "score": 35,
+      "colors": "GU",
+      "parts": [
+        [
+          "カードパワー",
+          6,
+          30,
+          "単体評価平均 46.5（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          13,
+          15,
+          "採用候補の呪文 20 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          5,
+          15,
+          "2/3/4マナの生物 2/2/1・6マナ以上 4"
+        ],
+        [
+          "クリーチャー",
+          5,
+          10,
+          "9枚"
+        ],
+        [
+          "除去・干渉",
+          1,
+          10,
+          "種類別の重み合計 1.5"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          0,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：U7/G6・非基本 4・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "503928cd-1abd-44cd-92c3-6dc19bb07f78",
+          "name": "Hydraulic Helper"
+        },
+        {
+          "key": "556f127f-6131-4171-b1ed-11420c21d345",
+          "name": "Serpent Specialist"
+        },
+        {
+          "key": "bbd0a2a4-f81b-4a6b-bc4d-d7e53dc51333",
+          "name": "She-Hulk, Jade Defender"
+        },
+        {
+          "key": "ec8e310f-e871-498f-8d80-c3617c5e1433",
+          "name": "Absorbing Man"
+        },
+        {
+          "key": "e929b730-9aa2-49e1-9a65-50afc0fbe3e0",
+          "name": "Atlantean Cavalry"
+        },
+        {
+          "key": "39d993be-30ad-4756-a494-fd8808d474c9",
+          "name": "Tigra, Feline Fury"
+        },
+        {
+          "key": "bd49a05c-ed51-4d69-ab9b-11192442ec17",
+          "name": "Stature, Size Shifter"
+        },
+        {
+          "key": "df3d5b86-7b75-4df9-8985-7159cde12261",
+          "name": "Ironheart, Clever Champion"
+        },
+        {
+          "key": "4bdfc580-de51-445b-b170-8c6832e44704",
+          "name": "Epic Fight"
+        },
+        {
+          "key": "d566d5f1-5abd-405b-8553-d267ecbe72ab",
+          "name": "The Thing, Ben Grimm"
+        },
+        {
+          "key": "deb16a9a-2fa9-4ad3-bb20-7c16066e3d14",
+          "name": "I Am Iron Man"
+        },
+        {
+          "key": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+          "name": "Giant Growth"
+        },
+        {
+          "key": "d82929f2-57ad-45be-a834-984437046026",
+          "name": "Super Intelligence"
+        },
+        {
+          "key": "de1ad369-5aa3-4c54-8fb1-30b7f1d4d542",
+          "name": "Rapid Rescue"
+        },
+        {
+          "key": "82fa14d8-5019-4e1b-a86c-923d9292b87a",
+          "name": "Frozen in Ice"
+        },
+        {
+          "key": "e1b577ad-1488-43b5-83d9-e40bd60c74be",
+          "name": "Super Strength"
+        },
+        {
+          "key": "2b87bcac-ec64-4012-9e75-f459d3640eb3",
+          "name": "Earth's Mightiest Heroes"
+        },
+        {
+          "key": "0f2335bf-6a13-4483-997a-fd19d30c4d48",
+          "name": "S.H.I.E.L.D. Helicarrier"
+        },
+        {
+          "key": "b5c8e24a-f4d7-42dc-8117-905ad0bad888",
+          "name": "Atlantis Attacks"
+        },
+        {
+          "key": "b5c8e24a-f4d7-42dc-8117-905ad0bad888",
+          "name": "Atlantis Attacks"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 37,
+          "missingSpells": 3,
+          "spellCount": 20,
+          "landCount": 17,
+          "basicCount": 13,
+          "basics": {
+            "U": 7,
+            "G": 6
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [
+            {
+              "key": "c5fc8e7c-a87e-4586-a13c-d30e0a3aafbf",
+              "name": "Avengers Tower",
+              "producedMana": [
+                "B",
+                "C",
+                "G",
+                "R",
+                "U",
+                "W"
+              ]
+            },
+            {
+              "key": "c3172c5d-c745-4422-b651-cd414c8da11b",
+              "name": "Birnin Zana Plaza",
+              "producedMana": [
+                "G",
+                "W"
+              ]
+            },
+            {
+              "key": "71bc69a5-7cec-4abd-b97d-13f8e1f9afac",
+              "name": "Baxter Building",
+              "producedMana": [
+                "B",
+                "C",
+                "G",
+                "R",
+                "U",
+                "W"
+              ]
+            },
+            {
+              "key": "52401cb4-1bce-4191-9220-0d93ea4108b8",
+              "name": "Stark Industries",
+              "producedMana": [
+                "R",
+                "U"
+              ]
+            }
+          ],
+          "weightedColorDemand": {
+            "U": 15.5,
+            "G": 14
+          },
+          "splashColors": [],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "Hydraulic Helper",
+            "color": "U",
+            "required": 1,
+            "cmc": 2,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Serpent Specialist",
+            "color": "G",
+            "required": 1,
+            "cmc": 1,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8589553175466488,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "She-Hulk, Jade Defender",
+            "color": "G",
+            "required": 1,
+            "cmc": 4,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Absorbing Man",
+            "color": "G",
+            "required": 1,
+            "cmc": 3,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.9262720978084755,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Absorbing Man",
+            "color": "U",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Atlantean Cavalry",
+            "color": "U",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Tigra, Feline Fury",
+            "color": "G",
+            "required": 1,
+            "cmc": 2,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Stature, Size Shifter",
+            "color": "U",
+            "required": 1,
+            "cmc": 1,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Ironheart, Clever Champion",
+            "color": "U",
+            "required": 1,
+            "cmc": 5,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Epic Fight",
+            "color": "G",
+            "required": 1,
+            "cmc": 3,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.9262720978084755,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "The Thing, Ben Grimm",
+            "color": "G",
+            "required": 1,
+            "cmc": 6,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.9747406074805456,
+            "landsByTurnProbability": 0.38792051228091273
+          },
+          {
+            "card": "I Am Iron Man",
+            "color": "U",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Giant Growth",
+            "color": "G",
+            "required": 1,
+            "cmc": 1,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8589553175466488,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Super Intelligence",
+            "color": "U",
+            "required": 1,
+            "cmc": 1,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Rapid Rescue",
+            "color": "G",
+            "required": 1,
+            "cmc": 1,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8589553175466488,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Frozen in Ice",
+            "color": "U",
+            "required": 1,
+            "cmc": 3,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.947676972638273,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Super Strength",
+            "color": "G",
+            "required": 1,
+            "cmc": 5,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Earth's Mightiest Heroes",
+            "color": "G",
+            "required": 2,
+            "cmc": 6,
+            "sources": 9,
+            "splash": false,
+            "probability": 0.8383398878754915,
+            "landsByTurnProbability": 0.38792051228091273
+          },
+          {
+            "card": "Atlantis Attacks",
+            "color": "U",
+            "required": 2,
+            "cmc": 7,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.918168880455408,
+            "landsByTurnProbability": 0.2521525418633317
+          },
+          {
+            "card": "Atlantis Attacks",
+            "color": "U",
+            "required": 2,
+            "cmc": 7,
+            "sources": 10,
+            "splash": false,
+            "probability": 0.918168880455408,
+            "landsByTurnProbability": 0.2521525418633317
+          }
+        ],
+        "unmodelledCosts": 0,
+        "earlyDoublePipLow": 0,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": false,
+        "incomplete": true
+      }
+    },
+    {
+      "score": 78,
+      "colors": "BR",
+      "parts": [
+        [
+          "カードパワー",
+          9,
+          30,
+          "単体評価平均 49.1（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          15,
+          15,
+          "採用候補の呪文 23 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          15,
+          15,
+          "2/3/4マナの生物 5/5/3・6マナ以上 0"
+        ],
+        [
+          "クリーチャー",
+          9,
+          10,
+          "16枚"
+        ],
+        [
+          "除去・干渉",
+          10,
+          10,
+          "種類別の重み合計 14.0"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          10,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：R6/B9・非基本 2・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "0618a217-2a6e-4fa1-bfe6-89c6612a594d",
+          "name": "K'un-Lun Warrior"
+        },
+        {
+          "key": "d89aa87a-d59a-41e2-b92f-15c9bc6d3d13",
+          "name": "Project Deathlok Soldier"
+        },
+        {
+          "key": "10db57b4-f895-4514-b610-2252ba676353",
+          "name": "Bullseye, Death Dealer"
+        },
+        {
+          "key": "b92c2da9-eaa4-404b-8114-5527eec6390e",
+          "name": "Roxxon Brutes"
+        },
+        {
+          "key": "8ceb1acf-5ff3-4f1a-af04-9f07ad454526",
+          "name": "Ronin, Shadow Stalker"
+        },
+        {
+          "key": "8ceb1acf-5ff3-4f1a-af04-9f07ad454526",
+          "name": "Ronin, Shadow Stalker"
+        },
+        {
+          "key": "31816924-1430-4581-86e8-325e2ca16217",
+          "name": "Agents of HYDRA"
+        },
+        {
+          "key": "31816924-1430-4581-86e8-325e2ca16217",
+          "name": "Agents of HYDRA"
+        },
+        {
+          "key": "00ed7aca-b3c1-4d48-acd5-b1596daeb4c3",
+          "name": "Whiplash, Vengeful Engineer"
+        },
+        {
+          "key": "39f2a632-30d2-4b35-9e7f-fef27713a4f7",
+          "name": "Widow's Bite"
+        },
+        {
+          "key": "aeeb50f2-8e02-4d40-a1dd-28b1c5c85c7e",
+          "name": "Moonstone, Harsh Mistress"
+        },
+        {
+          "key": "0a364879-31bd-4760-833d-165cde1e96c6",
+          "name": "Yellowjacket, Heartless Marauder"
+        },
+        {
+          "key": "70c96b50-ac2b-493d-bd15-fc66eb767111",
+          "name": "Vision of Love"
+        },
+        {
+          "key": "7d765055-da62-43f7-9580-98e9d164753b",
+          "name": "Truck Toss"
+        },
+        {
+          "key": "7d765055-da62-43f7-9580-98e9d164753b",
+          "name": "Truck Toss"
+        },
+        {
+          "key": "f34b9bc4-7bfe-47fd-ba23-4eeeb46026eb",
+          "name": "Lightning Strike"
+        },
+        {
+          "key": "95161e23-e4c4-411f-bce5-58a02abc0958",
+          "name": "Arnim Zola, Bio-Fanatic"
+        },
+        {
+          "key": "d8863742-6c1c-415a-ad27-7def6d119c6a",
+          "name": "Crimson Operative"
+        },
+        {
+          "key": "4f69d2f9-c16a-4752-9026-794a29d73af8",
+          "name": "Robot Domination"
+        },
+        {
+          "key": "4f69d2f9-c16a-4752-9026-794a29d73af8",
+          "name": "Robot Domination"
+        },
+        {
+          "key": "d812c8e3-a475-4ad2-a93f-7208ad873676",
+          "name": "Madame Hydra"
+        },
+        {
+          "key": "9c78778a-6335-4949-8ade-11d0f085cb2b",
+          "name": "Loki Laufeyson"
+        },
+        {
+          "key": "1c233e08-d5a3-48d7-9074-20393896a480",
+          "name": "Klaw, Sonic Subjugator"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 40,
+          "missingSpells": 0,
+          "spellCount": 23,
+          "landCount": 17,
+          "basicCount": 15,
+          "basics": {
+            "R": 6,
+            "B": 9
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [
+            {
+              "key": "d49a7525-eca5-48e1-b94b-d618a706fd02",
+              "name": "Subterranean Cavern",
+              "producedMana": [
+                "B",
+                "G"
+              ]
+            },
+            {
+              "key": "9bd013df-ad75-4099-940b-1765c58faf26",
+              "name": "Castle Doom",
+              "producedMana": [
+                "B",
+                "C",
+                "G",
+                "R",
+                "U",
+                "W"
+              ]
+            }
+          ],
+          "weightedColorDemand": {
+            "R": 13.5,
+            "B": 21.5
+          },
+          "splashColors": [],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "K'un-Lun Warrior",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Project Deathlok Soldier",
+            "color": "B",
+            "required": 1,
+            "cmc": 1,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9162831562212367,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Roxxon Brutes",
+            "color": "B",
+            "required": 1,
+            "cmc": 5,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9850344889481512,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Ronin, Shadow Stalker",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Ronin, Shadow Stalker",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Agents of HYDRA",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Agents of HYDRA",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Whiplash, Vengeful Engineer",
+            "color": "B",
+            "required": 1,
+            "cmc": 1,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9162831562212367,
+            "landsByTurnProbability": 0.9868503118503118
+          },
+          {
+            "card": "Widow's Bite",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Moonstone, Harsh Mistress",
+            "color": "B",
+            "required": 1,
+            "cmc": 4,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Yellowjacket, Heartless Marauder",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Vision of Love",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Truck Toss",
+            "color": "R",
+            "required": 2,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.5723161241737094,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Truck Toss",
+            "color": "R",
+            "required": 2,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.5723161241737094,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Lightning Strike",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Arnim Zola, Bio-Fanatic",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Crimson Operative",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Robot Domination",
+            "color": "B",
+            "required": 1,
+            "cmc": 4,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Robot Domination",
+            "color": "B",
+            "required": 1,
+            "cmc": 4,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Madame Hydra",
+            "color": "B",
+            "required": 1,
+            "cmc": 4,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9763702457076071,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Madame Hydra",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Loki Laufeyson",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Klaw, Sonic Subjugator",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 11,
+            "splash": false,
+            "probability": 0.9633738808467911,
+            "landsByTurnProbability": 0.8445945945945945
+          }
+        ],
+        "unmodelledCosts": 1,
+        "earlyDoublePipLow": 0,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": false,
+        "incomplete": false
+      }
+    }
+  ],
+  "anomalies": [
+    {
+      "type": "highP1P1",
+      "card": "Guerrilla Gorilla",
+      "rate": 0.9868421052631579
+    },
+    {
+      "type": "highP1P1",
+      "card": "Abomination, Terrifying Titan",
+      "rate": 0.8333333333333334
+    },
+    {
+      "type": "highP1P1",
+      "card": "Ronin, Shadow Stalker",
+      "rate": 0.8181818181818182
+    },
+    {
+      "type": "highP1P1",
+      "card": "Red Guardian, Super-Soldier",
+      "rate": 0.9210526315789473
+    }
+  ],
+  "savedWRIntegrity": {
+    "checked": 334,
+    "nonFinite": 0
+  }
+}

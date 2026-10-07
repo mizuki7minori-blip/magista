@@ -1,0 +1,3478 @@
+{
+  "officialCollation": {
+    "status": "official-unverified",
+    "source": null,
+    "cards": 14,
+    "common": 7,
+    "uncommon": 3,
+    "rareSlots": 1,
+    "mythicChance": 0.14285714285714285,
+    "basicSlots": 1,
+    "wildcardSlots": 2,
+    "wildcardWeights": [
+      0.5,
+      0.35,
+      0.125,
+      0.025
+    ],
+    "foil": null,
+    "doubleFacedSlot": null,
+    "bonusSheet": null,
+    "specialGuest": {
+      "pool": "spg",
+      "collectorRange": [
+        159,
+        168
+      ],
+      "chance": 0.01818181818181818,
+      "status": "legacy-unverified"
+    },
+    "maxLands": null,
+    "references": [
+      {
+        "article": "article-fra-draft-2026-09-25.html",
+        "url": "https://magic.wizards.com/ja/news/feature/collecting-reality-fracture",
+        "scope": "SPG presence mentioned by saved article; odds not confirmed"
+      }
+    ]
+  },
+  "savedWRCount": 60,
+  "fullCardCount": 461,
+  "wrCoverage": 0.8631578947368421,
+  "drafts": 100,
+  "cpus": 800,
+  "totalPicks": 33600,
+  "errors": 0,
+  "status": "measured-card-pool",
+  "reason": "No complete card snapshot; fetch inputs in a network-enabled environment.",
+  "ratingSource": "https://www.17lands.com/card_ratings/data?expansion=FRA&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07",
+  "ratingFetchedAt": "2026-10-07T06:47:14.650691+00:00",
+  "ratingValidation": {
+    "duplicates": 0,
+    "invalidValues": 0,
+    "missingIdentity": 0,
+    "missingMetrics": {
+      "wr": 44,
+      "gih_wr": 88,
+      "oh_wr": 184,
+      "games": 0,
+      "ata": 46,
+      "alsa": 12,
+      "usage": 12
+    },
+    "missingValues": 386
+  },
+  "ratingWindow": {
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07"
+  },
+  "actualColorResults": {
+    "set": "fra",
+    "complete": true,
+    "source": "https://www.17lands.com/color_ratings/data?expansion=FRA&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07&combine_splash=false",
+    "fetchedAt": "2026-10-07T06:47:16.074761+00:00",
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07",
+    "rows": [
+      {
+        "is_summary": true,
+        "color_name": "Mono-color",
+        "short_name": 1,
+        "wins": 517,
+        "games": 943
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White",
+        "short_name": "W",
+        "wins": 168,
+        "games": 268
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue",
+        "short_name": "U",
+        "wins": 96,
+        "games": 183
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black",
+        "short_name": "B",
+        "wins": 26,
+        "games": 61
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red",
+        "short_name": "R",
+        "wins": 162,
+        "games": 291
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green",
+        "short_name": "G",
+        "wins": 65,
+        "games": 140
+      },
+      {
+        "is_summary": true,
+        "color_name": "Mono-color + Splash",
+        "short_name": "1+",
+        "wins": 1882,
+        "games": 3467
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White + Splash",
+        "short_name": "W+",
+        "wins": 352,
+        "games": 644
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue + Splash",
+        "short_name": "U+",
+        "wins": 568,
+        "games": 1034
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black + Splash",
+        "short_name": "B+",
+        "wins": 198,
+        "games": 383
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red + Splash",
+        "short_name": "R+",
+        "wins": 285,
+        "games": 500
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green + Splash",
+        "short_name": "G+",
+        "wins": 479,
+        "games": 906
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color",
+        "short_name": 2,
+        "wins": 77505,
+        "games": 139229
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU)",
+        "short_name": "WU",
+        "wins": 11670,
+        "games": 20212
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB)",
+        "short_name": "UB",
+        "wins": 12570,
+        "games": 22159
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR)",
+        "short_name": "BR",
+        "wins": 8356,
+        "games": 15424
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG)",
+        "short_name": "RG",
+        "wins": 11234,
+        "games": 19915
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW)",
+        "short_name": "WG",
+        "wins": 9275,
+        "games": 16970
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB)",
+        "short_name": "WB",
+        "wins": 4015,
+        "games": 7547
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG)",
+        "short_name": "BG",
+        "wins": 4866,
+        "games": 8778
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU)",
+        "short_name": "UG",
+        "wins": 2462,
+        "games": 4693
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR)",
+        "short_name": "UR",
+        "wins": 8017,
+        "games": 14228
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW)",
+        "short_name": "WR",
+        "wins": 5040,
+        "games": 9303
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color + Splash",
+        "short_name": "2+",
+        "wins": 54720,
+        "games": 99912
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU) + Splash",
+        "short_name": "WU+",
+        "wins": 8068,
+        "games": 14439
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB) + Splash",
+        "short_name": "UB+",
+        "wins": 9801,
+        "games": 17294
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR) + Splash",
+        "short_name": "BR+",
+        "wins": 2876,
+        "games": 5482
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG) + Splash",
+        "short_name": "RG+",
+        "wins": 6602,
+        "games": 12188
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW) + Splash",
+        "short_name": "WG+",
+        "wins": 6050,
+        "games": 11330
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB) + Splash",
+        "short_name": "WB+",
+        "wins": 2738,
+        "games": 5134
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG) + Splash",
+        "short_name": "BG+",
+        "wins": 6703,
+        "games": 11874
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU) + Splash",
+        "short_name": "UG+",
+        "wins": 4186,
+        "games": 7767
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR) + Splash",
+        "short_name": "UR+",
+        "wins": 5518,
+        "games": 10216
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW) + Splash",
+        "short_name": "WR+",
+        "wins": 2178,
+        "games": 4188
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color",
+        "short_name": 3,
+        "wins": 21880,
+        "games": 40770
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR)",
+        "short_name": "WUR",
+        "wins": 1919,
+        "games": 3703
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG)",
+        "short_name": "UBG",
+        "wins": 3408,
+        "games": 6075
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW)",
+        "short_name": "WBR",
+        "wins": 527,
+        "games": 1147
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU)",
+        "short_name": "URG",
+        "wins": 2306,
+        "games": 4207
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB)",
+        "short_name": "WBG",
+        "wins": 1545,
+        "games": 2981
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB)",
+        "short_name": "WUB",
+        "wins": 3006,
+        "games": 5581
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR)",
+        "short_name": "UBR",
+        "wins": 2365,
+        "games": 4309
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG)",
+        "short_name": "BRG",
+        "wins": 3129,
+        "games": 5665
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW)",
+        "short_name": "WRG",
+        "wins": 2211,
+        "games": 4300
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU)",
+        "short_name": "WUG",
+        "wins": 1464,
+        "games": 2802
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color + Splash",
+        "short_name": "3+",
+        "wins": 4381,
+        "games": 8166
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR) + Splash",
+        "short_name": "WUR+",
+        "wins": 360,
+        "games": 658
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG) + Splash",
+        "short_name": "UBG+",
+        "wins": 823,
+        "games": 1532
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW) + Splash",
+        "short_name": "WBR+",
+        "wins": 109,
+        "games": 232
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU) + Splash",
+        "short_name": "URG+",
+        "wins": 601,
+        "games": 1138
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB) + Splash",
+        "short_name": "WBG+",
+        "wins": 442,
+        "games": 828
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB) + Splash",
+        "short_name": "WUB+",
+        "wins": 320,
+        "games": 634
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR) + Splash",
+        "short_name": "UBR+",
+        "wins": 399,
+        "games": 740
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG) + Splash",
+        "short_name": "BRG+",
+        "wins": 585,
+        "games": 1027
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW) + Splash",
+        "short_name": "WRG+",
+        "wins": 408,
+        "games": 750
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU) + Splash",
+        "short_name": "WUG+",
+        "wins": 334,
+        "games": 627
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color",
+        "short_name": 4,
+        "wins": 590,
+        "games": 1101
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR)",
+        "short_name": "WUBR",
+        "wins": 67,
+        "games": 128
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG)",
+        "short_name": "UBRG",
+        "wins": 228,
+        "games": 402
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW)",
+        "short_name": "WBRG",
+        "wins": 89,
+        "games": 171
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU)",
+        "short_name": "WURG",
+        "wins": 109,
+        "games": 224
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB)",
+        "short_name": "WUBG",
+        "wins": 97,
+        "games": 176
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color + Splash",
+        "short_name": "4+",
+        "wins": 189,
+        "games": 380
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR) + Splash",
+        "short_name": "WUBR+",
+        "wins": 16,
+        "games": 34
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG) + Splash",
+        "short_name": "UBRG+",
+        "wins": 70,
+        "games": 134
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW) + Splash",
+        "short_name": "WBRG+",
+        "wins": 35,
+        "games": 68
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU) + Splash",
+        "short_name": "WURG+",
+        "wins": 21,
+        "games": 52
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB) + Splash",
+        "short_name": "WUBG+",
+        "wins": 47,
+        "games": 92
+      },
+      {
+        "is_summary": true,
+        "color_name": "Five-color",
+        "short_name": 5,
+        "wins": 29,
+        "games": 64
+      },
+      {
+        "is_summary": false,
+        "color_name": "All Colors (WUBRG)",
+        "short_name": "WUBRG",
+        "wins": 29,
+        "games": 64
+      },
+      {
+        "is_summary": true,
+        "color_name": "All Decks",
+        "short_name": "All",
+        "wins": 161693,
+        "games": 294032
+      }
+    ]
+  },
+  "ratingMode": "full-rating-snapshot",
+  "fullPrintWRCount": 355,
+  "inputSource": "https://api.scryfall.com/cards/search?q=set%3Afra+game%3Apaper+lang%3Aen&unique=prints",
+  "inputFetchedAt": "2026-10-07T06:47:12.531130+00:00",
+  "inputSHA256": "acf1c065159682f488e8156246fc782c629080e6ff7503d431bfd8807a98d8b8",
+  "statisticsSHA256": "834e45c8f21f44943b57cd76f1087b47ed82c1e7df66bf6b4703ac75f68c16df",
+  "apiTotal": 461,
+  "acquisitionDuplicates": 0,
+  "acquisitionMissingIdentity": 0,
+  "acquisitionInvalidValues": 0,
+  "acquisitionCardsMissingFields": 0,
+  "specialInputSHA256": "a9d7fa0ad40fa4c9aee29b8881813800bc96c24c61495b6fda862fd0e7fdce2a",
+  "specialPools": {
+    "spg": 10,
+    "archive": 0,
+    "status": "legacy-targeting-official-unverified"
+  },
+  "poolDiagnostics": {
+    "boosterFlags": {
+      "true": 0,
+      "false": 461,
+      "missing": 0
+    },
+    "rarities": {
+      "common": 106,
+      "uncommon": 129,
+      "rare": 135,
+      "mythic": 91
+    },
+    "uniqueOracles": 285,
+    "samples": [
+      {
+        "id": "730d8c28-1e58-4b8e-89e9-445d154d2e83",
+        "oracle_id": "406e853b-713f-4c89-9efb-aca74a11183f",
+        "name": "Academic Ascent",
+        "rarity": "common",
+        "type_line": "Instant",
+        "booster": false,
+        "collector_number": "2"
+      },
+      {
+        "id": "f17d2792-b075-4c47-ad38-e7a7eaee5f8c",
+        "oracle_id": "172a8f58-c420-4497-b962-c5853f923667",
+        "name": "Aerid Konstrari",
+        "rarity": "mythic",
+        "type_line": "Legendary Creature — Elder Sphinx",
+        "booster": false,
+        "collector_number": "121"
+      },
+      {
+        "id": "66dcd789-d405-4fa6-855f-61064e2e4635",
+        "oracle_id": "172a8f58-c420-4497-b962-c5853f923667",
+        "name": "Aerid Konstrari",
+        "rarity": "mythic",
+        "type_line": "Legendary Creature — Elder Sphinx",
+        "booster": false,
+        "collector_number": "347"
+      }
+    ]
+  },
+  "rawCardCount": 461,
+  "draftPoolCount": 285,
+  "excludedNonDraft": 0,
+  "performanceVariantsCollapsed": 176,
+  "packEligibility": {
+    "officialVerified": false,
+    "method": "UNVERIFIED all main-set oracle-unique cards; booster flag bypassed ONLY for diagnostic simulation"
+  },
+  "wrCount": 246,
+  "missingWR": 39,
+  "joinMethods": {
+    "name": 280,
+    "unmatched": 5
+  },
+  "ratingRecordsNotMatchedToDraftPool": 10,
+  "cardKinds": {
+    "lands": 25,
+    "basicLands": 5,
+    "creatures": 160,
+    "multicolor": 54,
+    "colorless": 37,
+    "doubleFaced": 21
+  },
+  "ratings": {
+    "minimum": 12,
+    "maximum": 64.081499985,
+    "invalid": [],
+    "missingStructuralFields": 0,
+    "extremes": []
+  },
+  "scores": {
+    "mean": 71.925,
+    "atMost40": 7,
+    "median": 73,
+    "standardDeviation": 7.301498133944837,
+    "min": 36,
+    "max": 85,
+    "buckets": {
+      "<40": 6,
+      "40-49": 14,
+      "50-59": 29,
+      "60-69": 142,
+      "70-79": 555,
+      "80-89": 54,
+      ">=90": 0
+    }
+  },
+  "colorPicks": {
+    "B": 4254,
+    "U": 4229,
+    "R": 4405,
+    "W": 4327,
+    "multicolor": 5071,
+    "C": 7161,
+    "G": 4153
+  },
+  "finalColorAdoption": {
+    "W": {
+      "decks": 277,
+      "rate": 0.34625
+    },
+    "U": {
+      "decks": 444,
+      "rate": 0.555
+    },
+    "B": {
+      "decks": 338,
+      "rate": 0.4225
+    },
+    "R": {
+      "decks": 267,
+      "rate": 0.33375
+    },
+    "G": {
+      "decks": 274,
+      "rate": 0.3425
+    }
+  },
+  "archetypes": {
+    "WU": 126,
+    "UB": 115,
+    "BR": 77,
+    "RG": 46,
+    "GW": 41,
+    "WB": 64,
+    "UR": 98,
+    "BG": 82,
+    "RW": 46,
+    "GU": 105
+  },
+  "mainPairChangesAfterP1P10": 162,
+  "earlyCommitAtP1P5": 0,
+  "landCounts": {
+    "1": 539,
+    "2": 926,
+    "3": 659,
+    "4": 223,
+    "5": 45,
+    "6": 8
+  },
+  "packRarityCounts": {
+    "common": 21650,
+    "uncommon": 8822,
+    "rare": 2656,
+    "mythic": 472
+  },
+  "packRarityRates": {
+    "common": 0.6443452380952381,
+    "uncommon": 0.2625595238095238,
+    "rare": 0.07904761904761905,
+    "mythic": 0.014047619047619048
+  },
+  "slotCounts": {
+    "normal": 33575,
+    "special": 25
+  },
+  "slotRates": {
+    "normal": 0.9992559523809523,
+    "special": 0.000744047619047619
+  },
+  "scryfallIdMatchRate": 0,
+  "constructionRates": {
+    "playable23": 0.84,
+    "twoColorComplete": 0.37375,
+    "splash": 0.53875,
+    "averageLands": 17
+  },
+  "attainmentComparison": "ATA comparison enabled; ALSA kept separate",
+  "ataComparison": {
+    "status": "diagnostic-only-unverified-collation",
+    "cards": 244,
+    "pearson": 0.5628298152051286,
+    "spearman": 0.5511575364815021,
+    "pickedEarlier": [
+      {
+        "key": "48b1ac27-430f-4fd9-a71b-6ad125c57fe3",
+        "name": "Sphinx's Approach",
+        "appearances": 40,
+        "averagePick": 4.075,
+        "p1Appearances": 8,
+        "p1p1Count": 1,
+        "p1p1Rate": 0.125,
+        "p1p5Rate": 1,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.241041,
+        "gihWR": 57.241041,
+        "ohWR": 54.239766,
+        "ata": 9.970411,
+        "alsa": 7.4198998,
+        "ataDifference": -5.895411,
+        "baseValue": 57.241041,
+        "heuristicValue": 45.9,
+        "wrContribution": 57.241041,
+        "meanColorAdjustment": 0.9704821728874646,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 57.24104100000003,
+          "mana": 0,
+          "color": 0.9704821728874646,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 40,
+          "現在の主色に合う": 28,
+          "主色外のマナ供給が不足": 4
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "8ec56e2a-380f-4de7-9fb7-52de803008fc",
+        "name": "Transformative Commons",
+        "appearances": 231,
+        "averagePick": 3.017316017316017,
+        "p1Appearances": 89,
+        "p1p1Count": 17,
+        "p1p1Rate": 0.19101123595505617,
+        "p1p5Rate": 1,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.40038,
+        "gihWR": 57.40038,
+        "ohWR": 57.972806,
+        "ata": 8.8438382,
+        "alsa": 6.4161974,
+        "ataDifference": -5.826522182683983,
+        "baseValue": 57.40038,
+        "heuristicValue": 45,
+        "wrContribution": 57.40038,
+        "meanColorAdjustment": 0,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 57.40037999999969,
+          "mana": 0,
+          "color": 0,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 1.272602198855811
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 231,
+          "主色のマナ基盤を補強": 56
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色のマナ基盤を補強"
+        ]
+      },
+      {
+        "key": "6812e4d3-0034-4fc8-9ee9-520f76a0ea94",
+        "name": "Innovative Commons",
+        "appearances": 244,
+        "averagePick": 3.2459016393442623,
+        "p1Appearances": 83,
+        "p1p1Count": 13,
+        "p1p1Rate": 0.1566265060240964,
+        "p1p5Rate": 0.9759036144578314,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.246377,
+        "gihWR": 57.246377,
+        "ohWR": 58.551069,
+        "ata": 8.9199237,
+        "alsa": 6.3661503,
+        "ataDifference": -5.674022060655737,
+        "baseValue": 57.246377,
+        "heuristicValue": 45,
+        "wrContribution": 57.246377,
+        "meanColorAdjustment": 0,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 57.246376999999896,
+          "mana": 0,
+          "color": 0,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 1.4376107546748111
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 244,
+          "主色のマナ基盤を補強": 76
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色のマナ基盤を補強"
+        ]
+      },
+      {
+        "key": "46cf0e3e-3c3e-4eb8-a71a-4b4b87744ced",
+        "name": "Something Worth Saving",
+        "appearances": 239,
+        "averagePick": 3.8158995815899583,
+        "p1Appearances": 71,
+        "p1p1Count": 8,
+        "p1p1Rate": 0.11267605633802817,
+        "p1p5Rate": 0.9577464788732394,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.016532,
+        "gihWR": 57.016532,
+        "ohWR": 57.699805000000005,
+        "ata": 9.3648796,
+        "alsa": 6.9578626,
+        "ataDifference": -5.548980018410042,
+        "baseValue": 57.016532,
+        "heuristicValue": 43,
+        "wrContribution": 57.016532,
+        "meanColorAdjustment": 1.1729435002285433,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 57.01653199999977,
+          "mana": 0,
+          "color": 1.1729435002285433,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 239,
+          "現在の主色に合う": 151,
+          "主色外のマナ供給が不足": 20
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "3e51c060-1e86-4a0e-8fee-8b7273161468",
+        "name": "Formidable Commons",
+        "appearances": 241,
+        "averagePick": 3.3858921161825726,
+        "p1Appearances": 83,
+        "p1p1Count": 12,
+        "p1p1Rate": 0.14457831325301204,
+        "p1p5Rate": 0.9518072289156626,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.227005,
+        "gihWR": 57.227005,
+        "ohWR": 58.944954,
+        "ata": 8.7608486,
+        "alsa": 6.2783454,
+        "ataDifference": -5.374956483817426,
+        "baseValue": 57.227005,
+        "heuristicValue": 45,
+        "wrContribution": 57.227005,
+        "meanColorAdjustment": 0,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 57.227005000000204,
+          "mana": 0,
+          "color": 0,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 1.1388379131845812
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 241,
+          "主色のマナ基盤を補強": 50
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色のマナ基盤を補強"
+        ]
+      },
+      {
+        "key": "ecdfee75-15fd-41ea-89d4-4bfc1fa4d032",
+        "name": "Keeper of the Quiet Hour",
+        "appearances": 232,
+        "averagePick": 3.7801724137931036,
+        "p1Appearances": 72,
+        "p1p1Count": 2,
+        "p1p1Rate": 0.027777777777777776,
+        "p1p5Rate": 0.875,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 55.98526700000001,
+        "gihWR": 55.98526700000001,
+        "ohWR": 55.555555999999996,
+        "ata": 9.1276013,
+        "alsa": 6.4988427,
+        "ataDifference": -5.347428886206897,
+        "baseValue": 55.98526700000001,
+        "heuristicValue": 50.7,
+        "wrContribution": 55.98526700000001,
+        "meanColorAdjustment": 0,
+        "meanSynergyAdjustment": 0.2452579308723323,
+        "meanCurveAdjustment": 0.6156739811912225,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 55.985267000000015,
+          "mana": 0,
+          "color": 0,
+          "synergy": 0.2452579308723323,
+          "curve": 0.6156739811912225,
+          "creature": 0.48079937304075265,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 232,
+          "3マナのクリーチャーを補強": 126,
+          "クリーチャー不足を補う": 101,
+          "アーキタイプ・共通メカニズムと相性が良い": 62
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "3マナのクリーチャーを補強",
+          "クリーチャー不足を補う",
+          "アーキタイプ・共通メカニズムと相性が良い"
+        ]
+      },
+      {
+        "key": "6c5ed756-b999-49f7-9a52-fb8196202f0f",
+        "name": "Theoretical Necromancer",
+        "appearances": 222,
+        "averagePick": 4.076576576576577,
+        "p1Appearances": 75,
+        "p1p1Count": 2,
+        "p1p1Rate": 0.02666666666666667,
+        "p1p5Rate": 0.7333333333333333,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 55.977654,
+        "gihWR": 55.977654,
+        "ohWR": 53.42772,
+        "ata": 8.8903118,
+        "alsa": 6.4811763,
+        "ataDifference": -4.813735223423422,
+        "baseValue": 55.977654,
+        "heuristicValue": 50.7,
+        "wrContribution": 55.977654,
+        "meanColorAdjustment": 1.2750939377573642,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.45081900081900067,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 55.97765400000014,
+          "mana": 0,
+          "color": 1.2750939377573642,
+          "synergy": 0,
+          "curve": 0.45081900081900067,
+          "creature": 0.4719901719901723,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 222,
+          "現在の主色に合う": 147,
+          "3マナのクリーチャーを補強": 91,
+          "クリーチャー不足を補う": 92,
+          "主色外のマナ供給が不足": 20
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "3マナのクリーチャーを補強",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "26e20ae5-4059-4d63-9db5-6e12421d1aba",
+        "name": "Stingerquill Annex",
+        "appearances": 270,
+        "averagePick": 4.648148148148148,
+        "p1Appearances": 87,
+        "p1p1Count": 4,
+        "p1p1Rate": 0.04597701149425287,
+        "p1p5Rate": 0.7586206896551724,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 55.894428,
+        "gihWR": 55.894428,
+        "ohWR": 58.295282,
+        "ata": 9.2816616,
+        "alsa": 6.5591468,
+        "ataDifference": -4.633513451851852,
+        "baseValue": 55.894428,
+        "heuristicValue": 45,
+        "wrContribution": 55.894428,
+        "meanColorAdjustment": 0,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 55.89442799999973,
+          "mana": 0,
+          "color": 0,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 1.394670048693601
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 270,
+          "主色のマナ基盤を補強": 77
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色のマナ基盤を補強"
+        ]
+      },
+      {
+        "key": "d0ce03fa-2284-4217-85b2-4db6b8a88c94",
+        "name": "Divining Duelist",
+        "appearances": 233,
+        "averagePick": 5.527896995708154,
+        "p1Appearances": 69,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.2318840579710145,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 54.201411,
+        "gihWR": 54.201411,
+        "ohWR": 51.403509,
+        "ata": 10.090909,
+        "alsa": 6.9005864,
+        "ataDifference": -4.563012004291846,
+        "baseValue": 54.201411,
+        "heuristicValue": 51.800000000000004,
+        "wrContribution": 54.201411,
+        "meanColorAdjustment": 1.7261098893177749,
+        "meanSynergyAdjustment": 0.25311842818099617,
+        "meanCurveAdjustment": 0.5872415138509556,
+        "meanRemovalAdjustment": 0.21973273507608274,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 54.201411,
+          "mana": 0,
+          "color": 1.7261098893177749,
+          "synergy": 0.25311842818099617,
+          "curve": 0.5872415138509556,
+          "creature": 0.49746390948107705,
+          "removal": 0.21973273507608274,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 233,
+          "現在の主色に合う": 204,
+          "タップ": 211,
+          "アーキタイプ・共通メカニズムと相性が良い": 64,
+          "3マナのクリーチャーを補強": 117,
+          "クリーチャー不足を補う": 119,
+          "主色外のマナ供給が不足": 13
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "タップ",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "3マナのクリーチャーを補強"
+        ]
+      },
+      {
+        "key": "07617648-6490-4719-acec-7705671f7e01",
+        "name": "Protege's Awakening",
+        "appearances": 253,
+        "averagePick": 2.0118577075098814,
+        "p1Appearances": 93,
+        "p1p1Count": 60,
+        "p1p1Rate": 0.6451612903225806,
+        "p1p5Rate": 1,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 59.232041,
+        "gihWR": 59.232041,
+        "ohWR": 55.825511000000006,
+        "ata": 6.5153698,
+        "alsa": 5.034851,
+        "ataDifference": -4.503512092490119,
+        "baseValue": 59.232041,
+        "heuristicValue": 45.5,
+        "wrContribution": 59.232041,
+        "meanColorAdjustment": 1.2875747998579263,
+        "meanSynergyAdjustment": 0.13062817853141614,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 59.23204099999977,
+          "mana": 0,
+          "color": 1.2875747998579263,
+          "synergy": 0.13062817853141614,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 253,
+          "現在の主色に合う": 149,
+          "主色外のマナ供給が不足": 9,
+          "スプラッシュ用のマナ供給あり": 2
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足",
+          "スプラッシュ用のマナ供給あり"
+        ]
+      },
+      {
+        "key": "27d5b2eb-94fe-45fb-806c-354044de7ba5",
+        "name": "Room of Refuge",
+        "appearances": 252,
+        "averagePick": 2.996031746031746,
+        "p1Appearances": 81,
+        "p1p1Count": 1,
+        "p1p1Rate": 0.012345679012345678,
+        "p1p5Rate": 0.6049382716049383,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 55.333703,
+        "gihWR": 55.333703,
+        "ohWR": 56.207675,
+        "ata": 7.2518363,
+        "alsa": 5.0762436,
+        "ataDifference": -4.255804553968254,
+        "baseValue": 55.333703,
+        "heuristicValue": 45,
+        "wrContribution": 55.333703,
+        "meanColorAdjustment": 0,
+        "meanSynergyAdjustment": 0.05232280780331352,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 55.33370300000014,
+          "mana": 0,
+          "color": 0,
+          "synergy": 0.05232280780331352,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 3.2188719813083337
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 252,
+          "主色のマナ基盤を補強": 249,
+          "アーキタイプ・共通メカニズムと相性が良い": 14
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色のマナ基盤を補強",
+          "アーキタイプ・共通メカニズムと相性が良い"
+        ]
+      },
+      {
+        "key": "517f84b5-cf99-410d-96ea-910740231dac",
+        "name": "Void Extrapolator // Omit Variables",
+        "appearances": 241,
+        "averagePick": 5.468879668049793,
+        "p1Appearances": 87,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.5057471264367817,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 54.83871,
+        "gihWR": 54.83871,
+        "ohWR": 53.299492,
+        "ata": 9.6586791,
+        "alsa": 7.0578078,
+        "ataDifference": -4.189799431950208,
+        "baseValue": 54.83871,
+        "heuristicValue": 49,
+        "wrContribution": 54.83871,
+        "meanColorAdjustment": 1.027480022695866,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.5816672953602414,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 54.83871,
+          "mana": 0,
+          "color": 1.027480022695866,
+          "synergy": 0,
+          "curve": 0.5816672953602414,
+          "creature": 0.46374952847981904,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 241,
+          "主色外のマナ供給が不足": 35,
+          "現在の主色に合う": 162,
+          "2マナのクリーチャーを補強": 119,
+          "クリーチャー不足を補う": 111
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "2マナのクリーチャーを補強",
+          "クリーチャー不足を補う",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "00ad5200-5179-4d1b-8bb3-a09e1b31be58",
+        "name": "Theorix Annex",
+        "appearances": 209,
+        "averagePick": 4.08133971291866,
+        "p1Appearances": 79,
+        "p1p1Count": 3,
+        "p1p1Rate": 0.0379746835443038,
+        "p1p5Rate": 0.8987341772151899,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 56.60702,
+        "gihWR": 56.60702,
+        "ohWR": 56.442831000000005,
+        "ata": 8.2189015,
+        "alsa": 5.9562415,
+        "ataDifference": -4.1375617870813395,
+        "baseValue": 56.60702,
+        "heuristicValue": 45,
+        "wrContribution": 56.60702,
+        "meanColorAdjustment": 0,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 56.60701999999994,
+          "mana": 0,
+          "color": 0,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 1.3831131214231238
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 209,
+          "主色のマナ基盤を補強": 68
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色のマナ基盤を補強"
+        ]
+      },
+      {
+        "key": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "name": "Unsummon",
+        "appearances": 239,
+        "averagePick": 2.6861924686192467,
+        "p1Appearances": 84,
+        "p1p1Count": 31,
+        "p1p1Rate": 0.36904761904761907,
+        "p1p5Rate": 1,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.903780000000005,
+        "gihWR": 57.903780000000005,
+        "ohWR": 57.389849000000005,
+        "ata": 6.6914062,
+        "alsa": 5.1469495,
+        "ataDifference": -4.005213731380754,
+        "baseValue": 57.903780000000005,
+        "heuristicValue": 45.42,
+        "wrContribution": 57.903780000000005,
+        "meanColorAdjustment": 1.531851725063757,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0.21567135793077208,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 57.90378000000014,
+          "mana": 0,
+          "color": 1.531851725063757,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0.21567135793077208,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 239,
+          "バウンス・打ち消し": 176,
+          "現在の主色に合う": 149,
+          "主色外のマナ供給が不足": 6
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "バウンス・打ち消し",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "612c7807-be70-4e2f-afd2-3d3c03eddbbe",
+        "name": "Icy Reception",
+        "appearances": 256,
+        "averagePick": 2.45703125,
+        "p1Appearances": 82,
+        "p1p1Count": 31,
+        "p1p1Rate": 0.3780487804878049,
+        "p1p5Rate": 1,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.959543000000004,
+        "gihWR": 57.959543000000004,
+        "ohWR": 57.121135,
+        "ata": 6.4269552,
+        "alsa": 4.9639567,
+        "ataDifference": -3.96992395,
+        "baseValue": 57.959543000000004,
+        "heuristicValue": 47.4,
+        "wrContribution": 57.959543000000004,
+        "meanColorAdjustment": 1.486608639776706,
+        "meanSynergyAdjustment": 0.325987061243426,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0.18536931818181812,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 57.95954300000035,
+          "mana": 0,
+          "color": 1.486608639776706,
+          "synergy": 0.325987061243426,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0.18536931818181812,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 256,
+          "現在の主色に合う": 165,
+          "火力・マイナス修整": 187,
+          "アーキタイプ・共通メカニズムと相性が良い": 85,
+          "主色外のマナ供給が不足": 9
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "火力・マイナス修整",
+          "現在の主色に合う",
+          "アーキタイプ・共通メカニズムと相性が良い",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "2cdcf65c-03d2-416f-8a3f-0322f75e8595",
+        "name": "Heartstring Puller",
+        "appearances": 237,
+        "averagePick": 4.987341772151899,
+        "p1Appearances": 73,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.4931506849315068,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 55.143871,
+        "gihWR": 55.143871,
+        "ohWR": 50.601093,
+        "ata": 8.5255236,
+        "alsa": 6.1984816,
+        "ataDifference": -3.538181827848101,
+        "baseValue": 55.143871,
+        "heuristicValue": 47.8,
+        "wrContribution": 55.143871,
+        "meanColorAdjustment": 1.1947719818924012,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.6902186421173768,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 55.14387100000018,
+          "mana": 0,
+          "color": 1.1947719818924012,
+          "synergy": 0,
+          "curve": 0.6902186421173768,
+          "creature": 0.4522439585730727,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 237,
+          "現在の主色に合う": 162,
+          "4マナのクリーチャーを補強": 118,
+          "クリーチャー不足を補う": 98,
+          "主色外のマナ供給が不足": 28,
+          "スプラッシュ用のマナ供給あり": 9
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "4マナのクリーチャーを補強",
+          "クリーチャー不足を補う",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "a9d0657f-2c5e-4b6f-b8ae-d657cc0f7aef",
+        "name": "Tether Technician",
+        "appearances": 250,
+        "averagePick": 7.56,
+        "p1Appearances": 71,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.056338028169014086,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 53.307888000000005,
+        "gihWR": 53.307888000000005,
+        "ohWR": null,
+        "ata": 11.054444,
+        "alsa": 7.5602683,
+        "ataDifference": -3.4944440000000005,
+        "baseValue": 53.156399968,
+        "heuristicValue": 52.6,
+        "wrContribution": 41.899999968,
+        "meanColorAdjustment": 0.9885498754882068,
+        "meanSynergyAdjustment": 0.3713877643235476,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0.07175454545454543,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 53.15639996800015,
+          "mana": 0,
+          "color": 0.9885498754882068,
+          "synergy": 0.3713877643235476,
+          "curve": 0,
+          "creature": 0.4536000000000003,
+          "removal": 0.07175454545454543,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 250,
+          "現在の主色に合う": 186,
+          "火力・マイナス修整": 187,
+          "スプラッシュ用のマナ供給あり": 15,
+          "アーキタイプ・共通メカニズムと相性が良い": 106,
+          "クリーチャー不足を補う": 115,
+          "主色外のマナ供給が不足": 45
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "火力・マイナス修整",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "アーキタイプ・共通メカニズムと相性が良い"
+        ]
+      },
+      {
+        "key": "a9b3ee21-1af1-4e7e-8e48-d7c90d056f5c",
+        "name": "Cryotheory Adept",
+        "appearances": 253,
+        "averagePick": 6.446640316205533,
+        "p1Appearances": 94,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.10638297872340426,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 53.372591,
+        "gihWR": 53.372591,
+        "ohWR": 53.813559,
+        "ata": 9.898957,
+        "alsa": 6.821773,
+        "ataDifference": -3.452316683794466,
+        "baseValue": 53.372591,
+        "heuristicValue": 49.300000000000004,
+        "wrContribution": 53.372591,
+        "meanColorAdjustment": 1.5351214658253944,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.537279913762127,
+        "meanRemovalAdjustment": 0.2134387351778657,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 53.37259099999982,
+          "mana": 0,
+          "color": 1.5351214658253944,
+          "synergy": 0,
+          "curve": 0.537279913762127,
+          "creature": 0.41027667984189725,
+          "removal": 0.2134387351778657,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 253,
+          "現在の主色に合う": 221,
+          "タップ": 228,
+          "主色外のマナ供給が不足": 22,
+          "2マナのクリーチャーを補強": 118,
+          "クリーチャー不足を補う": 112
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "タップ",
+          "現在の主色に合う",
+          "2マナのクリーチャーを補強",
+          "クリーチャー不足を補う"
+        ]
+      },
+      {
+        "key": "4baa7847-dfcc-4aa3-aa64-2deeaa3f013b",
+        "name": "Murmuring Volume",
+        "appearances": 266,
+        "averagePick": 4.951127819548872,
+        "p1Appearances": 81,
+        "p1p1Count": 2,
+        "p1p1Rate": 0.024691358024691357,
+        "p1p5Rate": 0.8395061728395061,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 56.094104,
+        "gihWR": 56.094104,
+        "ohWR": 54.783258999999994,
+        "ata": 8.3560238,
+        "alsa": 6.2068115,
+        "ataDifference": -3.404895980451127,
+        "baseValue": 56.094104,
+        "heuristicValue": 45.5,
+        "wrContribution": 56.094104,
+        "meanColorAdjustment": 0,
+        "meanSynergyAdjustment": 0.26873036029192077,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 56.094103999999824,
+          "mana": 0,
+          "color": 0,
+          "synergy": 0.26873036029192077,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 266,
+          "アーキタイプ・共通メカニズムと相性が良い": 81
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "アーキタイプ・共通メカニズムと相性が良い"
+        ]
+      },
+      {
+        "key": "7b9a574f-6d56-421b-8fbd-94da1e6e3ce1",
+        "name": "Traxos, Academy Guardian",
+        "appearances": 84,
+        "averagePick": 2.392857142857143,
+        "p1Appearances": 26,
+        "p1p1Count": 4,
+        "p1p1Rate": 0.15384615384615385,
+        "p1p5Rate": 1,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.565129999999996,
+        "gihWR": 57.565129999999996,
+        "ohWR": 56.338027999999994,
+        "ata": 5.7976032,
+        "alsa": 4.4028045,
+        "ataDifference": -3.4047460571428574,
+        "baseValue": 57.565129999999996,
+        "heuristicValue": 49.4,
+        "wrContribution": 57.565129999999996,
+        "meanColorAdjustment": 1.378677346219119,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.6512445887445886,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": -0.08928571428571429,
+        "meanComponents": {
+          "base": 57.56512999999997,
+          "mana": 0,
+          "color": 1.378677346219119,
+          "synergy": 0,
+          "curve": 0.6512445887445886,
+          "creature": 0.44935064935064956,
+          "removal": 0,
+          "duplicate": -0.08928571428571429,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 84,
+          "現在の主色に合う": 56,
+          "4マナのクリーチャーを補強": 43,
+          "クリーチャー不足を補う": 31,
+          "主色外のマナ供給が不足": 2
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "4マナのクリーチャーを補強",
+          "クリーチャー不足を補う",
+          "主色外のマナ供給が不足"
+        ]
+      }
+    ],
+    "pickedLater": [
+      {
+        "key": "6745e850-68f6-480b-a1e0-e06180dde169",
+        "name": "Draconic Visitor",
+        "appearances": 38,
+        "averagePick": 10.5,
+        "p1Appearances": 14,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 49.021435000000004,
+        "gihWR": null,
+        "ohWR": null,
+        "ata": 2.0497738,
+        "alsa": 2.1281619,
+        "ataDifference": 8.4502262,
+        "baseValue": 50.234503149999995,
+        "heuristicValue": 51.4,
+        "wrContribution": 24.02050315,
+        "meanColorAdjustment": -0.20824257330817295,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 50.234503149999966,
+          "mana": 0,
+          "color": -0.20824257330817295,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0.261244019138756,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "カード情報からの推定単体評価": 38,
+          "現在の主色に合う": 26,
+          "クリーチャー不足を補う": 10,
+          "主色外のマナ供給が不足": 12
+        },
+        "reasons": [
+          "カード情報からの推定単体評価",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足",
+          "クリーチャー不足を補う"
+        ]
+      },
+      {
+        "key": "571cb06d-55b5-46e4-9678-1f74aca73068",
+        "name": "Tenured Tethermage",
+        "appearances": 41,
+        "averagePick": 10.560975609756097,
+        "p1Appearances": 15,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.823128999999994,
+        "gihWR": 57.823128999999994,
+        "ohWR": null,
+        "ata": 2.6705426,
+        "alsa": 2.5638298,
+        "ataDifference": 7.890433009756097,
+        "baseValue": 53.03439985199999,
+        "heuristicValue": 46.199999999999996,
+        "wrContribution": 33.999999851999995,
+        "meanColorAdjustment": -4.072614380132509,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.1895787139689579,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 53.03439985199999,
+          "mana": -0.26424834354880833,
+          "color": -4.072614380132509,
+          "synergy": 0,
+          "curve": 0.1895787139689579,
+          "creature": 0.11308203991130819,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 41,
+          "現在の主色に合う": 8,
+          "3マナのクリーチャーを補強": 7,
+          "クリーチャー不足を補う": 6,
+          "主色外のマナ供給が不足": 33
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色外のマナ供給が不足",
+          "現在の主色に合う",
+          "3マナのクリーチャーを補強",
+          "クリーチャー不足を補う"
+        ]
+      },
+      {
+        "key": "d6b478d1-5015-49ba-b1aa-cbc2b08107a6",
+        "name": "Vindictive Triumph",
+        "appearances": 39,
+        "averagePick": 12.64102564102564,
+        "p1Appearances": 15,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 49.922958,
+        "gihWR": null,
+        "ohWR": null,
+        "ata": 5.2711864,
+        "alsa": 4.1268462,
+        "ataDifference": 7.36983924102564,
+        "baseValue": 47.77646797199999,
+        "heuristicValue": 46.699999999999996,
+        "wrContribution": 16.674267972000003,
+        "meanColorAdjustment": -5.03961427238025,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0.007342657342657343,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 47.776467972000034,
+          "mana": -0.6554883640697382,
+          "color": -5.03961427238025,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0.007342657342657343,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "カード情報からの推定単体評価": 39,
+          "現在の主色に合う": 6,
+          "条件付き除去": 6,
+          "主色外のマナ供給が不足": 33
+        },
+        "reasons": [
+          "カード情報からの推定単体評価",
+          "主色外のマナ供給が不足",
+          "現在の主色に合う",
+          "条件付き除去"
+        ]
+      },
+      {
+        "key": "7799413d-e313-4a05-ad28-f4c926c26d28",
+        "name": "Vraska's Final Mercy",
+        "appearances": 44,
+        "averagePick": 10.227272727272727,
+        "p1Appearances": 16,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 49.832776,
+        "gihWR": 49.832776,
+        "ohWR": null,
+        "ata": 2.8794643,
+        "alsa": 2.5747304,
+        "ataDifference": 7.347808427272726,
+        "baseValue": 49.578400048,
+        "heuristicValue": 49.199999999999996,
+        "wrContribution": 29.800000048,
+        "meanColorAdjustment": 0.8959138884814503,
+        "meanSynergyAdjustment": 0.41520983973353087,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0.13527892561983476,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 49.57840004800002,
+          "mana": 0,
+          "color": 0.8959138884814503,
+          "synergy": 0.41520983973353087,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0.13527892561983476,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 44,
+          "現在の主色に合う": 36,
+          "条件付き除去": 36,
+          "主色外のマナ供給が不足": 8,
+          "アーキタイプ・共通メカニズムと相性が良い": 20
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "条件付き除去",
+          "アーキタイプ・共通メカニズムと相性が良い",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "f3ed157f-a09b-405f-aec4-0e7a81d80fc8",
+        "name": "Woodwork Prodigy // Soul Tether",
+        "appearances": 70,
+        "averagePick": 11.857142857142858,
+        "p1Appearances": 17,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 49.587397,
+        "gihWR": 49.587397,
+        "ohWR": 48.45735,
+        "ata": 4.7089041,
+        "alsa": 3.6364559,
+        "ataDifference": 7.148238757142858,
+        "baseValue": 49.587397,
+        "heuristicValue": 49,
+        "wrContribution": 49.587397,
+        "meanColorAdjustment": -5.711595703701595,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.06831168831168832,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 49.58739699999991,
+          "mana": -0.17933753560056376,
+          "color": -5.711595703701595,
+          "synergy": 0,
+          "curve": 0.06831168831168832,
+          "creature": 0.08493506493506493,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 70,
+          "主色外のマナ供給が不足": 56,
+          "現在の主色に合う": 14,
+          "3マナのクリーチャーを補強": 5,
+          "クリーチャー不足を補う": 6
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色外のマナ供給が不足",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "3マナのクリーチャーを補強"
+        ]
+      },
+      {
+        "key": "afddba56-f9a0-4917-8167-c9fd17ca9954",
+        "name": "Solarium Sentry",
+        "appearances": 41,
+        "averagePick": 11.658536585365853,
+        "p1Appearances": 12,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 51.456311,
+        "gihWR": null,
+        "ohWR": null,
+        "ata": 4.5609756,
+        "alsa": 3.6914176,
+        "ataDifference": 7.0975609853658534,
+        "baseValue": 51.192106931,
+        "heuristicValue": 51,
+        "wrContribution": 21.663106930999998,
+        "meanColorAdjustment": -5.304546674843335,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": -0.01951219512195121,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 51.19210693099996,
+          "mana": -0.23912206129705407,
+          "color": -5.304546674843335,
+          "synergy": 0,
+          "curve": -0.01951219512195121,
+          "creature": 0.07317073170731707,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "カード情報からの推定単体評価": 41,
+          "主色外のマナ供給が不足": 35,
+          "現在の主色に合う": 6,
+          "クリーチャー不足を補う": 3,
+          "2マナのクリーチャーを補強": 2
+        },
+        "reasons": [
+          "カード情報からの推定単体評価",
+          "主色外のマナ供給が不足",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "2マナのクリーチャーを補強"
+        ]
+      },
+      {
+        "key": "624cf822-0b4e-4f0c-9893-a53cb094f616",
+        "name": "Stinging Vitriol",
+        "appearances": 36,
+        "averagePick": 12.63888888888889,
+        "p1Appearances": 12,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 50.071531,
+        "gihWR": null,
+        "ohWR": null,
+        "ata": 6.1603774,
+        "alsa": 4.4208178,
+        "ataDifference": 6.4785114888888895,
+        "baseValue": 45.414802361999996,
+        "heuristicValue": 43.4,
+        "wrContribution": 15.121602361999999,
+        "meanColorAdjustment": -5.587426619393649,
+        "meanSynergyAdjustment": 0.10102921265258889,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 45.414802362000025,
+          "mana": -0.23508480299546664,
+          "color": -5.587426619393649,
+          "synergy": 0.10102921265258889,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "カード情報からの推定単体評価": 36,
+          "現在の主色に合う": 8,
+          "主色外のマナ供給が不足": 28,
+          "アーキタイプ・共通メカニズムと相性が良い": 4
+        },
+        "reasons": [
+          "カード情報からの推定単体評価",
+          "主色外のマナ供給が不足",
+          "現在の主色に合う",
+          "アーキタイプ・共通メカニズムと相性が良い"
+        ]
+      },
+      {
+        "key": "83c61083-b357-4775-a855-5a9013cc2bdf",
+        "name": "Verdant Kraken",
+        "appearances": 50,
+        "averagePick": 8.12,
+        "p1Appearances": 16,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.0625,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 56.568365,
+        "gihWR": 56.568365,
+        "ohWR": null,
+        "ata": 1.7169811,
+        "alsa": 1.7597403,
+        "ataDifference": 6.403018899999999,
+        "baseValue": 53.83320028999999,
+        "heuristicValue": 45.8,
+        "wrContribution": 42.20000029,
+        "meanColorAdjustment": 0.34594466135247315,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": -0.048,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": -0.024,
+        "meanComponents": {
+          "base": 53.833200290000015,
+          "mana": -0.39999999999999986,
+          "color": 0.34594466135247315,
+          "synergy": 0,
+          "curve": -0.048,
+          "creature": 0.3392727272727272,
+          "removal": 0,
+          "duplicate": -0.024,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 50,
+          "現在の主色に合う": 34,
+          "クリーチャー不足を補う": 19,
+          "主色外のマナ供給が不足": 15
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "3c0fe71c-bee1-41d3-aeb5-1723028eedde",
+        "name": "Face Yourself",
+        "appearances": 44,
+        "averagePick": 11.454545454545455,
+        "p1Appearances": 17,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 53.553038,
+        "gihWR": null,
+        "ohWR": null,
+        "ata": 5.1044177,
+        "alsa": 4.0801012,
+        "ataDifference": 6.350127754545455,
+        "baseValue": 47.786112416,
+        "heuristicValue": 43.4,
+        "wrContribution": 23.134912416,
+        "meanColorAdjustment": -0.552482056586297,
+        "meanSynergyAdjustment": 0.04400461509954827,
+        "meanCurveAdjustment": -0.02727272727272727,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": -0.02727272727272727,
+        "meanComponents": {
+          "base": 47.78611241599997,
+          "mana": 0,
+          "color": -0.552482056586297,
+          "synergy": 0.04400461509954827,
+          "curve": -0.02727272727272727,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": -0.02727272727272727,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "カード情報からの推定単体評価": 44,
+          "主色外のマナ供給が不足": 21,
+          "現在の主色に合う": 23,
+          "アーキタイプ・共通メカニズムと相性が良い": 2
+        },
+        "reasons": [
+          "カード情報からの推定単体評価",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足",
+          "アーキタイプ・共通メカニズムと相性が良い"
+        ]
+      },
+      {
+        "key": "4a37f4a0-2869-4f81-b51b-4c3e7e0e0671",
+        "name": "Ajani's Anguish",
+        "appearances": 42,
+        "averagePick": 8.238095238095237,
+        "p1Appearances": 18,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.142857,
+        "gihWR": 57.142857,
+        "ohWR": null,
+        "ata": 1.9011407,
+        "alsa": 1.8884758,
+        "ataDifference": 6.336954538095237,
+        "baseValue": 53.693399893,
+        "heuristicValue": 43.4,
+        "wrContribution": 42.799999893,
+        "meanColorAdjustment": 0.19966964157872172,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 53.69339989300004,
+          "mana": 0,
+          "color": 0.19966964157872172,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 42,
+          "主色外のマナ供給が不足": 13,
+          "現在の主色に合う": 29
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "8940f503-fc6d-4fae-be74-22c660cae1a7",
+        "name": "Pyre Rhymer // Molten Tide",
+        "appearances": 45,
+        "averagePick": 10.555555555555555,
+        "p1Appearances": 17,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 49.401523000000005,
+        "gihWR": null,
+        "ohWR": null,
+        "ata": 4.3980583,
+        "alsa": 3.4711447,
+        "ataDifference": 6.157497255555556,
+        "baseValue": 49.400615292,
+        "heuristicValue": 49.4,
+        "wrContribution": 19.958215292000002,
+        "meanColorAdjustment": -0.019561821910645587,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.17666666666666672,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 49.40061529200006,
+          "mana": -0.4,
+          "color": -0.019561821910645587,
+          "synergy": 0,
+          "curve": 0.17666666666666672,
+          "creature": 0.28363636363636363,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "カード情報からの推定単体評価": 45,
+          "現在の主色に合う": 31,
+          "3マナのクリーチャーを補強": 10,
+          "クリーチャー不足を補う": 14,
+          "主色外のマナ供給が不足": 14
+        },
+        "reasons": [
+          "カード情報からの推定単体評価",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "主色外のマナ供給が不足",
+          "3マナのクリーチャーを補強"
+        ]
+      },
+      {
+        "key": "57ea9f63-8267-4303-a3dd-9ded220294dc",
+        "name": "Rise of the Deathbringer",
+        "appearances": 30,
+        "averagePick": 8.133333333333333,
+        "p1Appearances": 12,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.16666666666666666,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 55.403557000000006,
+        "gihWR": 55.403557000000006,
+        "ohWR": null,
+        "ata": 2.1448276,
+        "alsa": 2.1102236,
+        "ataDifference": 5.988505733333333,
+        "baseValue": 53.35820016700001,
+        "heuristicValue": 47.8,
+        "wrContribution": 40.500000167,
+        "meanColorAdjustment": -1.0142320228443609,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0.022500000000000003,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 53.35820016699997,
+          "mana": 0,
+          "color": -1.0142320228443609,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0.022500000000000003,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 30,
+          "現在の主色に合う": 17,
+          "火力・マイナス修整": 18,
+          "スプラッシュ用のマナ供給あり": 3,
+          "主色外のマナ供給が不足": 8
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "火力・マイナス修整",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足",
+          "スプラッシュ用のマナ供給あり"
+        ]
+      },
+      {
+        "key": "add02a36-8811-438b-a8e1-f5c8a8146b4e",
+        "name": "Samut, Hazoret's Champion",
+        "appearances": 53,
+        "averagePick": 9.30188679245283,
+        "p1Appearances": 22,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 54.302103,
+        "gihWR": 54.302103,
+        "ohWR": null,
+        "ata": 3.6081081,
+        "alsa": 3.0649943,
+        "ataDifference": 5.69377869245283,
+        "baseValue": 51.963799869,
+        "heuristicValue": 49.4,
+        "wrContribution": 28.399999869000002,
+        "meanColorAdjustment": -0.2415057762592736,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.5154373927958833,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": -0.04716981132075472,
+        "meanComponents": {
+          "base": 51.963799869000006,
+          "mana": 0,
+          "color": -0.2415057762592736,
+          "synergy": 0,
+          "curve": 0.5154373927958833,
+          "creature": 0.3077186963979417,
+          "removal": 0,
+          "duplicate": -0.04716981132075472,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 53,
+          "現在の主色に合う": 34,
+          "2マナのクリーチャーを補強": 20,
+          "クリーチャー不足を補う": 17,
+          "主色外のマナ供給が不足": 19
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "2マナのクリーチャーを補強",
+          "主色外のマナ供給が不足",
+          "クリーチャー不足を補う"
+        ]
+      },
+      {
+        "key": "cad63b31-667b-4518-bc49-be4ffb82bc63",
+        "name": "Vraska, Soul of Stone",
+        "appearances": 44,
+        "averagePick": 12.318181818181818,
+        "p1Appearances": 11,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 52.380952,
+        "gihWR": null,
+        "ohWR": null,
+        "ata": 6.8076923,
+        "alsa": 4.7894737,
+        "ataDifference": 5.510489518181818,
+        "baseValue": 50.24957132,
+        "heuristicValue": 49.4,
+        "wrContribution": 14.92857132,
+        "meanColorAdjustment": -10.320637318785396,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 50.24957132000004,
+          "mana": -0.7748072692825025,
+          "color": -10.320637318785396,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "カード情報からの推定単体評価": 44,
+          "主色外のマナ供給が不足": 44
+        },
+        "reasons": [
+          "カード情報からの推定単体評価",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "22c2e66d-a2a1-46db-a70a-dff5ad5d6c14",
+        "name": "Liliana the Faultless",
+        "appearances": 34,
+        "averagePick": 8.029411764705882,
+        "p1Appearances": 9,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 55.513307999999995,
+        "gihWR": 55.513307999999995,
+        "ohWR": null,
+        "ata": 2.8364486,
+        "alsa": 2.4993289,
+        "ataDifference": 5.192963164705882,
+        "baseValue": 52.615600008,
+        "heuristicValue": 49.4,
+        "wrContribution": 29.200000008,
+        "meanColorAdjustment": 0.8705276514131861,
+        "meanSynergyAdjustment": 0.22379256323128288,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 52.615600008,
+          "mana": 0,
+          "color": 0.8705276514131861,
+          "synergy": 0.22379256323128288,
+          "curve": 0,
+          "creature": 0.460427807486631,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 34,
+          "現在の主色に合う": 27,
+          "アーキタイプ・共通メカニズムと相性が良い": 9,
+          "クリーチャー不足を補う": 16,
+          "主色外のマナ供給が不足": 7
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "アーキタイプ・共通メカニズムと相性が良い",
+          "主色外のマナ供給が不足"
+        ]
+      },
+      {
+        "key": "10721d62-dc68-43b4-bfa2-dcb8cf8ea980",
+        "name": "Way of the Warlord",
+        "appearances": 74,
+        "averagePick": 10.608108108108109,
+        "p1Appearances": 21,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 49.834437,
+        "gihWR": 49.834437,
+        "ohWR": null,
+        "ata": 5.5744308,
+        "alsa": 4.306795,
+        "ataDifference": 5.033677308108109,
+        "baseValue": 49.834437,
+        "heuristicValue": 45.5,
+        "wrContribution": 49.834437,
+        "meanColorAdjustment": -0.7761938713102849,
+        "meanSynergyAdjustment": 0.15474101167911092,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": -0.033783783783783786,
+        "meanComponents": {
+          "base": 49.83443699999999,
+          "mana": 0,
+          "color": -0.7761938713102849,
+          "synergy": 0.15474101167911092,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": -0.033783783783783786,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 74,
+          "現在の主色に合う": 44,
+          "主色外のマナ供給が不足": 30,
+          "アーキタイプ・共通メカニズムと相性が良い": 14
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "主色外のマナ供給が不足",
+          "アーキタイプ・共通メカニズムと相性が良い"
+        ]
+      },
+      {
+        "key": "f30a084c-5705-40f5-8e0d-2083d33973c7",
+        "name": "Curse-Marred Demon",
+        "appearances": 56,
+        "averagePick": 6.928571428571429,
+        "p1Appearances": 15,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.06666666666666667,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 54.344392,
+        "gihWR": 54.344392,
+        "ohWR": null,
+        "ata": 2.0592885,
+        "alsa": 2.0371622,
+        "ataDifference": 4.869282928571429,
+        "baseValue": 53.263800136,
+        "heuristicValue": 51.4,
+        "wrContribution": 34.400000136,
+        "meanColorAdjustment": 1.6300985374636807,
+        "meanSynergyAdjustment": 0.40121232821761527,
+        "meanCurveAdjustment": 0.7082792207792209,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 53.26380013600006,
+          "mana": 0,
+          "color": 1.6300985374636807,
+          "synergy": 0.40121232821761527,
+          "curve": 0.7082792207792209,
+          "creature": 0.47435064935064924,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 56,
+          "現在の主色に合う": 45,
+          "アーキタイプ・共通メカニズムと相性が良い": 26,
+          "4マナのクリーチャーを補強": 32,
+          "クリーチャー不足を補う": 27,
+          "主色外のマナ供給が不足": 10
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "4マナのクリーチャーを補強",
+          "クリーチャー不足を補う",
+          "アーキタイプ・共通メカニズムと相性が良い"
+        ]
+      },
+      {
+        "key": "501580b9-692c-4804-be34-012a25ba8adf",
+        "name": "Way of the Wildspeaker",
+        "appearances": 92,
+        "averagePick": 8.358695652173912,
+        "p1Appearances": 28,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.03571428571428571,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 53.255207999999996,
+        "gihWR": 53.255207999999996,
+        "ohWR": 51.428571,
+        "ata": 3.9275124,
+        "alsa": 3.2735444,
+        "ataDifference": 4.431183252173913,
+        "baseValue": 53.255207999999996,
+        "heuristicValue": 45.5,
+        "wrContribution": 53.255207999999996,
+        "meanColorAdjustment": 0.30305086528197905,
+        "meanSynergyAdjustment": 0.24924499706400421,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": -0.10869565217391304,
+        "meanComponents": {
+          "base": 53.25520799999996,
+          "mana": 0,
+          "color": 0.30305086528197905,
+          "synergy": 0.24924499706400421,
+          "curve": 0,
+          "creature": 0,
+          "removal": 0,
+          "duplicate": -0.10869565217391304,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 92,
+          "現在の主色に合う": 65,
+          "アーキタイプ・共通メカニズムと相性が良い": 27,
+          "主色外のマナ供給が不足": 18,
+          "スプラッシュ用のマナ供給あり": 8
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "アーキタイプ・共通メカニズムと相性が良い",
+          "主色外のマナ供給が不足",
+          "スプラッシュ用のマナ供給あり"
+        ]
+      },
+      {
+        "key": "ab56f7cf-9538-45b5-a657-1e2ebef1e92b",
+        "name": "Mabel, Valley Hero",
+        "appearances": 79,
+        "averagePick": 12.329113924050633,
+        "p1Appearances": 25,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 47.730829,
+        "gihWR": 47.730829,
+        "ohWR": null,
+        "ata": 8.0687623,
+        "alsa": 5.822054,
+        "ataDifference": 4.260351624050633,
+        "baseValue": 47.322599731,
+        "heuristicValue": 46.6,
+        "wrContribution": 30.499999731,
+        "meanColorAdjustment": -6.61486076174945,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0.07635212888377445,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": -0.0949367088607595,
+        "meanComponents": {
+          "base": 47.322599731000054,
+          "mana": -0.2237934722916579,
+          "color": -6.61486076174945,
+          "synergy": 0,
+          "curve": 0.07635212888377445,
+          "creature": 0.09321058688147296,
+          "removal": 0,
+          "duplicate": -0.0949367088607595,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 79,
+          "主色外のマナ供給が不足": 69,
+          "現在の主色に合う": 10,
+          "3マナのクリーチャーを補強": 4,
+          "クリーチャー不足を補う": 7
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "主色外のマナ供給が不足",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "3マナのクリーチャーを補強"
+        ]
+      },
+      {
+        "key": "24f1445c-16c9-45c0-be56-0266e6c78cdb",
+        "name": "Guiding Hydra",
+        "appearances": 47,
+        "averagePick": 5.723404255319149,
+        "p1Appearances": 14,
+        "p1p1Count": 0,
+        "p1p1Rate": 0,
+        "p1p5Rate": 0.7142857142857143,
+        "lastPickRate": 0,
+        "survivesTo15Rate": null,
+        "survivesTo15Status": "not-applicable-14-card-packs",
+        "wr": 57.427056,
+        "gihWR": 57.427056,
+        "ohWR": null,
+        "ata": 1.5061728,
+        "alsa": 1.5317073,
+        "ataDifference": 4.2172314553191494,
+        "baseValue": 55.255600224000005,
+        "heuristicValue": 48.6,
+        "wrContribution": 43.300000224,
+        "meanColorAdjustment": 0.18297290440038494,
+        "meanSynergyAdjustment": 0,
+        "meanCurveAdjustment": 0,
+        "meanRemovalAdjustment": 0,
+        "meanDuplicateAdjustment": 0,
+        "meanComponents": {
+          "base": 55.255600224,
+          "mana": 0,
+          "color": 0.18297290440038494,
+          "synergy": 0,
+          "curve": 0,
+          "creature": 0.31102514506769824,
+          "removal": 0,
+          "duplicate": 0,
+          "fixing": 0
+        },
+        "reasonCounts": {
+          "保存WRを参考にした単体評価": 47,
+          "現在の主色に合う": 27,
+          "主色外のマナ供給が不足": 10,
+          "クリーチャー不足を補う": 16
+        },
+        "reasons": [
+          "保存WRを参考にした単体評価",
+          "現在の主色に合う",
+          "クリーチャー不足を補う",
+          "主色外のマナ供給が不足"
+        ]
+      }
+    ]
+  },
+  "manaSummary": {
+    "decks": 800,
+    "earlyDoublePipLow": 311,
+    "splashLow": 0,
+    "zeroSources": 0,
+    "moreThanTwoColors": 431,
+    "incomplete": 128,
+    "twoColorComplete": 299,
+    "splash": 431,
+    "playable23": 672,
+    "totalLands": 13600,
+    "unmodelledCosts": 727,
+    "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled"
+  },
+  "extremeDecks": [
+    {
+      "score": 36,
+      "colors": "BR",
+      "parts": [
+        [
+          "カードパワー",
+          10,
+          30,
+          "単体評価平均 54.6（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          10,
+          15,
+          "採用候補の呪文 16 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          10,
+          15,
+          "2/3/4マナの生物 3/3/2・6マナ以上 1"
+        ],
+        [
+          "クリーチャー",
+          5,
+          10,
+          "9枚"
+        ],
+        [
+          "除去・干渉",
+          5,
+          10,
+          "種類別の重み合計 6.0"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          2,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：R6/B7/U1・非基本 3・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "02b41d0e-82e7-4307-8cc4-8175ff78ea1f",
+          "name": "Kiora of Fire and Ashes"
+        },
+        {
+          "key": "6c5ed756-b999-49f7-9a52-fb8196202f0f",
+          "name": "Theoretical Necromancer"
+        },
+        {
+          "key": "ecdfee75-15fd-41ea-89d4-4bfc1fa4d032",
+          "name": "Keeper of the Quiet Hour"
+        },
+        {
+          "key": "2cdcf65c-03d2-416f-8a3f-0322f75e8595",
+          "name": "Heartstring Puller"
+        },
+        {
+          "key": "2cdcf65c-03d2-416f-8a3f-0322f75e8595",
+          "name": "Heartstring Puller"
+        },
+        {
+          "key": "987aadac-d6a6-4e50-9468-9e8e53cc5529",
+          "name": "Stingerquill Charm"
+        },
+        {
+          "key": "517f84b5-cf99-410d-96ea-910740231dac",
+          "name": "Void Extrapolator // Omit Variables"
+        },
+        {
+          "key": "a82c3860-4dd6-4ffd-aa8f-ab8df687db6c",
+          "name": "Last Gasp"
+        },
+        {
+          "key": "a82c3860-4dd6-4ffd-aa8f-ab8df687db6c",
+          "name": "Last Gasp"
+        },
+        {
+          "key": "64e7ef06-ba30-4b19-9d44-ca77944cc930",
+          "name": "Rank Rat"
+        },
+        {
+          "key": "4baa7847-dfcc-4aa3-aa64-2deeaa3f013b",
+          "name": "Murmuring Volume"
+        },
+        {
+          "key": "d1af8018-35b5-4b6f-93c8-1ed6bd8c92b1",
+          "name": "Hallway Heckler // Vicious Verse"
+        },
+        {
+          "key": "81f022a7-fd19-4340-b8a0-6b11ab3e9d91",
+          "name": "Living Library"
+        },
+        {
+          "key": "eacfe895-5106-437c-b8c1-2ff03c107744",
+          "name": "Medic's Kitesail"
+        },
+        {
+          "key": "13bfc51f-d079-40ef-a4ba-47d06d3150a3",
+          "name": "Command the Stage"
+        },
+        {
+          "key": "f3087daa-d2ff-4227-abff-3398da6297af",
+          "name": "Way of the Necromancer"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 33,
+          "missingSpells": 7,
+          "spellCount": 16,
+          "landCount": 17,
+          "basicCount": 14,
+          "basics": {
+            "R": 6,
+            "B": 7,
+            "U": 1
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [
+            {
+              "key": "8ec56e2a-380f-4de7-9fb7-52de803008fc",
+              "name": "Transformative Commons",
+              "producedMana": [
+                "G",
+                "U"
+              ]
+            },
+            {
+              "key": "d4e0749a-e179-4c19-8536-bf8f1a198549",
+              "name": "Dedicated Commons",
+              "producedMana": [
+                "R",
+                "W"
+              ]
+            },
+            {
+              "key": "00ad5200-5179-4d1b-8bb3-a09e1b31be58",
+              "name": "Theorix Annex",
+              "producedMana": [
+                "B",
+                "U"
+              ]
+            }
+          ],
+          "weightedColorDemand": {
+            "R": 10,
+            "B": 13.5,
+            "U": 1.5
+          },
+          "splashColors": [
+            "U"
+          ],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "Kiora of Fire and Ashes",
+            "color": "R",
+            "required": 2,
+            "cmc": 6,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.6940005020500377,
+            "landsByTurnProbability": 0.38792051228091273
+          },
+          {
+            "card": "Theoretical Necromancer",
+            "color": "B",
+            "required": 1,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Heartstring Puller",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Heartstring Puller",
+            "color": "R",
+            "required": 1,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Stingerquill Charm",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Stingerquill Charm",
+            "color": "R",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Last Gasp",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Last Gasp",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Rank Rat",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Command the Stage",
+            "color": "R",
+            "required": 1,
+            "cmc": 3,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8589553175466488,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Way of the Necromancer",
+            "color": "B",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          }
+        ],
+        "unmodelledCosts": 2,
+        "earlyDoublePipLow": 0,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": true,
+        "incomplete": true
+      }
+    },
+    {
+      "score": 85,
+      "colors": "WU",
+      "parts": [
+        [
+          "カードパワー",
+          16,
+          30,
+          "単体評価平均 55.5（勝率ではありません）"
+        ],
+        [
+          "色のまとまり",
+          15,
+          15,
+          "採用候補の呪文 23 / 23枚"
+        ],
+        [
+          "マナカーブ",
+          15,
+          15,
+          "2/3/4マナの生物 6/4/3・6マナ以上 0"
+        ],
+        [
+          "クリーチャー",
+          10,
+          10,
+          "15枚"
+        ],
+        [
+          "除去・干渉",
+          10,
+          10,
+          "種類別の重み合計 11.5"
+        ],
+        [
+          "シナジー・アーキタイプ",
+          9,
+          10,
+          "保存ペア別WR差・共通メカニズムの補助評価"
+        ],
+        [
+          "マナ基盤",
+          10,
+          10,
+          "土地17枚：U8/W7/G1・非基本 1・早期3シンボル 0"
+        ]
+      ],
+      "cards": [
+        {
+          "key": "07617648-6490-4719-acec-7705671f7e01",
+          "name": "Protege's Awakening"
+        },
+        {
+          "key": "aa9547b3-e4e4-4557-9dd1-3aa9a7cb9937",
+          "name": "Mindseeker Oculus"
+        },
+        {
+          "key": "7fd2cac5-cd29-4a47-9e89-9c6be39a0b67",
+          "name": "Plan for All Outcomes"
+        },
+        {
+          "key": "612c7807-be70-4e2f-afd2-3d3c03eddbbe",
+          "name": "Icy Reception"
+        },
+        {
+          "key": "17e7212e-69d8-4014-af98-447baed2cae7",
+          "name": "Fblthp, Impossibly Lost"
+        },
+        {
+          "key": "1063822f-47d3-42e9-8a21-f62b12609fe1",
+          "name": "Fatehold Chronologist // Peer Review"
+        },
+        {
+          "key": "48b1ac27-430f-4fd9-a71b-6ad125c57fe3",
+          "name": "Sphinx's Approach"
+        },
+        {
+          "key": "0089acfe-da66-4dd7-b1e5-4d7407f58257",
+          "name": "Theorist's Proxy"
+        },
+        {
+          "key": "94be2e86-ba0e-4b8d-9b9c-114adacb26db",
+          "name": "Way of the Mind Sculptor"
+        },
+        {
+          "key": "77b684b8-227b-40de-80b4-15d0e70914f4",
+          "name": "Undulating Witness"
+        },
+        {
+          "key": "c1a9d60f-a469-48f9-8f1c-3ca5ae86bd64",
+          "name": "Campus Crier"
+        },
+        {
+          "key": "70616a8c-9b6c-408e-8f3e-2c348ec136d8",
+          "name": "Memory Trap"
+        },
+        {
+          "key": "70616a8c-9b6c-408e-8f3e-2c348ec136d8",
+          "name": "Memory Trap"
+        },
+        {
+          "key": "cd61c26b-8d3c-4730-92f2-0d94d961bafd",
+          "name": "Blossom-Blessed Angel // Seed Suture"
+        },
+        {
+          "key": "a9b3ee21-1af1-4e7e-8e48-d7c90d056f5c",
+          "name": "Cryotheory Adept"
+        },
+        {
+          "key": "ecdfee75-15fd-41ea-89d4-4bfc1fa4d032",
+          "name": "Keeper of the Quiet Hour"
+        },
+        {
+          "key": "ecdfee75-15fd-41ea-89d4-4bfc1fa4d032",
+          "name": "Keeper of the Quiet Hour"
+        },
+        {
+          "key": "7d6641e7-4d14-4a06-b588-0c752af529bd",
+          "name": "Shatterwing Pegasus"
+        },
+        {
+          "key": "21b8d59f-a90d-44ff-a2e3-9f439ac3e14a",
+          "name": "Semester Foreseer // Peer Review"
+        },
+        {
+          "key": "7a501f7e-eec8-45f7-9ac3-483fd8f5ca5e",
+          "name": "Tomik, Orzhov Lawmage"
+        },
+        {
+          "key": "0f8de7f0-c61d-415d-b4db-4959374343da",
+          "name": "Denzilore Fatehold"
+        },
+        {
+          "key": "2a18b3f0-8a78-46d8-b60f-3cd634062f1b",
+          "name": "Refute Destiny"
+        },
+        {
+          "key": "bb3996b6-b68d-4ea1-b3dd-1600f8da2f1c",
+          "name": "Fateshaper Aspirant"
+        }
+      ],
+      "mana": {
+        "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled",
+        "mana": {
+          "deckSize": 40,
+          "selectedCards": 40,
+          "missingSpells": 0,
+          "spellCount": 23,
+          "landCount": 17,
+          "basicCount": 16,
+          "basics": {
+            "U": 8,
+            "W": 7,
+            "G": 1
+          },
+          "colorlessBasics": 0,
+          "nonbasic": [
+            {
+              "key": "3e51c060-1e86-4a0e-8fee-8b7273161468",
+              "name": "Formidable Commons",
+              "producedMana": [
+                "B",
+                "G"
+              ]
+            }
+          ],
+          "weightedColorDemand": {
+            "U": 21.5,
+            "W": 17,
+            "G": 1
+          },
+          "splashColors": [
+            "G"
+          ],
+          "approximation": "Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer."
+        },
+        "checks": [
+          {
+            "card": "Protege's Awakening",
+            "color": "U",
+            "required": 1,
+            "cmc": 4,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Mindseeker Oculus",
+            "color": "U",
+            "required": 1,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.8974220491248355,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Plan for All Outcomes",
+            "color": "U",
+            "required": 1,
+            "cmc": 4,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9238937783829425,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Icy Reception",
+            "color": "U",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Fblthp, Impossibly Lost",
+            "color": "U",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Sphinx's Approach",
+            "color": "U",
+            "required": 2,
+            "cmc": 3,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.589688196499342,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Theorist's Proxy",
+            "color": "U",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Way of the Mind Sculptor",
+            "color": "U",
+            "required": 1,
+            "cmc": 5,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Undulating Witness",
+            "color": "U",
+            "required": 1,
+            "cmc": 5,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.9441887708141579,
+            "landsByTurnProbability": 0.5463164777680907
+          },
+          {
+            "card": "Campus Crier",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Memory Trap",
+            "color": "W",
+            "required": 1,
+            "cmc": 3,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8589553175466488,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Memory Trap",
+            "color": "W",
+            "required": 1,
+            "cmc": 3,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8589553175466488,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Cryotheory Adept",
+            "color": "U",
+            "required": 1,
+            "cmc": 2,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.863229398833114,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Shatterwing Pegasus",
+            "color": "W",
+            "required": 1,
+            "cmc": 3,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8589553175466488,
+            "landsByTurnProbability": 0.8445945945945945
+          },
+          {
+            "card": "Tomik, Orzhov Lawmage",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Denzilore Fatehold",
+            "color": "W",
+            "required": 1,
+            "cmc": 4,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8908041168103088,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Denzilore Fatehold",
+            "color": "U",
+            "required": 2,
+            "cmc": 4,
+            "sources": 8,
+            "splash": false,
+            "probability": 0.6591764858018727,
+            "landsByTurnProbability": 0.7069277714439005
+          },
+          {
+            "card": "Refute Destiny",
+            "color": "W",
+            "required": 1,
+            "cmc": 2,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.8194628064597105,
+            "landsByTurnProbability": 0.9394317394317394
+          },
+          {
+            "card": "Fateshaper Aspirant",
+            "color": "W",
+            "required": 1,
+            "cmc": 5,
+            "sources": 7,
+            "splash": false,
+            "probability": 0.9162831562212367,
+            "landsByTurnProbability": 0.5463164777680907
+          }
+        ],
+        "unmodelledCosts": 3,
+        "earlyDoublePipLow": 1,
+        "splashLow": 0,
+        "zeroSources": 0,
+        "moreThanTwoColors": true,
+        "incomplete": false
+      }
+    }
+  ],
+  "anomalies": [
+    {
+      "type": "highP1P1",
+      "card": "Countersculpt",
+      "rate": 0.918918918918919
+    },
+    {
+      "type": "moreThanTwoColorsShare",
+      "value": 0.53875,
+      "threshold": 0.25,
+      "note": "single-card splashes may be valid; inspect fixing and source probabilities"
+    }
+  ],
+  "savedWRIntegrity": {
+    "checked": 290,
+    "nonFinite": 0
+  }
+}

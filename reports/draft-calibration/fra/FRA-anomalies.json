@@ -1,0 +1,13 @@
+[
+  {
+    "type": "highP1P1",
+    "card": "Countersculpt",
+    "rate": 0.918918918918919
+  },
+  {
+    "type": "moreThanTwoColorsShare",
+    "value": 0.53875,
+    "threshold": 0.25,
+    "note": "single-card splashes may be valid; inspect fixing and source probabilities"
+  }
+]

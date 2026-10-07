@@ -1,0 +1,12 @@
+[
+  {
+    "type": "highP1P1",
+    "card": "Front Porch Sentries",
+    "rate": 0.9690721649484536
+  },
+  {
+    "type": "splashSupplyBelow70Percent",
+    "decks": 3,
+    "assumptions": "40 cards, no mulligan, on the play, land sources only; tapped timing/spell fixing/hybrid not modelled"
+  }
+]
