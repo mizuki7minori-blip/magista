@@ -1,0 +1,569 @@
+{
+  "officialCollation": {
+    "status": "official-unverified",
+    "source": null,
+    "cards": 14,
+    "common": 7,
+    "uncommon": 3,
+    "rareSlots": 1,
+    "mythicChance": 0.14285714285714285,
+    "basicSlots": 1,
+    "wildcardSlots": 2,
+    "wildcardWeights": [
+      0.5,
+      0.35,
+      0.125,
+      0.025
+    ],
+    "foil": null,
+    "doubleFacedSlot": null,
+    "bonusSheet": null,
+    "specialGuest": null,
+    "maxLands": 1
+  },
+  "savedWRCount": 60,
+  "fullCardCount": null,
+  "wrCoverage": null,
+  "drafts": 0,
+  "cpus": 0,
+  "totalPicks": 0,
+  "errors": 1,
+  "status": "input-error",
+  "reason": "pool cannot supply complete 14-card packs",
+  "ratingSource": "https://www.17lands.com/card_ratings/data?expansion=TMT&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07",
+  "ratingFetchedAt": "2026-10-07T06:48:19.270288+00:00",
+  "ratingValidation": {
+    "duplicates": 0,
+    "invalidValues": 0,
+    "missingIdentity": 0,
+    "missingMetrics": {
+      "wr": 210,
+      "gih_wr": 210,
+      "oh_wr": 210,
+      "games": 0,
+      "ata": 210,
+      "alsa": 210,
+      "usage": 210
+    },
+    "missingValues": 1260
+  },
+  "ratingWindow": {
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07"
+  },
+  "actualColorResults": {
+    "set": "tmt",
+    "complete": true,
+    "source": "https://www.17lands.com/color_ratings/data?expansion=TMT&event_type=PremierDraft&start_date=2019-01-01&end_date=2026-10-07&combine_splash=false",
+    "fetchedAt": "2026-10-07T06:48:21.867717+00:00",
+    "event": "PremierDraft",
+    "startDate": "2019-01-01",
+    "endDate": "2026-10-07",
+    "rows": [
+      {
+        "is_summary": true,
+        "color_name": "Mono-color",
+        "short_name": 1,
+        "wins": 299,
+        "games": 541
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White",
+        "short_name": "W",
+        "wins": 172,
+        "games": 272
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue",
+        "short_name": "U",
+        "wins": 31,
+        "games": 67
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black",
+        "short_name": "B",
+        "wins": 9,
+        "games": 20
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red",
+        "short_name": "R",
+        "wins": 42,
+        "games": 96
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green",
+        "short_name": "G",
+        "wins": 45,
+        "games": 86
+      },
+      {
+        "is_summary": true,
+        "color_name": "Mono-color + Splash",
+        "short_name": "1+",
+        "wins": 2675,
+        "games": 4661
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-White + Splash",
+        "short_name": "W+",
+        "wins": 617,
+        "games": 1036
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Blue + Splash",
+        "short_name": "U+",
+        "wins": 622,
+        "games": 1060
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Black + Splash",
+        "short_name": "B+",
+        "wins": 38,
+        "games": 94
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Red + Splash",
+        "short_name": "R+",
+        "wins": 114,
+        "games": 205
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mono-Green + Splash",
+        "short_name": "G+",
+        "wins": 1284,
+        "games": 2266
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color",
+        "short_name": 2,
+        "wins": 110300,
+        "games": 194040
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU)",
+        "short_name": "WU",
+        "wins": 1117,
+        "games": 1953
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB)",
+        "short_name": "UB",
+        "wins": 704,
+        "games": 1338
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR)",
+        "short_name": "BR",
+        "wins": 316,
+        "games": 675
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG)",
+        "short_name": "RG",
+        "wins": 295,
+        "games": 668
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW)",
+        "short_name": "WG",
+        "wins": 1091,
+        "games": 2023
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB)",
+        "short_name": "WB",
+        "wins": 37549,
+        "games": 63836
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG)",
+        "short_name": "BG",
+        "wins": 12656,
+        "games": 23390
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU)",
+        "short_name": "UG",
+        "wins": 6369,
+        "games": 12457
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR)",
+        "short_name": "UR",
+        "wins": 36164,
+        "games": 62500
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW)",
+        "short_name": "WR",
+        "wins": 14039,
+        "games": 25200
+      },
+      {
+        "is_summary": true,
+        "color_name": "Two-color + Splash",
+        "short_name": "2+",
+        "wins": 51392,
+        "games": 92120
+      },
+      {
+        "is_summary": false,
+        "color_name": "Azorius (WU) + Splash",
+        "short_name": "WU+",
+        "wins": 1002,
+        "games": 1766
+      },
+      {
+        "is_summary": false,
+        "color_name": "Dimir (UB) + Splash",
+        "short_name": "UB+",
+        "wins": 805,
+        "games": 1515
+      },
+      {
+        "is_summary": false,
+        "color_name": "Rakdos (BR) + Splash",
+        "short_name": "BR+",
+        "wins": 293,
+        "games": 604
+      },
+      {
+        "is_summary": false,
+        "color_name": "Gruul (RG) + Splash",
+        "short_name": "RG+",
+        "wins": 873,
+        "games": 1679
+      },
+      {
+        "is_summary": false,
+        "color_name": "Selesnya (GW) + Splash",
+        "short_name": "WG+",
+        "wins": 2299,
+        "games": 3989
+      },
+      {
+        "is_summary": false,
+        "color_name": "Orzhov (WB) + Splash",
+        "short_name": "WB+",
+        "wins": 5956,
+        "games": 10669
+      },
+      {
+        "is_summary": false,
+        "color_name": "Golgari (BG) + Splash",
+        "short_name": "BG+",
+        "wins": 13245,
+        "games": 23505
+      },
+      {
+        "is_summary": false,
+        "color_name": "Simic (GU) + Splash",
+        "short_name": "UG+",
+        "wins": 16754,
+        "games": 29898
+      },
+      {
+        "is_summary": false,
+        "color_name": "Izzet (UR) + Splash",
+        "short_name": "UR+",
+        "wins": 6956,
+        "games": 12424
+      },
+      {
+        "is_summary": false,
+        "color_name": "Boros (RW) + Splash",
+        "short_name": "WR+",
+        "wins": 3209,
+        "games": 6071
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color",
+        "short_name": 3,
+        "wins": 7776,
+        "games": 15174
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR)",
+        "short_name": "WUR",
+        "wins": 770,
+        "games": 1504
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG)",
+        "short_name": "UBG",
+        "wins": 2945,
+        "games": 5573
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW)",
+        "short_name": "WBR",
+        "wins": 498,
+        "games": 1065
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU)",
+        "short_name": "URG",
+        "wins": 1279,
+        "games": 2491
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB)",
+        "short_name": "WBG",
+        "wins": 1676,
+        "games": 3284
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB)",
+        "short_name": "WUB",
+        "wins": 131,
+        "games": 276
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR)",
+        "short_name": "UBR",
+        "wins": 163,
+        "games": 320
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG)",
+        "short_name": "BRG",
+        "wins": 48,
+        "games": 124
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW)",
+        "short_name": "WRG",
+        "wins": 66,
+        "games": 133
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU)",
+        "short_name": "WUG",
+        "wins": 200,
+        "games": 404
+      },
+      {
+        "is_summary": true,
+        "color_name": "Three-color + Splash",
+        "short_name": "3+",
+        "wins": 8061,
+        "games": 13890
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jeskai (WUR) + Splash",
+        "short_name": "WUR+",
+        "wins": 291,
+        "games": 506
+      },
+      {
+        "is_summary": false,
+        "color_name": "Sultai (UBG) + Splash",
+        "short_name": "UBG+",
+        "wins": 3574,
+        "games": 6077
+      },
+      {
+        "is_summary": false,
+        "color_name": "Mardu (BRW) + Splash",
+        "short_name": "WBR+",
+        "wins": 84,
+        "games": 157
+      },
+      {
+        "is_summary": false,
+        "color_name": "Temur (RGU) + Splash",
+        "short_name": "URG+",
+        "wins": 2137,
+        "games": 3606
+      },
+      {
+        "is_summary": false,
+        "color_name": "Abzan (GWB) + Splash",
+        "short_name": "WBG+",
+        "wins": 830,
+        "games": 1500
+      },
+      {
+        "is_summary": false,
+        "color_name": "Esper (WUB) + Splash",
+        "short_name": "WUB+",
+        "wins": 80,
+        "games": 161
+      },
+      {
+        "is_summary": false,
+        "color_name": "Grixis (UBR) + Splash",
+        "short_name": "UBR+",
+        "wins": 102,
+        "games": 180
+      },
+      {
+        "is_summary": false,
+        "color_name": "Jund (BRG) + Splash",
+        "short_name": "BRG+",
+        "wins": 245,
+        "games": 427
+      },
+      {
+        "is_summary": false,
+        "color_name": "Naya (RGW) + Splash",
+        "short_name": "WRG+",
+        "wins": 147,
+        "games": 279
+      },
+      {
+        "is_summary": false,
+        "color_name": "Bant (GWU) + Splash",
+        "short_name": "WUG+",
+        "wins": 571,
+        "games": 997
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color",
+        "short_name": 4,
+        "wins": 165,
+        "games": 300
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR)",
+        "short_name": "WUBR",
+        "wins": 7,
+        "games": 14
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG)",
+        "short_name": "UBRG",
+        "wins": 60,
+        "games": 112
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW)",
+        "short_name": "WBRG",
+        "wins": 22,
+        "games": 49
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU)",
+        "short_name": "WURG",
+        "wins": 32,
+        "games": 52
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB)",
+        "short_name": "WUBG",
+        "wins": 44,
+        "games": 73
+      },
+      {
+        "is_summary": true,
+        "color_name": "Four-color + Splash",
+        "short_name": "4+",
+        "wins": 418,
+        "games": 739
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Green (WUBR) + Splash",
+        "short_name": "WUBR+",
+        "wins": 15,
+        "games": 27
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-White (UBRG) + Splash",
+        "short_name": "UBRG+",
+        "wins": 174,
+        "games": 293
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Blue (BRGW) + Splash",
+        "short_name": "WBRG+",
+        "wins": 36,
+        "games": 61
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Black (RGWU) + Splash",
+        "short_name": "WURG+",
+        "wins": 73,
+        "games": 135
+      },
+      {
+        "is_summary": false,
+        "color_name": "Not-Red (GWUB) + Splash",
+        "short_name": "WUBG+",
+        "wins": 120,
+        "games": 223
+      },
+      {
+        "is_summary": true,
+        "color_name": "Five-color",
+        "short_name": 5,
+        "wins": 12,
+        "games": 25
+      },
+      {
+        "is_summary": false,
+        "color_name": "All Colors (WUBRG)",
+        "short_name": "WUBRG",
+        "wins": 12,
+        "games": 25
+      },
+      {
+        "is_summary": true,
+        "color_name": "All Decks",
+        "short_name": "All",
+        "wins": 181098,
+        "games": 321490
+      }
+    ]
+  },
+  "ratingMode": "full-rating-snapshot",
+  "fullPrintWRCount": 0,
+  "savedWRIntegrity": {
+    "checked": 210,
+    "nonFinite": 0
+  }
+}

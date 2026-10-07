@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "set": "fra",
+      "status": "input-error",
+      "tables": 0,
+      "cpus": 0,
+      "seed": 12345
+    },
+    {
+      "set": "hob",
+      "status": "input-error",
+      "tables": 0,
+      "cpus": 0,
+      "seed": 12345
+    },
+    {
+      "set": "msh",
+      "status": "input-error",
+      "tables": 0,
+      "cpus": 0,
+      "seed": 12345
+    },
+    {
+      "set": "sos",
+      "status": "input-error",
+      "tables": 0,
+      "cpus": 0,
+      "seed": 12345
+    },
+    {
+      "set": "tmt",
+      "status": "input-error",
+      "tables": 0,
+      "cpus": 0,
+      "seed": 12345
+    }
+  ]
+}
