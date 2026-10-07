@@ -187,3 +187,17 @@ Transformative Commons/Innovative CommonsはWR由来の基本値約57にfixing�
 - `docs/actions-real-data-calibration.md`
 
 生成レポートは `calibration-results` ブランチの `reports/draft-calibration/{set}/`。実行履歴・結果ファイルを保持し、巨大raw入力や本番HTML/controllerの既存未公開変更を混ぜてコミットしていない。
+
+## 色ペア実成績との照合
+
+17Lands color_ratingsのwins/gamesから2色・splashなしの成績を計算した。100試合以上の行のみ以下へ掲載。CPUの主色採用率と実WRは単位・母集団が異なるので差を単純に引いていない。
+
+| セット | 実WR上位3ペア（勝率・CPU主色採用率） | CPU最多ペア |
+|---|---|---|
+| FRA | WU: 57.74% / 15.75%、UB: 56.73% / 14.37%、RG: 56.41% / 5.75% | WU |
+| HOB | BR: 57.45% / 11.00%、WB: 57.13% / 8.75%、BG: 56.98% / 14.12% | BG |
+| MSH | WU: 58.58% / 8.75%、GW: 56.33% / 10.12%、GU: 56.21% / 10.12% | WB |
+| SOS | WB: 57.89% / 15.88%、RW: 57.56% / 15.75%、BG: 55.03% / 11.25% | WB |
+| TMT | WB: 58.82% / 13.00%、UR: 57.86% / 12.50%、WU: 57.19% / 5.88% | WB |
+
+FRA/WU、SOS/WB、TMT/WBは実成績上位とCPU最多が一致。HOBは実上位BRに対してCPU最多BG。MSHは実上位WUに対してCPU最多WBで、カード実績欠損のfallbackによる色・構造評価を調べる候補。これだけで色補正を均等化しない。実対戦のCPU勝率を測った結果ではない。
