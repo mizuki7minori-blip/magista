@@ -1,4 +1,4 @@
-name: Draft calibration (manual, reports only)
+name: Draft calibration (real data and published reports)
 
 on:
   push:
