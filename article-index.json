@@ -1,6 +1,20 @@
 {
-  "updatedAt": "2026-10-06T23:00:28.787Z",
+  "updatedAt": "2026-10-07T01:53:03.866Z",
   "items": [
+    {
+      "path": "article-card-watch-2026-10-07.html",
+      "category": "tournament",
+      "label": "今週の注目カード",
+      "title": "【10月7日】今週の注目カード｜Modern・イゼット果敢の新カードに注目",
+      "desc": "2026年10月7日の注目カード。横浜Modernで結果を残したイゼット果敢と《驕慢な戦闘魔道士》の採用実績、《コーリ鋼の短刀》との関係を整理します。",
+      "lead": "『リアリティ・フラクチャー』発売直後の大型Modern大会で結果を残した《驕慢な戦闘魔道士》を、横浜の実戦結果から確認します。",
+      "published": "2026-10-07T09:00:00+09:00",
+      "modified": "2026-10-07T10:30:00+09:00",
+      "keywords": [
+        "驕慢な戦闘魔道士",
+        "コーリ鋼の短刀"
+      ]
+    },
     {
       "path": "article-metagame-2026-10-06.html",
       "category": "tournament",
@@ -118,20 +132,6 @@
       "published": "2026-09-01T09:00:00+09:00",
       "modified": "2026-10-02T16:00:00+09:00",
       "keywords": []
-    },
-    {
-      "path": "article-card-watch-2026-10-07.html",
-      "category": "tournament",
-      "label": "大会・環境",
-      "title": "【10月7日】今週の注目カード｜Modern・イゼット果敢の新カードに注目",
-      "desc": "",
-      "lead": "",
-      "published": "",
-      "modified": "",
-      "keywords": [
-        "驕慢な&#25126;&#38360;魔道士",
-        "コーリ鋼の短刀"
-      ]
     }
   ]
 }
