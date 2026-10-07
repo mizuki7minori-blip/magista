@@ -113,7 +113,7 @@ jobs:
       - name: Fetch all rating rows
         continue-on-error: true
         run: python scripts/fetch_draft_ratings.py --sets "$SET_CODE" --start-date "$RATING_START" --end-date "$RATING_END"
-      - name: Run offline calibration
+      - name: Run offline calibration with bounded CPU decision trace
         run: |
           pool_options=()
           if [ "$UNVERIFIED_POOL" = true ]; then pool_options+=(--unverified-main-set-pool); fi
