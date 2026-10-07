@@ -750,6 +750,7 @@
     "splash": 0,
     "averageLands": 17
   },
+  "pickTraceScope": "first table only; top three candidates for each of 336 CPU decisions",
   "attainmentComparison": "ATA comparison enabled; ALSA kept separate",
   "ataComparison": {
     "status": "diagnostic-only-unverified-collation",
