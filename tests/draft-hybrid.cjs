@@ -26,9 +26,10 @@ const elements=new Map();
 function element(id){if(!elements.has(id))elements.set(id,{value:id==='sim-set'?'tmt':'',innerHTML:'',textContent:'',style:{},hidden:false,disabled:false,addEventListener(){},querySelectorAll(){return [];}});return elements.get(id);}
 const pool=Array.from({length:100},(_,i)=>card('Browser '+i,i%2?'{1}{U}':'{1}{W/U}',i%2?['U']:['W','U'],{rarity:['common','common','uncommon','rare','mythic'][i%5]}));
 pool.push(card('Island','',[''],{colors:[],type_line:'Basic Land — Island',produced_mana:['U']}));
-const sandbox={document:{getElementById:element},localStorage:{getItem:()=>null,setItem(){}},console,Math,Date,fetch:async url=>({ok:true,json:async()=>url.includes('limited-ranking')?{sets:{tmt:{ranking:[]}}}:{data:pool,has_more:false}})};
+const sandbox={document:{getElementById:element},localStorage:{getItem:()=>null,setItem(){}},console,Math,Date,AbortController,URL,setTimeout,clearTimeout,fetch:async url=>({ok:true,json:async()=>url.includes('limited-ranking')?{sets:{tmt:{ranking:[]}}}:{data:pool,has_more:false}})};
 sandbox.window=sandbox;vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(require.resolve('../draft-mana.js'),'utf8'),sandbox);
+vm.runInContext(fs.readFileSync(require.resolve('../draft-card-loader.js'),'utf8'),sandbox);
 let source=fs.readFileSync(require.resolve('../draft-simulator.js'),'utf8');
 source=source.replace('start.addEventListener(\'click\',loadPool);',"window.testDraft={loadPool,clear,botPriority,cardFitValue,read:()=>({picked,currentPack,pickHistory}),pick:()=>pickCard(currentPack[0],currentPack)};start.addEventListener('click',loadPool);");
 vm.runInContext(source,sandbox);

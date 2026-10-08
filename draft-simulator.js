@@ -8,8 +8,56 @@ let pool=[],engMap=new Map(),jaMap=new Map(),specialPools={spg:[],archive:[]},pi
 const imgOf=c=>c?.image_uris?.normal||c?.card_faces?.[0]?.image_uris?.normal||'';
 const displayName=c=>jaMap.get(c.name)?.printed_name||c.printed_name||c.name;
 const keyOf=c=>c.oracle_id||c.name;
-const fetchPaged=async q=>{let url='https://api.scryfall.com/cards/search?q='+encodeURIComponent(q)+'&unique=cards&order=set',out=[],n=0;while(url&&n<5){const r=await fetch(url);if(!r.ok)break;const d=await r.json();out.push(...(d.data||[]));url=d.has_more?d.next_page:'';n++;}return out;};
-async function loadPool(){loading=true;pack.innerHTML='<p class="sim-loading">レアリティ情報を読み込み中です…</p>';start.disabled=true;try{const set=setSel.value;const snap=await fetch('limited-ranking-data.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null);const rows=snap?.sets?.[set]?.ranking||[];rankingMap=new Map(rows.map(x=>[x.name,Number(x.wr)||0]));const engPromise=fetchPaged('set:'+set+' game:paper');const jaPromise=fetchPaged('set:'+set+' lang:ja game:paper');const spgPromise=set==='fra'?fetchPaged('set:spg game:paper'):Promise.resolve([]);const [eng,spg]=await Promise.all([engPromise,spgPromise]);if(set!==setSel.value)return;if(!Array.isArray(eng)||!eng.length)throw new Error('empty-scryfall-pool');engMap=new Map(eng.map(c=>[c.name,c]));pool=eng.filter(c=>!String(c.type_line||'').toLowerCase().includes('token'));if(set==='sos'){specialPools.archive=pool.filter(c=>{const pt=(c.promo_types||[]).join(' ').toLowerCase();const name=String(c.frame_effects||'').toLowerCase();return pt.includes('mystical')||name.includes('archive')||String(c.set_name||'').toLowerCase().includes('mystical archive');});}if(set==='fra'&&Array.isArray(spg)){specialPools.spg=spg.filter(c=>{const n=parseInt(String(c.collector_number||'').replace(/\D/g,''),10);return n>=159&&n<=168;});specialPools.spg.forEach(c=>engMap.set(c.name,c));}active=true;picked=[];pickHistory=[];quizAnswers=new Map();openPickNo=null;savedThisDraft=false;botPicks=[[],[],[],[],[],[],[]];loading=false;start.disabled=false;startDraftRound(1);renderAll();jaPromise.then(ja=>{if(set!==setSel.value)return;if(Array.isArray(ja))jaMap=new Map(ja.map(c=>[c.name,c]));if(active&&currentPack.length)renderPack(currentPack);renderPicked();renderHistory();}).catch(()=>{});}catch(e){pack.innerHTML='<p class="sim-loading">カードデータを準備できませんでした。ページを再読み込みしてお試しください。</p>';active=false;loading=false;start.disabled=false;}}
+let loadVersion=0,loadController=null;
+const fetchPaged=(query,signal)=>window.MagstaDraftCardLoader.paged(query,{signal});
+async function loadPool(){
+ if(loading)return;
+ clear();
+ const version=loadVersion,set=setSel.value;
+ const controller=new AbortController();loadController=controller;
+ const signal=controller.signal,isCurrent=()=>version===loadVersion&&!signal.aborted&&set===setSel.value;
+ loading=true;start.disabled=true;
+ pack.innerHTML='<p class="sim-loading">カードデータを読み込み中です…</p>';
+ // Japanese names and saved ratings are optional; attach rejection handlers immediately.
+ const jaPromise=fetchPaged('set:'+set+' lang:ja game:paper',signal).catch(()=>[]);
+ const ratingPromise=window.MagstaDraftCardLoader.json('limited-ranking-data.json',{signal,timeout:2500,retries:0,cache:'no-cache'}).catch(()=>null);
+ try{
+  const [eng,spg,snap]=await Promise.all([
+   fetchPaged('set:'+set+' game:paper',signal),
+   set==='fra'?fetchPaged('set:spg game:paper',signal):Promise.resolve([]),
+   ratingPromise
+  ]);
+  if(!isCurrent())return;
+  if(!eng.length)throw new Error('empty-scryfall-pool');
+  const rows=snap?.sets?.[set]?.ranking||[];
+  rankingMap=new Map(rows.map(x=>[x.name,Number(x.wr)||0]));
+  engMap=new Map(eng.map(c=>[c.name,c]));
+  pool=eng.filter(c=>!String(c.type_line||'').toLowerCase().includes('token'));
+  if(set==='sos')specialPools.archive=pool.filter(c=>{
+   const pt=(c.promo_types||[]).join(' ').toLowerCase();
+   const name=String(c.frame_effects||'').toLowerCase();
+   return pt.includes('mystical')||name.includes('archive')||String(c.set_name||'').toLowerCase().includes('mystical archive');
+  });
+  if(set==='fra'){
+   specialPools.spg=spg.filter(c=>{const n=parseInt(String(c.collector_number||'').replace(/\D/g,''),10);return n>=159&&n<=168;});
+   specialPools.spg.forEach(c=>engMap.set(c.name,c));
+  }
+  active=true;loading=false;start.disabled=false;
+  startDraftRound(1);renderAll();
+  jaPromise.then(ja=>{
+   if(!isCurrent())return;
+   jaMap=new Map(ja.map(c=>[c.name,c]));
+   if(active&&currentPack.length)renderPack(currentPack);
+   renderPicked();renderHistory();
+  });
+ }catch(error){
+  if(!isCurrent())return;
+  controller.abort();
+  pack.innerHTML='<p class="sim-loading">カードデータを準備できませんでした。「ドラフト開始」を押して再試行してください。</p>';
+  active=false;loading=false;start.disabled=false;
+ }
+}
+
 function sample(n){const source=[...pool],out=[];while(source.length&&out.length<n){const i=Math.floor(Math.random()*source.length);out.push(source.splice(i,1)[0]);}return out;}
 function takeOne(list,used){const choices=list.filter(c=>!used.has(keyOf(c)));if(!choices.length)return null;const c=choices[Math.floor(Math.random()*choices.length)];used.add(keyOf(c));return c;}
 function rarityBuckets(){const b={common:[],uncommon:[],rare:[],mythic:[],land:[]};pool.forEach(c=>{const isLand=String(c.type_line||'').toLowerCase().includes('land');if(isLand)b.land.push(c);if(c.rarity==='common'&&!isLand)b.common.push(c);else if(c.rarity==='uncommon'&&!isLand)b.uncommon.push(c);else if(c.rarity==='rare')b.rare.push(c);else if(c.rarity==='mythic')b.mythic.push(c);});return b;}
@@ -82,6 +130,6 @@ function finalScore(){
   scoreFeedback.innerHTML=notes.map(x=>'<li>'+x+'</li>').join('');saveGrowth(total,grade);renderGrowth();renderLevel();
 }
 function renderAll(){renderStage();renderColors();renderCurve();renderPicked();renderHistory();renderProfile();renderQuiz();renderMistakes();finalScore();if(picked.length<42){renderGrowth();renderLevel();}}
-function clear(){active=false;picked=[];pickHistory=[];quizAnswers=new Map();openPickNo=null;pool=[];currentPack=[];draftPacks=[];draftPackNo=1;draftPickInPack=0;draftDirection=1;botPicks=[[],[],[],[],[],[],[]];engMap=new Map();jaMap=new Map();specialPools={spg:[],archive:[]};rankingMap=new Map();savedThisDraft=false;pack.innerHTML='<p class="sim-loading">「ドラフト開始」を押してください。</p>';next.disabled=true;if(scoreBox)scoreBox.hidden=true;if(mistakeReview)mistakeReview.hidden=true;if(profileBox)profileBox.hidden=true;if(levelBox)levelBox.hidden=true;if(quizSection)quizSection.hidden=true;renderAll();}
-start.addEventListener('click',loadPool);reset.addEventListener('click',clear);next.addEventListener('click',()=>{});setSel.addEventListener('change',()=>{if(active)clear();});renderAll();
+function clear(){loadVersion++;loadController?.abort();loadController=null;loading=false;start.disabled=false;active=false;picked=[];pickHistory=[];quizAnswers=new Map();openPickNo=null;pool=[];currentPack=[];draftPacks=[];draftPackNo=1;draftPickInPack=0;draftDirection=1;botPicks=[[],[],[],[],[],[],[]];engMap=new Map();jaMap=new Map();specialPools={spg:[],archive:[]};rankingMap=new Map();savedThisDraft=false;pack.innerHTML='<p class="sim-loading">「ドラフト開始」を押してください。</p>';next.disabled=true;if(scoreBox)scoreBox.hidden=true;if(mistakeReview)mistakeReview.hidden=true;if(profileBox)profileBox.hidden=true;if(levelBox)levelBox.hidden=true;if(quizSection)quizSection.hidden=true;renderAll();}
+start.addEventListener('click',loadPool);reset.addEventListener('click',clear);next.addEventListener('click',()=>{});setSel.addEventListener('change',clear);renderAll();
 })();
