@@ -16,6 +16,13 @@ async function picture(data,button,status,fresh=false){
  try{
   const key='magsta-card-v2:'+data.en;let card;
   try{const cached=JSON.parse(localStorage.getItem(key));if(!fresh&&cached&&Date.now()-cached.at<86400000)card=cached.card;}catch{}
+  if(!card&&typeof data.image_url==='string'&&data.image_url.startsWith('https://')){
+   // Daily/manual random selections already contain the exact Japanese printing.
+   card={lang:'ja',image_uris:{normal:data.image_url}};
+  }
+  if(!card&&data.card_id){
+   try{card=await request('https://api.scryfall.com/cards/'+encodeURIComponent(data.card_id),fresh);}catch{}
+  }
   if(!card){
    try{const result=await request('https://api.scryfall.com/cards/search?q='+encodeURIComponent('!"'+data.en+'" lang:ja')+'&unique=prints',fresh);card=result.data?.[0];}catch{}
    if(!card)card=await request('https://api.scryfall.com/cards/named?exact='+encodeURIComponent(data.en),fresh);
@@ -30,12 +37,54 @@ function failure(data,button,status){button.replaceChildren(node('span','','画�
 const refresh=document.getElementById('pickup-refresh');
 const refreshStatus=document.getElementById('pickup-refresh-status');
 let busy=false,loaded=false,currentCards=[],candidatePool=[];
+const recentKey='magsta-recent-pickup-cards-v2';
+const randomQueries=[
+ ['🎲 クリーチャー','lang:ja game:paper t:creature -is:token'],
+ ['🎲 インスタント・ソーサリー','lang:ja game:paper (t:instant or t:sorcery)'],
+ ['🎲 その他のカード','lang:ja game:paper (t:artifact or t:enchantment or t:planeswalker or t:land) -t:basic']
+];
+function recentNames(){
+ try{const names=JSON.parse(localStorage.getItem(recentKey)||'[]');return Array.isArray(names)?names.filter(n=>typeof n==='string').slice(0,30):[];}catch{return [];}
+}
+function remember(cards){
+ const names=cards.map(c=>c.en).filter(Boolean);
+ try{localStorage.setItem(recentKey,JSON.stringify([...new Set([...names,...recentNames()])].slice(0,30)));}catch{}
+}
+function fromScryfall(data,label){
+ const face=data?.card_faces?.[0]||data;
+ const japanese=data?.printed_name||face?.printed_name;
+ const en=data?.name;
+ const image=imageURL(data||{});
+ if(data?.lang!=='ja'||!japanese||!en||!image)return null;
+ const type=face.printed_type_line||face.type_line||'MTGカード';
+ const effect=(face.printed_text||data.printed_text||'').replace(/\s+/g,' ').trim();
+ const desc=effect?`${type}。${effect.slice(0,100)}${effect.length>100?'…':''}`:`${type}。画像からカードを確認できます。`;
+ return {name:japanese,ja:japanese,en,label,desc,image_url:image,card_id:data.id};
+}
+async function liveRandomCards(previous){
+ const used=new Set([...recentNames(),...previous.map(c=>c.en)]);
+ const chosen=[];
+ for(const [label,query] of randomQueries){
+  let card=null;
+  for(let attempt=0;attempt<3;attempt++){
+   const data=await request('https://api.scryfall.com/cards/random?q='+encodeURIComponent(query),true);
+   const candidate=fromScryfall(data,label);
+   if(candidate&&!used.has(candidate.en)){card=candidate;break;}
+  }
+  if(!card)throw Error('no suitable random card');
+  chosen.push(card);used.add(card.en);
+ }
+ return chosen;
+}
 function chooseCards(pool,previous){
  if(!Array.isArray(pool)||pool.length<3)throw Error('pool');
  const excluded=new Set(previous.map(card=>card.en));
+ const recent=new Set(recentNames());
  const chosen=[];
  for(const group of pool.slice(0,3)){
-  const alternatives=(Array.isArray(group?.cards)?group.cards:[]).filter(card=>card&&typeof card.en==='string'&&card.en.trim()&&!excluded.has(card.en));
+  const options=(Array.isArray(group?.cards)?group.cards:[]).filter(card=>card&&typeof card.en==='string'&&card.en.trim()&&!excluded.has(card.en));
+  const preferred=options.filter(card=>!recent.has(card.en));
+  const alternatives=preferred.length?preferred:options;
   if(!alternatives.length)throw Error('pool');
   const card=alternatives[Math.floor(Math.random()*alternatives.length)];
   chosen.push({...card,label:group.label||card.label});excluded.add(card.en);
@@ -51,8 +100,13 @@ async function load(fresh=false){
  try{
   let cards;
   if(fresh){
-   if(!candidatePool.length)candidatePool=await request('pickup-pool.json?v='+Math.floor(Date.now()/600000));
-   cards=chooseCards(candidatePool,currentCards);
+   try{
+    cards=await liveRandomCards(currentCards);
+   }catch{
+    // Scryfall outage/offline: keep the refresh button usable via local candidates.
+    if(!candidatePool.length)candidatePool=await request('pickup-pool.json?v='+Math.floor(Date.now()/600000));
+    cards=chooseCards(candidatePool,currentCards);
+   }
   }else{
    const data=await request('pickup-data.json?v='+Math.floor(Date.now()/600000));
    if(!Array.isArray(data))throw Error('data');
@@ -68,7 +122,7 @@ async function load(fresh=false){
    item.append(button,status,node('h3','',card.name||card.ja||card.en),node('p','',card.desc||card.reason||''));
    return {item,card,button,status};
   });
-  grid.replaceChildren(...entries.map(entry=>entry.item));loaded=true;currentCards=cards;
+  grid.replaceChildren(...entries.map(entry=>entry.item));loaded=true;currentCards=cards;remember(cards);
   const date=document.querySelector('.pickup-date');
   if(date)date.textContent=fresh?'手動ピックアップ':cards[0].updated?cards[0].updated+' 選定':'';
   await Promise.all(entries.map(entry=>picture(entry.card,entry.button,entry.status)));
