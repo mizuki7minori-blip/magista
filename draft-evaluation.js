@@ -1,5 +1,7 @@
 /* Estimates are ratings, never invented win rates. No network or DOM ownership. */
 (function(root){'use strict';
+const manaModel=typeof module!=='undefined'&&module.exports?require('./draft-mana.js'):root.MagstaDraftMana;
+const fitsColors=(c,available)=>manaModel.fitsColors(c,available);
 const finite=(v,fallback=0)=>Number.isFinite(Number(v))?Number(v):fallback;
 const list=v=>Array.isArray(v)?v:[];
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,finite(x,a)));
@@ -63,35 +65,36 @@ function plan(history,data){
  return {colors:main,commitment,share,code:['W','U','B','R','G'].filter(x=>main.includes(x)).join('')};
 }
 function synergy(c,history,p,data){
- if(!p.code||!colors(c).every(x=>p.colors.includes(x)))return 0;
+ if(!p.code||!fitsColors(c,p.colors))return 0;
  const pair=Object.keys(data?.archetypeCards||{}).find(code=>code.length===p.code.length&&[...code].every(k=>p.code.includes(k)));
  const pairRows=list(data?.archetypeCards?.[pair]);const row=pairRows.find(x=>x.name===c.name),global=matchRating(c,data)?.row;
  if(row&&global&&Number.isFinite(Number(row.wr))&&Number.isFinite(Number(global.wr)))return clamp((Number(row.wr)-Number(global.wr))*.5,-1,3)*clamp(finite(row.games)/1000);
  // Conservative repeated-mechanic estimate; it is not set-specific empirical data.
  const tags=['proliferate','convoke','cycling','surveil','sacrifice','equip','landfall','discard'];
- return Math.min(2,tags.reduce((s,tag)=>s+(text(c).includes(tag)&&history.filter(x=>text(x).includes(tag)&&colors(x).every(k=>p.colors.includes(k))).length>=3?1:0),0));
+ return Math.min(2,tags.reduce((s,tag)=>s+(text(c).includes(tag)&&history.filter(x=>text(x).includes(tag)&&fitsColors(x,p.colors)).length>=3?1:0),0));
 }
 function splashSupport(c,history,p){
- const missing=colors(c).filter(x=>!p.colors.includes(x));
+ const requirement=manaModel.requirements(c,p.colors);
+ const missing=requirement.colors.filter(x=>!p.colors.includes(x));
  const mana=String(c?.mana_cost||c?.card_faces?.[0]?.mana_cost||'');
  const sources=missing.map(color=>history.filter(x=>{
   if(land(x))return list(x.produced_mana).includes(color)&&!basic(x);
   return /add (?:one mana|a mana|mana) of any colou?r/.test(text(x));
  }).length);
  // A single late pip with at least two drafted fixing sources is a cautious splash.
- const offPips=(mana.match(/\{[WUBRG]\}/g)||[]).filter(x=>missing.includes(x[1])).length;
+ const offPips=requirement.pips?missing.reduce((n,c)=>n+(requirement.pips[c]||0),0):(mana.match(/\{[WUBRG]\}/g)||[]).filter(x=>missing.includes(x[1])).length;
  return {missing,sources,supported:missing.length===1&&sources[0]>=2&&mv(c)>=4&&offPips===1};
 }
 function evaluate(c={},history=[],data={}){
  c=c||{};
- const b=base(c,data),p=plan(history,data),cc=colors(c),on=cc.every(x=>p.colors.includes(x));let value=b.value,reasons=[];
+ const b=base(c,data),p=plan(history,data),cc=manaModel.requirements(c,p.colors).colors,on=fitsColors(c,p.colors);let value=b.value,reasons=[];
  const components={base:b.value,mana:0,color:0,synergy:0,curve:0,creature:0,removal:0,duplicate:0,fixing:0};const add=(part,amount)=>{value+=amount;components[part]+=amount;};
- const mana=String(c.mana_cost||c.card_faces?.[0]?.mana_cost||''),pips=(mana.match(/\{[WUBRG]\}/g)||[]).length;
+ const mana=String(c.mana_cost||c.card_faces?.[0]?.mana_cost||''),req=manaModel.requirements(c,p.colors),pips=req.pips?Object.values(req.pips).reduce((n,x)=>n+x,0):(mana.match(/\{[WUBRG]\}/g)||[]).length;
  add('mana',-(Math.max(0,cc.length-1)*.6*(1-p.commitment)+Math.max(0,pips-2)*.4));
  reasons.push(b.wr!==null&&b.trust>=.5?'保存WRを参考にした単体評価':'カード情報からの推定単体評価');
  if(p.commitment&&cc.length){const support=splashSupport(c,history,p);const bonus=on?4*p.commitment:-(b.value>=65&&support.supported?5:10)*p.commitment*Math.max(1,support.missing.length);add('color',bonus);if(on)reasons.push('現在の主色に合う');else reasons.push(support.supported?'スプラッシュ用のマナ供給あり':'主色外のマナ供給が不足');}
  const syn=synergy(c,history,p,data)*p.commitment;add('synergy',syn);if(syn>.5)reasons.push('アーキタイプ・共通メカニズムと相性が良い');
- const spells=history.filter(x=>!land(x)&&colors(x).every(k=>p.colors.includes(k))),cost=mv(c),late=clamp((history.length-8)/22);
+ const spells=history.filter(x=>!land(x)&&fitsColors(x,p.colors)),cost=mv(c),late=clamp((history.length-8)/22);
  if(on&&!land(c)&&b.value>=45){
   if(creature(c)&&[2,3,4].includes(cost)){const n=spells.filter(x=>creature(x)&&mv(x)===cost).length,target={2:5,3:4,4:3}[cost];const bonus=late*(n<target?1.8:-Math.min(2,(n-target)*.5));add('curve',bonus);if(bonus>.5)reasons.push(cost+'マナのクリーチャーを補強');}
   if(cost>=6)add('curve',-late*Math.max(0,spells.filter(x=>mv(x)>=6).length-2)*1.2);
@@ -108,9 +111,8 @@ function evaluate(c={},history=[],data={}){
 }
 function recommendMana(deck,history=[],p=plan(deck,{})){
  const demand={};for(const card of deck){
-  const cost=String(card.mana_cost||card.card_faces?.[0]?.mana_cost||'');
-  const symbols=[...cost.matchAll(/\{([^}]+)\}/g)].flatMap(m=>m[1].split('/').filter(c=>'WUBRG'.includes(c)&&c.length===1));
-  const cc=symbols.length?symbols:colors(card);
+  const req=manaModel.requirements(card,p.colors,demand);
+  const cc=req.pips?Object.entries(req.pips).flatMap(([c,n])=>Array(n).fill(c)):req.colors;
   for(const c of cc)demand[c]=(demand[c]||0)+1+(mv(card)<=3?.5:0);
  }
  const wanted=Object.keys(demand),fixing=history.filter(c=>land(c)&&!basic(c)&&list(c.produced_mana).some(k=>wanted.includes(k))).slice(0,4);
@@ -124,15 +126,15 @@ function recommendMana(deck,history=[],p=plan(deck,{})){
  return {deckSize:40,selectedCards:deck.length+17,missingSpells:Math.max(0,23-deck.length),spellCount:deck.length,landCount:17,basicCount,basics,colorlessBasics,nonbasic:fixing.map(c=>({key:key(c),name:c.name,producedMana:list(c.produced_mana)})),weightedColorDemand:demand,splashColors:splash,approximation:'Basic lands supplied; nonbasic fixing drawn from picked pool. Not a probability optimizer.'};
 }
 function grade(history,data={}){
- const p=plan(history,data),eligible=history.filter(c=>!land(c)&&colors(c).every(x=>p.colors.includes(x)));
+ const p=plan(history,data),eligible=history.filter(c=>!land(c)&&fitsColors(c,p.colors));
  const deck=eligible.slice().sort((a,b)=>evaluate(b,history,data).value-evaluate(a,history,data).value).slice(0,23);
- const splash=history.filter(c=>!land(c)&&!colors(c).every(k=>p.colors.includes(k))&&base(c,data).value>=65&&splashSupport(c,history,p).supported).sort((a,b)=>evaluate(b,history,data).value-evaluate(a,history,data).value)[0];
+ const splash=history.filter(c=>!land(c)&&!fitsColors(c,p.colors)&&base(c,data).value>=65&&splashSupport(c,history,p).supported).sort((a,b)=>evaluate(b,history,data).value-evaluate(a,history,data).value)[0];
  if(splash&&(deck.length<23||evaluate(splash,history,data).value>evaluate(deck[deck.length-1],history,data).value+1)){if(deck.length===23)deck.pop();deck.push(splash);}
  const mana=recommendMana(deck,history,p);
  const n=deck.length,avg=deck.reduce((s,c)=>s+base(c,data).value,0)/Math.max(1,n),counts=[2,3,4].map(m=>deck.filter(c=>creature(c)&&mv(c)===m).length);
  const nc=deck.filter(creature).length,rem=deck.reduce((s,c)=>s+roles(c).removal,0),syn=deck.reduce((s,c)=>s+Math.max(0,synergy(c,deck,p,data)),0);
  const high=deck.filter(c=>mv(c)>=6).length;
- const pips=deck.map(c=>(String(c.mana_cost||c.card_faces?.[0]?.mana_cost||'').match(/\{[WUBRG]\}/g)||[]).length);
+ const pips=deck.map(c=>{const req=manaModel.requirements(c,p.colors);return req.pips?Object.values(req.pips).reduce((n,x)=>n+x,0):(String(c.mana_cost||c.card_faces?.[0]?.mana_cost||'').match(/\{[WUBRG]\}/g)||[]).length;});
  const demanding=deck.filter((c,i)=>mv(c)<=3&&pips[i]>=3).length;
  const parts=[['カードパワー',Math.round(30*clamp((avg-40)/30)*n/23),30,'単体評価平均 '+avg.toFixed(1)+'（勝率ではありません）'],
  ['色のまとまり',Math.round(15*clamp(n/23)),15,'採用候補の呪文 '+n+' / 23枚'],
@@ -144,6 +146,6 @@ function grade(history,data={}){
  let total=parts.reduce((s,x)=>s+x[1],0);total=Math.round(total*Math.min(1,n/23));
  return {total,grade:total>=90?'S':total>=80?'A':total>=70?'B':total>=60?'C':total>=50?'D':'E',parts,deck,mana,colors:p.colors,notes:['主色中心の23呪文を自動選択した推定評価です。スプラッシュは供給条件を満たす強カード1枚までです。実際のデッキ構築・勝率ではありません。','基本土地は補充可能とし、ドラフトした基本土地の多さで加点しません。',...(n<23?['主色の呪文が23枚未満です。']:[]),...(nc<13?['クリーチャーが不足しています。']:[]),...(counts[0]<4?['2マナのクリーチャーを補強してください。']:[]),...(rem<7?['安定した除去が不足しています。']:[])]};
 }
-const api={base,plan,evaluate,grade,roles,land,basic,creature,splashSupport,recommendMana,matchRating,identifiers,normalizedName};
+const api={base,plan,evaluate,grade,roles,land,basic,creature,splashSupport,recommendMana,matchRating,identifiers,normalizedName,fitsColors};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.MagstaDraftEvaluation=api;
 })(typeof window!=='undefined'?window:globalThis);

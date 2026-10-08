@@ -1,0 +1,35 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const mana=require('../draft-mana.js'),model=require('../draft-evaluation.js');
+const card=(name,cost,colors,extra={})=>({name,oracle_id:name,mana_cost:cost,colors,cmc:2,type_line:'Creature',power:'2',toughness:'2',rarity:'common',...extra});
+const hybrid=card('Hybrid','{1}{W/U}',['W','U']),gold=card('Gold','{W}{U}',['W','U']);
+assert.equal(mana.fitsColors(hybrid,['U']),true);
+assert.equal(mana.fitsColors(hybrid,['W']),true);
+assert.equal(mana.fitsColors(hybrid,['R']),false);
+assert.equal(mana.fitsColors(gold,['U']),false);
+assert.equal(mana.fitsColors(gold,['W','U']),true);
+assert.deepEqual(mana.requirements(card('Mixed','{U}{W/U}',['W','U']),['U']).pips,{U:2});
+assert.equal(mana.requirements(card('Phyrexian','{W/P}',['W']),['U']).modelled,false);
+assert.equal(mana.fitsColors(card('Phyrexian','{W/P}',['W']),['U']),false);
+assert.equal(mana.fitsColors(card('Missing',undefined,['W','U']),['U']),false);
+assert.deepEqual(mana.requirements({colors:['W','U'],card_faces:[{mana_cost:'{W/U}'}]},['U']).pips,{U:1});
+const history=Array.from({length:30},(_,i)=>card('U'+i,'{1}{U}',['U']));
+assert.ok(model.evaluate(hybrid,history).components.color>0);
+assert.ok(model.evaluate(gold,history).components.color<0);
+const result=model.grade([...history.slice(0,20),hybrid,hybrid,hybrid,gold]);
+assert.equal(result.deck.length,23);
+assert.ok(!result.deck.includes(gold));
+assert.deepEqual(Object.keys(result.mana.weightedColorDemand),['U']);
+assert.equal(result.mana.basics.U,17);
+assert.equal(result.mana.splashColors.length,0);
+// Exercise the actual browser controller, including all 42 picks and review.
+const elements=new Map();
+function element(id){if(!elements.has(id))elements.set(id,{value:id==='sim-set'?'tmt':'',innerHTML:'',textContent:'',style:{},hidden:false,disabled:false,addEventListener(){},querySelectorAll(){return [];}});return elements.get(id);}
+const pool=Array.from({length:100},(_,i)=>card('Browser '+i,i%2?'{1}{U}':'{1}{W/U}',i%2?['U']:['W','U'],{rarity:['common','common','uncommon','rare','mythic'][i%5]}));
+pool.push(card('Island','',[''],{colors:[],type_line:'Basic Land — Island',produced_mana:['U']}));
+const sandbox={document:{getElementById:element},localStorage:{getItem:()=>null,setItem(){}},console,Math,Date,fetch:async url=>({ok:true,json:async()=>url.includes('limited-ranking')?{sets:{tmt:{ranking:[]}}}:{data:pool,has_more:false}})};
+sandbox.window=sandbox;vm.createContext(sandbox);
+vm.runInContext(fs.readFileSync(require.resolve('../draft-mana.js'),'utf8'),sandbox);
+let source=fs.readFileSync(require.resolve('../draft-simulator.js'),'utf8');
+source=source.replace('start.addEventListener(\'click\',loadPool);',"window.testDraft={loadPool,clear,botPriority,cardFitValue,read:()=>({picked,currentPack,pickHistory}),pick:()=>pickCard(currentPack[0],currentPack)};start.addEventListener('click',loadPool);");
+vm.runInContext(source,sandbox);
+(async()=>{await sandbox.testDraft.loadPool();for(let i=0;i<42;i++){const before=sandbox.testDraft.read();assert.equal(before.currentPack.length,14-i%14);sandbox.testDraft.pick();}const done=sandbox.testDraft.read();assert.equal(done.picked.length,42);assert.equal(done.pickHistory.length,42);assert.equal(element('sim-score').hidden,false);assert.ok(Number.isFinite(Number(element('sim-score-total').textContent)));sandbox.testDraft.clear();assert.equal(sandbox.testDraft.read().picked.length,0);console.log('PASS hybrid eligibility, ordinary multicolor, unsupported costs, front face, mana demand, CPU components, browser 42-pick completion and reset');})().catch(e=>{console.error(e);process.exitCode=1;});
