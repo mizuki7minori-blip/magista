@@ -111,4 +111,39 @@ function enhance(root){
   }
 }
 enhance(body);
+// Show an image next to the first occurrence of each named card in article content.
+const seen=new Set();
+const buttons=[...body.querySelectorAll('.article-card-link')];
+const inlineButtons=buttons.filter(b=>{
+  const name=b.textContent.replace(/^《|》$/g,'').trim();
+  if(seen.has(name))return false;
+  seen.add(name);return true;
+});
+const imageObserver='IntersectionObserver' in window?new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){imageObserver.unobserve(entry.target);loadInline(entry.target);}});
+},{rootMargin:'350px'}):null;
+async function loadInline(figure){
+  const name=figure.dataset.cardName;
+  try{
+    const card=await findCard(name);
+    const src=cardImage(card);
+    if(!src){figure.remove();return;}
+    const img=document.createElement('img');
+    img.src=src;img.alt='《'+name+'》のカード画像';img.loading='lazy';img.decoding='async';
+    img.width=244;img.height=340;
+    figure.querySelector('.article-card-inline-image').replaceChildren(img);
+    figure.hidden=false;
+  }catch{figure.remove();}
+}
+inlineButtons.forEach(button=>{
+  const name=button.textContent.slice(1,-1).trim();
+  const figure=document.createElement('figure');
+  figure.className='article-card-inline';figure.dataset.cardName=name;
+  figure.innerHTML='<div class="article-card-inline-image"></div><figcaption></figcaption>';
+  figure.querySelector('figcaption').textContent='《'+name+'》';
+  const heading=button.closest('h2,h3');
+  if(heading){heading.insertAdjacentElement('afterend',figure);}
+  else{const paragraph=button.closest('p,li');if(paragraph?.parentElement){paragraph.insertAdjacentElement('afterend',figure);}else return;}
+  if(imageObserver)imageObserver.observe(figure);else loadInline(figure);
+});
 })();
