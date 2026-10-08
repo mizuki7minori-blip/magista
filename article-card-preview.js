@@ -34,11 +34,14 @@ async function findCard(name){
   const cached=readCache(name);if(cached)return cached;
   let card=null;
   try{
-    const result=await api(API+'/cards/search?q='+encodeURIComponent('!"'+name+'" lang:ja')+'&unique=prints');
+    const result=await api(API+'/cards/search?q='+encodeURIComponent('name:"'+name+'" lang:ja')+'&unique=prints');
     card=result?.data?.[0]||null;
   }catch{}
   if(!card){
     try{card=await api(API+'/cards/named?fuzzy='+encodeURIComponent(name));}catch{}
+  }
+  if(!card){
+    try{const result=await api(API+'/cards/search?q='+encodeURIComponent('"'+name+'"')+'&unique=cards');card=result?.data?.[0]||null;}catch{}
   }
   if(!card)throw Error('not-found');
   writeCache(name,card);
@@ -133,7 +136,10 @@ async function loadInline(figure){
     img.width=244;img.height=340;
     figure.querySelector('.article-card-inline-image').replaceChildren(img);
     figure.hidden=false;
-  }catch{figure.remove();}
+  }catch{
+    figure.querySelector('.article-card-inline-image').textContent='画像を取得できませんでした';
+    const link=document.createElement('a');link.href='https://scryfall.com/search?q='+encodeURIComponent(name);link.target='_blank';link.rel='noopener noreferrer';link.textContent='カードを検索する ↗';figure.append(link);
+  }
 }
 inlineButtons.forEach(button=>{
   const name=button.textContent.slice(1,-1).trim();
