@@ -130,7 +130,7 @@ async function loadInline(figure){
   try{
     const card=await findCard(name);
     const src=cardImage(card);
-    if(!src){figure.remove();return;}
+    if(!src)throw Error('no-image');
     const img=document.createElement('img');
     img.src=src;img.alt='《'+name+'》のカード画像';img.loading='lazy';img.decoding='async';
     img.width=244;img.height=340;
@@ -145,11 +145,12 @@ inlineButtons.forEach(button=>{
   const name=button.textContent.slice(1,-1).trim();
   const figure=document.createElement('figure');
   figure.className='article-card-inline';figure.dataset.cardName=name;
-  figure.innerHTML='<div class="article-card-inline-image"></div><figcaption></figcaption>';
+  figure.innerHTML='<div class="article-card-inline-image" role="status">カード画像を読み込み中…</div><figcaption></figcaption>';
   figure.querySelector('figcaption').textContent='《'+name+'》';
   const heading=button.closest('h2,h3');
   if(heading){heading.insertAdjacentElement('afterend',figure);}
   else{const paragraph=button.closest('p,li');if(paragraph?.parentElement){paragraph.insertAdjacentElement('afterend',figure);}else return;}
-  if(imageObserver)imageObserver.observe(figure);else loadInline(figure);
+  // Start immediately: a lazy observer can leave blank cards on cached pages.
+  loadInline(figure);
 });
 })();
