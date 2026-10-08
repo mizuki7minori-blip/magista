@@ -14,7 +14,7 @@ const idle=(fn,delay=1200)=>{
   else setTimeout(fn,delay);
 };
 const start=()=>{
-  idle(()=>add('article-card-preview.js?v=20261006-lite1'),1400);
+  add('article-card-preview.js?v=20261008-inline1').catch(()=>{});
   idle(()=>add('related-articles.js?v=20261006-lite1'),1800);
   idle(()=>add('analytics.js?v=20261006-lite1'),2200);
   const affiliate=document.getElementById('affiliate-products');
