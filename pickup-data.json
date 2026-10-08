@@ -1,29 +1,38 @@
 [
   {
-    "rank": 1,
-    "label": "🏆 大会注目",
-    "name": "黙示録、シェオルドレッド",
-    "ja": "黙示録、シェオルドレッド",
-    "en": "Sheoldred, the Apocalypse",
-    "desc": "カードを引くこととライフのやり取りを強く意識させる人気クリーチャー。採用環境の変化に注目。",
-    "updated": "2026-10-08"
+    "label": "🎲 クリーチャー",
+    "name": "賢いなりすまし",
+    "ja": "賢いなりすまし",
+    "en": "Clever Impersonator",
+    "desc": "Creature — Shapeshifter。このクリーチャーを、戦場にあり土地でないパーマネント１つのコピーとして戦場に出してもよい。",
+    "card_id": "12f6f29c-0e14-4db6-ae3c-c0b52379c2b4",
+    "oracle_id": "d4ec0df9-a4a3-48cf-a0aa-b1aea5c49142",
+    "image_url": "https://cards.scryfall.io/normal/front/1/2/12f6f29c-0e14-4db6-ae3c-c0b52379c2b4.jpg?1782766521",
+    "updated": "2026-10-09",
+    "rank": 1
   },
   {
-    "rank": 2,
-    "label": "🃏 カード注目",
-    "name": "死の飢えのタイタン、クロクサ",
-    "ja": "死の飢えのタイタン、クロクサ",
-    "en": "Kroxa, Titan of Death’s Hunger",
-    "desc": "手札と墓地の両方に干渉できる伝説のクリーチャー。墓地利用戦略との組み合わせをチェック。",
-    "updated": "2026-10-08"
+    "label": "🎲 インスタント・ソーサリー",
+    "name": "不自然な月の出",
+    "ja": "不自然な月の出",
+    "en": "Unnatural Moonrise",
+    "desc": "ソーサリー。夜になる。クリーチャー１体を対象とする。ターン終了時まで、それは＋１/＋０の修整を受けトランプルと「このクリーチャーがプレイヤー１人に戦闘ダメージを与えるたび、カード１枚を引く。」を得る。 フラッシュ…",
+    "card_id": "a7b2687e-86c3-455c-8684-defa38824ed4",
+    "oracle_id": "df33b298-9e4b-4522-96e5-c8d8d6af2bb4",
+    "image_url": "https://cards.scryfall.io/normal/front/a/7/a7b2687e-86c3-455c-8684-defa38824ed4.jpg?1782870786",
+    "updated": "2026-10-09",
+    "rank": 2
   },
   {
-    "rank": 3,
-    "label": "💬 コミュニティ",
-    "name": "魔力の墓所",
-    "ja": "魔力の墓所",
-    "en": "Mana Crypt",
-    "desc": "高速マナ加速として知られるカード。フォーマットやルール変更による評価の変化も追いやすい。",
-    "updated": "2026-10-08"
+    "label": "🎲 その他のカード",
+    "name": "興隆する荒野",
+    "ja": "興隆する荒野",
+    "en": "Thriving Heath",
+    "desc": "Land。この土地はタップ状態で戦場に出る。これが戦場に出るに際し、白でない色１色を選ぶ。 {T}：{W}か、その選ばれた色のマナ１点を加える。",
+    "card_id": "9b5dda77-2adc-4075-9b59-b8b5974eddab",
+    "oracle_id": "d1946630-e224-40db-8f0d-388b09622288",
+    "image_url": "https://cards.scryfall.io/normal/front/9/b/9b5dda77-2adc-4075-9b59-b8b5974eddab.jpg?1785277809",
+    "updated": "2026-10-09",
+    "rank": 3
   }
 ]
