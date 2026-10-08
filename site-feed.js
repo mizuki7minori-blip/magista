@@ -51,6 +51,15 @@ function editorialCard(a){
  item.append(el('small','source',a.meta.filter(Boolean).join(' · ')||'MAGSTA編集部'));
  return item;
 }
+function hideShopListing(a){
+ const title=String(a.title||'');
+ if(/店舗一覧|店舗検索|店舗案内|店舗詳細|店舗紹介|店舗情報|ショップ一覧|ショップ情報|通販専門店|オンラインショップ|ネットショップ|店舗イベント検索|公認店舗一覧/.test(title))return true;
+ if(a.sourceClass==='source-official'){
+  const short=title.replace(/ - mtg-jp.com$/,'');
+  if(short!==title&&short.length<=12&&!/MTG|大会|発表|更新|お知らせ|告知|発売|開催|禁止|アリーナ|イベント|デッキ|新カード|ルール/.test(short))return true;
+ }
+ return false;
+}
 const feedCacheKey='magsta-feed-cache-v1';
 function validFeed(data){
  return data&&Array.isArray(data.items)&&Number.isFinite(Date.parse(data.updatedAt));
@@ -129,7 +138,7 @@ async function load(skipExternalFeed=false){
  try{
   const {data,cached}=await fetchFeed();
   const seen=new Set();const items=(data.items||[]).filter(a=>{
-   if(!a||!a.title||!safe(a.link))return false;const url=new URL(a.link);url.hash='';[...url.searchParams.keys()].filter(k=>/^utm_|^(ref|fbclid|gclid)$/i.test(k)).forEach(k=>url.searchParams.delete(k));const key=url.href;if(seen.has(key))return false;seen.add(key);return true;
+   if(!a||!a.title||!safe(a.link)||hideShopListing(a))return false;const url=new URL(a.link);url.hash='';[...url.searchParams.keys()].filter(k=>/^utm_|^(ref|fbclid|gclid)$/i.test(k)).forEach(k=>url.searchParams.delete(k));const key=url.href;if(seen.has(key))return false;seen.add(key);return true;
   }).sort((a,b)=>(Date.parse(b.pubDate)||0)-(Date.parse(a.pubDate)||0));
   let stamp=Number.isFinite(Date.parse(data.updatedAt))?new Date(data.updatedAt).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'}):'不明';
   const stale=Date.now()-Date.parse(data.updatedAt)>21600000;
