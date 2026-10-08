@@ -1,6 +1,10 @@
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import json
+import random
+import time
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -27,28 +31,122 @@ LANES = [
     ]),
 ]
 
+# Pick from Japanese-language paper printings across the Scryfall card catalog.
+# The original editorial pool remains the offline fallback, not the primary source.
+RANDOM_LANES = [
+    ("🎲 クリーチャー", "lang:ja game:paper t:creature -is:token"),
+    ("🎲 インスタント・ソーサリー", "lang:ja game:paper (t:instant or t:sorcery)"),
+    ("🎲 その他のカード", "lang:ja game:paper (t:artifact or t:enchantment or t:planeswalker or t:land) -t:basic"),
+]
+HISTORY_PATH = ROOT / "pickup-history.json"
 today = datetime.now(timezone(timedelta(hours=9))).date()
-day = today.toordinal()
-cards = []
-for i, (label, pool) in enumerate(LANES):
-    name, en, desc = pool[(day + i) % len(pool)]
-    cards.append({
-        "rank": i + 1,
-        "label": label,
-        "name": name,
-        "ja": name,
-        "en": en,
-        "desc": desc,
-        "updated": today.isoformat()
+rng = random.SystemRandom()
+
+try:
+    history = json.loads(HISTORY_PATH.read_text(encoding="utf-8"))
+    if not isinstance(history, list):
+        history = []
+except (OSError, ValueError):
+    history = []
+
+# Keep enough history to make daily repeats unlikely without retaining it forever.
+history = [
+    row for row in history
+    if isinstance(row, dict)
+    and isinstance(row.get("date"), str)
+    and 0 <= (today - datetime.fromisoformat(row["date"]).date()).days <= 30
+] if all(isinstance(row, dict) and isinstance(row.get("date"), str)
+         and len(row["date"]) == 10 for row in history) else []
+recent_ids = {value for row in history for value in row.get("ids", [])}
+recent_names = {value for row in history for value in row.get("en", [])}
+today_ids = []
+today_names = []
+
+
+def image_url(data):
+    image = data.get("image_uris") or {}
+    if not image:
+        face = next((f for f in data.get("card_faces", []) if f.get("image_uris")), {})
+        image = face.get("image_uris") or {}
+    return image.get("normal") or image.get("large") or ""
+
+
+def make_card(data, label):
+    if data.get("lang") != "ja" or not data.get("id"):
+        return None
+    faces = data.get("card_faces") or []
+    primary = faces[0] if faces else data
+    japanese_name = data.get("printed_name") or primary.get("printed_name")
+    english_name = data.get("name")
+    url = image_url(data)
+    if not japanese_name or not english_name or not url.startswith("https://"):
+        return None
+    type_line = primary.get("printed_type_line") or primary.get("type_line") or "MTGカード"
+    rules_text = (primary.get("printed_text") or data.get("printed_text") or "").replace("\n", " ")
+    if len(rules_text) > 100:
+        rules_text = rules_text[:100].rstrip() + "…"
+    desc = f"{type_line}。{rules_text}" if rules_text else f"{type_line}。画像からカードを確認できます。"
+    return {
+        "label": label, "name": japanese_name, "ja": japanese_name,
+        "en": english_name, "desc": desc,
+        "card_id": data["id"], "oracle_id": data.get("oracle_id", ""),
+        "image_url": url, "updated": today.isoformat()
+    }
+
+
+def fetch_random(query):
+    url = "https://api.scryfall.com/cards/random?" + urlencode({"q": query})
+    req = Request(url, headers={
+        "User-Agent": "MAGSTA-Pickup/2.0 (https://magsta.jp)",
+        "Accept": "application/json;q=0.9,*/*;q=0.8"
     })
+    with urlopen(req, timeout=10) as response:
+        return json.load(response)
+
+
+cards = []
+for index, (label, query) in enumerate(RANDOM_LANES):
+    choice = None
+    # Bounded retries: never force requests if Scryfall is unavailable or rate-limiting.
+    for attempt in range(3):
+        try:
+            data = fetch_random(query)
+            proposal = make_card(data, label)
+            if proposal:
+                key = proposal["oracle_id"] or proposal["en"]
+                if key not in recent_ids and proposal["en"] not in recent_names and proposal["en"] not in today_names:
+                    choice = proposal
+                    break
+        except Exception as error:
+            print(f"Scryfall lookup unavailable ({label}): {error}")
+            break
+        finally:
+            time.sleep(0.15)
+    if choice is None:
+        fallback_label, pool = LANES[index]
+        candidates = [row for row in pool if row[1] not in recent_names and row[1] not in today_names]
+        if not candidates:
+            candidates = [row for row in pool if row[1] not in today_names] or pool
+        ja, en, desc = rng.choice(candidates)
+        choice = {
+            "label": fallback_label, "name": ja, "ja": ja,
+            "en": en, "desc": desc, "updated": today.isoformat()
+        }
+    choice["rank"] = index + 1
+    cards.append(choice)
+    today_names.append(choice["en"])
+    if choice.get("oracle_id"):
+        today_ids.append(choice["oracle_id"])
 
 (ROOT / "pickup-data.json").write_text(
-    json.dumps(cards, ensure_ascii=False, indent=2) + "\n",
-    encoding="utf-8"
+    json.dumps(cards, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
 )
-print(f"Updated {len(cards)} daily pickup cards for {today.isoformat()}")
+history = [row for row in history if row["date"] != today.isoformat()]
+history.append({"date": today.isoformat(), "ids": today_ids, "en": today_names})
+HISTORY_PATH.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+print(f"Updated {len(cards)} pickup cards for {today.isoformat()} (Scryfall + offline fallback)")
 
-# Publish the same editorial candidates for the manual update button.
+# Keep the small editorial pool for browsers that cannot reach the live Scryfall API.
 pool = [
     {"label": label, "cards": [
         {"label": label, "name": name, "ja": name, "en": en, "desc": desc}
