@@ -74,7 +74,7 @@
       if (!response.ok) throw new Error('unavailable');
       data = await response.json();
       if (!data.snapshots?.length) throw new Error('empty');
-      $('market-status').textContent = `最新観測：${new Date(data.updated_at).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'})}（日本時間） / 固定サンプル ${data.basket.cards.length}枚。国内価格は取得済み分のみ。為替：${data.latest.fx ? data.latest.fx.usd_jpy + '円/USD（' + data.latest.fx.date + '）' : '未取得'}`;
+      $('market-status').textContent = `最新観測：${new Date(data.updated_at).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'})}（日本時間） / 固定サンプル ${data.basket.cards.length}枚。日本の販売・買取価格は収集準備中です。為替：${data.latest.fx ? data.latest.fx.usd_jpy + '円/USD（' + data.latest.fx.date + '）' : '未取得'}`;
       $('market-group').innerHTML = Object.keys(data.series).map(g => `<option value="${esc(g)}">${esc(labels[g] || 'セット：' + g.slice(4).toUpperCase())}</option>`).join('');
       $('market-card').innerHTML = data.basket.cards.map(c => `<option value="${esc(c.id)}">${esc(c.name)} / ${esc(c.set.toUpperCase())} #${esc(c.collector_number)}</option>`).join('');
       ['market-group','market-period','market-metric'].forEach(id => $(id).addEventListener('change',render));
