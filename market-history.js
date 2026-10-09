@@ -24,15 +24,6 @@
     const q = row?.[metric];
     return q?.source_url && /^https:\/\//.test(q.source_url) ? `<a href="${esc(q.source_url)}" target="_blank" rel="noopener">${num(v)}</a><br><small>${esc(q.source)}</small>` : num(v);
   }
-  function cardHistory() {
-    const card = data.basket.cards.find(c => c.id === $('market-card').value);
-    if (!card) return;
-    $('card-caption').textContent = `${card.name} / ${card.set.toUpperCase()} #${card.collector_number} / 非Foil`;
-    $('card-points').innerHTML = filtered(data.snapshots).map(s => {
-      const row = s.cards.find(c => c.id === card.id);
-      return `<tr><td>${esc(s.date)}</td>${metrics.map(m => `<td>${quoteCell(row, m, s)}</td>`).join('')}</tr>`;
-    }).join('');
-  }
   function render() {
     const group = $('market-group').value;
     const series = data.series[group];
@@ -66,7 +57,6 @@
     }).filter(Boolean).sort((a,b) => b.change-a.change);
     const displayed = [...new Map([...movers.slice(0,5),...movers.slice(-5)].map(c => [c.id,c])).values()];
     $('market-movers').innerHTML = displayed.length ? displayed.map(c => `<tr><td>${esc(c.name)}<br><small>${esc(c.set.toUpperCase())} #${esc(c.collector_number)}</small></td><td>${num(c.a)}</td><td>${num(c.b)}</td><td>${c.change>0?'+':''}${num(c.change)}%</td></tr>`).join('') : '<tr><td colspan="4">比較できる価格がまだ揃っていません。</td></tr>';
-    cardHistory();
   }
   async function init() {
     try {
@@ -76,9 +66,7 @@
       if (!data.snapshots?.length) throw new Error('empty');
       $('market-status').textContent = `最新観測：${new Date(data.updated_at).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'})}（日本時間） / 固定サンプル ${data.basket.cards.length}枚。日本の販売・買取価格は収集準備中です。為替：${data.latest.fx ? data.latest.fx.usd_jpy + '円/USD（' + data.latest.fx.date + '）' : '未取得'}`;
       $('market-group').innerHTML = Object.keys(data.series).map(g => `<option value="${esc(g)}">${esc(labels[g] || 'セット：' + g.slice(4).toUpperCase())}</option>`).join('');
-      $('market-card').innerHTML = data.basket.cards.map(c => `<option value="${esc(c.id)}">${esc(c.name)} / ${esc(c.set.toUpperCase())} #${esc(c.collector_number)}</option>`).join('');
       ['market-group','market-period','market-metric'].forEach(id => $(id).addEventListener('change',render));
-      $('market-card').addEventListener('change',cardHistory);
       render();
     } catch(error) {
       $('market-status').textContent = '初回の価格記録待ちです。日本・海外とも未取得の価格は表示しません。';
