@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T22:40:45.847Z",
+  "updatedAt": "2026-10-09T23:01:14.968Z",
   "items": [
     {
       "path": "article-weekend-2026-10-09.html",
@@ -164,6 +164,17 @@
       "lead": "新セット発売後および直近の競技シーンを中心に、メタゲームの変化、注目カード、コミュニティでの議論を整理します。",
       "published": "2026-09-01T09:00:00+09:00",
       "modified": "2026-10-02T16:00:00+09:00",
+      "keywords": []
+    },
+    {
+      "path": "article-tournament-2026-10-10.html",
+      "category": "tournament",
+      "label": "大会・環境",
+      "title": "【10月10日】大会・デッキ速報",
+      "desc": "",
+      "lead": "",
+      "published": "",
+      "modified": "",
       "keywords": []
     }
   ]
