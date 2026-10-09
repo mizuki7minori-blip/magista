@@ -1,0 +1,740 @@
+{
+  "version": 1,
+  "created_at": "2026-10-09T01:52:41.222637+00:00",
+  "selection": "Each format: first 25 priced nonfoil paper cards in Scryfall EDHREC order; deduplicated by oracle_id. Printing and format membership frozen at inception.",
+  "cards": [
+    {
+      "id": "6675632d-d74a-4b1e-8539-ac678d5545a5",
+      "oracle_id": "c8b143ad-43ec-4e0d-a440-e348daa31391",
+      "name": "Swiftfoot Boots",
+      "set": "msc",
+      "collector_number": "216",
+      "formats": [
+        "standard",
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "4493b62b-f354-47ff-9dcf-cc6e29de77c6",
+      "oracle_id": "f29dc596-2121-4421-8463-15f6c2e8b9b3",
+      "name": "Rogue's Passage",
+      "set": "hoc",
+      "collector_number": "212",
+      "formats": [
+        "standard",
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "c0318a48-30e4-4ef7-be3d-5e561c5ce428",
+      "oracle_id": "a75445d3-1303-4bb5-89ad-26ea93fecd48",
+      "name": "Evolving Wilds",
+      "set": "msc",
+      "collector_number": "240",
+      "formats": [
+        "standard",
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "a81f924b-0527-4311-8120-9bfff71524f6",
+      "oracle_id": "1bd3e453-aa21-4ee6-95c2-d6d920ee8e7a",
+      "name": "Terramorphic Expanse",
+      "set": "msc",
+      "collector_number": "273",
+      "formats": [
+        "standard",
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "a829747f-cf9b-4d81-ba66-9f0630ed4565",
+      "oracle_id": "234a734b-ba28-4f1b-9d01-3c3e7d516590",
+      "name": "An Offer You Can't Refuse",
+      "set": "fdn",
+      "collector_number": "160",
+      "formats": [
+        "standard",
+        "pioneer",
+        "modern",
+        "pauper"
+      ]
+    },
+    {
+      "id": "daafd816-f7c1-4630-9e5c-a1e5db570a35",
+      "oracle_id": "00c0543c-2a1f-4425-8283-4062d74a1637",
+      "name": "Solemn Simulacrum",
+      "set": "msc",
+      "collector_number": "215",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "76edd22f-808e-4a7c-b941-13c0f5e30418",
+      "oracle_id": "0c85b8f7-0bd0-4680-9ec5-d4b110460a54",
+      "name": "Fabled Passage",
+      "set": "frc",
+      "collector_number": "71",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "5b8170dc-6a90-46fc-9989-7575f3d402b5",
+      "oracle_id": "fc9ec820-4245-4a96-b009-5308a818ca58",
+      "name": "Watery Grave",
+      "set": "eoe",
+      "collector_number": "261",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "52d58fe4-6070-4022-9cd7-c35a11b44525",
+      "oracle_id": "3407fe41-fdd3-4119-8f70-4bc4590a379f",
+      "name": "Negate",
+      "set": "tmt",
+      "collector_number": "47",
+      "formats": [
+        "standard",
+        "pioneer",
+        "pauper"
+      ]
+    },
+    {
+      "id": "6a0b230b-d391-4998-a3f7-7b158a0ec2cd",
+      "oracle_id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+      "name": "Llanowar Elves",
+      "set": "fdn",
+      "collector_number": "227",
+      "formats": [
+        "standard",
+        "pioneer",
+        "pauper"
+      ]
+    },
+    {
+      "id": "3c750d5a-f743-41ff-b5ba-02025ca0bec2",
+      "oracle_id": "20283c4a-f1f0-42f0-bc08-6da87474426b",
+      "name": "Breeding Pool",
+      "set": "eoe",
+      "collector_number": "251",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "8c542ea4-98c3-4c2d-9066-205ab7aa697a",
+      "oracle_id": "73864fcc-1bde-4bc0-831e-2b93e546e417",
+      "name": "Godless Shrine",
+      "set": "eoe",
+      "collector_number": "254",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "e056b55f-82ed-4fe0-ab0c-bb20fa4a218a",
+      "oracle_id": "f1750962-a87c-49f6-b731-02ae971ac6ea",
+      "name": "Hallowed Fountain",
+      "set": "ecl",
+      "collector_number": "265",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "b66daa94-d367-4812-9f18-f35378c1febb",
+      "oracle_id": "17039058-822d-409f-938c-b727a366ba63",
+      "name": "Steam Vents",
+      "set": "ecl",
+      "collector_number": "267",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "6da63cc5-4624-4491-abd9-9b600c3fefe2",
+      "oracle_id": "43985bbc-a0f6-4812-984e-392bc8562633",
+      "name": "Blood Crypt",
+      "set": "ecl",
+      "collector_number": "262",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "69be21b4-c613-47c6-ba57-f4785861af3e",
+      "oracle_id": "16052b52-ade1-406f-a06b-ce7ea607fb63",
+      "name": "Stomping Ground",
+      "set": "eoe",
+      "collector_number": "258",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "45b92924-baa1-4c9b-9932-9a5eda8f3446",
+      "oracle_id": "975ec9a3-6f20-4177-8211-82526e092538",
+      "name": "Overgrown Tomb",
+      "set": "ecl",
+      "collector_number": "266",
+      "formats": [
+        "standard",
+        "pioneer"
+      ]
+    },
+    {
+      "id": "8b4e2642-3c87-4708-b9b4-2e7f7359ac7d",
+      "oracle_id": "45181cb8-2090-4471-ba90-e5a8f04d525f",
+      "name": "Sacred Foundry",
+      "set": "eoe",
+      "collector_number": "256",
+      "formats": [
+        "standard"
+      ]
+    },
+    {
+      "id": "6cdd2a74-63b3-4ff2-9c5a-a85dee63c3c9",
+      "oracle_id": "f413a83d-a40d-434c-b20a-4c707c0527fa",
+      "name": "Temple Garden",
+      "set": "ecl",
+      "collector_number": "268",
+      "formats": [
+        "standard"
+      ]
+    },
+    {
+      "id": "b58c4033-f764-42f6-966f-b7202a2babbf",
+      "oracle_id": "3127ae9b-a7a7-43ec-89d7-688f8445b33d",
+      "name": "Garruk's Uprising",
+      "set": "ecc",
+      "collector_number": "109",
+      "formats": [
+        "standard"
+      ]
+    },
+    {
+      "id": "2246c098-1071-4cc3-a60a-802406e2827b",
+      "oracle_id": "5825997b-10d7-4a36-972c-a80ddd90b8ed",
+      "name": "Feed the Swarm",
+      "set": "tle",
+      "collector_number": "257",
+      "formats": [
+        "standard"
+      ]
+    },
+    {
+      "id": "0784b6f0-9ebf-43d2-ba0f-a6bc93ba0c48",
+      "oracle_id": "ee579a32-a048-4335-b966-231ba731cdea",
+      "name": "Phyrexian Arena",
+      "set": "fdn",
+      "collector_number": "180",
+      "formats": [
+        "standard"
+      ]
+    },
+    {
+      "id": "3aad15a2-8a1b-4460-9b06-e85863081878",
+      "oracle_id": "89ca686a-7c72-4d8f-9290-e89635624a83",
+      "name": "Cavern of Souls",
+      "set": "lci",
+      "collector_number": "269",
+      "formats": [
+        "standard"
+      ]
+    },
+    {
+      "id": "aaf258fc-3ba4-4b83-bdbf-10a07e0b6c03",
+      "oracle_id": "ac10d218-f9a6-4058-9cda-a15ca1b0b7b5",
+      "name": "Assassin's Trophy",
+      "set": "soc",
+      "collector_number": "294",
+      "formats": [
+        "standard"
+      ]
+    },
+    {
+      "id": "32fd8b7c-baf3-4d3d-be6f-044a917b11a0",
+      "oracle_id": "3640c29b-1534-4952-b297-619ade948431",
+      "name": "Roaming Throne",
+      "set": "lci",
+      "collector_number": "258",
+      "formats": [
+        "standard"
+      ]
+    },
+    {
+      "id": "1ac6cb62-45da-4e9a-84c6-09e6eacf0664",
+      "oracle_id": "0895c9b7-ae7d-4bb3-af17-3b75deb50a25",
+      "name": "Command Tower",
+      "set": "frc",
+      "collector_number": "22",
+      "formats": [
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "c6b6117c-faab-4bbb-b851-07bd8061ef03",
+      "oracle_id": "0bc7f093-bef0-4f1a-852c-4b75ebf54838",
+      "name": "Arcane Signet",
+      "set": "frc",
+      "collector_number": "20",
+      "formats": [
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "e2a27742-08c1-4153-af7f-25a7a98f585e",
+      "oracle_id": "c23e5b80-08d2-4e24-9908-fe2aa4f30f6f",
+      "name": "Reliquary Tower",
+      "set": "soc",
+      "collector_number": "398",
+      "formats": [
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "e60deb92-f7dd-4f4e-9036-e47dd586f985",
+      "oracle_id": "8b755881-a72d-4e21-a369-d2924eb4585a",
+      "name": "Cultivate",
+      "set": "msc",
+      "collector_number": "172",
+      "formats": [
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "e32c67d1-187f-40df-b3b3-6036f5c92834",
+      "oracle_id": "24882fa2-3fe9-4c1b-aa3d-0e6488b9db27",
+      "name": "Heroic Intervention",
+      "set": "cmm",
+      "collector_number": "295",
+      "formats": [
+        "pioneer",
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "dfb7c4b9-f2f4-4d4e-baf2-86551c8150fe",
+      "oracle_id": "d75b9c82-1b49-4c3e-a1b5-aeef57d6644b",
+      "name": "Cyclonic Rift",
+      "set": "rvr",
+      "collector_number": "40",
+      "formats": [
+        "pioneer"
+      ]
+    },
+    {
+      "id": "861b5889-0183-4bee-afeb-a4b2aa700a8e",
+      "oracle_id": "153376c9-dffd-458c-8ce3-a4c8269bc4e9",
+      "name": "Smothering Tithe",
+      "set": "cmm",
+      "collector_number": "57",
+      "formats": [
+        "pioneer"
+      ]
+    },
+    {
+      "id": "83d0b761-d694-4232-9f40-5bd8c82a05f1",
+      "oracle_id": "8ddfc283-c9b4-41a5-af88-cf0068e986cc",
+      "name": "Swan Song",
+      "set": "eoc",
+      "collector_number": "46",
+      "formats": [
+        "pioneer"
+      ]
+    },
+    {
+      "id": "cc14b1ee-5def-42df-8ef6-0d91dba39e3a",
+      "oracle_id": "27b047e3-0d41-45e2-98e9-9391d7923a1e",
+      "name": "Exotic Orchard",
+      "set": "frc",
+      "collector_number": "70",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "b61634ae-05be-4b56-8ebb-9d4ade902e42",
+      "oracle_id": "ca204b66-8d0c-431a-8d34-282f7c2d17da",
+      "name": "Lightning Greaves",
+      "set": "msc",
+      "collector_number": "202",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "22e08a78-55b7-46b0-bd1a-a51548fc1861",
+      "oracle_id": "d683d985-9888-4d21-8b5f-69e69ce4a03b",
+      "name": "Path to Exile",
+      "set": "frc",
+      "collector_number": "30",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "4f616706-ec97-4923-bb1e-11a69fbaa1f8",
+      "oracle_id": "cc187110-1148-4090-bbb8-e205694a39f5",
+      "name": "Counterspell",
+      "set": "dsc",
+      "collector_number": "114",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "bc99f300-29c0-44e7-9560-7bbd1dda7556",
+      "oracle_id": "95560508-7ac9-4be9-8a3f-3c7d5b52807b",
+      "name": "Fellwar Stone",
+      "set": "frc",
+      "collector_number": "57",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "7d4b1d44-126e-4987-9a9f-f0f9627a09cb",
+      "oracle_id": "7a2484a9-04fd-41a0-8224-610c1c07ed10",
+      "name": "Blasphemous Act",
+      "set": "msc",
+      "collector_number": "163",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "c1aac0f5-1d01-4673-b8d3-878d9a1d423c",
+      "oracle_id": "495e52e6-4c2b-4574-9474-eadbdcc8b4ac",
+      "name": "Farseek",
+      "set": "msc",
+      "collector_number": "173",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "55b5b094-9d2d-4d96-b90c-78fecdae725a",
+      "oracle_id": "04b7362d-0490-4cb0-b5d7-2a7732f659ce",
+      "name": "Bojuka Bog",
+      "set": "soc",
+      "collector_number": "363",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "400b43aa-c1d2-4435-b863-061f43889422",
+      "oracle_id": "7735eeba-693b-47e2-bd51-414379cf1016",
+      "name": "Beast Within",
+      "set": "msc",
+      "collector_number": "169",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "b7c47024-5e08-4b17-b41a-7647f8b814b9",
+      "oracle_id": "8539f295-5d58-4436-a73a-b9277c4c7795",
+      "name": "Rampant Growth",
+      "set": "tdc",
+      "collector_number": "265",
+      "formats": [
+        "modern",
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "ad881aa0-decc-447b-8c8a-983546a9a55a",
+      "oracle_id": "c97361b5-af16-4a7b-af85-a429dbaf4ad2",
+      "name": "Mind Stone",
+      "set": "soc",
+      "collector_number": "352",
+      "formats": [
+        "modern",
+        "pauper"
+      ]
+    },
+    {
+      "id": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+      "oracle_id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+      "name": "Birds of Paradise",
+      "set": "msc",
+      "collector_number": "170",
+      "formats": [
+        "modern"
+      ]
+    },
+    {
+      "id": "6e288374-2b71-4ace-b1d2-a19fee6cb4af",
+      "oracle_id": "ef86989d-ce80-4e55-aece-7d11710eeffa",
+      "name": "Polluted Delta",
+      "set": "mh3",
+      "collector_number": "224",
+      "formats": [
+        "modern"
+      ]
+    },
+    {
+      "id": "90c423cc-1264-4067-9c50-e7c88c68ef2d",
+      "oracle_id": "1593ea18-2f2f-4ab4-83fb-6ccc0bec8a90",
+      "name": "Kodama's Reach",
+      "set": "ecc",
+      "collector_number": "113",
+      "formats": [
+        "modern",
+        "pauper"
+      ]
+    },
+    {
+      "id": "8f85e12c-196b-4459-b81f-0c9c854e9f57",
+      "oracle_id": "f3c7af78-a77d-4134-82a2-a5ce84285a84",
+      "name": "Flooded Strand",
+      "set": "mh3",
+      "collector_number": "220",
+      "formats": [
+        "modern"
+      ]
+    },
+    {
+      "id": "f7e12477-d59f-442b-a678-1be746d0b7be",
+      "oracle_id": "b1544f21-7e98-461b-aed5-e748b0168c52",
+      "name": "Swords to Plowshares",
+      "set": "frc",
+      "collector_number": "37",
+      "formats": [
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "c047dedc-43bc-4a7c-bca4-182283c89069",
+      "oracle_id": "b473e293-59e3-4e04-acf2-622604aeb25f",
+      "name": "Path of Ancestry",
+      "set": "frc",
+      "collector_number": "77",
+      "formats": [
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "6ec6a910-f6d0-4225-8b55-d329dc788c64",
+      "oracle_id": "9965d9c5-2ebf-4a6c-930e-55c5890979be",
+      "name": "Thought Vessel",
+      "set": "msc",
+      "collector_number": "222",
+      "formats": [
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "7afc4a15-5ff8-457a-aa62-803b2d78d912",
+      "oracle_id": "78826359-fe63-44ad-adc4-a17ffcd710e4",
+      "name": "Nature's Lore",
+      "set": "msc",
+      "collector_number": "177",
+      "formats": [
+        "legacy",
+        "vintage",
+        "commander",
+        "pauper"
+      ]
+    },
+    {
+      "id": "57f61970-382e-415c-868b-6bbb6c78825d",
+      "oracle_id": "07a0cba9-8768-4fd9-a3d5-b0f83b4bf8e8",
+      "name": "Chaos Warp",
+      "set": "msc",
+      "collector_number": "164",
+      "formats": [
+        "legacy",
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "a0e2098f-1d94-491a-a7e9-a45a9f69e3a8",
+      "oracle_id": "2549bc57-9ffb-4053-9f10-f2a5f792b845",
+      "name": "Myriad Landscape",
+      "set": "eoc",
+      "collector_number": "169",
+      "formats": [
+        "legacy"
+      ]
+    },
+    {
+      "id": "8ee443cc-e17a-493b-9c93-1f9e141a30e4",
+      "oracle_id": "6ad8011d-3471-4369-9d68-b264cc027487",
+      "name": "Sol Ring",
+      "set": "frc",
+      "collector_number": "21",
+      "formats": [
+        "vintage",
+        "commander"
+      ]
+    },
+    {
+      "id": "11e12a84-e7be-4afc-a230-c2e644743fa8",
+      "oracle_id": "53f7c868-b03e-4fc2-8dcf-a75bbfa3272b",
+      "name": "Dark Ritual",
+      "set": "msc",
+      "collector_number": "793",
+      "formats": [
+        "pauper"
+      ]
+    },
+    {
+      "id": "99bf792f-963e-4509-8d3c-7db129c6a77f",
+      "oracle_id": "1b882a0e-0ede-4d1a-bd1a-9b7cffbcde8e",
+      "name": "Three Visits",
+      "set": "msc",
+      "collector_number": "181",
+      "formats": [
+        "pauper"
+      ]
+    },
+    {
+      "id": "9f37c5b6-a59c-45cd-9a99-e9357fe9ea1b",
+      "oracle_id": "53236dd7-845a-444c-96d5-f41ed7325d8f",
+      "name": "Rhystic Study",
+      "set": "j22",
+      "collector_number": "114",
+      "formats": [
+        "pauper"
+      ]
+    },
+    {
+      "id": "5eb843ef-b223-40d0-a461-54b16d188d0e",
+      "oracle_id": "ab1cc360-b9de-48d9-9983-4dfe4a7d2a37",
+      "name": "Arcane Denial",
+      "set": "msc",
+      "collector_number": "147",
+      "formats": [
+        "pauper"
+      ]
+    },
+    {
+      "id": "a0d50603-e31f-4cd7-b4b6-49847d99eb2e",
+      "oracle_id": "0b67c4e2-f88b-4e01-85a1-9d5f5b8db13b",
+      "name": "Commander's Sphere",
+      "set": "ecc",
+      "collector_number": "139",
+      "formats": [
+        "pauper"
+      ]
+    },
+    {
+      "id": "c3f9b454-97e9-4c77-b37a-e974221ae385",
+      "oracle_id": "fae37e28-e137-4177-b973-fa8b4dd8f409",
+      "name": "Generous Gift",
+      "set": "msc",
+      "collector_number": "133",
+      "formats": [
+        "pauper"
+      ]
+    },
+    {
+      "id": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
+      "oracle_id": "36cd2364-d113-47d1-b2c4-b088d9eb88dd",
+      "name": "Brainstorm",
+      "set": "frc",
+      "collector_number": "39",
+      "formats": [
+        "pauper"
+      ]
+    }
+  ]
+}
