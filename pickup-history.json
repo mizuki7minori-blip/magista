@@ -11,5 +11,18 @@
       "Unnatural Moonrise",
       "Thriving Heath"
     ]
+  },
+  {
+    "date": "2026-10-10",
+    "ids": [
+      "da359f85-7a11-4575-848d-642d1ae0ddbb",
+      "05b5c0fb-84b2-4a32-bf66-179c4dccb3df",
+      "01ed9139-293d-4477-a145-3c6fe59266c7"
+    ],
+    "en": [
+      "Rat King, Pale Piper",
+      "Natural End",
+      "Airship Engine Room"
+    ]
   }
 ]
