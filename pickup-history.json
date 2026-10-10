@@ -24,5 +24,18 @@
       "Natural End",
       "Airship Engine Room"
     ]
+  },
+  {
+    "date": "2026-10-11",
+    "ids": [
+      "4a294001-645b-4691-bb32-c240ba5b5320",
+      "a6e720a2-9819-40ec-a811-7812898b531a",
+      "52232aad-e4ca-4551-8c8d-c69a3b6b49c7"
+    ],
+    "en": [
+      "Inspiring Captain",
+      "Necrotic Hex",
+      "The Immortal Sun"
+    ]
   }
 ]
