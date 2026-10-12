@@ -23,6 +23,11 @@ const items=files.map(file=>{
   const lead=pick(html,/<p class="article-lead">([\s\S]*?)<\/p>/i)||description;
   const published=iso(html,'datePublished')||meta(html,'article:published_time');
   const modified=iso(html,'dateModified')||meta(html,'article:modified_time')||published;
+  // Keep unfinished drafts out of the public catalog and sitemap.
+  if (/\{\{[^}]+\}\}/.test(html) || /noindex/i.test(meta(html,'robots')) || !description || !published || !/<h2\b/i.test(html)) {
+    console.warn('Excluded unfinished or non-indexable article:',file);
+    return null;
+  }
   const tag=pick(html,/<span class="tag[^"]*">([\s\S]*?)<\/span>/i);
   const hay=[tag,title,description].join(' ');
   const found=categoryMap.find(row=>row[0].test(hay));
@@ -30,7 +35,7 @@ const items=files.map(file=>{
   const cards=[...html.matchAll(/《([^》]{1,80})》/g)].map(m=>m[1]);
   const keywords=[...new Set(cards.slice(0,12))];
   return {path:file,category,label:tag||fallbackLabel,title,desc:description,lead,published,modified,keywords};
-}).sort((a,b)=>Date.parse(b.published||0)-Date.parse(a.published||0));
+}).filter(Boolean).sort((a,b)=>Date.parse(b.published||0)-Date.parse(a.published||0));
 
 fs.writeFileSync(path.join(root,'article-index.json'),JSON.stringify({updatedAt:new Date().toISOString(),items},null,2)+'\n');
 console.log('Generated article-index.json:',items.length,'articles');

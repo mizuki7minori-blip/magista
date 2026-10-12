@@ -1,7 +1,7 @@
 (() => {
   const buttons = [...document.querySelectorAll("[data-article-filter]")];
    const status = document.querySelector("[data-article-filter-status]");
-  if (!buttons.length || !cards.length) return;
+  if (!buttons.length) return;
 
   const labels = {all:"すべて",news:"ニュース",tournament:"大会・環境",limited:"リミテッド",deck:"デッキ・メタ"};
 
