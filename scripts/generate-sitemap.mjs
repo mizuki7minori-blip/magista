@@ -13,7 +13,6 @@ const staticPages=[
   ['https://magsta.jp/limited-tracker.html',today,'weekly','0.8'],
   ['https://magsta.jp/commander.html',today,'weekly','0.9'],
   ['https://magsta.jp/commander-builder.html',today,'weekly','0.8'],
-  ['https://magsta.jp/search.html',today,'weekly','0.6'],
   ['https://magsta.jp/weekly.html',today,'weekly','0.7'],
   ['https://magsta.jp/strategy.html',today,'monthly','0.6'],
   ['https://magsta.jp/contact.html',today,'monthly','0.4'],
