@@ -15,7 +15,7 @@ const idle=(fn,delay=1200)=>{
 };
 const start=()=>{
   add('article-card-preview.js?v=20261008-inline3').catch(()=>{});
-  idle(()=>add('related-articles.js?v=20261006-lite1'),1800);
+  idle(()=>add('related-articles.js?v=20261012-syntax1'),1800);
   idle(()=>add('analytics.js?v=20261006-lite1'),2200);
   const affiliate=document.getElementById('affiliate-products');
   if(affiliate&&'IntersectionObserver' in window){
