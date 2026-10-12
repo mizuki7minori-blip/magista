@@ -194,7 +194,6 @@
         ${links.slice(0,3).map(([href,label,id])=>`<a href="${href}" data-next-action="${id}">${label}</a>`).join("")}
       </div>`;
     body.appendChild(actions);
-  });
   }
 
   if (!document.querySelector(".article-trust-note")) {
