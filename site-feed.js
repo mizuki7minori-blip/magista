@@ -160,7 +160,7 @@ async function load(skipExternalFeed=false){
    }
   }else{
    const ja=items.filter(a=>a.language==='ja'),en=items.filter(a=>a.language==='en');
-   if(latest&&!editorial.length){
+   if(latest&&!editorial.length&&!latest.querySelector('.article-card')){
     const cards=ja.slice(0,3).map(a=>card(a,false));
     latest.replaceChildren(...cards);
     if(!cards.length)latest.append(el('p','','現在、表示できる記事はありません。'));
@@ -171,7 +171,7 @@ async function load(skipExternalFeed=false){
   await editorialTask;
   if(status)status.textContent=editorial.length?'ニュース配信データを読み込めませんでした。MAGSTAの編集記事は表示しています。':'配信データを読み込めませんでした。';
   for(const id of category?['category-rss-list']:['latest-list','feed-ja','feed-en']){
-   if((id==='latest-list'||id==='category-rss-list')&&editorial.length)continue;
+   if((id==='latest-list'||id==='category-rss-list')&&(editorial.length||(id==='latest-list'&&document.getElementById(id)?.querySelector('.article-card'))))continue;
    const target=document.getElementById(id);if(target)error(target,load);
   }
  }
