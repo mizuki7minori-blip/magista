@@ -10,7 +10,7 @@ async function load(){
  ]);
  const indexData=indexResult.status==='fulfilled'?indexResult.value:{items:[]};
  const popularityData=popularityResult.status==='fulfilled'?popularityResult.value:{items:[]};
- return {items:Array.isArray(indexData.items)?indexData.items:[],popularity:popularityData};
+ return {items:Array.isArray(indexData.items)?indexData.items.slice().sort((a,b)=>(Date.parse(b.modified||b.published)||0)-(Date.parse(a.modified||a.published)||0)):[],popularity:popularityData};
 }
 function renderArticles(items){
  const list=document.querySelector('.article-list');
@@ -54,7 +54,7 @@ function renderHome(items){
   if(h1)h1.textContent=latest.title;
   if(p)p.textContent=latest.lead||latest.desc||'';
   if(link)link.href=latest.path;
-  if(small)small.textContent=(date(latest.published)||'更新')+' / 犬居';
+  if(small)small.textContent=(date(latest.modified||latest.published)||'更新')+' / 犬居';
  }
  const side=document.querySelector('.feature-side article');
  if(side&&second){
@@ -62,7 +62,7 @@ function renderHome(items){
   if(tag){tag.textContent=second.label||'記事';tag.className='tag '+(second.category||'news');}
   if(h2){h2.textContent=second.title;h2.href=second.path;}
   if(p)p.textContent=second.desc||second.lead||'';
-  if(small)small.textContent=date(second.published);
+  if(small)small.textContent=date(second.modified||second.published);
  }
 }
 load().then(({items,popularity})=>{renderArticles(items);renderHome(items);renderPopular(items,popularity);}).catch(()=>{});
