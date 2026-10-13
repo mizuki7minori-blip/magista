@@ -25,7 +25,18 @@ function card(a,compact=false){
  if(description&&description!==a.title){const details=el('details');details.append(el('summary','',a.language==='en'?'配信元の概要（英語）':'配信元の概要'));details.append(el('p','',description));item.append(details);}
  item.append(el('small','source',`${day(a.pubDate)} · ${a.sourceName||'配信元'}${a.language==='en'?' · 英語記事':''}`));return item;
 }
-function error(target,retry){target.replaceChildren();const box=el('div','feed-error','記事を取得できませんでした。');const btn=el('button','','再読み込み');btn.type='button';btn.addEventListener('click',retry);box.append(btn);target.append(box);}
+let retryTask;
+function retryButton(retry){
+ const btn=el('button','','再読み込み');btn.type='button';
+ btn.addEventListener('click',async()=>{
+  if(retryTask)return;
+  btn.disabled=true;btn.textContent='読み込み中…';
+  retryTask=Promise.resolve().then(retry);
+  try{await retryTask;}catch{}finally{retryTask=null;btn.disabled=false;btn.textContent='再読み込み';}
+ });
+ return btn;
+}
+function error(target,retry){target.replaceChildren();const box=el('div','feed-error','記事を取得できませんでした。');box.append(retryButton(retry));target.append(box);}
 let editorialIndexTask;
 function editorialIndex(){
  if(!editorialIndexTask){
@@ -127,6 +138,7 @@ async function load(skipExternalFeed=false){
    if(latest)latest.replaceChildren(...articles.map(editorialCard));
    else {
     category.querySelector('.feed-error')?.remove();
+    category.querySelectorAll('.editorial-feed-card').forEach(item=>item.remove());
     category.prepend(...articles.map(editorialCard));
    }
   }
@@ -150,11 +162,11 @@ async function load(skipExternalFeed=false){
   if(status){
    status.textContent=`配信データ更新：${stamp}（日本時間）${cached?' / 通信に失敗したため、前回取得したニュースを表示しています':stale?' / 更新が遅れています':''}${data.staleSources?.length?' / 一部は前回取得分':''}`;
    if(cached){
-    const retry=el('button','','再読み込み');retry.type='button';
-    retry.addEventListener('click',()=>{retry.disabled=true;load();});status.append(retry);
+    status.append(retryButton(()=>load()));
    }
   }
   if(category){
+   await editorialTask;
    const [,match]=categories[key];
    const selected=items.filter(a=>(language==='all'||a.language===language)&&(match instanceof RegExp?match.test(a.title+' '+clean(a.description)):match?a.categoryKey===match:a.categoryKey==='news'));
    category.replaceChildren(...editorial.map(editorialCard),...selected.slice(0,40).map(a=>card(a)));
@@ -174,7 +186,7 @@ async function load(skipExternalFeed=false){
   }
  }catch{
   await editorialTask;
-  if(status)status.textContent=editorial.length?'ニュース配信データを読み込めませんでした。MAGSTAの編集記事は表示しています。':'配信データを読み込めませんでした。';
+  if(status)status.textContent=(editorial.length||latest?.querySelector('.article-card'))?'ニュース配信データを読み込めませんでした。MAGSTAの編集記事は表示しています。':'配信データを読み込めませんでした。';
   for(const id of category?['category-rss-list']:['latest-list','feed-ja','feed-en']){
    if((id==='latest-list'||id==='category-rss-list')&&(editorial.length||(id==='latest-list'&&document.getElementById(id)?.querySelector('.article-card'))))continue;
    const target=document.getElementById(id);if(target)error(target,load);
