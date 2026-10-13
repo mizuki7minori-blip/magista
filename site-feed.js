@@ -45,7 +45,7 @@ function editorialIndex(){
    if(!r.ok)throw Error('editorial');
    const data=await r.json();
    if(!Array.isArray(data.items))throw Error('editorial format');
-   return data.items;
+   return data.items.slice().sort((a,b)=>(Date.parse(b.modified||b.published)||0)-(Date.parse(a.modified||a.published)||0));
   })().catch(error=>{editorialIndexTask=null;throw error;});
  }
  return editorialIndexTask;
@@ -55,7 +55,7 @@ async function editorialCards(limit=3, newsOnly=false){
   const items=await editorialIndex();
   return items.filter(item=>!newsOnly||item.category==='news').slice(0,limit).map(item=>({
    title:item.title, link:item.path, description:item.desc||item.lead||'',
-   meta:[item.label||'MAGSTA記事',item.published?new Date(item.published).toLocaleDateString('ja-JP',{timeZone:'Asia/Tokyo'}):'', '編集：犬居'].filter(Boolean)
+   meta:[item.label||'MAGSTA記事',(item.modified||item.published)?new Date(item.modified||item.published).toLocaleDateString('ja-JP',{timeZone:'Asia/Tokyo'}):'', '編集：犬居'].filter(Boolean)
   }));
  }catch{return [];}
 }
