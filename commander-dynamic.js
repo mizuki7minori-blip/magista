@@ -99,6 +99,41 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const draftCopy = draftDeckBox.querySelector('#draft-copy');
   const draftCopyImport = draftDeckBox.querySelector('#draft-copy-import');
   const draftCopyStatus = draftDeckBox.querySelector('#draft-copy-status');
+
+  function draftCardLabel(card){
+    return card.image?`<button type="button" class="draft-card-preview" data-image="${esc(card.image)}" data-name="${esc(card.name)}" aria-label="${esc(card.name)}のカード画像を表示">${esc(card.name)}</button>`:`<strong>${esc(card.name)}</strong>`;
+  }
+  const cardPreview=document.createElement('div');
+  cardPreview.className='draft-card-popover'; cardPreview.hidden=true;
+  cardPreview.setAttribute('role','dialog'); cardPreview.setAttribute('aria-label','カード画像');
+  cardPreview.innerHTML='<button type="button" aria-label="カード画像を閉じる">閉じる ×</button><img alt="">';
+  document.body.appendChild(cardPreview);
+  let activePreview=null;
+  function hideCardPreview(){cardPreview.hidden=true;activePreview=null;}
+  function showCardPreview(button){
+    const image=button.dataset.image;
+    if(!/^https:\/\//.test(image||''))return;
+    activePreview=button;
+    const img=cardPreview.querySelector('img');img.src=image;img.alt=button.dataset.name;
+    cardPreview.hidden=false;
+    const rect=button.getBoundingClientRect(), width=Math.min(260,innerWidth-24);
+    cardPreview.style.width=width+'px';
+    cardPreview.style.left=Math.max(12,Math.min(rect.right+12,innerWidth-width-12))+'px';
+    cardPreview.style.top=Math.max(12,Math.min(rect.top,innerHeight-cardPreview.offsetHeight-12))+'px';
+  }
+  draftDeckBox.addEventListener('pointerover',e=>{const button=e.target.closest('.draft-card-preview');if(button && e.pointerType!=='touch')showCardPreview(button);});
+  draftDeckBox.addEventListener('pointerout',e=>{if(e.target.closest('.draft-card-preview')&&!cardPreview.contains(e.relatedTarget))hideCardPreview();});
+  draftDeckBox.addEventListener('focusin',e=>{const button=e.target.closest('.draft-card-preview');if(button)showCardPreview(button);});
+  draftDeckBox.addEventListener('click',e=>{const button=e.target.closest('.draft-card-preview');if(button)showCardPreview(button);});
+  document.addEventListener('pointerdown',e=>{if(!cardPreview.contains(e.target)&&!e.target.closest('.draft-card-preview'))hideCardPreview();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')hideCardPreview();});
+  cardPreview.querySelector('button').addEventListener('click',hideCardPreview);
+  window.addEventListener('scroll',hideCardPreview,{passive:true});
+  window.addEventListener('resize',hideCardPreview);
+  const previewStyle=document.createElement('style');
+  previewStyle.textContent='.draft-card-preview{border:0;border-bottom:1px dotted currentColor;padding:2px 0;background:transparent;color:inherit;font:inherit;font-weight:700;text-align:left;cursor:zoom-in}.draft-card-preview:focus-visible{outline:2px solid #80501f;outline-offset:3px}.draft-card-popover{position:fixed;z-index:10000;background:#fff;padding:8px;border:1px solid #ccd2d8;border-radius:12px;box-shadow:0 8px 30px #0004;max-height:calc(100dvh - 24px);overflow:auto}.draft-card-popover[hidden]{display:none}.draft-card-popover img{display:block;width:100%;height:auto;border-radius:8px}.draft-card-popover>button{display:block;margin:0 0 6px auto;cursor:pointer}.draft-deck-row>div{min-width:0;overflow-wrap:anywhere}';
+  document.head.appendChild(previewStyle);
+
   const DRAFT_KEY = 'magsta-commander-draft-ja';
 
   function loadDraftDeck(){
@@ -117,7 +152,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function addDraftCard(item){
     const key=item.card.oracle_id||item.card.name;
     if(state.draftDeck.some(x=>x.key===key)) return;
-    const ref=domesticPriceInfo(item.card); state.draftDeck.push({key,name:displayName(item.card),role:item.role,usd:cardUsd(item.card),jpy:ref.jpy,priceSource:ref.source});
+    const ref=domesticPriceInfo(item.card); state.draftDeck.push({key,name:displayName(item.card),role:item.role,usd:cardUsd(item.card),jpy:ref.jpy,priceSource:ref.source,englishName:item.card.name,image:imgOf(item.card),set:item.card.set,collectorNumber:item.card.collector_number});
     saveDraftDeck();
   }
   function roleBucket(role){
@@ -225,29 +260,30 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     const counts={ramp:0,draw:0,interaction:0,protection:0,graveyard:0,tutor:0,theme:0};
     state.draftDeck.forEach(x=>counts[roleBucket(x.role)]++);
     const seen=new Set(state.draftDeck.map(x=>x.key)), cap=budgetCardCapUsd();
-    const addItems=(items,key,max)=>{
+    const addItems=async(items,key,max)=>{
       for(const item of items){
         if(state.draftDeck.length>=nonlandTarget || (counts[key]||0)>=max) break;
         const id=item.card.oracle_id||item.card.name, price=cardUsd(item.card);
         if(seen.has(id)) continue;
         if(budget.value!=='open' && price!=null && price>cap) continue;
+        item.card=await japaneseDisplayCard(item.card);
         seen.add(id); counts[key]=(counts[key]||0)+1;
-        const ref=domesticPriceInfo(item.card); state.draftDeck.push({key:id,name:displayName(item.card),role:item.role,usd:price,jpy:ref.jpy,priceSource:ref.source});
+        const ref=domesticPriceInfo(item.card); state.draftDeck.push({key:id,name:displayName(item.card),role:item.role,usd:price,jpy:ref.jpy,priceSource:ref.source,englishName:item.card.name,image:imgOf(item.card),set:item.card.set,collectorNumber:item.card.collector_number});
       }
     };
     try{
       for(const key of ['ramp','draw','interaction','protection','graveyard','tutor']){
         const spec=roleSearchSpec(key), found=await fetchSpec(spec,identity,state.dynamicCommander.name);
-        addItems(found,key,targets[key]); await new Promise(r=>setTimeout(r,100));
+        await addItems(found,key,targets[key]); await new Promise(r=>setTimeout(r,100));
       }
       const themes=detectThemes(state.dynamicCommander);
       for(const theme of themes){
         if(state.draftDeck.length>=nonlandTarget) break;
         const found=await fetchSpec({label:theme.label,query:theme.query,fallback:theme.fallback,reason:theme.reason},identity,state.dynamicCommander.name);
-        addItems(found,'theme',nonlandTarget); await new Promise(r=>setTimeout(r,100));
+        await addItems(found,'theme',nonlandTarget); await new Promise(r=>setTimeout(r,100));
       }
       if(state.draftDeck.length<nonlandTarget && state.suggestions.length){
-        addItems(state.suggestions,'theme',nonlandTarget);
+        await addItems(state.suggestions,'theme',nonlandTarget);
       }
       state.lands=buildLandPackage();
       const check=normalizeDeckTo100();
@@ -294,7 +330,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       if(!name) return;
       const row=map.get(name);
       if(row) row.count+=1;
-      else map.set(name,{name,count:1});
+      else map.set(name,{...x,name,count:1});
     });
     return [...map.values()];
   }
@@ -303,7 +339,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     if(!draftExportGrid) return;
     const groups=draftGroups();
     const labels={ramp:'マナ加速',draw:'ドロー',interaction:'除去・妨害',protection:'保護',graveyard:'墓地対策',tutor:'サーチ',theme:'テーマ・その他'};
-    const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>{const rows=collapseNamedItems(items);return `<section class="draft-export-group"><h4>${labels[key]}（${items.length}）</h4><ul>${rows.map(x=>`<li>${x.count} ${esc(x.name)}</li>`).join('')}</ul></section>`;}).join('') + (landItems.length?(()=>{const rows=collapseNamedItems(landItems);return `<section class="draft-export-group"><h4>土地（${landItems.length}）</h4><ul>${rows.map(x=>`<li>${x.count} ${esc(x.name)}</li>`).join('')}</ul></section>`;})():'')) || '<p class="draft-deck-empty">カードを追加するとカテゴリ別に表示されます。</p>';
+    const landItems=state.lands||[]; draftExportGrid.innerHTML=(Object.entries(groups).filter(([,items])=>items.length).map(([key,items])=>{const rows=collapseNamedItems(items);return `<section class="draft-export-group"><h4>${labels[key]}（${items.length}）</h4><ul>${rows.map(x=>`<li>${x.count} ${draftCardLabel(x)}</li>`).join('')}</ul></section>`;}).join('') + (landItems.length?(()=>{const rows=collapseNamedItems(landItems);return `<section class="draft-export-group"><h4>土地（${landItems.length}）</h4><ul>${rows.map(x=>`<li>${x.count} ${draftCardLabel(x)}</li>`).join('')}</ul></section>`;})():'')) || '<p class="draft-deck-empty">カードを追加するとカテゴリ別に表示されます。</p>';
   }
 
   function importDeckText(){
@@ -331,7 +367,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function renderDraftDeck(){
     const totalJpy=state.draftDeck.map(x=>(x.jpy!=null?Number(x.jpy):x.usd!=null?Number(x.usd)*USD_TO_JPY:NaN)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
     const check=normalizeDeckTo100(); draftSummary.textContent=`${state.draftDeck.length}枚保存 / 土地 ${state.lands.length}枚 / 合計 ${check.total}枚${state.dynamicCommander ? (check.total===100?'（枚数達成・適法性は未検証）':check.total<100?'（あと'+(100-check.total)+'枚）':'（'+(check.total-100)+'枚超過）'):'（統率者未選択）'} / 価格判明分 ${totalJpy.toLocaleString('ja-JP')}円（この端末のブラウザに保存）`;
-    draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'候補')}</small></div><span>${x.jpy==null?'価格不明':'約'+Number(x.jpy).toLocaleString('ja-JP')+'円'}${x.priceSource?`<small>${esc(x.priceSource)}</small>`:''}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
+    draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div>${draftCardLabel(x)}<small>${esc(x.role||'候補')}</small></div><span>${x.jpy==null?'価格不明':'約'+Number(x.jpy).toLocaleString('ja-JP')+'円'}${x.priceSource?`<small>${esc(x.priceSource)}</small>`:''}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
     draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{rememberDraft();state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
     renderDraftExport();
     renderDraftDiagnosis();
@@ -341,6 +377,17 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   const undoButton=document.createElement('button');
   undoButton.type='button'; undoButton.className='button secondary'; undoButton.textContent='直前の削除を戻す'; undoButton.disabled=true;
   draftClear.after(undoButton);
+  const refreshImages=document.createElement('button');refreshImages.type='button';refreshImages.className='button secondary';refreshImages.textContent='保存カードの日本語名・画像を更新';
+  undoButton.after(refreshImages);
+  refreshImages.addEventListener('click',async()=>{
+    refreshImages.disabled=true;
+    const cards=[...state.draftDeck];
+    try{for(const row of cards){
+      const card=await japaneseDisplayCard({name:row.englishName||row.name,oracle_id:/^[0-9a-f-]{36}$/i.test(row.key||'')?row.key:undefined,set:row.set,collector_number:row.collectorNumber});
+      if(!state.draftDeck.includes(row))continue;
+      row.name=displayName(card);row.image=imgOf(card)||row.image;row.englishName=card.name;
+    }saveDraftDeck();}finally{refreshImages.disabled=false;}
+  });
   function rememberDraft(){undoDraft=JSON.parse(JSON.stringify({cards:state.draftDeck,lands:state.lands}));undoButton.disabled=false;}
   undoButton.addEventListener('click',()=>{if(!undoDraft)return;state.draftDeck=undoDraft.cards;state.lands=undoDraft.lands;undoDraft=null;undoButton.disabled=true;saveDraftDeck();});
   draftSummary.setAttribute('aria-live','polite');
@@ -483,22 +530,30 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     ];
   }
 
+  const japaneseCards = new Map();
   async function japaneseDisplayCard(card) {
     if (!card) return card;
-    try {
-      const r = await fetch(`https://api.scryfall.com/cards/${card.set}/${card.collector_number}/ja`);
-      if (!r.ok) return card;
-      const ja = await r.json();
-      return {
-        ...card,
-        printed_name: ja.printed_name || ja.name || card.printed_name || card.name,
-        printed_text: ja.printed_text || card.printed_text || card.oracle_text,
-        image_uris: ja.image_uris || card.image_uris,
-        card_faces: ja.card_faces || card.card_faces
-      };
-    } catch(e) {
-      return card;
-    }
+    const key=card.oracle_id||card.name;
+    if(japaneseCards.has(key)) return japaneseCards.get(key);
+    const task=(async()=>{
+      let ja;
+      try {
+        if(card.set && card.collector_number){
+          const response=await fetch(`https://api.scryfall.com/cards/${encodeURIComponent(card.set)}/${encodeURIComponent(card.collector_number)}/ja`);
+          if(response.ok) ja=await response.json();
+          await new Promise(resolve=>setTimeout(resolve,110));
+        }
+        if(!ja?.printed_name){
+          const query=card.oracle_id?`oracleid:${card.oracle_id} lang:ja`:`!${JSON.stringify(card.name)} lang:ja`;
+          const response=await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(query)}&unique=prints`);
+          if(response.ok) ja=(await response.json()).data?.[0]||ja;
+          await new Promise(resolve=>setTimeout(resolve,110));
+        }
+      } catch(e) { /* Keep the original card when Japanese printing is unavailable. */ }
+      return ja?{...card,printed_name:ja.printed_name||ja.card_faces?.map(f=>f.printed_name||f.name).join(' // ')||card.printed_name||card.name,printed_text:ja.printed_text||card.printed_text||card.oracle_text,image_uris:ja.image_uris||card.image_uris,card_faces:ja.card_faces||card.card_faces}:card;
+    })();
+    japaneseCards.set(key,task);
+    return task;
   }
 
   async function localizeSuggestionItem(item) {
