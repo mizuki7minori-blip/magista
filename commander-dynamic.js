@@ -8,6 +8,8 @@
   const plan = document.getElementById('budget-plan');
   if (!select || !summary || !grid) return;
 
+  const USD_TO_JPY = 150;
+  let undoDraft = null;
   const state = { dynamicCommander: null, suggestions: [], themes: [], draftDeck: [], lands: [], domesticPrices: {}, domesticPriceMeta: {} };
   const esc = s => String(s || '').replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const imgOf = c => c?.image_uris?.normal || c?.card_faces?.[0]?.image_uris?.normal || '';
@@ -102,9 +104,16 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function loadDraftDeck(){
     try { const saved=JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}'); state.draftDeck=Array.isArray(saved)?saved:(saved.cards||[]); state.lands=Array.isArray(saved)?[]:(saved.lands||[]); }
     catch(e){ state.draftDeck = []; }
+    try {
+      const saved=JSON.parse(localStorage.getItem(DRAFT_KEY)||'{}');
+      if(saved.budget && [...budget.options].some(o=>o.value===saved.budget)) budget.value=saved.budget;
+      if(saved.bracket && [...bracket.options].some(o=>o.value===saved.bracket)) bracket.value=saved.bracket;
+      if(saved.strategy && strategyNames[saved.strategy]) strategy.value=saved.strategy;
+      if(saved.commander?.name) chooseCommander(saved.commander, false);
+    } catch(e) { /* Legacy decks remain available. */ }
     renderDraftDeck();
   }
-  function saveDraftDeck(){ localStorage.setItem(DRAFT_KEY, JSON.stringify({cards:state.draftDeck,lands:state.lands||[]})); renderDraftDeck(); }
+  function saveDraftDeck(){ try { localStorage.setItem(DRAFT_KEY, JSON.stringify({cards:state.draftDeck,lands:state.lands||[],commander:state.dynamicCommander,budget:budget.value,bracket:bracket.value,strategy:strategy?.value})); } catch(e) { status.textContent='端末への保存ができません。デッキリストをコピーして保管してください。'; } renderDraftDeck(); }
   function addDraftCard(item){
     const key=item.card.oracle_id||item.card.name;
     if(state.draftDeck.some(x=>x.key===key)) return;
@@ -243,7 +252,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
       state.lands=buildLandPackage();
       const check=normalizeDeckTo100();
       saveDraftDeck();
-      status.textContent=`最終チェック完了：統率者1枚 + 非土地 ${state.draftDeck.length}枚 + 土地 ${state.lands.length}枚 = ${check.total}枚です。`;
+      status.textContent=`自動補充結果（適法性は未検証）：統率者1枚 + 非土地 ${state.draftDeck.length}枚 + 土地 ${state.lands.length}枚 = ${check.total}枚です。`;
     }catch(e){status.textContent='自動補充に失敗しました。もう一度試してください。';}
     finally{draftAutoBuild.disabled=false;draftAutoBuild.textContent='99枚たたき台を自動補充';}
   }
@@ -268,20 +277,8 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
 
   function normalizeDeckTo100(){
     if(!state.dynamicCommander) return {total:state.draftDeck.length+(state.lands?.length||0), adjusted:false};
-    const targetMain=99;
-    if(!Array.isArray(state.lands) || !state.lands.length) state.lands=buildLandPackage();
-    let mainCount=state.draftDeck.length+state.lands.length, adjusted=false;
-    if(mainCount<targetMain){
-      const identity=state.dynamicCommander.color_identity||[];
-      const fillers=identity.length?identity.map(basicLandName):['荒地'];
-      let i=0;
-      while(mainCount<targetMain){state.lands.push({name:fillers[i%fillers.length],role:'土地'});i++;mainCount++;adjusted=true;}
-    }else if(mainCount>targetMain){
-      const over=mainCount-targetMain;
-      state.lands.splice(Math.max(0,state.lands.length-over),Math.min(over,state.lands.length));
-      mainCount=state.draftDeck.length+state.lands.length; adjusted=true;
-    }
-    return {total:mainCount+1,main:mainCount,adjusted};
+    const mainCount=state.draftDeck.length+(state.lands?.length||0);
+    return {total:mainCount+1,main:mainCount,adjusted:false};
   }
 
   function draftGroups(){
@@ -311,7 +308,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
 
   function importDeckText(){
     const commanderName=state.dynamicCommander?displayName(state.dynamicCommander):'';
-    const landItems=(state.lands&&state.lands.length)?state.lands:buildLandPackage();
+    const landItems=state.lands||[];
     const lines=[];
     if(commanderName) lines.push(`1 ${commanderName}`);
     state.draftDeck.forEach(x=>lines.push(`1 ${x.name}`));
@@ -324,7 +321,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   function draftText(){
     const groups=draftGroups(), labels={ramp:'マナ加速',draw:'ドロー',interaction:'除去・妨害',protection:'保護',graveyard:'墓地対策',tutor:'サーチ',theme:'テーマ・その他'};
     const commanderName=state.dynamicCommander?displayName(state.dynamicCommander):'未選択';
-    const landItems=(state.lands&&state.lands.length)?state.lands:buildLandPackage(), landTarget=landItems.length;
+    const landItems=state.lands||[], landTarget=landItems.length;
     const lines=[`【MAGSTA 統率者デッキ案】`,`統率者: ${commanderName}`,`ブラケット: ${bracket?.value||'-'}`,`土地: ${landTarget}枚`,''];
     Object.entries(groups).forEach(([key,items])=>{if(!items.length)return;lines.push(`## ${labels[key]} (${items.length})`,...items.map(x=>`1 ${x.name}`),'');});
     lines.push(`## 土地 (${landTarget})`,...landItems.map(x=>`1 ${x.name}`));
@@ -332,19 +329,25 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   }
 
   function renderDraftDeck(){
-    const totalJpy=state.draftDeck.map(x=>Number(x.jpy ?? (Number.isFinite(Number(x.usd))?Number(x.usd)*USD_TO_JPY:null))).filter(Number.isFinite).reduce((a,b)=>a+b,0);
-    const check=normalizeDeckTo100(); draftSummary.textContent=`${state.draftDeck.length}枚保存 / 土地 ${state.lands.length}枚 / 合計 ${check.total}枚 / 概算 ${totalJpy.toLocaleString('ja-JP')}円（この端末のブラウザに保存）`;
+    const totalJpy=state.draftDeck.map(x=>(x.jpy!=null?Number(x.jpy):x.usd!=null?Number(x.usd)*USD_TO_JPY:NaN)).filter(Number.isFinite).reduce((a,b)=>a+b,0);
+    const check=normalizeDeckTo100(); draftSummary.textContent=`${state.draftDeck.length}枚保存 / 土地 ${state.lands.length}枚 / 合計 ${check.total}枚${state.dynamicCommander ? (check.total===100?'（枚数達成・適法性は未検証）':check.total<100?'（あと'+(100-check.total)+'枚）':'（'+(check.total-100)+'枚超過）'):'（統率者未選択）'} / 価格判明分 ${totalJpy.toLocaleString('ja-JP')}円（この端末のブラウザに保存）`;
     draftList.innerHTML=state.draftDeck.length?state.draftDeck.map((x,i)=>`<div class="draft-deck-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.role||'候補')}</small></div><span>${x.jpy==null?'価格不明':'約'+Number(x.jpy).toLocaleString('ja-JP')+'円'}${x.priceSource?`<small>${esc(x.priceSource)}</small>`:''}</span><button type="button" class="button secondary draft-remove" data-index="${i}">削除</button></div>`).join(''):'<p class="draft-deck-empty">まだカードは保存されていません。</p>';
-    draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
+    draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{rememberDraft();state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
     renderDraftExport();
     renderDraftDiagnosis();
   }
   draftAddAll.addEventListener('click',()=>{state.suggestions.forEach(addDraftCard);status.textContent='現在の候補を仮デッキリストに保存しました。';});
   draftAutoBuild.addEventListener('click',autoBuildDraft);
-  draftClear.addEventListener('click',()=>{state.draftDeck=[];state.lands=[];saveDraftDeck();});
+  const undoButton=document.createElement('button');
+  undoButton.type='button'; undoButton.className='button secondary'; undoButton.textContent='直前の削除を戻す'; undoButton.disabled=true;
+  draftClear.after(undoButton);
+  function rememberDraft(){undoDraft=JSON.parse(JSON.stringify({cards:state.draftDeck,lands:state.lands}));undoButton.disabled=false;}
+  undoButton.addEventListener('click',()=>{if(!undoDraft)return;state.draftDeck=undoDraft.cards;state.lands=undoDraft.lands;undoDraft=null;undoButton.disabled=true;saveDraftDeck();});
+  draftSummary.setAttribute('aria-live','polite');
+  draftClear.addEventListener('click',()=>{rememberDraft();state.draftDeck=[];state.lands=[];saveDraftDeck();});
   draftCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(draftText());draftCopyStatus.textContent='デッキリストをコピーしました。';}catch(e){draftCopyStatus.textContent='コピーできませんでした。';}});
-  draftCopyImport.addEventListener('click',async()=>{try{const check=normalizeDeckTo100();await navigator.clipboard.writeText(importDeckText());draftCopyStatus.textContent=`Moxfield / Archidekt用に ${check.total}枚のリストをコピーしました。`;}catch(e){draftCopyStatus.textContent='インポート用リストをコピーできませんでした。';}});
-  try { loadDraftDeck(); } catch(e) { console.warn('MAGSTA draft init failed', e); state.draftDeck=[]; state.lands=[]; if(draftSummary) draftSummary.textContent='仮デッキの保存データを読み込めませんでした。検索機能は利用できます。'; }
+  draftCopyImport.addEventListener('click',async()=>{try{if(!state.dynamicCommander){draftCopyStatus.textContent='先に統率者を選択してください。';return;}const check=normalizeDeckTo100();await navigator.clipboard.writeText(importDeckText());draftCopyStatus.textContent=`Moxfield / Archidekt用に ${check.total}枚のリストをコピーしました。${check.total<100?'あと'+(100-check.total)+'枚必要です。':check.total>100?'100枚を超えています。':''}`;}catch(e){draftCopyStatus.textContent='インポート用リストをコピーできませんでした。';}});
+
 
   const goalBox = document.createElement('section');
   goalBox.className = 'commander-goals';
@@ -627,7 +630,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     return '価格制限なし';
   }
 
-  const USD_TO_JPY = 150;
+
 
   function priceSummary(items) {
     const known = items.map(item=>cardReferenceYen(item.card)).filter(v=>v != null);
@@ -659,13 +662,14 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     summary.innerHTML = `<strong>${esc(picked)}</strong>${picked!==card.name?`<small>${esc(card.name)}</small>`:''}固有色：${esc(colors)} / 予算：${budgetText} / ブラケット ${esc(bracket.value)} / 方針：${esc(strategyNames[mode])}。<br><small>${esc(strategyDescriptions[mode])}</small><div class="theme-badges">${themeText}</div>`;
   }
 
-  function chooseCommander(card) {
+  function chooseCommander(card, persist=true) {
     state.dynamicCommander = card;
     if (![...select.options].some(o=>o.value===card.name)) {
       const o=document.createElement('option'); o.value=card.name; o.textContent=displayName(card); o.title=card.name; o.dataset.dynamic='1'; select.appendChild(o);
     }
     select.value = card.name; renderCommanderSummary(card); results.innerHTML=''; input.value='';
     grid.innerHTML = '<p class="builder-empty">統率者のテーマを判定しました。「相性カード候補を表示」で、その統率者専用の候補を取得します。</p>';
+    if(persist) saveDraftDeck();
     state.suggestions=[]; loadSynergyButton.hidden=false; status.textContent=`${displayName(card)} を統率者に選択しました。`;
   }
 
@@ -733,6 +737,8 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     } finally { loadSynergyButton.disabled=false; loadSynergyButton.textContent='相性カード候補を再検討'; }
   }
 
+  loadDraftDeck();
+  [budget,bracket,strategy].filter(Boolean).forEach(el=>el.addEventListener('change',saveDraftDeck));
   loadSynergyButton.addEventListener('click',renderDynamic);
   select.addEventListener('change',()=>{ if(state.dynamicCommander && select.value===state.dynamicCommander.name) chooseCommander(state.dynamicCommander); });
   budget.addEventListener('change',()=>{ if(state.dynamicCommander) renderCommanderSummary(state.dynamicCommander); });
