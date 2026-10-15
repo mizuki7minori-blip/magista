@@ -1,1914 +1,1914 @@
 {
-  "generatedAt": "2026-10-14T07:47:09.891945Z",
+  "generatedAt": "2026-10-15T07:33:57.156871Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-10-14T07:46:51.098918Z",
+      "updatedAt": "2026-10-15T07:33:39.977162Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
-          "wr": 73.3,
-          "games": 7521
+          "wr": 73.4,
+          "games": 7856
         },
         {
           "name": "Uldaros Theorix",
           "wr": 69.4,
-          "games": 7595
+          "games": 7983
         },
         {
           "name": "The Theorist, Jace Beleren",
-          "wr": 68.4,
-          "games": 7160
+          "wr": 68.5,
+          "games": 7580
         },
         {
           "name": "Sublime Epiphany",
-          "wr": 66.9,
-          "games": 1735
-        },
-        {
-          "name": "Garruk, Veiled Butcher",
-          "wr": 66.0,
-          "games": 6727
+          "wr": 67.1,
+          "games": 1828
         },
         {
           "name": "Overwrite the Multiverse",
+          "wr": 66.0,
+          "games": 7253
+        },
+        {
+          "name": "Garruk, Veiled Butcher",
           "wr": 65.9,
-          "games": 6877
+          "games": 7045
         },
         {
           "name": "Garruk, Curse Breaker",
-          "wr": 65.7,
-          "games": 6166
+          "wr": 65.6,
+          "games": 6533
         },
         {
           "name": "Aerid Konstrari",
-          "wr": 64.8,
-          "games": 5718
+          "wr": 64.9,
+          "games": 6028
         },
         {
           "name": "Sphinx of False Conclusions",
-          "wr": 64.3,
-          "games": 15613
+          "wr": 64.4,
+          "games": 16365
         },
         {
           "name": "Mind Twist",
           "wr": 64.2,
-          "games": 1380
+          "games": 1454
+        },
+        {
+          "name": "Splinter Twin",
+          "wr": 63.5,
+          "games": 1037
         },
         {
           "name": "Lich's Relic",
           "wr": 63.2,
-          "games": 14318
+          "games": 15057
         },
         {
           "name": "Null Summoner",
-          "wr": 62.9,
-          "games": 15422
+          "wr": 63.0,
+          "games": 16221
         },
         {
-          "name": "Splinter Twin",
-          "wr": 62.9,
-          "games": 968
+          "name": "Austere Command",
+          "wr": 63.0,
+          "games": 1234
         },
         {
           "name": "Vraska, the Cutting Glare",
           "wr": 62.8,
-          "games": 12733
-        },
-        {
-          "name": "Austere Command",
-          "wr": 62.7,
-          "games": 1161
+          "games": 13412
         },
         {
           "name": "Kwia Vigorbloom",
           "wr": 62.6,
-          "games": 5288
+          "games": 5501
         },
         {
           "name": "Craftwork Crusher",
-          "wr": 62.4,
-          "games": 31536
+          "wr": 62.3,
+          "games": 33234
         },
         {
           "name": "Kindred Judgment",
           "wr": 62.0,
-          "games": 11846
+          "games": 12520
         },
         {
           "name": "Denzilore Fatehold",
-          "wr": 62.0,
-          "games": 6596
-        },
-        {
-          "name": "Hungering Puppetbeast",
           "wr": 61.9,
-          "games": 12355
+          "games": 6903
         },
         {
           "name": "Sanctum Lurker",
           "wr": 61.8,
-          "games": 13514
+          "games": 14183
+        },
+        {
+          "name": "Hungering Puppetbeast",
+          "wr": 61.8,
+          "games": 12990
         },
         {
           "name": "Kiora of Fire and Ashes",
           "wr": 61.4,
-          "games": 35972
-        },
-        {
-          "name": "Recursive Recruitment",
-          "wr": 61.0,
-          "games": 44483
+          "games": 37708
         },
         {
           "name": "Lyra, Tolarian Archangel",
+          "wr": 61.0,
+          "games": 16203
+        },
+        {
+          "name": "Recursive Recruitment",
           "wr": 60.9,
-          "games": 15432
+          "games": 46671
+        },
+        {
+          "name": "Avatar of Burgeoning Echoes",
+          "wr": 60.4,
+          "games": 5363
         },
         {
           "name": "Proctor of Potential",
-          "wr": 60.4,
-          "games": 10331
-        },
-        {
-          "name": "Mindseeker Oculus",
-          "wr": 60.2,
-          "games": 103119
+          "wr": 60.3,
+          "games": 10801
         },
         {
           "name": "Chandra, Torch of Defiance",
-          "wr": 60.2,
-          "games": 5481
+          "wr": 60.3,
+          "games": 5793
+        },
+        {
+          "name": "Mindseeker Oculus",
+          "wr": 60.1,
+          "games": 108021
         },
         {
           "name": "Countersculpt",
           "wr": 60.1,
-          "games": 45647
-        },
-        {
-          "name": "Avatar of Burgeoning Echoes",
-          "wr": 60.1,
-          "games": 5080
+          "games": 47907
         },
         {
           "name": "Diviner of Victory",
           "wr": 59.9,
-          "games": 13503
-        },
-        {
-          "name": "Simulacrum Shaper",
-          "wr": 59.9,
-          "games": 11474
+          "games": 14169
         },
         {
           "name": "Repurposed Enforcer",
           "wr": 59.9,
-          "games": 11072
+          "games": 11587
+        },
+        {
+          "name": "Simulacrum Shaper",
+          "wr": 59.8,
+          "games": 12026
         },
         {
           "name": "Fblthp, Impossibly Lost",
           "wr": 59.7,
-          "games": 43855
+          "games": 46423
         },
         {
           "name": "Gideon the Oathless",
           "wr": 59.7,
-          "games": 11774
+          "games": 12404
         },
         {
           "name": "Extended Absence",
           "wr": 59.6,
-          "games": 82609
+          "games": 86523
         },
         {
           "name": "Break Under Pressure",
           "wr": 59.6,
-          "games": 38115
+          "games": 40107
         },
         {
           "name": "Plan for All Outcomes",
-          "wr": 59.5,
-          "games": 45911
+          "wr": 59.4,
+          "games": 47984
         },
         {
           "name": "Violent Echoes",
           "wr": 59.4,
-          "games": 32476
+          "games": 34166
         },
         {
-          "name": "Chandra, Chill of Compliance",
+          "name": "Seasoned Cryomancer",
           "wr": 59.4,
-          "games": 6677
-        },
-        {
-          "name": "Rewrite Regrets",
-          "wr": 59.3,
-          "games": 34782
+          "games": 6998
         },
         {
           "name": "Hapatra, the Desert Fang",
           "wr": 59.3,
-          "games": 33574
+          "games": 35369
         },
         {
           "name": "Carnivorous Cultivator",
           "wr": 59.3,
-          "games": 11596
+          "games": 12263
         },
         {
-          "name": "Seasoned Cryomancer",
-          "wr": 59.3,
-          "games": 6653
+          "name": "Rewrite Regrets",
+          "wr": 59.2,
+          "games": 36768
+        },
+        {
+          "name": "Chandra, Chill of Compliance",
+          "wr": 59.2,
+          "games": 6994
         },
         {
           "name": "Multiply by Zero",
           "wr": 59.0,
-          "games": 36074
+          "games": 37867
         },
         {
           "name": "Primal Witchstalker",
           "wr": 59.0,
-          "games": 27106
-        },
-        {
-          "name": "Lyra, Archangel of Dawn",
-          "wr": 58.9,
-          "games": 9132
+          "games": 28598
         },
         {
           "name": "The Echoverse Fulcrum",
-          "wr": 58.8,
-          "games": 6005
+          "wr": 59.0,
+          "games": 6319
         },
         {
-          "name": "Verdant Kraken",
+          "name": "Lyra, Archangel of Dawn",
+          "wr": 58.8,
+          "games": 9633
+        },
+        {
+          "name": "Tenured Tethermage",
           "wr": 58.7,
-          "games": 11304
+          "games": 9995
         },
         {
           "name": "Protege's Awakening",
           "wr": 58.6,
-          "games": 68332
-        },
-        {
-          "name": "Tenured Tethermage",
-          "wr": 58.6,
-          "games": 9455
+          "games": 72557
         },
         {
           "name": "Clash of Elements",
           "wr": 58.5,
-          "games": 27156
+          "games": 28565
+        },
+        {
+          "name": "Verdant Kraken",
+          "wr": 58.5,
+          "games": 11820
         },
         {
           "name": "Jace, Reality Sculptor",
-          "wr": 58.4,
-          "games": 11875
+          "wr": 58.3,
+          "games": 12455
         },
         {
           "name": "Twinned Vision",
           "wr": 58.2,
-          "games": 69422
+          "games": 73735
         },
         {
           "name": "Way of the Mind Sculptor",
           "wr": 58.1,
-          "games": 37788
+          "games": 39837
         },
         {
           "name": "Fatehold Charm",
           "wr": 58.1,
-          "games": 26609
+          "games": 27996
         },
         {
-          "name": "Guiding Hydra",
-          "wr": 58.1,
-          "games": 11478
-        },
-        {
-          "name": "Liliana the Faultless",
-          "wr": 58.1,
-          "games": 7578
-        },
-        {
-          "name": "Theorist's Sanctum",
+          "name": "Icy Reception",
           "wr": 58.0,
-          "games": 14140
+          "games": 77557
         },
         {
           "name": "Shipwreck Marsh",
           "wr": 58.0,
-          "games": 10373
+          "games": 10888
         },
         {
-          "name": "Icy Reception",
+          "name": "Theorist's Sanctum",
           "wr": 57.9,
-          "games": 73520
+          "games": 14891
+        },
+        {
+          "name": "Guiding Hydra",
+          "wr": 57.9,
+          "games": 12083
+        },
+        {
+          "name": "Liliana the Faultless",
+          "wr": 57.9,
+          "games": 7945
         }
       ],
       "archetypes": [
         {
           "code": "WU",
           "name": "白青（アゾリウス）",
-          "wins": 19105,
-          "games": 33361,
-          "wr": 57.3
+          "wins": 19915,
+          "games": 34825,
+          "wr": 57.2
         },
         {
           "code": "UR",
           "name": "青赤（イゼット）",
-          "wins": 12774,
-          "games": 22786,
+          "wins": 13305,
+          "games": 23698,
           "wr": 56.1
         },
         {
           "code": "RG",
           "name": "赤緑（グルール）",
-          "wins": 16519,
-          "games": 29515,
+          "wins": 17122,
+          "games": 30595,
           "wr": 56.0
-        },
-        {
-          "code": "UB",
-          "name": "青黒（ディミーア）",
-          "wins": 20521,
-          "games": 36738,
-          "wr": 55.9
         },
         {
           "code": "BG",
           "name": "黒緑（ゴルガリ）",
-          "wins": 11147,
-          "games": 19930,
+          "wins": 11713,
+          "games": 20966,
           "wr": 55.9
+        },
+        {
+          "code": "UB",
+          "name": "青黒（ディミーア）",
+          "wins": 21282,
+          "games": 38146,
+          "wr": 55.8
         },
         {
           "code": "GW",
           "name": "緑白（セレズニア）",
-          "wins": 14150,
-          "games": 25853,
-          "wr": 54.7
+          "wins": 14628,
+          "games": 26784,
+          "wr": 54.6
         },
         {
           "code": "BR",
           "name": "黒赤（ラクドス）",
-          "wins": 12758,
-          "games": 23552,
-          "wr": 54.2
+          "wins": 13218,
+          "games": 24443,
+          "wr": 54.1
         },
         {
           "code": "RW",
           "name": "赤白（ボロス）",
-          "wins": 7458,
-          "games": 13791,
+          "wins": 7701,
+          "games": 14229,
           "wr": 54.1
         },
         {
           "code": "WB",
           "name": "白黒（オルゾフ）",
-          "wins": 6029,
-          "games": 11219,
-          "wr": 53.7
+          "wins": 6258,
+          "games": 11624,
+          "wr": 53.8
         },
         {
           "code": "GU",
           "name": "緑青（シミック）",
-          "wins": 7196,
-          "games": 13479,
-          "wr": 53.4
+          "wins": 7581,
+          "games": 14170,
+          "wr": 53.5
         }
       ],
-      "archetypesUpdatedAt": "2026-10-14T07:47:09.891945Z",
+      "archetypesUpdatedAt": "2026-10-15T07:33:57.156871Z",
       "archetypeCards": {
         "WU": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "UB": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "BR": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "RG": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "GW": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "WB": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "BG": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "GU": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "UR": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ],
         "RW": [
           {
-            "name": "Null Summoner",
-            "wr": 64.4,
-            "games": 946
+            "name": "Sphinx of False Conclusions",
+            "wr": 65.0,
+            "games": 752
           },
           {
-            "name": "Kindred Judgment",
-            "wr": 64.0,
-            "games": 866
+            "name": "Null Summoner",
+            "wr": 64.5,
+            "games": 799
           },
           {
             "name": "Lich's Relic",
-            "wr": 63.3,
-            "games": 859
+            "wr": 62.5,
+            "games": 739
+          },
+          {
+            "name": "Lyra, Tolarian Archangel",
+            "wr": 62.4,
+            "games": 771
+          },
+          {
+            "name": "Sanctum Lurker",
+            "wr": 62.3,
+            "games": 669
           },
           {
             "name": "Variable Chaser",
-            "wr": 61.2,
-            "games": 689
+            "wr": 61.8,
+            "games": 510
           },
           {
-            "name": "Hungering Puppetbeast",
+            "name": "Vraska, the Cutting Glare",
+            "wr": 61.6,
+            "games": 679
+          },
+          {
+            "name": "Repurposed Enforcer",
+            "wr": 61.4,
+            "games": 515
+          },
+          {
+            "name": "Way of the Paradox",
+            "wr": 61.2,
+            "games": 1130
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
             "wr": 61.1,
-            "games": 800
+            "games": 2568
           },
           {
             "name": "Craftwork Crusher",
             "wr": 61.0,
-            "games": 1833
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 61.0,
-            "games": 1040
-          },
-          {
-            "name": "Shipwreck Marsh",
-            "wr": 60.9,
-            "games": 611
-          },
-          {
-            "name": "Simulacrum Shaper",
-            "wr": 60.9,
-            "games": 593
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 60.8,
-            "games": 2060
-          },
-          {
-            "name": "Vraska, the Cutting Glare",
-            "wr": 60.6,
-            "games": 780
-          },
-          {
-            "name": "Proctor of Potential",
-            "wr": 60.4,
-            "games": 702
-          },
-          {
-            "name": "Repurposed Enforcer",
-            "wr": 60.3,
-            "games": 715
-          },
-          {
-            "name": "Lyra, Archangel of Dawn",
-            "wr": 60.3,
-            "games": 521
+            "games": 1698
           },
           {
             "name": "Tenured Tethermage",
-            "wr": 60.2,
+            "wr": 60.7,
             "games": 540
           },
           {
-            "name": "Sphinx of False Conclusions",
-            "wr": 60.0,
-            "games": 847
+            "name": "Kindred Judgment",
+            "wr": 60.5,
+            "games": 674
           },
           {
-            "name": "Violent Echoes",
-            "wr": 59.7,
-            "games": 1942
+            "name": "Recursive Recruitment",
+            "wr": 60.4,
+            "games": 2188
           },
           {
-            "name": "Guiding Hydra",
-            "wr": 59.6,
-            "games": 611
+            "name": "Carnivorous Cultivator",
+            "wr": 60.3,
+            "games": 667
           },
           {
             "name": "Break Under Pressure",
-            "wr": 59.3,
-            "games": 2069
+            "wr": 60.1,
+            "games": 1992
           },
           {
-            "name": "Plan for All Outcomes",
-            "wr": 59.2,
-            "games": 2650
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.0,
+            "games": 1736
           },
           {
-            "name": "Sanctum Lurker",
-            "wr": 59.2,
-            "games": 769
-          },
-          {
-            "name": "Jace, Reality Sculptor",
-            "wr": 59.2,
-            "games": 703
+            "name": "Mind Meanderer",
+            "wr": 59.9,
+            "games": 1708
           },
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.1,
-            "games": 5925
+            "wr": 59.8,
+            "games": 4902
           },
           {
-            "name": "Countersculpt",
-            "wr": 59.1,
-            "games": 2818
+            "name": "Geist of Saint Thalia",
+            "wr": 59.7,
+            "games": 1616
           },
           {
-            "name": "Twisted Fates",
-            "wr": 59.1,
-            "games": 1394
+            "name": "Hungering Puppetbeast",
+            "wr": 59.7,
+            "games": 635
           },
           {
-            "name": "Generous Revival",
-            "wr": 59.0,
-            "games": 1245
+            "name": "Extended Absence",
+            "wr": 59.6,
+            "games": 3914
           },
           {
             "name": "Multiply by Zero",
+            "wr": 59.3,
+            "games": 1793
+          },
+          {
+            "name": "Violent Echoes",
+            "wr": 59.3,
+            "games": 1690
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 59.2,
+            "games": 1446
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 59.2,
+            "games": 666
+          },
+          {
+            "name": "Clash of Elements",
             "wr": 58.9,
-            "games": 2155
+            "games": 1409
           },
           {
-            "name": "Jace's Machinations",
+            "name": "Simulacrum Shaper",
             "wr": 58.9,
-            "games": 811
+            "games": 552
           },
           {
-            "name": "Protege's Awakening",
+            "name": "Hapatra, the Desert Fang",
             "wr": 58.7,
-            "games": 4875
+            "games": 1795
           },
           {
-            "name": "Desperate Futurescribe",
+            "name": "Gideon the Oathless",
             "wr": 58.7,
-            "games": 1805
+            "games": 630
           }
         ]
       },
-      "archetypeCardsUpdatedAt": "2026-10-14T07:47:09.891945Z"
+      "archetypeCardsUpdatedAt": "2026-10-15T07:33:57.156871Z"
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-10-14T07:46:51.098918Z",
+      "updatedAt": "2026-10-15T07:33:39.977162Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -2283,12 +2283,12 @@
           "wr": 51.4
         }
       ],
-      "archetypesUpdatedAt": "2026-10-14T07:47:09.891945Z"
+      "archetypesUpdatedAt": "2026-10-15T07:33:57.156871Z"
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-10-14T07:46:51.098918Z",
+      "updatedAt": "2026-10-15T07:33:39.977162Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -2663,12 +2663,12 @@
           "wr": 52.3
         }
       ],
-      "archetypesUpdatedAt": "2026-10-14T07:47:09.891945Z"
+      "archetypesUpdatedAt": "2026-10-15T07:33:57.156871Z"
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-10-14T07:46:51.098918Z",
+      "updatedAt": "2026-10-15T07:33:39.977162Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -3043,12 +3043,12 @@
           "wr": 49.9
         }
       ],
-      "archetypesUpdatedAt": "2026-10-14T07:47:09.891945Z"
+      "archetypesUpdatedAt": "2026-10-15T07:33:57.156871Z"
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-10-14T07:46:51.098918Z",
+      "updatedAt": "2026-10-15T07:33:39.977162Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -3423,7 +3423,7 @@
           "wr": 46.8
         }
       ],
-      "archetypesUpdatedAt": "2026-10-14T07:47:09.891945Z"
+      "archetypesUpdatedAt": "2026-10-15T07:33:57.156871Z"
     }
   }
 }
