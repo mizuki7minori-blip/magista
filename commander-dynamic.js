@@ -134,6 +134,19 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   previewStyle.textContent='.draft-card-preview{border:0;border-bottom:1px dotted currentColor;padding:2px 0;background:transparent;color:inherit;font:inherit;font-weight:700;text-align:left;cursor:zoom-in}.draft-card-preview:focus-visible{outline:2px solid #80501f;outline-offset:3px}.draft-card-popover{position:fixed;z-index:10000;background:#fff;padding:8px;border:1px solid #ccd2d8;border-radius:12px;box-shadow:0 8px 30px #0004;max-height:calc(100dvh - 24px);overflow:auto}.draft-card-popover[hidden]{display:none}.draft-card-popover img{display:block;width:100%;height:auto;border-radius:8px}.draft-card-popover>button{display:block;margin:0 0 6px auto;cursor:pointer}.draft-deck-row>div{min-width:0;overflow-wrap:anywhere}';
   document.head.appendChild(previewStyle);
 
+  const playGuide=document.createElement('section');
+  playGuide.className='draft-play-guide draft-export';
+  playGuide.setAttribute('aria-label','デッキの運用ガイド');
+  draftDeckBox.appendChild(playGuide);
+  function renderPlayGuide(){
+    const guide=window.magstaCommanderPlayGuide?.({commander:state.dynamicCommander,strategy:strategy?.value,themeKeys:detectThemes(state.dynamicCommander||{}).map(t=>t.key),cards:state.draftDeck,lands:state.lands});
+    if(!guide){playGuide.innerHTML='<h3>デッキの運用ガイド</h3><p>統率者を選ぶと、初手の目安・序盤から終盤の動き方を表示します。</p>';return;}
+    playGuide.innerHTML=`<div class="draft-deck-head"><div><span class="section-kicker">${esc(guide.label)}</span><h3>${esc(guide.title)}</h3></div><button type="button" class="button secondary guide-copy">運用ガイドをコピー</button></div><div class="draft-export-grid">${guide.sections.map(section=>`<section class="draft-export-group"><h4>${esc(section.title)}</h4><p style="white-space:pre-line">${esc(section.text)}</p>${section.cards?.length?`<p>保存カード：${section.cards.map(draftCardLabel).join(' ／ ')}</p>`:''}</section>`).join('')}</div><p class="dynamic-note">${esc(guide.note)}</p><p class="guide-copy-status" role="status"></p>`;
+    playGuide.querySelector('.guide-copy').addEventListener('click',async()=>{
+      const text=[guide.title,guide.label,...guide.sections.map(section=>section.title+'\n'+section.text+(section.cards?.length?'\n保存カード：'+section.cards.map(c=>c.name).join(' ／ '):'')),guide.note].join('\n\n');
+      try{await navigator.clipboard.writeText(text);playGuide.querySelector('.guide-copy-status').textContent='運用ガイドをコピーしました。';}catch(e){playGuide.querySelector('.guide-copy-status').textContent='コピーできませんでした。本文を選択してコピーしてください。';}
+    });
+  }
   const DRAFT_KEY = 'magsta-commander-draft-ja';
 
   function loadDraftDeck(){
@@ -371,6 +384,7 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
     draftList.querySelectorAll('.draft-remove').forEach(btn=>btn.addEventListener('click',()=>{rememberDraft();state.draftDeck.splice(Number(btn.dataset.index),1);saveDraftDeck();}));
     renderDraftExport();
     renderDraftDiagnosis();
+    renderPlayGuide();
   }
   draftAddAll.addEventListener('click',()=>{state.suggestions.forEach(addDraftCard);status.textContent='現在の候補を仮デッキリストに保存しました。';});
   draftAutoBuild.addEventListener('click',autoBuildDraft);
