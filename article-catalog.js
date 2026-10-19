@@ -23,58 +23,42 @@ function renderArticles(items){
   a.innerHTML='<div class="article-meta"><span class="tag '+esc(item.category||'news')+'">'+esc(item.label||'記事')+'</span><span>公開 '+esc(date(item.published))+'</span><span>編集：犬居</span></div><h2>'+esc(item.title)+'</h2><p>'+esc(item.desc||item.lead||'')+'</p><a class="read-more" href="'+esc(item.path)+'">記事を読む</a>';
   return a;
  });
- list.replaceChildren(...cards,...compact);
+ // Preserve articles already shipped in static HTML if the generated index is stale.
+ const existing=[...list.querySelectorAll('.article-card:not(.compact)')];
+ const known=new Set(cards.map(card=>card.querySelector('a.read-more')?.getAttribute('href')));
+ const preserved=existing.filter(card=>{const path=card.querySelector('a.read-more')?.getAttribute('href');return path&&!known.has(path);});
+ list.replaceChildren(...preserved,...cards,...compact);
  document.dispatchEvent(new CustomEvent('magsta:article-index-rendered'));
 }
 function renderPopular(items,popularity){
+ // The homepage's editorial newest articles are authoritative.
+ // Analytics rankings must never replace or hide newly published articles.
  const list=document.querySelector('.popular-articles-list');
- if(!list||!Array.isArray(popularity?.items)||!popularity.items.length)return;
+ if(!list||!Array.isArray(popularity?.items))return;
+ const existing=new Set([...list.querySelectorAll('a[href]')].map(a=>a.getAttribute('href')));
  const byPath=new Map(items.map(item=>[item.path,item]));
- const picks=popularity.items.map(row=>({...row,article:byPath.get(row.path)})).filter(row=>row.article).slice(0,3);
- if(!picks.length)return;
- // Keep newly published static links visible until GA4 popularity catches up.
- const staticNewest=list.querySelector('li a[href]');
- const staticPath=staticNewest?.getAttribute('href');
- const staticIsNew=staticNewest?.querySelector('.popular-rank')?.textContent?.trim()==='NEW';
- if(staticIsNew && staticPath && !picks.some(row=>row.path===staticPath))return;
- list.innerHTML=picks.map((row,index)=>{
-  const item=row.article;
-  return '<li><a href="'+esc(item.path)+'"><span class="popular-rank">'+(index+1)+'</span><div><small>'+esc(item.label||'記事')+'</small><strong>'+esc(item.title)+'</strong><p>'+esc(item.desc||item.lead||'')+'</p></div></a></li>';
- }).join('');
- const note=document.querySelector('.popular-articles-note');
- if(note){
-  const d=popularity.updatedAt?new Date(popularity.updatedAt):null;
-  const when=d&&!Number.isNaN(d.getTime())?d.toLocaleString('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'更新時刻不明';
-  note.textContent='※ GA4の直近7日データ（利用者数・平均エンゲージメント）と新着補正をもとに掲載。更新：'+when;
- }
+ const extra=popularity.items.map(row=>byPath.get(row.path)).filter(Boolean).filter(item=>!existing.has(item.path)).slice(0,3);
+ extra.forEach(item=>{
+  const li=document.createElement('li'),a=document.createElement('a');
+  a.href=item.path;
+  const rank=document.createElement('span');rank.className='popular-rank';rank.textContent='注目';
+  const body=document.createElement('div'),small=document.createElement('small'),strong=document.createElement('strong'),p=document.createElement('p');
+  small.textContent=item.label||'記事';strong.textContent=item.title;p.textContent=item.desc||item.lead||'';
+  body.append(small,strong,p);a.append(rank,body);li.append(a);list.append(li);
+ });
 }
 
 function renderHome(items){
- if(!items.length)return;
- const latest=items[0],second=items[1];
- // Do not overwrite a newer server-rendered homepage hero with a stale generated JSON index.
- const existingStory=document.querySelector('.feature-story');
- const existingDate=existingStory?.querySelector('small')?.textContent?.match(/(20\d{2})[.\/-](\d{1,2})[.\/-](\d{1,2})/);
- const existingDay=existingDate?Date.parse(existingDate[1]+'-'+existingDate[2].padStart(2,'0')+'-'+existingDate[3].padStart(2,'0')):0;
- const jsonDay=Date.parse((latest.modified||latest.published||'').slice(0,10));
- if(existingDay && (!Number.isFinite(jsonDay)||existingDay>jsonDay))return;
+ // The published HTML hero is the source of truth.
+ // article-index.json is generated asynchronously and may lag behind,
+ // so never mutate the hero or its link based on that index.
  const story=document.querySelector('.feature-story');
- if(story){
-  const tag=story.querySelector('.tag'),h1=story.querySelector('h1'),p=story.querySelector('p'),link=story.querySelector('.button.primary'),small=story.querySelector('small');
-  if(tag){tag.textContent=latest.label||'最新記事';tag.className='tag '+(latest.category||'news');}
-  if(h1)h1.textContent=latest.title;
-  if(p)p.textContent=latest.lead||latest.desc||'';
-  if(link)link.href=latest.path;
-  if(small)small.textContent=(date(latest.modified||latest.published)||'更新')+' / 犬居';
- }
- const side=document.querySelector('.feature-side article');
- if(side&&second){
-  const tag=side.querySelector('.tag'),h2=side.querySelector('h2 a'),p=side.querySelector('p'),small=side.querySelector('small');
-  if(tag){tag.textContent=second.label||'記事';tag.className='tag '+(second.category||'news');}
-  if(h2){h2.textContent=second.title;h2.href=second.path;}
-  if(p)p.textContent=second.desc||second.lead||'';
-  if(small)small.textContent=date(second.modified||second.published);
- }
+ if(!story||!items.length)return;
+ const link=story.querySelector('.button.primary');
+ if(link?.getAttribute('href'))return;
+ const latest=items[0];
+ if(link&&latest.path)link.href=latest.path;
 }
+
 load().then(({items,popularity})=>{renderArticles(items);renderHome(items);renderPopular(items,popularity);}).catch(()=>{});
 })();
