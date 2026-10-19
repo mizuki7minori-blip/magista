@@ -32,6 +32,11 @@ function renderPopular(items,popularity){
  const byPath=new Map(items.map(item=>[item.path,item]));
  const picks=popularity.items.map(row=>({...row,article:byPath.get(row.path)})).filter(row=>row.article).slice(0,3);
  if(!picks.length)return;
+ // Keep newly published static links visible until GA4 popularity catches up.
+ const staticNewest=list.querySelector('li a[href]');
+ const staticPath=staticNewest?.getAttribute('href');
+ const staticIsNew=staticNewest?.querySelector('.popular-rank')?.textContent?.trim()==='NEW';
+ if(staticIsNew && staticPath && !picks.some(row=>row.path===staticPath))return;
  list.innerHTML=picks.map((row,index)=>{
   const item=row.article;
   return '<li><a href="'+esc(item.path)+'"><span class="popular-rank">'+(index+1)+'</span><div><small>'+esc(item.label||'記事')+'</small><strong>'+esc(item.title)+'</strong><p>'+esc(item.desc||item.lead||'')+'</p></div></a></li>';
@@ -47,6 +52,12 @@ function renderPopular(items,popularity){
 function renderHome(items){
  if(!items.length)return;
  const latest=items[0],second=items[1];
+ // Do not overwrite a newer server-rendered homepage hero with a stale generated JSON index.
+ const existingStory=document.querySelector('.feature-story');
+ const existingDate=existingStory?.querySelector('small')?.textContent?.match(/(20\d{2})[.\/-](\d{1,2})[.\/-](\d{1,2})/);
+ const existingDay=existingDate?Date.parse(existingDate[1]+'-'+existingDate[2].padStart(2,'0')+'-'+existingDate[3].padStart(2,'0')):0;
+ const jsonDay=Date.parse((latest.modified||latest.published||'').slice(0,10));
+ if(existingDay && (!Number.isFinite(jsonDay)||existingDay>jsonDay))return;
  const story=document.querySelector('.feature-story');
  if(story){
   const tag=story.querySelector('.tag'),h1=story.querySelector('h1'),p=story.querySelector('p'),link=story.querySelector('.button.primary'),small=story.querySelector('small');
