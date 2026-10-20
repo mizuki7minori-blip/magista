@@ -18,6 +18,17 @@
   const english = document.documentElement.lang.toLowerCase().startsWith('en');
   // Analytics is handled by analytics.js to avoid duplicate GA4 loading.
   const header = document.querySelector('.site-header');
+  const nav = header?.querySelector('#main-nav');
+  if (nav) {
+    if (!nav.querySelector('a[href="games.html"],a[href="/games.html"],a[href="/en/games.html"]')) {
+      const games = document.createElement('a');
+      games.href = english ? '/en/games.html' : '/games.html';
+      games.textContent = english ? 'Mini Games' : 'ミニゲーム';
+      nav.appendChild(games);
+    }
+    nav.style.flexWrap = 'wrap';
+    nav.style.rowGap = '0';
+  }
   const button = header?.querySelector('.menu-button');
   if (!button) return;
   const close = () => { header.classList.remove('menu-open'); button.setAttribute('aria-expanded','false'); button.setAttribute('aria-label',english ? 'Open menu' : 'メニューを開く'); button.textContent='☰'; };
