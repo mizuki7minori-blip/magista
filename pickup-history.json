@@ -154,5 +154,18 @@
       "Molten Rebuke",
       "Sword of Kaldra"
     ]
+  },
+  {
+    "date": "2026-10-21",
+    "ids": [
+      "5f685846-60dc-45f9-b118-02e74a443e6a",
+      "a58adf82-d9e2-4b47-933e-68180f280ba2",
+      "ab78fa13-f599-4d08-bd27-d3d8740ae58f"
+    ],
+    "en": [
+      "Frontier Guide",
+      "Mystic Speculation",
+      "Spontaneous Mutation"
+    ]
   }
 ]
