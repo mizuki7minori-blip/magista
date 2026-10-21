@@ -4,7 +4,7 @@ const api='https://api.scryfall.com/cards/search?q=';
 async function fetchCard(name){
  const queries=['name:"'+name+'" lang:ja','"'+name+'"'];
  for(const q of queries){
-  try{const r=await fetch(api+encodeURIComponent(q),{headers:{Accept:'application/json'}});if(!r.ok)continue;
+  try{const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),6500);let r;try{r=await fetch(api+encodeURIComponent(q),{headers:{Accept:'application/json'},signal:controller.signal});}finally{clearTimeout(timer);}if(!r.ok)continue;
    const json=await r.json();const card=json.data?.[0];if(card)return card;
   }catch(e){}
  }
@@ -21,6 +21,7 @@ async function fetchCard(name){
    img.onload=()=>media.replaceChildren(img);
    img.onerror=()=>{media.textContent='画像の取得に失敗しました。下のカード検索から確認してください。';};
    img.src=src;
+   setTimeout(()=>{if(!img.complete){img.onload=null;img.onerror=null;media.textContent='画像の読み込みに時間がかかっています。下のカード検索から確認してください。';}},12000);
   }catch(e){media.textContent='画像データが見つかりません。下のカード検索から確認してください。';}
  }));
 })();
