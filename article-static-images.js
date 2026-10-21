@@ -11,13 +11,13 @@ async function fetchCard(name){
  return null;
 }
 (async()=>{
- for(const slot of slots){
+ await Promise.allSettled(slots.map(async slot=>{
   const name=slot.dataset.cardName,media=slot.querySelector('.magsta-static-card-media');
   try{
    const card=await fetchCard(name);
    const src=card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal;
    if(!src)throw new Error('image not found');
-   const img=new Image();img.alt='《'+name+'》のカード画像';img.loading='eager';img.decoding='async';
+   const img=new Image();img.alt='《'+name+'》のカード画像';img.loading='lazy';img.decoding='async';
    img.onload=()=>media.replaceChildren(img);
    img.onerror=()=>{media.textContent='画像の取得に失敗しました。下のカード検索から確認してください。';};
    img.src=src;
