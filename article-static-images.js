@@ -22,6 +22,6 @@ async function fetchCard(name){
    img.onerror=()=>{media.textContent='画像の取得に失敗しました。下のカード検索から確認してください。';};
    img.src=src;
   }catch(e){media.textContent='画像データが見つかりません。下のカード検索から確認してください。';}
- }
+ }));
 })();
 })();
