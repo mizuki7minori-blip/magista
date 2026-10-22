@@ -1,40 +1,36 @@
 # MAGSTA
 
-MAGSTA is a Japanese/English information portal for Magic: The Gathering (MTG).
-Primary site: https://magsta.jp/
-Language: Japanese (primary), English (secondary)
-Editor: 犬居
+> MAGSTAは、マジック：ザ・ギャザリング（MTG）のニュース、大会・メタゲーム、ドラフト攻略、統率者デッキ構築を日本語中心に紹介する独立情報サイトです。英語ページも公開しています。
 
-## Main topics
-- MTG news and official announcements
-- Standard, Modern, Pioneer, Pauper and other format coverage
-- Limited and draft strategy
-- Draft simulator and draft tracking tools
-- Commander strategy and deck building
-- Card and metagame analysis
+公式発表や大会データを優先し、確認できた事実と編集部の分析を区別して掲載します。最新情報は各記事に記載された公開日と出典を確認してください。MAGSTAはウィザーズ・オブ・ザ・コーストと提携していません。
 
-## Key pages
-- Home: https://magsta.jp/
-- Articles: https://magsta.jp/articles.html
-- Limited: https://magsta.jp/limited.html
-- Draft simulator: https://magsta.jp/draft-simulator.html
-- Draft tracker: https://magsta.jp/limited-tracker.html
-- Commander: https://magsta.jp/commander.html
-- Commander builder: https://magsta.jp/commander-builder.html
-- Search: https://magsta.jp/search.html
-- English home: https://magsta.jp/en/
+## Main pages
+
+- [ホーム](https://magsta.jp/): 最新記事とMTGニュース
+- [記事一覧](https://magsta.jp/articles.html): MAGSTA編集記事
+- [MAGSTAについて](https://magsta.jp/strategy.html): 編集方針とサイト案内
+- [お問い合わせ](https://magsta.jp/contact.html): 連絡フォーム
+- [プライバシーポリシー](https://magsta.jp/privacy.html): 個人情報と広告について
+- [English home](https://magsta.jp/en/index.html): 英語ページ
+
+## Formats and tools
+
+- [リミテッド攻略](https://magsta.jp/limited.html): ドラフト環境、アーキタイプ、カード評価
+- [ドラフト実戦トラッカー](https://magsta.jp/limited-tracker.html): ピック履歴とデッキ構築の記録
+- [ドラフトシミュレーター](https://magsta-draft-lab.mizuki7-minori.chatgpt.site): 5セット対応のドラフト練習ツール
+- [統率者ガイド](https://magsta.jp/commander.html): 統率者戦の構築・運用情報
+- [統率者デッキビルダー](https://magsta.jp/commander-builder.html): 目的と予算からデッキ候補を作成
+- [サイト内検索](https://magsta.jp/search.html): 記事・攻略ページを検索
 
 ## Recent editorial content
-- Latest metagame: https://magsta.jp/article-metagame-2026-10-06.html
-- FRA draft data: https://magsta.jp/article-fra-draft-data-2026-10-05.html
-- Weekly MTG news: https://magsta.jp/article-weekly-news-2026-10-05.html
-- FRA draft guide: https://magsta.jp/article-fra-draft-2026-09-25.html
+
+- [10月22日：スター・トレック新製品と供給情報](https://magsta.jp/article-market-2026-10-22.html): 発表内容を整理
+- [10月21日：今週の注目カード](https://magsta.jp/article-card-watch-2026-10-21.html): モダン大会のカードと新製品情報
+- [10月19日：今週のMTGニュース](https://magsta.jp/article-weekly-news-2026-10-19.html): 禁止制限、モダン環境、新製品情報
+- [リアリティ・フラクチャーのドラフトデータ](https://magsta.jp/article-fra-draft-data-2026-10-05.html): 17Landsの初動データとカード評価
+- [リアリティ・フラクチャーのドラフト攻略](https://magsta.jp/article-fra-draft-2026-09-25.html): 初手候補とピック方針
 
 ## Discovery
-- Sitemap: https://magsta.jp/sitemap.xml
-- Robots: https://magsta.jp/robots.txt
 
-## Editorial notes
-MAGSTA separates confirmed facts from editorial analysis where possible. For time-sensitive MTG information, prefer the newest dated MAGSTA article and its cited primary sources.
-
-Magic: The Gathering is a trademark of Wizards of the Coast. MAGSTA is an independent information site and is not affiliated with Wizards of the Coast.
+- [サイトマップ](https://magsta.jp/sitemap.xml): 公開ページ一覧
+- [robots.txt](https://magsta.jp/robots.txt): クローラー向け設定
