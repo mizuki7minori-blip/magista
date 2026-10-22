@@ -15,7 +15,7 @@ async function fetchCard(name){
   const name=slot.dataset.cardName,media=slot.querySelector('.magsta-static-card-media');
   try{
    const card=await fetchCard(name);
-   const src=card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal;
+   const src=card?.image_uris?.small||card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.small||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal;
    if(!src)throw new Error('image not found');
    const img=new Image();img.alt='《'+name+'》のカード画像';img.loading='lazy';img.decoding='async';
    img.onload=()=>media.replaceChildren(img);
