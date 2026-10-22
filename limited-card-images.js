@@ -35,7 +35,7 @@
 
   let requestId=0, activeRole='ALL', lastRender=null, activeSynergyCard='', pickedCards=[];
   const imageMemoryCache=new Map(), jaMemoryCache=new Map();
-  const getImage=card=>card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris?.normal)?.image_uris.normal||'';
+  const getImage=card=>card?.image_uris?.small||card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris?.small||f.image_uris?.normal)?.image_uris.small||card?.card_faces?.find(f=>f.image_uris?.normal)?.image_uris.normal||'';
   const getDisplayName=(fallback,jaCard)=>jaCard?.printed_name||fallback;
   const formatDate=iso=>{if(!iso)return'保存データ準備中';const d=new Date(iso);return Number.isNaN(d.getTime())?'保存済みデータ':`${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} 更新`;};
 
