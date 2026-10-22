@@ -30,7 +30,7 @@ async function picture(data,button,status,fresh=false){
   }
   const url=imageURL(card);if(!url)throw Error('image');const img=node('img');img.alt=data.name||data.ja||data.en;img.width=244;img.height=340;img.loading='lazy';img.decoding='async';img.fetchPriority='low';
   img.addEventListener('load',()=>{button.disabled=false;status.textContent=(card.lang==='ja'?'日本語版':'英語版（日本語版画像なし）')+' / 画像を押すと拡大';});
-  img.addEventListener('error',()=>failure(data,button,status),{once:true});img.src=url;button.replaceChildren(img);button.onclick=()=>{large.src=url;large.alt=img.alt;dialog.showModal();};
+  img.addEventListener('error',()=>failure(data,button,status),{once:true});img.src=url;button.replaceChildren(img);button.onclick=()=>{large.src=card.image_uris?.normal||card.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||url;large.alt=img.alt;dialog.showModal();};
  }catch{failure(data,button,status);}
 }
 function failure(data,button,status){button.replaceChildren(node('span','','画像を再読み込み'));button.disabled=false;button.onclick=()=>picture(data,button,status);status.textContent='画像を取得できませんでした。再読み込みできます。';}
