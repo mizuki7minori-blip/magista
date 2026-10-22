@@ -283,7 +283,8 @@
 @media(max-width:800px){.home-start-grid{grid-template-columns:1fr}.home-start-card{min-height:0}}
 
 
-/* homepage rendering performance */
+/* Homepage sections are skipped until near the viewport. Use per-section
+   estimates instead of one 700px placeholder to reduce size changes on reveal. */
 .home #formats,
 .home #pickup,
 .home #saved-pages,
@@ -292,18 +293,23 @@
 .home .a8-top-banner,
 .home #affiliate-products{
   content-visibility:auto;
-  contain-intrinsic-size:1px 700px;
 }
+.home #formats{contain-intrinsic-size:1px 280px}
+.home #pickup{contain-intrinsic-size:1px 540px}
+.home #saved-pages,
+.home #recent-pages{contain-intrinsic-size:1px 360px}
+.home #timeline{contain-intrinsic-size:1px 2000px}
+.home .a8-top-banner{contain-intrinsic-size:1px 150px}
+.home #affiliate-products{contain-intrinsic-size:1px 920px}
 
-/* The affiliate panel is injected after DOMContentLoaded. Reserve a size close
-   to its rendered grid so its insertion does not move the page near the footer. */
-.home #affiliate-products{
-  contain-intrinsic-size:1px 920px;
-}
 @media(max-width:760px){
-  .home #affiliate-products{
-    contain-intrinsic-size:1px 1550px;
-  }
+  .home #formats{contain-intrinsic-size:1px 620px}
+  .home #pickup{contain-intrinsic-size:1px 1600px}
+  .home #saved-pages,
+  .home #recent-pages{contain-intrinsic-size:1px 600px}
+  .home #timeline{contain-intrinsic-size:1px 4500px}
+  .home .a8-top-banner{contain-intrinsic-size:1px 140px}
+  .home #affiliate-products{contain-intrinsic-size:1px 1550px}
 }
 
 
