@@ -50,11 +50,11 @@
 
   const fetchRankingCards=async(cacheKey,ranking)=>{
     const cached=readImageCache(cacheKey); if(cached?.length)return cached;
-    try{const r=await fetch('https://api.scryfall.com/cards/collection',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({identifiers:ranking.slice(0,60).map(x=>({name:x.name}))})});if(!r.ok)throw 0;const d=await r.json(),cards=d.data||[];if(cards.length)writeTimedCache(`magsta-limited-images-v3-${cacheKey}`,cards,imageMemoryCache);return cards;}catch{return [];}
+    try{const r=await fetch('https://api.scryfall.com/cards/collection',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({identifiers:ranking.slice(0,60).map(x=>({name:x.name}))})});if(!r.ok)throw 0;const d=await r.json(),cards=d.data||[];if(cards.length)writeTimedCache(cacheKey,cards,imageMemoryCache);return cards;}catch{return [];}
   };
   const fetchJapaneseSetCards=async setKey=>{
     const cached=readJaCache(setKey);if(cached?.length)return cached;
-    try{let url=`https://api.scryfall.com/cards/search?q=${encodeURIComponent(`set:${setKey} lang:ja`)}&unique=prints&order=set`,cards=[],s=0;while(url&&s<5){const r=await fetch(url);if(!r.ok)throw 0;const d=await r.json();cards.push(...(d.data||[]));url=d.has_more?d.next_page:'';s++;}if(cards.length)writeTimedCache(`magsta-limited-ja-${setKey}`,cards,jaMemoryCache);return cards;}catch{return [];}
+    try{let url=`https://api.scryfall.com/cards/search?q=${encodeURIComponent(`set:${setKey} lang:ja`)}&unique=prints&order=set`,cards=[],s=0;while(url&&s<5){const r=await fetch(url);if(!r.ok)throw 0;const d=await r.json();cards.push(...(d.data||[]));url=d.has_more?d.next_page:'';s++;}if(cards.length)writeTimedCache(setKey,cards,jaMemoryCache);return cards;}catch{return [];}
   };
   const buildJapaneseMap=cards=>{const m=new Map();cards.forEach(c=>{if(!c?.name)return;const old=m.get(c.name);if(!old||(!getImage(old)&&getImage(c)))m.set(c.name,c);});return m;};
 
