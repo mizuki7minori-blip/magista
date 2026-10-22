@@ -21,7 +21,8 @@ async function fetchCard(name){
    img.onload=()=>media.replaceChildren(img);
    img.onerror=()=>{media.textContent='画像の取得に失敗しました。下のカード検索から確認してください。';};
    img.src=src;
-   setTimeout(()=>{if(!img.complete){img.onload=null;img.onerror=null;media.textContent='画像の読み込みに時間がかかっています。下のカード検索から確認してください。';}},12000);
+   // Lazy-loaded images can legitimately remain incomplete while off screen.
+   // Never mistake that for a network failure or cancel their load handlers.
   }catch(e){media.textContent='画像データが見つかりません。下のカード検索から確認してください。';}
  }));
 })();
