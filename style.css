@@ -283,32 +283,6 @@
 @media(max-width:800px){.home-start-grid{grid-template-columns:1fr}.home-start-card{min-height:0}}
 
 
-/* Homepage sections are skipped until near the viewport. Use per-section
-   estimates instead of one 700px placeholder to reduce size changes on reveal. */
-.home #pickup,
-.home #saved-pages,
-.home #recent-pages,
-.home #timeline,
-.home .a8-top-banner,
-.home #affiliate-products{
-  content-visibility:auto;
-}
-.home #pickup{contain-intrinsic-size:1px 540px}
-.home #saved-pages,
-.home #recent-pages{contain-intrinsic-size:1px 360px}
-.home #timeline{contain-intrinsic-size:1px 2000px}
-.home .a8-top-banner{contain-intrinsic-size:1px 150px}
-.home #affiliate-products{contain-intrinsic-size:1px 920px}
-
-@media(max-width:760px){
-  .home #pickup{contain-intrinsic-size:1px 1600px}
-  .home #saved-pages,
-  .home #recent-pages{contain-intrinsic-size:1px 600px}
-  .home #timeline{contain-intrinsic-size:1px 4500px}
-  .home .a8-top-banner{contain-intrinsic-size:1px 140px}
-  .home #affiliate-products{contain-intrinsic-size:1px 1550px}
-}
-
 
 /* mobile refinement 20261006 */
 @media(max-width:760px){
