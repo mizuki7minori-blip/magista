@@ -5,62 +5,54 @@ const knownEnglish={
  'コーリ鋼の短刀':'Cori-Steel Cutter',
  'ウギンの迷宮':"Ugin's Labyrinth"
 };
-const namedImage=name=>'https://api.scryfall.com/cards/named?exact='+encodeURIComponent(name)+'&format=image&version=normal';
-const searchUrl=name=>'https://api.scryfall.com/cards/search?q='+encodeURIComponent('!"'+name+'"');
-async function findImage(name){
- const candidates=[name,knownEnglish[name]].filter(Boolean);
- for(const term of candidates){
+const API='https://api.scryfall.com';
+const imageOf=c=>c?.image_uris?.normal||c?.card_faces?.find(f=>f.image_uris?.normal)?.image_uris.normal||'';
+const cachePrefix='magsta-static-ja-v2:';
+const pending=new Map();
+async function request(url){
+ const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),8000);
+ try{const r=await fetch(url,{signal:ctl.signal});if(!r.ok)throw Error('scryfall');return await r.json();}
+ finally{clearTimeout(timer);}
+}
+async function resolveCards(name){
+ const cached=(()=>{try{const c=JSON.parse(localStorage.getItem(cachePrefix+name)||'null');return c&&Date.now()-c.saved<7*86400000?c:null;}catch{return null;}})();
+ if(cached)return cached;
+ const en=knownEnglish[name];
+ let japanese='',fallback='';
+ // Search language-specific printings rather than the English-default named endpoint.
+ for(const term of [en,name].filter(Boolean)){
   try{
-   const controller=new AbortController();
-   const timer=setTimeout(()=>controller.abort(),7000);
-   let r;
-   try{r=await fetch('https://api.scryfall.com/cards/named?fuzzy='+encodeURIComponent(term),{signal:controller.signal});}
-   finally{clearTimeout(timer);}
-   if(!r.ok)continue;
-   const c=await r.json();
-   const uri=c.image_uris?.normal||c.card_faces?.find(f=>f.image_uris)?.image_uris?.normal;
-   if(uri)return uri;
+   const d=await request(API+'/cards/search?q='+encodeURIComponent('!"'+term+'" lang:ja')+'&unique=prints');
+   const card=d.data?.find(c=>c.lang==='ja'&&imageOf(c));
+   if(card){japanese=imageOf(card);break;}
   }catch{}
  }
- return '';
+ if(!japanese){
+  try{const c=await request(API+'/cards/named?fuzzy='+encodeURIComponent(en||name));fallback=imageOf(c);}catch{}
+ }
+ const result={japanese,fallback,saved:Date.now()};
+ try{localStorage.setItem(cachePrefix+name,JSON.stringify(result));}catch{}
+ return result;
 }
-function showImage(media,url,name,onFailure){
- const img=new Image();
- img.alt='《'+name+'》のカード画像';
- img.width=244;img.height=340;
- img.decoding='async';
- // Image must start downloading now; do not use lazy with an application timeout.
- img.loading='eager';
+function getCard(name){
+ if(!pending.has(name))pending.set(name,resolveCards(name).finally(()=>pending.delete(name)));
+ return pending.get(name);
+}
+function render(media,url,name,onError){
+ const img=new Image();img.alt='《'+name+'》のカード画像';
+ img.width=244;img.height=340;img.decoding='async';img.loading='eager';
  img.onload=()=>media.replaceChildren(img);
- img.onerror=()=>onFailure();
+ img.onerror=onError;
  img.src=url;
 }
-function showFallback(media,name){
- const english=knownEnglish[name];
- if(english){
-  showImage(media,namedImage(english),name,()=>{
-   media.textContent='画像を取得できませんでした。下のカード検索から確認してください。';
-  });
- }else{
-  media.textContent='画像を取得できませんでした。下のカード検索から確認してください。';
- }
-}
 for(const slot of slots){
- const name=slot.dataset.cardName;
- const media=slot.querySelector('.magsta-static-card-media');
+ const name=slot.dataset.cardName,media=slot.querySelector('.magsta-static-card-media');
  if(!name||!media)continue;
- // Known names can render through the image endpoint without a preceding JSON fetch.
- if(knownEnglish[name]){
-  showImage(media,namedImage(knownEnglish[name]),name,async()=>{
-   const url=await findImage(name);
-   if(url)showImage(media,url,name,()=>showFallback(media,name));
-   else showFallback(media,name);
-  });
- }else{
-  findImage(name).then(url=>{
-   if(url)showImage(media,url,name,()=>showFallback(media,name));
-   else showFallback(media,name);
-  });
- }
+ getCard(name).then(({japanese,fallback})=>{
+  const fail=()=>{media.textContent='画像を取得できませんでした。下のカード検索から確認してください。';};
+  if(japanese)render(media,japanese,name,()=>fallback?render(media,fallback,name,fail):fail());
+  else if(fallback)render(media,fallback,name,fail);
+  else fail();
+ }).catch(()=>{media.textContent='画像を取得できませんでした。下のカード検索から確認してください。';});
 }
 })();
