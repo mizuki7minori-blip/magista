@@ -13,7 +13,7 @@ async function api(url){
   return r.json();
 }
 function cardImage(card){
-  return card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';
+  return card?.image_uris?.small||card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.small||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';
 }
 function cardText(card){
   if(card?.printed_text)return card.printed_text;
