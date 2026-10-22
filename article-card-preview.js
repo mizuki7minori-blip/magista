@@ -150,7 +150,9 @@ inlineButtons.forEach(button=>{
   const heading=button.closest('h2,h3');
   if(heading){heading.insertAdjacentElement('afterend',figure);}
   else{const paragraph=button.closest('p,li');if(paragraph?.parentElement){paragraph.insertAdjacentElement('afterend',figure);}else return;}
-  // Start immediately: a lazy observer can leave blank cards on cached pages.
-  loadInline(figure);
+  // Fetch cards near the viewport instead of requesting every card on page load.
+  // Cached cards remain fast; unsupported browsers still load immediately.
+  if(imageObserver)imageObserver.observe(figure);
+  else loadInline(figure);
 });
 })();
