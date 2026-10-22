@@ -295,6 +295,17 @@
   contain-intrinsic-size:1px 700px;
 }
 
+/* The affiliate panel is injected after DOMContentLoaded. Reserve a size close
+   to its rendered grid so its insertion does not move the page near the footer. */
+.home #affiliate-products{
+  contain-intrinsic-size:1px 920px;
+}
+@media(max-width:760px){
+  .home #affiliate-products{
+    contain-intrinsic-size:1px 1550px;
+  }
+}
+
 
 /* mobile refinement 20261006 */
 @media(max-width:760px){
