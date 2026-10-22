@@ -447,22 +447,22 @@ if(strategy&&initialParams.get('strategy')&&strategyNames[initialParams.get('str
   }
 
   async function enrichJapanese(cards) {
-    const seen = new Set(), out = [];
+    const seen = new Set(), unique = [];
     for (const card of cards) {
       const key = card.oracle_id || card.name;
       if (seen.has(key)) continue;
       seen.add(key);
-      let best = card;
-      if (!card.printed_name && card.oracle_id) {
-        try {
-          const jp = await fetchSearch(`oracleid:${card.oracle_id} lang:ja game:paper`);
-          if (jp[0]) best = jp[0];
-        } catch(e) {}
-      }
-      out.push(best);
-      if (out.length >= 8) break;
+      unique.push(card);
+      if (unique.length >= 8) break;
     }
-    return out;
+    // Resolve Japanese printings concurrently in a small bounded batch.
+    return Promise.all(unique.map(async card => {
+      if (card.printed_name || !card.oracle_id) return card;
+      try {
+        const jp = await fetchSearch(`oracleid:${card.oracle_id} lang:ja game:paper`);
+        return jp[0] || card;
+      } catch(e) { return card; }
+    }));
   }
 
   async function searchCommanders() {
