@@ -12,8 +12,9 @@ async function api(url){
   if(!r.ok)throw Error('card');
   return r.json();
 }
-function cardImage(card){
-  return card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';
+function cardImage(card,full=false){
+  if(full)return card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';
+  return card?.image_uris?.small||card?.image_uris?.normal||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.small||card?.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';
 }
 function cardText(card){
   if(card?.printed_text)return card.printed_text;
@@ -68,7 +69,7 @@ async function openCard(name){
   status.textContent='《'+name+'》を読み込んでいます…';
   try{
     const card=await findCard(name);
-    const imgUrl=cardImage(card);
+    const imgUrl=cardImage(card,true);
     if(imgUrl){
       const img=document.createElement('img');
       img.src=imgUrl;img.alt=(card.printed_name||card.name||name)+'のカード画像';

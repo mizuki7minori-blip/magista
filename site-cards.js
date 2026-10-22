@@ -3,7 +3,7 @@
 const grid=document.getElementById('pickup-grid');if(!grid)return;
 const node=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;};
 const dialog=node('dialog','card-dialog');dialog.setAttribute('aria-label','カード画像の拡大');const close=node('button','','閉じる');close.type='button';const large=node('img');dialog.append(close,large);document.body.append(dialog);close.addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
-function imageURL(card){const value=card.image_uris?.normal||card.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';try{return new URL(value).protocol==='https:'?value:'';}catch{return '';}}
+function imageURL(card){const value=card.image_uris?.small||card.image_uris?.normal||card.card_faces?.find(f=>f.image_uris)?.image_uris?.small||card.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';try{return new URL(value).protocol==='https:'?value:'';}catch{return '';}}
 let apiStart=Promise.resolve();
 async function waitForApiSlot(){
  const slot=apiStart;
@@ -30,7 +30,7 @@ async function picture(data,button,status,fresh=false){
   }
   const url=imageURL(card);if(!url)throw Error('image');const img=node('img');img.alt=data.name||data.ja||data.en;img.width=244;img.height=340;img.loading='lazy';img.decoding='async';img.fetchPriority='low';
   img.addEventListener('load',()=>{button.disabled=false;status.textContent=(card.lang==='ja'?'日本語版':'英語版（日本語版画像なし）')+' / 画像を押すと拡大';});
-  img.addEventListener('error',()=>failure(data,button,status),{once:true});img.src=url;button.replaceChildren(img);button.onclick=()=>{large.src=url;large.alt=img.alt;dialog.showModal();};
+  img.addEventListener('error',()=>failure(data,button,status),{once:true});img.src=url;button.replaceChildren(img);button.onclick=()=>{large.src=card.image_uris?.normal||card.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||url;large.alt=img.alt;dialog.showModal();};
  }catch{failure(data,button,status);}
 }
 function failure(data,button,status){button.replaceChildren(node('span','','画像を再読み込み'));button.disabled=false;button.onclick=()=>picture(data,button,status);status.textContent='画像を取得できませんでした。再読み込みできます。';}
