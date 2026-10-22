@@ -285,7 +285,6 @@
 
 /* Homepage sections are skipped until near the viewport. Use per-section
    estimates instead of one 700px placeholder to reduce size changes on reveal. */
-.home #formats,
 .home #pickup,
 .home #saved-pages,
 .home #recent-pages,
@@ -294,7 +293,6 @@
 .home #affiliate-products{
   content-visibility:auto;
 }
-.home #formats{contain-intrinsic-size:1px 280px}
 .home #pickup{contain-intrinsic-size:1px 540px}
 .home #saved-pages,
 .home #recent-pages{contain-intrinsic-size:1px 360px}
@@ -303,7 +301,6 @@
 .home #affiliate-products{contain-intrinsic-size:1px 920px}
 
 @media(max-width:760px){
-  .home #formats{contain-intrinsic-size:1px 620px}
   .home #pickup{contain-intrinsic-size:1px 1600px}
   .home #saved-pages,
   .home #recent-pages{contain-intrinsic-size:1px 600px}
