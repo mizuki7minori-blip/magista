@@ -13,8 +13,17 @@ const loadGA=()=>{
   window.gtag('config',MEASUREMENT_ID,{send_page_view:true});
 };
 const scheduleGA=()=>{
-  if('requestIdleCallback' in window)requestIdleCallback(loadGA,{timeout:2000});
-  else setTimeout(loadGA,700);
+  let started=false;
+  const start=()=>{
+    if(started)return;
+    started=true;
+    if('requestIdleCallback' in window)requestIdleCallback(loadGA,{timeout:1500});
+    else setTimeout(loadGA,500);
+  };
+  window.addEventListener('pointerdown',start,{once:true,passive:true});
+  window.addEventListener('keydown',start,{once:true});
+  window.addEventListener('scroll',start,{once:true,passive:true});
+  setTimeout(start,2500);
 };
 if(document.readyState==='complete')scheduleGA();
 else window.addEventListener('load',scheduleGA,{once:true});
