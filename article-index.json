@@ -1,6 +1,21 @@
 {
-  "updatedAt": "2026-10-22T01:41:40.882Z",
+  "updatedAt": "2026-10-22T23:52:37.637Z",
   "items": [
+    {
+      "path": "article-weekend-2026-10-23.html",
+      "category": "tournament",
+      "label": "週末注目情報",
+      "title": "【10月23日】今週末のMTG注目情報｜Arena Championship 13とSpotlight: Fracture",
+      "desc": "10月23〜25日のスタンダード大型大会とアリーナ・ダイレクトを公式発表から整理。注目デッキと観戦ポイントを紹介。",
+      "lead": "10月23〜25日のスタンダード大型大会とアリーナ・ダイレクトを公式発表から整理。注目デッキと観戦ポイントを紹介。",
+      "published": "2026-10-23T08:52:00+09:00",
+      "modified": "2026-10-23T08:52:00+09:00",
+      "keywords": [
+        "ジェイス・ベレレン",
+        "驕慢な戦闘魔道士",
+        "意志堅固なるアジャニ"
+      ]
+    },
     {
       "path": "article-market-2026-10-22.html",
       "category": "tournament",
