@@ -3,7 +3,7 @@
 const grid=document.getElementById('pickup-grid');if(!grid)return;
 const node=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;};
 const dialog=node('dialog','card-dialog');dialog.setAttribute('aria-label','カード画像の拡大');const close=node('button','','閉じる');close.type='button';const large=node('img');dialog.append(close,large);document.body.append(dialog);close.addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
-function imageURL(card){const value=card.image_uris?.normal||card.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';try{return new URL(value).protocol==='https:'?value:'';}catch{return '';}}
+function imageURL(card){const value=card.image_uris?.small||card.image_uris?.normal||card.card_faces?.find(f=>f.image_uris)?.image_uris?.small||card.card_faces?.find(f=>f.image_uris)?.image_uris?.normal||'';try{return new URL(value).protocol==='https:'?value:'';}catch{return '';}}
 let apiStart=Promise.resolve();
 async function waitForApiSlot(){
  const slot=apiStart;
