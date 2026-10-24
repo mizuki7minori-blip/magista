@@ -1,1914 +1,1914 @@
 {
-  "generatedAt": "2026-10-23T07:41:43.029201Z",
+  "generatedAt": "2026-10-24T07:24:54.620354Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-10-23T07:41:27.303090Z",
+      "updatedAt": "2026-10-24T07:24:37.454249Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
           "wr": 73.2,
-          "games": 10408
+          "games": 10703
         },
         {
           "name": "Uldaros Theorix",
-          "wr": 69.2,
-          "games": 10423
+          "wr": 69.1,
+          "games": 10759
         },
         {
           "name": "The Theorist, Jace Beleren",
-          "wr": 68.4,
-          "games": 10085
+          "wr": 68.3,
+          "games": 10344
         },
         {
           "name": "Sublime Epiphany",
-          "wr": 66.9,
-          "games": 2372
+          "wr": 66.8,
+          "games": 2432
         },
         {
           "name": "Garruk, Veiled Butcher",
           "wr": 65.9,
-          "games": 9531
-        },
-        {
-          "name": "Overwrite the Multiverse",
-          "wr": 65.5,
-          "games": 9632
+          "games": 9856
         },
         {
           "name": "Garruk, Curse Breaker",
           "wr": 65.5,
-          "games": 8626
+          "games": 8809
+        },
+        {
+          "name": "Overwrite the Multiverse",
+          "wr": 65.3,
+          "games": 9904
         },
         {
           "name": "Mind Twist",
           "wr": 64.6,
-          "games": 1950
+          "games": 2003
         },
         {
           "name": "Aerid Konstrari",
           "wr": 64.4,
-          "games": 7920
+          "games": 8131
         },
         {
           "name": "Sphinx of False Conclusions",
-          "wr": 63.7,
-          "games": 21444
-        },
-        {
-          "name": "Splinter Twin",
-          "wr": 62.8,
-          "games": 1432
+          "wr": 63.6,
+          "games": 21978
         },
         {
           "name": "Null Summoner",
           "wr": 62.6,
-          "games": 21648
+          "games": 22290
+        },
+        {
+          "name": "Splinter Twin",
+          "wr": 62.4,
+          "games": 1478
         },
         {
           "name": "Lich's Relic",
-          "wr": 62.4,
-          "games": 19920
+          "wr": 62.3,
+          "games": 20422
         },
         {
           "name": "Vraska, the Cutting Glare",
-          "wr": 62.4,
-          "games": 17836
+          "wr": 62.3,
+          "games": 18313
         },
         {
           "name": "Craftwork Crusher",
           "wr": 62.0,
-          "games": 44415
+          "games": 45641
         },
         {
           "name": "Kwia Vigorbloom",
           "wr": 62.0,
-          "games": 7165
-        },
-        {
-          "name": "Sanctum Lurker",
-          "wr": 61.7,
-          "games": 18777
+          "games": 7358
         },
         {
           "name": "Austere Command",
-          "wr": 61.7,
-          "games": 1592
+          "wr": 61.8,
+          "games": 1645
+        },
+        {
+          "name": "Sanctum Lurker",
+          "wr": 61.6,
+          "games": 19221
         },
         {
           "name": "Hungering Puppetbeast",
           "wr": 61.6,
-          "games": 17034
+          "games": 17511
         },
         {
           "name": "Denzilore Fatehold",
-          "wr": 61.5,
-          "games": 9149
+          "wr": 61.6,
+          "games": 9379
         },
         {
           "name": "Kindred Judgment",
           "wr": 61.4,
-          "games": 17293
+          "games": 17917
         },
         {
           "name": "Kiora of Fire and Ashes",
           "wr": 61.3,
-          "games": 49672
+          "games": 51042
         },
         {
           "name": "Lyra, Tolarian Archangel",
           "wr": 60.8,
-          "games": 21333
+          "games": 21903
         },
         {
           "name": "Recursive Recruitment",
           "wr": 60.5,
-          "games": 61332
+          "games": 62924
         },
         {
           "name": "Proctor of Potential",
           "wr": 60.1,
-          "games": 14522
-        },
-        {
-          "name": "Avatar of Burgeoning Echoes",
-          "wr": 60.1,
-          "games": 7248
+          "games": 14966
         },
         {
           "name": "Chandra, Torch of Defiance",
-          "wr": 59.9,
-          "games": 7737
+          "wr": 60.0,
+          "games": 8020
+        },
+        {
+          "name": "Avatar of Burgeoning Echoes",
+          "wr": 60.0,
+          "games": 7455
         },
         {
           "name": "Mindseeker Oculus",
           "wr": 59.8,
-          "games": 140538
+          "games": 144352
         },
         {
           "name": "Simulacrum Shaper",
-          "wr": 59.8,
-          "games": 15772
+          "wr": 59.7,
+          "games": 16162
         },
         {
           "name": "Repurposed Enforcer",
-          "wr": 59.8,
-          "games": 15545
+          "wr": 59.7,
+          "games": 15972
         },
         {
           "name": "Fblthp, Impossibly Lost",
-          "wr": 59.7,
-          "games": 63873
+          "wr": 59.6,
+          "games": 65669
         },
         {
           "name": "Countersculpt",
           "wr": 59.6,
-          "games": 63273
+          "games": 65070
         },
         {
           "name": "Break Under Pressure",
-          "wr": 59.6,
-          "games": 53262
+          "wr": 59.5,
+          "games": 54806
         },
         {
           "name": "Diviner of Victory",
-          "wr": 59.6,
-          "games": 18943
-        },
-        {
-          "name": "Rewrite Regrets",
-          "wr": 59.3,
-          "games": 49875
+          "wr": 59.5,
+          "games": 19520
         },
         {
           "name": "Violent Echoes",
           "wr": 59.3,
-          "games": 45067
+          "games": 46311
         },
         {
           "name": "Extended Absence",
           "wr": 59.2,
-          "games": 114956
+          "games": 118160
         },
         {
-          "name": "Hapatra, the Desert Fang",
+          "name": "Rewrite Regrets",
           "wr": 59.2,
-          "games": 47043
+          "games": 51394
         },
         {
           "name": "Gideon the Oathless",
           "wr": 59.2,
-          "games": 16294
+          "games": 16752
+        },
+        {
+          "name": "Hapatra, the Desert Fang",
+          "wr": 59.1,
+          "games": 48425
         },
         {
           "name": "Plan for All Outcomes",
           "wr": 59.0,
-          "games": 62893
-        },
-        {
-          "name": "Primal Witchstalker",
-          "wr": 59.0,
-          "games": 38164
-        },
-        {
-          "name": "Chandra, Chill of Compliance",
-          "wr": 59.0,
-          "games": 9188
-        },
-        {
-          "name": "Multiply by Zero",
-          "wr": 58.9,
-          "games": 50125
+          "games": 64604
         },
         {
           "name": "Seasoned Cryomancer",
+          "wr": 59.0,
+          "games": 9454
+        },
+        {
+          "name": "Primal Witchstalker",
           "wr": 58.9,
-          "games": 9195
+          "games": 39222
         },
         {
-          "name": "Lyra, Archangel of Dawn",
+          "name": "Chandra, Chill of Compliance",
+          "wr": 58.9,
+          "games": 9411
+        },
+        {
+          "name": "Multiply by Zero",
           "wr": 58.8,
-          "games": 12639
-        },
-        {
-          "name": "Carnivorous Cultivator",
-          "wr": 58.7,
-          "games": 16029
+          "games": 51315
         },
         {
           "name": "Tenured Tethermage",
           "wr": 58.7,
-          "games": 13370
+          "games": 13726
+        },
+        {
+          "name": "Lyra, Archangel of Dawn",
+          "wr": 58.7,
+          "games": 13010
+        },
+        {
+          "name": "Carnivorous Cultivator",
+          "wr": 58.6,
+          "games": 16508
         },
         {
           "name": "Protege's Awakening",
           "wr": 58.4,
-          "games": 100646
+          "games": 103714
         },
         {
           "name": "Clash of Elements",
-          "wr": 58.4,
-          "games": 38767
+          "wr": 58.3,
+          "games": 39873
         },
         {
           "name": "The Echoverse Fulcrum",
-          "wr": 58.4,
-          "games": 8210
+          "wr": 58.2,
+          "games": 8446
         },
         {
           "name": "Enlightened Confidant",
           "wr": 58.0,
-          "games": 5866
+          "games": 6006
         },
         {
           "name": "Twinned Vision",
-          "wr": 57.9,
-          "games": 102174
-        },
-        {
-          "name": "Jace, Reality Sculptor",
-          "wr": 57.9,
-          "games": 16340
-        },
-        {
-          "name": "Way of the Mind Sculptor",
           "wr": 57.8,
-          "games": 52313
+          "games": 105433
         },
         {
           "name": "Fatehold Charm",
           "wr": 57.8,
-          "games": 36703
+          "games": 37728
+        },
+        {
+          "name": "Jace, Reality Sculptor",
+          "wr": 57.8,
+          "games": 16737
         },
         {
           "name": "Verdant Kraken",
           "wr": 57.8,
-          "games": 15128
+          "games": 15454
         },
         {
           "name": "Liliana the Faultless",
           "wr": 57.8,
-          "games": 10584
+          "games": 10888
         },
         {
           "name": "Icy Reception",
           "wr": 57.7,
-          "games": 104556
+          "games": 107577
+        },
+        {
+          "name": "Way of the Mind Sculptor",
+          "wr": 57.7,
+          "games": 53800
         },
         {
           "name": "Fblthp, Knows the Way",
           "wr": 57.7,
-          "games": 43121
+          "games": 44247
         },
         {
           "name": "Theorist's Sanctum",
           "wr": 57.7,
-          "games": 19736
+          "games": 20273
         }
       ],
       "archetypes": [
         {
           "code": "WU",
           "name": "白青（アゾリウス）",
-          "wins": 25212,
-          "games": 44156,
+          "wins": 25820,
+          "games": 45223,
           "wr": 57.1
         },
         {
           "code": "UR",
           "name": "青赤（イゼット）",
-          "wins": 16740,
-          "games": 29753,
+          "wins": 17120,
+          "games": 30433,
           "wr": 56.3
         },
         {
           "code": "RG",
           "name": "赤緑（グルール）",
-          "wins": 20697,
-          "games": 37003,
+          "wins": 21057,
+          "games": 37671,
           "wr": 55.9
         },
         {
           "code": "BG",
           "name": "黒緑（ゴルガリ）",
-          "wins": 15275,
-          "games": 27366,
-          "wr": 55.8
+          "wins": 15568,
+          "games": 27953,
+          "wr": 55.7
         },
         {
           "code": "UB",
           "name": "青黒（ディミーア）",
-          "wins": 26356,
-          "games": 47474,
+          "wins": 27073,
+          "games": 48809,
           "wr": 55.5
         },
         {
           "code": "GW",
           "name": "緑白（セレズニア）",
-          "wins": 17826,
-          "games": 32702,
+          "wins": 18275,
+          "games": 33523,
           "wr": 54.5
         },
         {
           "code": "BR",
           "name": "黒赤（ラクドス）",
-          "wins": 16500,
-          "games": 30399,
+          "wins": 16975,
+          "games": 31267,
           "wr": 54.3
         },
         {
           "code": "RW",
           "name": "赤白（ボロス）",
-          "wins": 9314,
-          "games": 17223,
+          "wins": 9511,
+          "games": 17583,
           "wr": 54.1
         },
         {
           "code": "WB",
           "name": "白黒（オルゾフ）",
-          "wins": 7709,
-          "games": 14332,
+          "wins": 7807,
+          "games": 14503,
           "wr": 53.8
         },
         {
           "code": "GU",
           "name": "緑青（シミック）",
-          "wins": 10000,
-          "games": 18802,
+          "wins": 10239,
+          "games": 19244,
           "wr": 53.2
         }
       ],
-      "archetypesUpdatedAt": "2026-10-23T07:41:43.029201Z",
+      "archetypesUpdatedAt": "2026-10-24T07:24:54.620354Z",
       "archetypeCards": {
         "WU": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "UB": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "BR": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "RG": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "GW": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "WB": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "BG": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "GU": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "UR": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ],
         "RW": [
           {
-            "name": "Null Summoner",
+            "name": "Craftwork Crusher",
             "wr": 63.1,
-            "games": 607
-          },
-          {
-            "name": "Sphinx of False Conclusions",
-            "wr": 62.7,
-            "games": 574
-          },
-          {
-            "name": "Kiora of Fire and Ashes",
-            "wr": 62.1,
-            "games": 1369
-          },
-          {
-            "name": "Sanctum Lurker",
-            "wr": 62.0,
-            "games": 558
-          },
-          {
-            "name": "Lich's Relic",
-            "wr": 61.8,
-            "games": 612
-          },
-          {
-            "name": "Theorist's Sanctum",
-            "wr": 61.7,
-            "games": 525
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 60.6,
-            "games": 1704
+            "games": 1226
           },
           {
             "name": "Kindred Judgment",
-            "wr": 60.4,
-            "games": 500
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.1,
-            "games": 1413
+            "wr": 62.8,
+            "games": 624
           },
           {
             "name": "Lyra, Tolarian Archangel",
-            "wr": 59.8,
-            "games": 500
+            "wr": 61.6,
+            "games": 570
           },
           {
-            "name": "Rewrite Regrets",
-            "wr": 59.6,
-            "games": 1459
+            "name": "Kiora of Fire and Ashes",
+            "wr": 60.7,
+            "games": 1370
           },
           {
-            "name": "Hapatra, the Desert Fang",
-            "wr": 59.3,
-            "games": 1274
+            "name": "Null Summoner",
+            "wr": 60.6,
+            "games": 642
           },
           {
-            "name": "Multiply by Zero",
-            "wr": 59.0,
-            "games": 1543
+            "name": "Sphinx of False Conclusions",
+            "wr": 60.3,
+            "games": 534
+          },
+          {
+            "name": "Tetsuko Umezawa, Fugitive",
+            "wr": 59.4,
+            "games": 744
           },
           {
             "name": "Mindseeker Oculus",
+            "wr": 59.2,
+            "games": 3814
+          },
+          {
+            "name": "Way of the Healer",
+            "wr": 58.9,
+            "games": 1262
+          },
+          {
+            "name": "Your Fate Ends Here",
             "wr": 58.8,
-            "games": 3509
+            "games": 1058
           },
           {
-            "name": "Extended Absence",
-            "wr": 58.8,
-            "games": 3264
-          },
-          {
-            "name": "Primal Witchstalker",
-            "wr": 58.8,
-            "games": 1075
-          },
-          {
-            "name": "Pia, Determined Rebuilder",
-            "wr": 58.6,
-            "games": 971
-          },
-          {
-            "name": "Craftwork Crusher",
-            "wr": 58.5,
-            "games": 1199
-          },
-          {
-            "name": "Unsummon",
-            "wr": 58.3,
-            "games": 3035
-          },
-          {
-            "name": "Violent Echoes",
-            "wr": 58.3,
-            "games": 1087
-          },
-          {
-            "name": "Gideon the Oathless",
-            "wr": 58.3,
-            "games": 520
-          },
-          {
-            "name": "Bloombrute",
-            "wr": 58.0,
-            "games": 820
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 57.8,
-            "games": 2933
-          },
-          {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 57.6,
-            "games": 1917
-          },
-          {
-            "name": "Theorix Charm",
-            "wr": 57.6,
-            "games": 1049
-          },
-          {
-            "name": "Fatehold Charm",
-            "wr": 57.6,
-            "games": 941
-          },
-          {
-            "name": "Teyo, Lightshield Expert",
-            "wr": 57.6,
-            "games": 835
+            "name": "Fblthp, Knows the Way",
+            "wr": 58.7,
+            "games": 1126
           },
           {
             "name": "Plan for All Outcomes",
-            "wr": 57.3,
-            "games": 1631
+            "wr": 58.6,
+            "games": 1711
           },
           {
-            "name": "Way of the Paradox",
-            "wr": 57.3,
-            "games": 964
+            "name": "Recursive Recruitment",
+            "wr": 58.6,
+            "games": 1592
           },
           {
-            "name": "Prudent Fateseer",
+            "name": "Surgical Precision",
+            "wr": 58.4,
+            "games": 2323
+          },
+          {
+            "name": "Hexhaven Battalion",
+            "wr": 58.1,
+            "games": 2639
+          },
+          {
+            "name": "Countersculpt",
+            "wr": 58.1,
+            "games": 1797
+          },
+          {
+            "name": "Rewrite Regrets",
+            "wr": 58.1,
+            "games": 1519
+          },
+          {
+            "name": "Lich's Relic",
+            "wr": 58.0,
+            "games": 502
+          },
+          {
+            "name": "Icy Reception",
+            "wr": 57.7,
+            "games": 3021
+          },
+          {
+            "name": "Fblthp, Impossibly Lost",
+            "wr": 57.7,
+            "games": 1796
+          },
+          {
+            "name": "Diviner of Victory",
+            "wr": 57.7,
+            "games": 577
+          },
+          {
+            "name": "Marwyn, the Clearcutter",
+            "wr": 57.6,
+            "games": 540
+          },
+          {
+            "name": "Transformative Commons",
+            "wr": 57.5,
+            "games": 1225
+          },
+          {
+            "name": "Bloombrute",
+            "wr": 57.5,
+            "games": 818
+          },
+          {
+            "name": "Archive Arbiter",
+            "wr": 57.4,
+            "games": 949
+          },
+          {
+            "name": "Generous Revival",
+            "wr": 57.4,
+            "games": 829
+          },
+          {
+            "name": "Theorist's Sanctum",
+            "wr": 57.4,
+            "games": 537
+          },
+          {
+            "name": "Vinelasher Adept",
+            "wr": 57.2,
+            "games": 2288
+          },
+          {
+            "name": "Something Worth Saving",
+            "wr": 57.2,
+            "games": 1600
+          },
+          {
+            "name": "Fatehold Chronologist",
             "wr": 57.1,
-            "games": 1042
+            "games": 2794
           }
         ]
       },
-      "archetypeCardsUpdatedAt": "2026-10-23T07:41:43.029201Z"
+      "archetypeCardsUpdatedAt": "2026-10-24T07:24:54.620354Z"
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-10-23T07:41:27.303090Z",
+      "updatedAt": "2026-10-24T07:24:37.454249Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -2283,12 +2283,12 @@
           "wr": 51.4
         }
       ],
-      "archetypesUpdatedAt": "2026-10-23T07:41:43.029201Z"
+      "archetypesUpdatedAt": "2026-10-24T07:24:54.620354Z"
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-10-23T07:41:27.303090Z",
+      "updatedAt": "2026-10-24T07:24:37.454249Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -2663,12 +2663,12 @@
           "wr": 52.3
         }
       ],
-      "archetypesUpdatedAt": "2026-10-23T07:41:43.029201Z"
+      "archetypesUpdatedAt": "2026-10-24T07:24:54.620354Z"
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-10-23T07:41:27.303090Z",
+      "updatedAt": "2026-10-24T07:24:37.454249Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -3043,12 +3043,12 @@
           "wr": 49.9
         }
       ],
-      "archetypesUpdatedAt": "2026-10-23T07:41:43.029201Z"
+      "archetypesUpdatedAt": "2026-10-24T07:24:54.620354Z"
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-10-23T07:41:27.303090Z",
+      "updatedAt": "2026-10-24T07:24:37.454249Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -3423,7 +3423,7 @@
           "wr": 46.8
         }
       ],
-      "archetypesUpdatedAt": "2026-10-23T07:41:43.029201Z"
+      "archetypesUpdatedAt": "2026-10-24T07:24:54.620354Z"
     }
   }
 }
