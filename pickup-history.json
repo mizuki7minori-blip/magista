@@ -232,5 +232,18 @@
       "Depressurize",
       "Skywise Teachings"
     ]
+  },
+  {
+    "date": "2026-10-27",
+    "ids": [
+      "ea802eda-fc8d-45c7-b5a3-238a2cdc4dcb",
+      "ee7d2c2f-e32f-4be6-82ac-ff1e32055376",
+      "60b2f991-47ef-4da3-ba61-0692695ea098"
+    ],
+    "en": [
+      "Thornscape Master",
+      "Tyrant's Choice",
+      "Revoke Privileges"
+    ]
   }
 ]
