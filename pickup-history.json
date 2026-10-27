@@ -245,5 +245,18 @@
       "Tyrant's Choice",
       "Revoke Privileges"
     ]
+  },
+  {
+    "date": "2026-10-28",
+    "ids": [
+      "d93f82ce-0eed-45cc-a7b1-50fd4cbb6152",
+      "db4907f3-4071-47c4-9329-96b4813435be",
+      "1ebdc091-16d5-4803-821a-ac8c4696b5bc"
+    ],
+    "en": [
+      "Priest of Gix",
+      "Migration Path",
+      "Binding Grasp"
+    ]
   }
 ]
