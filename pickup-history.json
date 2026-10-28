@@ -258,5 +258,18 @@
       "Migration Path",
       "Binding Grasp"
     ]
+  },
+  {
+    "date": "2026-10-29",
+    "ids": [
+      "c1f33eac-0f85-4f0f-8562-1737b5f6b23a",
+      "7b89b7d2-c724-4d5d-9f0b-7d3302ad1168",
+      "8a1a5862-c027-4c15-99a7-1795d0da96da"
+    ],
+    "en": [
+      "Covert Operative",
+      "Agate Assault",
+      "Tough Cookie"
+    ]
   }
 ]
