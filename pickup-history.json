@@ -297,5 +297,18 @@
       "Blight Grenade",
       "Dovescape"
     ]
+  },
+  {
+    "date": "2026-11-01",
+    "ids": [
+      "61ec78da-979c-45cf-8be6-12aa24dc833a",
+      "1e6a24be-8281-41c1-a5ba-b68f0ef1d7b8",
+      "74a1a484-7c35-466a-b097-9aaf6fc2073b"
+    ],
+    "en": [
+      "Seismic Elemental",
+      "Snakeskin Veil",
+      "Thaumaturge's Familiar"
+    ]
   }
 ]
