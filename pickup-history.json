@@ -310,5 +310,18 @@
       "Snakeskin Veil",
       "Thaumaturge's Familiar"
     ]
+  },
+  {
+    "date": "2026-11-02",
+    "ids": [
+      "8358f65a-7572-430d-b4f0-4fba7a372bd9",
+      "c478fb5c-9fde-400d-a2cd-f8c4fa6b957a",
+      "9c8007ac-4b3d-4444-93e9-f583185e5d81"
+    ],
+    "en": [
+      "Akki Underminer",
+      "Trade the Helm",
+      "Blasted Landscape"
+    ]
   }
 ]
