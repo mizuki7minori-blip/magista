@@ -323,5 +323,18 @@
       "Trade the Helm",
       "Blasted Landscape"
     ]
+  },
+  {
+    "date": "2026-11-03",
+    "ids": [
+      "6e51a0b2-e07f-4c9d-b055-dd1dcd2e29d4",
+      "41ed9b02-5926-4af0-bcee-7f41bbb3fdd6",
+      "e2ea1901-68ac-4afc-adc2-ac6bc7465311"
+    ],
+    "en": [
+      "Skilled Animator",
+      "Sandblast",
+      "Medomai's Prophecy"
+    ]
   }
 ]
