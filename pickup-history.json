@@ -349,5 +349,18 @@
       "Culling Ritual",
       "Entrancing Lyre"
     ]
+  },
+  {
+    "date": "2026-11-05",
+    "ids": [
+      "c1a9d60f-a469-48f9-8f1c-3ca5ae86bd64",
+      "e42cd4da-f049-4304-a16f-911769985e6c",
+      "6e64f1e0-ddd6-4ee7-8797-086e234b02e8"
+    ],
+    "en": [
+      "Campus Crier",
+      "Tandem Tactics",
+      "Steel Hellkite"
+    ]
   }
 ]
