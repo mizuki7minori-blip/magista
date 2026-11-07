@@ -388,5 +388,18 @@
       "Spell Syphon",
       "Poet's Quill"
     ]
+  },
+  {
+    "date": "2026-11-08",
+    "ids": [
+      "d2e7198a-0eb5-4d30-973f-4b2d9617436f",
+      "5b7b1839-2b44-4446-80b4-ddb59e4e835e",
+      "65c0d59b-3a94-49af-94cd-2ab4820a51f3"
+    ],
+    "en": [
+      "Fan Bearer",
+      "Undercity's Embrace",
+      "Mantle of Leadership"
+    ]
   }
 ]
