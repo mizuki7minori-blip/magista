@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-09",
-    "ids": [
-      "d4ec0df9-a4a3-48cf-a0aa-b1aea5c49142",
-      "df33b298-9e4b-4522-96e5-c8d8d6af2bb4",
-      "d1946630-e224-40db-8f0d-388b09622288"
-    ],
-    "en": [
-      "Clever Impersonator",
-      "Unnatural Moonrise",
-      "Thriving Heath"
-    ]
-  },
-  {
     "date": "2026-10-10",
     "ids": [
       "da359f85-7a11-4575-848d-642d1ae0ddbb",
@@ -400,6 +387,19 @@
       "Fan Bearer",
       "Undercity's Embrace",
       "Mantle of Leadership"
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "ids": [
+      "cca33482-0bc5-4fe4-89dc-ba33b2e93831",
+      "3c9242fd-915b-4f6d-b4ee-830c9d80c9e8",
+      "a24e05fb-dffb-4400-b4ca-22fdde45e7a7"
+    ],
+    "en": [
+      "Feasting Hobbit",
+      "Desecrated Earth",
+      "Conversion"
     ]
   }
 ]
