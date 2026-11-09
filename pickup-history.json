@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-10",
-    "ids": [
-      "da359f85-7a11-4575-848d-642d1ae0ddbb",
-      "05b5c0fb-84b2-4a32-bf66-179c4dccb3df",
-      "01ed9139-293d-4477-a145-3c6fe59266c7"
-    ],
-    "en": [
-      "Rat King, Pale Piper",
-      "Natural End",
-      "Airship Engine Room"
-    ]
-  },
-  {
     "date": "2026-10-11",
     "ids": [
       "4a294001-645b-4691-bb32-c240ba5b5320",
@@ -400,6 +387,19 @@
       "Feasting Hobbit",
       "Desecrated Earth",
       "Conversion"
+    ]
+  },
+  {
+    "date": "2026-11-10",
+    "ids": [
+      "e62c943e-03ac-4a8a-ad3d-faa76b79824c",
+      "45c29ac0-f9ca-4ab9-b93e-8b678509bcd7",
+      "3b9bcf88-7304-48c5-bd46-3e37a93967a5"
+    ],
+    "en": [
+      "Caligo Skin-Witch",
+      "Glittering Wish",
+      "Horn of Ramos"
     ]
   }
 ]
