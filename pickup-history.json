@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-11",
-    "ids": [
-      "4a294001-645b-4691-bb32-c240ba5b5320",
-      "a6e720a2-9819-40ec-a811-7812898b531a",
-      "52232aad-e4ca-4551-8c8d-c69a3b6b49c7"
-    ],
-    "en": [
-      "Inspiring Captain",
-      "Necrotic Hex",
-      "The Immortal Sun"
-    ]
-  },
-  {
     "date": "2026-10-12",
     "ids": [
       "bc14356c-3a1a-47af-9a6e-2b449de0331f",
@@ -400,6 +387,19 @@
       "Caligo Skin-Witch",
       "Glittering Wish",
       "Horn of Ramos"
+    ]
+  },
+  {
+    "date": "2026-11-11",
+    "ids": [
+      "f42b6510-7322-4733-85ea-7ae6bd6ca8fc",
+      "951b59c5-6d5a-4fca-b3ae-e783814e7e7a",
+      "3e51c060-1e86-4a0e-8fee-8b7273161468"
+    ],
+    "en": [
+      "Quirion Dryad",
+      "Reach of Branches",
+      "Formidable Commons"
     ]
   }
 ]
