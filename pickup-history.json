@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-12",
-    "ids": [
-      "bc14356c-3a1a-47af-9a6e-2b449de0331f",
-      "0a35df9d-80a0-4b6f-91d5-dad980af47e1",
-      "09373283-a5c1-4d8e-ad25-19cd55b1e869"
-    ],
-    "en": [
-      "Kardur, Doomscourge",
-      "Footbottom Feast",
-      "Metallurgeon"
-    ]
-  },
-  {
     "date": "2026-10-13",
     "ids": [
       "8371dee1-5f4a-410a-8b7c-e4110cdbe9bd",
@@ -400,6 +387,19 @@
       "Quirion Dryad",
       "Reach of Branches",
       "Formidable Commons"
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "ids": [
+      "411b9158-e427-4099-bd30-3fbb22edb553",
+      "66b46257-b64c-4672-bf47-12bf0bcd6f8f",
+      "3fe9367b-def1-4820-9e23-92ce3d7a4afc"
+    ],
+    "en": [
+      "Geyser Drake",
+      "Sylvan Awakening",
+      "Moxite Refinery"
     ]
   }
 ]
