@@ -1,1914 +1,814 @@
 {
-  "generatedAt": "2026-11-11T09:35:29.735169Z",
+  "generatedAt": "2026-11-12T09:56:38.444069Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-11-11T09:35:12.003024Z",
+      "updatedAt": "2026-11-12T09:56:21.430001Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
           "wr": 73.2,
-          "games": 14177
+          "games": 14224
         },
         {
           "name": "Uldaros Theorix",
           "wr": 68.8,
-          "games": 14085
+          "games": 14144
         },
         {
           "name": "The Theorist, Jace Beleren",
           "wr": 67.8,
-          "games": 13629
+          "games": 13674
         },
         {
           "name": "Sublime Epiphany",
           "wr": 65.8,
-          "games": 3217
-        },
-        {
-          "name": "Garruk, Curse Breaker",
-          "wr": 65.4,
-          "games": 11481
+          "games": 3224
         },
         {
           "name": "Garruk, Veiled Butcher",
           "wr": 65.3,
-          "games": 13236
+          "games": 13301
+        },
+        {
+          "name": "Garruk, Curse Breaker",
+          "wr": 65.3,
+          "games": 11520
         },
         {
           "name": "Overwrite the Multiverse",
           "wr": 65.0,
-          "games": 13215
+          "games": 13273
         },
         {
           "name": "Mind Twist",
-          "wr": 65.0,
-          "games": 2687
-        },
-        {
-          "name": "Aerid Konstrari",
-          "wr": 63.7,
-          "games": 10646
+          "wr": 64.9,
+          "games": 2699
         },
         {
           "name": "Sphinx of False Conclusions",
-          "wr": 63.5,
-          "games": 29128
+          "wr": 63.6,
+          "games": 29252
+        },
+        {
+          "name": "Aerid Konstrari",
+          "wr": 63.6,
+          "games": 10668
         },
         {
           "name": "Splinter Twin",
-          "wr": 62.5,
-          "games": 1989
+          "wr": 62.6,
+          "games": 1995
         },
         {
           "name": "Null Summoner",
           "wr": 62.4,
-          "games": 29790
+          "games": 29914
         },
         {
           "name": "Lich's Relic",
           "wr": 62.2,
-          "games": 27074
+          "games": 27165
         },
         {
           "name": "Vraska, the Cutting Glare",
-          "wr": 61.9,
-          "games": 24372
+          "wr": 62.0,
+          "games": 24510
         },
         {
           "name": "Kwia Vigorbloom",
           "wr": 61.9,
-          "games": 9922
+          "games": 9958
         },
         {
           "name": "Craftwork Crusher",
           "wr": 61.6,
-          "games": 60747
+          "games": 60948
         },
         {
           "name": "Denzilore Fatehold",
           "wr": 61.6,
-          "games": 12403
+          "games": 12450
         },
         {
           "name": "Sanctum Lurker",
           "wr": 61.4,
-          "games": 25707
+          "games": 25825
         },
         {
           "name": "Kindred Judgment",
           "wr": 61.2,
-          "games": 24352
+          "games": 24446
         },
         {
           "name": "Hungering Puppetbeast",
           "wr": 61.2,
-          "games": 23248
+          "games": 23342
         },
         {
           "name": "Kiora of Fire and Ashes",
           "wr": 60.9,
-          "games": 67408
+          "games": 67666
         },
         {
           "name": "Lyra, Tolarian Archangel",
           "wr": 60.3,
-          "games": 29087
+          "games": 29156
         },
         {
           "name": "Recursive Recruitment",
           "wr": 60.1,
-          "games": 82566
+          "games": 82836
         },
         {
           "name": "Chandra, Torch of Defiance",
-          "wr": 59.7,
-          "games": 10523
+          "wr": 59.8,
+          "games": 10562
         },
         {
           "name": "Avatar of Burgeoning Echoes",
           "wr": 59.7,
-          "games": 9819
+          "games": 9844
+        },
+        {
+          "name": "Diviner of Victory",
+          "wr": 59.6,
+          "games": 25602
         },
         {
           "name": "Mindseeker Oculus",
           "wr": 59.5,
-          "games": 188715
+          "games": 189429
         },
         {
           "name": "Fblthp, Impossibly Lost",
           "wr": 59.5,
-          "games": 89639
-        },
-        {
-          "name": "Diviner of Victory",
-          "wr": 59.5,
-          "games": 25537
+          "games": 89978
         },
         {
           "name": "Proctor of Potential",
           "wr": 59.5,
-          "games": 19841
+          "games": 19911
         },
         {
           "name": "Austere Command",
           "wr": 59.5,
-          "games": 2277
+          "games": 2283
         },
         {
           "name": "Countersculpt",
           "wr": 59.4,
-          "games": 86099
+          "games": 86305
         },
         {
           "name": "Break Under Pressure",
           "wr": 59.3,
-          "games": 72853
+          "games": 73153
         },
         {
           "name": "Simulacrum Shaper",
           "wr": 59.3,
-          "games": 21335
+          "games": 21403
         },
         {
           "name": "Repurposed Enforcer",
           "wr": 59.3,
-          "games": 21197
+          "games": 21279
         },
         {
           "name": "Extended Absence",
           "wr": 59.0,
-          "games": 156778
+          "games": 157413
         },
         {
           "name": "Violent Echoes",
           "wr": 58.9,
-          "games": 61254
+          "games": 61463
         },
         {
           "name": "Gideon the Oathless",
           "wr": 58.9,
-          "games": 22421
+          "games": 22505
         },
         {
           "name": "Rewrite Regrets",
           "wr": 58.8,
-          "games": 69048
-        },
-        {
-          "name": "Multiply by Zero",
-          "wr": 58.8,
-          "games": 68332
+          "games": 69365
         },
         {
           "name": "Hapatra, the Desert Fang",
           "wr": 58.8,
-          "games": 64665
+          "games": 64925
         },
         {
           "name": "Seasoned Cryomancer",
           "wr": 58.8,
-          "games": 12527
+          "games": 12575
         },
         {
           "name": "Chandra, Chill of Compliance",
           "wr": 58.8,
-          "games": 12189
+          "games": 12219
         },
         {
           "name": "Plan for All Outcomes",
           "wr": 58.7,
-          "games": 84763
+          "games": 85051
+        },
+        {
+          "name": "Multiply by Zero",
+          "wr": 58.7,
+          "games": 68634
         },
         {
           "name": "Lyra, Archangel of Dawn",
           "wr": 58.7,
-          "games": 17325
+          "games": 17384
         },
         {
           "name": "Carnivorous Cultivator",
           "wr": 58.6,
-          "games": 21580
-        },
-        {
-          "name": "Tenured Tethermage",
-          "wr": 58.5,
-          "games": 18097
+          "games": 21677
         },
         {
           "name": "Primal Witchstalker",
           "wr": 58.4,
-          "games": 52395
+          "games": 52572
+        },
+        {
+          "name": "Tenured Tethermage",
+          "wr": 58.4,
+          "games": 18184
         },
         {
           "name": "Protege's Awakening",
           "wr": 58.2,
-          "games": 142303
+          "games": 142906
         },
         {
           "name": "Clash of Elements",
           "wr": 58.0,
-          "games": 53362
+          "games": 53570
         },
         {
           "name": "The Echoverse Fulcrum",
           "wr": 58.0,
-          "games": 11209
+          "games": 11259
         },
         {
           "name": "Jace, Reality Sculptor",
           "wr": 57.9,
-          "games": 22244
+          "games": 22311
         },
         {
           "name": "Enlightened Confidant",
           "wr": 57.9,
-          "games": 8108
+          "games": 8136
         },
         {
           "name": "Fblthp, Knows the Way",
           "wr": 57.7,
-          "games": 57854
+          "games": 58019
         },
         {
           "name": "Verdant Kraken",
           "wr": 57.7,
-          "games": 20365
+          "games": 20431
         },
         {
           "name": "Liliana the Faultless",
-          "wr": 57.6,
-          "games": 14657
+          "wr": 57.7,
+          "games": 14718
         },
         {
           "name": "Twinned Vision",
           "wr": 57.5,
-          "games": 143854
+          "games": 144411
         },
         {
           "name": "Icy Reception",
           "wr": 57.5,
-          "games": 143190
+          "games": 143716
         },
         {
           "name": "Hexhaven Battalion",
           "wr": 57.5,
-          "games": 132664
+          "games": 133146
         },
         {
           "name": "Jace's Machinations",
           "wr": 57.5,
-          "games": 24462
+          "games": 24529
         },
         {
           "name": "Variable Chaser",
           "wr": 57.5,
-          "games": 21839
+          "games": 21907
         }
       ],
       "archetypes": [
         {
           "code": "WU",
           "name": "白青（アゾリウス）",
-          "wins": 33005,
-          "games": 57805,
+          "wins": 33112,
+          "games": 58002,
           "wr": 57.1
         },
         {
           "code": "UR",
           "name": "青赤（イゼット）",
-          "wins": 21387,
-          "games": 38088,
-          "wr": 56.2
+          "wins": 21449,
+          "games": 38201,
+          "wr": 56.1
         },
         {
           "code": "RG",
           "name": "赤緑（グルール）",
-          "wins": 25675,
-          "games": 46061,
+          "wins": 25731,
+          "games": 46164,
           "wr": 55.7
         },
         {
           "code": "BG",
           "name": "黒緑（ゴルガリ）",
-          "wins": 20171,
-          "games": 36468,
+          "wins": 20255,
+          "games": 36624,
           "wr": 55.3
         },
         {
           "code": "UB",
           "name": "青黒（ディミーア）",
-          "wins": 36042,
-          "games": 65325,
+          "wins": 36172,
+          "games": 65569,
           "wr": 55.2
         },
         {
           "code": "BR",
           "name": "黒赤（ラクドス）",
-          "wins": 23234,
-          "games": 42508,
+          "wins": 23313,
+          "games": 42655,
           "wr": 54.7
         },
         {
           "code": "GW",
           "name": "緑白（セレズニア）",
-          "wins": 23408,
-          "games": 42972,
+          "wins": 23503,
+          "games": 43142,
           "wr": 54.5
         },
         {
           "code": "RW",
           "name": "赤白（ボロス）",
-          "wins": 11670,
-          "games": 21628,
+          "wins": 11710,
+          "games": 21696,
           "wr": 54.0
         },
         {
           "code": "WB",
           "name": "白黒（オルゾフ）",
-          "wins": 9765,
-          "games": 18109,
+          "wins": 9788,
+          "games": 18150,
           "wr": 53.9
         },
         {
           "code": "GU",
           "name": "緑青（シミック）",
-          "wins": 13445,
-          "games": 25431,
+          "wins": 13496,
+          "games": 25517,
           "wr": 52.9
         }
       ],
-      "archetypesUpdatedAt": "2026-11-11T09:35:29.735169Z",
+      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z",
       "archetypeCards": {
         "WU": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "UB": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "BR": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "RG": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "GW": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "WB": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "BG": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "GU": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "UR": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ],
         "RW": [
           {
-            "name": "Fblthp, Impossibly Lost",
-            "wr": 63.6,
-            "games": 796
-          },
-          {
-            "name": "Multiply by Zero",
-            "wr": 62.2,
-            "games": 547
-          },
-          {
-            "name": "Break Under Pressure",
-            "wr": 60.4,
-            "games": 578
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.9,
-            "games": 1117
-          },
-          {
-            "name": "Recursive Recruitment",
-            "wr": 59.8,
-            "games": 580
-          },
-          {
-            "name": "Memory Trap",
-            "wr": 59.4,
-            "games": 731
-          },
-          {
-            "name": "Something Worth Saving",
-            "wr": 59.1,
-            "games": 560
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 59.0,
-            "games": 949
-          },
-          {
             "name": "Twinned Vision",
-            "wr": 58.2,
-            "games": 997
-          },
-          {
-            "name": "Keeper of the Quiet Hour",
-            "wr": 58.2,
-            "games": 837
-          },
-          {
-            "name": "Fatehold Chronologist",
-            "wr": 58.1,
-            "games": 1004
-          },
-          {
-            "name": "Surgical Precision",
-            "wr": 57.7,
-            "games": 723
-          },
-          {
-            "name": "Plan for All Outcomes",
-            "wr": 57.7,
-            "games": 539
-          },
-          {
-            "name": "Mindseeker Oculus",
-            "wr": 57.5,
-            "games": 1349
+            "wr": 63.2,
+            "games": 557
           },
           {
             "name": "Protege's Awakening",
-            "wr": 57.5,
-            "games": 1010
+            "wr": 59.4,
+            "games": 603
           },
           {
-            "name": "Tam's Resistance",
-            "wr": 57.4,
-            "games": 664
+            "name": "Extended Absence",
+            "wr": 59.2,
+            "games": 635
           },
           {
-            "name": "Theorix Annex",
-            "wr": 57.4,
-            "games": 551
-          },
-          {
-            "name": "Surveillance Phantasm",
-            "wr": 57.3,
-            "games": 1058
+            "name": "Mindseeker Oculus",
+            "wr": 58.8,
+            "games": 714
           },
           {
             "name": "Unsummon",
-            "wr": 57.3,
-            "games": 975
+            "wr": 56.2,
+            "games": 548
           },
           {
-            "name": "Proft, Consulting Detective",
-            "wr": 57.2,
-            "games": 500
-          },
-          {
-            "name": "Countersculpt",
-            "wr": 56.9,
-            "games": 610
-          },
-          {
-            "name": "Theoretical Necromancer",
-            "wr": 56.8,
-            "games": 696
+            "name": "Icy Reception",
+            "wr": 56.1,
+            "games": 526
           },
           {
             "name": "Room of Refuge",
-            "wr": 56.6,
-            "games": 949
-          },
-          {
-            "name": "Infinite Coursework",
-            "wr": 56.6,
-            "games": 798
-          },
-          {
-            "name": "Compel Brutality",
-            "wr": 56.5,
-            "games": 653
-          },
-          {
-            "name": "Konstrari Improviser",
-            "wr": 56.3,
-            "games": 522
+            "wr": 55.3,
+            "games": 515
           },
           {
             "name": "Undulating Witness",
-            "wr": 56.2,
-            "games": 963
-          },
-          {
-            "name": "Arcane Amphisbaena",
-            "wr": 56.1,
-            "games": 652
-          },
-          {
-            "name": "Last Gasp",
-            "wr": 55.8,
-            "games": 844
-          },
-          {
-            "name": "Rank Rat",
-            "wr": 55.7,
-            "games": 503
+            "wr": 53.7,
+            "games": 529
           }
         ]
       },
-      "archetypeCardsUpdatedAt": "2026-11-11T09:35:29.735169Z"
+      "archetypeCardsUpdatedAt": "2026-11-12T09:56:38.444069Z"
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-11-11T09:35:12.003024Z",
+      "updatedAt": "2026-11-12T09:56:21.430001Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -2283,12 +1183,12 @@
           "wr": 51.4
         }
       ],
-      "archetypesUpdatedAt": "2026-11-11T09:35:29.735169Z"
+      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z"
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-11-11T09:35:12.003024Z",
+      "updatedAt": "2026-11-12T09:56:21.430001Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -2663,12 +1563,12 @@
           "wr": 52.3
         }
       ],
-      "archetypesUpdatedAt": "2026-11-11T09:35:29.735169Z"
+      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z"
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-11-11T09:35:12.003024Z",
+      "updatedAt": "2026-11-12T09:56:21.430001Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -3043,12 +1943,12 @@
           "wr": 49.9
         }
       ],
-      "archetypesUpdatedAt": "2026-11-11T09:35:29.735169Z"
+      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z"
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-11-11T09:35:12.003024Z",
+      "updatedAt": "2026-11-12T09:56:21.430001Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -3423,7 +2323,7 @@
           "wr": 46.8
         }
       ],
-      "archetypesUpdatedAt": "2026-11-11T09:35:29.735169Z"
+      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z"
     }
   }
 }
