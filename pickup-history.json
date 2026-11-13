@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-14",
-    "ids": [
-      "0d496c6e-8f7b-420f-9197-dacd2feb528f",
-      "5602c14d-cc22-47d7-a1b0-6491749f00dd",
-      "787e6a7b-64f9-48ba-bccd-68dda3489b0f"
-    ],
-    "en": [
-      "Ghalta the Immovable",
-      "Keep Safe",
-      "Jocasta, Automaton Avenger"
-    ]
-  },
-  {
     "date": "2026-10-15",
     "ids": [
       "50fa6a63-e031-47cb-8fd5-a6c235203722",
@@ -400,6 +387,19 @@
       "War-Torch Goblin",
       "Selective Memory",
       "Veiled Sentry"
+    ]
+  },
+  {
+    "date": "2026-11-14",
+    "ids": [
+      "05d0b904-a680-4f2f-aaa1-e227a7fe7e79",
+      "e99958bf-458c-403b-aae2-91d60c055ee2",
+      "cd510cf2-df54-4024-919b-e4377cdb2be1"
+    ],
+    "en": [
+      "Unruly Mob",
+      "Concussive Bolt",
+      "Zephyr Net"
     ]
   }
 ]
