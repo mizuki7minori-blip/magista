@@ -1,814 +1,464 @@
 {
-  "generatedAt": "2026-11-12T09:56:38.444069Z",
+  "generatedAt": "2026-11-13T09:42:54.721019Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-11-12T09:56:21.430001Z",
+      "updatedAt": "2026-11-13T09:42:39.064410Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
           "wr": 73.2,
-          "games": 14224
+          "games": 14257
         },
         {
           "name": "Uldaros Theorix",
           "wr": 68.8,
-          "games": 14144
+          "games": 14187
         },
         {
           "name": "The Theorist, Jace Beleren",
-          "wr": 67.8,
-          "games": 13674
+          "wr": 67.9,
+          "games": 13699
         },
         {
           "name": "Sublime Epiphany",
           "wr": 65.8,
-          "games": 3224
+          "games": 3230
         },
         {
           "name": "Garruk, Veiled Butcher",
-          "wr": 65.3,
-          "games": 13301
+          "wr": 65.4,
+          "games": 13348
         },
         {
           "name": "Garruk, Curse Breaker",
           "wr": 65.3,
-          "games": 11520
+          "games": 11548
         },
         {
           "name": "Overwrite the Multiverse",
           "wr": 65.0,
-          "games": 13273
+          "games": 13313
         },
         {
           "name": "Mind Twist",
           "wr": 64.9,
-          "games": 2699
+          "games": 2714
         },
         {
           "name": "Sphinx of False Conclusions",
           "wr": 63.6,
-          "games": 29252
+          "games": 29348
         },
         {
           "name": "Aerid Konstrari",
           "wr": 63.6,
-          "games": 10668
+          "games": 10688
         },
         {
           "name": "Splinter Twin",
           "wr": 62.6,
-          "games": 1995
+          "games": 2000
         },
         {
           "name": "Null Summoner",
-          "wr": 62.4,
-          "games": 29914
+          "wr": 62.3,
+          "games": 29989
         },
         {
           "name": "Lich's Relic",
           "wr": 62.2,
-          "games": 27165
+          "games": 27234
         },
         {
           "name": "Vraska, the Cutting Glare",
           "wr": 62.0,
-          "games": 24510
+          "games": 24619
         },
         {
           "name": "Kwia Vigorbloom",
           "wr": 61.9,
-          "games": 9958
+          "games": 9978
         },
         {
           "name": "Craftwork Crusher",
           "wr": 61.6,
-          "games": 60948
+          "games": 61087
         },
         {
           "name": "Denzilore Fatehold",
-          "wr": 61.6,
-          "games": 12450
+          "wr": 61.5,
+          "games": 12487
         },
         {
           "name": "Sanctum Lurker",
           "wr": 61.4,
-          "games": 25825
+          "games": 25910
         },
         {
           "name": "Kindred Judgment",
           "wr": 61.2,
-          "games": 24446
+          "games": 24536
         },
         {
           "name": "Hungering Puppetbeast",
           "wr": 61.2,
-          "games": 23342
+          "games": 23394
         },
         {
           "name": "Kiora of Fire and Ashes",
           "wr": 60.9,
-          "games": 67666
+          "games": 67865
         },
         {
           "name": "Lyra, Tolarian Archangel",
-          "wr": 60.3,
-          "games": 29156
+          "wr": 60.4,
+          "games": 29243
         },
         {
           "name": "Recursive Recruitment",
           "wr": 60.1,
-          "games": 82836
+          "games": 83034
         },
         {
           "name": "Chandra, Torch of Defiance",
           "wr": 59.8,
-          "games": 10562
+          "games": 10589
         },
         {
           "name": "Avatar of Burgeoning Echoes",
           "wr": 59.7,
-          "games": 9844
+          "games": 9869
         },
         {
           "name": "Diviner of Victory",
           "wr": 59.6,
-          "games": 25602
+          "games": 25684
+        },
+        {
+          "name": "Austere Command",
+          "wr": 59.6,
+          "games": 2287
         },
         {
           "name": "Mindseeker Oculus",
           "wr": 59.5,
-          "games": 189429
+          "games": 189949
         },
         {
           "name": "Fblthp, Impossibly Lost",
           "wr": 59.5,
-          "games": 89978
+          "games": 90277
         },
         {
           "name": "Proctor of Potential",
           "wr": 59.5,
-          "games": 19911
-        },
-        {
-          "name": "Austere Command",
-          "wr": 59.5,
-          "games": 2283
+          "games": 19990
         },
         {
           "name": "Countersculpt",
           "wr": 59.4,
-          "games": 86305
+          "games": 86544
         },
         {
           "name": "Break Under Pressure",
           "wr": 59.3,
-          "games": 73153
+          "games": 73399
         },
         {
           "name": "Simulacrum Shaper",
           "wr": 59.3,
-          "games": 21403
+          "games": 21440
         },
         {
           "name": "Repurposed Enforcer",
           "wr": 59.3,
-          "games": 21279
+          "games": 21316
         },
         {
           "name": "Extended Absence",
           "wr": 59.0,
-          "games": 157413
+          "games": 157880
+        },
+        {
+          "name": "Rewrite Regrets",
+          "wr": 58.9,
+          "games": 69664
         },
         {
           "name": "Violent Echoes",
           "wr": 58.9,
-          "games": 61463
+          "games": 61630
         },
         {
           "name": "Gideon the Oathless",
           "wr": 58.9,
-          "games": 22505
-        },
-        {
-          "name": "Rewrite Regrets",
-          "wr": 58.8,
-          "games": 69365
+          "games": 22569
         },
         {
           "name": "Hapatra, the Desert Fang",
           "wr": 58.8,
-          "games": 64925
+          "games": 65133
         },
         {
           "name": "Seasoned Cryomancer",
           "wr": 58.8,
-          "games": 12575
+          "games": 12601
         },
         {
           "name": "Chandra, Chill of Compliance",
           "wr": 58.8,
-          "games": 12219
+          "games": 12237
         },
         {
           "name": "Plan for All Outcomes",
           "wr": 58.7,
-          "games": 85051
+          "games": 85247
         },
         {
           "name": "Multiply by Zero",
           "wr": 58.7,
-          "games": 68634
+          "games": 68844
         },
         {
           "name": "Lyra, Archangel of Dawn",
           "wr": 58.7,
-          "games": 17384
+          "games": 17436
         },
         {
           "name": "Carnivorous Cultivator",
           "wr": 58.6,
-          "games": 21677
+          "games": 21734
         },
         {
           "name": "Primal Witchstalker",
           "wr": 58.4,
-          "games": 52572
+          "games": 52737
         },
         {
           "name": "Tenured Tethermage",
           "wr": 58.4,
-          "games": 18184
+          "games": 18228
         },
         {
           "name": "Protege's Awakening",
           "wr": 58.2,
-          "games": 142906
+          "games": 143336
         },
         {
           "name": "Clash of Elements",
           "wr": 58.0,
-          "games": 53570
+          "games": 53723
         },
         {
           "name": "The Echoverse Fulcrum",
           "wr": 58.0,
-          "games": 11259
+          "games": 11296
         },
         {
           "name": "Jace, Reality Sculptor",
           "wr": 57.9,
-          "games": 22311
+          "games": 22365
         },
         {
           "name": "Enlightened Confidant",
-          "wr": 57.9,
-          "games": 8136
+          "wr": 57.8,
+          "games": 8184
         },
         {
           "name": "Fblthp, Knows the Way",
           "wr": 57.7,
-          "games": 58019
+          "games": 58137
         },
         {
           "name": "Verdant Kraken",
           "wr": 57.7,
-          "games": 20431
+          "games": 20475
         },
         {
           "name": "Liliana the Faultless",
           "wr": 57.7,
-          "games": 14718
+          "games": 14743
         },
         {
           "name": "Twinned Vision",
           "wr": 57.5,
-          "games": 144411
+          "games": 144892
         },
         {
           "name": "Icy Reception",
           "wr": 57.5,
-          "games": 143716
+          "games": 144136
         },
         {
           "name": "Hexhaven Battalion",
           "wr": 57.5,
-          "games": 133146
+          "games": 133523
         },
         {
           "name": "Jace's Machinations",
           "wr": 57.5,
-          "games": 24529
+          "games": 24610
         },
         {
           "name": "Variable Chaser",
           "wr": 57.5,
-          "games": 21907
+          "games": 21988
         }
       ],
       "archetypes": [
         {
           "code": "WU",
           "name": "白青（アゾリウス）",
-          "wins": 33112,
-          "games": 58002,
+          "wins": 33227,
+          "games": 58207,
           "wr": 57.1
         },
         {
           "code": "UR",
           "name": "青赤（イゼット）",
-          "wins": 21449,
-          "games": 38201,
+          "wins": 21490,
+          "games": 38282,
           "wr": 56.1
         },
         {
           "code": "RG",
           "name": "赤緑（グルール）",
-          "wins": 25731,
-          "games": 46164,
+          "wins": 25767,
+          "games": 46221,
           "wr": 55.7
         },
         {
           "code": "BG",
           "name": "黒緑（ゴルガリ）",
-          "wins": 20255,
-          "games": 36624,
+          "wins": 20321,
+          "games": 36730,
           "wr": 55.3
         },
         {
           "code": "UB",
           "name": "青黒（ディミーア）",
-          "wins": 36172,
-          "games": 65569,
+          "wins": 36267,
+          "games": 65755,
           "wr": 55.2
         },
         {
           "code": "BR",
           "name": "黒赤（ラクドス）",
-          "wins": 23313,
-          "games": 42655,
+          "wins": 23380,
+          "games": 42770,
           "wr": 54.7
         },
         {
           "code": "GW",
           "name": "緑白（セレズニア）",
-          "wins": 23503,
-          "games": 43142,
+          "wins": 23563,
+          "games": 43249,
           "wr": 54.5
         },
         {
           "code": "RW",
           "name": "赤白（ボロス）",
-          "wins": 11710,
-          "games": 21696,
-          "wr": 54.0
+          "wins": 11726,
+          "games": 21738,
+          "wr": 53.9
         },
         {
           "code": "WB",
           "name": "白黒（オルゾフ）",
-          "wins": 9788,
-          "games": 18150,
+          "wins": 9800,
+          "games": 18171,
           "wr": 53.9
         },
         {
           "code": "GU",
           "name": "緑青（シミック）",
-          "wins": 13496,
-          "games": 25517,
+          "wins": 13513,
+          "games": 25557,
           "wr": 52.9
         }
       ],
-      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z",
+      "archetypesUpdatedAt": "2026-11-13T09:42:54.721019Z",
       "archetypeCards": {
         "WU": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "UB": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "BR": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "RG": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "GW": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "WB": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "BG": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "GU": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "UR": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ],
         "RW": [
           {
-            "name": "Twinned Vision",
-            "wr": 63.2,
-            "games": 557
-          },
-          {
-            "name": "Protege's Awakening",
-            "wr": 59.4,
-            "games": 603
-          },
-          {
-            "name": "Extended Absence",
-            "wr": 59.2,
-            "games": 635
-          },
-          {
             "name": "Mindseeker Oculus",
-            "wr": 58.8,
-            "games": 714
-          },
-          {
-            "name": "Unsummon",
-            "wr": 56.2,
-            "games": 548
-          },
-          {
-            "name": "Icy Reception",
-            "wr": 56.1,
-            "games": 526
-          },
-          {
-            "name": "Room of Refuge",
-            "wr": 55.3,
-            "games": 515
-          },
-          {
-            "name": "Undulating Witness",
-            "wr": 53.7,
-            "games": 529
+            "wr": 57.1,
+            "games": 520
           }
         ]
       },
-      "archetypeCardsUpdatedAt": "2026-11-12T09:56:38.444069Z"
+      "archetypeCardsUpdatedAt": "2026-11-13T09:42:54.721019Z"
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-11-12T09:56:21.430001Z",
+      "updatedAt": "2026-11-13T09:42:39.064410Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -1183,12 +833,12 @@
           "wr": 51.4
         }
       ],
-      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z"
+      "archetypesUpdatedAt": "2026-11-13T09:42:54.721019Z"
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-11-12T09:56:21.430001Z",
+      "updatedAt": "2026-11-13T09:42:39.064410Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -1563,12 +1213,12 @@
           "wr": 52.3
         }
       ],
-      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z"
+      "archetypesUpdatedAt": "2026-11-13T09:42:54.721019Z"
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-11-12T09:56:21.430001Z",
+      "updatedAt": "2026-11-13T09:42:39.064410Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -1943,12 +1593,12 @@
           "wr": 49.9
         }
       ],
-      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z"
+      "archetypesUpdatedAt": "2026-11-13T09:42:54.721019Z"
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-11-12T09:56:21.430001Z",
+      "updatedAt": "2026-11-13T09:42:39.064410Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -2323,7 +1973,7 @@
           "wr": 46.8
         }
       ],
-      "archetypesUpdatedAt": "2026-11-12T09:56:38.444069Z"
+      "archetypesUpdatedAt": "2026-11-13T09:42:54.721019Z"
     }
   }
 }
