@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-15",
-    "ids": [
-      "50fa6a63-e031-47cb-8fd5-a6c235203722",
-      "d465a3d6-5830-456c-8e7a-908b464db846",
-      "f74095aa-232f-432e-a899-86e9463ab5be"
-    ],
-    "en": [
-      "Whiptail Wurm",
-      "Inspired Charge",
-      "Filigree Crawler"
-    ]
-  },
-  {
     "date": "2026-10-16",
     "ids": [
       "f207ce73-e4cd-4dfc-b3b9-5704f5148959",
@@ -400,6 +387,19 @@
       "Unruly Mob",
       "Concussive Bolt",
       "Zephyr Net"
+    ]
+  },
+  {
+    "date": "2026-11-15",
+    "ids": [
+      "73fdb375-9c71-421d-8027-8636e3ea8f35",
+      "8c04663a-1023-49a5-a0b9-78f24a72fb1e",
+      "a11d890e-38d4-467c-bc04-948979c142e0"
+    ],
+    "en": [
+      "Captain Marvel, Shooting Star",
+      "Nature's Way",
+      "Marit Lage's Slumber"
     ]
   }
 ]
