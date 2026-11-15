@@ -1,464 +1,464 @@
 {
-  "generatedAt": "2026-11-14T09:05:38.207046Z",
+  "generatedAt": "2026-11-15T09:36:44.688634Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-11-14T09:05:22.030169Z",
+      "updatedAt": "2026-11-15T09:36:27.743244Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
           "wr": 73.2,
-          "games": 14288
+          "games": 14306
         },
         {
           "name": "Uldaros Theorix",
           "wr": 68.8,
-          "games": 14218
+          "games": 14250
         },
         {
           "name": "The Theorist, Jace Beleren",
           "wr": 67.9,
-          "games": 13748
+          "games": 13795
         },
         {
           "name": "Sublime Epiphany",
-          "wr": 65.8,
-          "games": 3239
+          "wr": 65.7,
+          "games": 3248
         },
         {
           "name": "Garruk, Veiled Butcher",
           "wr": 65.4,
-          "games": 13414
+          "games": 13463
         },
         {
           "name": "Garruk, Curse Breaker",
           "wr": 65.3,
-          "games": 11606
+          "games": 11650
         },
         {
           "name": "Overwrite the Multiverse",
           "wr": 65.0,
-          "games": 13335
+          "games": 13376
         },
         {
           "name": "Mind Twist",
           "wr": 65.0,
-          "games": 2728
+          "games": 2736
         },
         {
           "name": "Sphinx of False Conclusions",
-          "wr": 63.6,
-          "games": 29447
+          "wr": 63.7,
+          "games": 29570
         },
         {
           "name": "Aerid Konstrari",
           "wr": 63.6,
-          "games": 10724
+          "games": 10749
         },
         {
           "name": "Splinter Twin",
-          "wr": 62.7,
-          "games": 2006
+          "wr": 62.6,
+          "games": 2010
         },
         {
           "name": "Null Summoner",
           "wr": 62.4,
-          "games": 30088
+          "games": 30167
         },
         {
           "name": "Lich's Relic",
-          "wr": 62.1,
-          "games": 27325
+          "wr": 62.2,
+          "games": 27398
         },
         {
           "name": "Vraska, the Cutting Glare",
-          "wr": 62.0,
-          "games": 24687
+          "wr": 61.9,
+          "games": 24781
         },
         {
           "name": "Kwia Vigorbloom",
-          "wr": 62.0,
-          "games": 10024
+          "wr": 61.9,
+          "games": 10036
         },
         {
           "name": "Craftwork Crusher",
           "wr": 61.6,
-          "games": 61307
+          "games": 61469
         },
         {
           "name": "Denzilore Fatehold",
           "wr": 61.6,
-          "games": 12546
+          "games": 12601
         },
         {
           "name": "Sanctum Lurker",
           "wr": 61.4,
-          "games": 25979
+          "games": 26094
         },
         {
           "name": "Kindred Judgment",
           "wr": 61.3,
-          "games": 24613
+          "games": 24694
         },
         {
           "name": "Hungering Puppetbeast",
           "wr": 61.2,
-          "games": 23467
+          "games": 23538
         },
         {
           "name": "Kiora of Fire and Ashes",
           "wr": 60.9,
-          "games": 68059
+          "games": 68310
         },
         {
           "name": "Lyra, Tolarian Archangel",
           "wr": 60.4,
-          "games": 29323
+          "games": 29445
         },
         {
           "name": "Recursive Recruitment",
           "wr": 60.1,
-          "games": 83291
+          "games": 83472
         },
         {
           "name": "Chandra, Torch of Defiance",
           "wr": 59.8,
-          "games": 10612
+          "games": 10641
         },
         {
           "name": "Avatar of Burgeoning Echoes",
           "wr": 59.7,
-          "games": 9892
+          "games": 9915
         },
         {
           "name": "Diviner of Victory",
           "wr": 59.6,
-          "games": 25761
+          "games": 25807
         },
         {
           "name": "Proctor of Potential",
           "wr": 59.6,
-          "games": 20040
+          "games": 20115
         },
         {
           "name": "Austere Command",
           "wr": 59.6,
-          "games": 2288
+          "games": 2292
         },
         {
           "name": "Mindseeker Oculus",
           "wr": 59.5,
-          "games": 190514
+          "games": 191029
         },
         {
           "name": "Fblthp, Impossibly Lost",
           "wr": 59.5,
-          "games": 90544
+          "games": 90812
         },
         {
           "name": "Countersculpt",
           "wr": 59.4,
-          "games": 86753
+          "games": 87084
         },
         {
           "name": "Break Under Pressure",
           "wr": 59.3,
-          "games": 73592
+          "games": 73807
         },
         {
           "name": "Simulacrum Shaper",
           "wr": 59.3,
-          "games": 21512
+          "games": 21567
         },
         {
           "name": "Repurposed Enforcer",
           "wr": 59.3,
-          "games": 21392
+          "games": 21488
         },
         {
           "name": "Extended Absence",
           "wr": 59.0,
-          "games": 158361
+          "games": 158775
         },
         {
           "name": "Rewrite Regrets",
           "wr": 58.9,
-          "games": 69888
+          "games": 70135
         },
         {
           "name": "Violent Echoes",
           "wr": 58.9,
-          "games": 61823
+          "games": 62004
         },
         {
           "name": "Gideon the Oathless",
           "wr": 58.9,
-          "games": 22664
+          "games": 22731
+        },
+        {
+          "name": "Multiply by Zero",
+          "wr": 58.8,
+          "games": 69235
         },
         {
           "name": "Hapatra, the Desert Fang",
           "wr": 58.8,
-          "games": 65345
+          "games": 65550
         },
         {
           "name": "Seasoned Cryomancer",
           "wr": 58.8,
-          "games": 12631
+          "games": 12697
         },
         {
           "name": "Chandra, Chill of Compliance",
           "wr": 58.8,
-          "games": 12263
+          "games": 12297
         },
         {
           "name": "Plan for All Outcomes",
           "wr": 58.7,
-          "games": 85500
-        },
-        {
-          "name": "Multiply by Zero",
-          "wr": 58.7,
-          "games": 69065
+          "games": 85730
         },
         {
           "name": "Lyra, Archangel of Dawn",
           "wr": 58.7,
-          "games": 17489
+          "games": 17527
         },
         {
           "name": "Carnivorous Cultivator",
           "wr": 58.6,
-          "games": 21807
+          "games": 21854
         },
         {
           "name": "Primal Witchstalker",
           "wr": 58.5,
-          "games": 52889
+          "games": 53036
         },
         {
           "name": "Tenured Tethermage",
           "wr": 58.4,
-          "games": 18253
+          "games": 18301
         },
         {
           "name": "Protege's Awakening",
           "wr": 58.2,
-          "games": 143787
+          "games": 144262
         },
         {
           "name": "Clash of Elements",
           "wr": 58.1,
-          "games": 53923
+          "games": 54043
         },
         {
           "name": "The Echoverse Fulcrum",
           "wr": 58.0,
-          "games": 11345
+          "games": 11400
         },
         {
           "name": "Jace, Reality Sculptor",
           "wr": 57.9,
-          "games": 22429
+          "games": 22497
         },
         {
           "name": "Enlightened Confidant",
           "wr": 57.9,
-          "games": 8211
+          "games": 8216
         },
         {
           "name": "Fblthp, Knows the Way",
           "wr": 57.7,
-          "games": 58297
+          "games": 58440
         },
         {
           "name": "Verdant Kraken",
           "wr": 57.7,
-          "games": 20535
+          "games": 20567
         },
         {
           "name": "Liliana the Faultless",
           "wr": 57.7,
-          "games": 14765
+          "games": 14807
         },
         {
           "name": "Twinned Vision",
           "wr": 57.5,
-          "games": 145355
+          "games": 145799
         },
         {
           "name": "Icy Reception",
           "wr": 57.5,
-          "games": 144524
+          "games": 144945
         },
         {
           "name": "Hexhaven Battalion",
           "wr": 57.5,
-          "games": 133900
+          "games": 134317
         },
         {
           "name": "Jace's Machinations",
           "wr": 57.5,
-          "games": 24658
+          "games": 24725
         },
         {
-          "name": "Variable Chaser",
-          "wr": 57.5,
-          "games": 22068
+          "name": "Way of the Mind Sculptor",
+          "wr": 57.4,
+          "games": 71832
         }
       ],
       "archetypes": [
         {
           "code": "WU",
           "name": "白青（アゾリウス）",
-          "wins": 33338,
-          "games": 58372,
+          "wins": 33436,
+          "games": 58540,
           "wr": 57.1
         },
         {
           "code": "UR",
           "name": "青赤（イゼット）",
-          "wins": 21556,
-          "games": 38394,
+          "wins": 21617,
+          "games": 38506,
           "wr": 56.1
         },
         {
           "code": "RG",
           "name": "赤緑（グルール）",
-          "wins": 25831,
-          "games": 46341,
+          "wins": 25895,
+          "games": 46461,
           "wr": 55.7
         },
         {
           "code": "BG",
           "name": "黒緑（ゴルガリ）",
-          "wins": 20373,
-          "games": 36839,
+          "wins": 20433,
+          "games": 36943,
           "wr": 55.3
         },
         {
           "code": "UB",
           "name": "青黒（ディミーア）",
-          "wins": 36352,
-          "games": 65910,
-          "wr": 55.2
+          "wins": 36450,
+          "games": 66099,
+          "wr": 55.1
         },
         {
           "code": "BR",
           "name": "黒赤（ラクドス）",
-          "wins": 23471,
-          "games": 42909,
+          "wins": 23545,
+          "games": 43043,
           "wr": 54.7
         },
         {
           "code": "GW",
           "name": "緑白（セレズニア）",
-          "wins": 23613,
-          "games": 43339,
+          "wins": 23665,
+          "games": 43435,
           "wr": 54.5
-        },
-        {
-          "code": "WB",
-          "name": "白黒（オルゾフ）",
-          "wins": 9825,
-          "games": 18210,
-          "wr": 54.0
         },
         {
           "code": "RW",
           "name": "赤白（ボロス）",
-          "wins": 11762,
-          "games": 21804,
+          "wins": 11783,
+          "games": 21847,
+          "wr": 53.9
+        },
+        {
+          "code": "WB",
+          "name": "白黒（オルゾフ）",
+          "wins": 9845,
+          "games": 18249,
           "wr": 53.9
         },
         {
           "code": "GU",
           "name": "緑青（シミック）",
-          "wins": 13560,
-          "games": 25630,
+          "wins": 13591,
+          "games": 25699,
           "wr": 52.9
         }
       ],
-      "archetypesUpdatedAt": "2026-11-14T09:05:38.207046Z",
+      "archetypesUpdatedAt": "2026-11-15T09:36:44.688634Z",
       "archetypeCards": {
         "WU": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "UB": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "BR": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "RG": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "GW": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "WB": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "BG": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "GU": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "UR": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ],
         "RW": [
           {
             "name": "Mindseeker Oculus",
-            "wr": 59.6,
-            "games": 565
+            "wr": 61.4,
+            "games": 515
           }
         ]
       },
-      "archetypeCardsUpdatedAt": "2026-11-14T09:05:38.207046Z"
+      "archetypeCardsUpdatedAt": "2026-11-15T09:36:44.688634Z"
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-11-14T09:05:22.030169Z",
+      "updatedAt": "2026-11-15T09:36:27.743244Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -833,12 +833,12 @@
           "wr": 51.4
         }
       ],
-      "archetypesUpdatedAt": "2026-11-14T09:05:38.207046Z"
+      "archetypesUpdatedAt": "2026-11-15T09:36:44.688634Z"
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-11-14T09:05:22.030169Z",
+      "updatedAt": "2026-11-15T09:36:27.743244Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -1213,12 +1213,12 @@
           "wr": 52.3
         }
       ],
-      "archetypesUpdatedAt": "2026-11-14T09:05:38.207046Z"
+      "archetypesUpdatedAt": "2026-11-15T09:36:44.688634Z"
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-11-14T09:05:22.030169Z",
+      "updatedAt": "2026-11-15T09:36:27.743244Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -1593,12 +1593,12 @@
           "wr": 49.9
         }
       ],
-      "archetypesUpdatedAt": "2026-11-14T09:05:38.207046Z"
+      "archetypesUpdatedAt": "2026-11-15T09:36:44.688634Z"
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-11-14T09:05:22.030169Z",
+      "updatedAt": "2026-11-15T09:36:27.743244Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -1973,7 +1973,7 @@
           "wr": 46.8
         }
       ],
-      "archetypesUpdatedAt": "2026-11-14T09:05:38.207046Z"
+      "archetypesUpdatedAt": "2026-11-15T09:36:44.688634Z"
     }
   }
 }
