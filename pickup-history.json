@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-16",
-    "ids": [
-      "f207ce73-e4cd-4dfc-b3b9-5704f5148959",
-      "13d5b664-db13-406e-9956-3d9fe4177d33",
-      "e42d087e-c999-4f9a-bdc5-4327e8ce94b6"
-    ],
-    "en": [
-      "Zell Dincht",
-      "Scale the Heights",
-      "Numbing Dose"
-    ]
-  },
-  {
     "date": "2026-10-17",
     "ids": [
       "b4eafd12-5f3e-43e6-aa0a-6bb5f4f5782b",
@@ -400,6 +387,19 @@
       "Captain Marvel, Shooting Star",
       "Nature's Way",
       "Marit Lage's Slumber"
+    ]
+  },
+  {
+    "date": "2026-11-16",
+    "ids": [
+      "8c653a0d-e35a-4596-bed6-b5156192955b",
+      "a1ed0f7e-56c3-4866-89c4-77b81a952955",
+      "8ee2371c-e2c3-412e-b9e9-1ec511c9d537"
+    ],
+    "en": [
+      "Scytheclaw Raptor",
+      "Remove",
+      "Moonfolk Puzzlemaker"
     ]
   }
 ]
