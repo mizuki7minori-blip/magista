@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-17",
-    "ids": [
-      "b4eafd12-5f3e-43e6-aa0a-6bb5f4f5782b",
-      "c6f69168-71c2-41a2-ab95-cfd7baf0ba68",
-      "cd69b2c7-2be7-4915-9d17-4fd400ace6b8"
-    ],
-    "en": [
-      "Judge of Currents",
-      "Refreshing Rain",
-      "Mantle of the Wolf"
-    ]
-  },
-  {
     "date": "2026-10-18",
     "ids": [
       "180919a5-67b2-473a-9b90-a828bdc2477c",
@@ -400,6 +387,19 @@
       "Scytheclaw Raptor",
       "Remove",
       "Moonfolk Puzzlemaker"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "ids": [
+      "446b9626-2e64-4933-afc8-891135b8e3d6",
+      "973fd4d4-9255-4825-85b7-503606c4e932",
+      "c262e015-f379-484f-894f-1a1deb3c75cc"
+    ],
+    "en": [
+      "Dreadwing",
+      "Sinister Sabotage",
+      "Smoke Bomb"
     ]
   }
 ]
