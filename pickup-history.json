@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-18",
-    "ids": [
-      "180919a5-67b2-473a-9b90-a828bdc2477c",
-      "cdbaa21d-5896-4b8b-9a08-f0839ccfddfc",
-      "9b87b4cd-4fb9-4bb3-b4c0-de1fcc6f44a2"
-    ],
-    "en": [
-      "Shadowheart, Dark Justiciar",
-      "Disturbed Burial",
-      "Love Song of Night and Day"
-    ]
-  },
-  {
     "date": "2026-10-19",
     "ids": [
       "8353f834-678a-4fa1-857a-8bfdfb8d6378",
@@ -400,6 +387,19 @@
       "Dreadwing",
       "Sinister Sabotage",
       "Smoke Bomb"
+    ]
+  },
+  {
+    "date": "2026-11-18",
+    "ids": [
+      "667dae0b-5006-4e38-be80-eae79c2a2a95",
+      "d4a73cee-659b-4e1a-8821-a8d0a31c749f",
+      "6b336228-92c0-4f14-a479-1f97aaeae018"
+    ],
+    "en": [
+      "Bellows Lizard",
+      "Laquatus's Creativity",
+      "Belisarius Cawl"
     ]
   }
 ]
