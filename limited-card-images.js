@@ -76,6 +76,7 @@
       balance:'クリーチャー15〜17枚、除去3〜5枚、アドバンテージ源2〜4枚を目安に調整します。'
     };
     const usable=cards.filter(Boolean),counts={};
+    if(!usable.length)return {game:'カード情報を取得できていないため、この色のゲームプランは判定できません。',synergy:'17Landsやカード一覧で対象カードを確認してください。',balance:'配分は実際のピックとカードの役割を見て調整してください。'};
     usable.forEach(card=>{const r=roleFor(card);counts[r]=(counts[r]||0)+1;});
     const avgMv=usable.length?usable.reduce((s,c)=>s+Number(c.cmc||0),0)/usable.length:0;
     const creatureCount=usable.filter(c=>(c.type_line||'').toLowerCase().includes('creature')).length;
@@ -107,7 +108,7 @@
     planGame.textContent=p.game;
     planSynergy.textContent=p.synergy;
     planBalance.textContent=p.balance;
-    if(planNote)planNote.textContent=archKey==='ALL'?'全体ランキングから基本方針を表示':'上位20枚の役割・カードテキストから自動分析';
+    if(planNote)planNote.textContent=archKey==='ALL'?'編集部の基本方針を表示':source.length?'取得できた上位'+source.length+'枚の役割・テキストから推定':'カード情報を取得できていません';
   };
   const synergyTags=card=>{
     const text=(card?.oracle_text||card?.card_faces?.map(f=>f.oracle_text||'').join(' ')||'').toLowerCase();
@@ -422,7 +423,7 @@
     if(archetypes)archetypes.textContent=arch.name;
     renderBestColors(set);
     if(archSummary)archSummary.innerHTML=`<span>${arch.name}</span><span>${activeRole==='ALL'?'全役割':activeRole}</span><span>${pool.length}枚を優先表示</span><span>GIH WR順</span>`;
-    if(topNote)topNote.textContent=`${arch.name}・${archKey==='ALL'?'全体GIH WR':'アーキタイプ専用GIH WR'}順・${formatDate(archKey==='ALL'?set.updatedAt:(set.archetypeCardsUpdatedAt||set.updatedAt))}`;
+    if(topNote)topNote.textContent=`${arch.name}・${archKey!=='ALL'&&set.archetypeCards?.[archKey]?.length?'アーキタイプ専用GIH WR':'全体GIH WR'}順・${formatDate(archKey==='ALL'?set.updatedAt:(set.archetypeCardsUpdatedAt||set.updatedAt))}`;
     if(galleryTitle)galleryTitle.textContent=`${set.name}｜${arch.name} 優先カード`;
     renderPlan(set,cards,archKey);
     renderSynergy(set,cards,jaCards,archKey);
