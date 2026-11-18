@@ -8,7 +8,7 @@ const pickKey=()=>`magsta-limited-picks-${setSel.value}`;
 const loadLocal=()=>{try{const v=JSON.parse(localStorage.getItem(storeKey())||'[]');packNames=Array.isArray(v)?v:[];}catch{packNames=[];}};
 const saveLocal=()=>{try{localStorage.setItem(storeKey(),JSON.stringify(packNames));}catch{}};
 const picked=()=>{try{const v=JSON.parse(localStorage.getItem(pickKey())||'[]');return Array.isArray(v)?v:[];}catch{return[];}};
-const fetchPaged=async query=>{let url='https://api.scryfall.com/cards/search?q='+encodeURIComponent(query)+'&unique=cards&order=name',out=[];while(url&&out.length<1000){const r=await fetch(url);if(!r.ok)break;const d=await r.json();out.push(...(d.data||[]));url=d.has_more?d.next_page:'';}return out;};
+const fetchPaged=async query=>{query=query.replace(/\bset:trk\b/g,'(set:trk or set:sds)');let url='https://api.scryfall.com/cards/search?q='+encodeURIComponent(query)+'&unique=cards&order=name',out=[];while(url&&out.length<1000){const r=await fetch(url);if(!r.ok)break;const d=await r.json();out.push(...(d.data||[]));url=d.has_more?d.next_page:'';}return out;};
 const jaMap=()=>new Map(jaCards.filter(c=>c?.name).map(c=>[c.name,c]));
 const nameOf=name=>jaMap().get(name)?.printed_name||name;
 const map=()=>new Map(cards.map(c=>[c.name,c]));

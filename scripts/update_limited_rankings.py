@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SETS = {
+    "trk": ("TRK", "スター・トレック"),
     "fra": ("FRA", "リアリティ・フラクチャー"),
     "hob": ("HOB", "ホビット"),
     "msh": ("MSH", "マーベル・スーパー・ヒーローズ"),
@@ -159,6 +160,7 @@ def main():
             print(f"{code}: archetype fetch failed ({exc}); kept previous snapshot")
 
         output["sets"][key] = {
+            **old,
             "code": code,
             "name": name,
             "updatedAt": now if updated else old.get("updatedAt"),

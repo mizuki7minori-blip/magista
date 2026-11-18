@@ -7,6 +7,7 @@ from pathlib import Path
 
 OUT = Path(__file__).resolve().parents[1] / "limited-ranking-data.json"
 SETS = {
+    "trk": "TRK",
     "fra": "FRA",
     "hob": "HOB",
     "msh": "MSH",

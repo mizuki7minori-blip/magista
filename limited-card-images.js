@@ -19,6 +19,7 @@
   };
   const PENDING = { colors:'17Lands集計を基準に順次更新', firstPick:'除去・ボム・柔軟性を優先', status:'ランキング連動' };
   const SETS = {
+    trk:{name:'スター・トレック',code:'TRK',article:'https://magic.wizards.com/ja/news/feature/collecting-star-trek',guide:PENDING,ranking:[],updatedAt:null},
     fra:{name:'リアリティ・フラクチャー',code:'FRA',article:'article-fra-draft-2026-09-25.html',updatedAt:null,guide:{colors:'17Lands集計を基準に順次更新',firstPick:'単体性能の高いカードを優先し、序盤は色を固定しすぎない',status:'攻略記事あり'},ranking:[]},
     hob:{name:'ホビット',code:'HOB',guide:PENDING,ranking:[],updatedAt:null},
     msh:{name:'マーベル・スーパー・ヒーローズ',code:'MSH',guide:PENDING,ranking:[],updatedAt:null},
@@ -54,7 +55,8 @@
   };
   const fetchJapaneseSetCards=async setKey=>{
     const cached=readJaCache(setKey);if(cached?.length)return cached;
-    try{let url=`https://api.scryfall.com/cards/search?q=${encodeURIComponent(`set:${setKey} lang:ja`)}&unique=prints&order=set`,cards=[],s=0;while(url&&s<5){const r=await fetch(url);if(!r.ok)throw 0;const d=await r.json();cards.push(...(d.data||[]));url=d.has_more?d.next_page:'';s++;}if(cards.length)writeTimedCache(setKey,cards,jaMemoryCache);return cards;}catch{return [];}
+    const query=setKey==='trk'?'(set:trk or set:sds) lang:ja':`set:${setKey} lang:ja`;
+    try{let url=`https://api.scryfall.com/cards/search?q=${encodeURIComponent(query)}&unique=prints&order=set`,cards=[],s=0;while(url&&s<5){const r=await fetch(url);if(!r.ok)throw 0;const d=await r.json();cards.push(...(d.data||[]));url=d.has_more?d.next_page:'';s++;}if(cards.length)writeTimedCache(setKey,cards,jaMemoryCache);return cards;}catch{return [];}
   };
   const buildJapaneseMap=cards=>{const m=new Map();cards.forEach(c=>{if(!c?.name)return;const old=m.get(c.name);if(!old||(!getImage(old)&&getImage(c)))m.set(c.name,c);});return m;};
 
@@ -455,12 +457,12 @@
   const applySet=(setKey,updateUrl=true)=>{
     activeRole='ALL';activeSynergyCard='';
     if(roleFilter)roleFilter.querySelectorAll('button[data-role]').forEach((b,i)=>b.classList.toggle('is-active',i===0));
-    const key=SETS[setKey]?setKey:'fra',set=SETS[key],guide=set.guide||PENDING;selector.value=key;loadPicked();syncAutoStage();
+    const key=SETS[setKey]?setKey:'trk',set=SETS[key],guide=set.guide||PENDING;selector.value=key;loadPicked();syncAutoStage();
     if(kicker)kicker.textContent=`リミテッド / ${set.code}`;if(title)title.textContent=`${set.name} リミテッド攻略`;if(description)description.textContent=`${set.name}（${set.code}）を、シリーズ → アーキタイプ → 優先カードの順で確認できます。`;
     if(cardDataLink)cardDataLink.href=`https://www.17lands.com/card_data?expansion=${set.code}&format=PremierDraft&sort=ever_drawn_win_rate%2Cdesc&time_period=ALL_TIME&view=table`;
     if(colorDataLink)colorDataLink.href=`https://www.17lands.com/deck_color_data?expansion=${set.code}&format=PremierDraft`;
     if(scryfallLink)scryfallLink.href=`https://scryfall.com/sets/${key}?as=grid&order=set&lang=ja`;
-    if(articleLink){articleLink.hidden=!set.article;if(set.article)articleLink.href=set.article;}
+    if(articleLink){articleLink.hidden=!set.article;if(set.article){articleLink.href=set.article;articleLink.textContent=key==='trk'?'公式セット情報':'MAGSTA攻略記事';}}
     if(bestColors)bestColors.textContent=guide.colors;if(firstPick)firstPick.textContent=guide.firstPick;if(guideStatus)guideStatus.textContent=guide.status;
     renderQuickArches(set);
     syncCurrentView(set,archSelector.value||'ALL');
@@ -494,7 +496,7 @@
   });
 
   const cached=readSnapshotCache();if(cached)mergeSnapshots(cached);
-  const params=new URLSearchParams(location.search),initialSet=(params.get('set')||'fra').toLowerCase(),initialArch=(params.get('arch')||'ALL').toUpperCase();
+  const params=new URLSearchParams(location.search),initialSet=(params.get('set')||'trk').toLowerCase(),initialArch=(params.get('arch')||'ALL').toUpperCase();
   archSelector.value=ARCHETYPES[initialArch]?initialArch:'ALL';
   selector.addEventListener('change',()=>applySet(selector.value));archSelector.addEventListener('change',applyArch);
   applySet(initialSet,false);
