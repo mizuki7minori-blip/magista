@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-19",
-    "ids": [
-      "8353f834-678a-4fa1-857a-8bfdfb8d6378",
-      "5e8086d5-ea48-4555-b65a-a33d08ba4afd",
-      "c3fdfb94-2d10-4743-864c-a59fdd57d8b7"
-    ],
-    "en": [
-      "Lurebound Scarecrow",
-      "Purging Stormbrood // Absorb Essence",
-      "Reflections of Littjara"
-    ]
-  },
-  {
     "date": "2026-10-20",
     "ids": [
       "02765930-e15e-4cc1-ac0d-040334a9c5bc",
@@ -400,6 +387,19 @@
       "Bellows Lizard",
       "Laquatus's Creativity",
       "Belisarius Cawl"
+    ]
+  },
+  {
+    "date": "2026-11-19",
+    "ids": [
+      "542be13f-b9c0-4b79-b486-be576c531a82",
+      "8c70980b-3c38-4624-8f19-5e29d271acf5",
+      "a1bdea9f-56d0-411a-9da8-601dd6dc6d32"
+    ],
+    "en": [
+      "Loot, the Key to Everything",
+      "Let the Galaxy Burn",
+      "Eye of Ramos"
     ]
   }
 ]
