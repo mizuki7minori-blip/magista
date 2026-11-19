@@ -11,8 +11,86 @@ const savePicked=()=>{try{localStorage.setItem(storeKey(),JSON.stringify(picked)
 const jaMap=()=>{const m=new Map();jaCards.forEach(c=>{if(c?.name)m.set(c.name,c)});return m;};
 const byName=()=>new Map(cards.map(c=>[c.name,c]));
 const displayName=name=>jaMap().get(name)?.printed_name||name;
-const fetchPaged=async q=>{q=q.replace(/\bset:trk\b/g,'(set:trk or set:sds)');let url='https://api.scryfall.com/cards/search?q='+encodeURIComponent(q)+'&unique=prints&order=set',out=[],n=0;while(url&&n<5){const r=await fetch(url);if(!r.ok)break;const d=await r.json();out.push(...(d.data||[]));url=d.has_more?d.next_page:'';n++;}return out;};
-const fetchData=async()=>{const set=setSel.value;const [snap,eng,ja]=await Promise.all([fetch('limited-ranking-data.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null),fetchPaged('set:'+set),fetchPaged('set:'+set+' lang:ja')]);cards=eng;jaCards=ja;const s=snap?.sets?.[set]||{};ranking=(archSel.value!=='ALL'&&s.archetypeCards?.[archSel.value]?.length?s.archetypeCards[archSel.value]:s.ranking)||[];renderAll();};
+const status=$('tracker-data-status');
+const cache=new Map();
+let snapshotRequest,requestId=0,activeSet='',loadFailed=false;
+
+const fetchPaged=async query=>{
+  let url='https://api.scryfall.com/cards/search?q='+encodeURIComponent(query)+'&unique=prints&order=set';
+  const found=[];
+  while(url){
+    const response=await fetch(url);
+    if(response.status===404&&!found.length)return [];
+    if(!response.ok)throw new Error('Card search failed');
+    const page=await response.json();
+    found.push(...page.data);
+    url=page.has_more?page.next_page:null;
+  }
+  return found;
+};
+const loadSet=set=>{
+  if(!cache.has(set)){
+    const query=set==='trk'?'(set:trk or set:sds)':`set:${set}`;
+    snapshotRequest??=fetch('limited-ranking-data.json',{cache:'no-cache'})
+      .then(response=>response.ok?response.json():null)
+      .catch(()=>null)
+      .then(data=>{if(!data)snapshotRequest=undefined;return data;});
+    const request=Promise.all([
+      snapshotRequest,
+      fetchPaged(query).catch(()=>null),
+      fetchPaged(query+' lang:ja').catch(()=>null)
+    ]).then(([data,cards,jaCards])=>{
+      if(!cards?.length)throw new Error('Card list is unavailable');
+      if(!jaCards||!data)cache.delete(set);
+      return {cards,jaCards:jaCards||[],snapshot:data?.sets?.[set]};
+    }).catch(error=>{
+      cache.delete(set);
+      throw error;
+    });
+    cache.set(set,request);
+  }
+  return cache.get(set);
+};
+const loadData=async(set,arch)=>{
+  const {cards,jaCards,snapshot}=await loadSet(set);
+  const archRanking=snapshot?.archetypeCards?.[arch];
+  return {cards,jaCards,ranking:arch!=='ALL'&&archRanking?.length?archRanking:snapshot?.ranking||[]};
+};
+window.magstaLimitedTracker={loadData};
+
+const syncLinks=()=>{
+  const params=new URLSearchParams({set:setSel.value,arch:archSel.value});
+  $('tracker-back').href=`limited.html?${params}`;
+  const url=new URL(location.href);
+  params.forEach((value,key)=>url.searchParams.set(key,value));
+  history.replaceState(history.state,'',url);
+};
+
+const fetchData=async()=>{
+  const request=++requestId;
+  const set=setSel.value;
+  loadFailed=false;
+  if(activeSet!==set){
+    activeSet=set;
+    cards=[];jaCards=[];ranking=[];
+    loadPicked();
+    renderAll();
+  }
+  status.hidden=cards.length>0;
+  status.textContent='カード一覧を読み込み中です…';
+  try{
+    const data=await loadData(set,archSel.value);
+    if(request!==requestId)return;
+    ({cards,jaCards,ranking}=data);
+    status.hidden=true;
+    renderAll();
+  }catch{
+    if(request!==requestId)return;
+    loadFailed=true;
+    status.hidden=false;
+    status.textContent='カード一覧を取得できませんでした。「候補を更新」で再試行できます。';
+  }
+};
 const syncStage=()=>{const auto=autoEl.checked;packEl.disabled=auto;pickEl.disabled=auto;if(auto){const next=Math.min(42,picked.length+1),pack=Math.min(3,Math.floor((next-1)/14)+1),pick=((next-1)%14)+1;packEl.value=pack;pickEl.value=pick;stageStatus.textContent=picked.length>=42?'ドラフト完了':`次：${pack}-${pick}`;}else stageStatus.textContent='手動';const p=Number(packEl.value),k=Number(pickEl.value);let title='',body='';if(p===1&&k<=5){title='序盤：色を開けておく';body='単体性能を優先し、まだ色を固定しすぎない段階です。';}else if(p===1){title='1パック後半：流れを読む';body='流れてくる色を見て主色候補を絞ります。';}else if(p===2&&k<=5){title='2パック序盤：軸を固める';body='色とアーキタイプに寄せていく段階です。';}else if(p===2){title='2パック後半：不足を埋める';body='除去・低マナ域・枚数不足を埋めます。';}else if(p===3&&k<=5){title='3パック序盤：完成度を上げる';body='完成色に沿ってメイン採用カードを優先します。';}else{title='終盤：23枚を完成させる';body='マナカーブと不足役割を最終調整します。';}stageAdvice.innerHTML='<strong>'+title+'</strong><p>'+body+'</p>';};
 const colorProfile=()=>{const map=byName(),counts={W:0,U:0,B:0,R:0,G:0};picked.forEach(n=>(map.get(n)?.colors||[]).forEach(c=>counts[c]++));return Object.entries(counts).sort((a,b)=>b[1]-a[1]);};
 const renderColors=()=>{const rows=colorProfile();colorBars.innerHTML=rows.map(([c,n])=>`<div class="tracker-color"><strong>${NAMES[c]}</strong><span>${n}票</span></div>`).join('');const total=rows.reduce((s,x)=>s+x[1],0);if(!total){colorNote.textContent='まだ色の傾向はありません。';return;}const [a,b,c]=rows,pack=Number(packEl.value),pick=Number(pickEl.value);if((pack===1&&pick<=5)||picked.length<5){colorNote.textContent=`現在は${NAMES[a[0]]}がやや多め。まだ色を切らず様子を見る段階です。`;return;}if(a[1]>=b[1]+3&&a[1]>=5){colorNote.textContent=`主色候補は${NAMES[a[0]]}、副色候補は${NAMES[b[0]]}。現在は${NAMES[a[0]]+NAMES[b[0]]}寄りです。${c&&c[1]<=1?' '+NAMES[c[0]]+'はかなり薄めです。':''}`;return;}colorNote.textContent=`現在は${NAMES[a[0]]+NAMES[b[0]]}が中心候補です。`;};
@@ -78,11 +156,18 @@ const renderImagePicker=()=>{
 };
 const renderPicked=()=>{pickedCount.textContent=picked.length;if(!picked.length){pickedEl.innerHTML='<span class="limited-series-note">カードを検索して追加してください。</span>';return;}pickedEl.innerHTML=picked.map((n,i)=>`<span class="tracker-chip">${displayName(n)} <button data-remove="${i}">×</button></span>`).join('');};
 const renderSearch=()=>{const q=search.value.trim().toLowerCase();if(!q){results.innerHTML='';return;}const jm=jaMap(),matches=[];for(const c of cards){if(!matchesFilters(c))continue;const j=jm.get(c.name),ja=(j?.printed_name||'').toLowerCase(),en=c.name.toLowerCase();if(ja.includes(q)||en.includes(q)){matches.push(c);if(matches.length>=10)break;}}results.innerHTML=matches.length?matches.map(c=>`<div class="tracker-result"><span>${displayName(c.name)}<small>${c.name}</small></span><button class="tracker-add" data-pick="${c.name.replace(/"/g,'&quot;')}">＋ピック</button></div>`).join(''):'<span class="limited-series-note">該当カードが見つかりません。</span>';};
-const renderAll=()=>{syncStage();renderColors();renderCurve();renderRecommendations();renderImagePicker();renderPicked();renderSearch();savePicked();};
-document.addEventListener('click',e=>{const a=e.target.closest('[data-pick]');if(a){picked.push(a.dataset.pick);renderAll();return;}const r=e.target.closest('[data-remove]');if(r){picked.splice(Number(r.dataset.remove),1);renderAll();}});
-search.addEventListener('input',renderSearch);[colorFilter,manaFilter].filter(Boolean).forEach(el=>el.addEventListener('change',()=>{imageOffset=0;renderImagePicker();renderSearch();}));if(filterReset)filterReset.addEventListener('click',()=>{if(colorFilter)colorFilter.value='ALL';if(manaFilter)manaFilter.value='ALL';imageOffset=0;renderImagePicker();renderSearch();});if(refreshCards)refreshCards.addEventListener('click',()=>{imageOffset+=10;renderImagePicker();});reset.addEventListener('click',()=>{picked=[];renderAll();});autoEl.addEventListener('change',renderAll);packEl.addEventListener('input',renderAll);pickEl.addEventListener('input',renderAll);archSel.addEventListener('change',()=>{imageOffset=0;fetchData();});setSel.addEventListener('change',()=>{imageOffset=0;loadPicked();fetchData();});
-const p=new URLSearchParams(location.search);if(p.get('set'))setSel.value=p.get('set');if(p.get('arch'))archSel.value=p.get('arch').toUpperCase();loadPicked();fetchData();
+const renderAll=()=>{syncStage();renderColors();renderCurve();renderRecommendations();renderImagePicker();renderPicked();renderSearch();};
+document.addEventListener('click',e=>{const a=e.target.closest('[data-pick]');if(a){if(cards.some(card=>card.name===a.dataset.pick)){picked.push(a.dataset.pick);savePicked();renderAll();}return;}const r=e.target.closest('[data-remove]');if(r){picked.splice(Number(r.dataset.remove),1);savePicked();renderAll();}});
+search.addEventListener('input',renderSearch);[colorFilter,manaFilter].filter(Boolean).forEach(el=>el.addEventListener('change',()=>{imageOffset=0;renderImagePicker();renderSearch();}));if(filterReset)filterReset.addEventListener('click',()=>{if(colorFilter)colorFilter.value='ALL';if(manaFilter)manaFilter.value='ALL';imageOffset=0;renderImagePicker();renderSearch();});if(refreshCards)refreshCards.addEventListener('click',()=>{if(loadFailed){setSel.dispatchEvent(new Event('change'));return;}imageOffset+=10;renderImagePicker();});reset.addEventListener('click',()=>{picked=[];savePicked();renderAll();});autoEl.addEventListener('change',renderAll);packEl.addEventListener('input',renderAll);pickEl.addEventListener('input',renderAll);const changeView=()=>{imageOffset=0;syncLinks();fetchData();};
+archSel.addEventListener('change',changeView);
+setSel.addEventListener('change',changeView);
+const params=new URLSearchParams(location.search);
+const set=params.get('set')?.toLowerCase();
+const arch=params.get('arch')?.toUpperCase();
+if(Array.from(setSel.options).some(option=>option.value===set))setSel.value=set;
+if(Array.from(archSel.options).some(option=>option.value===arch))archSel.value=arch;
+changeView();
 })();
-(()=>{const s=document.createElement('script');s.src='limited-tracker-synergy.js?v=20261118-trk1';s.defer=true;document.body.appendChild(s);})();
+(()=>{const s=document.createElement('script');s.src='limited-tracker-synergy.js?v=20261119';s.defer=true;document.body.appendChild(s);})();
 
-(()=>{const s=document.createElement('script');s.src='limited-tracker-pack.js?v=20261118-trk1';s.defer=true;document.body.appendChild(s);})();
+(()=>{const s=document.createElement('script');s.src='limited-tracker-pack.js?v=20261119';s.defer=true;document.body.appendChild(s);})();
