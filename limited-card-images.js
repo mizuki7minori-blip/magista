@@ -396,6 +396,10 @@
   };
 
   const syncCurrentView=(set,archKey)=>{
+    const params=new URLSearchParams({set:set.code.toLowerCase(),arch:archKey});
+    document.querySelectorAll('[data-limited-tracker-link]').forEach(link=>{
+      link.href=`limited-tracker.html?${params}`;
+    });
     if(currentView)currentView.innerHTML=`<span>${set.code}</span><span>${(ARCHETYPES[archKey]||ARCHETYPES.ALL).name}</span>`;
     if(quickArches)quickArches.querySelectorAll('.limited-quick-arch').forEach(btn=>btn.classList.toggle('is-active',btn.dataset.arch===archKey));
   };
