@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-20",
-    "ids": [
-      "02765930-e15e-4cc1-ac0d-040334a9c5bc",
-      "af05cc39-725b-4535-919a-ddbcb89c2210",
-      "35f63c60-b0a1-459d-bf51-a8549fb06930"
-    ],
-    "en": [
-      "Chainbreaker",
-      "Molten Rebuke",
-      "Sword of Kaldra"
-    ]
-  },
-  {
     "date": "2026-10-21",
     "ids": [
       "5f685846-60dc-45f9-b118-02e74a443e6a",
@@ -400,6 +387,19 @@
       "Loot, the Key to Everything",
       "Let the Galaxy Burn",
       "Eye of Ramos"
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "ids": [
+      "0585ea6a-ef78-4386-a22c-6b8d8fc6c03c",
+      "0ff78353-a26e-4b5a-948d-1c3b41d2dd1f",
+      "155ee24f-a458-4df4-86d5-5eb7396ebf45"
+    ],
+    "en": [
+      "Troll Ascetic",
+      "Oxidize",
+      "Erosion"
     ]
   }
 ]
