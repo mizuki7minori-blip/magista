@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-21",
-    "ids": [
-      "5f685846-60dc-45f9-b118-02e74a443e6a",
-      "a58adf82-d9e2-4b47-933e-68180f280ba2",
-      "ab78fa13-f599-4d08-bd27-d3d8740ae58f"
-    ],
-    "en": [
-      "Frontier Guide",
-      "Mystic Speculation",
-      "Spontaneous Mutation"
-    ]
-  },
-  {
     "date": "2026-10-22",
     "ids": [
       "dcaf3c6f-06e2-4762-82aa-625113e375a1",
@@ -400,6 +387,19 @@
       "Troll Ascetic",
       "Oxidize",
       "Erosion"
+    ]
+  },
+  {
+    "date": "2026-11-21",
+    "ids": [
+      "8485cfaa-1dbf-432b-b5d0-92a6aa6a329b",
+      "67c4b1d5-757c-46cf-8bb1-9889d9ed1a1f",
+      "6b6e4ee2-52e6-452b-af15-c90eab5fc746"
+    ],
+    "en": [
+      "Tergrid, God of Fright // Tergrid's Lantern",
+      "Slaughter Pact",
+      "Wheel of Sun and Moon"
     ]
   }
 ]
