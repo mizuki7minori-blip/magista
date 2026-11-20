@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T02:48:12.134581+00:00",
+  "updated_at": "2026-11-20T02:36:01.972198+00:00",
   "basket": {
     "version": 1,
     "created_at": "2026-10-09T01:52:41.222637+00:00",
@@ -741,30 +741,30 @@
     ]
   },
   "latest": {
-    "date": "2026-11-19",
-    "observed_at": "2026-11-19T02:48:12.134581+00:00",
+    "date": "2026-11-20",
+    "observed_at": "2026-11-20T02:36:01.972198+00:00",
     "fx": {
-      "usd_jpy": 159.42,
-      "date": "2026-11-18",
+      "usd_jpy": 159.97,
+      "date": "2026-11-19",
       "source": "Frankfurter / ECB",
       "source_url": "https://www.frankfurter.dev/"
     },
     "cards": [
       {
         "id": "6675632d-d74a-4b1e-8539-ac678d5545a5",
-        "usd": 2.48,
+        "usd": 2.58,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "4493b62b-f354-47ff-9dcf-cc6e29de77c6",
-        "usd": 1.19,
+        "usd": 1.27,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "c0318a48-30e4-4ef7-be3d-5e561c5ce428",
-        "usd": 0.29,
+        "usd": 0.32,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -776,25 +776,25 @@
       },
       {
         "id": "a829747f-cf9b-4d81-ba66-9f0630ed4565",
-        "usd": 3.44,
+        "usd": 3.12,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "daafd816-f7c1-4630-9e5c-a1e5db570a35",
-        "usd": 0.4,
+        "usd": 0.39,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "76edd22f-808e-4a7c-b941-13c0f5e30418",
-        "usd": 0.94,
+        "usd": 1.06,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "5b8170dc-6a90-46fc-9989-7575f3d402b5",
-        "usd": 8.7,
+        "usd": 8.21,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -806,61 +806,61 @@
       },
       {
         "id": "6a0b230b-d391-4998-a3f7-7b158a0ec2cd",
-        "usd": 0.35,
+        "usd": 0.36,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "3c750d5a-f743-41ff-b5ba-02025ca0bec2",
-        "usd": 7.03,
+        "usd": 7.32,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "8c542ea4-98c3-4c2d-9066-205ab7aa697a",
-        "usd": 8.31,
+        "usd": 8.45,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "e056b55f-82ed-4fe0-ab0c-bb20fa4a218a",
-        "usd": 6.76,
+        "usd": 6.69,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "b66daa94-d367-4812-9f18-f35378c1febb",
-        "usd": 9.63,
+        "usd": 9.53,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "6da63cc5-4624-4491-abd9-9b600c3fefe2",
-        "usd": 7.65,
+        "usd": 7.98,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "69be21b4-c613-47c6-ba57-f4785861af3e",
-        "usd": 5.8,
+        "usd": 5.93,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "45b92924-baa1-4c9b-9932-9a5eda8f3446",
-        "usd": 6.56,
+        "usd": 6.57,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "8b4e2642-3c87-4708-b9b4-2e7f7359ac7d",
-        "usd": 8.4,
+        "usd": 7.68,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "6cdd2a74-63b3-4ff2-9c5a-a85dee63c3c9",
-        "usd": 5.24,
+        "usd": 5.55,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -878,25 +878,25 @@
       },
       {
         "id": "0784b6f0-9ebf-43d2-ba0f-a6bc93ba0c48",
-        "usd": 2.89,
+        "usd": 3.05,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "3aad15a2-8a1b-4460-9b06-e85863081878",
-        "usd": 48.46,
+        "usd": 47.9,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "aaf258fc-3ba4-4b83-bdbf-10a07e0b6c03",
-        "usd": 1.38,
+        "usd": 1.35,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "32fd8b7c-baf3-4d3d-be6f-044a917b11a0",
-        "usd": 49.64,
+        "usd": 47.56,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -908,25 +908,25 @@
       },
       {
         "id": "c6b6117c-faab-4bbb-b851-07bd8061ef03",
-        "usd": 0.56,
+        "usd": 0.64,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "e2a27742-08c1-4153-af7f-25a7a98f585e",
-        "usd": 5.15,
+        "usd": 5.12,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "e60deb92-f7dd-4f4e-9036-e47dd586f985",
-        "usd": 0.55,
+        "usd": 0.54,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "e32c67d1-187f-40df-b3b3-6036f5c92834",
-        "usd": 16.1,
+        "usd": 16.12,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -938,49 +938,49 @@
       },
       {
         "id": "861b5889-0183-4bee-afeb-a4b2aa700a8e",
-        "usd": 61.48,
+        "usd": 61.45,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "83d0b761-d694-4232-9f40-5bd8c82a05f1",
-        "usd": 12.6,
+        "usd": 12.56,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "cc14b1ee-5def-42df-8ef6-0d91dba39e3a",
-        "usd": 0.33,
+        "usd": 0.34,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "b61634ae-05be-4b56-8ebb-9d4ade902e42",
-        "usd": 3.85,
+        "usd": 3.69,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "22e08a78-55b7-46b0-bd1a-a51548fc1861",
-        "usd": 1.13,
+        "usd": 1.09,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "4f616706-ec97-4923-bb1e-11a69fbaa1f8",
-        "usd": 3.97,
+        "usd": 3.93,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "bc99f300-29c0-44e7-9560-7bbd1dda7556",
-        "usd": 0.72,
+        "usd": 0.84,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "7d4b1d44-126e-4987-9a9f-f0f9627a09cb",
-        "usd": 1.33,
+        "usd": 1.31,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -992,13 +992,13 @@
       },
       {
         "id": "55b5b094-9d2d-4d96-b90c-78fecdae725a",
-        "usd": 2.07,
+        "usd": 2.1,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "400b43aa-c1d2-4435-b863-061f43889422",
-        "usd": 0.8,
+        "usd": 0.81,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -1010,43 +1010,43 @@
       },
       {
         "id": "ad881aa0-decc-447b-8c8a-983546a9a55a",
-        "usd": 0.38,
+        "usd": 0.37,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
-        "usd": 9.35,
+        "usd": 9.09,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "6e288374-2b71-4ace-b1d2-a19fee6cb4af",
-        "usd": 20.31,
+        "usd": 20.91,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "90c423cc-1264-4067-9c50-e7c88c68ef2d",
-        "usd": 1.88,
+        "usd": 1.86,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "8f85e12c-196b-4459-b81f-0c9c854e9f57",
-        "usd": 16.37,
+        "usd": 16.11,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "f7e12477-d59f-442b-a678-1be746d0b7be",
-        "usd": 1.06,
+        "usd": 1.1,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "c047dedc-43bc-4a7c-bca4-182283c89069",
-        "usd": 0.31,
+        "usd": 0.32,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -1058,43 +1058,43 @@
       },
       {
         "id": "7afc4a15-5ff8-457a-aa62-803b2d78d912",
-        "usd": 3.0,
+        "usd": 3.04,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "57f61970-382e-415c-868b-6bbb6c78825d",
-        "usd": 0.49,
+        "usd": 0.5,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "a0e2098f-1d94-491a-a7e9-a45a9f69e3a8",
-        "usd": 0.32,
+        "usd": 0.3,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "8ee443cc-e17a-493b-9c93-1f9e141a30e4",
-        "usd": 1.58,
+        "usd": 1.53,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "11e12a84-e7be-4afc-a230-c2e644743fa8",
-        "usd": 8.92,
+        "usd": 8.83,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "99bf792f-963e-4509-8d3c-7db129c6a77f",
-        "usd": 5.09,
+        "usd": 5.16,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "9f37c5b6-a59c-45cd-9a99-e9357fe9ea1b",
-        "usd": 68.27,
+        "usd": 68.2,
         "jp_sale": null,
         "jp_buy": null
       },
@@ -1112,13 +1112,13 @@
       },
       {
         "id": "c3f9b454-97e9-4c77-b37a-e974221ae385",
-        "usd": 1.39,
+        "usd": 1.47,
         "jp_sale": null,
         "jp_buy": null
       },
       {
         "id": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
-        "usd": 0.64,
+        "usd": 0.63,
         "jp_sale": null,
         "jp_buy": null
       }
@@ -1378,6 +1378,12 @@
           "index": 108.429,
           "coverage": 62,
           "total": 62
+        },
+        {
+          "date": "2026-11-20",
+          "index": 109.5057,
+          "coverage": 62,
+          "total": 62
         }
       ],
       "usd_jpy": [
@@ -1630,6 +1636,12 @@
         {
           "date": "2026-11-19",
           "index": 109.2099,
+          "coverage": 62,
+          "total": 62
+        },
+        {
+          "date": "2026-11-20",
+          "index": 110.6749,
           "coverage": 62,
           "total": 62
         }
@@ -1886,6 +1898,12 @@
           "index": null,
           "coverage": 0,
           "total": 62
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 62
         }
       ],
       "jp_buy": [
@@ -2137,6 +2155,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 62
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 62
@@ -2396,6 +2420,12 @@
           "index": 96.2546,
           "coverage": 25,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 97.554,
+          "coverage": 25,
+          "total": 25
         }
       ],
       "usd_jpy": [
@@ -2648,6 +2678,12 @@
         {
           "date": "2026-11-19",
           "index": 96.9479,
+          "coverage": 25,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 98.5956,
           "coverage": 25,
           "total": 25
         }
@@ -2904,6 +2940,12 @@
           "index": null,
           "coverage": 0,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 25
         }
       ],
       "jp_buy": [
@@ -3155,6 +3197,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 25
@@ -3414,6 +3462,12 @@
           "index": 103.433,
           "coverage": 25,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 105.4803,
+          "coverage": 25,
+          "total": 25
         }
       ],
       "usd_jpy": [
@@ -3666,6 +3720,12 @@
         {
           "date": "2026-11-19",
           "index": 104.1779,
+          "coverage": 25,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 106.6065,
           "coverage": 25,
           "total": 25
         }
@@ -3922,6 +3982,12 @@
           "index": null,
           "coverage": 0,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 25
         }
       ],
       "jp_buy": [
@@ -4173,6 +4239,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 25
@@ -4432,6 +4504,12 @@
           "index": 116.9134,
           "coverage": 25,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 118.5274,
+          "coverage": 25,
+          "total": 25
         }
       ],
       "usd_jpy": [
@@ -4684,6 +4762,12 @@
         {
           "date": "2026-11-19",
           "index": 117.7554,
+          "coverage": 25,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 119.7929,
           "coverage": 25,
           "total": 25
         }
@@ -4940,6 +5024,12 @@
           "index": null,
           "coverage": 0,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 25
         }
       ],
       "jp_buy": [
@@ -5191,6 +5281,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 25
@@ -5450,6 +5546,12 @@
           "index": 120.3052,
           "coverage": 25,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 122.7855,
+          "coverage": 25,
+          "total": 25
         }
       ],
       "usd_jpy": [
@@ -5702,6 +5804,12 @@
         {
           "date": "2026-11-19",
           "index": 121.1717,
+          "coverage": 25,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 124.0965,
           "coverage": 25,
           "total": 25
         }
@@ -5958,6 +6066,12 @@
           "index": null,
           "coverage": 0,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 25
         }
       ],
       "jp_buy": [
@@ -6209,6 +6323,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 25
@@ -6468,6 +6588,12 @@
           "index": 120.7559,
           "coverage": 25,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 123.3493,
+          "coverage": 25,
+          "total": 25
         }
       ],
       "usd_jpy": [
@@ -6720,6 +6846,12 @@
         {
           "date": "2026-11-19",
           "index": 121.6257,
+          "coverage": 25,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 124.6663,
           "coverage": 25,
           "total": 25
         }
@@ -6976,6 +7108,12 @@
           "index": null,
           "coverage": 0,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 25
         }
       ],
       "jp_buy": [
@@ -7227,6 +7365,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 25
@@ -7486,6 +7630,12 @@
           "index": 120.7559,
           "coverage": 25,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 123.3493,
+          "coverage": 25,
+          "total": 25
         }
       ],
       "usd_jpy": [
@@ -7738,6 +7888,12 @@
         {
           "date": "2026-11-19",
           "index": 121.6257,
+          "coverage": 25,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 124.6663,
           "coverage": 25,
           "total": 25
         }
@@ -7994,6 +8150,12 @@
           "index": null,
           "coverage": 0,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 25
         }
       ],
       "jp_buy": [
@@ -8245,6 +8407,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 25
@@ -8504,6 +8672,12 @@
           "index": 112.4346,
           "coverage": 25,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 114.4097,
+          "coverage": 25,
+          "total": 25
         }
       ],
       "usd_jpy": [
@@ -8756,6 +8930,12 @@
         {
           "date": "2026-11-19",
           "index": 113.2444,
+          "coverage": 25,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": 115.6313,
           "coverage": 25,
           "total": 25
         }
@@ -9012,6 +9192,12 @@
           "index": null,
           "coverage": 0,
           "total": 25
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 25
         }
       ],
       "jp_buy": [
@@ -9263,6 +9449,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 25
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 25
@@ -9522,6 +9714,12 @@
           "index": 100.6249,
           "coverage": 2,
           "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": 100.6552,
+          "coverage": 2,
+          "total": 2
         }
       ],
       "usd_jpy": [
@@ -9774,6 +9972,12 @@
         {
           "date": "2026-11-19",
           "index": 101.3497,
+          "coverage": 2,
+          "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": 101.7299,
           "coverage": 2,
           "total": 2
         }
@@ -10030,6 +10234,12 @@
           "index": null,
           "coverage": 0,
           "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 2
         }
       ],
       "jp_buy": [
@@ -10281,6 +10491,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 2
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 2
@@ -10540,6 +10756,12 @@
           "index": 92.757,
           "coverage": 1,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 91.8224,
+          "coverage": 1,
+          "total": 1
         }
       ],
       "usd_jpy": [
@@ -10792,6 +11014,12 @@
         {
           "date": "2026-11-19",
           "index": 93.4251,
+          "coverage": 1,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 92.8028,
           "coverage": 1,
           "total": 1
         }
@@ -11048,6 +11276,12 @@
           "index": null,
           "coverage": 0,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 1
         }
       ],
       "jp_buy": [
@@ -11299,6 +11533,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 1
@@ -11558,6 +11798,12 @@
           "index": 98.3652,
           "coverage": 3,
           "total": 3
+        },
+        {
+          "date": "2026-11-20",
+          "index": 98.0009,
+          "coverage": 3,
+          "total": 3
         }
       ],
       "usd_jpy": [
@@ -11810,6 +12056,12 @@
         {
           "date": "2026-11-19",
           "index": 99.0736,
+          "coverage": 3,
+          "total": 3
+        },
+        {
+          "date": "2026-11-20",
+          "index": 99.0473,
           "coverage": 3,
           "total": 3
         }
@@ -12066,6 +12318,12 @@
           "index": null,
           "coverage": 0,
           "total": 3
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 3
         }
       ],
       "jp_buy": [
@@ -12317,6 +12575,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 3
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 3
@@ -12576,6 +12840,12 @@
           "index": 82.7075,
           "coverage": 5,
           "total": 5
+        },
+        {
+          "date": "2026-11-20",
+          "index": 83.9554,
+          "coverage": 5,
+          "total": 5
         }
       ],
       "usd_jpy": [
@@ -12828,6 +13098,12 @@
         {
           "date": "2026-11-19",
           "index": 83.3032,
+          "coverage": 5,
+          "total": 5
+        },
+        {
+          "date": "2026-11-20",
+          "index": 84.8518,
           "coverage": 5,
           "total": 5
         }
@@ -13084,6 +13360,12 @@
           "index": null,
           "coverage": 0,
           "total": 5
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 5
         }
       ],
       "jp_buy": [
@@ -13335,6 +13617,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 5
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 5
@@ -13594,6 +13882,12 @@
           "index": 111.0469,
           "coverage": 2,
           "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": 107.6324,
+          "coverage": 2,
+          "total": 2
         }
       ],
       "usd_jpy": [
@@ -13846,6 +14140,12 @@
         {
           "date": "2026-11-19",
           "index": 111.8467,
+          "coverage": 2,
+          "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": 108.7816,
           "coverage": 2,
           "total": 2
         }
@@ -14102,6 +14402,12 @@
           "index": null,
           "coverage": 0,
           "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 2
         }
       ],
       "jp_buy": [
@@ -14353,6 +14659,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 2
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 2
@@ -14612,6 +14924,12 @@
           "index": 80.0904,
           "coverage": 5,
           "total": 5
+        },
+        {
+          "date": "2026-11-20",
+          "index": 79.2389,
+          "coverage": 5,
+          "total": 5
         }
       ],
       "usd_jpy": [
@@ -14864,6 +15182,12 @@
         {
           "date": "2026-11-19",
           "index": 80.6672,
+          "coverage": 5,
+          "total": 5
+        },
+        {
+          "date": "2026-11-20",
+          "index": 80.085,
           "coverage": 5,
           "total": 5
         }
@@ -15120,6 +15444,12 @@
           "index": null,
           "coverage": 0,
           "total": 5
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 5
         }
       ],
       "jp_buy": [
@@ -15371,6 +15701,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 5
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 5
@@ -15630,6 +15966,12 @@
           "index": 92.2337,
           "coverage": 3,
           "total": 3
+        },
+        {
+          "date": "2026-11-20",
+          "index": 91.0625,
+          "coverage": 3,
+          "total": 3
         }
       ],
       "usd_jpy": [
@@ -15882,6 +16224,12 @@
         {
           "date": "2026-11-19",
           "index": 92.898,
+          "coverage": 3,
+          "total": 3
+        },
+        {
+          "date": "2026-11-20",
+          "index": 92.0348,
           "coverage": 3,
           "total": 3
         }
@@ -16138,6 +16486,12 @@
           "index": null,
           "coverage": 0,
           "total": 3
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 3
         }
       ],
       "jp_buy": [
@@ -16389,6 +16743,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 3
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 3
@@ -16648,6 +17008,12 @@
           "index": 138.4602,
           "coverage": 10,
           "total": 10
+        },
+        {
+          "date": "2026-11-20",
+          "index": 144.5086,
+          "coverage": 10,
+          "total": 10
         }
       ],
       "usd_jpy": [
@@ -16900,6 +17266,12 @@
         {
           "date": "2026-11-19",
           "index": 139.4575,
+          "coverage": 10,
+          "total": 10
+        },
+        {
+          "date": "2026-11-20",
+          "index": 146.0515,
           "coverage": 10,
           "total": 10
         }
@@ -17156,6 +17528,12 @@
           "index": null,
           "coverage": 0,
           "total": 10
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 10
         }
       ],
       "jp_buy": [
@@ -17407,6 +17785,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 10
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 10
@@ -17666,6 +18050,12 @@
           "index": 154.5455,
           "coverage": 1,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 164.9351,
+          "coverage": 1,
+          "total": 1
         }
       ],
       "usd_jpy": [
@@ -17918,6 +18308,12 @@
         {
           "date": "2026-11-19",
           "index": 155.6586,
+          "coverage": 1,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 166.6961,
           "coverage": 1,
           "total": 1
         }
@@ -18174,6 +18570,12 @@
           "index": null,
           "coverage": 0,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 1
         }
       ],
       "jp_buy": [
@@ -18425,6 +18827,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 1
@@ -18684,6 +19092,12 @@
           "index": 98.1032,
           "coverage": 1,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 98.0026,
+          "coverage": 1,
+          "total": 1
         }
       ],
       "usd_jpy": [
@@ -18936,6 +19350,12 @@
         {
           "date": "2026-11-19",
           "index": 98.8098,
+          "coverage": 1,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 99.049,
           "coverage": 1,
           "total": 1
         }
@@ -19192,6 +19612,12 @@
           "index": null,
           "coverage": 0,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 1
         }
       ],
       "jp_buy": [
@@ -19443,6 +19869,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 1
@@ -19702,6 +20134,12 @@
           "index": 94.9811,
           "coverage": 2,
           "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": 92.4342,
+          "coverage": 2,
+          "total": 2
         }
       ],
       "usd_jpy": [
@@ -19954,6 +20392,12 @@
         {
           "date": "2026-11-19",
           "index": 95.6652,
+          "coverage": 2,
+          "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": 93.4212,
           "coverage": 2,
           "total": 2
         }
@@ -20210,6 +20654,12 @@
           "index": null,
           "coverage": 0,
           "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 2
         }
       ],
       "jp_buy": [
@@ -20461,6 +20911,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 2
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 2
@@ -20720,6 +21176,12 @@
           "index": 101.9906,
           "coverage": 2,
           "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": 102.6111,
+          "coverage": 2,
+          "total": 2
         }
       ],
       "usd_jpy": [
@@ -20972,6 +21434,12 @@
         {
           "date": "2026-11-19",
           "index": 102.7252,
+          "coverage": 2,
+          "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": 103.7067,
           "coverage": 2,
           "total": 2
         }
@@ -21228,6 +21696,12 @@
           "index": null,
           "coverage": 0,
           "total": 2
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 2
         }
       ],
       "jp_buy": [
@@ -21479,6 +21953,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 2
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 2
@@ -21738,6 +22218,12 @@
           "index": 116.1519,
           "coverage": 17,
           "total": 17
+        },
+        {
+          "date": "2026-11-20",
+          "index": 116.9697,
+          "coverage": 17,
+          "total": 17
         }
       ],
       "usd_jpy": [
@@ -21990,6 +22476,12 @@
         {
           "date": "2026-11-19",
           "index": 116.9885,
+          "coverage": 17,
+          "total": 17
+        },
+        {
+          "date": "2026-11-20",
+          "index": 118.2187,
           "coverage": 17,
           "total": 17
         }
@@ -22246,6 +22738,12 @@
           "index": null,
           "coverage": 0,
           "total": 17
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 17
         }
       ],
       "jp_buy": [
@@ -22497,6 +22995,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 17
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 17
@@ -22756,6 +23260,12 @@
           "index": 98.0848,
           "coverage": 1,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 98.0848,
+          "coverage": 1,
+          "total": 1
         }
       ],
       "usd_jpy": [
@@ -23008,6 +23518,12 @@
         {
           "date": "2026-11-19",
           "index": 98.7912,
+          "coverage": 1,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 99.1321,
           "coverage": 1,
           "total": 1
         }
@@ -23264,6 +23780,12 @@
           "index": null,
           "coverage": 0,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 1
         }
       ],
       "jp_buy": [
@@ -23515,6 +24037,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 1
@@ -23774,6 +24302,12 @@
           "index": 120.2617,
           "coverage": 4,
           "total": 4
+        },
+        {
+          "date": "2026-11-20",
+          "index": 119.3269,
+          "coverage": 4,
+          "total": 4
         }
       ],
       "usd_jpy": [
@@ -24026,6 +24560,12 @@
         {
           "date": "2026-11-19",
           "index": 121.1279,
+          "coverage": 4,
+          "total": 4
+        },
+        {
+          "date": "2026-11-20",
+          "index": 120.601,
           "coverage": 4,
           "total": 4
         }
@@ -24282,6 +24822,12 @@
           "index": null,
           "coverage": 0,
           "total": 4
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 4
         }
       ],
       "jp_buy": [
@@ -24533,6 +25079,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 4
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 4
@@ -24792,6 +25344,12 @@
           "index": 60.8,
           "coverage": 1,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 60.8,
+          "coverage": 1,
+          "total": 1
         }
       ],
       "usd_jpy": [
@@ -25044,6 +25602,12 @@
         {
           "date": "2026-11-19",
           "index": 61.2379,
+          "coverage": 1,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 61.4492,
           "coverage": 1,
           "total": 1
         }
@@ -25300,6 +25864,12 @@
           "index": null,
           "coverage": 0,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 1
         }
       ],
       "jp_buy": [
@@ -25551,6 +26121,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 1
@@ -25810,6 +26386,12 @@
           "index": 100.0,
           "coverage": 1,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 100.0,
+          "coverage": 1,
+          "total": 1
         }
       ],
       "usd_jpy": [
@@ -26062,6 +26644,12 @@
         {
           "date": "2026-11-19",
           "index": 100.7202,
+          "coverage": 1,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 101.0677,
           "coverage": 1,
           "total": 1
         }
@@ -26318,6 +26906,12 @@
           "index": null,
           "coverage": 0,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 1
         }
       ],
       "jp_buy": [
@@ -26569,6 +27163,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 1
@@ -26828,6 +27428,12 @@
           "index": 75.0,
           "coverage": 1,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 75.0,
+          "coverage": 1,
+          "total": 1
         }
       ],
       "usd_jpy": [
@@ -27080,6 +27686,12 @@
         {
           "date": "2026-11-19",
           "index": 75.5402,
+          "coverage": 1,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": 75.8008,
           "coverage": 1,
           "total": 1
         }
@@ -27336,6 +27948,12 @@
           "index": null,
           "coverage": 0,
           "total": 1
+        },
+        {
+          "date": "2026-11-20",
+          "index": null,
+          "coverage": 0,
+          "total": 1
         }
       ],
       "jp_buy": [
@@ -27587,6 +28205,12 @@
         },
         {
           "date": "2026-11-19",
+          "index": null,
+          "coverage": 0,
+          "total": 1
+        },
+        {
+          "date": "2026-11-20",
           "index": null,
           "coverage": 0,
           "total": 1
@@ -43718,6 +44342,390 @@
         {
           "id": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
           "usd": 0.64,
+          "jp_sale": null,
+          "jp_buy": null
+        }
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "observed_at": "2026-11-20T02:36:01.972198+00:00",
+      "fx": {
+        "usd_jpy": 159.97,
+        "date": "2026-11-19",
+        "source": "Frankfurter / ECB",
+        "source_url": "https://www.frankfurter.dev/"
+      },
+      "cards": [
+        {
+          "id": "6675632d-d74a-4b1e-8539-ac678d5545a5",
+          "usd": 2.58,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "4493b62b-f354-47ff-9dcf-cc6e29de77c6",
+          "usd": 1.27,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "c0318a48-30e4-4ef7-be3d-5e561c5ce428",
+          "usd": 0.32,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "a81f924b-0527-4311-8120-9bfff71524f6",
+          "usd": 0.27,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "a829747f-cf9b-4d81-ba66-9f0630ed4565",
+          "usd": 3.12,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "daafd816-f7c1-4630-9e5c-a1e5db570a35",
+          "usd": 0.39,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "76edd22f-808e-4a7c-b941-13c0f5e30418",
+          "usd": 1.06,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "5b8170dc-6a90-46fc-9989-7575f3d402b5",
+          "usd": 8.21,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "52d58fe4-6070-4022-9cd7-c35a11b44525",
+          "usd": 0.18,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "6a0b230b-d391-4998-a3f7-7b158a0ec2cd",
+          "usd": 0.36,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "3c750d5a-f743-41ff-b5ba-02025ca0bec2",
+          "usd": 7.32,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "8c542ea4-98c3-4c2d-9066-205ab7aa697a",
+          "usd": 8.45,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "e056b55f-82ed-4fe0-ab0c-bb20fa4a218a",
+          "usd": 6.69,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "b66daa94-d367-4812-9f18-f35378c1febb",
+          "usd": 9.53,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "6da63cc5-4624-4491-abd9-9b600c3fefe2",
+          "usd": 7.98,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "69be21b4-c613-47c6-ba57-f4785861af3e",
+          "usd": 5.93,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "45b92924-baa1-4c9b-9932-9a5eda8f3446",
+          "usd": 6.57,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "8b4e2642-3c87-4708-b9b4-2e7f7359ac7d",
+          "usd": 7.68,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "6cdd2a74-63b3-4ff2-9c5a-a85dee63c3c9",
+          "usd": 5.55,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "b58c4033-f764-42f6-966f-b7202a2babbf",
+          "usd": 0.56,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "2246c098-1071-4cc3-a60a-802406e2827b",
+          "usd": 0.24,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "0784b6f0-9ebf-43d2-ba0f-a6bc93ba0c48",
+          "usd": 3.05,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "3aad15a2-8a1b-4460-9b06-e85863081878",
+          "usd": 47.9,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "aaf258fc-3ba4-4b83-bdbf-10a07e0b6c03",
+          "usd": 1.35,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "32fd8b7c-baf3-4d3d-be6f-044a917b11a0",
+          "usd": 47.56,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "1ac6cb62-45da-4e9a-84c6-09e6eacf0664",
+          "usd": 0.29,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "c6b6117c-faab-4bbb-b851-07bd8061ef03",
+          "usd": 0.64,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "e2a27742-08c1-4153-af7f-25a7a98f585e",
+          "usd": 5.12,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "e60deb92-f7dd-4f4e-9036-e47dd586f985",
+          "usd": 0.54,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "e32c67d1-187f-40df-b3b3-6036f5c92834",
+          "usd": 16.12,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "dfb7c4b9-f2f4-4d4e-baf2-86551c8150fe",
+          "usd": 38.41,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "861b5889-0183-4bee-afeb-a4b2aa700a8e",
+          "usd": 61.45,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "83d0b761-d694-4232-9f40-5bd8c82a05f1",
+          "usd": 12.56,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "cc14b1ee-5def-42df-8ef6-0d91dba39e3a",
+          "usd": 0.34,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "b61634ae-05be-4b56-8ebb-9d4ade902e42",
+          "usd": 3.69,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "22e08a78-55b7-46b0-bd1a-a51548fc1861",
+          "usd": 1.09,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "4f616706-ec97-4923-bb1e-11a69fbaa1f8",
+          "usd": 3.93,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "bc99f300-29c0-44e7-9560-7bbd1dda7556",
+          "usd": 0.84,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "7d4b1d44-126e-4987-9a9f-f0f9627a09cb",
+          "usd": 1.31,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "c1aac0f5-1d01-4673-b8d3-878d9a1d423c",
+          "usd": 0.5,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "55b5b094-9d2d-4d96-b90c-78fecdae725a",
+          "usd": 2.1,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "400b43aa-c1d2-4435-b863-061f43889422",
+          "usd": 0.81,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "b7c47024-5e08-4b17-b41a-7647f8b814b9",
+          "usd": 0.76,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "ad881aa0-decc-447b-8c8a-983546a9a55a",
+          "usd": 0.37,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+          "usd": 9.09,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "6e288374-2b71-4ace-b1d2-a19fee6cb4af",
+          "usd": 20.91,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "90c423cc-1264-4067-9c50-e7c88c68ef2d",
+          "usd": 1.86,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "8f85e12c-196b-4459-b81f-0c9c854e9f57",
+          "usd": 16.11,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "f7e12477-d59f-442b-a678-1be746d0b7be",
+          "usd": 1.1,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "c047dedc-43bc-4a7c-bca4-182283c89069",
+          "usd": 0.32,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "6ec6a910-f6d0-4225-8b55-d329dc788c64",
+          "usd": 2.9,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "7afc4a15-5ff8-457a-aa62-803b2d78d912",
+          "usd": 3.04,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "57f61970-382e-415c-868b-6bbb6c78825d",
+          "usd": 0.5,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "a0e2098f-1d94-491a-a7e9-a45a9f69e3a8",
+          "usd": 0.3,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "8ee443cc-e17a-493b-9c93-1f9e141a30e4",
+          "usd": 1.53,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "11e12a84-e7be-4afc-a230-c2e644743fa8",
+          "usd": 8.83,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "99bf792f-963e-4509-8d3c-7db129c6a77f",
+          "usd": 5.16,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "9f37c5b6-a59c-45cd-9a99-e9357fe9ea1b",
+          "usd": 68.2,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "5eb843ef-b223-40d0-a461-54b16d188d0e",
+          "usd": 3.14,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "a0d50603-e31f-4cd7-b4b6-49847d99eb2e",
+          "usd": 0.32,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "c3f9b454-97e9-4c77-b37a-e974221ae385",
+          "usd": 1.47,
+          "jp_sale": null,
+          "jp_buy": null
+        },
+        {
+          "id": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
+          "usd": 0.63,
           "jp_sale": null,
           "jp_buy": null
         }
