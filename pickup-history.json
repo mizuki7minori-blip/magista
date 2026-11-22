@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-23",
-    "ids": [
-      "a4d46c1b-7742-4ac8-9794-b669ee4d2cc1",
-      "7fe67cef-38c8-4071-86df-71053818d908",
-      "23f73983-0337-4464-8817-5f7596d65b38"
-    ],
-    "en": [
-      "Strongarm Thug",
-      "Liliana's Influence",
-      "Grapeshot Catapult"
-    ]
-  },
-  {
     "date": "2026-10-24",
     "ids": [
       "898763f8-a333-43f5-9f66-52e2adbe5758",
@@ -400,6 +387,19 @@
       "Cinder Pyromancer",
       "Piper's Melody",
       "Dragonstorm Globe"
+    ]
+  },
+  {
+    "date": "2026-11-23",
+    "ids": [
+      "c208b959-d0e4-4a9a-8255-2c7cc7596767",
+      "773c7a1e-0f59-4606-a2fc-c47bda760ecd",
+      "2522a9dd-bcf3-4b84-abff-52b9e6dbde34"
+    ],
+    "en": [
+      "Abbey Gargoyles",
+      "Foul Play",
+      "Bag End Banquet"
     ]
   }
 ]
