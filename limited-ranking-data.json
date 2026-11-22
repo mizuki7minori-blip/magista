@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T09:57:32.302270Z",
+  "generatedAt": "2026-11-22T09:55:20.120802Z",
   "source": "17Lands PremierDraft",
   "sets": {
     "trk": {
@@ -8,1942 +8,1942 @@
       "ranking": [
         {
           "name": "U.S.S. Enterprise-A, Free Spirit",
-          "wr": 67.7,
-          "games": 1679
+          "wr": 67.3,
+          "games": 1790
         },
         {
           "name": "U.S.S. Discovery, at Black Alert",
           "wr": 66.9,
-          "games": 3939
+          "games": 4169
         },
         {
           "name": "Excalbian Gamemaster",
           "wr": 65.4,
-          "games": 2070
+          "games": 2176
         },
         {
           "name": "Captain Jonathan Archer",
-          "wr": 65.1,
-          "games": 4318
+          "wr": 65.0,
+          "games": 4591
         },
         {
           "name": "Captain Jean-Luc Picard",
           "wr": 64.0,
-          "games": 1783
+          "games": 1872
         },
         {
           "name": "Holo-Engineer",
-          "wr": 63.9,
-          "games": 4307
-        },
-        {
-          "name": "The Wrath of Khan",
-          "wr": 63.0,
-          "games": 4408
-        },
-        {
-          "name": "Jadzia Dax, Living Legacy",
-          "wr": 63.0,
-          "games": 1841
+          "wr": 63.6,
+          "games": 4564
         },
         {
           "name": "The Destruction of Praxis",
-          "wr": 62.9,
-          "games": 3698
+          "wr": 63.4,
+          "games": 3969
         },
         {
           "name": "Captain James T. Kirk",
+          "wr": 63.0,
+          "games": 2062
+        },
+        {
+          "name": "The Wrath of Khan",
+          "wr": 62.8,
+          "games": 4674
+        },
+        {
+          "name": "Jadzia Dax, Living Legacy",
           "wr": 62.7,
-          "games": 1941
+          "games": 1983
         },
         {
           "name": "Captain Kathryn Janeway",
-          "wr": 62.3,
-          "games": 1793
+          "wr": 62.1,
+          "games": 1881
         },
         {
           "name": "Will Riker, First in the Field",
-          "wr": 61.7,
-          "games": 4137
+          "wr": 62.0,
+          "games": 4424
         },
         {
           "name": "Nog, Ambitious Cadet",
           "wr": 61.7,
-          "games": 4016
+          "games": 4222
         },
         {
           "name": "Hologram Stalker",
-          "wr": 61.4,
-          "games": 13916
-        },
-        {
-          "name": "Munitions Enthusiast",
-          "wr": 61.2,
-          "games": 12416
+          "wr": 61.5,
+          "games": 14705
         },
         {
           "name": "Georgiou, Terran Emperor",
-          "wr": 61.2,
-          "games": 1579
+          "wr": 61.4,
+          "games": 1716
         },
         {
-          "name": "The Duras Sisters",
-          "wr": 61.1,
-          "games": 11669
+          "name": "Munitions Enthusiast",
+          "wr": 61.3,
+          "games": 13330
         },
         {
           "name": "Prosper, Tome-Bound",
-          "wr": 61.1,
-          "games": 331
+          "wr": 61.3,
+          "games": 343
         },
         {
-          "name": "Seven of Nine, Unassimilated",
+          "name": "The Traveler",
+          "wr": 61.2,
+          "games": 10194
+        },
+        {
+          "name": "The Duras Sisters",
           "wr": 61.0,
-          "games": 1929
+          "games": 12456
+        },
+        {
+          "name": "Primary Unimatrix Adjunct",
+          "wr": 61.0,
+          "games": 2738
         },
         {
           "name": "Transporter Malfunction",
           "wr": 60.9,
-          "games": 12073
-        },
-        {
-          "name": "The Traveler",
-          "wr": 60.9,
-          "games": 9469
-        },
-        {
-          "name": "Primary Unimatrix Adjunct",
-          "wr": 60.8,
-          "games": 2564
+          "games": 12837
         },
         {
           "name": "Captain Pike, Fullness of Time",
-          "wr": 60.7,
-          "games": 4050
-        },
-        {
-          "name": "Q Continuum",
           "wr": 60.5,
-          "games": 3459
-        },
-        {
-          "name": "Cloak and Phaser",
-          "wr": 60.3,
-          "games": 12675
-        },
-        {
-          "name": "Khaaaaaaaaaaaannn!",
-          "wr": 60.2,
-          "games": 12187
+          "games": 4365
         },
         {
           "name": "Armus, Skin of Evil",
-          "wr": 60.2,
-          "games": 3852
+          "wr": 60.4,
+          "games": 4087
         },
         {
-          "name": "Q, Stacking the Deck",
-          "wr": 60.2,
-          "games": 2049
-        },
-        {
-          "name": "Spock, Always Your Friend",
-          "wr": 60.1,
-          "games": 7876
+          "name": "Khaaaaaaaaaaaannn!",
+          "wr": 60.3,
+          "games": 12993
         },
         {
           "name": "Khan, Despot by Design",
+          "wr": 60.3,
+          "games": 12129
+        },
+        {
+          "name": "Q Continuum",
+          "wr": 60.3,
+          "games": 3671
+        },
+        {
+          "name": "Seven of Nine, Unassimilated",
+          "wr": 60.2,
+          "games": 2054
+        },
+        {
+          "name": "Torbran, Thane of Red Fell",
+          "wr": 60.2,
+          "games": 296
+        },
+        {
+          "name": "Cloak and Phaser",
+          "wr": 60.1,
+          "games": 13475
+        },
+        {
+          "name": "Spock, Always Your Friend",
           "wr": 60.0,
-          "games": 11348
+          "games": 8384
         },
         {
           "name": "Borg Cube",
           "wr": 60.0,
-          "games": 1570
-        },
-        {
-          "name": "Salt Vampire",
-          "wr": 59.9,
-          "games": 3527
+          "games": 1668
         },
         {
           "name": "General Chang, Cold Warrior",
           "wr": 59.9,
-          "games": 2272
+          "games": 2429
         },
         {
-          "name": "Torbran, Thane of Red Fell",
-          "wr": 59.9,
-          "games": 290
+          "name": "Q, Stacking the Deck",
+          "wr": 59.8,
+          "games": 2142
+        },
+        {
+          "name": "Salt Vampire",
+          "wr": 59.7,
+          "games": 3770
         },
         {
           "name": "Vash, Freelance Archaeologist",
-          "wr": 59.6,
-          "games": 10053
+          "wr": 59.5,
+          "games": 10679
         },
         {
-          "name": "Storied Veteran",
+          "name": "Subcommander T'Pol",
           "wr": 59.4,
-          "games": 7397
+          "games": 3767
         },
         {
           "name": "Antagonist Incorporator",
           "wr": 59.4,
-          "games": 2679
+          "games": 2838
         },
         {
-          "name": "Bristly Bill, Spine Sower",
-          "wr": 59.4,
-          "games": 403
-        },
-        {
-          "name": "Dr. Leonard \"Bones\" McCoy",
+          "name": "Storied Veteran",
           "wr": 59.3,
-          "games": 3792
-        },
-        {
-          "name": "Subcommander T'Pol",
-          "wr": 59.3,
-          "games": 3572
+          "games": 7905
         },
         {
           "name": "MACO Strike Team",
+          "wr": 59.3,
+          "games": 3514
+        },
+        {
+          "name": "Bristly Bill, Spine Sower",
           "wr": 59.2,
-          "games": 3309
+          "games": 423
+        },
+        {
+          "name": "Dr. Leonard \"Bones\" McCoy",
+          "wr": 59.1,
+          "games": 4001
+        },
+        {
+          "name": "Common Goal",
+          "wr": 58.9,
+          "games": 33075
         },
         {
           "name": "Amok Time",
           "wr": 58.9,
-          "games": 10720
+          "games": 11362
         },
         {
           "name": "Dal R'El, Augment Orphan",
           "wr": 58.9,
-          "games": 7792
-        },
-        {
-          "name": "Common Goal",
-          "wr": 58.8,
-          "games": 31078
+          "games": 8327
         },
         {
           "name": "Temporal Conqueror",
-          "wr": 58.7,
-          "games": 31095
-        },
-        {
-          "name": "Sylvia Tilly, Joy of Discovery",
-          "wr": 58.7,
-          "games": 10517
+          "wr": 58.8,
+          "games": 32934
         },
         {
           "name": "L'Rell, Fierce Visionary",
-          "wr": 58.7,
-          "games": 7860
+          "wr": 58.8,
+          "games": 8383
         },
         {
           "name": "Cantankerous Captain",
-          "wr": 58.6,
-          "games": 27109
+          "wr": 58.7,
+          "games": 29013
         },
         {
           "name": "Tasha Yar, Out of Time",
           "wr": 58.6,
-          "games": 3815
-        },
-        {
-          "name": "David and Carol Marcus, Creators",
-          "wr": 58.3,
-          "games": 10469
+          "games": 4060
         },
         {
           "name": "D'Ghor Bloodletter",
-          "wr": 58.3,
-          "games": 9565
+          "wr": 58.5,
+          "games": 10121
         },
         {
-          "name": "Rishkar, Peema Renegade",
+          "name": "Sylvia Tilly, Joy of Discovery",
+          "wr": 58.4,
+          "games": 11205
+        },
+        {
+          "name": "David and Carol Marcus, Creators",
+          "wr": 58.4,
+          "games": 11178
+        },
+        {
+          "name": "Pah-Wraith",
+          "wr": 58.4,
+          "games": 3925
+        },
+        {
+          "name": "Xenobotanist",
           "wr": 58.3,
-          "games": 343
+          "games": 30754
         },
         {
           "name": "Blastoneuron",
           "wr": 58.2,
-          "games": 8763
+          "games": 9383
         },
         {
-          "name": "Pah-Wraith",
+          "name": "Rishkar, Peema Renegade",
           "wr": 58.2,
-          "games": 3706
+          "games": 359
         },
         {
-          "name": "Xenobotanist",
+          "name": "U.S.S. Enterprise-D, Galaxy-Class",
           "wr": 58.1,
-          "games": 28827
-        },
-        {
-          "name": "Earth, Sector 001",
-          "wr": 58.1,
-          "games": 12817
-        },
-        {
-          "name": "Hologram Janeway",
-          "wr": 58.1,
-          "games": 7807
+          "games": 4132
         },
         {
           "name": "Stomping Ground",
           "wr": 58.1,
-          "games": 2900
+          "games": 3135
         },
         {
-          "name": "U.S.S. Enterprise-D, Galaxy-Class",
+          "name": "Hologram Janeway",
           "wr": 58.0,
-          "games": 3900
+          "games": 8278
         },
         {
-          "name": "Breeding Pool",
+          "name": "Crystalline Entity",
           "wr": 58.0,
-          "games": 3311
+          "games": 1351
+        },
+        {
+          "name": "Plasma Cascade",
+          "wr": 57.9,
+          "games": 32498
         }
       ],
       "archetypes": [
         {
           "code": "RG",
           "name": "赤緑（グルール）",
-          "wins": 10375,
-          "games": 17713,
-          "wr": 58.6
+          "wins": 11073,
+          "games": 18866,
+          "wr": 58.7
         },
         {
           "code": "BR",
           "name": "黒赤（ラクドス）",
-          "wins": 13226,
-          "games": 22828,
-          "wr": 57.9
+          "wins": 14116,
+          "games": 24337,
+          "wr": 58.0
         },
         {
           "code": "BG",
           "name": "黒緑（ゴルガリ）",
-          "wins": 5488,
-          "games": 9523,
+          "wins": 5801,
+          "games": 10066,
           "wr": 57.6
         },
         {
           "code": "RW",
           "name": "赤白（ボロス）",
-          "wins": 6908,
-          "games": 12129,
+          "wins": 7314,
+          "games": 12842,
           "wr": 57.0
         },
         {
           "code": "UR",
           "name": "青赤（イゼット）",
-          "wins": 5453,
-          "games": 9661,
-          "wr": 56.4
+          "wins": 5796,
+          "games": 10255,
+          "wr": 56.5
         },
         {
           "code": "GU",
           "name": "緑青（シミック）",
-          "wins": 7944,
-          "games": 14396,
-          "wr": 55.2
+          "wins": 8540,
+          "games": 15426,
+          "wr": 55.4
         },
         {
           "code": "WU",
           "name": "白青（アゾリウス）",
-          "wins": 3306,
-          "games": 6076,
-          "wr": 54.4
+          "wins": 3406,
+          "games": 6271,
+          "wr": 54.3
         },
         {
           "code": "WB",
           "name": "白黒（オルゾフ）",
-          "wins": 8395,
-          "games": 15696,
-          "wr": 53.5
+          "wins": 8896,
+          "games": 16602,
+          "wr": 53.6
         },
         {
           "code": "GW",
           "name": "緑白（セレズニア）",
-          "wins": 3325,
-          "games": 6254,
-          "wr": 53.2
+          "wins": 3486,
+          "games": 6561,
+          "wr": 53.1
         },
         {
           "code": "UB",
           "name": "青黒（ディミーア）",
-          "wins": 4287,
-          "games": 8645,
+          "wins": 4408,
+          "games": 8896,
           "wr": 49.6
         }
       ],
-      "updatedAt": "2026-11-21T09:57:13.603889Z",
-      "archetypesUpdatedAt": "2026-11-21T09:57:32.302270Z",
+      "updatedAt": "2026-11-22T09:55:00.673514Z",
+      "archetypesUpdatedAt": "2026-11-22T09:55:20.120802Z",
       "archetypeCards": {
         "WU": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "UB": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "BR": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "RG": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "GW": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "WB": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "BG": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "GU": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "UR": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ],
         "RW": [
           {
             "name": "The Traveler",
-            "wr": 65.3,
-            "games": 749
-          },
-          {
-            "name": "Munitions Enthusiast",
-            "wr": 62.0,
-            "games": 876
-          },
-          {
-            "name": "Amok Time",
-            "wr": 60.7,
-            "games": 842
-          },
-          {
-            "name": "Transporter Malfunction",
-            "wr": 60.6,
-            "games": 841
-          },
-          {
-            "name": "Tal Shiar Analyst",
-            "wr": 60.6,
-            "games": 531
-          },
-          {
-            "name": "Hologram Stalker",
-            "wr": 60.2,
-            "games": 968
-          },
-          {
-            "name": "The Duras Sisters",
-            "wr": 60.1,
-            "games": 775
-          },
-          {
-            "name": "Vash, Freelance Archaeologist",
-            "wr": 59.8,
-            "games": 747
-          },
-          {
-            "name": "Khaaaaaaaaaaaannn!",
-            "wr": 59.7,
-            "games": 870
-          },
-          {
-            "name": "Ensign Pavel Chekov",
-            "wr": 59.6,
-            "games": 777
-          },
-          {
-            "name": "Plasma Cascade",
-            "wr": 59.3,
-            "games": 1920
-          },
-          {
-            "name": "First Contact",
-            "wr": 59.3,
-            "games": 1029
-          },
-          {
-            "name": "Mugato",
-            "wr": 59.3,
-            "games": 678
-          },
-          {
-            "name": "He's Dead, Jim",
-            "wr": 59.1,
-            "games": 1729
-          },
-          {
-            "name": "U.S.S. Voyager, Lone Wanderer",
-            "wr": 58.9,
-            "games": 705
+            "wr": 65.0,
+            "games": 725
           },
           {
             "name": "Khan, Despot by Design",
-            "wr": 58.8,
-            "games": 918
+            "wr": 64.5,
+            "games": 781
           },
           {
-            "name": "Reckless Impulse",
-            "wr": 58.7,
-            "games": 744
+            "name": "Hologram Stalker",
+            "wr": 63.8,
+            "games": 789
           },
           {
-            "name": "Suurok-Class Science Vessel",
-            "wr": 58.4,
-            "games": 934
+            "name": "D'Ghor Bloodletter",
+            "wr": 63.3,
+            "games": 556
+          },
+          {
+            "name": "Munitions Enthusiast",
+            "wr": 62.4,
+            "games": 914
+          },
+          {
+            "name": "Transporter Malfunction",
+            "wr": 62.2,
+            "games": 764
+          },
+          {
+            "name": "Khaaaaaaaaaaaannn!",
+            "wr": 62.0,
+            "games": 806
+          },
+          {
+            "name": "U.S.S. Voyager, Lone Wanderer",
+            "wr": 62.0,
+            "games": 547
           },
           {
             "name": "Xenobotanist",
-            "wr": 58.3,
-            "games": 2066
-          },
-          {
-            "name": "Fugitive Listener",
-            "wr": 58.3,
-            "games": 1550
-          },
-          {
-            "name": "Oberth-Class Starship",
-            "wr": 58.3,
-            "games": 907
-          },
-          {
-            "name": "Spock, Always Your Friend",
-            "wr": 58.1,
-            "games": 537
+            "wr": 61.7,
+            "games": 1927
           },
           {
             "name": "Common Goal",
-            "wr": 58.0,
-            "games": 2119
+            "wr": 61.2,
+            "games": 1997
           },
           {
-            "name": "Silicate Surveyor",
-            "wr": 58.0,
-            "games": 1282
+            "name": "L'Rell, Fierce Visionary",
+            "wr": 60.8,
+            "games": 523
           },
           {
-            "name": "Make It So",
-            "wr": 57.9,
-            "games": 1435
+            "name": "Starfleet Security",
+            "wr": 60.7,
+            "games": 621
           },
           {
-            "name": "Risa",
-            "wr": 57.9,
-            "games": 674
+            "name": "Academy Instructor",
+            "wr": 60.4,
+            "games": 576
           },
           {
-            "name": "Boarding Action",
-            "wr": 57.8,
-            "games": 1837
+            "name": "Moopsy",
+            "wr": 60.3,
+            "games": 1603
           },
           {
-            "name": "Cloak and Phaser",
-            "wr": 57.7,
-            "games": 834
-          },
-          {
-            "name": "Perils of the Past",
-            "wr": 57.6,
-            "games": 1010
+            "name": "Ensign Pavel Chekov",
+            "wr": 60.0,
+            "games": 768
           },
           {
             "name": "Andoria",
-            "wr": 57.6,
-            "games": 852
+            "wr": 59.9,
+            "games": 755
+          },
+          {
+            "name": "Temporal Conqueror",
+            "wr": 59.8,
+            "games": 1839
+          },
+          {
+            "name": "The Duras Sisters",
+            "wr": 59.8,
+            "games": 787
+          },
+          {
+            "name": "Daniels, Temporal Agent",
+            "wr": 59.7,
+            "games": 616
+          },
+          {
+            "name": "Pattern Buffer Preservation",
+            "wr": 59.6,
+            "games": 1361
+          },
+          {
+            "name": "David and Carol Marcus, Creators",
+            "wr": 59.5,
+            "games": 709
+          },
+          {
+            "name": "Temporal Anomaly",
+            "wr": 59.4,
+            "games": 596
+          },
+          {
+            "name": "Cantankerous Captain",
+            "wr": 59.3,
+            "games": 1904
+          },
+          {
+            "name": "Sarcophagus, Ship of the Dead",
+            "wr": 59.3,
+            "games": 514
+          },
+          {
+            "name": "Planetary Bombardment",
+            "wr": 59.2,
+            "games": 1717
+          },
+          {
+            "name": "Boarding Action",
+            "wr": 59.0,
+            "games": 1694
+          },
+          {
+            "name": "Dominion Assault Force",
+            "wr": 59.0,
+            "games": 1406
+          },
+          {
+            "name": "First Contact",
+            "wr": 58.8,
+            "games": 982
+          },
+          {
+            "name": "Vash, Freelance Archaeologist",
+            "wr": 58.8,
+            "games": 626
+          },
+          {
+            "name": "Dal R'El, Augment Orphan",
+            "wr": 58.7,
+            "games": 535
           }
         ]
       },
-      "archetypeCardsUpdatedAt": "2026-11-21T09:57:32.302270Z"
+      "archetypeCardsUpdatedAt": "2026-11-22T09:55:20.120802Z"
     },
     "fra": {
       "code": "FRA",
       "name": "リアリティ・フラクチャー",
-      "updatedAt": "2026-11-21T09:57:13.603889Z",
+      "updatedAt": "2026-11-22T09:55:00.673514Z",
       "ranking": [
         {
           "name": "Ajani Unrelenting",
           "wr": 73.2,
-          "games": 14538
+          "games": 14576
         },
         {
           "name": "Uldaros Theorix",
           "wr": 68.8,
-          "games": 14461
+          "games": 14491
         },
         {
           "name": "The Theorist, Jace Beleren",
           "wr": 67.9,
-          "games": 14017
+          "games": 14060
         },
         {
           "name": "Sublime Epiphany",
           "wr": 65.7,
-          "games": 3302
+          "games": 3318
+        },
+        {
+          "name": "Garruk, Curse Breaker",
+          "wr": 65.4,
+          "games": 11896
         },
         {
           "name": "Garruk, Veiled Butcher",
           "wr": 65.3,
-          "games": 13721
-        },
-        {
-          "name": "Garruk, Curse Breaker",
-          "wr": 65.3,
-          "games": 11859
+          "games": 13777
         },
         {
           "name": "Overwrite the Multiverse",
-          "wr": 65.1,
-          "games": 13615
+          "wr": 65.0,
+          "games": 13652
         },
         {
           "name": "Mind Twist",
@@ -1953,12 +1953,12 @@
         {
           "name": "Sphinx of False Conclusions",
           "wr": 63.6,
-          "games": 30009
+          "games": 30063
         },
         {
           "name": "Aerid Konstrari",
-          "wr": 63.5,
-          "games": 10912
+          "wr": 63.6,
+          "games": 10943
         },
         {
           "name": "Splinter Twin",
@@ -1968,322 +1968,322 @@
         {
           "name": "Null Summoner",
           "wr": 62.4,
-          "games": 30598
+          "games": 30684
         },
         {
           "name": "Lich's Relic",
           "wr": 62.2,
-          "games": 27864
+          "games": 27931
         },
         {
           "name": "Vraska, the Cutting Glare",
           "wr": 61.9,
-          "games": 25160
+          "games": 25219
         },
         {
           "name": "Kwia Vigorbloom",
           "wr": 61.9,
-          "games": 10201
+          "games": 10254
         },
         {
           "name": "Craftwork Crusher",
           "wr": 61.6,
-          "games": 62395
+          "games": 62519
         },
         {
           "name": "Denzilore Fatehold",
           "wr": 61.5,
-          "games": 12751
+          "games": 12788
         },
         {
           "name": "Sanctum Lurker",
           "wr": 61.4,
-          "games": 26474
+          "games": 26538
         },
         {
           "name": "Kindred Judgment",
           "wr": 61.3,
-          "games": 25153
+          "games": 25247
         },
         {
           "name": "Hungering Puppetbeast",
           "wr": 61.2,
-          "games": 23812
+          "games": 23893
         },
         {
           "name": "Kiora of Fire and Ashes",
           "wr": 60.9,
-          "games": 69381
+          "games": 69592
         },
         {
           "name": "Lyra, Tolarian Archangel",
           "wr": 60.3,
-          "games": 29939
+          "games": 30026
         },
         {
           "name": "Recursive Recruitment",
           "wr": 60.1,
-          "games": 84834
+          "games": 85084
         },
         {
           "name": "Chandra, Torch of Defiance",
           "wr": 59.7,
-          "games": 10811
+          "games": 10828
         },
         {
           "name": "Fblthp, Impossibly Lost",
           "wr": 59.6,
-          "games": 92479
+          "games": 92810
         },
         {
           "name": "Proctor of Potential",
           "wr": 59.6,
-          "games": 20407
+          "games": 20453
         },
         {
           "name": "Avatar of Burgeoning Echoes",
           "wr": 59.6,
-          "games": 10058
+          "games": 10082
         },
         {
           "name": "Mindseeker Oculus",
           "wr": 59.5,
-          "games": 194037
+          "games": 194496
         },
         {
           "name": "Countersculpt",
           "wr": 59.5,
-          "games": 88530
+          "games": 88721
         },
         {
           "name": "Diviner of Victory",
           "wr": 59.5,
-          "games": 26208
+          "games": 26270
         },
         {
           "name": "Break Under Pressure",
           "wr": 59.3,
-          "games": 74970
+          "games": 75157
         },
         {
           "name": "Simulacrum Shaper",
           "wr": 59.3,
-          "games": 21867
+          "games": 21956
         },
         {
           "name": "Repurposed Enforcer",
           "wr": 59.3,
-          "games": 21824
+          "games": 21902
         },
         {
           "name": "Austere Command",
           "wr": 59.3,
-          "games": 2329
+          "games": 2343
         },
         {
           "name": "Extended Absence",
           "wr": 59.0,
-          "games": 161272
-        },
-        {
-          "name": "Violent Echoes",
-          "wr": 59.0,
-          "games": 62966
+          "games": 161690
         },
         {
           "name": "Gideon the Oathless",
           "wr": 59.0,
-          "games": 23066
+          "games": 23131
         },
         {
           "name": "Rewrite Regrets",
           "wr": 58.9,
-          "games": 71340
+          "games": 71506
+        },
+        {
+          "name": "Violent Echoes",
+          "wr": 58.9,
+          "games": 63160
+        },
+        {
+          "name": "Multiply by Zero",
+          "wr": 58.8,
+          "games": 70480
         },
         {
           "name": "Hapatra, the Desert Fang",
           "wr": 58.8,
-          "games": 66541
+          "games": 66685
+        },
+        {
+          "name": "Seasoned Cryomancer",
+          "wr": 58.8,
+          "games": 12962
         },
         {
           "name": "Chandra, Chill of Compliance",
           "wr": 58.8,
-          "games": 12470
+          "games": 12500
         },
         {
           "name": "Plan for All Outcomes",
           "wr": 58.7,
-          "games": 87020
-        },
-        {
-          "name": "Multiply by Zero",
-          "wr": 58.7,
-          "games": 70303
-        },
-        {
-          "name": "Seasoned Cryomancer",
-          "wr": 58.7,
-          "games": 12908
+          "games": 87229
         },
         {
           "name": "Carnivorous Cultivator",
           "wr": 58.6,
-          "games": 22182
+          "games": 22225
         },
         {
           "name": "Lyra, Archangel of Dawn",
           "wr": 58.6,
-          "games": 17825
+          "games": 17893
         },
         {
           "name": "Primal Witchstalker",
           "wr": 58.5,
-          "games": 53888
+          "games": 54050
         },
         {
           "name": "Tenured Tethermage",
-          "wr": 58.4,
-          "games": 18589
+          "wr": 58.5,
+          "games": 18658
         },
         {
           "name": "Protege's Awakening",
           "wr": 58.3,
-          "games": 146637
+          "games": 147039
         },
         {
           "name": "Clash of Elements",
           "wr": 58.0,
-          "games": 54787
+          "games": 54928
         },
         {
           "name": "Jace, Reality Sculptor",
           "wr": 58.0,
-          "games": 22856
+          "games": 22895
         },
         {
           "name": "The Echoverse Fulcrum",
           "wr": 58.0,
-          "games": 11586
+          "games": 11600
         },
         {
           "name": "Enlightened Confidant",
-          "wr": 58.0,
-          "games": 8388
+          "wr": 57.9,
+          "games": 8420
         },
         {
           "name": "Fblthp, Knows the Way",
           "wr": 57.7,
-          "games": 59212
+          "games": 59343
         },
         {
           "name": "Verdant Kraken",
           "wr": 57.7,
-          "games": 20837
+          "games": 20881
         },
         {
           "name": "Liliana the Faultless",
           "wr": 57.7,
-          "games": 15037
+          "games": 15092
         },
         {
           "name": "Twinned Vision",
           "wr": 57.6,
-          "games": 148407
+          "games": 148830
         },
         {
           "name": "Hexhaven Battalion",
           "wr": 57.6,
-          "games": 136517
+          "games": 136928
         },
         {
           "name": "Jace's Machinations",
           "wr": 57.6,
-          "games": 25074
+          "games": 25152
         },
         {
           "name": "Icy Reception",
           "wr": 57.5,
-          "games": 147164
+          "games": 147550
         },
         {
-          "name": "Variable Chaser",
+          "name": "Fatehold Charm",
           "wr": 57.5,
-          "games": 22564
+          "games": 51092
         }
       ],
       "archetypes": [
         {
           "code": "WU",
           "name": "白青（アゾリウス）",
-          "wins": 33917,
-          "games": 59382,
+          "wins": 34003,
+          "games": 59525,
           "wr": 57.1
         },
         {
           "code": "UR",
           "name": "青赤（イゼット）",
-          "wins": 21869,
-          "games": 38966,
+          "wins": 21911,
+          "games": 39039,
           "wr": 56.1
         },
         {
           "code": "RG",
           "name": "赤緑（グルール）",
-          "wins": 26207,
-          "games": 47034,
+          "wins": 26260,
+          "games": 47133,
           "wr": 55.7
         },
         {
           "code": "BG",
           "name": "黒緑（ゴルガリ）",
-          "wins": 20730,
-          "games": 37453,
+          "wins": 20779,
+          "games": 37542,
           "wr": 55.3
         },
         {
           "code": "UB",
           "name": "青黒（ディミーア）",
-          "wins": 36982,
-          "games": 67077,
+          "wins": 37083,
+          "games": 67260,
           "wr": 55.1
         },
         {
           "code": "BR",
           "name": "黒赤（ラクドス）",
-          "wins": 23920,
-          "games": 43734,
+          "wins": 23987,
+          "games": 43851,
           "wr": 54.7
         },
         {
           "code": "GW",
           "name": "緑白（セレズニア）",
-          "wins": 24025,
-          "games": 44056,
+          "wins": 24097,
+          "games": 44195,
           "wr": 54.5
         },
         {
           "code": "RW",
           "name": "赤白（ボロス）",
-          "wins": 11948,
-          "games": 22121,
+          "wins": 11979,
+          "games": 22181,
           "wr": 54.0
         },
         {
           "code": "WB",
           "name": "白黒（オルゾフ）",
-          "wins": 10010,
-          "games": 18528,
+          "wins": 10025,
+          "games": 18557,
           "wr": 54.0
         },
         {
           "code": "GU",
           "name": "緑青（シミック）",
-          "wins": 13795,
-          "games": 26083,
+          "wins": 13843,
+          "games": 26164,
           "wr": 52.9
         }
       ],
-      "archetypesUpdatedAt": "2026-11-21T09:57:32.302270Z",
+      "archetypesUpdatedAt": "2026-11-22T09:55:20.120802Z",
       "archetypeCards": {
         "WU": [
           {
@@ -2356,12 +2356,12 @@
           }
         ]
       },
-      "archetypeCardsUpdatedAt": "2026-11-21T09:57:32.302270Z"
+      "archetypeCardsUpdatedAt": "2026-11-22T09:55:20.120802Z"
     },
     "hob": {
       "code": "HOB",
       "name": "ホビット",
-      "updatedAt": "2026-11-21T09:57:13.603889Z",
+      "updatedAt": "2026-11-22T09:55:00.673514Z",
       "ranking": [
         {
           "name": "Fíli the Pathfinder",
@@ -2736,12 +2736,12 @@
           "wr": 51.4
         }
       ],
-      "archetypesUpdatedAt": "2026-11-21T09:57:32.302270Z"
+      "archetypesUpdatedAt": "2026-11-22T09:55:20.120802Z"
     },
     "msh": {
       "code": "MSH",
       "name": "マーベル・スーパー・ヒーローズ",
-      "updatedAt": "2026-11-21T09:57:13.603889Z",
+      "updatedAt": "2026-11-22T09:55:00.673514Z",
       "ranking": [
         {
           "name": "The Super Hero Civil War",
@@ -3116,12 +3116,12 @@
           "wr": 52.3
         }
       ],
-      "archetypesUpdatedAt": "2026-11-21T09:57:32.302270Z"
+      "archetypesUpdatedAt": "2026-11-22T09:55:20.120802Z"
     },
     "sos": {
       "code": "SOS",
       "name": "ストリクスヘイヴンの秘密",
-      "updatedAt": "2026-11-21T09:57:13.603889Z",
+      "updatedAt": "2026-11-22T09:55:00.673514Z",
       "ranking": [
         {
           "name": "Together as One",
@@ -3496,12 +3496,12 @@
           "wr": 49.9
         }
       ],
-      "archetypesUpdatedAt": "2026-11-21T09:57:32.302270Z"
+      "archetypesUpdatedAt": "2026-11-22T09:55:20.120802Z"
     },
     "tmt": {
       "code": "TMT",
       "name": "ティーンエイジ・ミュータント・ニンジャ・タートルズ",
-      "updatedAt": "2026-11-21T09:57:13.603889Z",
+      "updatedAt": "2026-11-22T09:55:00.673514Z",
       "ranking": [
         {
           "name": "Sally Pride, Lioness Leader",
@@ -3876,7 +3876,7 @@
           "wr": 46.8
         }
       ],
-      "archetypesUpdatedAt": "2026-11-21T09:57:32.302270Z"
+      "archetypesUpdatedAt": "2026-11-22T09:55:20.120802Z"
     }
   }
 }
