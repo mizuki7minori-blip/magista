@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-25",
-    "ids": [
-      "2f82b232-21ff-44cc-bc35-0999a1d1c52f",
-      "03c1e376-1410-4321-90fe-a6997e8db85a",
-      "965aa666-3919-4053-8584-b773bdd54f0b"
-    ],
-    "en": [
-      "Lightning Runner",
-      "Terisiare's Devastation",
-      "Surtland Frostpyre"
-    ]
-  },
-  {
     "date": "2026-10-26",
     "ids": [
       "64132f93-66ac-4794-8c07-a88f9ed0e22b",
@@ -400,6 +387,19 @@
       "Shrapnel Slinger",
       "Chef's Kiss",
       "Transmogrifying Wand"
+    ]
+  },
+  {
+    "date": "2026-11-25",
+    "ids": [
+      "8933297c-62f1-4df9-91b8-2d3481db77e5",
+      "61eacaab-625b-499c-8602-f37ad5dda138",
+      "ee9c57c6-41ef-4328-8417-e5a433eadf17"
+    ],
+    "en": [
+      "Spider-Man India",
+      "Orim's Cure",
+      "Tibalt, the Fiend-Blooded"
     ]
   }
 ]
