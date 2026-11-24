@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-24",
-    "ids": [
-      "898763f8-a333-43f5-9f66-52e2adbe5758",
-      "4f9c66f9-f5d4-499d-9325-e779e6612bca",
-      "01dc86f3-5ebb-4b10-bf68-8fc9f232c724"
-    ],
-    "en": [
-      "Mesa Cavalier",
-      "Temporary Insanity",
-      "Master of the Feast"
-    ]
-  },
-  {
     "date": "2026-10-25",
     "ids": [
       "2f82b232-21ff-44cc-bc35-0999a1d1c52f",
@@ -400,6 +387,19 @@
       "Abbey Gargoyles",
       "Foul Play",
       "Bag End Banquet"
+    ]
+  },
+  {
+    "date": "2026-11-24",
+    "ids": [
+      "b400536c-ea8b-4237-90da-1d3ac139881d",
+      "3d177c04-9aa3-44b8-bbe4-df5de23a4ce6",
+      "921345ce-2eaf-4b95-b65d-1c27204665ed"
+    ],
+    "en": [
+      "Shrapnel Slinger",
+      "Chef's Kiss",
+      "Transmogrifying Wand"
     ]
   }
 ]
