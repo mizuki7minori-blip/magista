@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-26",
-    "ids": [
-      "64132f93-66ac-4794-8c07-a88f9ed0e22b",
-      "abcb5321-c295-4abf-8622-7de79679d27a",
-      "95a5e444-39f6-4f42-a83f-befa76350bc1"
-    ],
-    "en": [
-      "Cloak and Dagger, Entwined",
-      "Depressurize",
-      "Skywise Teachings"
-    ]
-  },
-  {
     "date": "2026-10-27",
     "ids": [
       "ea802eda-fc8d-45c7-b5a3-238a2cdc4dcb",
@@ -400,6 +387,19 @@
       "Spider-Man India",
       "Orim's Cure",
       "Tibalt, the Fiend-Blooded"
+    ]
+  },
+  {
+    "date": "2026-11-26",
+    "ids": [
+      "7b1599c0-bb4f-48f8-a358-dc60166b13e7",
+      "285fecb7-f872-454d-ac2f-bc5615c70cd8",
+      "7df45a2a-75bc-4343-8dad-3a642efd13ee"
+    ],
+    "en": [
+      "Vishgraz, the Doomhive",
+      "Nightmare Unmaking",
+      "Metalhead"
     ]
   }
 ]
