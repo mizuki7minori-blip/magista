@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-27",
-    "ids": [
-      "ea802eda-fc8d-45c7-b5a3-238a2cdc4dcb",
-      "ee7d2c2f-e32f-4be6-82ac-ff1e32055376",
-      "60b2f991-47ef-4da3-ba61-0692695ea098"
-    ],
-    "en": [
-      "Thornscape Master",
-      "Tyrant's Choice",
-      "Revoke Privileges"
-    ]
-  },
-  {
     "date": "2026-10-28",
     "ids": [
       "d93f82ce-0eed-45cc-a7b1-50fd4cbb6152",
@@ -400,6 +387,19 @@
       "Vishgraz, the Doomhive",
       "Nightmare Unmaking",
       "Metalhead"
+    ]
+  },
+  {
+    "date": "2026-11-27",
+    "ids": [
+      "8137e765-4df9-469f-a527-dee91d58fb7e",
+      "a35b7fd3-fdef-4414-b720-978f7ce70bff",
+      "33e85a8a-86df-4cdc-a9cc-8cbabe92c3c0"
+    ],
+    "en": [
+      "Kjeldoran Royal Guard",
+      "Rebel Salvo",
+      "Urza's Mine"
     ]
   }
 ]
