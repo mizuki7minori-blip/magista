@@ -1,18 +1,5 @@
 [
   {
-    "date": "2026-10-28",
-    "ids": [
-      "d93f82ce-0eed-45cc-a7b1-50fd4cbb6152",
-      "db4907f3-4071-47c4-9329-96b4813435be",
-      "1ebdc091-16d5-4803-821a-ac8c4696b5bc"
-    ],
-    "en": [
-      "Priest of Gix",
-      "Migration Path",
-      "Binding Grasp"
-    ]
-  },
-  {
     "date": "2026-10-29",
     "ids": [
       "c1f33eac-0f85-4f0f-8562-1737b5f6b23a",
@@ -400,6 +387,19 @@
       "Kjeldoran Royal Guard",
       "Rebel Salvo",
       "Urza's Mine"
+    ]
+  },
+  {
+    "date": "2026-11-28",
+    "ids": [
+      "3ee451e7-2b2f-4ce7-af96-540bba555c60",
+      "6082f66e-3641-4b09-bb04-86bf29ee1c6f",
+      "03220765-8a9d-4d4a-88d5-98df975ce13c"
+    ],
+    "en": [
+      "King of the Oathbreakers",
+      "Return of the Nightstalkers",
+      "Sangrite Backlash"
     ]
   }
 ]
